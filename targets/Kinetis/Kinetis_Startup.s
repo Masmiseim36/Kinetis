@@ -45,19 +45,27 @@
  *   If defined then access is enabled to the FPU
  */
 
+.macro ISR_HANDLER name=
+  .section .vectors, "ax"
+  .word \name
+  .section .init, "ax"
+  .thumb_func
+  .weak \name
+\name:
+1: b 1b /* endless loop */
+.endm
+
+.macro ISR_RESERVED
+  .section .vectors, "ax"
+  .word 0
+.endm
+
   .syntax unified
   .global reset_handler
 
   .section .vectors, "ax"
   .code 16
   .global _vectors
-
-.macro DEFAULT_ISR_HANDLER name=
-  .thumb_func
-  .weak \name
-\name:
-1: b 1b /* endless loop */
-.endm
 
 _vectors:
   .word __stack_end__
@@ -66,21 +74,20 @@ _vectors:
 #else
   .word reset_wait
 #endif /* STARTUP_FROM_RESET */
-  .word NMI_Handler
-  .word HardFault_Handler
-  .word MemManage_Handler
-  .word BusFault_Handler
-  .word UsageFault_Handler
-  .word 0 // Reserved
-  .word 0 // Reserved
-  .word 0 // Reserved
-  .word 0 // Reserved
-  .word SVC_Handler
-  .word DebugMon_Handler
-  .word 0 // Reserved
-  .word PendSV_Handler
-  .word SysTick_Handler
-  // External interrupts start her 
+ISR_HANDLER NMI_Handler
+ISR_HANDLER HardFault_Handler
+ISR_HANDLER MemManage_Handler 
+ISR_HANDLER BusFault_Handler
+ISR_HANDLER UsageFault_Handler
+ISR_RESERVED
+ISR_RESERVED
+ISR_RESERVED
+ISR_RESERVED
+ISR_HANDLER SVC_Handler
+ISR_HANDLER DebugMon_Handler
+ISR_RESERVED
+ISR_HANDLER PendSV_Handler
+ISR_HANDLER SysTick_Handler 
 #if defined(MK10D5)
   #include "MK10D5.vec"
 #elif defined(MK10D7)
@@ -149,11 +156,24 @@ _vectors:
   #include "MK70F12.vec"
 #elif defined(MK70F15)
   #include "MK70F15.vec"
+#elif defined(MKL04Z4)
+  #include "MKL04Z4.vec"
+#elif defined(MKL05Z4)
+  #include "MKL05Z4.vec"
+#elif defined(MKL14Z4)
+  #include "MKL14Z4.vec"
+#elif defined(MKL15Z4)
+  #include "MKL15Z4.vec"
+#elif defined(MKL24Z4)
+  #include "MKL24Z4.vec"
+#elif defined(MKL25Z4)
+  #include "MKL25Z4.vec"
 #else
   #error no vectors
 #endif
 _vectors_end:
-
+  
+  .section .vectors, "ax"
   // align to 0x400 for the flash configuration field
   .balign 0x400, 0xff
 BackDoorKey:
@@ -173,20 +193,17 @@ FDPROT:
   .thumb_func
   reset_handler:
 #ifndef __NO_SYSTEM_INIT
+#ifdef __ARM_ARCH_6M__
+  ldr r0, =__SRAM_segment_end__
+  mov sp, r0
+#else
   ldr sp, =__SRAM_segment_end__
+#endif
   bl SystemInit
 #endif
 
 #ifdef __HAS_FPU
 #ifndef __NO_FPU
-#ifdef CTL_TASKING
-  // Clear ASPEN and LSPEN bits with FPCCR &= ~(C00000000)
-  movw r0, 0xEF34
-  movt r0, 0xE000
-  ldr r1, [r0]
-  bics r1, r1, #(0xC0000000)
-  str r1, [r0]
-#endif
   // Enable CP11 and CP10 with CPACR |= (0xf<<20)
   movw r0, 0xED88
   movt r0, 0xE000
@@ -200,6 +217,15 @@ FDPROT:
   vmrs r0, fpscr
   orrs r0, r0, #(0x3 << 24) // FZ and DN
   vmsr fpscr, r0
+  // clear the CONTROL.FPCA bit
+  mov r0, #0
+  msr control, r0 
+  // FPDSCR similarly
+  movw r1, 0xEF3C
+  movt r1, 0xE000
+  ldr r0, [r1]
+  orrs r0, r0, #(0x3 << 24) // FZ and DN
+  str r0, [r1]
 #endif
 #endif
 #endif
@@ -228,94 +254,17 @@ l1:
 
   b _start
 
-DEFAULT_ISR_HANDLER NMI_Handler
-DEFAULT_ISR_HANDLER HardFault_Handler
-DEFAULT_ISR_HANDLER MemManage_Handler
-DEFAULT_ISR_HANDLER BusFault_Handler
-DEFAULT_ISR_HANDLER UsageFault_Handler
-DEFAULT_ISR_HANDLER SVC_Handler
-DEFAULT_ISR_HANDLER DebugMon_Handler
-DEFAULT_ISR_HANDLER PendSV_Handler
-DEFAULT_ISR_HANDLER SysTick_Handler
-
-#if defined(MK10D5)
-  #include "MK10D5.vecdef"
-#elif defined(MK10D7)
-  #include "MK10D7.vecdef"
-#elif defined(MK10D10)
-  #include "MK10D10.vecdef"  
-#elif defined(MK10DZ10)
-  #include "MK10DZ10.vecdef"
-#elif defined(MK10F12)
-  #include "MK10F12.vecdef"
-#elif defined(MK20D5)
-  #include "MK20D5.vecdef"
-#elif defined(MK20D7)
-  #include "MK20D7.vecdef"
-#elif defined(MK20D10)
-  #include "MK20D10.vecdef"  
-#elif defined(MK20DZ10)
-  #include "MK20DZ10.vecdef"
-#elif defined(MK20F12)
-  #include "MK20F12.vecdef"
-#elif defined(MK30D7)
-  #include "MK30D7.vecdef"
-#elif defined(MK30D10)
-  #include "MK30D10.vecdef"
-#elif defined(MK30DZ10)
-  #include "MK30DZ10.vecdef"
-#elif defined(MK40D7)
-  #include "MK40D7.vecdef"
-#elif defined(MK40D10)
-  #include "MK40D10.vecdef"
-#elif defined(MK40DZ10)
-  #include "MK40DZ10.vecdef"
-#elif defined(MK50D7)
-  #include "MK50D7.vecdef"
-#elif defined(MK50D10)
-  #include "MK50D10.vecdef"
-#elif defined(MK50DZ10)
-  #include "MK50DZ10.vecdef"
-#elif defined(MK51D7)
-  #include "MK51D7.vecdef"
-#elif defined(MK51D10)
-  #include "MK51D10.vecdef"
-#elif defined(MK51DZ10)
-  #include "MK51DZ10.vecdef"
-#elif defined(MK52D10)
-  #include "MK52D10.vecdef"
-#elif defined(MK52DZ10)
-  #include "MK52DZ10.vecdef"
-#elif defined(MK53D10)
-  #include "MK53D10.vecdef"
-#elif defined(MK53DZ10)
-  #include "MK52DZ10.vecdef"
-#elif defined(MK60D10)
-  #include "MK60D10.vecdef"
-#elif defined(MK60DZ10)
-  #include "MK60DZ10.vecdef"
-#elif defined(MK60F12)
-  #include "MK60F12.vecdef"
-#elif defined(MK60F15)
-  #include "MK60F15.vecdef"
-#elif defined(MK61F12)
-  #include "MK61F12.vecdef"
-#elif defined(MK61F15)
-  #include "MK61F15.vecdef"
-#elif defined(MK70F12)
-  #include "MK70F12.vecdef"
-#elif defined(MK70F15)
-  #include "MK70F15.vecdef"
-#else
-  #error no vectors
-#endif
-
 #ifndef __NO_SYSTEM_INIT
   .thumb_func
   .weak SystemInit
 SystemInit:
 #endif  
 disableWatchDog: 
+#if defined(MKL04Z4) || defined(MKL05Z4) || defined(MKL14Z4) || defined(MKL15Z4) || defined(MKL24Z4) || defined(MKL25Z4)
+  ldr r0, =0x40048100
+  ldr r1, =#0
+  str r1, [r0]
+#else
   movw r0, #0x2000
   movt r0, #0x4005
   movw r1, #0xC520
@@ -324,6 +273,7 @@ disableWatchDog:
   strh r1, [r0, #14] 
   movw r1, #0x1D2
   strh r1, [r0]
+#endif
   bx lr
 
 #ifndef STARTUP_FROM_RESET

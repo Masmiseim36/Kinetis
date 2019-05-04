@@ -86,6 +86,7 @@ KinetisSimulatorMemoryImpl::~KinetisSimulatorMemoryImpl()
 bool 
 KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char *argv[])
 {
+  l_series = strstr(argv[0], "MKL") == argv[0];
   if (argc != 5)
     return false;
   unsigned flashSize = strtoul(argv[1],0,0);
@@ -121,7 +122,12 @@ KinetisSimulatorMemoryImpl::findMemoryRegion(unsigned address, unsigned size, un
       m = flash;
       offset = address;
     }
-  else if (address >= (0x20000000-(sram->size()/2)) && address < (0x20000000+sram->size()/2))
+  else if (l_series && (address >= (0x20000000-(sram->size()/4)) && address < (0x20000000+sram->size()/4*3)))
+    {
+      m = sram;
+      offset = address-(0x20000000-(sram->size()/4));
+    }
+  else if (!l_series && (address >= (0x20000000-(sram->size()/2)) && address < (0x20000000+sram->size()/2)))
     {
       m = sram;
       offset = address-(0x20000000-(sram->size()/2));

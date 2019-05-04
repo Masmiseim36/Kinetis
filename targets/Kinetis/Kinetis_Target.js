@@ -10,28 +10,15 @@
   WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  ******************************************************************************/
 
-function EnableETB()
+function EnableTrace(TraceInterfaceType)
 {
-  TargetInterface.pokeWord(0xE0080014, 0x00000030); // MCM_ETB_CNT_CTRL - disable TPIU
-  //TargetInterface.pokeWord(0xE0043FB0, 0xC5ACCE55); // FUNNEL_LOCKACCESS_REG
-  TargetInterface.pokeWord(0xE0043000, 0x00000003); // FUNNEL_FUNCTL_REG - enable funnel
-  //TargetInterface.pokeWord(0xE0042FB0, 0xC5ACCE55); // ETB_LOCKACCESS_REG
-  TargetInterface.pokeWord(0xE0042304, 0x00000001); // ETB_FLU_CTRL_REG - enable formatting
-}
-
-function EnableETM()
-{
-  TargetInterface.pokeWord(0x40048038, 0xFFFF);
-  TargetInterface.pokeWord(0x40048004, 0x00001000);
-   
-  TargetInterface.pokeWord(0x40049018, 0x00000700);   // TraceClock, low drive strength
-  TargetInterface.pokeWord(0x4004901C, 0x00000740);   // Trace data, High drive strength
-  TargetInterface.pokeWord(0x40049020, 0x00000740);
-  TargetInterface.pokeWord(0x40049024, 0x00000740);
-  TargetInterface.pokeWord(0x40049028, 0x00000740);
- 
-  TargetInterface.pokeWord(0xE0040004, 0x00000008);
-  TargetInterface.pokeWord(0xE00400F0, 0x00000000);
+  if (TraceInterfaceType == "ETB")
+    {
+      TargetInterface.pokeWord(0xE0080014, 0x00000030); // MCM_ETB_CNT_CTRL - disable TPIU
+      var CSTF_Ctrl_Reg = ((0x908<<16)|0);
+      v = TargetInterface.getICEBreakerRegister(CSTF_Ctrl_Reg);
+      TargetInterface.setICEBreakerRegister(CSTF_Ctrl_Reg, v | 0x00000003); // EnS0 | EnS1  
+    }
 }
 
 function Reset()
@@ -40,12 +27,7 @@ function Reset()
     {
       TargetInterface.stop(1);
       return;
-    }
-  if (TargetInterface.implementation() == "j-link")
-    {
-      TargetInterface.stopAndReset(1);
-      return;
-    }
+    }  
   if (TargetInterface.implementation() == "P&E")
     TargetInterface.stop();
   TargetInterface.setDebugRegister(0x01000004, 0x8); // set System Reset Request, 
@@ -67,67 +49,92 @@ function FLASHReset()
 }
 
 function GetPartName()
-{ 
-  var SIM_SDID = TargetInterface.peekWord(0x40048024);    
-  var PartName;
-  switch ((SIM_SDID>>4) & 0x7)
+{    
+  TargetInterface.pokeWord(0xE000EDFC, (1<<24)); 
+  var status = TargetInterface.getDebugRegister(0x01000000);    
+  if (status & (1<<2))
     {
-      case 0: // K10
-        PartName = "MK10";
-        break;
-      case 1: // K20
-        PartName = "MK20";
-        break;
-      case 2: // K30
-        PartName = "MK30";
-        break;
-      case 3: // K40
-        PartName = "MK40";
-        break;
-      case 4: // K60
-        PartName = "MK60";
-        break;
-      case 5: // K70
-        PartName = "MK70";
-        break;
-      case 6: // K50/K52
-        PartName = "MK50";
-        break;
-      case 7: // K51/K53
-        PartName = "MK51";
-        break;
-    }
-  var SIM_FCFG2 = TargetInterface.peekWord(0x40048050)
-  if (((SIM_SDID>>7) & 0x7)==3)
-    PartName += "F";
-  else
-    PartName += "D";
-  if (SIM_FCFG2 & (1<<23))
-    {
-      PartName += "N";
-      Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
-      Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
-      if (((SIM_SDID>>7) & 0x7)==3)
-        Length *= 2;
-      if (Length == 1024)
-        PartName += "1M0";
+      if (CWSys.popup && CWSys.popup("System Security Enabled - MassErase to unlock?\nNote that the nSRST must be connected to the debug port\n"))        
+        MassEraseUnderNSRST();
       else
-        PartName += Length.toString();
-    }
-  else
+        TargetInterface.error("System Security Enabled\n");
+    }  
+  status = TargetInterface.getDebugRegister(0x01000000);  
+  if ((status & (1<<3))==0)
     {
-      PartName += "X";
+      TargetInterface.setDebugRegister(0x01000004, 0x10);
+      TargetInterface.delay(1000);      
+    }
+  var SIM_SDID = TargetInterface.peekWord(0x40048024);
+  var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
+  var PartName;
+  switch ((SIM_SDID>>20) & 0xf) 
+    {
+      case 0: // K Series
+        switch ((SIM_SDID>>4) & 0x7)
+          {
+            case 0: // K10
+              PartName = "MK10";
+              break;
+            case 1: // K20
+              PartName = "MK20";
+              break;
+            case 2: // K30
+              PartName = "MK30";
+              break;
+            case 3: // K40
+              PartName = "MK40";
+              break;
+            case 4: // K60
+              PartName = "MK60";
+              break;
+            case 5: // K70
+              PartName = "MK70";
+              break;
+            case 6: // K50/K52
+              PartName = "MK50";
+              break;
+            case 7: // K51/K53
+              PartName = "MK51";
+              break;
+          }        
+        if (((SIM_SDID>>7) & 0x7)==3)
+          PartName += "F";
+        else
+          PartName += "D";
+        if (SIM_FCFG2 & (1<<23))
+          {
+            PartName += "N";
+            Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+            Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
+            if (((SIM_SDID>>7) & 0x7)==3)
+              Length *= 2;
+            if (Length == 1024)
+              PartName += "1M0";
+            else
+              PartName += Length.toString();
+          }
+        else
+          {
+            PartName += "X";
+            Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+            if (((SIM_SDID>>7) & 0x7)==3)
+              Length *= 2;
+            PartName += Length.toString();
+          }
+      break;
+    case 1: // KL Series
+      PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";       
       Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
-      if (((SIM_SDID>>7) & 0x7)==3)
-        Length *= 2;
       PartName += Length.toString();
+      break;
     }
   return PartName;
 }
 
 function MatchPartName(name)
 {
-  return name.substring(0, 8) == GetPartName().substring(0, 8);
+  return name && name.substring(0, 8) == GetPartName().substring(0, 8);
 }
 
 function MDMStatus()
@@ -182,12 +189,12 @@ function MDMControl()
     WScript.Echo("LLS, VLLSx Status Acknowledge\n");
 }
 
-function MassErase()
-{  
-  var i;
-  TargetInterface.setDebugRegister(0x01000004, 0x1); 
-  for (i=0;i<10000 && (TargetInterface.getDebugRegister(0x01000004)&1);i++);
-  if (i==10000)
-    WScript.Echo("Mass Erase timed out\n");
-  TargetInterface.setDebugRegister(0x01000004, 0x0); 
+function MassEraseUnderNSRST()
+{
+  TargetInterface.setNSRST(0); 
+  TargetInterface.setDebugRegister(0x01000004, 0x1);
+  TargetInterface.delay(1000);  
+  if (TargetInterface.getDebugRegister(0x01000004) & 1)    
+    TargetInterface.message("MassErase failed"); 
+  TargetInterface.setNSRST(1);
 }

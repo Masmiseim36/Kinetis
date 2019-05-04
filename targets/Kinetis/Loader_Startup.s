@@ -28,7 +28,11 @@
  *             : R1 - Loader parameter 0                                     *
  *****************************************************************************/
 _start:
-
+#if defined(L_SERIES)
+  ldr r0, =0x40048100
+  ldr r1, =#0
+  str r1, [r0]
+#elif defined(K_SERIES)
   // disable the watchdog
   movw r2, #0x2000
   movt r2, #0x4005
@@ -38,12 +42,16 @@ _start:
   strh r3, [r2, #14] 
   movw r3, #0x1D2
   strh r3, [r2]
+#else
+#error L_SERIES or K_SERIES should be defined
+#endif
   /***************************************************************************
    * Copy loader parameter to R0 if a parameter has been supplied.           *
    ***************************************************************************/
   cmp r0, #0
-  it ne
-  movne r0, r1
+  beq 1f
+  mov r0, r1
+1:
 
   /***************************************************************************
    * TODO: Carry out memory configration here if required.                   *
@@ -52,18 +60,20 @@ _start:
   /***************************************************************************
    * Setup stack                                                             *
    ***************************************************************************/
-  ldr sp, =__stack_end__
+  ldr r2, =__stack_end__
+  mov sp, r2
 
   /***************************************************************************
    * Zero the BSS section.                                                   *
    ***************************************************************************/
   ldr r2, =__bss_start__
   ldr r3, =__bss_end__
-  mov r4, #0
+  movs r4, #0
 zero_bss_loop:
   cmp r2, r3
   beq zero_bss_end
-  strb r4, [r2], #+1
+  strb r4, [r2]
+  adds r2, r2, #1
   b zero_bss_loop
 zero_bss_end:
 

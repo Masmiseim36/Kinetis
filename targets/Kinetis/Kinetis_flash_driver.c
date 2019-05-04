@@ -12,10 +12,6 @@
 #include <libmem.h>
 #include <string.h>
 
-#define FMC_PFAPR (*(volatile unsigned *)0x4001F000)
-#define FMC_PFB0CR (*(volatile unsigned *)0x4001F004)
-#define FMC_PFB1CR (*(volatile unsigned *)0x4001F008) 
-
 #define FTFL_FSTAT (*(volatile unsigned char *)0x40020000)
 #define FTFL_FCNFG (*(volatile unsigned char *)0x40020001)
 #define FTFL_FSEC (*(const volatile unsigned char *)0x40020002)
@@ -172,6 +168,27 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
         *erased_size = h->size;
       // Erase All
       FTFL_FCCOB0 = FCMD_ERSALL;
+      doFlashCmd();           
+      if (write_block_size == 8)
+        {
+          setFlashCmdAndAddress(FCMD_PGM8, 0x408);
+          FTFL_FCCOB7 = 0xff;
+          FTFL_FCCOB6 = 0xff;
+          FTFL_FCCOB5 = 0xff;
+          FTFL_FCCOB4 = 0xff;
+          FTFL_FCCOBB = 0xfe;
+          FTFL_FCCOBA = 0xff;
+          FTFL_FCCOB9 = 0xff;
+          FTFL_FCCOB8 = 0xff;                                                                              
+        }
+      else
+        {
+          setFlashCmdAndAddress(FCMD_PGM4, 0x40C);
+          FTFL_FCCOB7 = 0xfe;
+          FTFL_FCCOB6 = 0xff;
+          FTFL_FCCOB5 = 0xff;
+          FTFL_FCCOB4 = 0xff;                                                                              
+        }
       doFlashCmd();
     }
   else
@@ -271,6 +288,19 @@ static const libmem_ext_driver_functions_t ext_driver_functions =
 int
 kinetis_register_libmem_driver(libmem_driver_handle_t *h)
 {        
+  unsigned sectorSize;
+#if defined(L_SERIES)
+#define MCM_PLACR (*(volatile unsigned *)0xF000300C)
+  // turn off and invalidate any caching
+  MCM_PLACR = (1<<15) | (1<<13) | (1<<12) | (1<<11) | (1<<10);
+
+  FLASH_SIZE = ((SIM_FCFG2>>24) & 0x3f)<<13;
+  
+  write_block_size = 4;
+  
+  sectorSize = 1*1024;
+#elif defined(K_SERIES)
+#define FMC_PFB0CR (*(volatile unsigned *)0x4001F004)
   // turn off and invalidate any caching
   FMC_PFB0CR = (0xf<<20) | (0x1<<19);
 
@@ -280,8 +310,7 @@ kinetis_register_libmem_driver(libmem_driver_handle_t *h)
     FLASH_SIZE += ((SIM_FCFG2>>16) & 0x3f)<<13;
 
   write_block_size = 4;
-
-  unsigned sectorSize;
+  
   switch ((SIM_SDID >> 7) & 0x7)
     {
       case 0x0:
@@ -299,7 +328,9 @@ kinetis_register_libmem_driver(libmem_driver_handle_t *h)
       default:
         return LIBMEM_STATUS_ERROR;
     }
-
+#else
+#error L_SERIES or K_SERIES should be defined
+#endif
   geometry[0].count = FLASH_SIZE/sectorSize;
   geometry[0].size = sectorSize;
   libmem_register_driver(h, (uint8_t *)0, FLASH_SIZE, geometry, 0, &driver_functions, &ext_driver_functions);

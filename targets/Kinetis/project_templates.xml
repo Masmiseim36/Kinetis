@@ -2,8 +2,6 @@
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Executable" description="An executable for Freescale Kinetis." type="Executable" template_name="Kinetis_EXE">
     <configuration name="THUMB Debug"/>
     <configuration name="THUMB Release"/>
-    <property name="arm_architecture" value="v7EM"/>
-    <property name="arm_core_type" value="Cortex-M4"/>
     <property name="arm_target_debug_interface_type" value="ADIv5"/>
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml"/>
     <propertygroup name="Target" value="Kinetis" choose="Yes"/>
@@ -12,8 +10,8 @@
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
     <property name="target_reset_script" value="Reset()"/>
     <property name="target_reset_script" configuration="Flash" value="FLASHReset()"/>
+    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)"/>
     <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader"/>
-    <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
     <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
@@ -33,7 +31,7 @@
     <property name="linker_scanf_fmt_level"/>
     <property name="linker_scanf_fp_enabled"/>
     <property name="linker_scanf_character_group_matching_enabled"/>
-    <property name="c_user_include_directories" value="$(TargetsDir)/Kinetis"/>
+    <property name="c_user_include_directories" value="$(TargetsDir)/Kinetis;$(TargetsDir)/CMSIS_3/CMSIS/Include"/>
     <propertygroup name="Placement" value="Flash"/>
     <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc"/>
     <folder name="System Files">
@@ -46,8 +44,6 @@
     </folder>
   </project>
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Externally Built Executable" description="An externally built executable for Freescale Kinetis." type="Externally Built Executable" template_name="Kinetis_EXT_EXE">
-    <property name="arm_architecture" value="v7EM"/>
-    <property name="arm_core_type" value="Cortex-M4"/>
     <property name="arm_target_debug_interface_type" value="ADIv5"/>
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml"/>
     <propertygroup name="Target" value="Kinetis" choose="Yes"/>
@@ -56,8 +52,8 @@
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
     <property name="target_reset_script" value="Reset()"/>
     <property name="target_reset_script" configuration="Flash" value="FLASHReset()"/>
+    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)"/>
     <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader"/>
-    <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
     <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
@@ -74,8 +70,6 @@
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis CTL Executable" description="A CrossWorks Tasking Library executable for Freescale Kinetis." type="Executable" template_name="Kinetis_CTL_EXE">
     <configuration name="THUMB Debug"/>
     <configuration name="THUMB Release"/>
-    <property name="arm_architecture" value="v7EM"/>
-    <property name="arm_core_type" value="Cortex-M4"/>
     <property name="arm_target_debug_interface_type" value="ADIv5"/>
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml"/>
     <propertygroup name="Target" value="Kinetis" choose="Yes"/>
@@ -84,8 +78,8 @@
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
     <property name="target_reset_script" value="Reset()"/>
     <property name="target_reset_script" configuration="Flash" value="FLASHReset()"/>
+    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)"/>
     <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader"/>
-    <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
     <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
@@ -105,7 +99,7 @@
     <property name="linker_scanf_fmt_level"/>
     <property name="linker_scanf_fp_enabled"/>
     <property name="linker_scanf_character_group_matching_enabled"/>
-    <property name="c_user_include_directories" value="$(StudioDir)/ctl/include;$(TargetsDir)/Kinetis"/>
+    <property name="c_user_include_directories" value="$(StudioDir)/ctl/include;$(TargetsDir)/Kinetis;$(TargetsDir)/CMSIS_3/CMSIS/Include"/>
     <property name="c_preprocessor_definitions" value="NESTED_INTERRUPTS;CTL_TASKING"/>
     <property name="link_use_multi_threaded_libraries" value="Yes"/>
     <property name="linker_additional_files" value="$(StudioDir)/ctl/lib/libctl$(LibExt).a"/>

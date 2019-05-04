@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.4" build_version="2012022900.5609;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-">
+<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.5" build_version="2012092501.6372;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
 
 <targets>
   <category name="K10 Series" >
@@ -102,6 +102,30 @@
     <cpu name="MK70FX512xxx15"/>
     <cpu name="MK70FN1M0xxx15"/>
   </category>
+  <category name="KL0 Series" >
+    <cpu name="MKL04Z8Vxx4"/>
+    <cpu name="MKL04Z16Vxx4"/>
+    <cpu name="MKL04Z32Vxx4"/>
+    <cpu name="MKL05Z8Vxx4"/>
+    <cpu name="MKL05Z16Vxx4"/>
+    <cpu name="MKL05Z32Vxx4"/>
+  </category>
+  <category name="KL1 Series" >
+    <cpu name="MKL14Z32Vxx4"/>
+    <cpu name="MKL14Z64Vxx4"/>
+    <cpu name="MKL15Z32Vxx4"/>
+    <cpu name="MKL15Z64Vxx4"/>
+    <cpu name="MKL15Z128Vxx4"/>
+    <cpu name="MKL15Z256Vxx4"/>
+  </category>
+  <category name="KL2 Series" >
+    <cpu name="MKL24Z32Vxx4"/>
+    <cpu name="MKL24Z64Vxx4"/>
+    <cpu name="MKL25Z32Vxx4"/>
+    <cpu name="MKL25Z64Vxx4"/>
+    <cpu name="MKL25Z128Vxx4"/>
+    <cpu name="MKL25Z256Vxx4"/>
+  </category>
 </targets>
 
   <documentation>
@@ -173,12 +197,13 @@
       has application specific interrupt service routine names then you can use the preprocessor definitions
       to rename the symbol for example <b>PORTA_IRQHandler=porta_isr</b>.</p>
 
-      <h5>Target Reset Script</h5>
-      <p>The reset script <a href="file:$(TargetsDir)/Kinetis/Kinetis_Target.js">Kinetis_Target.js</a> is used by the
-      debugger to reset the target board. For OSJTAG and CrossConnect/FTDI/Wiggler target interfaces the MDM-AP
-      is used to reset the target board. For J-Link target interfaces this script will use the SRST signal so in order 
-      to reset the target properly and therefore debug your application reliably from a defined state the SRST signal 
-      should be connected.</p>
+      <h5>Target Script</h5>
+      <p>The script <a href="file:$(TargetsDir)/Kinetis/Kinetis_Target.js">Kinetis_Target.js</a> is used by the
+      debugger to identify the Kinetis part, match the project to the target and to reset the target board. The
+      reset script contains a function <b>MassErase</b>. This function can be used to unlock a secured device
+      by connecting to the device with the <b>Identify Target On Connect</b> cleared. You can then right click
+      on the target (in the targets window) and select <b>MassErase</b>. Note that the project property 
+      <b>target_extras_script</b> should be set to be <b>Extras()</b> to get the menu entry to display.</p>
 
       <h5>Kinetis Internal Flash Loader</h5>
       <p>The source code to the flash loaders <a href="file:$(TargetsDir)/Kinetis/Loader.hzp">(click to load solution)</a>
@@ -207,37 +232,84 @@
       use CTL and should not be disabled by a CTL interrupt.</p>
     </section>
 
-    <section name="3) CrossWorks Shared Sample Projects">
-      <p>The following project files are supplied that can be used to run the standard CrossWorks shared samples.</p>
-      <ul>        
-        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K20D50M/shared.hzp">TWR-K20D50M Shared Samples (click to load project)</a></b></li>
-        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/shared.hzp">TWR-K40X256 Shared Samples (click to load project)</a></b></li>   
-        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K53N512/shared.hzp">TWR-K53N512 Shared Samples (click to load project)</a></b></li>   
-        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60N512/shared.hzp">TWR-K60N512 Shared Samples (click to load project)</a></b></li>
-        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60F120M/shared.hzp">TWR-K60F120M Shared Samples (click to load project)</a></b></li>
-        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/shared.hzp">TWR-K70F120M Shared Samples (click to load project)</a></b></li>
-      </ul>
-      <p>The board specific file <b>Kinetis_ctl_board.c</b> is included in the samples that sets up the PLL (either using a bespoke constructor
-      function or the standard Freescale CMSIS function) and implements the ctl board support functions to flash a led and handle a button press.</p>
-    </section>
-
-    <section name="4) CTL Sample Projects">
-      <p>The following project files are supplied that can be used to run the standard CrossWorks CTL samples.</p>
+    <section name="3) Kinetis Sample Projects">
+      <p>Sample projects are supplied for the following Freescale boards.</p>
+      <h5>FRDM-KL25Z Samples</h5>      
       <ul>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/FRDM-KL25Z/shared.hzp">FRDM-KL25Z Shared Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/FRDM-KL25Z/ctl.hzp">FRDM-KL25Z CTL Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/FRDM-KL25Z/DSP_Lib_Samples.hzp">FRDM-KL25Z CMSIS-DSP Samples (click to load project)</a></b></li>
+      </ul>
+      <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/FRDM-KL25Z/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
+      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press.</p>
+
+      <h5>TWR-K20D50M Samples</h5>      
+      <ul>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K20D50M/shared.hzp">TWR-K20D50M Shared Samples (click to load project)</a></b></li>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K20D50M/ctl.hzp">TWR-K20D50M CTL Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K20D50M/DSP_Lib_Samples.hzp">TWR-K20D50M CMSIS-DSP Samples (click to load project)</a></b></li>
+      </ul>
+      <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/TWR-K20D50M/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
+      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press.</p>
+
+      <h5>TWR-K20D72M Samples</h5>      
+      <ul>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K20D72M/shared.hzp">TWR-K20D72M Shared Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K20D72M/ctl.hzp">TWR-K20D72M CTL Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K20D72M/DSP_Lib_Samples.hzp">TWR-K20D72M CMSIS-DSP Samples (click to load project)</a></b></li>
+      </ul>
+      <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/TWR-K20D72M/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
+      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press.</p>
+
+      <h5>TWR-K40X256 Samples</h5>      
+      <ul>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/shared.hzp">TWR-K40X256 Shared Samples (click to load project)</a></b></li>   
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/ctl.hzp">TWR-K40X256 CTL Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/DSP_Lib_Samples.hzp">TWR-K40X256 CMSIS-DSP Samples (click to load project)</a></b></li>
+      </ul>
+      <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
+      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press.</p>
+
+      <h5>TWR-K53N512 Samples</h5>      
+      <ul>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K53N512/shared.hzp">TWR-K53N512 Shared Samples (click to load project)</a></b></li>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K53N512/ctl.hzp">TWR-K53N512 CTL Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K53N512/DSP_Lib_Samples.hzp">TWR-K53N512 CMSIS-DSP Samples (click to load project)</a></b></li>
+      </ul>
+      <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/TWR-K53N512/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
+      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press.</p>
+
+      <h5>TWR-K60N512 Samples</h5>     
+      <ul>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60N512/shared.hzp">TWR-K60N512 Shared Samples (click to load project)</a></b></li>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60N512/ctl.hzp">TWR-K60N512 CTL Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60N512/DSP_Lib_Samples.hzp">TWR-K60N512 CMSIS-DSP Samples (click to load project)</a></b></li>
+      </ul>
+      <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/TWR-K60N512/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
+      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press.</p>
+
+      <h5>TWR-K60F120M Samples</h5>      
+      <ul>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60F120M/shared.hzp">TWR-K60F120M Shared Samples (click to load project)</a></b></li>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60F120M/ctl.hzp">TWR-K60F120M CTL Samples (click to load project)</a></b></li>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60F120M/ctl_vfp.hzp">TWR-K60F120M CTL VFP Sample (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60F120M/DSP_Lib_Samples.hzp">TWR-K60F120M CMSIS-DSP Samples (click to load project)</a></b></li>
+      </ul>
+      <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/TWR-K60F120M/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
+      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press.</p>
+
+      <h5>TWR-K70F120M Samples</h5>      
+      <ul>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/shared.hzp">TWR-K70F120M Shared Samples (click to load project)</a></b></li>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/ctl.hzp">TWR-K70F120M CTL Samples (click to load project)</a></b></li>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/ctl_vfp.hzp">TWR-K70F120M CTL VFP Sample (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/DSP_Lib_Samples.hzp">TWR-K70F120M CMSIS-DSP Samples (click to load project)</a></b></li> 
       </ul>
-      <p>The board specific file <b>Kinetis_ctl_board.c</b> is included in the samples that sets up the PLL (either using a bespoke constructor
-      function or the standard Freescale CMSIS function) and implements the ctl board support functions to flash a led and handle a button press.</p>
+       <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
+      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press.</p>
     </section>
 
-    <section name="5) OSJTAG Firmware Update">
+    <section name="4) OSJTAG firmware update">
       <p>The package contains an update to the firmware that can be loaded on to the OSJTAG hardware of the TWR CPU 
       modules. The updated firmware improves the download and debug performance of the CrossWorks 'Kinetis OSJTAG' target 
       interface. You'll need to use the firmware update procedure available from <a href="http://www.pemicro.com/osbdm">PE micro</a> and 
@@ -248,6 +320,20 @@
 
   </documentation>
   <history>  
+    <version name="1.5">
+      <description>Added support for L series devices. CrossWorks for ARM version 2.3 is required for Cortex-M0+ support.</description>
+      <description>Supplied samples for FRDM-KL25Z.</description>
+      <description>Supplied samples for TWR-K20D72M.</description>            
+      <description>Fixed <b>Erase All</b> to set the flash security state to be unsecure.</description>
+      <description>The <b>GetPartName</b> script now handles connecting to parts that are secured (but can be mass erased) and also
+      to parts that have been erased. CrossWorks for ARM version 2.3 is required to make use of these facilities.</description>
+      <description>Removed disabling the hardware lazy FP save feature for CTL. CTL supplied in CrossWorks for ARM version 2.3
+      supports the hardware lazy FP save feature.</description>
+      <description>Removed core CMSIS header files from this package. New projects will reference the include directory 
+      <b>$(TargetsDir)/CMSIS_3/CMSIS/Include</b> of the CMSIS-3 package.
+      If you have an existing project then you will have to add <b>$(TargetsDir)/CMSIS_3/CMSIS/Include</b> to the <b>User Include Directories</b>
+      project property.</description>
+    </version>
     <version name="1.4">
       <description>Support for latest parts based on the sub-family name and memory size 
       rather than specific part numbers. For example MK60DN512ZVMD10 has become MK60DN512Zxxx10. You will need to reselect
