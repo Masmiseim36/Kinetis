@@ -7978,6 +7978,20 @@
       <BitField start="12" size="4" name="OUTDIV5">
         <Enum name="0000" start="0b0000" />
         <Enum name="0001" start="0b0001" />
+        <Enum name="0010" start="0b0010" />
+        <Enum name="0011" start="0b0011" />
+        <Enum name="0100" start="0b0100" />
+        <Enum name="0101" start="0b0101" />
+        <Enum name="0110" start="0b0110" />
+        <Enum name="0111" start="0b0111" />
+        <Enum name="1000" start="0b1000" />
+        <Enum name="1001" start="0b1001" />
+        <Enum name="1010" start="0b1010" />
+        <Enum name="1011" start="0b1011" />
+        <Enum name="1100" start="0b1100" />
+        <Enum name="1101" start="0b1101" />
+        <Enum name="1110" start="0b1110" />
+        <Enum name="1111" start="0b1111" />
       </BitField>
       <BitField start="16" size="4" name="OUTDIV4">
         <Enum name="0000" start="0b0000" />

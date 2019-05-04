@@ -10,9 +10,9 @@
 **                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    K80P121M150SF5RM, Rev. 1, March 2015
-**     Version:             rev. 2.0, 2015-04-01
-**     Build:               b150408
+**     Reference manual:    K80P121M150SF5RM, Rev. 2, May 2015
+**     Version:             rev. 2.1, 2015-05-28
+**     Build:               b150529
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
@@ -59,14 +59,16 @@
 **         Update according to the new version of reference manual Rev. 1 Draft A.
 **     - rev. 2.0 (2015-04-01)
 **         Update according to the new version of reference manual Rev. 1.
+**     - rev. 2.1 (2015-05-28)
+**         Update according to the reference manual Rev. 2.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MK80F25615
- * @version 2.0
- * @date 2015-04-01
+ * @version 2.1
+ * @date 2015-05-28
  * @brief Device specific configuration file for MK80F25615 (header file)
  *
  * Provides a system configuration function and a global variable that contains

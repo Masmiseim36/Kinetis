@@ -3,15 +3,16 @@
 **     Compilers:           ARM Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
+**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    KV10P48M75RM Rev.2, July 2013
-**     Version:             rev. 1.0, 2013-05-09
+**     Version:             rev. 1.1, 2014-02-20
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MKV10Z7
 **
-**     Copyright: 1997 - 2013 Freescale, Inc. All Rights Reserved.
+**     Copyright: 1997 - 2014 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -19,14 +20,17 @@
 **     Revisions:
 **     - rev. 1.0 (2013-05-09)
 **         Initial version.
+**     - rev. 1.1 (2014-02-20)
+**         ADC module - removed PGA registers
+**         UART0 module - removed CEA709.1 registers
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKV10Z7.h
- * @version 1.0
- * @date 2013-05-09
+ * @version 1.1
+ * @date 2014-02-20
  * @brief CMSIS Peripheral Access Layer for MKV10Z7
  *
  * CMSIS Peripheral Access Layer for MKV10Z7
@@ -39,7 +43,7 @@
  * compatible) */
 #define MCU_MEM_MAP_VERSION 0x0100u
 /** Memory map minor version */
-#define MCU_MEM_MAP_VERSION_MINOR 0x0000u
+#define MCU_MEM_MAP_VERSION_MINOR 0x0001u
 
 
 /* ----------------------------------------------------------------------------
@@ -180,7 +184,7 @@ typedef struct {
   __IO uint32_t CLP2;                              /**< ADC Plus-Side General Calibration Value Register, offset: 0x44 */
   __IO uint32_t CLP1;                              /**< ADC Plus-Side General Calibration Value Register, offset: 0x48 */
   __IO uint32_t CLP0;                              /**< ADC Plus-Side General Calibration Value Register, offset: 0x4C */
-  __IO uint32_t PGA;                               /**< ADC PGA Register, offset: 0x50 */
+       uint8_t RESERVED_0[4];
   __IO uint32_t CLMD;                              /**< ADC Minus-Side General Calibration Value Register, offset: 0x54 */
   __IO uint32_t CLMS;                              /**< ADC Minus-Side General Calibration Value Register, offset: 0x58 */
   __IO uint32_t CLM4;                              /**< ADC Minus-Side General Calibration Value Register, offset: 0x5C */
@@ -313,18 +317,6 @@ typedef struct {
 #define ADC_CLP0_CLP0_MASK                       0x3Fu
 #define ADC_CLP0_CLP0_SHIFT                      0
 #define ADC_CLP0_CLP0(x)                         (((uint32_t)(((uint32_t)(x))<<ADC_CLP0_CLP0_SHIFT))&ADC_CLP0_CLP0_MASK)
-/* PGA Bit Fields */
-#define ADC_PGA_PGAOFSM_MASK                     0x4000u
-#define ADC_PGA_PGAOFSM_SHIFT                    14
-#define ADC_PGA_PGAG_MASK                        0xF0000u
-#define ADC_PGA_PGAG_SHIFT                       16
-#define ADC_PGA_PGAG(x)                          (((uint32_t)(((uint32_t)(x))<<ADC_PGA_PGAG_SHIFT))&ADC_PGA_PGAG_MASK)
-#define ADC_PGA_PGALPb_MASK                      0x100000u
-#define ADC_PGA_PGALPb_SHIFT                     20
-#define ADC_PGA_PGACHPb_MASK                     0x200000u
-#define ADC_PGA_PGACHPb_SHIFT                    21
-#define ADC_PGA_PGAEN_MASK                       0x800000u
-#define ADC_PGA_PGAEN_SHIFT                      23
 /* CLMD Bit Fields */
 #define ADC_CLMD_CLMD_MASK                       0x3Fu
 #define ADC_CLMD_CLMD_SHIFT                      0
@@ -1455,7 +1447,7 @@ typedef struct {
   } CONTROLS[6];
        uint8_t RESERVED_0[16];
   __IO uint32_t CNTIN;                             /**< Counter Initial Value, offset: 0x4C */
-  __I  uint32_t STATUS;                            /**< Capture And Compare Status, offset: 0x50 */
+  __IO uint32_t STATUS;                            /**< Capture And Compare Status, offset: 0x50 */
   __IO uint32_t MODE;                              /**< Features Mode Selection, offset: 0x54 */
   __IO uint32_t SYNC;                              /**< Synchronization, offset: 0x58 */
   __IO uint32_t OUTINIT;                           /**< Initial State For Channels Output, offset: 0x5C */
@@ -2366,7 +2358,7 @@ typedef struct {
   __IO uint32_t CSR;                               /**< Low Power Timer Control Status Register, offset: 0x0 */
   __IO uint32_t PSR;                               /**< Low Power Timer Prescale Register, offset: 0x4 */
   __IO uint32_t CMR;                               /**< Low Power Timer Compare Register, offset: 0x8 */
-  __I  uint32_t CNR;                               /**< Low Power Timer Counter Register, offset: 0xC */
+  __IO uint32_t CNR;                               /**< Low Power Timer Counter Register, offset: 0xC */
 } LPTMR_Type;
 
 /* ----------------------------------------------------------------------------
@@ -4322,32 +4314,6 @@ typedef struct {
   __I  uint8_t TCFIFO;                             /**< UART FIFO Transmit Count, offset: 0x14 */
   __IO uint8_t RWFIFO;                             /**< UART FIFO Receive Watermark, offset: 0x15 */
   __I  uint8_t RCFIFO;                             /**< UART FIFO Receive Count, offset: 0x16 */
-       uint8_t RESERVED_1[10];
-  __IO uint8_t C6;                                 /**< UART CEA709.1-B Control Register 6, offset: 0x21 */
-  __IO uint8_t PCTH;                               /**< UART CEA709.1-B Packet Cycle Time Counter High, offset: 0x22 */
-  __IO uint8_t PCTL;                               /**< UART CEA709.1-B Packet Cycle Time Counter Low, offset: 0x23 */
-  __IO uint8_t IE0;                                /**< UART CEA709.1-B Interrupt Enable Register 0, offset: 0x24 */
-  __IO uint8_t SDTH;                               /**< UART CEA709.1-B Secondary Delay Timer High, offset: 0x25 */
-  __IO uint8_t SDTL;                               /**< UART CEA709.1-B Secondary Delay Timer Low, offset: 0x26 */
-  __IO uint8_t PRE;                                /**< UART CEA709.1-B Preamble, offset: 0x27 */
-  __IO uint8_t TPL;                                /**< UART CEA709.1-B Transmit Packet Length, offset: 0x28 */
-  __IO uint8_t IE;                                 /**< UART CEA709.1-B Interrupt Enable Register, offset: 0x29 */
-  __IO uint8_t WB;                                 /**< UART CEA709.1-B WBASE, offset: 0x2A */
-  __IO uint8_t S3;                                 /**< UART CEA709.1-B Status Register, offset: 0x2B */
-  __IO uint8_t S4;                                 /**< UART CEA709.1-B Status Register, offset: 0x2C */
-  __I  uint8_t RPL;                                /**< UART CEA709.1-B Received Packet Length, offset: 0x2D */
-  __I  uint8_t RPREL;                              /**< UART CEA709.1-B Received Preamble Length, offset: 0x2E */
-  __IO uint8_t CPW;                                /**< UART CEA709.1-B Collision Pulse Width, offset: 0x2F */
-  __IO uint8_t RIDTH;                              /**< UART CEA709.1-B Receive Indeterminate Time High, offset: 0x30 */
-  __IO uint8_t RIDTL;                              /**< UART CEA709.1-B Receive Indeterminate Time Low, offset: 0x31 */
-  __IO uint8_t TIDTH;                              /**< UART CEA709.1-B Transmit Indeterminate Time High, offset: 0x32 */
-  __IO uint8_t TIDTL;                              /**< UART CEA709.1-B Transmit Indeterminate Time Low, offset: 0x33 */
-  __IO uint8_t RB1TH;                              /**< UART CEA709.1-B Receive Beta1 Timer High, offset: 0x34 */
-  __IO uint8_t RB1TL;                              /**< UART CEA709.1-B Receive Beta1 Timer Low, offset: 0x35 */
-  __IO uint8_t TB1TH;                              /**< UART CEA709.1-B Transmit Beta1 Timer High, offset: 0x36 */
-  __IO uint8_t TB1TL;                              /**< UART CEA709.1-B Transmit Beta1 Timer Low, offset: 0x37 */
-  __IO uint8_t PROG_REG;                           /**< UART CEA709.1-B Programmable register, offset: 0x38 */
-  __I  uint8_t STATE_REG;                          /**< UART CEA709.1-B State register, offset: 0x39 */
 } UART_Type;
 
 /* ----------------------------------------------------------------------------
@@ -4550,154 +4516,6 @@ typedef struct {
 #define UART_RCFIFO_RXCOUNT_MASK                 0xFFu
 #define UART_RCFIFO_RXCOUNT_SHIFT                0
 #define UART_RCFIFO_RXCOUNT(x)                   (((uint8_t)(((uint8_t)(x))<<UART_RCFIFO_RXCOUNT_SHIFT))&UART_RCFIFO_RXCOUNT_MASK)
-/* C6 Bit Fields */
-#define UART_C6_CP_MASK                          0x10u
-#define UART_C6_CP_SHIFT                         4
-#define UART_C6_CE_MASK                          0x20u
-#define UART_C6_CE_SHIFT                         5
-#define UART_C6_TX709_MASK                       0x40u
-#define UART_C6_TX709_SHIFT                      6
-#define UART_C6_EN709_MASK                       0x80u
-#define UART_C6_EN709_SHIFT                      7
-/* PCTH Bit Fields */
-#define UART_PCTH_PCTH_MASK                      0xFFu
-#define UART_PCTH_PCTH_SHIFT                     0
-#define UART_PCTH_PCTH(x)                        (((uint8_t)(((uint8_t)(x))<<UART_PCTH_PCTH_SHIFT))&UART_PCTH_PCTH_MASK)
-/* PCTL Bit Fields */
-#define UART_PCTL_PCTL_MASK                      0xFFu
-#define UART_PCTL_PCTL_SHIFT                     0
-#define UART_PCTL_PCTL(x)                        (((uint8_t)(((uint8_t)(x))<<UART_PCTL_PCTL_SHIFT))&UART_PCTL_PCTL_MASK)
-/* IE0 Bit Fields */
-#define UART_IE0_CPTXIE_MASK                     0x1u
-#define UART_IE0_CPTXIE_SHIFT                    0
-#define UART_IE0_CTXDIE_MASK                     0x2u
-#define UART_IE0_CTXDIE_SHIFT                    1
-#define UART_IE0_RPLOFIE_MASK                    0x4u
-#define UART_IE0_RPLOFIE_SHIFT                   2
-/* SDTH Bit Fields */
-#define UART_SDTH_SDTH_MASK                      0xFFu
-#define UART_SDTH_SDTH_SHIFT                     0
-#define UART_SDTH_SDTH(x)                        (((uint8_t)(((uint8_t)(x))<<UART_SDTH_SDTH_SHIFT))&UART_SDTH_SDTH_MASK)
-/* SDTL Bit Fields */
-#define UART_SDTL_SDTL_MASK                      0xFFu
-#define UART_SDTL_SDTL_SHIFT                     0
-#define UART_SDTL_SDTL(x)                        (((uint8_t)(((uint8_t)(x))<<UART_SDTL_SDTL_SHIFT))&UART_SDTL_SDTL_MASK)
-/* PRE Bit Fields */
-#define UART_PRE_PREAMBLE_MASK                   0xFFu
-#define UART_PRE_PREAMBLE_SHIFT                  0
-#define UART_PRE_PREAMBLE(x)                     (((uint8_t)(((uint8_t)(x))<<UART_PRE_PREAMBLE_SHIFT))&UART_PRE_PREAMBLE_MASK)
-/* TPL Bit Fields */
-#define UART_TPL_TPL_MASK                        0xFFu
-#define UART_TPL_TPL_SHIFT                       0
-#define UART_TPL_TPL(x)                          (((uint8_t)(((uint8_t)(x))<<UART_TPL_TPL_SHIFT))&UART_TPL_TPL_MASK)
-/* IE Bit Fields */
-#define UART_IE_TXDIE_MASK                       0x1u
-#define UART_IE_TXDIE_SHIFT                      0
-#define UART_IE_PSIE_MASK                        0x2u
-#define UART_IE_PSIE_SHIFT                       1
-#define UART_IE_PCTEIE_MASK                      0x4u
-#define UART_IE_PCTEIE_SHIFT                     2
-#define UART_IE_PTXIE_MASK                       0x8u
-#define UART_IE_PTXIE_SHIFT                      3
-#define UART_IE_PRXIE_MASK                       0x10u
-#define UART_IE_PRXIE_SHIFT                      4
-#define UART_IE_ISDIE_MASK                       0x20u
-#define UART_IE_ISDIE_SHIFT                      5
-#define UART_IE_WBEIE_MASK                       0x40u
-#define UART_IE_WBEIE_SHIFT                      6
-#define UART_IE_PEIE_MASK                        0x80u
-#define UART_IE_PEIE_SHIFT                       7
-/* WB Bit Fields */
-#define UART_WB_WBASE_MASK                       0xFFu
-#define UART_WB_WBASE_SHIFT                      0
-#define UART_WB_WBASE(x)                         (((uint8_t)(((uint8_t)(x))<<UART_WB_WBASE_SHIFT))&UART_WB_WBASE_MASK)
-/* S3 Bit Fields */
-#define UART_S3_TXFF_MASK                        0x1u
-#define UART_S3_TXFF_SHIFT                       0
-#define UART_S3_PSF_MASK                         0x2u
-#define UART_S3_PSF_SHIFT                        1
-#define UART_S3_PCTEF_MASK                       0x4u
-#define UART_S3_PCTEF_SHIFT                      2
-#define UART_S3_PTXF_MASK                        0x8u
-#define UART_S3_PTXF_SHIFT                       3
-#define UART_S3_PRXF_MASK                        0x10u
-#define UART_S3_PRXF_SHIFT                       4
-#define UART_S3_ISD_MASK                         0x20u
-#define UART_S3_ISD_SHIFT                        5
-#define UART_S3_WBEF_MASK                        0x40u
-#define UART_S3_WBEF_SHIFT                       6
-#define UART_S3_PEF_MASK                         0x80u
-#define UART_S3_PEF_SHIFT                        7
-/* S4 Bit Fields */
-#define UART_S4_FE_MASK                          0x1u
-#define UART_S4_FE_SHIFT                         0
-#define UART_S4_TXDF_MASK                        0x2u
-#define UART_S4_TXDF_SHIFT                       1
-#define UART_S4_CDET_MASK                        0xCu
-#define UART_S4_CDET_SHIFT                       2
-#define UART_S4_CDET(x)                          (((uint8_t)(((uint8_t)(x))<<UART_S4_CDET_SHIFT))&UART_S4_CDET_MASK)
-#define UART_S4_RPLOF_MASK                       0x10u
-#define UART_S4_RPLOF_SHIFT                      4
-#define UART_S4_LNF_MASK                         0x20u
-#define UART_S4_LNF_SHIFT                        5
-/* RPL Bit Fields */
-#define UART_RPL_RPL_MASK                        0xFFu
-#define UART_RPL_RPL_SHIFT                       0
-#define UART_RPL_RPL(x)                          (((uint8_t)(((uint8_t)(x))<<UART_RPL_RPL_SHIFT))&UART_RPL_RPL_MASK)
-/* RPREL Bit Fields */
-#define UART_RPREL_RPREL_MASK                    0xFFu
-#define UART_RPREL_RPREL_SHIFT                   0
-#define UART_RPREL_RPREL(x)                      (((uint8_t)(((uint8_t)(x))<<UART_RPREL_RPREL_SHIFT))&UART_RPREL_RPREL_MASK)
-/* CPW Bit Fields */
-#define UART_CPW_CPW_MASK                        0xFFu
-#define UART_CPW_CPW_SHIFT                       0
-#define UART_CPW_CPW(x)                          (((uint8_t)(((uint8_t)(x))<<UART_CPW_CPW_SHIFT))&UART_CPW_CPW_MASK)
-/* RIDTH Bit Fields */
-#define UART_RIDTH_RIDTH_MASK                    0xFFu
-#define UART_RIDTH_RIDTH_SHIFT                   0
-#define UART_RIDTH_RIDTH(x)                      (((uint8_t)(((uint8_t)(x))<<UART_RIDTH_RIDTH_SHIFT))&UART_RIDTH_RIDTH_MASK)
-/* RIDTL Bit Fields */
-#define UART_RIDTL_RIDTL_MASK                    0xFFu
-#define UART_RIDTL_RIDTL_SHIFT                   0
-#define UART_RIDTL_RIDTL(x)                      (((uint8_t)(((uint8_t)(x))<<UART_RIDTL_RIDTL_SHIFT))&UART_RIDTL_RIDTL_MASK)
-/* TIDTH Bit Fields */
-#define UART_TIDTH_TIDTH_MASK                    0xFFu
-#define UART_TIDTH_TIDTH_SHIFT                   0
-#define UART_TIDTH_TIDTH(x)                      (((uint8_t)(((uint8_t)(x))<<UART_TIDTH_TIDTH_SHIFT))&UART_TIDTH_TIDTH_MASK)
-/* TIDTL Bit Fields */
-#define UART_TIDTL_TIDTL_MASK                    0xFFu
-#define UART_TIDTL_TIDTL_SHIFT                   0
-#define UART_TIDTL_TIDTL(x)                      (((uint8_t)(((uint8_t)(x))<<UART_TIDTL_TIDTL_SHIFT))&UART_TIDTL_TIDTL_MASK)
-/* RB1TH Bit Fields */
-#define UART_RB1TH_RB1TH_MASK                    0xFFu
-#define UART_RB1TH_RB1TH_SHIFT                   0
-#define UART_RB1TH_RB1TH(x)                      (((uint8_t)(((uint8_t)(x))<<UART_RB1TH_RB1TH_SHIFT))&UART_RB1TH_RB1TH_MASK)
-/* RB1TL Bit Fields */
-#define UART_RB1TL_RB1TL_MASK                    0xFFu
-#define UART_RB1TL_RB1TL_SHIFT                   0
-#define UART_RB1TL_RB1TL(x)                      (((uint8_t)(((uint8_t)(x))<<UART_RB1TL_RB1TL_SHIFT))&UART_RB1TL_RB1TL_MASK)
-/* TB1TH Bit Fields */
-#define UART_TB1TH_TB1TH_MASK                    0xFFu
-#define UART_TB1TH_TB1TH_SHIFT                   0
-#define UART_TB1TH_TB1TH(x)                      (((uint8_t)(((uint8_t)(x))<<UART_TB1TH_TB1TH_SHIFT))&UART_TB1TH_TB1TH_MASK)
-/* TB1TL Bit Fields */
-#define UART_TB1TL_TB1TL_MASK                    0xFFu
-#define UART_TB1TL_TB1TL_SHIFT                   0
-#define UART_TB1TL_TB1TL(x)                      (((uint8_t)(((uint8_t)(x))<<UART_TB1TL_TB1TL_SHIFT))&UART_TB1TL_TB1TL_MASK)
-/* PROG_REG Bit Fields */
-#define UART_PROG_REG_MIN_DMC1_MASK              0xFu
-#define UART_PROG_REG_MIN_DMC1_SHIFT             0
-#define UART_PROG_REG_MIN_DMC1(x)                (((uint8_t)(((uint8_t)(x))<<UART_PROG_REG_MIN_DMC1_SHIFT))&UART_PROG_REG_MIN_DMC1_MASK)
-#define UART_PROG_REG_LCV_LEN_MASK               0xF0u
-#define UART_PROG_REG_LCV_LEN_SHIFT              4
-#define UART_PROG_REG_LCV_LEN(x)                 (((uint8_t)(((uint8_t)(x))<<UART_PROG_REG_LCV_LEN_SHIFT))&UART_PROG_REG_LCV_LEN_MASK)
-/* STATE_REG Bit Fields */
-#define UART_STATE_REG_SM_STATE_MASK             0x7u
-#define UART_STATE_REG_SM_STATE_SHIFT            0
-#define UART_STATE_REG_SM_STATE(x)               (((uint8_t)(((uint8_t)(x))<<UART_STATE_REG_SM_STATE_SHIFT))&UART_STATE_REG_SM_STATE_MASK)
-#define UART_STATE_REG_TX_STATE_MASK             0x38u
-#define UART_STATE_REG_TX_STATE_SHIFT            3
-#define UART_STATE_REG_TX_STATE(x)               (((uint8_t)(((uint8_t)(x))<<UART_STATE_REG_TX_STATE_SHIFT))&UART_STATE_REG_TX_STATE_MASK)
 
 /*!
  * @}
@@ -4873,7 +4691,140 @@ typedef struct {
  * @{
  */
 
-/* No backward compatibility issues. */
+#define ADC_PGA_PGAOFSM_MASK                     This_symbol_has_been_deprecated
+#define ADC_PGA_PGAOFSM_SHIFT                    This_symbol_has_been_deprecated
+#define ADC_PGA_PGAG_MASK                        This_symbol_has_been_deprecated
+#define ADC_PGA_PGAG_SHIFT                       This_symbol_has_been_deprecated
+#define ADC_PGA_PGAG(x)                          This_symbol_has_been_deprecated
+#define ADC_PGA_PGALPb_MASK                      This_symbol_has_been_deprecated
+#define ADC_PGA_PGALPb_SHIFT                     This_symbol_has_been_deprecated
+#define ADC_PGA_PGACHPb_MASK                     This_symbol_has_been_deprecated
+#define ADC_PGA_PGACHPb_SHIFT                    This_symbol_has_been_deprecated
+#define ADC_PGA_PGAEN_MASK                       This_symbol_has_been_deprecated
+#define ADC_PGA_PGAEN_SHIFT                      This_symbol_has_been_deprecated
+#define UART_C6_CP_MASK                          This_symbol_has_been_deprecated
+#define UART_C6_CP_SHIFT                         This_symbol_has_been_deprecated
+#define UART_C6_CE_MASK                          This_symbol_has_been_deprecated
+#define UART_C6_CE_SHIFT                         This_symbol_has_been_deprecated
+#define UART_C6_TX709_MASK                       This_symbol_has_been_deprecated
+#define UART_C6_TX709_SHIFT                      This_symbol_has_been_deprecated
+#define UART_C6_EN709_MASK                       This_symbol_has_been_deprecated
+#define UART_C6_EN709_SHIFT                      This_symbol_has_been_deprecated
+#define UART_PCTH_PCTH_MASK                      This_symbol_has_been_deprecated
+#define UART_PCTH_PCTH_SHIFT                     This_symbol_has_been_deprecated
+#define UART_PCTH_PCTH(x)                        This_symbol_has_been_deprecated
+#define UART_PCTL_PCTL_MASK                      This_symbol_has_been_deprecated
+#define UART_PCTL_PCTL_SHIFT                     This_symbol_has_been_deprecated
+#define UART_PCTL_PCTL(x)                        This_symbol_has_been_deprecated
+#define UART_IE0_CPTXIE_MASK                     This_symbol_has_been_deprecated
+#define UART_IE0_CPTXIE_SHIFT                    This_symbol_has_been_deprecated
+#define UART_IE0_CTXDIE_MASK                     This_symbol_has_been_deprecated
+#define UART_IE0_CTXDIE_SHIFT                    This_symbol_has_been_deprecated
+#define UART_IE0_RPLOFIE_MASK                    This_symbol_has_been_deprecated
+#define UART_IE0_RPLOFIE_SHIFT                   This_symbol_has_been_deprecated
+#define UART_SDTH_SDTH_MASK                      This_symbol_has_been_deprecated
+#define UART_SDTH_SDTH_SHIFT                     This_symbol_has_been_deprecated
+#define UART_SDTH_SDTH(x)                        This_symbol_has_been_deprecated
+#define UART_SDTL_SDTL_MASK                      This_symbol_has_been_deprecated
+#define UART_SDTL_SDTL_SHIFT                     This_symbol_has_been_deprecated
+#define UART_SDTL_SDTL(x)                        This_symbol_has_been_deprecated
+#define UART_PRE_PREAMBLE_MASK                   This_symbol_has_been_deprecated
+#define UART_PRE_PREAMBLE_SHIFT                  This_symbol_has_been_deprecated
+#define UART_PRE_PREAMBLE(x)                     This_symbol_has_been_deprecated
+#define UART_TPL_TPL_MASK                        This_symbol_has_been_deprecated
+#define UART_TPL_TPL_SHIFT                       This_symbol_has_been_deprecated
+#define UART_TPL_TPL(x)                          This_symbol_has_been_deprecated
+#define UART_IE_TXDIE_MASK                       This_symbol_has_been_deprecated
+#define UART_IE_TXDIE_SHIFT                      This_symbol_has_been_deprecated
+#define UART_IE_PSIE_MASK                        This_symbol_has_been_deprecated
+#define UART_IE_PSIE_SHIFT                       This_symbol_has_been_deprecated
+#define UART_IE_PCTEIE_MASK                      This_symbol_has_been_deprecated
+#define UART_IE_PCTEIE_SHIFT                     This_symbol_has_been_deprecated
+#define UART_IE_PTXIE_MASK                       This_symbol_has_been_deprecated
+#define UART_IE_PTXIE_SHIFT                      This_symbol_has_been_deprecated
+#define UART_IE_PRXIE_MASK                       This_symbol_has_been_deprecated
+#define UART_IE_PRXIE_SHIFT                      This_symbol_has_been_deprecated
+#define UART_IE_ISDIE_MASK                       This_symbol_has_been_deprecated
+#define UART_IE_ISDIE_SHIFT                      This_symbol_has_been_deprecated
+#define UART_IE_WBEIE_MASK                       This_symbol_has_been_deprecated
+#define UART_IE_WBEIE_SHIFT                      This_symbol_has_been_deprecated
+#define UART_IE_PEIE_MASK                        This_symbol_has_been_deprecated
+#define UART_IE_PEIE_SHIFT                       This_symbol_has_been_deprecated
+#define UART_WB_WBASE_MASK                       This_symbol_has_been_deprecated
+#define UART_WB_WBASE_SHIFT                      This_symbol_has_been_deprecated
+#define UART_WB_WBASE(x)                         This_symbol_has_been_deprecated
+#define UART_S3_TXFF_MASK                        This_symbol_has_been_deprecated
+#define UART_S3_TXFF_SHIFT                       This_symbol_has_been_deprecated
+#define UART_S3_PSF_MASK                         This_symbol_has_been_deprecated
+#define UART_S3_PSF_SHIFT                        This_symbol_has_been_deprecated
+#define UART_S3_PCTEF_MASK                       This_symbol_has_been_deprecated
+#define UART_S3_PCTEF_SHIFT                      This_symbol_has_been_deprecated
+#define UART_S3_PTXF_MASK                        This_symbol_has_been_deprecated
+#define UART_S3_PTXF_SHIFT                       This_symbol_has_been_deprecated
+#define UART_S3_PRXF_MASK                        This_symbol_has_been_deprecated
+#define UART_S3_PRXF_SHIFT                       This_symbol_has_been_deprecated
+#define UART_S3_ISD_MASK                         This_symbol_has_been_deprecated
+#define UART_S3_ISD_SHIFT                        This_symbol_has_been_deprecated
+#define UART_S3_WBEF_MASK                        This_symbol_has_been_deprecated
+#define UART_S3_WBEF_SHIFT                       This_symbol_has_been_deprecated
+#define UART_S3_PEF_MASK                         This_symbol_has_been_deprecated
+#define UART_S3_PEF_SHIFT                        This_symbol_has_been_deprecated
+#define UART_S4_FE_MASK                          This_symbol_has_been_deprecated
+#define UART_S4_FE_SHIFT                         This_symbol_has_been_deprecated
+#define UART_S4_TXDF_MASK                        This_symbol_has_been_deprecated
+#define UART_S4_TXDF_SHIFT                       This_symbol_has_been_deprecated
+#define UART_S4_CDET_MASK                        This_symbol_has_been_deprecated
+#define UART_S4_CDET_SHIFT                       This_symbol_has_been_deprecated
+#define UART_S4_CDET(x)                          This_symbol_has_been_deprecated
+#define UART_S4_RPLOF_MASK                       This_symbol_has_been_deprecated
+#define UART_S4_RPLOF_SHIFT                      This_symbol_has_been_deprecated
+#define UART_S4_LNF_MASK                         This_symbol_has_been_deprecated
+#define UART_S4_LNF_SHIFT                        This_symbol_has_been_deprecated
+#define UART_RPL_RPL_MASK                        This_symbol_has_been_deprecated
+#define UART_RPL_RPL_SHIFT                       This_symbol_has_been_deprecated
+#define UART_RPL_RPL(x)                          This_symbol_has_been_deprecated
+#define UART_RPREL_RPREL_MASK                    This_symbol_has_been_deprecated
+#define UART_RPREL_RPREL_SHIFT                   This_symbol_has_been_deprecated
+#define UART_RPREL_RPREL(x)                      This_symbol_has_been_deprecated
+#define UART_CPW_CPW_MASK                        This_symbol_has_been_deprecated
+#define UART_CPW_CPW_SHIFT                       This_symbol_has_been_deprecated
+#define UART_CPW_CPW(x)                          This_symbol_has_been_deprecated
+#define UART_RIDTH_RIDTH_MASK                    This_symbol_has_been_deprecated
+#define UART_RIDTH_RIDTH_SHIFT                   This_symbol_has_been_deprecated
+#define UART_RIDTH_RIDTH(x)                      This_symbol_has_been_deprecated
+#define UART_RIDTL_RIDTL_MASK                    This_symbol_has_been_deprecated
+#define UART_RIDTL_RIDTL_SHIFT                   This_symbol_has_been_deprecated
+#define UART_RIDTL_RIDTL(x)                      This_symbol_has_been_deprecated
+#define UART_TIDTH_TIDTH_MASK                    This_symbol_has_been_deprecated
+#define UART_TIDTH_TIDTH_SHIFT                   This_symbol_has_been_deprecated
+#define UART_TIDTH_TIDTH(x)                      This_symbol_has_been_deprecated
+#define UART_TIDTL_TIDTL_MASK                    This_symbol_has_been_deprecated
+#define UART_TIDTL_TIDTL_SHIFT                   This_symbol_has_been_deprecated
+#define UART_TIDTL_TIDTL(x)                      This_symbol_has_been_deprecated
+#define UART_RB1TH_RB1TH_MASK                    This_symbol_has_been_deprecated
+#define UART_RB1TH_RB1TH_SHIFT                   This_symbol_has_been_deprecated
+#define UART_RB1TH_RB1TH(x)                      This_symbol_has_been_deprecated
+#define UART_RB1TL_RB1TL_MASK                    This_symbol_has_been_deprecated
+#define UART_RB1TL_RB1TL_SHIFT                   This_symbol_has_been_deprecated
+#define UART_RB1TL_RB1TL(x)                      This_symbol_has_been_deprecated
+#define UART_TB1TH_TB1TH_MASK                    This_symbol_has_been_deprecated
+#define UART_TB1TH_TB1TH_SHIFT                   This_symbol_has_been_deprecated
+#define UART_TB1TH_TB1TH(x)                      This_symbol_has_been_deprecated
+#define UART_TB1TL_TB1TL_MASK                    This_symbol_has_been_deprecated
+#define UART_TB1TL_TB1TL_SHIFT                   This_symbol_has_been_deprecated
+#define UART_TB1TL_TB1TL(x)                      This_symbol_has_been_deprecated
+#define UART_PROG_REG_MIN_DMC1_MASK              This_symbol_has_been_deprecated
+#define UART_PROG_REG_MIN_DMC1_SHIFT             This_symbol_has_been_deprecated
+#define UART_PROG_REG_MIN_DMC1(x)                This_symbol_has_been_deprecated
+#define UART_PROG_REG_LCV_LEN_MASK               This_symbol_has_been_deprecated
+#define UART_PROG_REG_LCV_LEN_SHIFT              This_symbol_has_been_deprecated
+#define UART_PROG_REG_LCV_LEN(x)                 This_symbol_has_been_deprecated
+#define UART_STATE_REG_SM_STATE_MASK             This_symbol_has_been_deprecated
+#define UART_STATE_REG_SM_STATE_SHIFT            This_symbol_has_been_deprecated
+#define UART_STATE_REG_SM_STATE(x)               This_symbol_has_been_deprecated
+#define UART_STATE_REG_TX_STATE_MASK             This_symbol_has_been_deprecated
+#define UART_STATE_REG_TX_STATE_SHIFT            This_symbol_has_been_deprecated
+#define UART_STATE_REG_TX_STATE(x)               This_symbol_has_been_deprecated
 
 /*!
  * @}

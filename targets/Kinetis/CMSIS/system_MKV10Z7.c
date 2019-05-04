@@ -3,17 +3,18 @@
 **     Compilers:           ARM Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
+**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    KV10P48M75RM Rev.2, July 2013
-**     Version:             rev. 1.0, 2013-05-09
+**     Version:             rev. 1.1, 2014-02-20
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
+**     Copyright: 2014 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -21,14 +22,17 @@
 **     Revisions:
 **     - rev. 1.0 (2013-05-09)
 **         Initial version.
+**     - rev. 1.1 (2014-02-20)
+**         ADC module - removed PGA registers
+**         UART0 module - removed CEA709.1 registers
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKV10Z7
- * @version 1.0
- * @date 2013-05-09
+ * @version 1.1
+ * @date 2014-02-20
  * @brief Device specific configuration file for MKV10Z7 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -48,12 +52,18 @@
    0 ... Multipurpose Clock Generator (MCG) in FLL Engaged Internal (FEI) mode
          Reference clock source for MCG module is the slow internal clock source 32.768kHz
          Core clock = 72MHz, BusClock = 24MHz
-   1 ... Multipurpose Clock Generator (MCG) in PLL Engaged External (FEE) mode
+   1 ... Multipurpose Clock Generator (MCG) in FLL Engaged External (FEE) mode
          Reference clock source for MCG module is an external crystal 10MHz
          Core clock = 75MHz, BusClock = 25MHz
    2 ... Multipurpose Clock Generator (MCG) in Bypassed Low Power External (BLPE) mode
          Core clock/Bus clock derived directly from an external crystal 10MHz with no multiplication
          Core clock = 10MHz, BusClock = 10MHz
+*/
+
+#define DISABLE_USRTRIM 0
+/* Enables MCG trimming from user trim field
+   0 ... Factory trimmed value is kept in the MCG trim fields
+   1 ... MCG trimming from non-volatile IRC user trim field is enabled
 */
 
 /*----------------------------------------------------------------------------
@@ -92,8 +102,6 @@ uint32_t SystemCoreClock = DEFAULT_SYSTEM_CLOCK;
    -- SystemInit()
    ---------------------------------------------------------------------------- */
 
-int main(void);
-
 void SystemInit (void) {
 #if (DISABLE_WDOG)
   /* Disable the WDOG module */
@@ -110,12 +118,19 @@ void SystemInit (void) {
   /* Switch to FEI Mode */
   /* MCG->C1: CLKS=0, FRDIV=0, IREFS=1, IRCLKEN=1, IREFSTEN=0 */
   MCG->C1 = (uint8_t)0x06U;
+  /* MCG->C2: LOCRE0=0, RANGE0=0, HGO0=0, EREFS0=0, LP=0,IRCS=0 */
+#if (DISABLE_USRTRIM)
   /* MCG->C2: LOCRE0=0, FCFTRIM=FCFTRIM_Trim, RANGE0=0,HGO0=0,EREFS0=0,LP=0,IRCS=0 */
   MCG->C2 = (uint8_t)(((uint8_t)0x40U) & NON_VOLATILE_IRC_USER_TRIM(2));
   /* MCG->C3: SCTRIM=SCTRIM_Trim */
   MCG->C3 = NON_VOLATILE_IRC_USER_TRIM(3);
   /* MCG->C4: DMX32=1, DRST_DRS=2, FCTRIM=FCTRIM_Trim, SCFTRIM=SCFTRIM_Trim */
   MCG->C4 = (uint8_t)(((uint8_t)0xC0U) | (uint8_t)(((uint8_t)0x1FU) & NON_VOLATILE_IRC_USER_TRIM(2)));
+#else /* (DISABLE_USRTRIM == 0) */
+  MCG->C2 = (uint8_t)(MCG->C2 & ((uint8_t)0x40U));
+  /* MCG->C4: DMX32=1, DRST_DRS=2 */
+  MCG->C4 = (uint8_t)((MCG->C4 & (uint8_t)0x1FU) | (uint8_t)0xC0U);
+#endif /* (DISABLE_USRTRIM) */
   /* MCG->C6: CME0=0 */
   MCG->C6 = (uint8_t)0x00U;
   while((uint8_t)(MCG->S & (uint8_t)0x1DU) != (uint8_t)0x10U) { /* Check that IREFST=1, CLKST=0, IRCST=0. */
@@ -130,8 +145,13 @@ void SystemInit (void) {
   /* PORTA->PCR19: ISF=1, IRQC=0, MUX=0, DSE=0, PFE=0, SRE=0, PE=0, PS=1 */
   PORTA->PCR[19] = (uint32_t)0x01000001UL;
   /* Switch to FEE Mode */
+#if (DISABLE_USRTRIM)
   /* MCG->C2: LOCRE0=0, FCFTRIM=FCFTRIM_Trim, RANGE0=1, HGO0=0, EREFS0=1, LP=0, IRCS=0 */
   MCG->C2 = (uint8_t)(((uint8_t)0x40U & NON_VOLATILE_IRC_USER_TRIM(2)) | (uint8_t)0x14U);
+#else /* (DISABLE_USRTRIM == 0) */
+  /* MCG->C2: LOCRE0=0, RANGE0=1, HGO0=0, EREFS0=1, LP=0, IRCS=0 */
+  MCG->C2 = (uint8_t)((MCG->C2 & (uint8_t)0x40U) | (uint8_t)0x14U);
+#endif /* (DISABLE_USRTRIM) */
   /* OSC0->CR: ERCLKEN=1, EREFSTEN=0, SC2P=0, SC4P=0, SC8P=0, SC16P=0 */
   OSC0->CR = (uint8_t)0x80U;
   while((uint8_t)(MCG->S & (uint8_t)0x02U) != (uint8_t)0x02U) { /* Check that OSCINIT0=1 */
@@ -140,10 +160,15 @@ void SystemInit (void) {
   MCG->C1 = (uint8_t)0x1AU;
   while((uint8_t)(MCG->S & (uint8_t)0x1DU) != (uint8_t)0x00U) { /* Check that Check that IREFST=0, CLKST=0, IRCST=0. */
   }
+#if (DISABLE_USRTRIM)
   /* MCG->C3: SCTRIM=SCTRIM_Trim */
   MCG->C3 = NON_VOLATILE_IRC_USER_TRIM(3);
   /* MCG->C4: DMX32=0, DRST_DRS=2, FCTRIM=FCTRIM_Trim, SCFTRIM=SCFTRIM_Trim */
   MCG->C4 = (uint8_t)(((uint8_t)0x40U) | (uint8_t)(((uint8_t)0x1FU) & NON_VOLATILE_IRC_USER_TRIM(2)));
+#else /* (DISABLE_USRTRIM == 0) */
+  /* MCG->C4: DMX32=0, DRST_DRS=2 */
+  MCG->C4 = (uint8_t)((MCG->C4 & (uint8_t)0x1FU) | (uint8_t)0x40U);
+#endif /* (DISABLE_USRTRIM) */
   /* MCG->C6: CME0=0 */
   MCG->C6 = (uint8_t)0x00U;
 #elif (CLOCK_SETUP == 2)
@@ -154,8 +179,13 @@ void SystemInit (void) {
   /* PORTA->PCR19: ISF=1, IRQC=0, MUX=0, DSE=0, PFE=0, SRE=0, PE=0, PS=1 */
   PORTA->PCR[19] = (uint32_t)0x01000001UL;
   /* Switch to FEE Mode */
+#if (DISABLE_USRTRIM)
   /* MCG->C2: LOCRE0=0, FCFTRIM=FCFTRIM_Trim, RANGE0=1, HGO0=0, EREFS0=1, LP=0, IRCS=0 */
   MCG->C2 = (uint8_t)(((uint8_t)0x40U & NON_VOLATILE_IRC_USER_TRIM(2)) | (uint8_t)0x14U);
+#else /* (DISABLE_USRTRIM == 0) */
+  /* MCG->C2: LOCRE0=0, RANGE0=1, HGO0=0, EREFS0=1, LP=0, IRCS=0 */
+  MCG->C2 = (uint8_t)((MCG->C2 & (uint8_t)0x40U) | (uint8_t)0x14U);
+#endif /* (DISABLE_USRTRIM) */
   /* OSC0->CR: ERCLKEN=1, EREFSTEN=0, SC2P=0, SC4P=0, SC8P=0, SC16P=0 */
   OSC0->CR = (uint8_t)0x80U;
   while((uint8_t)(MCG->S & (uint8_t)0x02U) != (uint8_t)0x02U) { /* Check that OSCINIT0=1 */
@@ -166,8 +196,13 @@ void SystemInit (void) {
   }
   /* SIM->CLKDIV1: OUTDIV1=0,OUTDIV4=0, OUTDIV5EN=1, OUTDIV5=0  */
   SIM->CLKDIV1 = (uint32_t)0x00008000UL;              /* Update system prescalers */
+#if (DISABLE_USRTRIM)
   /* MCG->C2: LOCRE0=0, FCFTRIM=FCFTRIM_Trim, RANGE0=1, HGO0=0, EREFS0=1, LP=1, IRCS=0 */
   MCG->C2 = (uint8_t)(((uint8_t)0x40U & NON_VOLATILE_IRC_USER_TRIM(2)) | (uint8_t)0x16U);
+#else /* (DISABLE_USRTRIM == 0) */
+  /* MCG->C2: LOCRE0=0, RANGE0=1, HGO0=0, EREFS0=1, LP=1, IRCS=0 */
+  MCG->C2 = (uint8_t)((MCG->C2 & (uint8_t)0x40U) | (uint8_t)0x16U);
+#endif /* (DISABLE_USRTRIM) */
   while((uint8_t)(MCG->S & (uint8_t)0x01U) != (uint8_t)0x00U) { /* Check that Check that IRCST=0. */
   }
 #endif /* (CLOCK_SETUP == 2) */
@@ -232,7 +267,6 @@ void SystemCoreClockUpdate (void) {
       break;
     default:
       return;                                         /* Reserved value */
-      break;
   }
   SystemCoreClock = (MCGOUTClock / (1u + ((SIM->CLKDIV1 & SIM_CLKDIV1_OUTDIV1_MASK) >> SIM_CLKDIV1_OUTDIV1_SHIFT)));
 }

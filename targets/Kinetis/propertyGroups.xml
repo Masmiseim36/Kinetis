@@ -3629,12 +3629,12 @@
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
       <property name="arm_simulator_memory_simulation_parameter" value="MKV46F256xxx16;0x40000;0x0;0x0;0x8000;2" />
     </groupEntry>
-    <groupEntry name="MKV56F512xxx22" family="KV5x">
-      <cdefine value="MKV56F512xxx22" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKV56F22" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV56F512xxx22_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV56F22_Peripherals.xml" />
-      <cdefine name="__VECTORS" value="&quot;MKV56F22.vec&quot;" />
+    <groupEntry name="MKV56F512xxx24" family="KV5x">
+      <cdefine value="MKV56F512xxx24" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKV56F24" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV56F512xxx24_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV56F24_Peripherals.xml" />
+      <cdefine name="__VECTORS" value="&quot;MKV56F24.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV5.elf" />
       <property name="arm_architecture" value="v7EM" />
       <property name="arm_core_type" value="Cortex-M7" />
@@ -3644,14 +3644,14 @@
       <cdefine name="V_SERIES" />
       <property name="target_get_partname_script" value="GetPartName()" />
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKV56F512xxx22;0x80000;0x0;0x0;0x20000;1" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKV56F512xxx24;0x80000;0x0;0x0;0x20000;1" />
     </groupEntry>
-    <groupEntry name="MKV56F1M0xxx22" family="KV5x">
-      <cdefine value="MKV56F1M0xxx22" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKV56F22" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV56F1M0xxx22_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV56F22_Peripherals.xml" />
-      <cdefine name="__VECTORS" value="&quot;MKV56F22.vec&quot;" />
+    <groupEntry name="MKV56F1M0xxx24" family="KV5x">
+      <cdefine value="MKV56F1M0xxx24" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKV56F24" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV56F1M0xxx24_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV56F24_Peripherals.xml" />
+      <cdefine name="__VECTORS" value="&quot;MKV56F24.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV5.elf" />
       <property name="arm_architecture" value="v7EM" />
       <property name="arm_core_type" value="Cortex-M7" />
@@ -3661,14 +3661,14 @@
       <cdefine name="V_SERIES" />
       <property name="target_get_partname_script" value="GetPartName()" />
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKV56F1M0xxx22;0x100000;0x0;0x0;0x40000;1" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKV56F1M0xxx24;0x100000;0x0;0x0;0x40000;1" />
     </groupEntry>
-    <groupEntry name="MKV58F512xxx22" family="KV5x">
-      <cdefine value="MKV58F512xxx22" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKV58F22" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV58F512xxx22_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV58F22_Peripherals.xml" />
-      <cdefine name="__VECTORS" value="&quot;MKV58F22.vec&quot;" />
+    <groupEntry name="MKV58F512xxx24" family="KV5x">
+      <cdefine value="MKV58F512xxx24" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKV58F24" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV58F512xxx24_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV58F24_Peripherals.xml" />
+      <cdefine name="__VECTORS" value="&quot;MKV58F24.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV5.elf" />
       <property name="arm_architecture" value="v7EM" />
       <property name="arm_core_type" value="Cortex-M7" />
@@ -3678,14 +3678,14 @@
       <cdefine name="V_SERIES" />
       <property name="target_get_partname_script" value="GetPartName()" />
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKV58F512xxx22;0x80000;0x0;0x0;0x20000;1" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKV58F512xxx24;0x80000;0x0;0x0;0x20000;1" />
     </groupEntry>
-    <groupEntry name="MKV58F1M0xxx22" family="KV5x">
-      <cdefine value="MKV58F1M0xxx22" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKV58F22" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV58F1M0xxx22_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV58F22_Peripherals.xml" />
-      <cdefine name="__VECTORS" value="&quot;MKV58F22.vec&quot;" />
+    <groupEntry name="MKV58F1M0xxx24" family="KV5x">
+      <cdefine value="MKV58F1M0xxx24" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKV58F24" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV58F1M0xxx24_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV58F24_Peripherals.xml" />
+      <cdefine name="__VECTORS" value="&quot;MKV58F24.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV5.elf" />
       <property name="arm_architecture" value="v7EM" />
       <property name="arm_core_type" value="Cortex-M7" />
@@ -3695,7 +3695,7 @@
       <cdefine name="V_SERIES" />
       <property name="target_get_partname_script" value="GetPartName()" />
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKV58F1M0xxx22;0x100000;0x0;0x0;0x40000;1" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKV58F1M0xxx24;0x100000;0x0;0x0;0x40000;1" />
     </groupEntry>
     <groupEntry name="MKW01Z128xxx" family="KW01Z">
       <cdefine value="MKW01Z128xxx" name="__TARGET_PROCESSOR" />

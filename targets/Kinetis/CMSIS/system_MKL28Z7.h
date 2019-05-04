@@ -1,9 +1,7 @@
 /*
 ** ###################################################################
 **     Processors:          MKL28Z512VDC7
-**                          MKL28Z512VLH7
 **                          MKL28Z512VLL7
-**                          MKL28Z512VMP7
 **
 **     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
@@ -11,16 +9,16 @@
 **                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    KL28SINGLERM, Rev. 0, June 1, 2015
+**     Reference manual:    MKL28ZRM, Rev. 2, March, 2016
 **     Version:             rev. 1.12, 2015-06-03
-**     Build:               b150603
+**     Build:               b160310
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright (c) 2015 Freescale Semiconductor, Inc.
+**     Copyright (c) 2016 Freescale Semiconductor, Inc.
 **     All rights reserved.
 **
 **     Redistribution and use in source and binary forms, with or without modification,
@@ -103,8 +101,8 @@
  * (PLL) that is part of the microcontroller device.
  */
 
-#ifndef SYSTEM_MKL28Z7_H_
-#define SYSTEM_MKL28Z7_H_                        /**< Symbol preventing repeated inclusion */
+#ifndef _SYSTEM_MKL28Z7_H_
+#define _SYSTEM_MKL28Z7_H_                       /**< Symbol preventing repeated inclusion */
 
 #ifdef __cplusplus
 extern "C" {
@@ -117,210 +115,16 @@ extern "C" {
   #define DISABLE_WDOG  1
 #endif
 
-/* SCG mode constants */
-
-#define SCG_MODE_FIRC       0U
-#define SCG_MODE_SIRC       1U
-#define SCG_MODE_SOSC       2U
-#define SCG_MODE_SPLL       3U
-
-/* Predefined clock setups
-   0 ... System Clock Generator (SCG) in Fast Internal Reference Clock (FIRC) mode
-         Default part configuration.
-         Core clock/Bus clock derived from the internal clock source 48 MHz
-         Core clock = 48MHz, BusClock = 24MHz
-   1 ... System Clock Generator (SCG) in Slow Internal Reference Clock (SIRC) mode
-         Maximum achievable clock frequency configuration using internal clock.
-         Core clock/Bus clock derived from the internal clock source 8MHz
-         Core clock = 8MHz, BusClock = 4MHz
-   2 ... System Clock Generator (SCG) in System Oscillator Clock (SOSC) mode
-         Core clock/Bus clock derived from the internal clock source 2MHz
-         The clock settings is ready for Very Low Power Run mode.
-         Core clock = 2MHz, BusClock = 1MHz
-   3 ... System Clock Generator (SCG) in System Phase-lock Loop (SPLL) mode
-         Core clock/Bus clock derived from the internal clock source 48 MHz
-         The clock settings is ready for Very Low Power Run mode.
-         Core clock = 72MHz, BusClock = 24MHz
-*/
-
 /* Define clock source values */
 #define CPU_XTAL_CLK_HZ                8000000u
 
 /* Low power mode enable */
 /* SMC_PMPROT: AVLP=1,AVLLS=1 */
 #define SYSTEM_SMC_PMPROT_VALUE        0x2Au               /* SMC_PMPROT */
-#define SMC_PMCTRL_VALUE               0x0u                /* SMC_PMCTRL */
+#define SYSTEM_SMC_PMCTRL_VALUE        0x0u                /* SMC_PMCTRL */
 
-#ifdef CLOCK_SETUP
-#if (CLOCK_SETUP == 0)
-  #define DEFAULT_SYSTEM_CLOCK         48000000u          /* Default System clock value */
-  #define CPU_INT_SLOW_CLK_HZ          24000000u
-  #define SCG_MODE                     SCG_MODE_FIRC      /* Clock generator mode */
-  /* SCG_RCCR: SCS=3, DIVCORE=0, DIVSLOW=1*/
-  #define SCG_RCCR_VALUE               0x3000001u         /* SCG_RCCR */
-  /* SCG_VCCR: SCS=2, DIVCORE=0, DIVSLOW=1*/
-  #define SCG_VCCR_VALUE               0x2000001u         /* SCG_VCCR */
-  /* SCG_HCCR: SCS=3, DIVCORE=0, DIVSLOW=1*/
-  #define SCG_HCCR_VALUE               0x3000001u         /* SCG_VCCR */
-  /* SCG_FIRCCSR: FIRCEN=1 */
-  #define SCG_FIRCCSR_VALUE            0x1u               /* SCG_FIRCCSR */
-  /* SCG_FIRCDIV: FIRCDIV3=1, FIRCDIV2=1, FIRCDIV1=1 */
-  #define SCG_FIRCDIV_VALUE            0x10101u               /* SCG_FIRCDIV */
-  /* SCG_FIRCCFG: RANGE=0 */
-  #define SCG_FIRCCFG_VALUE            0x0u               /* SCG_FIRCCFG */
-  /* SCG_FIRCTCFG: TRIMDIV=0 TRIMSRC=0 */
-  #define SCG_FIRCTCFG_VALUE           0x0u               /* SCG_FIRCTCFG */
-
-  /* SCG_SIRCCSR: SIRCEN=1 */
-  #define SCG_SIRCCSR_VALUE            0x1u               /* SCG_SIRCCSR */
-  /* SCG_SIRCDIV: SIRCDIV3=1, SIRCDIV2=1, SIRCDIV1=1 */
-  #define SCG_SIRCDIV_VALUE            0x10101u           /* SCG_SIRCDIV */
-  /* SCG_SIRCCFG: RANGE=0 */
-  #define SCG_SIRCCFG_VALUE            0x0u               /* SCG_SIRCCFG */
-
-  /* SCG_SOSCCSR: SOSCLPEN=1, SOSCEN=1 */
-  #define SCG_SOSCCSR_VALUE            0x5u               /* SCG_SOSCCSR */
-  /* SCG_SOSCDIV: SOSCDIV3=1, SOSCDIV2=1, SOSCDIV1=1 */
-  #define SCG_SOSCDIV_VALUE            0x10101u           /* SCG_SOSCDIV */
-  /* SCG_SOSCCFG: RANGE=2, EREFS=1 */
-  #define SCG_SOSCCFG_VALUE            0x24u               /* SCG_SOSCCFG */
-
-  /* SCG_SPLLCSR: SPLLEN=1 */
-  #define SCG_SPLLCSR_VALUE            0x1u               /* SCG_SPLLCSR */
-  /* SCG_SPLLDIV: SPLLDIV3=1, SPLLDIV2=1, SPLLDIV1=1 */
-  #define SCG_SPLLDIV_VALUE            0x10101u               /* SCG_SPLLDIV */
-  /* SCG_SPLLCFG: MULT=2, PREDIV=3, SOURCE=0 */
-  #define SCG_SPLLCFG_VALUE            0x80501u           /* SCG_SPLLCFG */
-
-#elif (CLOCK_SETUP == 1)
-  #define DEFAULT_SYSTEM_CLOCK         8000000u           /* Default System clock value */
-  #define CPU_INT_SLOW_CLK_HZ          4000000u
-  #define SCG_MODE                     SCG_MODE_SIRC      /* Clock generator mode */
-  /* SCG_RCCR: SCS=2, DIVCORE=0, DIVSLOW=1*/
-  #define SCG_RCCR_VALUE               0x2000001u         /* SCG_RCCR */
-  /* SCG_VCCR: SCS=2, DIVCORE=0, DIVSLOW=1*/
-  #define SCG_VCCR_VALUE               0x2000001u         /* SCG_VCCR */
-  /* SCG_HCCR: SCS=2, DIVCORE=0, DIVSLOW=1*/
-  #define SCG_HCCR_VALUE               0x2000001u         /* SCG_VCCR */
-  /* SCG_SIRCCSR: SIRCLPEN=1, SIRCEN=1 */
-  #define SCG_SIRCCSR_VALUE            0x5u               /* SCG_SIRCCSR */
-  /* SCG_SIRCDIV: SIRCDIV3=1, SIRCDIV2=1, SIRCDIV1=1 */
-  #define SCG_SIRCDIV_VALUE            0x10101u               /* SCG_SIRCDIV */
-  /* SCG_SIRCCFG: RANGE=1 */
-  #define SCG_SIRCCFG_VALUE            0x1u               /* SCG_SIRCCFG */
-
-  /* SCG_FIRCCSR: FIRCEN=1 */
-  #define SCG_FIRCCSR_VALUE            0x1u               /* SCG_FIRCCSR */
-  /* SCG_FIRCDIV: FIRCDIV3=1, FIRCDIV2=1, FIRCDIV1=1 */
-  #define SCG_FIRCDIV_VALUE            0x10101u               /* SCG_FIRCDIV */
-  /* SCG_FIRCCFG: RANGE=0 */
-  #define SCG_FIRCCFG_VALUE            0x0u               /* SCG_FIRCCFG */
-  /* SCG_FIRCTCFG: TRIMDIV=0 TRIMSRC=0 */
-  #define SCG_FIRCTCFG_VALUE           0x0u               /* SCG_FIRCTCFG */
-
-  /* SCG_SOSCCSR: SOSCEN=1 */
-  #define SCG_SOSCCSR_VALUE            0x1u               /* SCG_SOSCCSR */
-  /* SCG_SOSCDIV: SOSCDIV3=1, SOSCDIV2=1, SOSCDIV1=1 */
-  #define SCG_SOSCDIV_VALUE            0x10101u           /* SCG_SOSCDIV */
-  /* SCG_SOSCCFG: RANGE=2, EREFS=1 */
-  #define SCG_SOSCCFG_VALUE            0x24u               /* SCG_SOSCCFG */
-
-  /* SCG_SPLLCSR: SPLLEN=1 */
-  #define SCG_SPLLCSR_VALUE            0x1u               /* SCG_SPLLCSR */
-  /* SCG_SPLLDIV: SPLLDIV3=1, SPLLDIV2=1, SPLLDIV1=1 */
-  #define SCG_SPLLDIV_VALUE            0x10101u               /* SCG_SPLLDIV */
-  /* SCG_SPLLCFG: MULT=2, PREDIV=3, SOURCE=0 */
-  #define SCG_SPLLCFG_VALUE            0x80501u           /* SCG_SPLLCFG */
-
-#elif (CLOCK_SETUP == 2)
-  #define DEFAULT_SYSTEM_CLOCK         8000000u           /* Default System clock value */
-  #define CPU_INT_SLOW_CLK_HZ          4000000u
-  #define SCG_MODE                     SCG_MODE_SOSC      /* Clock generator mode */
-  /* SCG_RCCR: SCS=2, DIVCORE=0, DIVSLOW=1*/
-  #define SCG_RCCR_VALUE               0x1000001u         /* SCG_RCCR */
-  /* SCG_VCCR: SCS=2, DIVCORE=0, DIVSLOW=1*/
-  #define SCG_VCCR_VALUE               0x1000001u         /* SCG_VCCR */
-  /* SCG_HCCR: SCS=2, DIVCORE=0, DIVSLOW=1*/
-  #define SCG_HCCR_VALUE               0x1000001u         /* SCG_VCCR */
-  /* SCG_SOSCCSR: SOSCLPEN=1, SOSCEN=1 */
-  #define SCG_SOSCCSR_VALUE            0x5u               /* SCG_SOSCCSR */
-  /* SCG_SOSCDIV: SOSCDIV3=1, SOSCDIV2=1, SOSCDIV1=1 */
-  #define SCG_SOSCDIV_VALUE            0x10101u               /* SCG_SOSCDIV */
-  /* SCG_SOSCCFG: RANGE=2, EREFS=1 */
-  #define SCG_SOSCCFG_VALUE            0x24u               /* SCG_SOSCCFG */
-
-  /* SCG_SIRCCSR: SIRCEN=1 */
-  #define SCG_SIRCCSR_VALUE            0x1u               /* SCG_SIRCCSR */
-  /* SCG_SIRCDIV: SIRCDIV3=1, SIRCDIV2=1, SIRCDIV1=1 */
-  #define SCG_SIRCDIV_VALUE            0x10101u               /* SCG_SIRCDIV */
-  /* SCG_SIRCCFG: RANGE=1 */
-  #define SCG_SIRCCFG_VALUE            0x1u               /* SCG_SIRCCFG */
-
-  /* SCG_FIRCCSR: FIRCEN=1 */
-  #define SCG_FIRCCSR_VALUE            0x1u               /* SCG_FIRCCSR */
-  /* SCG_FIRCDIV: FIRCDIV3=1, FIRCDIV2=1, FIRCDIV1=1 */
-  #define SCG_FIRCDIV_VALUE            0x10101u               /* SCG_FIRCDIV */
-  /* SCG_FIRCCFG: RANGE=0 */
-  #define SCG_FIRCCFG_VALUE            0x0u               /* SCG_FIRCCFG */
-  /* SCG_FIRCTCFG: TRIMDIV=0 TRIMSRC=0 */
-  #define SCG_FIRCTCFG_VALUE           0x0u               /* SCG_FIRCTCFG */
-
-  /* SCG_SPLLCSR: SPLLEN=1 */
-  #define SCG_SPLLCSR_VALUE            0x1u               /* SCG_SPLLCSR */
-  /* SCG_SPLLDIV: SPLLDIV3=1, SPLLDIV2=1, SPLLDIV1=1 */
-  #define SCG_SPLLDIV_VALUE            0x10101u               /* SCG_SPLLDIV */
-  /* SCG_SPLLCFG: MULT=2, PREDIV=3, SOURCE=0 */
-  #define SCG_SPLLCFG_VALUE            0x80501u           /* SCG_SPLLCFG */
-
-#elif (CLOCK_SETUP == 3)
-  #define DEFAULT_SYSTEM_CLOCK         72000000u          /* Default System clock value */
-  #define CPU_INT_SLOW_CLK_HZ          24000000u
-  #define SCG_MODE                     SCG_MODE_SPLL      /* Clock generator mode */
-  /* SCG_RCCR: SCS=6, DIVCORE=0, DIVSLOW=2*/
-  #define SCG_RCCR_VALUE               0x6000002u         /* SCG_RCCR */
-  /* SCG_VCCR: SCS=2, DIVCORE=0, DIVSLOW=2*/
-  #define SCG_VCCR_VALUE               0x2000002u         /* SCG_VCCR */
-  /* SCG_HCCR: SCS=6, DIVCORE=0, DIVSLOW=2*/
-  #define SCG_HCCR_VALUE               0x6000002u         /* SCG_VCCR */
-
-  /* SCG_SPLLCSR: SPLLEN=1 */
-  #define SCG_SPLLCSR_VALUE            0x1u               /* SCG_SPLLCSR */
-  /* SCG_SPLLDIV: SPLLDIV3=1, SPLLDIV2=1, SPLLDIV1=1 */
-  #define SCG_SPLLDIV_VALUE            0x10101u               /* SCG_SPLLDIV */
-  /* SCG_SPLLCFG: MULT=2, PREDIV=3, SOURCE=0 */
-  #define SCG_SPLLCFG_VALUE            0x80501u           /* SCG_SPLLCFG */
-
-  /* SCG_SOSCCSR: SOSCLPEN=1, SOSCEN=1 */
-  #define SCG_SOSCCSR_VALUE            0x5u               /* SCG_SOSCCSR */
-  /* SCG_SOSCDIV: SOSCDIV3=1, SOSCDIV2=1, SOSCDIV1=1 */
-  #define SCG_SOSCDIV_VALUE            0x10101u               /* SCG_SOSCDIV */
-  /* SCG_SOSCCFG: RANGE=2, EREFS=1 */
-  #define SCG_SOSCCFG_VALUE            0x24u               /* SCG_SOSCCFG */
-
-  /* SCG_SIRCCSR: SIRCEN=1 */
-  #define SCG_SIRCCSR_VALUE            0x1u               /* SCG_SIRCCSR */
-  /* SCG_SIRCDIV: SIRCDIV3=1, SIRCDIV2=1, SIRCDIV1=1 */
-  #define SCG_SIRCDIV_VALUE            0x10101u               /* SCG_SIRCDIV */
-  /* SCG_SIRCCFG: RANGE=1 */
-  #define SCG_SIRCCFG_VALUE            0x1u               /* SCG_SIRCCFG */
-
-  /* SCG_FIRCCSR: FIRCEN=1 */
-  #define SCG_FIRCCSR_VALUE            0x1u               /* SCG_FIRCCSR */
-  /* SCG_FIRCDIV: FIRCDIV3=1, FIRCDIV2=1, FIRCDIV1=1 */
-  #define SCG_FIRCDIV_VALUE            0x10101u               /* SCG_FIRCDIV */
-  /* SCG_FIRCCFG: RANGE=0 */
-  #define SCG_FIRCCFG_VALUE            0x0u               /* SCG_FIRCCFG */
-  /* SCG_FIRCTCFG: TRIMDIV=0 TRIMSRC=0 */
-  #define SCG_FIRCTCFG_VALUE           0x0u               /* SCG_FIRCTCFG */
-
-#else
-  #error The selected clock setup is not supported.
-#endif /* (CLOCK_SETUP == 3) */
-#else
-  /* TODO */
-  #define DEFAULT_SYSTEM_CLOCK         48000000u            /* Default System clock value */
-  #define CPU_INT_SLOW_CLK_HZ          24000000u            /* Value of the slow internal oscillator clock frequency in Hz  */
-#endif
+#define DEFAULT_SYSTEM_CLOCK           8000000u            /* Default System clock value */
+#define CPU_INT_SLOW_CLK_HZ            4000000u            /* Value of the slow internal oscillator clock frequency in Hz  */
 
 
 /**
@@ -356,4 +160,4 @@ void SystemCoreClockUpdate (void);
 }
 #endif
 
-#endif  /* #if !defined(SYSTEM_MKL28Z7_H_) */
+#endif  /* _SYSTEM_MKL28Z7_H_ */

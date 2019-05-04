@@ -14,7 +14,7 @@
 **
 **     Reference manual:    KL82P121M72SF0RM, Rev.1.2 September 2015
 **     Version:             rev. 1.5, 2015-09-24
-**     Build:               b151109
+**     Build:               b151201
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that

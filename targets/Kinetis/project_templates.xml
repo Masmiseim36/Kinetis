@@ -1,11 +1,11 @@
 <projects>
-  <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Executable" description="An executable for Freescale Kinetis." type="Executable" template_name="Kinetis_EXE">
+  <project cpu_manufacturer="NXP" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Executable" description="An executable for NXP Kinetis." type="Executable" template_name="Kinetis_EXE">
     <configuration name="THUMB Debug" />
     <configuration name="THUMB Release" />
     <property name="arm_target_debug_interface_type" value="ADIv5" />
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
     <propertygroup name="Target" value="Kinetis" choose="Yes" />
-    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll" />
+    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory$(HostDLL)" />
     <property name="target_connect_script" value="Connect()" />
     <property name="target_get_partname_script" value="GetPartName()" />
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
@@ -42,13 +42,13 @@
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no" />
     </folder>
   </project>
-  <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Externally Built Executable" description="An externally built executable for Freescale Kinetis." type="Externally Built Executable" template_name="Kinetis_EXT_EXE">
+  <project cpu_manufacturer="NXP" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Externally Built Executable" description="An externally built executable for NXP Kinetis." type="Externally Built Executable" template_name="Kinetis_EXT_EXE">
     <configuration name="THUMB Debug" />
     <configuration name="THUMB Release" />
     <property name="arm_target_debug_interface_type" value="ADIv5" />
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
     <propertygroup name="Target" value="Kinetis" choose="Yes" />
-    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll" />
+    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory$(HostDLL)" />
     <property name="target_connect_script" value="Connect()" />
     <property name="target_get_partname_script" value="GetPartName()" />
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
@@ -66,13 +66,13 @@
     <propertygroup name="Placement" value="Flash" />
     <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc" />
   </project>
-  <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis CTL Executable" description="A CrossWorks Tasking Library executable for Freescale Kinetis." type="Executable" template_name="Kinetis_CTL_EXE">
+  <project cpu_manufacturer="NXP" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis CTL Executable" description="A CrossWorks Tasking Library executable for NXP Kinetis." type="Executable" template_name="Kinetis_CTL_EXE">
     <configuration name="THUMB Debug" />
     <configuration name="THUMB Release" />
     <property name="arm_target_debug_interface_type" value="ADIv5" />
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
     <propertygroup name="Target" value="Kinetis" choose="Yes" />
-    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll" />
+    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory$(HostDLL)" />
     <property name="target_connect_script" value="Connect()" />
     <property name="target_get_partname_script" value="GetPartName()" />
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />

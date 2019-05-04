@@ -14,13 +14,15 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    KL43P64M48SF6RM, Rev.3, Aug 2014
-**     Version:             rev. 1.3, 2014-08-21
-**     Build:               b140821
+**     Version:             rev. 1.5, 2014-09-05
+**     Build:               b151212
 **
 **     Abstract:
-**         CMSIS Peripheral Access Layer for MKL43Z4
+**         Provides a system configuration function and a global variable that
+**         contains the system frequency. It configures the device and initializes
+**         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright (c) 1997 - 2014 Freescale Semiconductor, Inc.
+**     Copyright (c) 2015 Freescale Semiconductor, Inc.
 **     All rights reserved.
 **
 **     Redistribution and use in source and binary forms, with or without modification,
@@ -79,14 +81,19 @@
 **         USB - Removed bitfield REG_EN in CLK_RECOVER_IRC_EN register.
 **         SIM - Changed bitfield value MCGIRCLK to LIRC_CLK of bitfield CLKOUTSEL in SOPT2 register.
 **         SIM - Removed bitfield DIEID in SDID register.
+**     - rev. 1.4 (2014-09-01)
+**         USB - USB0_CTL0 was renamed to USB0_OTGCTL register.
+**         USB - USB0_CTL1 was renamed to USB0_CTL register.
+**     - rev. 1.5 (2014-09-05)
+**         USB - Renamed USBEN bitfield of USB0_CTL was renamed to USBENSOFEN.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKL43Z4
- * @version 1.3
- * @date 2014-08-21
+ * @version 1.5
+ * @date 2014-09-05
  * @brief Device specific configuration file for MKL43Z4 (header file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -103,12 +110,23 @@ extern "C" {
 
 #include <stdint.h>
 
-
-#define DISABLE_WDOG    1
-
 #ifndef CLOCK_SETUP
-  #define CLOCK_SETUP   0
+  #define CLOCK_SETUP 0
 #endif
+
+#ifndef DISABLE_WDOG
+  #define DISABLE_WDOG  1
+#endif
+
+#define ACK_ISOLATION   1
+
+/* MCG_Lite mode constants */
+
+#define MCG_MODE_LIRC_8M               0U
+#define MCG_MODE_HIRC                  1U
+#define MCG_MODE_LIRC_2M               2U
+#define MCG_MODE_EXT                   3U
+
 /* Predefined clock setups
    0 ... Multipurpose Clock Generator Lite (MCG_Lite) in Low-frequency Internal Reference Clock 8 MHz (LIRC 8 MHz) mode
          Default part configuration.
@@ -135,40 +153,155 @@ extern "C" {
          Core clock = 8MHz, BusClock = 4MHz, USB FS clock derived from external clock USB_CLKIN (applicable only for derivatived with USB)
 */
 
-/*----------------------------------------------------------------------------
-  Define clock source values
- *----------------------------------------------------------------------------*/
+/* Define clock source values */
+
+#define CPU_XTAL_CLK_HZ                32768u              /* Value of the external crystal or oscillator clock frequency in Hz */
+#define CPU_INT_FAST_CLK_HZ            48000000u           /* Value of the fast internal oscillator clock frequency in Hz  */
+#define CPU_INT_IRC_CLK_HZ             48000000u           /* Value of the 48M internal oscillator clock frequency in Hz  */
+
+/* Low power mode enable */
+/* SMC_PMPROT: AVLP=1,AVLLS=1 */
+#define SYSTEM_SMC_PMPROT_VALUE        0x2Au               /* SMC_PMPROT */
+
+#ifdef CLOCK_SETUP
 #if (CLOCK_SETUP == 0)
-    #define CPU_XTAL_CLK_HZ                 32768u    /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             8000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            4000000u  /* Default System clock value */
+  #define DEFAULT_SYSTEM_CLOCK         4000000u            /* Default System clock value */
+  #define CPU_INT_SLOW_CLK_HZ          8000000u            /* Value of the slow internal oscillator clock frequency in Hz  */
+  #define MCG_MODE                     MCG_MODE_LIRC_8M    /* Clock generator mode */
+  /* MCG_C1: CLKS=1,IRCLKEN=1,IREFSTEN=0 */
+  #define MCG_C1_VALUE                 0x42u               /* MCG_C1 */
+  /* MCG_C2: RANGE0=0,HGO0=0,EREFS0=0,IRCS=1 */
+  #define MCG_C2_VALUE                 0x01u               /* MCG_C2 */
+  /* MCG_SC: FCRDIV=0 */
+  #define MCG_SC_VALUE                 0x00u               /* MCG_SC */
+  /* MCG_MC: HIRCEN=0 LIRC_DIV2=0 */
+  #define MCG_MC_VALUE                 0x00u               /* MCG_MC */
+  /* OSC0_CR: ERCLKEN=0,EREFSTEN=0,SC2P=0,SC4P=0,SC8P=0,SC16P=0 */
+  #define OSC0_CR_VALUE                0x00u               /* OSC0_CR */
+  /* SMC_PMCTRL: RUNM=0,STOPA=0,STOPM=0 */
+  #define SMC_PMCTRL_VALUE             0x00u               /* SMC_PMCTRL */
+  /* SIM_CLKDIV1: OUTDIV1=1,OUTDIV4=1 */
+  #define SYSTEM_SIM_CLKDIV1_VALUE     0x10010000u         /* SIM_CLKDIV1 */
+  /* SIM_SOPT1: OSC32KSEL=0,OSC32KOUT=0 */
+  #define SYSTEM_SIM_SOPT1_VALUE       0x00000000u         /* SIM_SOPT1 */
+  /* SIM_SOPT2: LPUART1SRC=0,LPUART0SRC=0,TPMSRC=3,FLEXIOSRC=0,USBSRC=0,CLKOUTSEL=0,RTCCLKOUTSEL=0 */
+  #define SYSTEM_SIM_SOPT2_VALUE       0x03000000u         /* SIM_SOPT2 */
 #elif (CLOCK_SETUP == 1)
-    #define CPU_XTAL_CLK_HZ                 32768u    /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             8000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            48000000u /* Default System clock value */
+  #define DEFAULT_SYSTEM_CLOCK         48000000u           /* Default System clock value */
+  #define CPU_INT_SLOW_CLK_HZ          8000000u            /* Value of the slow internal oscillator clock frequency in Hz  */
+  #define MCG_MODE                     MCG_MODE_HIRC       /* Clock generator mode */
+  /* MCG_C1: CLKS=0,IRCLKEN=0,IREFSTEN=0 */
+  #define MCG_C1_VALUE                 0x00u               /* MCG_C1 */
+  /* MCG_C2: RANGE0=0,HGO0=0,EREFS0=0,IRCS=1 */
+  #define MCG_C2_VALUE                 0x01u               /* MCG_C2 */
+  /* MCG_SC: FCRDIV=0 */
+  #define MCG_SC_VALUE                 0x00u               /* MCG_SC */
+  /* MCG_MC: HIRCEN=1 LIRC_DIV2=0 */
+  #define MCG_MC_VALUE                 0x80u               /* MCG_MC */
+  /* OSC0_CR: ERCLKEN=0,EREFSTEN=0,SC2P=0,SC4P=0,SC8P=0,SC16P=0 */
+  #define OSC0_CR_VALUE                0x00u               /* OSC0_CR */
+  /* SMC_PMCTRL: RUNM=0,STOPA=0,STOPM=0 */
+  #define SMC_PMCTRL_VALUE             0x00u               /* SMC_PMCTRL */
+  /* SIM_CLKDIV1: OUTDIV1=0,OUTDIV4=1 */
+  #define SYSTEM_SIM_CLKDIV1_VALUE     0x10000u            /* SIM_CLKDIV1 */
+  /* SIM_SOPT1: OSC32KSEL=0,OSC32KOUT=0 */
+  #define SYSTEM_SIM_SOPT1_VALUE       0x00000000u         /* SIM_SOPT1 */
+  /* SIM_SOPT2: LPUART1SRC=0,LPUART0SRC=0,TPMSRC=3,FLEXIOSRC=0,USBSRC=0,CLKOUTSEL=0,RTCCLKOUTSEL=0 */
+  #define SYSTEM_SIM_SOPT2_VALUE       0x03000000U         /* SIM_SOPT2 */
 #elif (CLOCK_SETUP == 2)
-    #define CPU_XTAL_CLK_HZ                 32768u    /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             8000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            32768u    /* Default System clock value */
+  #define DEFAULT_SYSTEM_CLOCK         32768u              /* Default System clock value */
+  #define CPU_INT_SLOW_CLK_HZ          8000000u            /* Value of the slow internal oscillator clock frequency in Hz  */
+  #define MCG_MODE                     MCG_MODE_EXT        /* Clock generator mode */
+  /* MCG_C1: CLKS=2,IRCLKEN=1,IREFSTEN=0 */
+  #define MCG_C1_VALUE                 0x82u               /* MCG_C1 */
+  /* MCG_C2: RANGE0=0,HGO0=0,EREFS0=1,IRCS=1 */
+  #define MCG_C2_VALUE                 0x05u               /* MCG_C2 */
+  /* MCG_SC: FCRDIV=0 */
+  #define MCG_SC_VALUE                 0x00u               /* MCG_SC */
+  /* MCG_MC: HIRCEN=0 LIRC_DIV2=0 */
+  #define MCG_MC_VALUE                 0x00u               /* MCG_MC */
+  /* OSC0_CR: ERCLKEN=1,EREFSTEN=0,SC2P=0,SC4P=0,SC8P=0,SC16P=0 */
+  #define OSC0_CR_VALUE                0x80u               /* OSC0_CR */
+  /* SMC_PMCTRL: RUNM=0,STOPA=0,STOPM=0 */
+  #define SMC_PMCTRL_VALUE             0x00u               /* SMC_PMCTRL */
+  /* SIM_CLKDIV1: OUTDIV1=0,OUTDIV4=0 */
+  #define SYSTEM_SIM_CLKDIV1_VALUE     0x00u               /* SIM_CLKDIV1 */
+  /* SIM_SOPT1: OSC32KSEL=0,OSC32KOUT=0 */
+  #define SYSTEM_SIM_SOPT1_VALUE       0x00000000u         /* SIM_SOPT1 */
+  /* SIM_SOPT2: LPUART1SRC=0,LPUART0SRC=0,TPMSRC=2,FLEXIOSRC=0,USBSRC=0,CLKOUTSEL=0,RTCCLKOUTSEL=0 */
+  #define SYSTEM_SIM_SOPT2_VALUE       0x02000000u         /* SIM_SOPT2 */
 #elif (CLOCK_SETUP == 3)
-    #define CPU_XTAL_CLK_HZ                 32768u    /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             2000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            2000000u  /* Default System clock value */
+  #define DEFAULT_SYSTEM_CLOCK         2000000u            /* Default System clock value */
+  #define CPU_INT_SLOW_CLK_HZ          2000000u            /* Value of the slow internal oscillator clock frequency in Hz  */
+  #define MCG_MODE                     MCG_MODE_LIRC_2M    /* Clock generator mode */
+  /* MCG_C1: CLKS=1,IRCLKEN=1,IREFSTEN=0 */
+  #define MCG_C1_VALUE                 0x42u               /* MCG_C1 */
+  /* MCG_C2: RANGE0=0,HGO0=0,EREFS0=0,IRCS=0 */
+  #define MCG_C2_VALUE                 0x00u               /* MCG_C2 */
+  /* MCG_SC: FCRDIV=0 */
+  #define MCG_SC_VALUE                 0x00u               /* MCG_SC */
+  /* MCG_MC: HIRCEN=0 LIRC_DIV2=0 */
+  #define MCG_MC_VALUE                 0x00u               /* MCG_MC */
+  /* OSC0_CR: ERCLKEN=0,EREFSTEN=0,SC2P=0,SC4P=0,SC8P=0,SC16P=0 */
+  #define OSC0_CR_VALUE                0x00u               /* OSC0_CR */
+  /* SMC_PMCTRL: RUNM=0,STOPA=0,STOPM=0 */
+  #define SMC_PMCTRL_VALUE             0x00u               /* SMC_PMCTRL */
+  /* SIM_CLKDIV1: OUTDIV1=0,OUTDIV4=1 */
+  #define SYSTEM_SIM_CLKDIV1_VALUE     0x10000u            /* SIM_CLKDIV1 */
+  /* SIM_SOPT1: OSC32KSEL=0,OSC32KOUT=0 */
+  #define SYSTEM_SIM_SOPT1_VALUE       0x00000000u         /* SIM_SOPT1 */
+  /* SIM_SOPT2: LPUART1SRC=0,LPUART0SRC=0,TPMSRC=3,FLEXIOSRC=0,USBSRC=0,CLKOUTSEL=0,RTCCLKOUTSEL=0 */
+  #define SYSTEM_SIM_SOPT2_VALUE       0x03000000u         /* SIM_SOPT2 */
 #elif (CLOCK_SETUP == 4)
-    #define CPU_XTAL_CLK_HZ                 32768u    /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             8000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            48000000u /* Default System clock value */
+  #define DEFAULT_SYSTEM_CLOCK         2000000u            /* Default System clock value */
+  #define CPU_INT_SLOW_CLK_HZ          8000000u            /* Value of the slow internal oscillator clock frequency in Hz  */
+  #define MCG_MODE                     MCG_MODE_LIRC_2M    /* Clock generator mode */
+  /* MCG_C1: CLKS=0,IRCLKEN=1,IREFSTEN=0 */
+  #define MCG_C1_VALUE                 0x02u               /* MCG_C1 */
+  /* MCG_C2: RANGE0=0,HGO0=0,EREFS0=0,IRCS=1 */
+  #define MCG_C2_VALUE                 0x01u               /* MCG_C2 */
+  /* MCG_SC: FCRDIV=0 */
+  #define MCG_SC_VALUE                 0x00u               /* MCG_SC */
+  /* MCG_MC: HIRCEN=1 LIRC_DIV2=0 */
+  #define MCG_MC_VALUE                 0x80u               /* MCG_MC */
+  /* OSC0_CR: ERCLKEN=0,EREFSTEN=0,SC2P=0,SC4P=0,SC8P=0,SC16P=0 */
+  #define OSC0_CR_VALUE                0x00u               /* OSC0_CR */
+  /* SMC_PMCTRL: RUNM=0,STOPA=0,STOPM=0 */
+  #define SMC_PMCTRL_VALUE             0x00u               /* SMC_PMCTRL */
+  /* SIM_CLKDIV1: OUTDIV1=0,OUTDIV4=1 */
+  #define SYSTEM_SIM_CLKDIV1_VALUE     0x10000u            /* SIM_CLKDIV1 */
+  /* SIM_SOPT1: OSC32KSEL=0,OSC32KOUT=0 */
+  #define SYSTEM_SIM_SOPT1_VALUE       0x00000000u         /* SIM_SOPT1 */
+  /* SIM_SOPT2: LPUART1SRC=0,LPUART0SRC=0,TPMSRC=3,FLEXIOSRC=0,USBSRC=1,CLKOUTSEL=0,RTCCLKOUTSEL=0 */
+  #define SYSTEM_SIM_SOPT2_VALUE       0x03040000u         /* SIM_SOPT2 */
 #elif (CLOCK_SETUP == 5)
-    #define CPU_XTAL_CLK_HZ                 8000000u  /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             8000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            8000000u    /* Default System clock value */
+  #define DEFAULT_SYSTEM_CLOCK         2000000u            /* Default System clock value */
+  #define CPU_INT_SLOW_CLK_HZ          2000000u            /* Value of the slow internal oscillator clock frequency in Hz  */
+  #define MCG_MODE                     MCG_MODE_LIRC_2M    /* Clock generator mode */
+  /* MCG_C1: CLKS=2,IRCLKEN=0,IREFSTEN=0 */
+  #define MCG_C1_VALUE                 0x80u               /* MCG_C1 */
+  /* MCG_C2: RANGE0=1,HGO0=0,EREFS0=1,IRCS=1 */
+  #define MCG_C2_VALUE                 0x15u               /* MCG_C2 */
+  /* MCG_SC: FCRDIV=0 */
+  #define MCG_SC_VALUE                 0x00u               /* MCG_SC */
+  /* MCG_MC: HIRCEN=0 LIRC_DIV2=0 */
+  #define MCG_MC_VALUE                 0x00u               /* MCG_MC */
+  /* OSC0_CR: ERCLKEN=1,EREFSTEN=0,SC2P=0,SC4P=0,SC8P=0,SC16P=0 */
+  #define OSC0_CR_VALUE                0x80u               /* OSC0_CR */
+  /* SMC_PMCTRL: RUNM=0,STOPA=0,STOPM=0 */
+  #define SMC_PMCTRL_VALUE             0x00u               /* SMC_PMCTRL */
+  /* SIM_CLKDIV1: OUTDIV1=0,OUTDIV4=1 */
+  #define SYSTEM_SIM_CLKDIV1_VALUE     0x10000u            /* SIM_CLKDIV1 */
+  /* SIM_SOPT1: OSC32KSEL=0,OSC32KOUT=0 */
+  #define SYSTEM_SIM_SOPT1_VALUE       0x00000000u         /* SIM_SOPT1 */
+  /* SIM_SOPT2: LPUART1SRC=0,LPUART0SRC=0,TPMSRC=3,FLEXIOSRC=0,USBSRC=0,CLKOUTSEL=0,RTCCLKOUTSEL=0 */
+  #define SYSTEM_SIM_SOPT2_VALUE       0x03000000u         /* SIM_SOPT2 */
+#else
+  #error The selected clock setup is not supported.
 #endif /* (CLOCK_SETUP == 5) */
+#else
+  #define DEFAULT_SYSTEM_CLOCK         4000000u            /* Default System clock value */
+#endif
 
 
 /**

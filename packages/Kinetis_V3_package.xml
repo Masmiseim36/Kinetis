@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="3.5" build_version="2015112701.11285;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.5-" replaces="Kinetis" dependencies="CMSIS-CORE">
+<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="NXP" cpu_family="Kinetis" version="3.6" build_version="2016032201.11528;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.5-" replaces="Kinetis" dependencies="CMSIS-CORE">
   <file file_name="$(TargetsDir)/Kinetis/Loader.hzp" title="Kinetis Loader Application Solution" />
   <file file_name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" title="Kinetis CTL Timer and Interrupt support functions" />
 <targets>
@@ -281,10 +281,10 @@
     <cpu name="MKV46F256xxx16"/>
   </category>
   <category name="KV5x Series" >
-    <cpu name="MKV56F512xxx22"/>
-    <cpu name="MKV56F1M0xxx22"/>
-    <cpu name="MKV58F512xxx22"/>
-    <cpu name="MKV58F1M0xxx22"/>
+    <cpu name="MKV56F512xxx24"/>
+    <cpu name="MKV56F1M0xxx24"/>
+    <cpu name="MKV58F512xxx24"/>
+    <cpu name="MKV58F1M0xxx24"/>
   </category>
   <category name="KW01Z Series" >
     <cpu name="MKW01Z128xxx"/>
@@ -406,6 +406,9 @@
 
   </documentation>
   <history>
+    <version name="3.6">
+      <description>Changed Freescale to NXP.</description>
+    </version>
     <version name="3.5">
       <description>Removed support for KV4x15 devices.</description>
       <description>Added support for K80FN256, K82FN256, KL28Z7, KL82Z7, KS22FN256, KS22FN128, KV11Z7, KV42F16, KV44F16, KV46F16 and KV5x22 devices.</description>

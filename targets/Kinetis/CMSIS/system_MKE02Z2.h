@@ -6,7 +6,7 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    MKE02Z64M20SF0RM, Rev.2.1, Apr-23 2013
-**     Version:             rev. 1.7, 2014-05-28
+**     Version:             rev. 1.4, 2013-07-10
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
@@ -30,26 +30,14 @@
 **     - rev. 1.4 (2013-07-10)
 **         NV - DFPROT register renamed to EEPROT.
 **         WDOG - Peripheral register layout structure has been extended with 16-bit access registers CNT, TOVAL, WIN.
-**     - rev. 1.5 (2013-09-13)
-**         ADC - Changed width of ADC Pin Control field from 32 to 16 bits.
-**         I2C0 - Added bit SBRC into C2 register. Added bits STARTF,SSIE,STOPF,SHEN into FLT register.
-**         PMC - Removed BGBDS bit from SPMSC1 register.
-**         ROM - ROM module added.
-**         SIM - Renamed bit PINSEL[IICPS] to I2C0PS, bit SCGC[IIC] to I2C.
-**     - rev. 1.6 (2013-10-29)
-**         Definition of BITBAND macros updated to support peripherals with 32-bit acces disabled.
-**     - rev. 1.7 (2014-05-28)
-**         The declaration of clock configurations has been moved to separate header file system_MKE02Z2.h
-**         Module access macro {module}_BASES replaced by {module}_BASE_PTRS.
-**         Added register accessor macros.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKE02Z2
- * @version 1.7
- * @date 2014-05-28
+ * @version 1.4
+ * @date 2013-07-10
  * @brief Device specific configuration file for MKE02Z2 (header file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -65,53 +53,6 @@ extern "C" {
 #endif
 
 #include <stdint.h>
-              
-#define DISABLE_WDOG    1
-
-#ifndef CLOCK_SETUP
-  #define CLOCK_SETUP   0
-#endif
-
-/* Predefined clock setups
-   0 ... Internal Clock Source (ICS) in FLL Engaged Internal (FEI) mode
-         Default  part configuration.
-         Reference clock source for ICS module is the slow internal clock source 32.768kHz
-         Core clock = 16.78MHz, BusClock = 16.78MHz
-   1 ... Internal Clock Source (ICS) in FLL Engaged External (FEE) mode
-         Maximum achievable clock frequency configuration.
-         Reference clock source for ICS module is an external 8MHz crystal
-         Core clock = 20MHz, BusClock = 20MHz
-   2 ... Internal Clock Source (ICS) in Bypassed Low Power Internal (FBILP) mode
-         Core clock/Bus clock derived directly from an  internal clock 32.769kHz with no multiplication
-         The clock settings is ready for Very Low Power Run mode.
-         Core clock = 32.769kHz, BusClock = 32.769kHz
-   3 ... Internal Clock Source (ICS) in Bypassed Low Power External (BLPE) mode
-         Core clock/Bus clock derived directly from the external 8MHz crystal
-         The clock settings is ready for Very Low Power Run mode.
-         Core clock = 8MHz, BusClock = 8MHz
-*/
-
-/*----------------------------------------------------------------------------
-  Define clock source values
- *----------------------------------------------------------------------------*/
-#if (CLOCK_SETUP == 0)
-    #define CPU_XTAL_CLK_HZ                 8000000u /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_CLK_HZ                  32768u   /* Value of the internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            16777216u /* Default System clock value */
-#elif (CLOCK_SETUP == 1)
-    #define CPU_XTAL_CLK_HZ                 8000000u /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_CLK_HZ                  32768u   /* Value of the internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            20000000u /* Default System clock value */
-#elif (CLOCK_SETUP == 2)
-    #define CPU_XTAL_CLK_HZ                 8000000u /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_CLK_HZ                  32768u   /* Value of the internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            32768u   /* Default System clock value */
-#elif (CLOCK_SETUP == 3)
-    #define CPU_XTAL_CLK_HZ                 8000000u /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_CLK_HZ                  32768u   /* Value of the internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            8000000u /* Default System clock value */
-#endif /* (CLOCK_SETUP == 4) */
-
 
 /**
  * @brief System clock frequency (core clock)

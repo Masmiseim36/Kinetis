@@ -240,10 +240,10 @@
 #define MKV44F256xxx16 229
 #define MKV46F128xxx16 230
 #define MKV46F256xxx16 231
-#define MKV56F512xxx22 232
-#define MKV56F1M0xxx22 233
-#define MKV58F512xxx22 234
-#define MKV58F1M0xxx22 235
+#define MKV56F512xxx24 232
+#define MKV56F1M0xxx24 233
+#define MKV58F512xxx24 234
+#define MKV58F1M0xxx24 235
 #define MKW01Z128xxx 236
 #define MKW21D256xxx5 237
 #define MKW21D512xxx5 238
@@ -947,17 +947,17 @@
 #elif (__TARGET_PROCESSOR == MKV46F256xxx16 )
 #include          <CMSIS/MKV46F16.h>
 
-#elif (__TARGET_PROCESSOR == MKV56F512xxx22 )
-#include          <CMSIS/MKV56F22.h>
+#elif (__TARGET_PROCESSOR == MKV56F512xxx24 )
+#include          <CMSIS/MKV56F24.h>
 
-#elif (__TARGET_PROCESSOR == MKV56F1M0xxx22 )
-#include          <CMSIS/MKV56F22.h>
+#elif (__TARGET_PROCESSOR == MKV56F1M0xxx24 )
+#include          <CMSIS/MKV56F24.h>
 
-#elif (__TARGET_PROCESSOR == MKV58F512xxx22 )
-#include          <CMSIS/MKV58F22.h>
+#elif (__TARGET_PROCESSOR == MKV58F512xxx24 )
+#include          <CMSIS/MKV58F24.h>
 
-#elif (__TARGET_PROCESSOR == MKV58F1M0xxx22 )
-#include          <CMSIS/MKV58F22.h>
+#elif (__TARGET_PROCESSOR == MKV58F1M0xxx24 )
+#include          <CMSIS/MKV58F24.h>
 
 #elif (__TARGET_PROCESSOR == MKW01Z128xxx )
 #include          <CMSIS/MKW01Z4.h>

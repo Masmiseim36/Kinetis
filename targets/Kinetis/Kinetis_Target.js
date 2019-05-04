@@ -194,6 +194,7 @@ function GetPartName()
               case 6: // K50/K52
                 PartName = "MK50";
                 PartName2 = "MK52";
+                PartName3 = "MKW24";
                 break;
               case 7: // K51/K53
                 PartName = "MK51";
@@ -210,8 +211,8 @@ function GetPartName()
         {
           if (PartName.substring(0,3) != "MKV")
             SubPartName += "N";
-          Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
-          Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
+          Length = ((SIM_FCFG2>>24) & 0x7f)<<3;
+          Length += ((SIM_FCFG2>>16) & 0x7f)<<3;
           if (((SIM_SDID>>7) & 0x7)==3)
             Length *= 2;
           if (Length == 1024)
@@ -251,7 +252,7 @@ function MatchPartName(name)
         return name.substring(4,4) == partName.substring(4,4);
       else if (partName.substring(0,4) == "MK60" && name.substring(0,4) == "MK22")
         return name.substring(4,4) == partName.substring(4,4);
-      else if (partName.substring(0,4) == "MK50" && name.substring(0,4) == "MK52")
+      else if (partName.substring(0,4) == "MK50" && (name.substring(0,4) == "MK52") || (name.substring(0,4) == "MKW2"))
         return name.substring(4,4) == partName.substring(4,4);
       else if (partName.substring(0,4) == "MK51" && name.substring(0,4) == "MK53")
         return name.substring(4,4) == partName.substring(4,4);
