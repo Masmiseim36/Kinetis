@@ -214,6 +214,12 @@ ISR_HANDLER SysTick_Handler
   #include "MKM38Z5.vec"
 #elif defined(MKV10Z7)
   #include "MKV10Z7.vec"
+#elif defined(MKW21D5)
+  #include "MKW21D5.vec"
+#elif defined(MKW22D5)
+  #include "MKW22D5.vec"
+#elif defined(MKW24D5)
+  #include "MKW24D5.vec"
 #else
   #error no vectors
 #endif

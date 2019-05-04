@@ -2077,6 +2077,62 @@
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
       <property name="arm_simulator_memory_simulation_parameter" value="MKV10Z32xxx7;0x8000;0x0;0x0;0x2000" />
     </groupEntry>
+    <groupEntry name="MKW21D256xxx5" family="KW2x">
+      <cdefine value="MKW21D256xxx5" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW21D5" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW21D256xxx5_MemoryMap.xml" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
+      <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
+      <property name="arm_architecture" value="v7EM" />
+      <property name="arm_core_type" value="Cortex-M4" />
+      <property name="arm_fpu_type" value="None" />
+      <cdefine name="K_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW21D256xxx5;0x40000;0x10000;0x1000;0x8000" />
+    </groupEntry>
+    <groupEntry name="MKW21D512xxx5" family="KW2x">
+      <cdefine value="MKW21D512xxx5" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW21D5" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW21D512xxx5_MemoryMap.xml" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
+      <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
+      <property name="arm_architecture" value="v7EM" />
+      <property name="arm_core_type" value="Cortex-M4" />
+      <property name="arm_fpu_type" value="None" />
+      <cdefine name="K_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW21D512xxx5;0x80000;0x0;0x0;0x10000" />
+    </groupEntry>
+    <groupEntry name="MKW22D512xxx5" family="KW2x">
+      <cdefine value="MKW22D512xxx5" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW22D5" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW22D512xxx5_MemoryMap.xml" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
+      <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
+      <property name="arm_architecture" value="v7EM" />
+      <property name="arm_core_type" value="Cortex-M4" />
+      <property name="arm_fpu_type" value="None" />
+      <cdefine name="K_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW22D512xxx5;0x80000;0x0;0x0;0x10000" />
+    </groupEntry>
+    <groupEntry name="MKW24D512xxx5" family="KW2x">
+      <cdefine value="MKW24D512xxx5" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW24D5" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW24D512xxx5_MemoryMap.xml" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
+      <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
+      <property name="arm_architecture" value="v7EM" />
+      <property name="arm_core_type" value="Cortex-M4" />
+      <property name="arm_fpu_type" value="None" />
+      <cdefine name="K_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW24D512xxx5;0x80000;0x0;0x0;0x10000" />
+    </groupEntry>
   </group>
   <group short="Section Placement" group="Build Options" long="Select a set of options based on section placement." name="Placement" default="Flash">
     <groupEntry name="Flash">

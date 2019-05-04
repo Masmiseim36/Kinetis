@@ -229,7 +229,7 @@ function MatchPartName(name)
         return name.substring(4,4) == partName.substring(4,4);
       else if (partName.substring(0,4) == "MK30" && (name.substring(0,4) == "MK11" || name.substring(0,4) == "MK61"))
         return name.substring(4,4) == partName.substring(4,4);
-      else if (partName.substring(0,4) == "MK40" && name.substring(0,4) == "MK21")
+      else if (partName.substring(0,4) == "MK40" && (name.substring(0,4) == "MK21") || (name.substring(0,4) == "MKW2"))
         return name.substring(4,4) == partName.substring(4,4);
       else if (partName.substring(0,4) == "MK60" && name.substring(0,4) == "MK22")
         return name.substring(4,4) == partName.substring(4,4);

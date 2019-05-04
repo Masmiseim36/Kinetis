@@ -135,6 +135,14 @@
   #include "CMSIS/system_MKM38Z5.c"
 #elif defined(MKV10Z7)
   #include "CMSIS/system_MKV10Z7.c"
+#elif defined(MKW21D5)
+  #include "CMSIS/system_MKW21D5.c"
+#elif defined(MKW21D5)
+  #include "CMSIS/system_MKW21D5.c"
+#elif defined(MKW22D5)
+  #include "CMSIS/system_MKW22D5.c"
+#elif defined(MKW24D5)
+  #include "CMSIS/system_MKW24D5.c"
 #else
   #error no SystemInit
 #endif
