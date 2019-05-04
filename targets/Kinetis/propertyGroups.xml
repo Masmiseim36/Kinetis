@@ -10,6 +10,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DN32xxx5;0x8000;0x0;0x0;0x2000"/>
     </groupEntry>
     <groupEntry name="MK10DX32xxx5" family="K10">
@@ -21,6 +23,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX32xxx5;0x8000;0x8000;0x800;0x2000"/>
     </groupEntry>
     <groupEntry name="MK10DN64xxx5" family="K10">
@@ -32,6 +36,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DN64xxx5;0x10000;0x0;0x0;0x4000"/>
     </groupEntry>
     <groupEntry name="MK10DX64xxx5" family="K10">
@@ -43,6 +49,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX64xxx5;0x10000;0x8000;0x800;0x4000"/>
     </groupEntry>
     <groupEntry name="MK10DN128xxx5" family="K10">
@@ -54,6 +62,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DN128xxx5;0x20000;0x0;0x0;0x4000"/>
     </groupEntry>
     <groupEntry name="MK10DX128xxx5" family="K10">
@@ -65,6 +75,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX128xxx5;0x20000;0x8000;0x800;0x4000"/>
     </groupEntry>
     <groupEntry name="MK10DX64xxx7" family="K10">
@@ -76,6 +88,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX64xxx7;0x10000;0x8000;0x800;0x4000"/>
     </groupEntry>
     <groupEntry name="MK10DX128xxx7" family="K10">
@@ -87,6 +101,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX128xxx7;0x20000;0x8000;0x800;0x8000"/>
     </groupEntry>
     <groupEntry name="MK10DX256xxx7" family="K10">
@@ -98,6 +114,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX256xxx7;0x40000;0x8000;0x800;0x10000"/>
     </groupEntry>
     <groupEntry name="MK10DX128Zxxx10" family="K10">
@@ -109,6 +127,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX128Zxxx10;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK10DX256Zxxx10" family="K10">
@@ -120,6 +140,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX256Zxxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK10DN512Zxxx10" family="K10">
@@ -131,6 +153,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DN512Zxxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK10DX128xxx10" family="K10">
@@ -142,6 +166,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX128xxx10;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK10DX256xxx10" family="K10">
@@ -153,6 +179,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DX256xxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK10DN512xxx10" family="K10">
@@ -164,6 +192,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10DN512xxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK10FX512xxx12" family="K10">
@@ -177,6 +207,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10FX512xxx12;0x80000;0x80000;0x4000;0x20000"/>
     </groupEntry>
     <groupEntry name="MK10FN1M0xxx12" family="K10">
@@ -190,6 +222,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10FN1M0xxx12;0x100000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK11DX128xxx5" family="K11">
@@ -201,6 +235,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK11DX128xxx5;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK11DX256xxx5" family="K11">
@@ -212,6 +248,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK11DX256xxx5;0x40000;0x40000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK11DN512xxx5" family="K11">
@@ -223,6 +261,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK11DN512xxx5;0x80000;0x0;0x0;0x10000"/>
     </groupEntry>
     <groupEntry name="MK12DX128xxx5" family="K12">
@@ -234,6 +274,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK12DX128xxx5;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK12DX256xxx5" family="K12">
@@ -245,6 +287,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK12DX256xxx5;0x40000;0x40000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK12DN512xxx5" family="K12">
@@ -256,6 +300,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK12DN512xxx5;0x80000;0x0;0x0;0x10000"/>
     </groupEntry>
     <groupEntry name="MK20DN32xxx5" family="K20">
@@ -267,6 +313,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DN32xxx5;0x8000;0x0;0x0;0x2000"/>
     </groupEntry>
     <groupEntry name="MK20DX32xxx5" family="K20">
@@ -278,6 +326,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX32xxx5;0x8000;0x8000;0x800;0x2000"/>
     </groupEntry>
     <groupEntry name="MK20DN64xxx5" family="K20">
@@ -289,6 +339,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DN64xxx5;0x10000;0x0;0x0;0x4000"/>
     </groupEntry>
     <groupEntry name="MK20DX64xxx5" family="K20">
@@ -300,6 +352,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX64xxx5;0x10000;0x8000;0x800;0x4000"/>
     </groupEntry>
     <groupEntry name="MK20DN128xxx5" family="K20">
@@ -311,6 +365,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DN128xxx5;0x20000;0x0;0x0;0x4000"/>
     </groupEntry>
     <groupEntry name="MK20DX128xxx5" family="K20">
@@ -322,6 +378,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX128xxx5;0x20000;0x8000;0x800;0x4000"/>
     </groupEntry>
     <groupEntry name="MK20DX64xxx7" family="K20">
@@ -333,6 +391,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX64xxx7;0x10000;0x8000;0x800;0x4000"/>
     </groupEntry>
     <groupEntry name="MK20DX128xxx7" family="K20">
@@ -344,6 +404,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX128xxx7;0x20000;0x8000;0x800;0x8000"/>
     </groupEntry>
     <groupEntry name="MK20DX256xxx7" family="K20">
@@ -355,6 +417,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX256xxx7;0x40000;0x8000;0x800;0x10000"/>
     </groupEntry>
     <groupEntry name="MK20DX128Zxxx10" family="K20">
@@ -366,6 +430,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX128Zxxx10;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK20DX256Zxxx10" family="K20">
@@ -377,6 +443,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX256Zxxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK20DN512Zxxx10" family="K20">
@@ -388,6 +456,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DN512Zxxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK20DX128xxx10" family="K20">
@@ -399,6 +469,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX128xxx10;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK20DX256xxx10" family="K20">
@@ -410,6 +482,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DX256xxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK20DN512xxx10" family="K20">
@@ -421,6 +495,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DN512xxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK21DX128xxx5" family="K21">
@@ -432,6 +508,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK21DX128xxx5;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK21DX256xxx5" family="K21">
@@ -443,6 +521,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK21DX256xxx5;0x40000;0x40000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK21DN512xxx5" family="K21">
@@ -454,6 +534,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK21DN512xxx5;0x80000;0x0;0x0;0x10000"/>
     </groupEntry>
     <groupEntry name="MK22DX128xxx5" family="K22">
@@ -465,6 +547,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK22DX128xxx5;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK22DX256xxx5" family="K22">
@@ -476,6 +560,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK22DX256xxx5;0x40000;0x40000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK22DN512xxx5" family="K22">
@@ -487,6 +573,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK22DN512xxx5;0x80000;0x0;0x0;0x10000"/>
     </groupEntry>
     <groupEntry name="MK30DX64xxx7" family="K30">
@@ -498,6 +586,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK30DX64xxx7;0x10000;0x8000;0x800;0x4000"/>
     </groupEntry>
     <groupEntry name="MK30DX128xxx7" family="K30">
@@ -509,6 +599,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK30DX128xxx7;0x20000;0x8000;0x800;0x8000"/>
     </groupEntry>
     <groupEntry name="MK30DX256xxx7" family="K30">
@@ -520,6 +612,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK30DX256xxx7;0x40000;0x8000;0x800;0x10000"/>
     </groupEntry>
     <groupEntry name="MK30DX128Zxxx10" family="K30">
@@ -531,6 +625,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK30DX128Zxxx10;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK30DX256Zxxx10" family="K30">
@@ -542,6 +638,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK30DX256Zxxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK30DN512Zxxx10" family="K30">
@@ -553,6 +651,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK30DN512Zxxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK30DX128xxx10" family="K30">
@@ -564,6 +664,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK30DX128xxx10;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK30DX256xxx10" family="K30">
@@ -575,6 +677,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK30DX256xxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK30DN512xxx10" family="K30">
@@ -586,6 +690,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK30DN512xxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK40DX64xxx7" family="K40">
@@ -597,6 +703,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK40DX64xxx7;0x10000;0x8000;0x800;0x4000"/>
     </groupEntry>
     <groupEntry name="MK40DX128xxx7" family="K40">
@@ -608,6 +716,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK40DX128xxx7;0x20000;0x8000;0x800;0x8000"/>
     </groupEntry>
     <groupEntry name="MK40DX256xxx7" family="K40">
@@ -619,6 +729,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK40DX256xxx7;0x40000;0x8000;0x800;0x10000"/>
     </groupEntry>
     <groupEntry name="MK40DX128Zxxx10" family="K40">
@@ -630,6 +742,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK40DX128Zxxx10;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK40DX256Zxxx10" family="K40">
@@ -641,6 +755,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK40DX256Zxxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK40DN512Zxxx10" family="K40">
@@ -652,6 +768,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK40DN512Zxxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK40DX128xxx10" family="K40">
@@ -663,6 +781,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK40DX128xxx10;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
     <groupEntry name="MK40DX256xxx10" family="K40">
@@ -674,6 +794,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK40DX256xxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK40DN512xxx10" family="K40">
@@ -685,6 +807,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK40DN512xxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK50DX128xxx7" family="K50">
@@ -696,6 +820,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK50DX128xxx7;0x20000;0x8000;0x800;0x8000"/>
     </groupEntry>
     <groupEntry name="MK50DX256xxx7" family="K50">
@@ -707,6 +833,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK50DX256xxx7;0x40000;0x8000;0x800;0x10000"/>
     </groupEntry>
     <groupEntry name="MK50DX256xxx10" family="K50">
@@ -718,6 +846,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK50DX256xxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK50DN512xxx10" family="K50">
@@ -729,6 +859,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK50DN512xxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK50DX256Zxxx10" family="K50">
@@ -740,6 +872,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK50DX256Zxxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK50DN512Zxxx10" family="K50">
@@ -751,6 +885,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK50DN512Zxxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK51DX128xxx7" family="K51">
@@ -762,6 +898,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK51DX128xxx7;0x20000;0x8000;0x800;0x8000"/>
     </groupEntry>
     <groupEntry name="MK51DX256xxx7" family="K51">
@@ -773,6 +911,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK51DX256xxx7;0x40000;0x8000;0x800;0x10000"/>
     </groupEntry>
     <groupEntry name="MK51DX256xxx10" family="K51">
@@ -784,6 +924,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK51DX256xxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK51DN512xxx10" family="K51">
@@ -795,6 +937,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK51DN512xxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK51DX256Zxxx10" family="K51">
@@ -806,6 +950,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK51DX256Zxxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK51DN512Zxxx10" family="K51">
@@ -817,6 +963,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK51DN512Zxxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK52DN512xxx10" family="K52">
@@ -828,6 +976,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK52DN512xxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK52DN512Zxxx10" family="K52">
@@ -839,6 +989,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK52DN512Zxxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK53DX256xxx10" family="K53">
@@ -850,6 +1002,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK53DX256xxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK53DN512xxx10" family="K53">
@@ -861,6 +1015,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK53DN512xxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK53DX256Zxxx10" family="K53">
@@ -872,6 +1028,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK53DX256Zxxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK53DN512Zxxx10" family="K53">
@@ -883,6 +1041,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK53DN512Zxxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK60DN256xxx10" family="K60">
@@ -894,6 +1054,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60DN256xxx10;0x40000;0x0;0x0;0x10000"/>
     </groupEntry>
     <groupEntry name="MK60DX256xxx10" family="K60">
@@ -905,6 +1067,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60DX256xxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK60DN512xxx10" family="K60">
@@ -916,6 +1080,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60DN512xxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK60DN256Zxxx10" family="K60">
@@ -927,6 +1093,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60DN256Zxxx10;0x40000;0x0;0x0;0x10000"/>
     </groupEntry>
     <groupEntry name="MK60DX256Zxxx10" family="K60">
@@ -938,6 +1106,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60DX256Zxxx10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
     <groupEntry name="MK60DN512Zxxx10" family="K60">
@@ -949,6 +1119,8 @@
       <property name="arm_architecture" value="v7EM"/>
       <property name="arm_core_type" value="Cortex-M4"/>
       <property name="arm_fpu_type" value="None"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60DN512Zxxx10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK60FX512xxx12" family="K60">
@@ -962,6 +1134,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60FX512xxx12;0x80000;0x80000;0x4000;0x20000"/>
     </groupEntry>
     <groupEntry name="MK60FN1M0xxx12" family="K60">
@@ -975,6 +1149,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60FN1M0xxx12;0x100000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK60FX512xxx15" family="K60">
@@ -988,6 +1164,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60FX512xxx15;0x80000;0x80000;0x4000;0x20000"/>
     </groupEntry>
     <groupEntry name="MK60FN1M0xxx15" family="K60">
@@ -1001,6 +1179,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK60FN1M0xxx15;0x100000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK61FX512xxx12" family="K61">
@@ -1014,6 +1194,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK61FX512xxx12;0x80000;0x80000;0x4000;0x20000"/>
     </groupEntry>
     <groupEntry name="MK61FN1M0xxx12" family="K61">
@@ -1027,6 +1209,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK61FN1M0xxx12;0x100000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK61FX512xxx15" family="K61">
@@ -1040,6 +1224,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK61FX512xxx15;0x80000;0x80000;0x4000;0x20000"/>
     </groupEntry>
     <groupEntry name="MK61FN1M0xxx15" family="K61">
@@ -1053,6 +1239,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK61FN1M0xxx15;0x100000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK70FX512xxx12" family="K70">
@@ -1066,6 +1254,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK70FX512xxx12;0x80000;0x80000;0x4000;0x20000"/>
     </groupEntry>
     <groupEntry name="MK70FN1M0xxx12" family="K70">
@@ -1079,6 +1269,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK70FN1M0xxx12;0x100000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MK70FX512xxx15" family="K70">
@@ -1092,6 +1284,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK70FX512xxx15;0x80000;0x80000;0x4000;0x20000"/>
     </groupEntry>
     <groupEntry name="MK70FN1M0xxx15" family="K70">
@@ -1105,6 +1299,8 @@
       <cdefine name="__HAS_FPU" value="1"/>
       <cdefine name="__FPU_PRESENT" value="1"/>
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK70FN1M0xxx15;0x100000;0x0;0x0;0x20000"/>
     </groupEntry>
     <groupEntry name="MKE02Z16Vxx2" family="KE0">
@@ -1114,6 +1310,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKE02Z16Vxx2;0x4000;0x0;0x0;0x800"/>
     </groupEntry>
     <groupEntry name="MKE02Z32Vxx2" family="KE0">
@@ -1123,6 +1321,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKE02Z32Vxx2;0x8000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKE02Z64Vxx2" family="KE0">
@@ -1132,6 +1332,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKE02Z64Vxx2;0x10000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKE04Z8Vxx4" family="KE0">
@@ -1141,6 +1343,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04_1K.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKE04Z8Vxx4;0x2000;0x0;0x0;0x400"/>
     </groupEntry>
     <groupEntry name="MKL02Z8Vxx4" family="KL0">
@@ -1150,6 +1354,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_1K.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL02Z8Vxx4;0x2000;0x0;0x0;0x400"/>
     </groupEntry>
     <groupEntry name="MKL02Z16Vxx4" family="KL0">
@@ -1159,6 +1365,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL02Z16Vxx4;0x4000;0x0;0x0;0x800"/>
     </groupEntry>
     <groupEntry name="MKL02Z32Vxx4" family="KL0">
@@ -1168,6 +1376,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL02Z32Vxx4;0x8000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKL04Z8Vxx4" family="KL0">
@@ -1177,6 +1387,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_1K.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL04Z8Vxx4;0x2000;0x0;0x0;0x400"/>
     </groupEntry>
     <groupEntry name="MKL04Z16Vxx4" family="KL0">
@@ -1186,6 +1398,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL04Z16Vxx4;0x4000;0x0;0x0;0x800"/>
     </groupEntry>
     <groupEntry name="MKL04Z32Vxx4" family="KL0">
@@ -1195,6 +1409,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL04Z32Vxx4;0x8000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKL05Z8Vxx4" family="KL0">
@@ -1204,6 +1420,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_1K.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL05Z8Vxx4;0x2000;0x0;0x0;0x400"/>
     </groupEntry>
     <groupEntry name="MKL05Z16Vxx4" family="KL0">
@@ -1213,6 +1431,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL05Z16Vxx4;0x4000;0x0;0x0;0x800"/>
     </groupEntry>
     <groupEntry name="MKL05Z32Vxx4" family="KL0">
@@ -1222,6 +1442,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL05Z32Vxx4;0x8000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKL14Z32Vxx4" family="KL1">
@@ -1231,6 +1453,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL14Z32Vxx4;0x8000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKL14Z64Vxx4" family="KL1">
@@ -1240,6 +1464,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL14Z64Vxx4;0x10000;0x0;0x0;0x2000"/>
     </groupEntry>
     <groupEntry name="MKL15Z32Vxx4" family="KL1">
@@ -1249,6 +1475,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL15Z32Vxx4;0x8000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKL15Z64Vxx4" family="KL1">
@@ -1258,6 +1486,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL15Z64Vxx4;0x10000;0x0;0x0;0x2000"/>
     </groupEntry>
     <groupEntry name="MKL15Z128Vxx4" family="KL1">
@@ -1267,6 +1497,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL15Z128Vxx4;0x20000;0x0;0x0;0x4000"/>
     </groupEntry>
     <groupEntry name="MKL15Z256Vxx4" family="KL1">
@@ -1276,6 +1508,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL15Z256Vxx4;0x40000;0x0;0x0;0x8000"/>
     </groupEntry>
     <groupEntry name="MKL24Z32Vxx4" family="KL2">
@@ -1285,6 +1519,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL24Z32Vxx4;0x8000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKL24Z64Vxx4" family="KL2">
@@ -1294,6 +1530,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL24Z64Vxx4;0x10000;0x0;0x0;0x2000"/>
     </groupEntry>
     <groupEntry name="MKL24Z128Vxx4" family="KL2">
@@ -1303,6 +1541,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL24Z128Vxx4;0x20000;0x0;0x0;0x4000"/>
     </groupEntry>
     <groupEntry name="MKL25Z32Vxx4" family="KL2">
@@ -1312,6 +1552,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL25Z32Vxx4;0x8000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKL25Z64Vxx4" family="KL2">
@@ -1321,6 +1563,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL25Z64Vxx4;0x10000;0x0;0x0;0x2000"/>
     </groupEntry>
     <groupEntry name="MKL25Z128Vxx4" family="KL2">
@@ -1330,6 +1574,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL25Z128Vxx4;0x20000;0x0;0x0;0x4000"/>
     </groupEntry>
     <groupEntry name="MKL25Z256Vxx4" family="KL2">
@@ -1339,6 +1585,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL25Z256Vxx4;0x40000;0x0;0x0;0x8000"/>
     </groupEntry>
     <groupEntry name="MKL34Z64Vxx4" family="KL3">
@@ -1348,6 +1596,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL34Z64Vxx4;0x10000;0x0;0x0;0x2000"/>
     </groupEntry>
     <groupEntry name="MKL34Z128Vxx4" family="KL3">
@@ -1357,6 +1607,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL34Z128Vxx4;0x20000;0x0;0x0;0x4000"/>
     </groupEntry>
     <groupEntry name="MKL34Z256Vxx4" family="KL3">
@@ -1366,6 +1618,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL34Z256Vxx4;0x40000;0x0;0x0;0x8000"/>
     </groupEntry>
     <groupEntry name="MKL46Z128Vxx4" family="KL4">
@@ -1375,6 +1629,8 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL46Z128Vxx4;0x20000;0x0;0x0;0x4000"/>
     </groupEntry>
     <groupEntry name="MKL46Z256Vxx4" family="KL4">
@@ -1384,7 +1640,64 @@
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
       <property name="arm_architecture" value="v6M"/>
       <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName()"/>
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MKL46Z256Vxx4;0x40000;0x0;0x0;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MKM14Z64Cxx5" family="KM1">
+      <cdefine value="MKM14Z64Cxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MKM14Z5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z64Cxx5_MemoryMap.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf"/>
+      <property name="arm_architecture" value="v6M"/>
+      <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName2()"/>
+      <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MKM14Z64Cxx5;0x10000;0x0;0x0;0x4000"/>
+    </groupEntry>
+    <groupEntry name="MKM14Z128Cxx5" family="KM1">
+      <cdefine value="MKM14Z128Cxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MKM14Z5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z128Cxx5_MemoryMap.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf"/>
+      <property name="arm_architecture" value="v6M"/>
+      <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName2()"/>
+      <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MKM14Z128Cxx5;0x20000;0x0;0x0;0x4000"/>
+    </groupEntry>
+    <groupEntry name="MKM33Z64Cxx5" family="KM3">
+      <cdefine value="MKM33Z64Cxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MKM33Z5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z64Cxx5_MemoryMap.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf"/>
+      <property name="arm_architecture" value="v6M"/>
+      <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName2()"/>
+      <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MKM33Z64Cxx5;0x10000;0x0;0x0;0x4000"/>
+    </groupEntry>
+    <groupEntry name="MKM33Z128Cxx5" family="KM3">
+      <cdefine value="MKM33Z128Cxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MKM33Z5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z128Cxx5_MemoryMap.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf"/>
+      <property name="arm_architecture" value="v6M"/>
+      <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName2()"/>
+      <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MKM33Z128Cxx5;0x20000;0x0;0x0;0x4000"/>
+    </groupEntry>
+    <groupEntry name="MKM34Z128Cxx5" family="KM3">
+      <cdefine value="MKM34Z128Cxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MKM34Z5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM34Z128Cxx5_MemoryMap.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf"/>
+      <property name="arm_architecture" value="v6M"/>
+      <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="target_get_partname_script" value="GetPartName2()"/>
+      <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MKM34Z128Cxx5;0x20000;0x0;0x0;0x4000"/>
     </groupEntry>
   </group>
   <group short="Section Placement" group="Build Options" long="Select a set of options based on section placement." name="Placement" default="Flash">

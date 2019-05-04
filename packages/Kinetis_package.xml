@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.11" build_version="2013090601.7774;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
+<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.12" build_version="2013092002.7835;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
 
 <targets>
   <category name="K10 Series" >
@@ -114,6 +114,12 @@
     <cpu name="MK70FX512xxx15"/>
     <cpu name="MK70FN1M0xxx15"/>
   </category>
+  <category name="KE0 Series" >
+    <cpu name="MKE02Z16Vxx2"/>
+    <cpu name="MKE02Z32Vxx2"/>
+    <cpu name="MKE02Z64Vxx2"/>
+    <cpu name="MKE04Z8Vxx4"/>
+  </category>
   <category name="KL0 Series" >
     <cpu name="MKL02Z8Vxx4"/>
     <cpu name="MKL02Z16Vxx4"/>
@@ -150,12 +156,15 @@
   <category name="KL4 Series" >
     <cpu name="MKL46Z128Vxx4"/>
     <cpu name="MKL46Z256Vxx4"/>
+  </category> 
+  <category name="KM1 Series" >
+    <cpu name="MKM14Z64Cxx5"/>
+    <cpu name="MKM14Z128Cxx5"/>
   </category>
-  <category name="KE0 Series" >
-    <cpu name="MKE02Z16Vxx2"/>
-    <cpu name="MKE02Z32Vxx2"/>
-    <cpu name="MKE02Z64Vxx2"/>
-    <cpu name="MKE04Z8Vxx4"/>
+  <category name="KM3 Series" >
+    <cpu name="MKM33Z64Cxx5"/>
+    <cpu name="MKM33Z128Cxx5"/>
+    <cpu name="MKM34Z128Cxx5"/>
   </category>
 </targets>
 
@@ -277,7 +286,11 @@
     </section>
 
   </documentation>
-  <history>  
+  <history>
+    <version name="1.12">
+      <description>Added support for MKM14Z5, MKM33Z5 and MKM34Z5 devices.</description>
+      <description>Fixed erase all for L series flash loader.</description>
+    </version>
     <version name="1.11">
       <description>K series flash loaders support DataFlash loading and now uses a loader parameter to specify
       the sector sizes of the program and data flashes. You will need to reselect the Target processor to update

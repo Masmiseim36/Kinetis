@@ -192,6 +192,18 @@ ISR_HANDLER SysTick_Handler
   #include "MKL36Z4.vec"
 #elif defined(MKL46Z4)
   #include "MKL46Z4.vec"
+#elif defined(MKM13Z5)
+  #include "MKM13Z5.vec"
+#elif defined(MKM14Z5)
+  #include "MKM14Z5.vec"
+#elif defined(MKM32Z5)
+  #include "MKM32Z5.vec"
+#elif defined(MKM33Z5)
+  #include "MKM33Z5.vec"
+#elif defined(MKM34Z5)
+  #include "MKM34Z5.vec"
+#elif defined(MKM38Z5)
+  #include "MKM38Z5.vec"
 #else
   #error no vectors
 #endif
@@ -316,6 +328,14 @@ disableWatchDog:
   strh r1, [r0, #4] // WDOG->TOVAL = 0xFFFF;
   ldr r1, =#0x20
   strb r1, [r0, #0] // WDOG->CS1 = 0x20;
+#elif defined(MKM13Z5) || defined(MKM14Z5) || defined(MKM32Z5) || defined(MKM33Z5) || defined(MKM34Z5) || defined(MKM38Z5)
+  ldr r2, =0x40053000
+  ldr r3, =0xC520
+  strh r3, [r2, #14]
+  ldr r3, =0xD928
+  strh r3, [r2, #14] 
+  ldr r3, =0x1D2
+  strh r3, [r2]
 #else
   movw r0, #0x2000
   movt r0, #0x4005

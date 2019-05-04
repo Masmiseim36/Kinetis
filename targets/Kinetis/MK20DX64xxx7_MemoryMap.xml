@@ -27923,7 +27923,7 @@
       </Register>
       <Register start="0xE000ED08" name="VTOR" aka="Vector_Table_Offset">
         <BitField size="1" name="TBLBASE" start="29"/>
-        <BitField size="22" name="TBLOFF" start="7"/>
+        <BitField size="25" name="TBLOFF" start="7"/>
       </Register>
       <Register start="0xE000ED0C" name="AIRCR" aka="Application_Interrupt_and_Reset_Control">
         <BitField size="16" name="VECTKEY" start="16"/>

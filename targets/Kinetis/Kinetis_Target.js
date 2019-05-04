@@ -48,8 +48,8 @@ function FLASHReset()
   Reset();
 }
 
-function GetPartName()
-{  
+function CheckSystemSecurity()
+{
   var status = TargetInterface.getDebugRegister(0x01000000);    
   if (status & (1<<2))
     {
@@ -64,6 +64,11 @@ function GetPartName()
       TargetInterface.setDebugRegister(0x01000004, 0x10);
       TargetInterface.delay(1000);      
     }    
+}
+
+function GetPartName()
+{  
+  CheckSystemSecurity();
   TargetInterface.pokeWord(0xE000EDFC, (1<<24));
   var PartName;
   var CPUID = TargetInterface.peekWord(0xE000ED00);
@@ -86,10 +91,15 @@ function GetPartName()
         {
           var SIM_SDID = TargetInterface.peekWord(0x40048024);
           var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
-          if (((SIM_SDID>>24)&0xff) < 10)
-            PartName = "MKL0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
-          else
-            PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";       
+          switch ((SIM_SDID>>20)&0xf)
+            {
+              case 1:
+                if (((SIM_SDID>>24)&0xff) < 10)
+                  PartName = "MKL0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+                else
+                  PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+                break;
+            }            
           Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
           Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
           PartName += Length.toString();      
@@ -156,7 +166,7 @@ function GetPartName()
 
 function MatchPartName(name)
 {  
-  var partName = GetPartName();  
+  var partName = GetPartName();
   if (partName.length >= 8)
     {
       if (partName.substring(0,4) == "MK10" && name.substring(0,4) == "MK12")
@@ -179,6 +189,34 @@ function MatchPartName(name)
   else (partName.length >= 6)
     return name.substring(0, 6) == partName.substring(0, 6);
   return false;
+}
+
+// MKM devices have the SIM module at a different address :-<
+function GetPartName2()
+{
+  CheckSystemSecurity();
+  TargetInterface.pokeWord(0xE000EDFC, (1<<24));
+  var PartName;
+  var SIM_SDID = TargetInterface.peekWord(0x4003F024);
+  var SIM_FCFG2 = TargetInterface.peekWord(0x4003F050);
+  switch (SIM_SDID >> 20)
+    {
+      case 0x123:
+      case 0x133:
+      case 0x143:
+      case 0x323:
+      case 0x333:
+      case 0x343:
+        PartName = "MKM"+((SIM_SDID>>28)&0xf).toString()+((SIM_SDID>>24)&0xf).toString()+"Z"+(((SIM_FCFG2>>24) & 0x3f)<<3).toString();
+        break;
+    }
+  return PartName;
+}
+
+function MatchPartName2(name)
+{  
+  var partName = GetPartName2();  
+  return name.substring(0, 8) == partName.substring(0, 8);
 }
 
 function MDMStatus()

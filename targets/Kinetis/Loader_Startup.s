@@ -32,7 +32,7 @@ _start:
   ldr r0, =0x40048100
   ldr r1, =#0
   str r1, [r0]
-#elif defined(K_SERIES)  
+#elif defined(K_SERIES)
   movw r2, #0x2000
   movt r2, #0x4005
   movw r3, #0xC520
@@ -40,6 +40,14 @@ _start:
   movw r3, #0xD928
   strh r3, [r2, #14] 
   movw r3, #0x1D2
+  strh r3, [r2]
+#elif defined(M_SERIES)
+  ldr r2, =0x40053000
+  ldr r3, =0xC520
+  strh r3, [r2, #14]
+  ldr r3, =0xD928
+  strh r3, [r2, #14] 
+  ldr r3, =0x1D2
   strh r3, [r2]
 #elif defined(E_SERIES)
   ldr r0, =0x40052000
@@ -54,7 +62,7 @@ _start:
   ldr r1, =#0x20
   strb r1, [r0, #0]
 #else
-#error L_SERIES, K_SERIES or E_SERIES should be defined
+#error L_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined
 #endif
   /***************************************************************************
    * Copy loader parameter to R0 if a parameter has been supplied.           *

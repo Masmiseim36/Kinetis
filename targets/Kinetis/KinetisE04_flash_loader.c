@@ -156,64 +156,57 @@ libmem_write(uint8_t *dest, const uint8_t *src, size_t size)
 }
 
 int
+libmem_erase_all(void)
+{        
+  FTMRE->FCCOBIX = 0x0;
+  FTMRE->FCCOBHI = FLASH_CMD_ERASE_ALL; 
+  doFlashCmd();    
+  flashCmdProgram(0x40C, FCF);
+  return LIBMEM_STATUS_SUCCESS;
+}
+
+int
 libmem_erase(uint8_t *start, size_t size, uint8_t **erased_start, size_t *erased_size)
 {
   int res = LIBMEM_STATUS_SUCCESS;
-#ifndef NO_ERASE_ALL
-  if (LIBMEM_RANGE_WITHIN_RANGE(FLASH_START, FLASH_START + FLASH_SIZE - 1, start, start + size - 1))
+  int found = 0;
+  int j = FLASH_PAGE_COUNT;//geometry[0].count;
+  int blocksize = FLASH_PAGE_SIZE;//geometry[0].size;
+  uint8_t *end = start + size - 1;
+  uint8_t *flashstart = FLASH_START;//h->start;      
+  if (erased_size)
+    *erased_size = 0;
+  while (j--)
     {
-      if (erased_start)
-        *erased_start = FLASH_START;
-      if (erased_size)
-        *erased_size = FLASH_SIZE;
-      // Erase All     
-      FTMRE->FCCOBIX = 0x0;
-      FTMRE->FCCOBHI = FLASH_CMD_ERASE_ALL; 
-      doFlashCmd();    
-      flashCmdProgram(0x40C, FCF);
-    }
-  else
-#endif
-    {      
-      int found = 0;
-      int j = FLASH_PAGE_COUNT;//geometry[0].count;
-      int blocksize = FLASH_PAGE_SIZE;//geometry[0].size;
-      uint8_t *end = start + size - 1;
-      uint8_t *flashstart = FLASH_START;//h->start;      
-      if (erased_size)
-        *erased_size = 0;
-      while (j--)
+      if (LIBMEM_RANGE_OCCLUDES_RANGE(start, end, flashstart, flashstart + blocksize - 1))
         {
-          if (LIBMEM_RANGE_OCCLUDES_RANGE(start, end, flashstart, flashstart + blocksize - 1))
+          if (!found)
             {
-              if (!found)
-                {
-                  if (erased_start)
-                    *erased_start = flashstart;
-                  found = 1;
-                }
-              if (res == LIBMEM_STATUS_SUCCESS)
-                {                  
-                  setFlashCmdAndAddress(FLASH_CMD_ERASE_SECTOR, (unsigned)flashstart);
-                  doFlashCmd();
+              if (erased_start)
+                *erased_start = flashstart;
+              found = 1;
+            }
+          if (res == LIBMEM_STATUS_SUCCESS)
+            {                  
+              setFlashCmdAndAddress(FLASH_CMD_ERASE_SECTOR, (unsigned)flashstart);
+              doFlashCmd();
 #ifndef ALLOW_FCF_WRITE                
-                  if (LIBMEM_ADDRESS_IN_RANGE((uint8_t*)0x40C, flashstart, flashstart + blocksize - 1))
-                    {
-                      flashCmdProgram(0x40C, FCF);
-                    }
-#endif                                      
+              if (LIBMEM_ADDRESS_IN_RANGE((uint8_t*)0x40C, flashstart, flashstart + blocksize - 1))
+                {
+                  flashCmdProgram(0x40C, FCF);
                 }
-              if (erased_size)
-                *erased_size += blocksize;
+#endif                                      
             }
-          else
-            {
-              if (found)
-                return res;
-            }
-          flashstart += blocksize;         
-        }            
-    }
+          if (erased_size)
+            *erased_size += blocksize;
+        }
+      else
+        {
+          if (found)
+            return res;
+        }
+      flashstart += blocksize;         
+    }            
   return res;
 }
 

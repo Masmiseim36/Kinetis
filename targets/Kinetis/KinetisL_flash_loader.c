@@ -51,9 +51,15 @@
 #define FCMD_PGMPART 0x80
 #define FCMD_SETRAM 0x81
 
+#if defined(M_SERIES)
+#define SIM_SDID  (*(volatile unsigned *)0x4003F024)
+#define SIM_FCFG1 (*(volatile unsigned *)0x4003F04C)
+#define SIM_FCFG2 (*(volatile unsigned *)0x4003F050)
+#else
 #define SIM_SDID  (*(volatile unsigned *)0x40048024)
 #define SIM_FCFG1 (*(volatile unsigned *)0x4004804C)
 #define SIM_FCFG2 (*(volatile unsigned *)0x40048050)
+#endif
 
 #define INVALID_ADDRESS (unsigned char *)1
 
@@ -153,63 +159,56 @@ libmem_write(uint8_t *dest, const uint8_t *src, size_t size)
 }
 
 int
+libmem_erase_all(void)
+{  
+  FTFL_FCCOB0 = FCMD_ERSALL;
+  doFlashCmd();    
+  flashCmdProgram(0x40C, FCF);
+  return LIBMEM_STATUS_SUCCESS;
+}
+
+int
 libmem_erase(uint8_t *start, size_t size, uint8_t **erased_start, size_t *erased_size)
 {
   int res = LIBMEM_STATUS_SUCCESS;
-#ifndef NO_ERASE_ALL
-  if (LIBMEM_RANGE_WITHIN_RANGE(FLASH_START, FLASH_START + FLASH_SIZE - 1, start, start + size - 1))
+  int found = 0;
+  int j = FLASH_PAGE_COUNT;
+  int blocksize = FLASH_PAGE_SIZE;
+  uint8_t *end = start + size - 1;
+  uint8_t *flashstart = FLASH_START;
+  if (erased_size)
+    *erased_size = 0;
+  while (j--)
     {
-      if (erased_start)
-        *erased_start = FLASH_START;
-      if (erased_size)
-        *erased_size = FLASH_SIZE;
-      // Erase All     
-      FTFL_FCCOB0 = FCMD_ERSALL;
-      doFlashCmd();    
-      flashCmdProgram(0x40C, FCF);
-    }
-  else
-#endif
-    {      
-      int found = 0;
-      int j = FLASH_PAGE_COUNT;
-      int blocksize = FLASH_PAGE_SIZE;
-      uint8_t *end = start + size - 1;
-      uint8_t *flashstart = FLASH_START;
-      if (erased_size)
-        *erased_size = 0;
-      while (j--)
+      if (LIBMEM_RANGE_OCCLUDES_RANGE(start, end, flashstart, flashstart + blocksize - 1))
         {
-          if (LIBMEM_RANGE_OCCLUDES_RANGE(start, end, flashstart, flashstart + blocksize - 1))
+          if (!found)
             {
-              if (!found)
-                {
-                  if (erased_start)
-                    *erased_start = flashstart;
-                  found = 1;
-                }
-              if (res == LIBMEM_STATUS_SUCCESS)
-                {                  
-                  setFlashCmdAndAddress(FCMD_ERSSCR, (unsigned)flashstart);
-                  doFlashCmd();
+              if (erased_start)
+                *erased_start = flashstart;
+              found = 1;
+            }
+          if (res == LIBMEM_STATUS_SUCCESS)
+            {                  
+              setFlashCmdAndAddress(FCMD_ERSSCR, (unsigned)flashstart);
+              doFlashCmd();
 #ifndef ALLOW_FCF_WRITE                
-                  if (LIBMEM_ADDRESS_IN_RANGE((uint8_t*)0x40C, flashstart, flashstart + blocksize - 1))
-                    {
-                      flashCmdProgram(0x40C, FCF);
-                    }
-#endif                                      
+              if (LIBMEM_ADDRESS_IN_RANGE((uint8_t*)0x40C, flashstart, flashstart + blocksize - 1))
+                {
+                  flashCmdProgram(0x40C, FCF);
                 }
-              if (erased_size)
-                *erased_size += blocksize;
+#endif                                      
             }
-          else
-            {
-              if (found)
-                return res;
-            }
-          flashstart += blocksize;         
-        }            
-    }
+          if (erased_size)
+            *erased_size += blocksize;
+        }
+      else
+        {
+          if (found)
+            return res;
+        }
+      flashstart += blocksize;         
+    }               
   return res;
 }
 
@@ -245,7 +244,12 @@ main(int param0)
   FLASH_SIZE = ((SIM_FCFG2>>24) & 0x3f)<<13;
   FLASH_SIZE += ((SIM_FCFG2>>16) & 0x3f)<<13;
   FLASH_PAGE_COUNT = FLASH_SIZE/FLASH_PAGE_SIZE;
-  int res = libmem_rpc_loader_start(__RAM_segment_used_end__, __RAM_segment_end__ - 1); 
+  int res;
+#if 0
+  unsigned erasedStart, erasedSize;
+  res = libmem_erase(0x0, 0x8e8, &erasedStart, &erasedSize);
+#endif
+  res = libmem_rpc_loader_start(__RAM_segment_used_end__, __RAM_segment_end__ - 1); 
   MCM_PLACR = 0;
   libmem_rpc_loader_exit(res, 0);
   return 0;

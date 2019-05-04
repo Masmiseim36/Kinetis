@@ -138,6 +138,11 @@
 #define MKL34Z256Vxx4 127
 #define MKL46Z128Vxx4 128
 #define MKL46Z256Vxx4 129
+#define MKM14Z64Cxx5 130
+#define MKM14Z128Cxx5 131
+#define MKM33Z64Cxx5 132
+#define MKM33Z128Cxx5 133
+#define MKM34Z128Cxx5 134
 
 #if (__TARGET_PROCESSOR == MK10DN32xxx5 )
 #include          <CMSIS/MK10D5.h>
@@ -344,10 +349,10 @@
 #include          <CMSIS/MK50DZ10.h>
 
 #elif (__TARGET_PROCESSOR == MK51DX128xxx7 )
-#include          <CMSIS/MK50D7.h>
+#include          <CMSIS/MK51D7.h>
 
 #elif (__TARGET_PROCESSOR == MK51DX256xxx7 )
-#include          <CMSIS/MK50D7.h>
+#include          <CMSIS/MK51D7.h>
 
 #elif (__TARGET_PROCESSOR == MK51DX256xxx10 )
 #include          <CMSIS/MK51D10.h>
@@ -525,6 +530,21 @@
 
 #elif (__TARGET_PROCESSOR == MKL46Z256Vxx4 )
 #include          <CMSIS/MKL46Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKM14Z64Cxx5 )
+#include          <CMSIS/MKM14Z5.h>
+
+#elif (__TARGET_PROCESSOR == MKM14Z128Cxx5 )
+#include          <CMSIS/MKM14Z5.h>
+
+#elif (__TARGET_PROCESSOR == MKM33Z64Cxx5 )
+#include          <CMSIS/MKM33Z5.h>
+
+#elif (__TARGET_PROCESSOR == MKM33Z128Cxx5 )
+#include          <CMSIS/MKM33Z5.h>
+
+#elif (__TARGET_PROCESSOR == MKM34Z128Cxx5 )
+#include          <CMSIS/MKM34Z5.h>
 
 #else
 #error bad __TARGET_PROCESSOR
