@@ -1,0 +1,90 @@
+<!DOCTYPE CrossStudio_Group_Values>
+<propertyGroups>
+  <group short="Target Processor" group="Build Options" long="Select a set of target options" name="Target" default="MK60N512VMD100">
+    <groupEntry name="MK10N512VMD100" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />      
+      <cdefine value="MK10N512VMD100" name="__TARGET_PROCESSOR" />         
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10N512VMD100;0x80000;0;0;0x20000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
+    </groupEntry> 
+    <groupEntry name="MK10X256VMD100" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10X256VMD100_MemoryMap.xml" name="linker_memory_map_file" />
+       <cdefine value="MK10X256VMD100" name="__TARGET_PROCESSOR" />         
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
+    </groupEntry>
+    <groupEntry name="MK20N512VMD100" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
+      <cdefine value="MK20N512VMD100" name="__TARGET_PROCESSOR" />         
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20N512VMD100;0x80000;0;0;0x20000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
+    </groupEntry> 
+    <groupEntry name="MK20X256VMD100" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
+      <cdefine value="MK20X256VMD100" name="__TARGET_PROCESSOR" />         
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
+    </groupEntry>
+    <groupEntry name="MK30N512VMD100" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
+      <cdefine value="MK30N512VMD100" name="__TARGET_PROCESSOR" />         
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30N512VMD100;0x80000;0;0;0x20000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
+    </groupEntry> 
+    <groupEntry name="MK30X256VMD100" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30X256VMD100_MemoryMap.xml" name="linker_memory_map_file" />
+      <cdefine value="MK30X256VMD100" name="__TARGET_PROCESSOR" />         
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
+    </groupEntry>            
+    <groupEntry name="MK40N512VMD100" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
+      <cdefine value="MK40N512VMD100" name="__TARGET_PROCESSOR" />         
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40N512VMD100;0x80000;0;0;0x20000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
+    </groupEntry>
+    <groupEntry name="MK40X256VMD100" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40X256VMD100_MemoryMap.xml" name="linker_memory_map_file" />
+      <cdefine value="MK40X256VMD100" name="__TARGET_PROCESSOR" />         
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
+    </groupEntry>
+    <groupEntry name="MK60N512VMD100" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
+      <cdefine value="MK60N512VMD100" name="__TARGET_PROCESSOR" />            
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60N512VMD100;0x80000;0;0;0x20000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
+    </groupEntry>
+    <groupEntry name="MK60X256VMD100" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60X256VMD100_MemoryMap.xml" name="linker_memory_map_file" />
+      <cdefine value="MK60X256VMD100" name="__TARGET_PROCESSOR" />      
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
+    </groupEntry>               
+  </group>
+  <group short="Section Placement" group="Build Options" long="Select a set of options based on section placement." name="Placement" default="Flash" >
+    <groupEntry name="Flash">
+      <property value="$(StudioDir)/targets/Cortex_M/flash_placement.xml" name="linker_section_placement_file" />
+      <property name="arm_target_loader_applicable_loaders" value="Flash"/>
+      <property name="arm_target_loader_default_loader" value="Flash"/>          
+    </groupEntry>
+    <groupEntry name="Flash Vectors In RAM">
+      <property value="$(StudioDir)/targets/Cortex_M/flash_placement.xml" name="linker_section_placement_file" />
+      <property name="arm_target_loader_applicable_loaders" value="Flash"/>
+      <property name="arm_target_loader_default_loader" value="Flash"/>
+      <cdefine value="1" name="VECTORS_IN_RAM" />            
+    </groupEntry>
+    <groupEntry name="Flash Copy To RAM">
+      <property value="$(StudioDir)/targets/Cortex_M/flash_to_ram_placement.xml" name="linker_section_placement_file" />  
+      <property name="arm_target_loader_applicable_loaders" value="Flash"/>
+      <property name="arm_target_loader_default_loader" value="Flash"/>
+      <cdefine value="1" name="VECTORS_IN_RAM" />    
+    </groupEntry>
+    <groupEntry name="RAM">
+      <property value="$(StudioDir)/targets/Cortex_M/ram_placement.xml" name="linker_section_placement_file" />
+      <property name="arm_target_loader_applicable_loaders" value=""/>
+      <property name="arm_target_loader_default_loader" value=""/>                        
+    </groupEntry>
+  </group>
+  <include filename="../frequencies.xml"/>
+</propertyGroups>

@@ -1,0 +1,11 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution version="1" Name="KinetisSimulatorMemory" >
+  <project Name="KinetisSimulatorMemory" template_name="DLL">
+    <configuration Name="Common" build_output_file_name="$(ProjectName)$(HostDLL)" c_user_include_directories="../ARMSimulatorMemoryInterface"/>
+    <folder Name="Source Files" >            
+      <file file_name="KinetisSimulatorMemory.cpp" />
+      <file file_name="KinetisSimulatorMemory.h" />
+      <file file_name="../ARMSimulatorMemoryInterface/ARMSimulatorMemoryImplementation.cpp" />
+    </folder>
+  </project>
+</solution>

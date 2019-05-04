@@ -1,0 +1,157 @@
+<!DOCTYPE CrossStudio_Package_Description_File>
+<package cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.0" build_version="2011031403.4839;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.0.11-">
+  <targets>
+    <category name="K10 Series" >
+      <cpu name="MK10N512VMD100"/>
+      <cpu name="MK10X256VMD100"/>
+    </category>
+    <category name="K20 Series" >
+      <cpu name="MK20N512VMD100"/>
+      <cpu name="MK20X256VMD100"/>
+    </category>
+    <category name="K30 Series" >
+      <cpu name="MK30N512VMD100"/>
+      <cpu name="MK30X256VMD100"/>
+    </category>
+    <category name="K40 Series" >
+      <cpu name="MK40N512VMD100"/>
+      <cpu name="MK40X256VMD100"/>
+    </category>
+    <category name="K60 Series" >
+      <cpu name="MK60N512VMD100"/>
+      <cpu name="MK60X256VMD100"/>
+    </category>   
+  </targets>
+  <documentation>
+    <section name="1) Creating Kinetis Projects">
+      <h5>To create a new Kinetis project</h5>
+      <ul>
+        <li>Select the <b>File &gt; New &gt; New Project</b> menu item.</li>
+        <li>Select the appropriate <b>Generic Kinetis</b> from the <b>Categories</b> list.</li>
+        <li>Select the required project template type from the <b>Templates</b> list.</li>
+        <li>Set the required project name and location directory.</li>
+        <li>Click <b>OK</b>.</li>
+      </ul>          
+      <h5>To build and debug an application the runs in Flash memory</h5>
+      <ul>
+        <li>Select the project to work on by using the <b>Project &gt; Set Active Project</b> menu option.</li>
+        <li>Select the configuration you require by using the <b>Build &gt; Set Active Build Configuration</b> menu option.</li>
+        <li>Right click on the project node in the project explorer and select the <b>Flash</b> placement.</li>
+        <li>Build the project by using the <b>Build &gt; Build Project</b> menu option.</li>
+        <li>Connect to the appropriate target in the target window.</li>
+        <li>Download and start debugging the current project by using <b>Debug &gt; Start Debugging</b>.</li>
+      </ul>     
+      <h5>To make the application startup from reset</h5>
+      <ul>
+        <li>Right click on the project node in the project explorer and select <b>Properties...</b></li>
+        <li>In the properties window scroll down to the <b>Preprocessor Options</b> section.</li>
+        <li>Type <b>STARTUP_FROM_RESET</b> into the <b>Preprocessor Definitions</b> property editor.</li>
+      </ul>          
+    </section>
+
+    <section name="2) Kinetis Project Specifics">
+      <h5>Target Processor</h5>
+      <p>Once a project has been created you can select different target processors by right clicking on the project node in the project 
+      explorer and selecting the <b>Target Processor</b> entry.</p>
+      <p>Selecting the target processor will specify the memory map that is used for the build and debug. You can view the selected 
+      memory map by right clicking on the project node in the project explorer and selecting <b>View Memory Map</b> or 
+      <b>View Memory Map (as text)</b>.</p>
+      <p>Selecting the target processor will cause the preprocessor definition <b>__TARGET_PROCESSOR</b> to be set to the specified processor
+      name when you compile the project.</p>
+
+      <h5>Section Placement</h5>
+      <p>CrossStudio for ARM supports Kinetis projects running applications in a number of different
+      memory configurations. You can select the memory configuration you require by right clicking on the project node in the 
+      project explorer and selecting the <b>Placement</b> entry.</p> 
+      <p>For Kinetis projects the set of placements are:</p>
+      <ul>      
+        <li><b>Flash</b> application runs in internal Flash memory.</li>
+        <li><b>Flash Vectors In RAM</b> application runs in internal Flash memory with exception vectors in RAM memory.</li>
+        <li><b>Flash Copy To RAM</b> application starts in internal flash and copies itself to run internal RAM memory.</li>
+        <li><b>RAM</b> application runs internal RAM memory.</li>
+      </ul>
+
+      <h5>Stack and Heap Sizes</h5>
+      <p>The stack and heap sizes are set to be 128 bytes by default when a project is created. This enables projects to run on the smallest of
+      the Kinetis processors. It is likely that you will need to change these values when developing applications to run on the larger of the
+      Kinetis processors.</p>
+
+      <h5>Target Startup Code</h5>
+      <p>The startup code <a href="file:$(TargetsDir)/Kinetis/Kinetis_Startup.s">Kinetis_Startup.s</a>           
+      is common to all Kinetis processors. There are a set of preprocessor defines that
+      configure the startup code and are documented in the startup file itself. The startup code
+      calls out to symbol <b>SystemInit</b> with the stack pointer set to the top of RAM.
+      The <b>SystemInit</b> function can be used to set the CPU clock or configure
+      any external memories prior to the C initialisation code as such it cannot access initialised 
+      static data.</p>      
+
+      <p>The startup code declares symoblic names (and weak implementations) for each interrupt service routine,
+      for example the <b>PORTA_IRQHandler</b> function will be called when this interrupt occurs. 
+      If you are porting code that
+      has application specific interrupt service routine names then you can use the preprocessor definitions
+      to rename the symbol for example <b>PORTA_IRQHandler=porta_isr</b>.</p>
+
+      <h5>Target Reset Script</h5>
+      <p>The reset script <a href="file:$(TargetsDir)/Kinetis/Kinetis_Target.js">Kinetis_Target.js</a> is used by the
+      debugger to reset the target board. For OSJTAG and CrossConnect/FTDI/Wiggler target interfaces the MDM-AP
+      is used to reset the target board. For J-Link target interfaces this script will use the SRST signal so in order 
+      to reset the target properly and therefore debug your application reliably from a defined state the SRST signal 
+      should be connected.</p>
+
+      <h5>Kinetis Internal Flash Loader</h5>
+      <p>The source code to the flash loaders <a href="file:$(TargetsDir)/Kinetis/Loader.hzp">(click to load solution)</a>
+        for the internal Flash of the Kinetis is provided.</p>
+
+      <h5>Memory Simulator</h5>
+      <p>An Kinetis memory simulator is provided that simulates the memories of the various Kinetis devices. 
+      The memory simulation parameter (which is set by the <b>Target Processor</b> selection) specifies the device name,
+      the size of the internal Flash and RAM memories.</p>
+     
+      <h5>CMSIS support</h5>
+      <p>CMSIS header and source files are included as part of the new project setup. 
+      The file <a href="file:$(TargetsDir)/Kinetis/Kinetis.h">Kinetis.h</a> is provided which
+      selects the appropriate header file depending on the target processor selection. The file
+      <a href="file:$(TargetsDir)/Kinetis/Kinetis_SystemInit.c">Kinetis_SystemInit.c</a> selects the appropriate source
+      file containing the CMSIS SystemInit and SystemCoreClockUpdate functions. This file also contains the definition
+      of the function <b>set_sys_dividers</b> that can be used the system clock dividers.</p>
+
+      <h5>CTL support</h5>
+      <p>The file <a href="file:$(TargetsDir)/Kinetis/Kinetis_ctl.c">Kinetis_ctl.c</a> implements the CTL system timer using the Cortex-M
+      SysTick timer. The timer is configured to interrupt at a 10 millisecond rate and increment the CTL system timer by 10 to give a 
+      millisecond timer. The implementation uses the CMSIS <b>SystemCoreClock</b> global variable to determine the CPU clock
+      frequency. The CTL samples that are provided in this package have board specific files that initialise this variable.</p>
+
+      <p>The CTL interrupt support functions <b>ctl_global_interrupts_set</b>, <b>ctl_set_priority</b>, <b>ctl_unmask_isr</b> 
+      and <b>ctl_mask_isr</b> are implemented in this file. The implementation uses the lowest half of the available NVIC 
+      priorities (top bit set in the priority) for CTL interrupts and disables global interrupts by raising the NVIC basepriority 
+      above the highest CTL priority. This enables you to use the upper half of the NVIC priorities for interrupts that do not
+      use CTL and should not be disabled by a CTL interrupt.</p>
+    </section>
+
+    <section name="3) CrossWorks Shared Sample Projects">
+      <p>The following project files are supplied that can be used to run the standard CrossWorks shared samples.</p>
+      <ul>        
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/shared.hzp">TWR-K40X256 Shared Samples (click to load project)</a></b></li>   
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60N512/shared.hzp">TWR-K60N512 Shared Samples (click to load project)</a></b></li>   
+      </ul>
+      <p>The board specific file <b>Kinetis_ctl_board.c</b> is included in the samples that sets up the PLL (using a constructor
+      function) and implements the ctl board support functions to flash a led and handle a button press.</p>
+    </section>
+
+    <section name="4) CTL Sample Projects">
+      <p>The following project files are supplied that can be used to run the standard CrossWorks CTL samples.</p>
+      <ul>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/ctl.hzp">TWR-K40X256 CTL Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60N512/ctl.hzp">TWR-K60N512 CTL Samples (click to load project)</a></b></li>
+      </ul>
+      <p>The board specific file <b>Kinetis_ctl_board.c</b> is included in the samples that sets up the PLL (using a constructor
+      function) and implements the ctl board support functions to flash a led and handle a button press.</p>
+    </section>
+
+  </documentation>
+  <history>    
+    <version name="1.0">
+      <description>Initial Release.</description>
+    </version>
+  </history>
+</package>
