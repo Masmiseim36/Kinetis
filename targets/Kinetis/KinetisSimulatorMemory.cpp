@@ -66,12 +66,12 @@ public:
     }
 };
 
-LM3SSimulatorMemoryImpl::LM3SSimulatorMemoryImpl() :
+KinetisSimulatorMemoryImpl::KinetisSimulatorMemoryImpl() :
   flash(0), sram(0)
 {
 }
 
-LM3SSimulatorMemoryImpl::~LM3SSimulatorMemoryImpl()
+KinetisSimulatorMemoryImpl::~KinetisSimulatorMemoryImpl()
 {
   if (flash)
     delete flash;
@@ -84,7 +84,7 @@ LM3SSimulatorMemoryImpl::~LM3SSimulatorMemoryImpl()
 }
 
 bool 
-LM3SSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char *argv[])
+KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char *argv[])
 {
   if (argc != 5)
     return false;
@@ -99,7 +99,7 @@ LM3SSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char *ar
 }
 
 void 
-LM3SSimulatorMemoryImpl::reset()
+KinetisSimulatorMemoryImpl::reset()
 {
   sram->clear(0xcd);
   peripherals->reset();
@@ -107,16 +107,16 @@ LM3SSimulatorMemoryImpl::reset()
 }
 
 void 
-LM3SSimulatorMemoryImpl::eraseAll()
+KinetisSimulatorMemoryImpl::eraseAll()
 {
   flash->clear(0xff);
 }
 
 MemoryRegion *
-LM3SSimulatorMemoryImpl::findMemoryRegion(unsigned address, unsigned size, unsigned &offset)
+KinetisSimulatorMemoryImpl::findMemoryRegion(unsigned address, unsigned size, unsigned &offset)
 {
   MemoryRegion *m = 0;  
-  if (address < 0x10000000)
+  if (address < flash->size())
     {
       m = flash;
       offset = address;
@@ -124,7 +124,7 @@ LM3SSimulatorMemoryImpl::findMemoryRegion(unsigned address, unsigned size, unsig
   else if (address >= (0x20000000-(sram->size()/2)) && address < (0x20000000+sram->size()/2))
     {
       m = sram;
-      offset = address-0x20000000;
+      offset = address-(0x20000000-(sram->size()/2));
     }
   else if (address >= 0x40000000 && address < 0x40100000)
     {
@@ -136,7 +136,12 @@ LM3SSimulatorMemoryImpl::findMemoryRegion(unsigned address, unsigned size, unsig
       m = scs;
       offset = address-0xE000E000;
     }
-  return m;
+  if (!m) 
+    return 0;
+  if ((offset + size) <= m->size())
+    return m;
+  else
+    return 0;
 }
 
 #ifdef WIN32
@@ -165,7 +170,7 @@ extern "C" EXPORT void ReleaseARMSimulatorMemoryInterface(void *ptr);
 
 void *AllocateARMSimulatorMemoryInterface(void)
 {
-  return new LM3SSimulatorMemoryImpl();
+  return new KinetisSimulatorMemoryImpl();
 }
 
 void ReleaseARMSimulatorMemoryInterface(void *ptr)

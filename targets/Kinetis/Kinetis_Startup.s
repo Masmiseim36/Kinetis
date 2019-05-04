@@ -222,7 +222,7 @@ FDPROT:
 #ifdef VECTORS_IN_RAM
   ldr r0, =__vectors_load_start__
   ldr r1, =__vectors_load_end__
-  ldr r2, =__vectors_ram_start__
+  ldr r2, =__VECTOR_RAM
 l0:
   cmp r0, r1
   beq l1
@@ -358,10 +358,12 @@ DEFAULT_ISR_HANDLER Reserved117_IRQHandler  /* Reserved interrupt 117 */
 DEFAULT_ISR_HANDLER Reserved118_IRQHandler  /* Reserved interrupt 118 */
 DEFAULT_ISR_HANDLER Reserved119_IRQHandler  /* Reserved interrupt 119 */
 
-#ifndef STARTUP_FROM_RESET
+#ifndef __NO_SYSTEM_INIT
   .thumb_func
-reset_wait:
-  // disable the watchdog
+  .weak SystemInit
+SystemInit:
+#endif  
+disableWatchDog: 
   movw r0, #0x2000
   movt r0, #0x4005
   movw r1, #0xC520
@@ -370,11 +372,18 @@ reset_wait:
   strh r1, [r0, #14] 
   movw r1, #0x1D2
   strh r1, [r0]
+  bx lr
+
+#ifndef STARTUP_FROM_RESET
+  .thumb_func
+reset_wait:
+  bl disableWatchDog;
 1: b 1b /* endless loop */
 #endif /* STARTUP_FROM_RESET */
 
 #ifdef VECTORS_IN_RAM
   .section .vectors_ram, "ax"
-_vectors_ram:
+  .global __VECTOR_RAM
+__VECTOR_RAM:
   .space _vectors_end-_vectors, 0
 #endif

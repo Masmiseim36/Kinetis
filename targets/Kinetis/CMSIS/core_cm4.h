@@ -230,7 +230,7 @@ typedef struct
   __IO uint32_t ISER[8];                 /*!< Offset: 0x000 (R/W)  Interrupt Set Enable Register           */
        uint32_t RESERVED0[24];                                   
   __IO uint32_t ICER[8];                 /*!< Offset: 0x080 (R/W)  Interrupt Clear Enable Register         */
-       uint32_t RSERVED1[24];                                    
+       uint32_t RESERVED1[24];                                    
   __IO uint32_t ISPR[8];                 /*!< Offset: 0x100 (R/W)  Interrupt Set Pending Register          */
        uint32_t RESERVED2[24];                                   
   __IO uint32_t ICPR[8];                 /*!< Offset: 0x180 (R/W)  Interrupt Clear Pending Register        */

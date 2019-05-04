@@ -12,8 +12,44 @@
 #ifndef __NO_PLL
 #define _100Mhz
 
-void set_sys_dividers(unsigned outdiv1, unsigned outdiv2, unsigned outdiv3, unsigned outdiv4)__attribute__((__long_call__,section(".fast")));
+void set_sys_dividers(unsigned outdiv1, unsigned outdiv2, unsigned outdiv3, unsigned outdiv4)__attribute__((section(".fast")));
+void set_sys_dividers(unsigned outdiv1, unsigned outdiv2, unsigned outdiv3, unsigned outdiv4)
+{
+ /*
+  * This routine must be placed in RAM. It is a workaround for errata e2448.
+  * Flash prefetch must be disabled when the flash clock divider is changed.
+  * This cannot be performed while executing out of flash.
+  * There must be a short delay after the clock dividers are changed before prefetch
+  * can be re-enabled.
+  */
+  unsigned temp_reg;
+  unsigned i;
+  
+  temp_reg = FMC->PFAPR; // store present value of FMC_PFAPR
+  
+  // set M0PFD through M7PFD to 1 to disable prefetch
+  FMC->PFAPR |= FMC_PFAPR_M7PFD_MASK | FMC_PFAPR_M6PFD_MASK | FMC_PFAPR_M5PFD_MASK
+             | FMC_PFAPR_M4PFD_MASK | FMC_PFAPR_M3PFD_MASK | FMC_PFAPR_M2PFD_MASK
+             | FMC_PFAPR_M1PFD_MASK | FMC_PFAPR_M0PFD_MASK;
+  
+  // set clock dividers to desired value  
+  SIM->CLKDIV1 = SIM_CLKDIV1_OUTDIV1(outdiv1) | SIM_CLKDIV1_OUTDIV2(outdiv2) 
+              | SIM_CLKDIV1_OUTDIV3(outdiv3) | SIM_CLKDIV1_OUTDIV4(outdiv4);
 
+  // wait for dividers to change
+  for (i = 0 ; i < outdiv4 ; i++)
+  {}
+  
+  FMC->PFAPR = temp_reg; // re-store original value of FMC_PFAPR
+  
+  return;
+} // set_sys_dividers
+
+uint32_t SystemCoreClock;
+
+//
+// This should be SystemInit but the set_sys_dividers is copied by the startup code.
+//
 void sysinit (void)__attribute__((constructor));
 void sysinit (void)
 {
@@ -86,11 +122,7 @@ void sysinit (void)
 
 #else
 
-void sysinit (void)__attribute__((constructor));
-void sysinit (void)
-{
-  SystemCoreClockUpdate();
-}
+#include "CMSIS/system_MK60DZ10.c"
 
 #endif
 

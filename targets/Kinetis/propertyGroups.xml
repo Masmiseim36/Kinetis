@@ -1,90 +1,429 @@
 <!DOCTYPE CrossStudio_Group_Values>
 <propertyGroups>
-  <group short="Target Processor" group="Build Options" long="Select a set of target options" name="Target" default="MK60N512VMD100">
-    <groupEntry name="MK10N512VMD100" family="K10">
-      <property value="$(TargetsDir)/Kinetis/MK10N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />      
-      <cdefine value="MK10N512VMD100" name="__TARGET_PROCESSOR" />         
-      <property name="arm_simulator_memory_simulation_parameter" value="MK10N512VMD100;0x80000;0;0;0x20000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
-    </groupEntry> 
-    <groupEntry name="MK10X256VMD100" family="K10">
-      <property value="$(TargetsDir)/Kinetis/MK10X256VMD100_MemoryMap.xml" name="linker_memory_map_file" />
-       <cdefine value="MK10X256VMD100" name="__TARGET_PROCESSOR" />         
-      <property name="arm_simulator_memory_simulation_parameter" value="MK10X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
+  <group short="Target Processor" group="Build Options" long="Select a set of target options" name="Target" default="MK60DN512ZVMD10">
+    <groupEntry name="MK10DN512ZVLK10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DN512ZVLK10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DN512ZVLK10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DN512ZVLK10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
-    <groupEntry name="MK20N512VMD100" family="K20">
-      <property value="$(TargetsDir)/Kinetis/MK20N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
-      <cdefine value="MK20N512VMD100" name="__TARGET_PROCESSOR" />         
-      <property name="arm_simulator_memory_simulation_parameter" value="MK20N512VMD100;0x80000;0;0;0x20000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
-    </groupEntry> 
-    <groupEntry name="MK20X256VMD100" family="K20">
-      <property value="$(TargetsDir)/Kinetis/MK20N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
-      <cdefine value="MK20X256VMD100" name="__TARGET_PROCESSOR" />         
-      <property name="arm_simulator_memory_simulation_parameter" value="MK20X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
+    <groupEntry name="MK10DN512ZVLL10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DN512ZVLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DN512ZVLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DN512ZVLL10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
-    <groupEntry name="MK30N512VMD100" family="K30">
-      <property value="$(TargetsDir)/Kinetis/MK30N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
-      <cdefine value="MK30N512VMD100" name="__TARGET_PROCESSOR" />         
-      <property name="arm_simulator_memory_simulation_parameter" value="MK30N512VMD100;0x80000;0;0;0x20000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
-    </groupEntry> 
-    <groupEntry name="MK30X256VMD100" family="K30">
-      <property value="$(TargetsDir)/Kinetis/MK30X256VMD100_MemoryMap.xml" name="linker_memory_map_file" />
-      <cdefine value="MK30X256VMD100" name="__TARGET_PROCESSOR" />         
-      <property name="arm_simulator_memory_simulation_parameter" value="MK30X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
-    </groupEntry>            
-    <groupEntry name="MK40N512VMD100" family="K40">
-      <property value="$(TargetsDir)/Kinetis/MK40N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
-      <cdefine value="MK40N512VMD100" name="__TARGET_PROCESSOR" />         
-      <property name="arm_simulator_memory_simulation_parameter" value="MK40N512VMD100;0x80000;0;0;0x20000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
+    <groupEntry name="MK10DN512ZVLQ10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DN512ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DN512ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DN512ZVLQ10;0x80000;0x0;0x0;0x20000"/>
     </groupEntry>
-    <groupEntry name="MK40X256VMD100" family="K40">
-      <property value="$(TargetsDir)/Kinetis/MK40X256VMD100_MemoryMap.xml" name="linker_memory_map_file" />
-      <cdefine value="MK40X256VMD100" name="__TARGET_PROCESSOR" />         
-      <property name="arm_simulator_memory_simulation_parameter" value="MK40X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
+    <groupEntry name="MK10DX128ZVLQ10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DX128ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DX128ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DX128ZVLQ10;0x20000;0x20000;0x1000;0x8000"/>
     </groupEntry>
-    <groupEntry name="MK60N512VMD100" family="K60">
-      <property value="$(TargetsDir)/Kinetis/MK60N512VMD100_MemoryMap.xml" name="linker_memory_map_file" />
-      <cdefine value="MK60N512VMD100" name="__TARGET_PROCESSOR" />            
-      <property name="arm_simulator_memory_simulation_parameter" value="MK60N512VMD100;0x80000;0;0;0x20000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/N512/Loader.elf" />
+    <groupEntry name="MK10DX256ZVLQ10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DX256ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DX256ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DX256ZVLQ10;0x40000;0x40000;0x1000;0x10000"/>
     </groupEntry>
-    <groupEntry name="MK60X256VMD100" family="K60">
-      <property value="$(TargetsDir)/Kinetis/MK60X256VMD100_MemoryMap.xml" name="linker_memory_map_file" />
-      <cdefine value="MK60X256VMD100" name="__TARGET_PROCESSOR" />      
-      <property name="arm_simulator_memory_simulation_parameter" value="MK60X256VMD100;0x40000;0x40000;0x1000;0x10000"/>
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/X256/Loader.elf" />
-    </groupEntry>               
+    <groupEntry name="MK10DN512ZVMB10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DN512ZVMB10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DN512ZVMB10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DN512ZVMB10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK10DN512ZVMC10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DN512ZVMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DN512ZVMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DN512ZVMC10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK10DN512ZVMD10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DN512ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DN512ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DN512ZVMD10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK10DX256ZVMD10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DX256ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DX256ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DX256ZVMD10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK10DX128ZVMD10" family="K10">
+      <property value="$(TargetsDir)/Kinetis/MK10DX128ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK10DX128ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK10DX128ZVMD10;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK20DN512ZVLK10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DN512ZVLK10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DN512ZVLK10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DN512ZVLK10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK20DX256ZVLK10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DX256ZVLK10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DX256ZVLK10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DX256ZVLK10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK20DN512ZVLL10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DN512ZVLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DN512ZVLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DN512ZVLL10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK20DX256ZVLL10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DX256ZVLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DX256ZVLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DX256ZVLL10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK20DN512ZVLQ10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DN512ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DN512ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DN512ZVLQ10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK20DX128ZVLQ10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DX128ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DX128ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DX128ZVLQ10;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK20DX256ZVLQ10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DX256ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DX256ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DX256ZVLQ10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK20DN512ZVMB10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DN512ZVMB10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DN512ZVMB10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DN512ZVMB10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK20DX256ZVMB10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DX256ZVMB10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DX256ZVMB10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DX256ZVMB10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK20DN512ZVMC10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DN512ZVMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DN512ZVMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DN512ZVMC10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK20DX256ZVMC10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DX256ZVMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DX256ZVMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DX256ZVMC10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK20DN512ZVMD10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DN512ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DN512ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DN512ZVMD10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK20DX256ZVMD10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DX256ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DX256ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DX256ZVMD10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK20DX128ZVMD10" family="K20">
+      <property value="$(TargetsDir)/Kinetis/MK20DX128ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK20DX128ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK20DX128ZVMD10;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK30DN512ZVLK10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DN512ZVLK10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DN512ZVLK10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DN512ZVLK10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK30DN512ZVLL10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DN512ZVLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DN512ZVLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DN512ZVLL10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK30DN512ZVLQ10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DN512ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DN512ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DN512ZVLQ10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK30DX128ZVLQ10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DX128ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DX128ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DX128ZVLQ10;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK30DX256ZVLQ10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DX256ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DX256ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DX256ZVLQ10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK30DN512ZVMB10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DN512ZVMB10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DN512ZVMB10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DN512ZVMB10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK30DN512ZVMC10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DN512ZVMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DN512ZVMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DN512ZVMC10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK30DN512ZVMD10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DN512ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DN512ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DN512ZVMD10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK30DX256ZVMD10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DX256ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DX256ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DX256ZVMD10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK30DX128ZVMD10" family="K30">
+      <property value="$(TargetsDir)/Kinetis/MK30DX128ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK30DX128ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK30DX128ZVMD10;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK40DN512ZVLK10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DN512ZVLK10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DN512ZVLK10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DN512ZVLK10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK40DN512ZVLL10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DN512ZVLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DN512ZVLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DN512ZVLL10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK40DN512ZVLQ10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DN512ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DN512ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DN512ZVLQ10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK40DX128ZVLQ10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DX128ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DX128ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DX128ZVLQ10;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK40DX256ZVLQ10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DX256ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DX256ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DX256ZVLQ10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK40DN512ZVMB10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DN512ZVMB10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DN512ZVMB10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DN512ZVMB10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK40DN512ZVMC10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DN512ZVMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DN512ZVMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DN512ZVMC10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK40DN512ZVMD10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DN512ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DN512ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DN512ZVMD10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK40DX256ZVMD10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DX256ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DX256ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DX256ZVMD10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK40DX128ZVMD10" family="K40">
+      <property value="$(TargetsDir)/Kinetis/MK40DX128ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK40DX128ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK40DX128ZVMD10;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK50DN512ZCLL10" family="K50">
+      <property value="$(TargetsDir)/Kinetis/MK50DN512ZCLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK50DN512ZCLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK50DN512ZCLL10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK50DX256ZCLL10" family="K50">
+      <property value="$(TargetsDir)/Kinetis/MK50DX256ZCLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK50DX256ZCLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK50DX256ZCLL10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK50DN512ZCLQ10" family="K50">
+      <property value="$(TargetsDir)/Kinetis/MK50DN512ZCLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK50DN512ZCLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK50DN512ZCLQ10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK50DN512ZCMC10" family="K50">
+      <property value="$(TargetsDir)/Kinetis/MK50DN512ZCMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK50DN512ZCMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK50DN512ZCMC10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK50DX256ZCMC10" family="K50">
+      <property value="$(TargetsDir)/Kinetis/MK50DX256ZCMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK50DX256ZCMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK50DX256ZCMC10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK50DN512ZCMD10" family="K50">
+      <property value="$(TargetsDir)/Kinetis/MK50DN512ZCMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK50DN512ZCMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK50DN512ZCMD10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK50DX256ZCLK10" family="K50">
+      <property value="$(TargetsDir)/Kinetis/MK50DX256ZCLK10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK50DX256ZCLK10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK50DX256ZCLK10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK50DX256ZCMB10" family="K50">
+      <property value="$(TargetsDir)/Kinetis/MK50DX256ZCMB10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK50DX256ZCMB10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK50DX256ZCMB10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK51DN512ZCLL10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DN512ZCLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DN512ZCLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DN512ZCLL10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK51DX256ZCLL10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DX256ZCLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DX256ZCLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DX256ZCLL10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK51DN512ZCLQ10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DN512ZCLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DN512ZCLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DN512ZCLQ10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK51DN256ZCLQ10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DN256ZCLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DN256ZCLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DN256ZCLQ10;0x40000;0x0;0x0;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK51DN512ZCMC10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DN512ZCMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DN512ZCMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DN512ZCMC10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK51DX256ZCMC10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DX256ZCMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DX256ZCMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DX256ZCMC10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK51DN512ZCMD10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DN512ZCMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DN512ZCMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DN512ZCMD10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK51DN256ZCMD10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DN256ZCMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DN256ZCMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DN256ZCMD10;0x40000;0x0;0x0;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK51DX256ZCLK10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DX256ZCLK10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DX256ZCLK10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DX256ZCLK10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK51DX256ZCMB10" family="K51">
+      <property value="$(TargetsDir)/Kinetis/MK51DX256ZCMB10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK51DX256ZCMB10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK51DX256ZCMB10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK52DN512ZCLQ10" family="K52">
+      <property value="$(TargetsDir)/Kinetis/MK52DN512ZCLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK52DN512ZCLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK52DN512ZCLQ10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK52DN512ZCMD10" family="K52">
+      <property value="$(TargetsDir)/Kinetis/MK52DN512ZCMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK52DN512ZCMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK52DN512ZCMD10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK53DN512ZCLQ10" family="K53">
+      <property value="$(TargetsDir)/Kinetis/MK53DN512ZCLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK53DN512ZCLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK53DN512ZCLQ10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK53DX256ZCLQ10" family="K53">
+      <property value="$(TargetsDir)/Kinetis/MK53DX256ZCLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK53DX256ZCLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK53DX256ZCLQ10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK53DN512ZCMD10" family="K53">
+      <property value="$(TargetsDir)/Kinetis/MK53DN512ZCMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK53DN512ZCMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK53DN512ZCMD10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK53DX256ZCMD10" family="K53">
+      <property value="$(TargetsDir)/Kinetis/MK53DX256ZCMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK53DX256ZCMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK53DX256ZCMD10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK60DN512ZVLL10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DN512ZVLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DN512ZVLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DN512ZVLL10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK60DX256ZVLL10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DX256ZVLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DX256ZVLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DX256ZVLL10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK60DN256ZVLL10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DN256ZVLL10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DN256ZVLL10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DN256ZVLL10;0x40000;0x0;0x0;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK60DN512ZVLQ10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DN512ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DN512ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DN512ZVLQ10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK60DN256ZVLQ10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DN256ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DN256ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DN256ZVLQ10;0x40000;0x0;0x0;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK60DX256ZVLQ10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DX256ZVLQ10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DX256ZVLQ10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DX256ZVLQ10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK60DN512ZVMC10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DN512ZVMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DN512ZVMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DN512ZVMC10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK60DN256ZVMC10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DN256ZVMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DN256ZVMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DN256ZVMC10;0x40000;0x0;0x0;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK60DX256ZVMC10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DX256ZVMC10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DX256ZVMC10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DX256ZVMC10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK60DN512ZVMD10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DN512ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DN512ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DN512ZVMD10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK60DN256ZVMD10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DN256ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DN256ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DN256ZVMD10;0x40000;0x0;0x0;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK60DX256ZVMD10" family="K60">
+      <property value="$(TargetsDir)/Kinetis/MK60DX256ZVMD10_MemoryMap.xml" name="linker_memory_map_file"/>
+      <cdefine value="MK60DX256ZVMD10" name="__TARGET_PROCESSOR"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK60DX256ZVMD10;0x40000;0x40000;0x1000;0x10000"/>
+    </groupEntry>
   </group>
-  <group short="Section Placement" group="Build Options" long="Select a set of options based on section placement." name="Placement" default="Flash" >
+  <group short="Section Placement" group="Build Options" long="Select a set of options based on section placement." name="Placement" default="Flash">
     <groupEntry name="Flash">
-      <property value="$(StudioDir)/targets/Cortex_M/flash_placement.xml" name="linker_section_placement_file" />
+      <property value="$(StudioDir)/targets/Cortex_M/flash_placement.xml" name="linker_section_placement_file"/>
       <property name="arm_target_loader_applicable_loaders" value="Flash"/>
-      <property name="arm_target_loader_default_loader" value="Flash"/>          
+      <property name="arm_target_loader_default_loader" value="Flash"/>
     </groupEntry>
     <groupEntry name="Flash Vectors In RAM">
-      <property value="$(StudioDir)/targets/Cortex_M/flash_placement.xml" name="linker_section_placement_file" />
+      <property value="$(StudioDir)/targets/Cortex_M/flash_placement.xml" name="linker_section_placement_file"/>
       <property name="arm_target_loader_applicable_loaders" value="Flash"/>
       <property name="arm_target_loader_default_loader" value="Flash"/>
-      <cdefine value="1" name="VECTORS_IN_RAM" />            
+      <cdefine value="1" name="VECTORS_IN_RAM"/>
     </groupEntry>
     <groupEntry name="Flash Copy To RAM">
-      <property value="$(StudioDir)/targets/Cortex_M/flash_to_ram_placement.xml" name="linker_section_placement_file" />  
+      <property value="$(StudioDir)/targets/Cortex_M/flash_to_ram_placement.xml" name="linker_section_placement_file"/>
       <property name="arm_target_loader_applicable_loaders" value="Flash"/>
       <property name="arm_target_loader_default_loader" value="Flash"/>
-      <cdefine value="1" name="VECTORS_IN_RAM" />    
+      <cdefine value="1" name="VECTORS_IN_RAM"/>
     </groupEntry>
     <groupEntry name="RAM">
-      <property value="$(StudioDir)/targets/Cortex_M/ram_placement.xml" name="linker_section_placement_file" />
+      <property value="$(StudioDir)/targets/Cortex_M/ram_placement.xml" name="linker_section_placement_file"/>
       <property name="arm_target_loader_applicable_loaders" value=""/>
-      <property name="arm_target_loader_default_loader" value=""/>                        
+      <property name="arm_target_loader_default_loader" value=""/>
     </groupEntry>
   </group>
-  <include filename="../frequencies.xml"/>
 </propertyGroups>

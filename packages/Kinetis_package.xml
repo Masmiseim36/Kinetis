@@ -1,29 +1,103 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.0" build_version="2011031403.4839;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.0.11-">
-  <targets>
-    <category name="K10 Series" >
-      <cpu name="MK10N512VMD100"/>
-      <cpu name="MK10X256VMD100"/>
-    </category>
-    <category name="K20 Series" >
-      <cpu name="MK20N512VMD100"/>
-      <cpu name="MK20X256VMD100"/>
-    </category>
-    <category name="K30 Series" >
-      <cpu name="MK30N512VMD100"/>
-      <cpu name="MK30X256VMD100"/>
-    </category>
-    <category name="K40 Series" >
-      <cpu name="MK40N512VMD100"/>
-      <cpu name="MK40X256VMD100"/>
-    </category>
-    <category name="K60 Series" >
-      <cpu name="MK60N512VMD100"/>
-      <cpu name="MK60X256VMD100"/>
-    </category>   
-  </targets>
+<package cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.2" build_version="2011091900.5206;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-">
+
+<targets>
+  <category name="K10 Series" >
+    <cpu name="MK10DN512ZVLK10"/>
+    <cpu name="MK10DN512ZVLL10"/>
+    <cpu name="MK10DN512ZVLQ10"/>
+    <cpu name="MK10DX128ZVLQ10"/>
+    <cpu name="MK10DX256ZVLQ10"/>
+    <cpu name="MK10DN512ZVMB10"/>
+    <cpu name="MK10DN512ZVMC10"/>
+    <cpu name="MK10DN512ZVMD10"/>
+    <cpu name="MK10DX256ZVMD10"/>
+    <cpu name="MK10DX128ZVMD10"/>
+  </category>
+  <category name="K20 Series" >
+    <cpu name="MK20DN512ZVLK10"/>
+    <cpu name="MK20DX256ZVLK10"/>
+    <cpu name="MK20DN512ZVLL10"/>
+    <cpu name="MK20DX256ZVLL10"/>
+    <cpu name="MK20DN512ZVLQ10"/>
+    <cpu name="MK20DX128ZVLQ10"/>
+    <cpu name="MK20DX256ZVLQ10"/>
+    <cpu name="MK20DN512ZVMB10"/>
+    <cpu name="MK20DX256ZVMB10"/>
+    <cpu name="MK20DN512ZVMC10"/>
+    <cpu name="MK20DX256ZVMC10"/>
+    <cpu name="MK20DN512ZVMD10"/>
+    <cpu name="MK20DX256ZVMD10"/>
+    <cpu name="MK20DX128ZVMD10"/>
+  </category>
+  <category name="K30 Series" >
+    <cpu name="MK30DN512ZVLK10"/>
+    <cpu name="MK30DN512ZVLL10"/>
+    <cpu name="MK30DN512ZVLQ10"/>
+    <cpu name="MK30DX128ZVLQ10"/>
+    <cpu name="MK30DX256ZVLQ10"/>
+    <cpu name="MK30DN512ZVMB10"/>
+    <cpu name="MK30DN512ZVMC10"/>
+    <cpu name="MK30DN512ZVMD10"/>
+    <cpu name="MK30DX256ZVMD10"/>
+    <cpu name="MK30DX128ZVMD10"/>
+  </category>
+  <category name="K40 Series" >
+    <cpu name="MK40DN512ZVLK10"/>
+    <cpu name="MK40DN512ZVLL10"/>
+    <cpu name="MK40DN512ZVLQ10"/>
+    <cpu name="MK40DX128ZVLQ10"/>
+    <cpu name="MK40DX256ZVLQ10"/>
+    <cpu name="MK40DN512ZVMB10"/>
+    <cpu name="MK40DN512ZVMC10"/>
+    <cpu name="MK40DN512ZVMD10"/>
+    <cpu name="MK40DX256ZVMD10"/>
+    <cpu name="MK40DX128ZVMD10"/>
+  </category>
+  <category name="K50 Series" >
+    <cpu name="MK50DN512ZCLL10"/>
+    <cpu name="MK50DX256ZCLL10"/>
+    <cpu name="MK50DN512ZCLQ10"/>
+    <cpu name="MK50DN512ZCMC10"/>
+    <cpu name="MK50DX256ZCMC10"/>
+    <cpu name="MK50DN512ZCMD10"/>
+    <cpu name="MK50DX256ZCLK10"/>
+    <cpu name="MK50DX256ZCMB10"/>
+    <cpu name="MK51DN512ZCLL10"/>
+    <cpu name="MK51DX256ZCLL10"/>
+    <cpu name="MK51DN512ZCLQ10"/>
+    <cpu name="MK51DN256ZCLQ10"/>
+    <cpu name="MK51DN512ZCMC10"/>
+    <cpu name="MK51DX256ZCMC10"/>
+    <cpu name="MK51DN512ZCMD10"/>
+    <cpu name="MK51DN256ZCMD10"/>
+    <cpu name="MK51DX256ZCLK10"/>
+    <cpu name="MK51DX256ZCMB10"/>
+    <cpu name="MK52DN512ZCLQ10"/>
+    <cpu name="MK52DN512ZCMD10"/>
+    <cpu name="MK53DN512ZCLQ10"/>
+    <cpu name="MK53DX256ZCLQ10"/>
+    <cpu name="MK53DN512ZCMD10"/>
+    <cpu name="MK53DX256ZCMD10"/>
+  </category>
+  <category name="K60 Series" >
+    <cpu name="MK60DN512ZVLL10"/>
+    <cpu name="MK60DX256ZVLL10"/>
+    <cpu name="MK60DN256ZVLL10"/>
+    <cpu name="MK60DN512ZVLQ10"/>
+    <cpu name="MK60DN256ZVLQ10"/>
+    <cpu name="MK60DX256ZVLQ10"/>
+    <cpu name="MK60DN512ZVMC10"/>
+    <cpu name="MK60DN256ZVMC10"/>
+    <cpu name="MK60DX256ZVMC10"/>
+    <cpu name="MK60DN512ZVMD10"/>
+    <cpu name="MK60DN256ZVMD10"/>
+    <cpu name="MK60DX256ZVMD10"/>
+  </category>
+</targets>
+
   <documentation>
-    <section name="1) Creating Kinetis Projects">
+    <section name="1) Creating Projects">
       <h5>To create a new Kinetis project</h5>
       <ul>
         <li>Select the <b>File &gt; New &gt; New Project</b> menu item.</li>
@@ -49,7 +123,7 @@
       </ul>          
     </section>
 
-    <section name="2) Kinetis Project Specifics">
+    <section name="2) Project Specifics">
       <h5>Target Processor</h5>
       <p>Once a project has been created you can select different target processors by right clicking on the project node in the project 
       explorer and selecting the <b>Target Processor</b> entry.</p>
@@ -108,15 +182,12 @@
       the size of the internal Flash and RAM memories.</p>
      
       <h5>CMSIS support</h5>
-      <p>CMSIS header and source files are included as part of the new project setup. 
+      <p>CMSIS header files are included as part of the new project setup. 
       The file <a href="file:$(TargetsDir)/Kinetis/Kinetis.h">Kinetis.h</a> is provided which
-      selects the appropriate header file depending on the target processor selection. The file
-      <a href="file:$(TargetsDir)/Kinetis/Kinetis_SystemInit.c">Kinetis_SystemInit.c</a> selects the appropriate source
-      file containing the CMSIS SystemInit and SystemCoreClockUpdate functions. This file also contains the definition
-      of the function <b>set_sys_dividers</b> that can be used the system clock dividers.</p>
+      selects the appropriate header file depending on the target processor selection.</p>
 
       <h5>CTL support</h5>
-      <p>The file <a href="file:$(TargetsDir)/Kinetis/Kinetis_ctl.c">Kinetis_ctl.c</a> implements the CTL system timer using the Cortex-M
+      <p>The file <a href="file:$(TargetsDir)/Kinetis/Kinetis_ctl.c">Kinetis_ctl.c</a> implements the CTL system timer using the Cortex-M4
       SysTick timer. The timer is configured to interrupt at a 10 millisecond rate and increment the CTL system timer by 10 to give a 
       millisecond timer. The implementation uses the CMSIS <b>SystemCoreClock</b> global variable to determine the CPU clock
       frequency. The CTL samples that are provided in this package have board specific files that initialise this variable.</p>
@@ -128,7 +199,7 @@
       use CTL and should not be disabled by a CTL interrupt.</p>
     </section>
 
-    <section name="3) CrossWorks Shared Sample Projects">
+    <section name="3) Shared Sample Projects">
       <p>The following project files are supplied that can be used to run the standard CrossWorks shared samples.</p>
       <ul>        
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/shared.hzp">TWR-K40X256 Shared Samples (click to load project)</a></b></li>   
@@ -149,7 +220,20 @@
     </section>
 
   </documentation>
-  <history>    
+  <history>  
+    <version name="1.2">
+      <description>Support for latest parts and new part numbering e.g MK60N512VMD100 has become MK60DN512ZVMD10. 
+      You will need to reselect the <b>Target Processor</b> property for existing projects.</description>     
+      <description>Added <b>GetPartName</b> and <b>MatchPartName</b> functions to the target script. New projects will set
+      the <b>Get Part Name Script</b> and <b>Match Part Name Script</b> project properties to enable part name detection
+      on connect and compatibility on start debugging (requires CrossWorks for ARM Version 2.1.2 and above).</description>
+      <description>Removed <b>Kinetis_SystemInit.c</b> you'll need to add the appropriate CMSIS system_MKxxDZ10.c file
+      to your project.</description>
+      <description>Startup code now supplies a default weak <b>SystemInit()</b> function that disables the watchdog.</description>
+    </version>
+    <version name="1.1">
+      <description>Fixed <b>Flash Vectors In RAM</b> placement when the <b>Enable Unused Symbol Removal</b> property is enabled.</description>
+    </version>
     <version name="1.0">
       <description>Initial Release.</description>
     </version>

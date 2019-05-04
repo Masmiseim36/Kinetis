@@ -1,0 +1,10 @@
+<!DOCTYPE Board_Memory_Definition_File>
+<Root name="MK10DN512ZVMB10">
+  <MemorySegment size="0x80000" access="ReadOnly" start="0x00000000" name="FLASH"/>
+  <MemorySegment size="0x80000/2" access="Read/Write" start="0x00000000" name="FLASH_L"/>
+  <MemorySegment size="0x80000/2" access="Read/Write" start="0x00000000+0x80000/2" name="FLASH_H"/>
+  <MemorySegment size="0x20000" access="Read/Write" start="0x20000000-0x20000/2" name="SRAM"/>
+  <MemorySegment size="0x20000/2" access="Read/Write" start="0x20000000-0x20000/2" name="SRAM_L"/>
+  <MemorySegment size="0x20000/2" access="Read/Write" start="0x20000000" name="SRAM_H"/>
+  <ImportSVD filename="$(TargetsDir)/Kinetis/SVD/MK10DZ10.svd.xml"/>
+</Root>

@@ -1,13 +1,13 @@
-#ifndef __LM3SSimulatorMemory
-#define __LMS3SimulatorMemory
+#ifndef __KinetisSimulatorMemory
+#define __KinetisSimulatorMemory
 
 #include "ARMSimulatorMemoryImplementation.h"
 
-class LM3SSimulatorMemoryImpl : public ARMSimulatorMemoryImplementation
+class KinetisSimulatorMemoryImpl : public ARMSimulatorMemoryImplementation
 {
 public:
-  LM3SSimulatorMemoryImpl();
-  ~LM3SSimulatorMemoryImpl();
+  KinetisSimulatorMemoryImpl();
+  ~KinetisSimulatorMemoryImpl();
   bool setSpecification(bool le, unsigned argc, const char *argv[]);
   void reset();  
   void eraseAll();  

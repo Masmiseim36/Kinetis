@@ -10,6 +10,30 @@
   WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  ******************************************************************************/
 
+function EnableETB()
+{
+  TargetInterface.pokeWord(0xE0080014, 0x00000030); // MCM_ETB_CNT_CTRL - disable TPIU
+  //TargetInterface.pokeWord(0xE0043FB0, 0xC5ACCE55); // FUNNEL_LOCKACCESS_REG
+  TargetInterface.pokeWord(0xE0043000, 0x00000003); // FUNNEL_FUNCTL_REG - enable funnel
+  //TargetInterface.pokeWord(0xE0042FB0, 0xC5ACCE55); // ETB_LOCKACCESS_REG
+  TargetInterface.pokeWord(0xE0042304, 0x00000001); // ETB_FLU_CTRL_REG - enable formatting
+}
+
+function EnableETM()
+{
+  TargetInterface.pokeWord(0x40048038, 0xFFFF);
+  TargetInterface.pokeWord(0x40048004, 0x00001000);
+   
+  TargetInterface.pokeWord(0x40049018, 0x00000700);   // TraceClock, low drive strength
+  TargetInterface.pokeWord(0x4004901C, 0x00000740);   // Trace data, High drive strength
+  TargetInterface.pokeWord(0x40049020, 0x00000740);
+  TargetInterface.pokeWord(0x40049024, 0x00000740);
+  TargetInterface.pokeWord(0x40049028, 0x00000740);
+ 
+  TargetInterface.pokeWord(0xE0040004, 0x00000008);
+  TargetInterface.pokeWord(0xE00400F0, 0x00000000);
+}
+
 function Reset()
 {
   if (TargetInterface.implementation() == "crossworks_simulator")
@@ -40,6 +64,79 @@ function SRAMReset()
 function FLASHReset()
 {
   Reset();
+}
+
+function GetPartName()
+{ 
+  var SIM_SDID = TargetInterface.peekWord(0x40048024);    
+  var PartName;
+  switch ((SIM_SDID>>4) & 0x7)
+    {
+      case 0: // K10
+        PartName = "MK10";
+        break;
+      case 1: // K20
+        PartName = "MK20";
+        break;
+      case 2: // K30
+        PartName = "MK30";
+        break;
+      case 3: // K40
+        PartName = "MK40";
+        break;
+      case 4: // K60
+        PartName = "MK60";
+        break;
+      case 5: // K70
+        PartName = "MK70";
+        break;
+      case 6: // K50/K52
+        PartName = "MK50";
+        break;
+      case 7: // K51/K53
+        PartName = "MK51";
+        break;
+    }
+  var SIM_FCFG2 = TargetInterface.peekWord(0x40048050)
+  if (SIM_FCFG2 & (1<<23))
+    {
+      PartName += "N";
+      Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+      Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
+      PartName += Length.toString();
+    }
+  else
+    {
+      PartName += "X";
+      Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+      PartName += Length.toString();
+    }
+  return PartName;
+}
+
+function MatchPartName(name)
+{
+  var SIM_SDID = TargetInterface.peekWord(0x40048024);    
+  var FamilyName = name.substring(0,4);
+  switch ((SIM_SDID>>4) & 0x7)
+    {
+      case 0: // K10
+        return FamilyName == "MK10";
+      case 1: // K20
+        return FamilyName == "MK20";        
+      case 2: // K30
+        return FamilyName == "MK30";
+      case 3: // K40
+        return FamilyName == "MK40";
+      case 4: // K60
+        return FamilyName == "MK60";
+      case 5: // K70
+        return FamilyName == "MK70";
+      case 6: // K50/K52
+        return (FamilyName == "MK50") || (FamilyName == "MK52");
+      case 7: // K51/K53
+        return (FamilyName == "MK51") || (FamilyName == "MK53");
+    }
 }
 
 function MDMStatus()

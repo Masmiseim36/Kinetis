@@ -2,15 +2,18 @@
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Executable" description="An executable for Freescale Kinetis." type="Executable" template_name="Kinetis_EXE">
     <configuration name="THUMB Debug"/>
     <configuration name="THUMB Release"/>
-    <property name="arm_architecture" value="v7M"/>
-    <property name="arm_core_type" value="Cortex-M3"/>
+    <property name="arm_architecture" value="v7EM"/>
+    <property name="arm_core_type" value="Cortex-M4"/>
     <property name="arm_target_debug_interface_type" value="ADIv5"/>
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml"/>
     <propertygroup name="Target" value="Kinetis" choose="Yes"/>
     <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll"/>
+    <property name="target_get_partname_script" value="GetPartName()"/>
+    <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
     <property name="target_reset_script" value="Reset()"/>
     <property name="target_reset_script" configuration="Flash" value="FLASHReset()"/>
     <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader"/>
+    <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
     <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
@@ -35,7 +38,6 @@
     <folder name="System Files">
       <file name="$(StudioDir)/source/thumb_crt0.s" expand="no"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no"/>
-      <file name="$(TargetsDir)/Kinetis/Kinetis_SystemInit.c" expand="no"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_Target.js" expand="no">
         <property name="file_type" value="Reset Script"/>
@@ -43,15 +45,18 @@
     </folder>
   </project>
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Externally Built Executable" description="An externally built executable for Freescale Kinetis." type="Externally Built Executable" template_name="Kinetis_EXT_EXE">
-    <property name="arm_architecture" value="v7M"/>
-    <property name="arm_core_type" value="Cortex-M3"/>
+    <property name="arm_architecture" value="v7EM"/>
+    <property name="arm_core_type" value="Cortex-M4"/>
     <property name="arm_target_debug_interface_type" value="ADIv5"/>
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml"/>
     <propertygroup name="Target" value="Kinetis" choose="Yes"/>
     <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll"/>
+    <property name="target_get_partname_script" value="GetPartName()"/>
+    <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
     <property name="target_reset_script" value="Reset()"/>
     <property name="target_reset_script" configuration="Flash" value="FLASHReset()"/>
     <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader"/>
+    <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
     <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
@@ -68,15 +73,18 @@
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis CTL Executable" description="A CrossWorks Tasking Library executable for Freescale Kinetis." type="Executable" template_name="Kinetis_CTL_EXE">
     <configuration name="THUMB Debug"/>
     <configuration name="THUMB Release"/>
-    <property name="arm_architecture" value="v7M"/>
-    <property name="arm_core_type" value="Cortex-M3"/>
+    <property name="arm_architecture" value="v7EM"/>
+    <property name="arm_core_type" value="Cortex-M4"/>
     <property name="arm_target_debug_interface_type" value="ADIv5"/>
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml"/>
     <propertygroup name="Target" value="Kinetis" choose="Yes"/>
     <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll"/>
+    <property name="target_get_partname_script" value="GetPartName()"/>
+    <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
     <property name="target_reset_script" value="Reset()"/>
     <property name="target_reset_script" configuration="Flash" value="FLASHReset()"/>
     <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader"/>
+    <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
     <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
@@ -106,7 +114,6 @@
     <folder name="System Files">
       <file name="$(StudioDir)/source/thumb_crt0.s" expand="No"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no"/>
-      <file name="$(TargetsDir)/Kinetis/Kinetis_SystemInit.c" expand="no"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_Target.js" expand="no">
         <property name="file_type" value="Reset Script"/>
