@@ -66,6 +66,32 @@ public:
     }  
 };
 
+#define MCG_SC_OFFSET (MCG_BASE+0x8)
+#define MCG_MC_OFFSET (MCG_BASE+0x18)
+
+class KinetisLitePeripheralMemory : public LittleMemoryRegion
+{
+public:
+  KinetisLitePeripheralMemory() : LittleMemoryRegion(0x100000) { }
+  void reset()
+    {     
+      pokeByte(MCG_C1_OFFSET, 0x40);
+      pokeByte(MCG_C2_OFFSET, 0x01);
+      pokeByte(MCG_S_OFFSET, 0x04);
+      pokeByte(MCG_SC_OFFSET, 0x00);
+      pokeByte(MCG_MC_OFFSET, 0x00);       
+    } 
+  void pokeByte(unsigned address, unsigned value)
+    {
+      LittleMemoryRegion::pokeByte(address, value);
+      if (address == MCG_C1_OFFSET)
+        {
+          pokeByte(MCG_S_OFFSET, value);
+        }
+    }  
+};
+
+
 #define ICS_BASE (0x64000)
 #define ICS_C1_OFFSET (MCG_BASE+0x0)
 #define ICS_C2_OFFSET (MCG_BASE+0x1)
@@ -145,6 +171,8 @@ KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char 
   sram = new LittleMemoryRegion(strtoul(argv[4],0,0));   
   if (strstr(argv[0], "MKE") || strstr(argv[0], "SKEA") || strstr(argv[0], "MWPR1516"))
     peripherals = new KinetisEPeripheralMemory();
+  else if (strstr(argv[0], "MKL13") || strstr(argv[0], "MKL17Z32") || strstr(argv[0], "MKL17Z64") || strstr(argv[0], "MKL27Z32") || strstr(argv[0], "MKL27Z64") || strstr(argv[0], "MKL33Z32") || strstr(argv[0], "MKL33Z64"))
+    peripherals = new KinetisLitePeripheralMemory();
   else
     peripherals = new KinetisPeripheralMemory();
   scs = new LittleMemoryRegion(0x1000);
@@ -163,6 +191,10 @@ KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char 
           case 0x30000:
             sram_start = 0x20000000-(sram->size()/3);
             sram_end = 0x20000000+(sram->size()/3)*2;
+            break;
+          case 0x40000:
+            sram_start = 0x20000000-(sram->size()/4);
+            sram_end = 0x20000000+(sram->size()/4)*3;
             break;
           default:
             sram_start = 0x20000000-(sram->size()/2);

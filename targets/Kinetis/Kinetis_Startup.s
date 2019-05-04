@@ -115,7 +115,7 @@ FPROT:
 FSEC:
   .byte 0xfe
 FOPT:
-#if defined(MKL03Z4) || defined(MKL17Z4) || defined(MKL27Z4) || defined(MKL33Z4) || defined(MKL43Z4)
+#if defined(MKL03Z4) || defined(MKL17Z4) || defined(MKL17Z644) || defined(MKL27Z4)  || defined(MKL27Z644) || defined(MKL33Z4) || defined(MKL33Z644) || defined(MKL43Z4)
   .byte 0x3b
 #else 
   .byte 0xff

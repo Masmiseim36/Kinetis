@@ -1,9 +1,11 @@
 <!DOCTYPE Board_Memory_Definition_File>
 <Root name="SKEAZN64xxx2">
   <MemorySegment size="0x10000" access="ReadOnly" start="0x00000000" name="FLASH" />
-  <MemorySegment size="0x1000" access="Read/Write" start="0x20000000-0x1000/4" name="SRAM" />
-  <MemorySegment size="0x1000/4" access="Read/Write" start="0x20000000-0x1000/4" name="SRAM_L" />
-  <MemorySegment size="0x1000/4*3" access="Read/Write" start="0x20000000" name="SRAM_U" />
+  <MemorySegment size="0x10000/2" access="Read/Write" start="0x00000000" name="FLASH_L" />
+  <MemorySegment size="0x10000/2" access="Read/Write" start="0x00000000+0x10000/2" name="FLASH_H" />
+  <MemorySegment size="0x1000" access="Read/Write" start="0x1ffffc00" name="SRAM" />
+  <MemorySegment size="0x400" access="Read/Write" start="0x1ffffc00" name="SRAM_L" />
+  <MemorySegment size="0xc00" access="Read/Write" start="0x20000000" name="SRAM_H" />
   <MemorySegment size="0x100000" access="Read/Write" start="0x40000000" name="PERIPHERALS" />
   <MemorySegment size="0x100000" access="Read/Write" start="0xE0000000" name="PPB" />
 </Root>

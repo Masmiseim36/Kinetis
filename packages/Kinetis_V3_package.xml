@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="3.2" build_version="2015030510.10624;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.1-" replaces="Kinetis" dependencies="CMSIS_3">
+<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="3.3" build_version="2015050100.10725;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.1-" replaces="Kinetis" dependencies="CMSIS_3">
   <file file_name="$(TargetsDir)/Kinetis/Loader.hzp" title="Kinetis Loader Application Solution" />
   <file file_name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" title="Kinetis CTL Timer and Interrupt support functions" />
 <targets>
@@ -61,6 +61,8 @@
     <cpu name="MK21DN512Axxx5"/>
     <cpu name="MK21FX512xxx12"/>
     <cpu name="MK21FN1M0xxx12"/>
+    <cpu name="MK21FX512Axxx12"/>
+    <cpu name="MK21FN1M0Axxx12"/>
     <cpu name="MK22DX128xxx5"/>
     <cpu name="MK22DX256xxx5"/>
     <cpu name="MK22DN512xxx5"/>
@@ -184,6 +186,8 @@
     <cpu name="MKL16Z64xxx4"/>
     <cpu name="MKL16Z128xxx4"/>
     <cpu name="MKL16Z256xxx4"/>
+    <cpu name="MKL17Z32xxx4"/>
+    <cpu name="MKL17Z64xxx4"/>
     <cpu name="MKL17Z128xxx4"/>
     <cpu name="MKL17Z256xxx4"/>
   </category>
@@ -197,6 +201,8 @@
     <cpu name="MKL26Z64xxx4"/>
     <cpu name="MKL26Z128xxx4"/>
     <cpu name="MKL26Z256xxx4"/>
+    <cpu name="MKL27Z32xxx4"/>
+    <cpu name="MKL27Z64xxx4"/>
     <cpu name="MKL27Z128xxx4"/>
     <cpu name="MKL27Z256xxx4"/>
   </category>
@@ -218,11 +224,16 @@
   <category name="KM1x Series" >
     <cpu name="MKM14Z64xxx5"/>
     <cpu name="MKM14Z128xxx5"/>
+    <cpu name="MKM14Z64Axxx5"/>
+    <cpu name="MKM14Z128Axxx5"/>
   </category>
   <category name="KM3x Series" >
     <cpu name="MKM33Z64xxx5"/>
     <cpu name="MKM33Z128xxx5"/>
+    <cpu name="MKM33Z64Axxx5"/>
+    <cpu name="MKM33Z128Axxx5"/>
     <cpu name="MKM34Z128xxx5"/>
+    <cpu name="MKM34Z128Axxx5"/>
   </category>
   <category name="KV1x Series" >
     <cpu name="MKV10Z16xxx7"/>
@@ -313,6 +324,9 @@
         into the <b>DDR_DATA_WB</b> segment.</li>
         <li><b>RAM</b> application runs in internal RAM memory.</li>
       </ul>
+      <p>Kinetis devices that have a Cortex-M0+ core may also have an on-chip MTB. By default the MTB will store the
+      trace data to the SRAM_L block. To reserve this space for the MTB trace data add <b>RAM_NAME=SRAM_H</b> to the 
+      section placement macros property.</p>
 
       <h5>Stack and Heap Sizes</h5>
       <p>The stack and heap sizes are set to be 128 bytes by default when a project is created. This enables projects to run on the smallest of
@@ -346,7 +360,7 @@
       <h5>CMSIS support</h5>
       <p>CMSIS header files are included as part of the new project setup. 
       The file <a href="file:$(TargetsDir)/Kinetis/Kinetis.h">Kinetis.h</a> is provided which
-      selects the appropriate header file depending on the target processor selection.</p>
+      selects the appropriate header file depending on the target processor selection.</p>     
       
     </section>    
 
@@ -356,6 +370,10 @@
 
   </documentation>
   <history>
+    <version name="3.3">
+      <description>Added support for K21FA, KL17Z32, KL17Z64, KL27Z32, KL27Z64 devices.</description>
+      <description>Fixed SRAM start address for K24FN1M0, K63FN1M0, K64FX512 and K64FN1M0 devices.</description>
+    </version>
     <version name="3.2">
       <description>Added support for K02F, K11DxxxA, K21DxxxA, K24FN256, KL17, KL27, KL33, KL43, KV30, KV40 and WPR1516 devices.</description>
       <description>Fixed SRAM sizes for K24FN1M0, K63FN1M0, K64FX512 and K64FN1M0 devices.</description>

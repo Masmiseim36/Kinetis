@@ -43,6 +43,8 @@
   #include "CMSIS/system_MK21DA5.c"
 #elif defined(MK21F12)
   #include "CMSIS/system_MK21F12.c"
+#elif defined(MK21FA12)
+  #include "CMSIS/system_MK21FA12.c"
 #elif defined(MK22D5)
   #include "CMSIS/system_MK22D5.c"
 #elif defined(MK22F12)
@@ -131,12 +133,16 @@
   #include "CMSIS/system_MKL04Z4.c"
 #elif defined(MKL05Z4)
   #include "CMSIS/system_MKL05Z4.c"
+#elif defined(MKL13Z644)
+  #include "CMSIS/system_MKL13Z644.c"
 #elif defined(MKL14Z4)
   #include "CMSIS/system_MKL14Z4.c"
 #elif defined(MKL15Z4)
   #include "CMSIS/system_MKL15Z4.c"
 #elif defined(MKL16Z4)
   #include "CMSIS/system_MKL16Z4.c"
+#elif defined(MKL17Z644)
+  #include "CMSIS/system_MKL17Z644.c"
 #elif defined(MKL17Z4)
   #include "CMSIS/system_MKL17Z4.c"
 #elif defined(MKL24Z4)
@@ -145,8 +151,12 @@
   #include "CMSIS/system_MKL25Z4.c"
 #elif defined(MKL26Z4)
   #include "CMSIS/system_MKL26Z4.c"
+#elif defined(MKL27Z644)
+  #include "CMSIS/system_MKL27Z644.c"
 #elif defined(MKL27Z4)
   #include "CMSIS/system_MKL27Z4.c"
+#elif defined(MKL33Z644)
+  #include "CMSIS/system_MKL33Z644.c"
 #elif defined(MKL33Z4)
   #include "CMSIS/system_MKL33Z4.c"
 #elif defined(MKL34Z4)
@@ -161,12 +171,18 @@
   #include "CMSIS/system_MKM13Z5.c"
 #elif defined(MKM14Z5)
   #include "CMSIS/system_MKM14Z5.c"
+#elif defined(MKM14ZA5)
+  #include "CMSIS/system_MKM14ZA5.c"
 #elif defined(MKM32Z5)
   #include "CMSIS/system_MKM32Z5.c"
 #elif defined(MKM33Z5)
   #include "CMSIS/system_MKM33Z5.c"
+#elif defined(MKM33ZA5)
+  #include "CMSIS/system_MKM33ZA5.c"
 #elif defined(MKM34Z5)
   #include "CMSIS/system_MKM34Z5.c"
+#elif defined(MKM34ZA5)
+  #include "CMSIS/system_MKM34ZA5.c"
 #elif defined(MKM38Z5)
   #include "CMSIS/system_MKM38Z5.c"
 #elif defined(MKV10Z7)
