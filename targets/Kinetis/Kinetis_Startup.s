@@ -87,184 +87,15 @@ ISR_HANDLER SVC_Handler
 ISR_HANDLER DebugMon_Handler
 ISR_RESERVED
 ISR_HANDLER PendSV_Handler
-ISR_HANDLER SysTick_Handler 
-#if defined(MK10D5)
-  #include "MK10D5.vec"
-#elif defined(MK10D7)
-  #include "MK10D7.vec"
-#elif defined(MK10D10)
-  #include "MK10D10.vec"  
-#elif defined(MK10DZ10)
-  #include "MK10DZ10.vec"
-#elif defined(MK10F12)
-  #include "MK10F12.vec"
-#elif defined(MK11D5)
-  #include "MK11D5.vec"
-#elif defined(MK12D5)
-  #include "MK12D5.vec"
-#elif defined(MK20D5)
-  #include "MK20D5.vec"
-#elif defined(MK20D7)
-  #include "MK20D7.vec"
-#elif defined(MK20D10)
-  #include "MK20D10.vec"  
-#elif defined(MK20DZ10)
-  #include "MK20DZ10.vec"
-#elif defined(MK20F12)
-  #include "MK20F12.vec"
-#elif defined(MK21D5)
-  #include "MK21D5.vec"
-#elif defined(MK21F12)
-  #include "MK21F12.vec"
-#elif defined(MK22D5)
-  #include "MK22D5.vec"
-#elif defined(MK22F12)
-  #include "MK22F12.vec"
-#elif defined(MK22F12810)
-  #include "MK22F12810.vec"
-#elif defined(MK22F25612)
-  #include "MK22F25612.vec"
-#elif defined(MK22F51212)
-  #include "MK22F51212.vec"
-#elif defined(MK24F12)
-  #include "MK24F12.vec"
-#elif defined(MK30D7)
-  #include "MK30D7.vec"
-#elif defined(MK30D10)
-  #include "MK30D10.vec"
-#elif defined(MK30DZ10)
-  #include "MK30DZ10.vec"
-#elif defined(MK40D7)
-  #include "MK40D7.vec"
-#elif defined(MK40D10)
-  #include "MK40D10.vec"
-#elif defined(MK40DZ10)
-  #include "MK40DZ10.vec"
-#elif defined(MK50D7)
-  #include "MK50D7.vec"
-#elif defined(MK50D10)
-  #include "MK50D10.vec"
-#elif defined(MK50DZ10)
-  #include "MK50DZ10.vec"
-#elif defined(MK51D7)
-  #include "MK51D7.vec"
-#elif defined(MK51D10)
-  #include "MK51D10.vec"
-#elif defined(MK51DZ10)
-  #include "MK51DZ10.vec"
-#elif defined(MK52D10)
-  #include "MK52D10.vec"
-#elif defined(MK52DZ10)
-  #include "MK52DZ10.vec"
-#elif defined(MK53D10)
-  #include "MK53D10.vec"
-#elif defined(MK53DZ10)
-  #include "MK53DZ10.vec"
-#elif defined(MK60D10)
-  #include "MK60D10.vec"
-#elif defined(MK60DZ10)
-  #include "MK60DZ10.vec"
-#elif defined(MK60F12)
-  #include "MK60F12.vec"
-#elif defined(MK60F15)
-  #include "MK60F15.vec"
-#elif defined(MK61F12)
-  #include "MK61F12.vec"
-#elif defined(MK61F15)
-  #include "MK61F15.vec"
-#elif defined(MK63F12)
-  #include "MK63F12.vec"
-#elif defined(MK64F12)
-  #include "MK64F12.vec"
-#elif defined(MK65F18)
-  #include "MK65F18.vec"
-#elif defined(MK66F18)
-  #include "MK66F18.vec"
-#elif defined(MK70F12)
-  #include "MK70F12.vec"
-#elif defined(MK70F15)
-  #include "MK70F15.vec"
-#elif defined(MKE02Z2)
-  #include "MKE02Z2.vec"
-#elif defined(MKE02Z4)
-  #include "MKE02Z4.vec"
-#elif defined(MKE04Z1284)
-  #include "MKE04Z1284.vec"
-#elif defined(MKE04Z4)
-  #include "MKE04Z4.vec"
-#elif defined(MKE06Z4)
-  #include "MKE06Z4.vec"
-#elif defined(MKL02Z4)
-  #include "MKL02Z4.vec"
-#elif defined(MKL03Z4)
-  #include "MKL03Z4.vec"
-#elif defined(MKL04Z4)
-  #include "MKL04Z4.vec"
-#elif defined(MKL05Z4)
-  #include "MKL05Z4.vec"
-#elif defined(MKL14Z4)
-  #include "MKL14Z4.vec"
-#elif defined(MKL15Z4)
-  #include "MKL15Z4.vec"
-#elif defined(MKL16Z4)
-  #include "MKL16Z4.vec"
-#elif defined(MKL24Z4)
-  #include "MKL24Z4.vec"
-#elif defined(MKL25Z4)
-  #include "MKL25Z4.vec"
-#elif defined(MKL26Z4)
-  #include "MKL26Z4.vec"
-#elif defined(MKL34Z4)
-  #include "MKL34Z4.vec"
-#elif defined(MKL36Z4)
-  #include "MKL36Z4.vec"
-#elif defined(MKL43Z4)
-  #include "MKL43Z4.vec"
-#elif defined(MKL46Z4)
-  #include "MKL46Z4.vec"
-#elif defined(MKM13Z5)
-  #include "MKM13Z5.vec"
-#elif defined(MKM14Z5)
-  #include "MKM14Z5.vec"
-#elif defined(MKM32Z5)
-  #include "MKM32Z5.vec"
-#elif defined(MKM33Z5)
-  #include "MKM33Z5.vec"
-#elif defined(MKM34Z5)
-  #include "MKM34Z5.vec"
-#elif defined(MKM38Z5)
-  #include "MKM38Z5.vec"
-#elif defined(MKV10Z7)
-  #include "MKV10Z7.vec"
-#elif defined(MKV31F12810)
-  #include "MKV31F12810.vec"
-#elif defined(MKV31F25612)
-  #include "MKV31F25612.vec"
-#elif defined(MKV31F51212)
-  #include "MKV31F51212.vec"
-#elif defined(MKW01Z4)
-  #include "MKW01Z4.vec"
-#elif defined(MKW21D5)
-  #include "MKW21D5.vec"
-#elif defined(MKW22D5)
-  #include "MKW22D5.vec"
-#elif defined(MKW24D5)
-  #include "MKW24D5.vec"
-#elif defined(SKEAZ1284)
-  #include "SKEAZ1284.vec"
-#elif defined(SKEAZN642)
-  #include "SKEAZN642.vec"
-#elif defined(SKEAZN84)
-  #include "SKEAZN84.vec"
-#else
-  #error no vectors
-#endif
+ISR_HANDLER SysTick_Handler
+#include __VECTORS
   .section .vectors, "ax"
 _vectors_end:
   
   .section .vectors, "ax"
   // fill to 0x400 for the flash configuration field
-  .fill 0x400-(_vectors_end-_vectors), 1, 0xff
+  //.fill 0x400-(_vectors_end-_vectors), 1, 0xff
+  .org 0x400, 0xFF
 BackDoorKey:
   .byte 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 #if defined(E_SERIES)
@@ -284,7 +115,11 @@ FPROT:
 FSEC:
   .byte 0xfe
 FOPT:
+#if defined(MKL03Z4) || defined(MKL17Z4) || defined(MKL27Z4) || defined(MKL33Z4) || defined(MKL43Z4)
+  .byte 0x3b
+#else 
   .byte 0xff
+#endif
 FEPROT:
   .byte 0xff
 FDPROT:
@@ -354,7 +189,7 @@ l1:
 #endif
   str r1, [r0]
 
-  b _start
+  bl _start
 
 #ifndef __NO_SYSTEM_INIT
   .thumb_func
@@ -364,7 +199,7 @@ SystemInit:
 disableWatchDog: 
 #if defined(L_SERIES)
   ldr r0, =0x40048100
-  ldr r1, =#0
+  ldr r1, =0x0
   str r1, [r0]
 #elif defined(K_SERIES)
   movw r0, #0x2000
@@ -395,13 +230,13 @@ disableWatchDog:
   ldr r0, =0x40052000
   ldr r1, =0x0
   strb r1, [r0, #1]
-  ldr r1, =#0x20c5
+  ldr r1, =0x20c5
   strh r1, [r0, #2]
-  ldr r1, =#0x28D9
+  ldr r1, =0x28D9
   strh r1, [r0, #2]
-  ldr r1, =#0xFFFF
+  ldr r1, =0xFFFF
   strh r1, [r0, #4]
-  ldr r1, =#0x20
+  ldr r1, =0x20
   strb r1, [r0, #0]
 #else
 #error L_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined

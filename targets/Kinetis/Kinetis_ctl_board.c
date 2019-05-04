@@ -9,7 +9,9 @@
 #include <ctl_api.h>
 #include <Kinetis.h>
 
-#if defined(MK10D5)
+#if defined(MK02F12810)
+  #include "CMSIS/system_MK02F12810.c"
+#elif defined(MK10D5)
   #include "CMSIS/system_MK10D5.c"
 #elif defined(MK10D7)
   #include "CMSIS/system_MK10D7.c"
@@ -21,6 +23,8 @@
   #include "CMSIS/system_MK10F12.c"
 #elif defined(MK11D5)
   #include "CMSIS/system_MK11D5.c"
+#elif defined(MK11DA5)
+  #include "CMSIS/system_MK11DA5.c"
 #elif defined(MK12D5)
   #include "CMSIS/system_MK12D5.c"
 #elif defined(MK20D5)
@@ -35,6 +39,8 @@
   #include "CMSIS/system_MK20F12.c"
 #elif defined(MK21D5)
   #include "CMSIS/system_MK21D5.c"
+#elif defined(MK21DA5)
+  #include "CMSIS/system_MK21DA5.c"
 #elif defined(MK21F12)
   #include "CMSIS/system_MK21F12.c"
 #elif defined(MK22D5)
@@ -47,6 +53,8 @@
   #include "CMSIS/system_MK22F25612.c"
 #elif defined(MK22F51212)
   #include "CMSIS/system_MK22F51212.c"
+#elif defined(MK24F25612)
+  #include "CMSIS/system_MK24F25612.c"
 #elif defined(MK24F12)
   #include "CMSIS/system_MK24F12.c"
 #elif defined(MK30D7)
@@ -129,12 +137,18 @@
   #include "CMSIS/system_MKL15Z4.c"
 #elif defined(MKL16Z4)
   #include "CMSIS/system_MKL16Z4.c"
+#elif defined(MKL17Z4)
+  #include "CMSIS/system_MKL17Z4.c"
 #elif defined(MKL24Z4)
   #include "CMSIS/system_MKL24Z4.c"
 #elif defined(MKL25Z4)
   #include "CMSIS/system_MKL25Z4.c"
 #elif defined(MKL26Z4)
   #include "CMSIS/system_MKL26Z4.c"
+#elif defined(MKL27Z4)
+  #include "CMSIS/system_MKL27Z4.c"
+#elif defined(MKL33Z4)
+  #include "CMSIS/system_MKL33Z4.c"
 #elif defined(MKL34Z4)
   #include "CMSIS/system_MKL34Z4.c"
 #elif defined(MKL36Z4)
@@ -157,12 +171,24 @@
   #include "CMSIS/system_MKM38Z5.c"
 #elif defined(MKV10Z7)
   #include "CMSIS/system_MKV10Z7.c"
+#elif defined(MKV30F12810)
+  #include "CMSIS/system_MKV30F12810.c"
 #elif defined(MKV31F12810)
   #include "CMSIS/system_MKV31F12810.c"
 #elif defined(MKV31F25612)
   #include "CMSIS/system_MKV31F25612.c"
 #elif defined(MKV31F51212)
   #include "CMSIS/system_MKV31F51212.c"
+#elif defined(MKV40F15)
+  #include "CMSIS/system_MKV40F15.c"
+#elif defined(MKV43F15)
+  #include "CMSIS/system_MKV43F15.c"
+#elif defined(MKV44F15)
+  #include "CMSIS/system_MKV44F15.c"
+#elif defined(MKV45F15)
+  #include "CMSIS/system_MKV45F15.c"
+#elif defined(MKV46F15)
+  #include "CMSIS/system_MKV46F15.c"
 #elif defined(MKW01Z4)
   #include "CMSIS/system_MKW01Z4.c"
 #elif defined(MKW21D5)
@@ -181,6 +207,8 @@
   #include "CMSIS/system_SKEAZN642.c"
 #elif defined(SKEAZN84)
   #include "CMSIS/system_SKEAZN84.c"
+#elif defined(MWPR1516)
+  #include "CMSIS/system_MWPR1516.c"
 #else
   #error no SystemInit
 #endif

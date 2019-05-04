@@ -1,8 +1,12 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="3.1" build_version="2014091704.10391;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.1-" ses_versions="8:1-" replaces="Kinetis" dependencies="CMSIS_3">
-  <file file_name="$(TargetsDir)/Kinetis/Loader.hzp" title="Kinetis Loader Application Solution" ses_versions="0"/>
-  <file file_name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" title="Kinetis CTL Timer and Interrupt support functions" ses_versions="0"/>
+<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="3.2" build_version="2015030510.10624;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.1-" replaces="Kinetis" dependencies="CMSIS_3">
+  <file file_name="$(TargetsDir)/Kinetis/Loader.hzp" title="Kinetis Loader Application Solution" />
+  <file file_name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" title="Kinetis CTL Timer and Interrupt support functions" />
 <targets>
+  <category name="K02x Series" >
+    <cpu name="MK02FN64xxx10"/>
+    <cpu name="MK02FN128xxx10"/>
+  </category>
   <category name="K1x Series" >
     <cpu name="MK10DN32xxx5"/>
     <cpu name="MK10DX32xxx5"/>
@@ -24,6 +28,9 @@
     <cpu name="MK11DX128xxx5"/>
     <cpu name="MK11DX256xxx5"/>
     <cpu name="MK11DN512xxx5"/>
+    <cpu name="MK11DX128Axxx5"/>
+    <cpu name="MK11DX256Axxx5"/>
+    <cpu name="MK11DN512Axxx5"/>
     <cpu name="MK12DX128xxx5"/>
     <cpu name="MK12DX256xxx5"/>
     <cpu name="MK12DN512xxx5"/>
@@ -49,6 +56,9 @@
     <cpu name="MK21DX128xxx5"/>
     <cpu name="MK21DX256xxx5"/>
     <cpu name="MK21DN512xxx5"/>
+    <cpu name="MK21DX128Axxx5"/>
+    <cpu name="MK21DX256Axxx5"/>
+    <cpu name="MK21DN512Axxx5"/>
     <cpu name="MK21FX512xxx12"/>
     <cpu name="MK21FN1M0xxx12"/>
     <cpu name="MK22DX128xxx5"/>
@@ -59,6 +69,7 @@
     <cpu name="MK22FN512xxx12"/>
     <cpu name="MK22FX512xxx12"/>
     <cpu name="MK22FN1M0xxx12"/>
+    <cpu name="MK24FN256xxx12"/>
     <cpu name="MK24FN1M0xxx12"/>
   </category>
   <category name="K3x Series" >
@@ -173,6 +184,8 @@
     <cpu name="MKL16Z64xxx4"/>
     <cpu name="MKL16Z128xxx4"/>
     <cpu name="MKL16Z256xxx4"/>
+    <cpu name="MKL17Z128xxx4"/>
+    <cpu name="MKL17Z256xxx4"/>
   </category>
   <category name="KL2x Series" >
     <cpu name="MKL24Z32xxx4"/>
@@ -184,14 +197,21 @@
     <cpu name="MKL26Z64xxx4"/>
     <cpu name="MKL26Z128xxx4"/>
     <cpu name="MKL26Z256xxx4"/>
+    <cpu name="MKL27Z128xxx4"/>
+    <cpu name="MKL27Z256xxx4"/>
   </category>
   <category name="KL3x Series" >
+    <cpu name="MKL33Z128xxx4"/>
+    <cpu name="MKL33Z256xxx4"/>
     <cpu name="MKL34Z64xxx4"/>
     <cpu name="MKL36Z64xxx4"/>
     <cpu name="MKL36Z128xxx4"/>
     <cpu name="MKL36Z256xxx4"/>
   </category>
   <category name="KL4x Series" >
+    <cpu name="MKL43Z64xxx4"/>
+    <cpu name="MKL43Z128xxx4"/>
+    <cpu name="MKL43Z256xxx4"/>
     <cpu name="MKL46Z128xxx4"/>
     <cpu name="MKL46Z256xxx4"/>
   </category>
@@ -209,9 +229,24 @@
     <cpu name="MKV10Z32xxx7"/>
   </category>
   <category name="KV3x Series" >
+    <cpu name="MKV30F64xxx10"/>
+    <cpu name="MKV30F128xxx10"/>
     <cpu name="MKV31F128xxx10"/>
     <cpu name="MKV31F256xxx12"/>
     <cpu name="MKV31F512xxx12"/>
+  </category>
+  <category name="KV4x Series" >
+    <cpu name="MKV40F64xxx15"/>
+    <cpu name="MKV40F128xxx15"/>
+    <cpu name="MKV40F256xxx15"/>
+    <cpu name="MKV43F64xxx15"/>
+    <cpu name="MKV43F128xxx15"/>
+    <cpu name="MKV44F64xxx15"/>
+    <cpu name="MKV44F128xxx15"/>
+    <cpu name="MKV45F128xxx15"/>
+    <cpu name="MKV45F256xxx15"/>
+    <cpu name="MKV46F128xxx15"/>
+    <cpu name="MKV46F256xxx15"/>
   </category>
   <category name="KW0x Series" >
     <cpu name="MKW01Z128xxx"/>
@@ -221,6 +256,9 @@
     <cpu name="MKW21D512xxx5"/>
     <cpu name="MKW22D512xxx5"/>
     <cpu name="MKW24D512xxx5"/>
+  </category>
+  <category name="WPR1516 Series" >
+    <cpu name="MWPR1516"/>
   </category>
 </targets>
   <documentation>
@@ -318,6 +356,10 @@
 
   </documentation>
   <history>
+    <version name="3.2">
+      <description>Added support for K02F, K11DxxxA, K21DxxxA, K24FN256, KL17, KL27, KL33, KL43, KV30, KV40 and WPR1516 devices.</description>
+      <description>Fixed SRAM sizes for K24FN1M0, K63FN1M0, K64FX512 and K64FN1M0 devices.</description>
+    </version>
     <version name="3.1">
       <description>Added support for SKEA devices.</description>
     </version>

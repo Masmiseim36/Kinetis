@@ -95,6 +95,10 @@ function GetPartName()
   CheckSystemSecurity();
   TargetInterface.pokeWord(0xE000EDFC, (1<<24));
   var PartName;
+  var PartName2;
+  var PartName3;
+  var ForD;
+  var SubPartName="";
   var CPUID = TargetInterface.peekWord(0xE000ED00);
   if (((CPUID>>4)&0xf)==0) // Cortex-M0
     {      
@@ -141,66 +145,79 @@ function GetPartName()
             }
           PartName += ((SIM_SDID>>24)&0xff).toString(16);
           if (TargetInterface.peekWord(0xE000EF40))
-            PartName += "F";
+            ForD = "F";
           else
-            PartName += "D";
+            ForD = "D";
         }
       else
-        {
+        {          
           switch ((SIM_SDID>>4) & 0x7)
             {
               case 0: // K10/K12
                 PartName = "MK10";
+                PartName2 = "MK12";
                 break;
               case 1: // K20/K22
                 PartName = "MK20";
+                PartName2 = "MK22";
                 break;
               case 2: // K30/K11/K61
                 PartName = "MK30";
+                PartName2 = "MK11";
+                PartName3 = "MK61";
                 break;
               case 3: // K40/K21
                 PartName = "MK40";
+                PartName2 = "MK21";
                 break;
               case 4: // K60/K62
                 PartName = "MK60";
+                PartName2 = "MK62";
                 break;
               case 5: // K70
                 PartName = "MK70";
                 break;
               case 6: // K50/K52
                 PartName = "MK50";
+                PartName2 = "MK52";
                 break;
               case 7: // K51/K53
                 PartName = "MK51";
+                PartName2 = "MK53";
                 break;
             }        
           if (((SIM_SDID>>7) & 0x7)==3)
-            PartName += "F";
+            ForD = "F";
           else
-            PartName += "D";
-        }
+            ForD = "D";
+        }      
       var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
       if (SIM_FCFG2 & (1<<23))
         {
           if (PartName.substring(0,3) != "MKV")
-            PartName += "N";
+            SubPartName += "N";
           Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
           Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
           if (((SIM_SDID>>7) & 0x7)==3)
             Length *= 2;
           if (Length == 1024)
-            PartName += "1M0";
+            SubPartName += "1M0";
           else
-            PartName += Length.toString();
+            SubPartName += Length.toString();
         }
       else
         {
-          PartName += "X";
+          SubPartName += "X";
           Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
           if (((SIM_SDID>>7) & 0x7)==3)
             Length *= 2;
-          PartName += Length.toString();
+          SubPartName += Length.toString();
         }
+      PartName += ForD+SubPartName;
+      if (PartName2)
+        PartName += "/"+PartName2+ForD+SubPartName;
+      if (PartName3)
+        PartName += "/"+PartName3+ForD+SubPartName;
     }
   return PartName;
 }
@@ -271,7 +288,7 @@ function GetPartName3()
   switch (SIM_SRSID >> 24)
     {
       case 2: // KE02
-        PartName = "MKE02Z/SKEAZN64";
+        PartName = "MKE02Z/SKEAZN64/MWPR15";
         break;
       case 4: // KE04
         PartName = "MKE04Z/SKEAZN8";
@@ -289,7 +306,7 @@ function MatchPartName3(name)
   switch (SIM_SRSID >> 24)
     {
       case 2: // KE02
-        return name == "MKE02Z" || name.substring(0,8) == "SKEAZN64";       
+        return name == "MKE02Z" || name.substring(0,8) == "SKEAZN64" || name == "MWPR1516";
       case 4: // KE04
         return name == "MKE04Z" || name.substring(0,7) == "SKEAZN8";
       case 6: // KE06

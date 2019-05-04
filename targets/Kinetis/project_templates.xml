@@ -9,9 +9,8 @@
     <property name="target_connect_script" value="Connect()" />
     <property name="target_get_partname_script" value="GetPartName()" />
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
-    <property name="target_script_file" value="$(TargetsDir)/Kinetis/Kinetis_Target.js" />
     <property name="target_reset_script" value="Reset()" />
+    <property name="target_script_file" value="$(TargetsDir)/Kinetis/Kinetis_Target.js" />
     <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
     <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader" />
     <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No" />
@@ -44,6 +43,8 @@
     </folder>
   </project>
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Externally Built Executable" description="An externally built executable for Freescale Kinetis." type="Externally Built Executable" template_name="Kinetis_EXT_EXE">
+    <configuration name="THUMB Debug" />
+    <configuration name="THUMB Release" />
     <property name="arm_target_debug_interface_type" value="ADIv5" />
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
     <propertygroup name="Target" value="Kinetis" choose="Yes" />
@@ -51,9 +52,8 @@
     <property name="target_connect_script" value="Connect()" />
     <property name="target_get_partname_script" value="GetPartName()" />
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
-    <property name="target_script_file" value="$(TargetsDir)/Kinetis/Kinetis_Target.js" />
     <property name="target_reset_script" value="Reset()" />
+    <property name="target_script_file" value="$(TargetsDir)/Kinetis/Kinetis_Target.js" />
     <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
     <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader" />
     <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No" />
@@ -61,6 +61,7 @@
     <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No" />
     <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No" />
     <property name="arm_target_restrict_memory_accesses" value="Yes" />
+    <property name="project_type" />
     <property name="external_build_file_name" />
     <propertygroup name="Placement" value="Flash" />
     <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc" />
@@ -75,9 +76,8 @@
     <property name="target_connect_script" value="Connect()" />
     <property name="target_get_partname_script" value="GetPartName()" />
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
-    <property name="target_script_file" value="$(TargetsDir)/Kinetis/Kinetis_Target.js" />
     <property name="target_reset_script" value="Reset()" />
+    <property name="target_script_file" value="$(TargetsDir)/Kinetis/Kinetis_Target.js" />
     <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
     <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader" />
     <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No" />

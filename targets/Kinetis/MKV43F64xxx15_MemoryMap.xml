@@ -1,0 +1,14 @@
+<!DOCTYPE Board_Memory_Definition_File>
+<Root name="MKV43F64xxx15">
+  <MemorySegment size="0x10000" access="ReadOnly" start="0x00000000" name="FLASH" />
+  <MemorySegment size="0x10000/2" access="Read/Write" start="0x00000000" name="FLASH_L" />
+  <MemorySegment size="0x10000/2" access="Read/Write" start="0x00000000+0x10000/2" name="FLASH_H" />
+  <MemorySegment size="$(DDR_CODE_SIZE:0)" access="Read/Write" start="$(DDR_CODE_START:0x08000000)" name="DDR_CODE" />
+  <MemorySegment size="0x4000" access="Read/Write" start="0x20000000-0x4000/2" name="SRAM" />
+  <MemorySegment size="0x4000/2" access="Read/Write" start="0x20000000-0x4000/2" name="SRAM_L" />
+  <MemorySegment size="0x4000/2" access="Read/Write" start="0x20000000" name="SRAM_H" />
+  <MemorySegment size="0x100000" access="Read/Write" start="0x40000000" name="PERIPHERALS" />
+  <MemorySegment size="$(DDR_DATA_WB_SIZE:0)" access="Read/Write" start="$(DDR_DATA_WB_START:0x70000000)" name="$(DDR_DATA_WB_NAME:DDR_DATA_WB)" />
+  <MemorySegment size="$(DDR_DATA_WT_SIZE:0)" access="Read/Write" start="$(DDR_DATA_WT_START:0x80000000)" name="$(DDR_DATA_WT_NAME:DDR_DATA_WT)" />
+  <MemorySegment size="0x100000" access="Read/Write" start="0xE0000000" name="PPB" />
+</Root>
