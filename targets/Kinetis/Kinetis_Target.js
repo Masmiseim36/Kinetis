@@ -13,6 +13,8 @@
 function Connect()
 {
   TargetInterface.setMaximumJTAGFrequency(8000000);
+  if (TargetInterface.implementation() != "j-link")
+    TargetInterface.setDebugInterfaceProperty("max_ap_num", 3);
 }
 
 function EnableTrace(TraceInterfaceType)
@@ -106,11 +108,20 @@ function GetPartName()
       var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
       switch ((SIM_SDID>>20)&0xf)
         {
+          case 0:
           case 1:
             if (((SIM_SDID>>24)&0xff) < 10)
               PartName = "MKL0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            else if (((SIM_SDID>>28)&0xf) == 9)
+              PartName = "MKL"+(((SIM_SDID>>24)&0xff)-0x10).toString(16)+"Z";
             else
               PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            break;
+          case 5:
+            if (((SIM_SDID>>24)&0xff) < 10)
+              PartName = "MKW0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            else
+              PartName = "MKW"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
             break;
           case 6:
             if (((SIM_SDID>>24)&0xff) < 10)
@@ -141,6 +152,9 @@ function GetPartName()
                 break;
               case 6:
                 PartName = "MKV";
+                break;
+              case 7:
+                PartName = "MKS";
                 break;
             }
           PartName += ((SIM_SDID>>24)&0xff).toString(16);
@@ -314,6 +328,30 @@ function MatchPartName3(name)
         break;
     }
   return 0;
+}
+
+// MKL28 devices have the SIM module at a different address
+function GetPartName4()
+{  
+  CheckSystemSecurity();
+  TargetInterface.pokeWord(0xE000EDFC, (1<<24));
+  var PartName;
+  var SIM_SDID = TargetInterface.peekWord(0x40075024);
+  var SIM_FCFG2 = TargetInterface.peekWord(0x40075050);
+  if (((SIM_SDID>>24)&0xff) < 10)
+    PartName = "MKL0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+  else
+    PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+  Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+  Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
+  PartName += Length.toString();  
+  return PartName;
+}
+
+function MatchPartName4(name)
+{  
+  var partName = GetPartName4();  
+  return name.substring(0, 8) == partName.substring(0, 8);
 }
 
 function MDMStatus()

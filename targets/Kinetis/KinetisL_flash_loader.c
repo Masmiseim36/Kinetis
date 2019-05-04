@@ -55,6 +55,10 @@
 #define SIM_SDID  (*(volatile unsigned *)0x4003F024)
 #define SIM_FCFG1 (*(volatile unsigned *)0x4003F04C)
 #define SIM_FCFG2 (*(volatile unsigned *)0x4003F050)
+#elif defined(L28_SERIES)
+#define SIM_SDID  (*(volatile unsigned *)0x40075024)
+#define SIM_FCFG1 (*(volatile unsigned *)0x4007504C)
+#define SIM_FCFG2 (*(volatile unsigned *)0x40075050)
 #else
 #define SIM_SDID  (*(volatile unsigned *)0x40048024)
 #define SIM_FCFG1 (*(volatile unsigned *)0x4004804C)
@@ -237,7 +241,7 @@ extern unsigned char __RAM_segment_used_end__[];
 
 int
 main(int param0)
-{  
+{
 #define MCM_PLACR (*(volatile unsigned *)0xF000300C)
   // turn off and invalidate any caching
   MCM_PLACR = (1<<15) | (1<<13) | (1<<12) | (1<<11) | (1<<10);

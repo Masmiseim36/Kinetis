@@ -137,7 +137,7 @@ public:
 };
 
 KinetisSimulatorMemoryImpl::KinetisSimulatorMemoryImpl() :
-  pflash(0), dflash(0), flexram(0), sram(0)
+  pflash(0), dflash(0), flexram(0), sram(0), peripherals(0), scs(0), itcm(0)
 {
 }
 
@@ -155,20 +155,24 @@ KinetisSimulatorMemoryImpl::~KinetisSimulatorMemoryImpl()
     delete peripherals;
   if (scs)
     delete scs;
+  if (itcm)
+    delete itcm;
 }
 
 bool 
 KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char *argv[])
 {
-  l_series = (strstr(argv[0], "MKL") == argv[0]) || (strstr(argv[0], "MKE") == argv[0]) || (strstr(argv[0], "MKM") == argv[0]) || (strstr(argv[0], "MKV10") == argv[0]) || (strstr(argv[0], "MKW0") == argv[0]) || (strstr(argv[0], "SKEA") == argv[0]) || (strstr(argv[0], "MWPR1516") == argv[0]);
-  if (argc != 5)
+  if (argc != 6)
     return false;  
+  l_series = (strstr(argv[0], "MKL") == argv[0]) || (strstr(argv[0], "MKE") == argv[0]) || (strstr(argv[0], "MKM") == argv[0]) || (strstr(argv[0], "MKV10") == argv[0]) || (strstr(argv[0], "MKV11") == argv[0]) || (strstr(argv[0], "MKW0") == argv[0]) || (strstr(argv[0], "SKEA") == argv[0]) || (strstr(argv[0], "MWPR1516") == argv[0]);
+  kv5_series = (strstr(argv[0], "MKV5") == argv[0]);
   pflash = new LittleMemoryRegion(strtoul(argv[1],0,0));
   pflash->clear(0xff);  
   dflash = new LittleMemoryRegion(strtoul(argv[2],0,0));
   dflash->clear(0xff);  
   flexram = new LittleMemoryRegion(strtoul(argv[3],0,0));
   sram = new LittleMemoryRegion(strtoul(argv[4],0,0));   
+  unsigned sramsplit = strtoul(argv[5],0,0);
   if (strstr(argv[0], "MKE") || strstr(argv[0], "SKEA") || strstr(argv[0], "MWPR1516"))
     peripherals = new KinetisEPeripheralMemory();
   else if (strstr(argv[0], "MKL13") || strstr(argv[0], "MKL17Z32") || strstr(argv[0], "MKL17Z64") || strstr(argv[0], "MKL27Z32") || strstr(argv[0], "MKL27Z64") || strstr(argv[0], "MKL33Z32") || strstr(argv[0], "MKL33Z64"))
@@ -176,31 +180,16 @@ KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char 
   else
     peripherals = new KinetisPeripheralMemory();
   scs = new LittleMemoryRegion(0x1000);
-  if (l_series)
+  if (kv5_series)
     {
-      sram_start = 0x20000000-(sram->size()/4);
-      sram_end = 0x20000000+(sram->size()/4)*3;
+      sram_start = 0x20000000;
+      sram_end = 0x20000000+sram->size();
+      itcm = new LittleMemoryRegion(0x10000);
     }
   else
     {
-      switch (sram->size())
-        {
-          case 0x6000:
-          case 0xC000:
-          case 0x18000:
-          case 0x30000:
-            sram_start = 0x20000000-(sram->size()/3);
-            sram_end = 0x20000000+(sram->size()/3)*2;
-            break;
-          case 0x40000:
-            sram_start = 0x20000000-(sram->size()/4);
-            sram_end = 0x20000000+(sram->size()/4)*3;
-            break;
-          default:
-            sram_start = 0x20000000-(sram->size()/2);
-            sram_end = 0x20000000+sram->size()/2;
-            break;
-        }
+      sram_start = 0x20000000-(sram->size()/sramsplit);
+      sram_end = 0x20000000+(sram->size()/sramsplit)*(sramsplit-1);
     }
   return true;
 }
@@ -225,7 +214,17 @@ MemoryRegion *
 KinetisSimulatorMemoryImpl::findMemoryRegion(unsigned address, unsigned size, unsigned &offset)
 {
   MemoryRegion *m = 0;  
-  if (address < pflash->size())
+  if (kv5_series && (address >= 0x10000000) && (address < (0x10000000+pflash->size())))
+    {
+      m = pflash;
+      offset = address-0x10000000;
+    }
+  else if (kv5_series && (address < 0x10000))
+    {
+      m = itcm;
+      offset = address;
+    }
+  else if (address < pflash->size())
     {
       m = pflash;
       offset = address;

@@ -8,7 +8,7 @@
 **
 **     Reference manual:    KV11P64M75RM Rev.2, April 2015
 **     Version:             rev. 1.0, 2014-12-14
-**     Build:               b150417
+**     Build:               b150616
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MKV11Z7
@@ -9295,7 +9295,7 @@ typedef struct {
   __I  uint32_t RXFR2;                             /**< Receive FIFO Registers, offset: 0x84 */
   __I  uint32_t RXFR3;                             /**< Receive FIFO Registers, offset: 0x88 */
        uint8_t RESERVED_3[176];
-  __IO uint32_t SREX;                              /**< Status Register Extended, offset: 0x13C */
+  __I  uint32_t SREX;                              /**< Status Register Extended, offset: 0x13C */
 } SPI_Type, *SPI_MemMapPtr;
 
 /* ----------------------------------------------------------------------------

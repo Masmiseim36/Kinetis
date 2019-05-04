@@ -201,6 +201,18 @@ disableWatchDog:
   ldr r0, =0x40048100
   ldr r1, =0x0
   str r1, [r0]
+#elif defined(L28_SERIES)
+  ldr r0, =0x40076000
+  ldr r1, =0xD928C520
+  str r1, [r0, #4]
+  ldr r1, =0xffff
+  str r1, [r0, #8]
+  ldr r1, [r0]
+  ldr r2, =(1<<7)
+  bics r1, r2
+  ldr r2, =(1<<5)
+  orrs r1, r2
+  str r1, [r0]
 #elif defined(K_SERIES)
   movw r0, #0x2000
   movt r0, #0x4005

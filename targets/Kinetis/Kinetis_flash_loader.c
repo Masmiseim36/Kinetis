@@ -311,9 +311,16 @@ main(int param0)
   unsigned FLASH_SIZE = ((SIM_FCFG2>>24) & 0x7f)<<13;  
   if (SIM_FCFG2 & (1<<23)) // N
     FLASH_SIZE += ((SIM_FCFG2>>16) & 0x7f)<<13;
+  unsigned FLASH_START = 0;
 
   write_block_size = 4;
-  
+#if defined(LOADER3)
+  sectorSize = 4 * 1024;
+#elif defined(LOADERV5)
+  sectorSize = 8 * 1024;
+  write_block_size = 8;
+  FLASH_START = 0x10000000;
+#else  
   if (param0)
     {
       sectorSize = (param0 & 0xf) * 1024;
@@ -342,9 +349,10 @@ main(int param0)
           libmem_rpc_loader_exit(LIBMEM_STATUS_ERROR, "Unsupported device");
           return 0;
       }
+#endif
   geometry[0].count = FLASH_SIZE/sectorSize;
   geometry[0].size = sectorSize;
-  libmem_register_driver(&h, (uint8_t *)0, FLASH_SIZE, geometry, 0, &driver_functions, &ext_driver_functions);
+  libmem_register_driver(&h, (uint8_t *)FLASH_START, FLASH_SIZE, geometry, 0, &driver_functions, &ext_driver_functions);
 
 #ifdef HASFlexNVM
   sectorSize = ((param0 >> 4) & 0xf) * 1024;

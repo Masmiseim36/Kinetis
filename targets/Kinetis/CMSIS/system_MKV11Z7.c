@@ -8,7 +8,7 @@
 **
 **     Reference manual:    KV11P64M75RM Rev.2, April 2015
 **     Version:             rev. 1.0, 2014-12-14
-**     Build:               b150416
+**     Build:               b150616
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that

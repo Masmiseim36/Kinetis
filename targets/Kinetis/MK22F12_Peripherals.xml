@@ -28464,6 +28464,8 @@
       <BitField size="1" start="0" name="DISMCYCINT" description="Disable load/store multiple" />
       <BitField size="1" start="1" name="DISDEFWBUF" description="Disable write buffer" />
       <BitField size="1" start="2" name="DISFOLD" description="Disable IT folding" />
+      <BitField size="1" start="8" name="DISFPCA" description="Disable FPCA update" />
+      <BitField size="1" start="9" name="DISOOFP" description="Disable out of order FP execution" />
     </Register>
   </RegisterGroup>
   <RegisterGroup start="0xE000E010" name="SysTick" description="24Bit System Tick Timer for use in RTOS">
@@ -28559,6 +28561,7 @@
     </Register>
     <Register start="0xE000ED28" size="1" name="MMFSR" aka="Memory_Manage_Fault_Status">
       <BitField size="1" name="MMARVALID" start="7" />
+      <BitField size="1" name="MLSPERR" start="5" />
       <BitField size="1" name="MSTKERR" start="4" />
       <BitField size="1" name="MUNSTKERR" start="3" />
       <BitField size="1" name="DACCVIOL" start="1" />
@@ -28566,6 +28569,7 @@
     </Register>
     <Register start="0xE000ED29" size="1" name="BFSR" aka="Bus_Fault_Status">
       <BitField size="1" name="BFARVALID" start="7" />
+      <BitField size="1" name="LSPERR" start="5" />
       <BitField size="1" name="STKERR" start="4" />
       <BitField size="1" name="UNSTKERR" start="3" />
       <BitField size="1" name="IMPRECISERR" start="2" />
@@ -28670,6 +28674,28 @@
     <Register start="0xE000EF00" name="STIR" aka="SCB_SW_TRIG" access="WriteOnly" description="Software Trigger Interrupt Register">
       <BitField size="10" name="INTID" start="0" description="ID of the interrupt to trigger" />
     </Register>
+  </RegisterGroup>
+  <RegisterGroup start="0xE000EF34" name="SCB_FP">
+    <Register start="0xE000EF34" name="FPCCR" description="Floating-point Context Control Register">
+      <BitField size="1" name="ASPEN" start="31" description="Automatic State Preservation" />
+      <BitField size="1" name="LSPEN" start="30" description="Lazy State Preservation Enabled" />
+      <BitField size="1" name="MONRDY" start="8" description="Monitor Ready" />
+      <BitField size="1" name="BFRDY" start="6" description="BusFault Ready" />
+      <BitField size="1" name="MMRDY" start="5" description="MemManage Ready" />
+      <BitField size="1" name="HFRDY" start="4" description="HardFault Ready" />
+      <BitField size="1" name="THREAD" start="3" description="Thread Mode Allocated Stack Frame" />
+      <BitField size="1" name="USER" start="1" description="User Allocated Stack Frame" />
+      <BitField size="1" name="LSPACT" start="0" description="Lazy State Preservation Active" />
+    </Register>
+    <Register start="0xE000EF38" name="FPCAR" description="Floating-point Context Address Register" />
+    <Register start="0xE000EF3C" name="FPDSCR" description="Floating-point Default Status Control Register">
+      <BitField size="1" name="AHP" start="26" description="Default value for FPSCR.AHP" />
+      <BitField size="1" name="DN" start="25" description="Default value for FPSCR.DN" />
+      <BitField size="1" name="FZ" start="24" description="Default value for FPSCR.FZ" />
+      <BitField size="2" name="RMode" start="22" description="Default value for FPSCR.RMode" />
+    </Register>
+    <Register start="0xE000EF40" name="MVFR0" />
+    <Register start="0xE000EF44" name="MVFR1" />
   </RegisterGroup>
   <RegisterGroup start="0xE000EFD0" name="ID_space">
     <Register start="0xE000EFD0" size="1" name="PID4" access="ReadOnly" />

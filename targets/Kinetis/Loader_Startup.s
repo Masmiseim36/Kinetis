@@ -33,6 +33,18 @@ _start:
   ldr r2, =0x40048100
   ldr r3, =#0
   str r3, [r2]
+#elif defined(L28_SERIES)
+  ldr r0, =0x40076000
+  ldr r1, =0xD928C520
+  str r1, [r0, #4]
+  ldr r1, =0xffff
+  str r1, [r0, #8]
+  ldr r1, [r0]
+  ldr r2, =(1<<7)
+  bics r1, r2
+  ldr r2, =(1<<5)
+  orrs r1, r2
+  str r1, [r0]
 #elif defined(K_SERIES)
   movw r2, #0x2000
   movt r2, #0x4005
@@ -71,7 +83,7 @@ _start:
   ldr r3, =#0x20
   strb r3, [r2, #0]
 #else
-#error L_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined
+#error L_SERIES, L28_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined
 #endif
 
   // Copy loader parameter if supplied
