@@ -98,6 +98,10 @@ ISR_HANDLER SysTick_Handler
   #include "MK10DZ10.vec"
 #elif defined(MK10F12)
   #include "MK10F12.vec"
+#elif defined(MK11D5)
+  #include "MK11D5.vec"
+#elif defined(MK12D5)
+  #include "MK12D5.vec"
 #elif defined(MK20D5)
   #include "MK20D5.vec"
 #elif defined(MK20D7)
@@ -108,6 +112,10 @@ ISR_HANDLER SysTick_Handler
   #include "MK20DZ10.vec"
 #elif defined(MK20F12)
   #include "MK20F12.vec"
+#elif defined(MK21D5)
+  #include "MK21D5.vec"
+#elif defined(MK22D5)
+  #include "MK22D5.vec"
 #elif defined(MK30D7)
   #include "MK30D7.vec"
 #elif defined(MK30D10)
@@ -156,6 +164,8 @@ ISR_HANDLER SysTick_Handler
   #include "MK70F12.vec"
 #elif defined(MK70F15)
   #include "MK70F15.vec"
+#elif defined(MKL02Z4)
+  #include "MKL02Z4.vec"
 #elif defined(MKL04Z4)
   #include "MKL04Z4.vec"
 #elif defined(MKL05Z4)
@@ -232,14 +242,16 @@ FDPROT:
 #endif
 
 #ifdef VECTORS_IN_RAM
-  ldr r0, =__vectors_load_start__
-  ldr r1, =__vectors_load_end__
+  ldr r0, =_vectors
+  ldr r1, =_vectors_end
   ldr r2, =__VECTOR_RAM
 l0:
   cmp r0, r1
   beq l1
-  ldr r3, [r0], #4
-  str r3, [r2], #4
+  ldr r3, [r0]
+  str r3, [r2]
+  adds r0, r0, #4
+  adds r2, r2, #4
   b l0
 l1:
 #endif
@@ -261,7 +273,7 @@ l1:
 SystemInit:
 #endif  
 disableWatchDog: 
-#if defined(MKL04Z4) || defined(MKL05Z4) || defined(MKL14Z4) || defined(MKL15Z4) || defined(MKL24Z4) || defined(MKL25Z4)
+#if defined(MKL02Z4) || defined(MKL04Z4) || defined(MKL05Z4) || defined(MKL14Z4) || defined(MKL15Z4) || defined(MKL24Z4) || defined(MKL25Z4)
   ldr r0, =0x40048100
   ldr r1, =#0
   str r1, [r0]

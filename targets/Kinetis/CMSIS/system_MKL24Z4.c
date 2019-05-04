@@ -1,20 +1,24 @@
 /*
 ** ###################################################################
-**     Processor:           MKL24Z64VLK4
+**     Processors:          MKL24Z64FM4
+**                          MKL24Z64FT4
+**                          MKL24Z64LH4
+**                          MKL24Z64VLK4
+**
 **     Compilers:           ARM Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    KL24RM, Rev.1, Jun 2012
-**     Version:             rev. 1.0, 2012-06-21
+**     Reference manual:    KL24P80M48SF0RM, Rev.3, Sep 2012
+**     Version:             rev. 1.3, 2012-11-22
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2012 Freescale Semiconductor, Inc. All Rights Reserved.
+**     Copyright: 2012 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -22,14 +26,21 @@
 **     Revisions:
 **     - rev. 1.0 (2012-06-21)
 **         Initial version.
+**     - rev. 1.1 (2012-08-01)
+**         Device type UARTLP changed to UART0.
+**     - rev. 1.2 (2012-10-04)
+**         Update according to reference manual rev. 3.
+**     - rev. 1.3 (2012-11-22)
+**         MCG module - bit LOLS in MCG_S register renamed to LOLS0.
+**         NV registers - bit EZPORT_DIS in NV_FOPT register removed.
 **
 ** ###################################################################
 */
 
 /**
  * @file MKL24Z4
- * @version 1.0
- * @date 2012-06-21
+ * @version 1.3
+ * @date 2012-11-22
  * @brief Device specific configuration file for MKL24Z4 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains

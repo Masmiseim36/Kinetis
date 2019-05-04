@@ -98,6 +98,7 @@ write_current_block()
       return LIBMEM_STATUS_SUCCESS;
     }
 #endif
+#if defined(K_SERIES)
   if (write_block_size == 8)
     {
       setFlashCmdAndAddress(FCMD_PGM8, (unsigned)write_block_address);          
@@ -111,6 +112,7 @@ write_current_block()
       FTFL_FCCOB8 = write_block[7];
     }
   else
+#endif
     {
       setFlashCmdAndAddress(FCMD_PGM4, (unsigned)write_block_address);
       FTFL_FCCOB7 = write_block[0];
@@ -169,6 +171,7 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
       // Erase All
       FTFL_FCCOB0 = FCMD_ERSALL;
       doFlashCmd();           
+#if defined(K_SERIES)
       if (write_block_size == 8)
         {
           setFlashCmdAndAddress(FCMD_PGM8, 0x408);
@@ -182,6 +185,7 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
           FTFL_FCCOB8 = 0xff;                                                                              
         }
       else
+#endif
         {
           setFlashCmdAndAddress(FCMD_PGM4, 0x40C);
           FTFL_FCCOB7 = 0xfe;
@@ -218,6 +222,7 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
                   // Ensure that FTFL_FSEC(0x40C) = 0xfe                  
                   if (LIBMEM_ADDRESS_IN_RANGE((uint8_t*)0x40C, flashstart, flashstart + blocksize - 1))
                     {
+#if defined(K_SERIES)
                       if (write_block_size == 8)
                         {
                           setFlashCmdAndAddress(FCMD_PGM8, 0x408);
@@ -231,6 +236,7 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
                           FTFL_FCCOB8 = 0xff;                                                                              
                         }
                       else
+#endif
                         {
                           setFlashCmdAndAddress(FCMD_PGM4, 0x40C);
                           FTFL_FCCOB7 = 0xfe;

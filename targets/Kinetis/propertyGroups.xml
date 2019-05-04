@@ -1,6 +1,6 @@
 <!DOCTYPE CrossStudio_Group_Values>
 <propertyGroups>
-  <group short="Target Processor" group="Build Options" long="Select a set of target options" name="Target" default="MK60DN512ZVMD10">
+  <group short="Target Processor" group="Build Options" long="Select a set of target options" name="Target" default="UNKNOWN">
     <groupEntry name="MK10DN32xxx5" family="K10">
       <cdefine value="MK10DN32xxx5" name="__TARGET_PROCESSOR"/>
       <cdefine value="1" name="MK10D5"/>
@@ -192,6 +192,72 @@
       <property name="linker_memory_map_macros" value="NAME=MK10FN1M0xxx12;FLASHSIZE=0x100000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x20000;SVD=MK10F12"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK10FN1M0xxx12;0x100000;0x0;0x0;0x20000"/>
     </groupEntry>
+    <groupEntry name="MK11DX128xxx5" family="K11">
+      <cdefine value="MK11DX128xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK11D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap2.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK11DX128xxx5;FLASHSIZE=0x20000;FlexNVMSIZE=0x20000;FlexRAMSIZE=0x1000;SRAMSIZE=0x8000;SVD=MK11D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK11DX128xxx5;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK11DX256xxx5" family="K11">
+      <cdefine value="MK11DX256xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK11D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap2.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK11DX256xxx5;FLASHSIZE=0x40000;FlexNVMSIZE=0x40000;FlexRAMSIZE=0x1000;SRAMSIZE=0x8000;SVD=MK11D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK11DX256xxx5;0x40000;0x40000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK11DN512xxx5" family="K11">
+      <cdefine value="MK11DN512xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK11D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK11DN512xxx5;FLASHSIZE=0x80000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x10000;SVD=MK11D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK11DN512xxx5;0x80000;0x0;0x0;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK12DX128xxx5" family="K12">
+      <cdefine value="MK12DX128xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK12D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap2.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK12DX128xxx5;FLASHSIZE=0x20000;FlexNVMSIZE=0x20000;FlexRAMSIZE=0x1000;SRAMSIZE=0x8000;SVD=MK12D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK12DX128xxx5;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK12DX256xxx5" family="K12">
+      <cdefine value="MK12DX256xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK12D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap2.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK12DX256xxx5;FLASHSIZE=0x40000;FlexNVMSIZE=0x40000;FlexRAMSIZE=0x1000;SRAMSIZE=0x8000;SVD=MK12D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK12DX256xxx5;0x40000;0x40000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK12DN512xxx5" family="K12">
+      <cdefine value="MK12DN512xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK12D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK12DN512xxx5;FLASHSIZE=0x80000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x10000;SVD=MK12D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK12DN512xxx5;0x80000;0x0;0x0;0x10000"/>
+    </groupEntry>
     <groupEntry name="MK20DN32xxx5" family="K20">
       <cdefine value="MK20DN32xxx5" name="__TARGET_PROCESSOR"/>
       <cdefine value="1" name="MK20D5"/>
@@ -356,6 +422,72 @@
       <property name="arm_fpu_type" value="None"/>
       <property name="linker_memory_map_macros" value="NAME=MK20DN512xxx10;FLASHSIZE=0x80000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x20000;SVD=MK20D10"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK20DN512xxx10;0x80000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MK21DX128xxx5" family="K21">
+      <cdefine value="MK21DX128xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK21D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap2.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK21DX128xxx5;FLASHSIZE=0x20000;FlexNVMSIZE=0x20000;FlexRAMSIZE=0x1000;SRAMSIZE=0x8000;SVD=MK21D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK21DX128xxx5;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK21DX256xxx5" family="K21">
+      <cdefine value="MK21DX256xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK21D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap2.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK21DX256xxx5;FLASHSIZE=0x40000;FlexNVMSIZE=0x40000;FlexRAMSIZE=0x1000;SRAMSIZE=0x8000;SVD=MK21D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK21DX256xxx5;0x40000;0x40000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK21DN512xxx5" family="K21">
+      <cdefine value="MK21DN512xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK21D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK21DN512xxx5;FLASHSIZE=0x80000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x10000;SVD=MK21D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK21DN512xxx5;0x80000;0x0;0x0;0x10000"/>
+    </groupEntry>
+    <groupEntry name="MK22DX128xxx5" family="K22">
+      <cdefine value="MK22DX128xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK22D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap2.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK22DX128xxx5;FLASHSIZE=0x20000;FlexNVMSIZE=0x20000;FlexRAMSIZE=0x1000;SRAMSIZE=0x8000;SVD=MK22D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK22DX128xxx5;0x20000;0x20000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK22DX256xxx5" family="K22">
+      <cdefine value="MK22DX256xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK22D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap2.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK22DX256xxx5;FLASHSIZE=0x40000;FlexNVMSIZE=0x40000;FlexRAMSIZE=0x1000;SRAMSIZE=0x8000;SVD=MK22D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK22DX256xxx5;0x40000;0x40000;0x1000;0x8000"/>
+    </groupEntry>
+    <groupEntry name="MK22DN512xxx5" family="K22">
+      <cdefine value="MK22DN512xxx5" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MK22D5"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf"/>
+      <property name="arm_architecture" value="v7EM"/>
+      <property name="arm_core_type" value="Cortex-M4"/>
+      <property name="arm_fpu_type" value="None"/>
+      <property name="linker_memory_map_macros" value="NAME=MK22DN512xxx5;FLASHSIZE=0x80000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x10000;SVD=MK22D5"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MK22DN512xxx5;0x80000;0x0;0x0;0x10000"/>
     </groupEntry>
     <groupEntry name="MK30DX64xxx7" family="K30">
       <cdefine value="MK30DX64xxx7" name="__TARGET_PROCESSOR"/>
@@ -974,6 +1106,36 @@
       <property name="arm_fpu_type" value="FPv4-SP-D16"/>
       <property name="linker_memory_map_macros" value="NAME=MK70FN1M0xxx15;FLASHSIZE=0x100000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x20000;SVD=MK70F15"/>
       <property name="arm_simulator_memory_simulation_parameter" value="MK70FN1M0xxx15;0x100000;0x0;0x0;0x20000"/>
+    </groupEntry>
+    <groupEntry name="MKL02Z8Vxx4" family="KL0">
+      <cdefine value="MKL02Z8Vxx4" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MKL02Z4"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap3.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
+      <property name="arm_architecture" value="v6M"/>
+      <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="linker_memory_map_macros" value="NAME=MKL02Z8Vxx4;FLASHSIZE=0x2000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x400;SVD=MKL02Z4"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MKL02Z8Vxx4;0x2000;0x0;0x0;0x400"/>
+    </groupEntry>
+    <groupEntry name="MKL02Z16Vxx4" family="KL0">
+      <cdefine value="MKL02Z16Vxx4" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MKL02Z4"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap3.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
+      <property name="arm_architecture" value="v6M"/>
+      <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="linker_memory_map_macros" value="NAME=MKL02Z16Vxx4;FLASHSIZE=0x4000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x800;SVD=MKL02Z4"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MKL02Z16Vxx4;0x4000;0x0;0x0;0x800"/>
+    </groupEntry>
+    <groupEntry name="MKL02Z32Vxx4" family="KL0">
+      <cdefine value="MKL02Z32Vxx4" name="__TARGET_PROCESSOR"/>
+      <cdefine value="1" name="MKL02Z4"/>
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/Kinetis_MemoryMap3.xml"/>
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf"/>
+      <property name="arm_architecture" value="v6M"/>
+      <property name="arm_core_type" value="Cortex-M0"/>
+      <property name="linker_memory_map_macros" value="NAME=MKL02Z32Vxx4;FLASHSIZE=0x8000;FlexNVMSIZE=0x0;FlexRAMSIZE=0x0;SRAMSIZE=0x1000;SVD=MKL02Z4"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="MKL02Z32Vxx4;0x8000;0x0;0x0;0x1000"/>
     </groupEntry>
     <groupEntry name="MKL04Z8Vxx4" family="KL0">
       <cdefine value="MKL04Z8Vxx4" name="__TARGET_PROCESSOR"/>

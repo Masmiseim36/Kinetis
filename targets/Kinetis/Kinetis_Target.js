@@ -73,19 +73,19 @@ function GetPartName()
       case 0: // K Series
         switch ((SIM_SDID>>4) & 0x7)
           {
-            case 0: // K10
+            case 0: // K10/K12
               PartName = "MK10";
               break;
-            case 1: // K20
+            case 1: // K20/K22
               PartName = "MK20";
               break;
-            case 2: // K30
+            case 2: // K30/K11/K61
               PartName = "MK30";
               break;
-            case 3: // K40
+            case 3: // K40/K21
               PartName = "MK40";
               break;
-            case 4: // K60
+            case 4: // K60/K62
               PartName = "MK60";
               break;
             case 5: // K70

@@ -5,13 +5,13 @@
 **                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    K61P256M150SF3RM, Rev. 1, Oct 2011
-**     Version:             rev. 1.1, 2011-11-03
+**     Reference manual:    K61P256M150SF3RM, Rev. 2, Dec 2011
+**     Version:             rev. 1.5, 2013-01-10
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MK61F12
 **
-**     Copyright: 1997 - 2011 Freescale Semiconductor, Inc. All Rights Reserved.
+**     Copyright: 1997 - 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -23,14 +23,30 @@
 **         Registers updated according to the new reference manual revision - Rev. 1, Oct 2011
 **         Registers of the following modules have been updated - CAN, DDR, I2S, MCG, MPU, NFC, RCM, RTC, SDHC, SIM, USBHS, WDOG
 **         The following modules have been removed - DRY, LCDC
+**     - rev. 1.2 (2012-01-04)
+**         Registers updated according to the new reference manual revision - Rev. 2, Dec 2011
+**         EWM - INTEN bit in EWM_CTRL register has been added.
+**         PDB - register PDB_PO0EN renamed to PRB_POEN.
+**         PMC - BGEN bit in PMC_REGSC register has been removed.
+**         SIM - several changes in SCGC registers. Bit USBHS in SOPT2 register removed.
+**         UART - new bits RXOFE in regiter CFIFO and RXOF in register SFIFO.
+**         DRY - bit THYD in CR register renamed to THYS. Bit group KSL in LR register removed.
+**     - rev. 1.3 (2012-04-13)
+**         Added new #define symbol MCU_MEM_MAP_VERSION_MINOR.
+**         Added new #define symbols <peripheralType>_BASE_PTRS.
+**     - rev. 1.4 (2012-10-19)
+**         Interrupt Number Definitions updated - HardFault_IRQn has been added.
+**     - rev. 1.5 (2013-01-10)
+**         DRY module removed.
+**         RTC security related registers removed.
 **
 ** ###################################################################
 */
 
 /**
  * @file MK61F12.h
- * @version 1.1
- * @date 2011-11-03
+ * @version 1.5
+ * @date 2013-01-10
  * @brief CMSIS Peripheral Access Layer for MK61F12
  *
  * CMSIS Peripheral Access Layer for MK61F12
@@ -43,7 +59,7 @@
  * compatible) */
 #define MCU_MEM_MAP_VERSION 0x0100u
 /** Memory map minor version */
-#define MCU_MEM_MAP_VERSION_MINOR 0x0001u
+#define MCU_MEM_MAP_VERSION_MINOR 0x0005u
 
 /**
  * @brief Macro to access a single bit of a peripheral register (bit band region
@@ -67,6 +83,7 @@
 typedef enum IRQn {
   /* Core interrupts */
   NonMaskableInt_IRQn          = -14,              /**< Non Maskable Interrupt */
+  HardFault_IRQn               = -13,              /**< Cortex-M4 SV Hard Fault Interrupt */
   MemoryManagement_IRQn        = -12,              /**< Cortex-M4 Memory Management Interrupt */
   BusFault_IRQn                = -11,              /**< Cortex-M4 Bus Fault Interrupt */
   UsageFault_IRQn              = -10,              /**< Cortex-M4 Usage Fault Interrupt */
@@ -465,6 +482,8 @@ typedef struct {
 #define ADC3_BASE                                (0x400BC000u)
 /** Peripheral ADC3 base pointer */
 #define ADC3                                     ((ADC_Type *)ADC3_BASE)
+/** Array initializer of ADC peripheral base pointers */
+#define ADC_BASES                                { ADC0, ADC1, ADC2, ADC3 }
 
 /**
  * @}
@@ -1360,6 +1379,8 @@ typedef struct {
 #define AIPS1_BASE                               (0x40080000u)
 /** Peripheral AIPS1 base pointer */
 #define AIPS1                                    ((AIPS_Type *)AIPS1_BASE)
+/** Array initializer of AIPS peripheral base pointers */
+#define AIPS_BASES                               { AIPS0, AIPS1 }
 
 /**
  * @}
@@ -1479,6 +1500,8 @@ typedef struct {
 #define AXBS_BASE                                (0x40004000u)
 /** Peripheral AXBS base pointer */
 #define AXBS                                     ((AXBS_Type *)AXBS_BASE)
+/** Array initializer of AXBS peripheral base pointers */
+#define AXBS_BASES                               { AXBS }
 
 /**
  * @}
@@ -1807,6 +1830,8 @@ typedef struct {
 #define CAN1_BASE                                (0x400A4000u)
 /** Peripheral CAN1 base pointer */
 #define CAN1                                     ((CAN_Type *)CAN1_BASE)
+/** Array initializer of CAN peripheral base pointers */
+#define CAN_BASES                                { CAN0, CAN1 }
 
 /**
  * @}
@@ -1943,6 +1968,8 @@ typedef struct {
 #define CAU_BASE                                 (0xE0081000u)
 /** Peripheral CAU base pointer */
 #define CAU                                      ((CAU_Type *)CAU_BASE)
+/** Array initializer of CAU peripheral base pointers */
+#define CAU_BASES                                { CAU }
 
 /**
  * @}
@@ -2054,6 +2081,8 @@ typedef struct {
 #define CMP3_BASE                                (0x40073018u)
 /** Peripheral CMP3 base pointer */
 #define CMP3                                     ((CMP_Type *)CMP3_BASE)
+/** Array initializer of CMP peripheral base pointers */
+#define CMP_BASES                                { CMP0, CMP1, CMP2, CMP3 }
 
 /**
  * @}
@@ -2167,6 +2196,8 @@ typedef struct {
 #define CMT_BASE                                 (0x40062000u)
 /** Peripheral CMT base pointer */
 #define CMT                                      ((CMT_Type *)CMT_BASE)
+/** Array initializer of CMT peripheral base pointers */
+#define CMT_BASES                                { CMT }
 
 /**
  * @}
@@ -2333,6 +2364,8 @@ typedef struct {
 #define CRC_BASE                                 (0x40032000u)
 /** Peripheral CRC base pointer */
 #define CRC0                                     ((CRC_Type *)CRC_BASE)
+/** Array initializer of CRC peripheral base pointers */
+#define CRC_BASES                                { CRC0 }
 
 /**
  * @}
@@ -2434,6 +2467,8 @@ typedef struct {
 #define DAC1_BASE                                (0x400CD000u)
 /** Peripheral DAC1 base pointer */
 #define DAC1                                     ((DAC_Type *)DAC1_BASE)
+/** Array initializer of DAC peripheral base pointers */
+#define DAC_BASES                                { DAC0, DAC1 }
 
 /**
  * @}
@@ -3114,6 +3149,8 @@ typedef struct {
 #define DDR_BASE                                 (0x400AE000u)
 /** Peripheral DDR base pointer */
 #define DDR                                      ((DDR_Type *)DDR_BASE)
+/** Array initializer of DDR peripheral base pointers */
+#define DDR_BASES                                { DDR }
 
 /**
  * @}
@@ -4137,6 +4174,8 @@ typedef struct {
 #define DMA_BASE                                 (0x40008000u)
 /** Peripheral DMA base pointer */
 #define DMA0                                     ((DMA_Type *)DMA_BASE)
+/** Array initializer of DMA peripheral base pointers */
+#define DMA_BASES                                { DMA0 }
 
 /**
  * @}
@@ -4189,307 +4228,12 @@ typedef struct {
 #define DMAMUX1_BASE                             (0x40022000u)
 /** Peripheral DMAMUX1 base pointer */
 #define DMAMUX1                                  ((DMAMUX_Type *)DMAMUX1_BASE)
+/** Array initializer of DMAMUX peripheral base pointers */
+#define DMAMUX_BASES                             { DMAMUX0, DMAMUX1 }
 
 /**
  * @}
  */ /* end of group DMAMUX_Peripheral_Access_Layer */
-
-
-/* ----------------------------------------------------------------------------
-   -- DRY Peripheral Access Layer
-   ---------------------------------------------------------------------------- */
-
-/**
- * @addtogroup DRY_Peripheral_Access_Layer DRY Peripheral Access Layer
- * @{
- */
-
-/** DRY - Register Layout Typedef */
-typedef struct {
-       uint8_t RESERVED_0[4];
-  __IO uint32_t SKVR;                              /**< DryIce Secure Key Valid Register, offset: 0x4 */
-  __IO uint32_t SKWLR;                             /**< DryIce Secure Key Write Lock Register, offset: 0x8 */
-  __IO uint32_t SKRLR;                             /**< DryIce Secure Key Read Lock Register, offset: 0xC */
-  __IO uint32_t CR;                                /**< DryIce Control Register, offset: 0x10 */
-  __IO uint32_t SR;                                /**< DryIce Status Register, offset: 0x14 */
-  __IO uint32_t LR;                                /**< DryIce Lock Register, offset: 0x18 */
-  __IO uint32_t IER;                               /**< DryIce Interrupt Enable Register, offset: 0x1C */
-  __IO uint32_t TSR;                               /**< DryIce Tamper Seconds Register, offset: 0x20 */
-  __IO uint32_t TER;                               /**< DryIce Tamper Enable Register, offset: 0x24 */
-  __IO uint32_t PDR;                               /**< DryIce Pin Direction Register, offset: 0x28 */
-  __IO uint32_t PPR;                               /**< DryIce Pin Polarity Register, offset: 0x2C */
-  __IO uint32_t ATR[2];                            /**< DryIce Active Tamper Register, array offset: 0x30, array step: 0x4 */
-       uint8_t RESERVED_1[8];
-  __IO uint32_t PGFR[8];                           /**< DryIce Pin Glitch Filter Register, array offset: 0x40, array step: 0x4 */
-       uint8_t RESERVED_2[1952];
-  __IO uint32_t WAC;                               /**< DryIce Write Access Control Register, offset: 0x800 */
-  __IO uint32_t RAC;                               /**< DryIce Read Access Control Register, offset: 0x804 */
-       uint8_t RESERVED_3[2040];
-  __IO uint32_t SKR[8];                            /**< Secure Key Register, array offset: 0x1000, array step: 0x4 */
-       uint8_t RESERVED_4[2016];
-  __IO uint32_t SWAC;                              /**< Secure Write Access Control, offset: 0x1800 */
-  __IO uint32_t SRAC;                              /**< Secure Read Access Control, offset: 0x1804 */
-} DRY_Type;
-
-/* ----------------------------------------------------------------------------
-   -- DRY Register Masks
-   ---------------------------------------------------------------------------- */
-
-/**
- * @addtogroup DRY_Register_Masks DRY Register Masks
- * @{
- */
-
-/* SKVR Bit Fields */
-#define DRY_SKVR_SKV_MASK                        0xFFu
-#define DRY_SKVR_SKV_SHIFT                       0
-#define DRY_SKVR_SKV(x)                          (((uint32_t)(((uint32_t)(x))<<DRY_SKVR_SKV_SHIFT))&DRY_SKVR_SKV_MASK)
-/* SKWLR Bit Fields */
-#define DRY_SKWLR_SKWL_MASK                      0xFFu
-#define DRY_SKWLR_SKWL_SHIFT                     0
-#define DRY_SKWLR_SKWL(x)                        (((uint32_t)(((uint32_t)(x))<<DRY_SKWLR_SKWL_SHIFT))&DRY_SKWLR_SKWL_MASK)
-/* SKRLR Bit Fields */
-#define DRY_SKRLR_SKRL_MASK                      0xFFu
-#define DRY_SKRLR_SKRL_SHIFT                     0
-#define DRY_SKRLR_SKRL(x)                        (((uint32_t)(((uint32_t)(x))<<DRY_SKRLR_SKRL_SHIFT))&DRY_SKRLR_SKRL_MASK)
-/* CR Bit Fields */
-#define DRY_CR_SWR_MASK                          0x1u
-#define DRY_CR_SWR_SHIFT                         0
-#define DRY_CR_DEN_MASK                          0x2u
-#define DRY_CR_DEN_SHIFT                         1
-#define DRY_CR_TFSR_MASK                         0x4u
-#define DRY_CR_TFSR_SHIFT                        2
-#define DRY_CR_UM_MASK                           0x8u
-#define DRY_CR_UM_SHIFT                          3
-#define DRY_CR_THYS_MASK                         0x100u
-#define DRY_CR_THYS_SHIFT                        8
-#define DRY_CR_TPFE_MASK                         0x200u
-#define DRY_CR_TPFE_SHIFT                        9
-#define DRY_CR_TDSE_MASK                         0x400u
-#define DRY_CR_TDSE_SHIFT                        10
-#define DRY_CR_TSRE_MASK                         0x800u
-#define DRY_CR_TSRE_SHIFT                        11
-#define DRY_CR_DPR_MASK                          0xFFFE0000u
-#define DRY_CR_DPR_SHIFT                         17
-#define DRY_CR_DPR(x)                            (((uint32_t)(((uint32_t)(x))<<DRY_CR_DPR_SHIFT))&DRY_CR_DPR_MASK)
-/* SR Bit Fields */
-#define DRY_SR_DTF_MASK                          0x1u
-#define DRY_SR_DTF_SHIFT                         0
-#define DRY_SR_TAF_MASK                          0x2u
-#define DRY_SR_TAF_SHIFT                         1
-#define DRY_SR_TOF_MASK                          0x4u
-#define DRY_SR_TOF_SHIFT                         2
-#define DRY_SR_MOF_MASK                          0x8u
-#define DRY_SR_MOF_SHIFT                         3
-#define DRY_SR_VTF_MASK                          0x10u
-#define DRY_SR_VTF_SHIFT                         4
-#define DRY_SR_CTF_MASK                          0x20u
-#define DRY_SR_CTF_SHIFT                         5
-#define DRY_SR_TTF_MASK                          0x40u
-#define DRY_SR_TTF_SHIFT                         6
-#define DRY_SR_STF_MASK                          0x80u
-#define DRY_SR_STF_SHIFT                         7
-#define DRY_SR_FSF_MASK                          0x100u
-#define DRY_SR_FSF_SHIFT                         8
-#define DRY_SR_TMF_MASK                          0x200u
-#define DRY_SR_TMF_SHIFT                         9
-#define DRY_SR_TPF_MASK                          0xFF0000u
-#define DRY_SR_TPF_SHIFT                         16
-#define DRY_SR_TPF(x)                            (((uint32_t)(((uint32_t)(x))<<DRY_SR_TPF_SHIFT))&DRY_SR_TPF_MASK)
-/* LR Bit Fields */
-#define DRY_LR_KVL_MASK                          0x2u
-#define DRY_LR_KVL_SHIFT                         1
-#define DRY_LR_KWL_MASK                          0x4u
-#define DRY_LR_KWL_SHIFT                         2
-#define DRY_LR_KRL_MASK                          0x8u
-#define DRY_LR_KRL_SHIFT                         3
-#define DRY_LR_CRL_MASK                          0x10u
-#define DRY_LR_CRL_SHIFT                         4
-#define DRY_LR_SRL_MASK                          0x20u
-#define DRY_LR_SRL_SHIFT                         5
-#define DRY_LR_LRL_MASK                          0x40u
-#define DRY_LR_LRL_SHIFT                         6
-#define DRY_LR_IEL_MASK                          0x80u
-#define DRY_LR_IEL_SHIFT                         7
-#define DRY_LR_TSL_MASK                          0x100u
-#define DRY_LR_TSL_SHIFT                         8
-#define DRY_LR_TEL_MASK                          0x200u
-#define DRY_LR_TEL_SHIFT                         9
-#define DRY_LR_PDL_MASK                          0x400u
-#define DRY_LR_PDL_SHIFT                         10
-#define DRY_LR_PPL_MASK                          0x800u
-#define DRY_LR_PPL_SHIFT                         11
-#define DRY_LR_ATL_MASK                          0x3000u
-#define DRY_LR_ATL_SHIFT                         12
-#define DRY_LR_ATL(x)                            (((uint32_t)(((uint32_t)(x))<<DRY_LR_ATL_SHIFT))&DRY_LR_ATL_MASK)
-#define DRY_LR_GFL_MASK                          0xFF0000u
-#define DRY_LR_GFL_SHIFT                         16
-#define DRY_LR_GFL(x)                            (((uint32_t)(((uint32_t)(x))<<DRY_LR_GFL_SHIFT))&DRY_LR_GFL_MASK)
-/* IER Bit Fields */
-#define DRY_IER_DTIE_MASK                        0x1u
-#define DRY_IER_DTIE_SHIFT                       0
-#define DRY_IER_TOIE_MASK                        0x4u
-#define DRY_IER_TOIE_SHIFT                       2
-#define DRY_IER_MOIE_MASK                        0x8u
-#define DRY_IER_MOIE_SHIFT                       3
-#define DRY_IER_VTIE_MASK                        0x10u
-#define DRY_IER_VTIE_SHIFT                       4
-#define DRY_IER_CTIE_MASK                        0x20u
-#define DRY_IER_CTIE_SHIFT                       5
-#define DRY_IER_TTIE_MASK                        0x40u
-#define DRY_IER_TTIE_SHIFT                       6
-#define DRY_IER_STIE_MASK                        0x80u
-#define DRY_IER_STIE_SHIFT                       7
-#define DRY_IER_FSIE_MASK                        0x100u
-#define DRY_IER_FSIE_SHIFT                       8
-#define DRY_IER_TMIE_MASK                        0x200u
-#define DRY_IER_TMIE_SHIFT                       9
-#define DRY_IER_TPIE_MASK                        0xFF0000u
-#define DRY_IER_TPIE_SHIFT                       16
-#define DRY_IER_TPIE(x)                          (((uint32_t)(((uint32_t)(x))<<DRY_IER_TPIE_SHIFT))&DRY_IER_TPIE_MASK)
-/* TSR Bit Fields */
-#define DRY_TSR_TTS_MASK                         0xFFFFFFFFu
-#define DRY_TSR_TTS_SHIFT                        0
-#define DRY_TSR_TTS(x)                           (((uint32_t)(((uint32_t)(x))<<DRY_TSR_TTS_SHIFT))&DRY_TSR_TTS_MASK)
-/* TER Bit Fields */
-#define DRY_TER_TOE_MASK                         0x4u
-#define DRY_TER_TOE_SHIFT                        2
-#define DRY_TER_MOE_MASK                         0x8u
-#define DRY_TER_MOE_SHIFT                        3
-#define DRY_TER_VTE_MASK                         0x10u
-#define DRY_TER_VTE_SHIFT                        4
-#define DRY_TER_CTE_MASK                         0x20u
-#define DRY_TER_CTE_SHIFT                        5
-#define DRY_TER_TTE_MASK                         0x40u
-#define DRY_TER_TTE_SHIFT                        6
-#define DRY_TER_STE_MASK                         0x80u
-#define DRY_TER_STE_SHIFT                        7
-#define DRY_TER_FSE_MASK                         0x100u
-#define DRY_TER_FSE_SHIFT                        8
-#define DRY_TER_TME_MASK                         0x200u
-#define DRY_TER_TME_SHIFT                        9
-#define DRY_TER_TPE_MASK                         0xFF0000u
-#define DRY_TER_TPE_SHIFT                        16
-#define DRY_TER_TPE(x)                           (((uint32_t)(((uint32_t)(x))<<DRY_TER_TPE_SHIFT))&DRY_TER_TPE_MASK)
-/* PDR Bit Fields */
-#define DRY_PDR_TPD_MASK                         0xFFu
-#define DRY_PDR_TPD_SHIFT                        0
-#define DRY_PDR_TPD(x)                           (((uint32_t)(((uint32_t)(x))<<DRY_PDR_TPD_SHIFT))&DRY_PDR_TPD_MASK)
-#define DRY_PDR_TPOD_MASK                        0xFF0000u
-#define DRY_PDR_TPOD_SHIFT                       16
-#define DRY_PDR_TPOD(x)                          (((uint32_t)(((uint32_t)(x))<<DRY_PDR_TPOD_SHIFT))&DRY_PDR_TPOD_MASK)
-/* PPR Bit Fields */
-#define DRY_PPR_TPP_MASK                         0xFFu
-#define DRY_PPR_TPP_SHIFT                        0
-#define DRY_PPR_TPP(x)                           (((uint32_t)(((uint32_t)(x))<<DRY_PPR_TPP_SHIFT))&DRY_PPR_TPP_MASK)
-#define DRY_PPR_TPID_MASK                        0xFF0000u
-#define DRY_PPR_TPID_SHIFT                       16
-#define DRY_PPR_TPID(x)                          (((uint32_t)(((uint32_t)(x))<<DRY_PPR_TPID_SHIFT))&DRY_PPR_TPID_MASK)
-/* ATR Bit Fields */
-#define DRY_ATR_ATSR_MASK                        0xFFFFu
-#define DRY_ATR_ATSR_SHIFT                       0
-#define DRY_ATR_ATSR(x)                          (((uint32_t)(((uint32_t)(x))<<DRY_ATR_ATSR_SHIFT))&DRY_ATR_ATSR_MASK)
-#define DRY_ATR_ATP_MASK                         0xFFFF0000u
-#define DRY_ATR_ATP_SHIFT                        16
-#define DRY_ATR_ATP(x)                           (((uint32_t)(((uint32_t)(x))<<DRY_ATR_ATP_SHIFT))&DRY_ATR_ATP_MASK)
-/* PGFR Bit Fields */
-#define DRY_PGFR_GFW_MASK                        0x3Fu
-#define DRY_PGFR_GFW_SHIFT                       0
-#define DRY_PGFR_GFW(x)                          (((uint32_t)(((uint32_t)(x))<<DRY_PGFR_GFW_SHIFT))&DRY_PGFR_GFW_MASK)
-#define DRY_PGFR_GFP_MASK                        0x40u
-#define DRY_PGFR_GFP_SHIFT                       6
-#define DRY_PGFR_GFE_MASK                        0x80u
-#define DRY_PGFR_GFE_SHIFT                       7
-#define DRY_PGFR_TPEX_MASK                       0x30000u
-#define DRY_PGFR_TPEX_SHIFT                      16
-#define DRY_PGFR_TPEX(x)                         (((uint32_t)(((uint32_t)(x))<<DRY_PGFR_TPEX_SHIFT))&DRY_PGFR_TPEX_MASK)
-#define DRY_PGFR_TPE_MASK                        0x1000000u
-#define DRY_PGFR_TPE_SHIFT                       24
-/* WAC Bit Fields */
-#define DRY_WAC_SKVW_MASK                        0x2u
-#define DRY_WAC_SKVW_SHIFT                       1
-#define DRY_WAC_SKWRW_MASK                       0x4u
-#define DRY_WAC_SKWRW_SHIFT                      2
-#define DRY_WAC_SKRRW_MASK                       0x8u
-#define DRY_WAC_SKRRW_SHIFT                      3
-#define DRY_WAC_CRW_MASK                         0x10u
-#define DRY_WAC_CRW_SHIFT                        4
-#define DRY_WAC_SRW_MASK                         0x20u
-#define DRY_WAC_SRW_SHIFT                        5
-#define DRY_WAC_LRW_MASK                         0x40u
-#define DRY_WAC_LRW_SHIFT                        6
-#define DRY_WAC_IEW_MASK                         0x80u
-#define DRY_WAC_IEW_SHIFT                        7
-#define DRY_WAC_TSRW_MASK                        0x100u
-#define DRY_WAC_TSRW_SHIFT                       8
-#define DRY_WAC_TEW_MASK                         0x200u
-#define DRY_WAC_TEW_SHIFT                        9
-#define DRY_WAC_PDW_MASK                         0x400u
-#define DRY_WAC_PDW_SHIFT                        10
-#define DRY_WAC_PPW_MASK                         0x800u
-#define DRY_WAC_PPW_SHIFT                        11
-#define DRY_WAC_ATW_MASK                         0x3000u
-#define DRY_WAC_ATW_SHIFT                        12
-#define DRY_WAC_ATW(x)                           (((uint32_t)(((uint32_t)(x))<<DRY_WAC_ATW_SHIFT))&DRY_WAC_ATW_MASK)
-#define DRY_WAC_GFW_MASK                         0xFF0000u
-#define DRY_WAC_GFW_SHIFT                        16
-#define DRY_WAC_GFW(x)                           (((uint32_t)(((uint32_t)(x))<<DRY_WAC_GFW_SHIFT))&DRY_WAC_GFW_MASK)
-/* RAC Bit Fields */
-#define DRY_RAC_SKVR_MASK                        0x2u
-#define DRY_RAC_SKVR_SHIFT                       1
-#define DRY_RAC_SKWRR_MASK                       0x4u
-#define DRY_RAC_SKWRR_SHIFT                      2
-#define DRY_RAC_SKRRR_MASK                       0x8u
-#define DRY_RAC_SKRRR_SHIFT                      3
-#define DRY_RAC_CRR_MASK                         0x10u
-#define DRY_RAC_CRR_SHIFT                        4
-#define DRY_RAC_SRR_MASK                         0x20u
-#define DRY_RAC_SRR_SHIFT                        5
-#define DRY_RAC_LRR_MASK                         0x40u
-#define DRY_RAC_LRR_SHIFT                        6
-#define DRY_RAC_IER_MASK                         0x80u
-#define DRY_RAC_IER_SHIFT                        7
-#define DRY_RAC_TSRR_MASK                        0x100u
-#define DRY_RAC_TSRR_SHIFT                       8
-#define DRY_RAC_TER_MASK                         0x200u
-#define DRY_RAC_TER_SHIFT                        9
-#define DRY_RAC_PDR_MASK                         0x400u
-#define DRY_RAC_PDR_SHIFT                        10
-#define DRY_RAC_PPR_MASK                         0x800u
-#define DRY_RAC_PPR_SHIFT                        11
-#define DRY_RAC_ATR_MASK                         0x3000u
-#define DRY_RAC_ATR_SHIFT                        12
-#define DRY_RAC_ATR(x)                           (((uint32_t)(((uint32_t)(x))<<DRY_RAC_ATR_SHIFT))&DRY_RAC_ATR_MASK)
-#define DRY_RAC_GFR_MASK                         0xFF0000u
-#define DRY_RAC_GFR_SHIFT                        16
-#define DRY_RAC_GFR(x)                           (((uint32_t)(((uint32_t)(x))<<DRY_RAC_GFR_SHIFT))&DRY_RAC_GFR_MASK)
-/* SKR Bit Fields */
-#define DRY_SKR_SK_MASK                          0xFFFFFFFFu
-#define DRY_SKR_SK_SHIFT                         0
-#define DRY_SKR_SK(x)                            (((uint32_t)(((uint32_t)(x))<<DRY_SKR_SK_SHIFT))&DRY_SKR_SK_MASK)
-/* SWAC Bit Fields */
-#define DRY_SWAC_SKRW_MASK                       0xFFu
-#define DRY_SWAC_SKRW_SHIFT                      0
-#define DRY_SWAC_SKRW(x)                         (((uint32_t)(((uint32_t)(x))<<DRY_SWAC_SKRW_SHIFT))&DRY_SWAC_SKRW_MASK)
-/* SRAC Bit Fields */
-#define DRY_SRAC_SKRR_MASK                       0xFFu
-#define DRY_SRAC_SKRR_SHIFT                      0
-#define DRY_SRAC_SKRR(x)                         (((uint32_t)(((uint32_t)(x))<<DRY_SRAC_SKRR_SHIFT))&DRY_SRAC_SKRR_MASK)
-
-/**
- * @}
- */ /* end of group DRY_Register_Masks */
-
-
-/* DRY - Peripheral instance base addresses */
-/** Peripheral DRY base address */
-#define DRY_BASE                                 (0x40042000u)
-/** Peripheral DRY base pointer */
-#define DRY                                      ((DRY_Type *)DRY_BASE)
-
-/**
- * @}
- */ /* end of group DRY_Peripheral_Access_Layer */
 
 
 /* ----------------------------------------------------------------------------
@@ -4985,6 +4729,8 @@ typedef struct {
 #define ENET_BASE                                (0x400C0000u)
 /** Peripheral ENET base pointer */
 #define ENET                                     ((ENET_Type *)ENET_BASE)
+/** Array initializer of ENET peripheral base pointers */
+#define ENET_BASES                               { ENET }
 
 /**
  * @}
@@ -5049,6 +4795,8 @@ typedef struct {
 #define EWM_BASE                                 (0x40061000u)
 /** Peripheral EWM base pointer */
 #define EWM                                      ((EWM_Type *)EWM_BASE)
+/** Array initializer of EWM peripheral base pointers */
+#define EWM_BASES                                { EWM }
 
 /**
  * @}
@@ -5156,6 +4904,8 @@ typedef struct {
 #define FB_BASE                                  (0x4000C000u)
 /** Peripheral FB base pointer */
 #define FB                                       ((FB_Type *)FB_BASE)
+/** Array initializer of FB peripheral base pointers */
+#define FB_BASES                                 { FB }
 
 /**
  * @}
@@ -5315,6 +5065,8 @@ typedef struct {
 #define FMC_BASE                                 (0x4001F000u)
 /** Peripheral FMC base pointer */
 #define FMC                                      ((FMC_Type *)FMC_BASE)
+/** Array initializer of FMC peripheral base pointers */
+#define FMC_BASES                                { FMC }
 
 /**
  * @}
@@ -5494,6 +5246,8 @@ typedef struct {
 #define FTFE_BASE                                (0x40020000u)
 /** Peripheral FTFE base pointer */
 #define FTFE                                     ((FTFE_Type *)FTFE_BASE)
+/** Array initializer of FTFE peripheral base pointers */
+#define FTFE_BASES                               { FTFE }
 
 /**
  * @}
@@ -5975,6 +5729,8 @@ typedef struct {
 #define FTM3_BASE                                (0x400B9000u)
 /** Peripheral FTM3 base pointer */
 #define FTM3                                     ((FTM_Type *)FTM3_BASE)
+/** Array initializer of FTM peripheral base pointers */
+#define FTM_BASES                                { FTM0, FTM1, FTM2, FTM3 }
 
 /**
  * @}
@@ -6064,6 +5820,8 @@ typedef struct {
 #define PTF_BASE                                 (0x400FF140u)
 /** Peripheral PTF base pointer */
 #define PTF                                      ((GPIO_Type *)PTF_BASE)
+/** Array initializer of GPIO peripheral base pointers */
+#define GPIO_BASES                               { PTA, PTB, PTC, PTD, PTE, PTF }
 
 /**
  * @}
@@ -6219,6 +5977,8 @@ typedef struct {
 #define I2C1_BASE                                (0x40067000u)
 /** Peripheral I2C1 base pointer */
 #define I2C1                                     ((I2C_Type *)I2C1_BASE)
+/** Array initializer of I2C peripheral base pointers */
+#define I2C_BASES                                { I2C0, I2C1 }
 
 /**
  * @}
@@ -6517,6 +6277,8 @@ typedef struct {
 #define I2S1_BASE                                (0x400AF000u)
 /** Peripheral I2S1 base pointer */
 #define I2S1                                     ((I2S_Type *)I2S1_BASE)
+/** Array initializer of I2S peripheral base pointers */
+#define I2S_BASES                                { I2S0, I2S1 }
 
 /**
  * @}
@@ -6710,6 +6472,8 @@ typedef struct {
 #define LLWU_BASE                                (0x4007C000u)
 /** Peripheral LLWU base pointer */
 #define LLWU                                     ((LLWU_Type *)LLWU_BASE)
+/** Array initializer of LLWU peripheral base pointers */
+#define LLWU_BASES                               { LLWU }
 
 /**
  * @}
@@ -6956,6 +6720,8 @@ typedef struct {
 #define LMEM_BASE                                (0xE0082000u)
 /** Peripheral LMEM base pointer */
 #define LMEM                                     ((LMEM_Type *)LMEM_BASE)
+/** Array initializer of LMEM peripheral base pointers */
+#define LMEM_BASES                               { LMEM }
 
 /**
  * @}
@@ -7032,6 +6798,8 @@ typedef struct {
 #define LPTMR0_BASE                              (0x40040000u)
 /** Peripheral LPTMR0 base pointer */
 #define LPTMR0                                   ((LPTMR_Type *)LPTMR0_BASE)
+/** Array initializer of LPTMR peripheral base pointers */
+#define LPTMR_BASES                              { LPTMR0 }
 
 /**
  * @}
@@ -7241,6 +7009,8 @@ typedef struct {
 #define MCG_BASE                                 (0x40064000u)
 /** Peripheral MCG base pointer */
 #define MCG                                      ((MCG_Type *)MCG_BASE)
+/** Array initializer of MCG peripheral base pointers */
+#define MCG_BASES                                { MCG }
 
 /**
  * @}
@@ -7397,6 +7167,8 @@ typedef struct {
 #define MCM_BASE                                 (0xE0080000u)
 /** Peripheral MCM base pointer */
 #define MCM                                      ((MCM_Type *)MCM_BASE)
+/** Array initializer of MCM peripheral base pointers */
+#define MCM_BASES                                { MCM }
 
 /**
  * @}
@@ -7592,6 +7364,8 @@ typedef struct {
 #define MPU_BASE                                 (0x4000D000u)
 /** Peripheral MPU base pointer */
 #define MPU                                      ((MPU_Type *)MPU_BASE)
+/** Array initializer of MPU peripheral base pointers */
+#define MPU_BASES                                { MPU }
 
 /**
  * @}
@@ -7826,6 +7600,8 @@ typedef struct {
 #define NFC_BASE                                 (0x400A8000u)
 /** Peripheral NFC base pointer */
 #define NFC                                      ((NFC_Type *)NFC_BASE)
+/** Array initializer of NFC peripheral base pointers */
+#define NFC_BASES                                { NFC }
 
 /**
  * @}
@@ -7955,6 +7731,8 @@ typedef struct {
 #define FTFE_FlashConfig_BASE                    (0x400u)
 /** Peripheral FTFE_FlashConfig base pointer */
 #define FTFE_FlashConfig                         ((NV_Type *)FTFE_FlashConfig_BASE)
+/** Array initializer of NV peripheral base pointers */
+#define NV_BASES                                 { FTFE_FlashConfig }
 
 /**
  * @}
@@ -8012,6 +7790,8 @@ typedef struct {
 #define OSC1_BASE                                (0x400E5000u)
 /** Peripheral OSC1 base pointer */
 #define OSC1                                     ((OSC_Type *)OSC1_BASE)
+/** Array initializer of OSC peripheral base pointers */
+#define OSC_BASES                                { OSC0, OSC1 }
 
 /**
  * @}
@@ -8151,6 +7931,8 @@ typedef struct {
 #define PDB0_BASE                                (0x40036000u)
 /** Peripheral PDB0 base pointer */
 #define PDB0                                     ((PDB_Type *)PDB0_BASE)
+/** Array initializer of PDB peripheral base pointers */
+#define PDB_BASES                                { PDB0 }
 
 /**
  * @}
@@ -8219,6 +8001,8 @@ typedef struct {
 #define PIT_BASE                                 (0x40037000u)
 /** Peripheral PIT base pointer */
 #define PIT                                      ((PIT_Type *)PIT_BASE)
+/** Array initializer of PIT peripheral base pointers */
+#define PIT_BASES                                { PIT }
 
 /**
  * @}
@@ -8290,6 +8074,8 @@ typedef struct {
 #define PMC_BASE                                 (0x4007D000u)
 /** Peripheral PMC base pointer */
 #define PMC                                      ((PMC_Type *)PMC_BASE)
+/** Array initializer of PMC peripheral base pointers */
+#define PMC_BASES                                { PMC }
 
 /**
  * @}
@@ -8410,6 +8196,8 @@ typedef struct {
 #define PORTF_BASE                               (0x4004E000u)
 /** Peripheral PORTF base pointer */
 #define PORTF                                    ((PORT_Type *)PORTF_BASE)
+/** Array initializer of PORT peripheral base pointers */
+#define PORT_BASES                               { PORTA, PORTB, PORTC, PORTD, PORTE, PORTF }
 
 /**
  * @}
@@ -8497,6 +8285,8 @@ typedef struct {
 #define RCM_BASE                                 (0x4007F000u)
 /** Peripheral RCM base pointer */
 #define RCM                                      ((RCM_Type *)RCM_BASE)
+/** Array initializer of RCM peripheral base pointers */
+#define RCM_BASES                                { RCM }
 
 /**
  * @}
@@ -8550,6 +8340,8 @@ typedef struct {
 #define RFSYS_BASE                               (0x40041000u)
 /** Peripheral RFSYS base pointer */
 #define RFSYS                                    ((RFSYS_Type *)RFSYS_BASE)
+/** Array initializer of RFSYS peripheral base pointers */
+#define RFSYS_BASES                              { RFSYS }
 
 /**
  * @}
@@ -8603,6 +8395,8 @@ typedef struct {
 #define RFVBAT_BASE                              (0x4003E000u)
 /** Peripheral RFVBAT base pointer */
 #define RFVBAT                                   ((RFVBAT_Type *)RFVBAT_BASE)
+/** Array initializer of RFVBAT peripheral base pointers */
+#define RFVBAT_BASES                             { RFVBAT }
 
 /**
  * @}
@@ -8682,6 +8476,8 @@ typedef struct {
 #define RNG_BASE                                 (0x400A0000u)
 /** Peripheral RNG base pointer */
 #define RNG                                      ((RNG_Type *)RNG_BASE)
+/** Array initializer of RNG peripheral base pointers */
+#define RNG_BASES                                { RNG }
 
 /**
  * @}
@@ -8876,12 +8672,12 @@ typedef struct {
 #define RTC_TTR_CDTH_MASK                        0xE00u
 #define RTC_TTR_CDTH_SHIFT                       9
 #define RTC_TTR_CDTH(x)                          (((uint32_t)(((uint32_t)(x))<<RTC_TTR_CDTH_SHIFT))&RTC_TTR_CDTH_MASK)
-#define RTC_TTR_TDTL_MASK                        0x7000u
-#define RTC_TTR_TDTL_SHIFT                       12
-#define RTC_TTR_TDTL(x)                          (((uint32_t)(((uint32_t)(x))<<RTC_TTR_TDTL_SHIFT))&RTC_TTR_TDTL_MASK)
-#define RTC_TTR_TDTH_MASK                        0x38000u
-#define RTC_TTR_TDTH_SHIFT                       15
+#define RTC_TTR_TDTH_MASK                        0x7000u
+#define RTC_TTR_TDTH_SHIFT                       12
 #define RTC_TTR_TDTH(x)                          (((uint32_t)(((uint32_t)(x))<<RTC_TTR_TDTH_SHIFT))&RTC_TTR_TDTH_MASK)
+#define RTC_TTR_TDTL_MASK                        0x38000u
+#define RTC_TTR_TDTL_SHIFT                       15
+#define RTC_TTR_TDTL(x)                          (((uint32_t)(((uint32_t)(x))<<RTC_TTR_TDTL_SHIFT))&RTC_TTR_TDTL_MASK)
 /* TIR Bit Fields */
 #define RTC_TIR_DTIE_MASK                        0x1u
 #define RTC_TIR_DTIE_SHIFT                       0
@@ -8972,6 +8768,8 @@ typedef struct {
 #define RTC_BASE                                 (0x4003D000u)
 /** Peripheral RTC base pointer */
 #define RTC                                      ((RTC_Type *)RTC_BASE)
+/** Array initializer of RTC peripheral base pointers */
+#define RTC_BASES                                { RTC }
 
 /**
  * @}
@@ -9410,6 +9208,8 @@ typedef struct {
 #define SDHC_BASE                                (0x400B1000u)
 /** Peripheral SDHC base pointer */
 #define SDHC                                     ((SDHC_Type *)SDHC_BASE)
+/** Array initializer of SDHC peripheral base pointers */
+#define SDHC_BASES                               { SDHC }
 
 /**
  * @}
@@ -9849,6 +9649,8 @@ typedef struct {
 #define SIM_BASE                                 (0x40047000u)
 /** Peripheral SIM base pointer */
 #define SIM                                      ((SIM_Type *)SIM_BASE)
+/** Array initializer of SIM peripheral base pointers */
+#define SIM_BASES                                { SIM }
 
 /**
  * @}
@@ -9918,6 +9720,8 @@ typedef struct {
 #define SMC_BASE                                 (0x4007E000u)
 /** Peripheral SMC base pointer */
 #define SMC                                      ((SMC_Type *)SMC_BASE)
+/** Array initializer of SMC peripheral base pointers */
+#define SMC_BASES                                { SMC }
 
 /**
  * @}
@@ -10185,6 +9989,8 @@ typedef struct {
 #define SPI2_BASE                                (0x400AC000u)
 /** Peripheral SPI2 base pointer */
 #define SPI2                                     ((SPI_Type *)SPI2_BASE)
+/** Array initializer of SPI peripheral base pointers */
+#define SPI_BASES                                { SPI0, SPI1, SPI2 }
 
 /**
  * @}
@@ -10393,6 +10199,8 @@ typedef struct {
 #define TSI0_BASE                                (0x40045000u)
 /** Peripheral TSI0 base pointer */
 #define TSI0                                     ((TSI_Type *)TSI0_BASE)
+/** Array initializer of TSI peripheral base pointers */
+#define TSI_BASES                                { TSI0 }
 
 /**
  * @}
@@ -10872,6 +10680,8 @@ typedef struct {
 #define UART5_BASE                               (0x400EB000u)
 /** Peripheral UART5 base pointer */
 #define UART5                                    ((UART_Type *)UART5_BASE)
+/** Array initializer of UART peripheral base pointers */
+#define UART_BASES                               { UART0, UART1, UART2, UART3, UART4, UART5 }
 
 /**
  * @}
@@ -11203,6 +11013,8 @@ typedef struct {
 #define USB0_BASE                                (0x40072000u)
 /** Peripheral USB0 base pointer */
 #define USB0                                     ((USB_Type *)USB0_BASE)
+/** Array initializer of USB peripheral base pointers */
+#define USB_BASES                                { USB0 }
 
 /**
  * @}
@@ -11300,6 +11112,8 @@ typedef struct {
 #define USBDCD_BASE                              (0x40035000u)
 /** Peripheral USBDCD base pointer */
 #define USBDCD                                   ((USBDCD_Type *)USBDCD_BASE)
+/** Array initializer of USBDCD peripheral base pointers */
+#define USBDCD_BASES                             { USBDCD }
 
 /**
  * @}
@@ -11923,6 +11737,8 @@ typedef struct {
 #define USBHS_BASE                               (0x40034000u)
 /** Peripheral USBHS base pointer */
 #define USBHS                                    ((USBHS_Type *)USBHS_BASE)
+/** Array initializer of USBHS peripheral base pointers */
+#define USBHS_BASES                              { USBHS }
 
 /**
  * @}
@@ -11978,6 +11794,8 @@ typedef struct {
 #define VREF_BASE                                (0x40074000u)
 /** Peripheral VREF base pointer */
 #define VREF                                     ((VREF_Type *)VREF_BASE)
+/** Array initializer of VREF peripheral base pointers */
+#define VREF_BASES                               { VREF }
 
 /**
  * @}
@@ -12098,6 +11916,8 @@ typedef struct {
 #define WDOG_BASE                                (0x40052000u)
 /** Peripheral WDOG base pointer */
 #define WDOG                                     ((WDOG_Type *)WDOG_BASE)
+/** Array initializer of WDOG peripheral base pointers */
+#define WDOG_BASES                               { WDOG }
 
 /**
  * @}
@@ -12134,7 +11954,15 @@ typedef struct {
  * @{
  */
 
-/* No backward compatibility issues. */
+#define PDB0_PO0EN                               PDB0_POEN
+#define PMC_REGSC_BGEN_MASK                      0x10u
+#define PMC_REGSC_BGEN_SHIFT                     4
+#define SIM_SCGC4_IIC2_MASK                      SIM_SCGC4_IIC0_MASK
+#define SIM_SCGC4_IIC2_SHIFT                     SIM_SCGC4_IIC0_SHIFT
+#define SIM_SCGC6_FTFE_MASK                      0x1u
+#define SIM_SCGC6_FTFE_SHIFT                     0
+#define SIM_SCGC7_PFLEXNVM_MASK                  0x4u
+#define SIM_SCGC7_PFLEXNVM_SHIFT                 2
 
 /**
  * @}

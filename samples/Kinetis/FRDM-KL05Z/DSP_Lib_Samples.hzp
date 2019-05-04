@@ -1,6 +1,6 @@
 <!DOCTYPE CrossStudio_Project_File>
 <solution version="1" Name="FRDM-KL05Z CMSIS DSP Library Samples">
-  <configuration Name="Common" c_user_include_directories="$(TargetsDir)/CMSIS_3/CMSIS/DSP_Lib/Examples/Common/Include" c_preprocessor_definitions="ARM_MATH_CM0" arm_fp_abi="Soft"/>
+  <configuration Name="Common" c_user_include_directories="$(TargetsDir)/CMSIS_3/CMSIS/DSP_Lib/Examples/Common/Include" c_preprocessor_definitions="ARM_MATH_CM0PLUS" arm_fp_abi="Soft"/>
   <project Name="arm_class_marks_example" template_name="Kinetis_EXE">
     <configuration Name="Common" project_directory="arm_class_marks_example" linker_additional_files="$(TargetsDir)/CMSIS_3/CMSIS/Lib/CrossWorks/arm_cortex_math$(LibExt)$(LIB)" arm_linker_stack_size="1024" Target="MKL05Z32Vxx4"/>
     <folder Name="Source Files" filter="*.c;*.h" path="$(TargetsDir)/CMSIS_3/CMSIS/DSP_Lib/Examples/arm_class_marks_example" recurse="Yes"/>

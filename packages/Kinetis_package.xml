@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.7" build_version="2013022705.6971;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
+<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.9" build_version="2013041001.7155;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
 
 <targets>
   <category name="K10 Series" >
@@ -20,6 +20,12 @@
     <cpu name="MK10DN512xxx10"/>
     <cpu name="MK10FX512xxx12"/>
     <cpu name="MK10FN1M0xxx12"/>
+    <cpu name="MK11DX128xxx5"/>
+    <cpu name="MK11DX256xxx5"/>
+    <cpu name="MK11DN512xxx5"/>
+    <cpu name="MK12DX128xxx5"/>
+    <cpu name="MK12DX256xxx5"/>
+    <cpu name="MK12DN512xxx5"/>
   </category>
   <category name="K20 Series" >
     <cpu name="MK20DN32xxx5"/>
@@ -37,6 +43,12 @@
     <cpu name="MK20DX128xxx10"/>
     <cpu name="MK20DX256xxx10"/>
     <cpu name="MK20DN512xxx10"/>
+    <cpu name="MK21DX128xxx5"/>
+    <cpu name="MK21DX256xxx5"/>
+    <cpu name="MK21DN512xxx5"/>
+    <cpu name="MK22DX128xxx5"/>
+    <cpu name="MK22DX256xxx5"/>
+    <cpu name="MK22DN512xxx5"/>
   </category>
   <category name="K30 Series" >
     <cpu name="MK30DX64xxx7"/>
@@ -103,6 +115,9 @@
     <cpu name="MK70FN1M0xxx15"/>
   </category>
   <category name="KL0 Series" >
+    <cpu name="MKL02Z8Vxx4"/>
+    <cpu name="MKL02Z16Vxx4"/>
+    <cpu name="MKL02Z32Vxx4"/>
     <cpu name="MKL04Z8Vxx4"/>
     <cpu name="MKL04Z16Vxx4"/>
     <cpu name="MKL04Z32Vxx4"/>
@@ -247,6 +262,13 @@
 
   </documentation>
   <history>  
+    <version name="1.9">
+      <description>Added support for MK11D5, MK12D5, MK21D5, MK22D5 and MKL02Z4 devices.</description>
+       <description>Modified L series flash loader to run in 2K of SRAM - note 1K SRAM parts are not supported.</description>
+    </version>
+    <version name="1.8">
+      <description>Fixed VECTORS_IN_RAM initialization.</description>
+    </version>
     <version name="1.7">
       <description>Modified L series flash loader to run in 4K of SRAM - note that 2K and 1K parts
       are not supported.</description>

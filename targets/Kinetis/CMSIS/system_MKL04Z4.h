@@ -1,20 +1,23 @@
 /*
 ** ###################################################################
-**     Processor:           MKL04Z32VLF4
+**     Processors:          MKL04Z32FK4
+**                          MKL04Z32LC4
+**                          MKL04Z32VLF4
+**
 **     Compilers:           ARM Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    KL04RM, Rev.1, Jun 2012
-**     Version:             rev. 1.0, 2012-06-21
+**     Reference manual:    KL04P48M48SF1RM, Rev.3, Sep 2012
+**     Version:             rev. 1.3, 2012-11-22
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2012 Freescale Semiconductor, Inc. All Rights Reserved.
+**     Copyright: 2012 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -22,14 +25,21 @@
 **     Revisions:
 **     - rev. 1.0 (2012-06-21)
 **         Initial version.
+**     - rev. 1.1 (2012-08-01)
+**         Device type UARTLP changed to UART0.
+**         Missing PORTB_IRQn interrupt number definition added.
+**     - rev. 1.2 (2012-10-04)
+**         Update according to reference manual rev. 3.
+**     - rev. 1.3 (2012-11-22)
+**         NV registers - bit EZPORT_DIS in NV_FOPT register removed.
 **
 ** ###################################################################
 */
 
 /**
  * @file MKL04Z4
- * @version 1.0
- * @date 2012-06-21
+ * @version 1.3
+ * @date 2012-11-22
  * @brief Device specific configuration file for MKL04Z4 (header file)
  *
  * Provides a system configuration function and a global variable that contains
