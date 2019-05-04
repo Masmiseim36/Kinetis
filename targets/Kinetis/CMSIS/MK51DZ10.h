@@ -13,11 +13,11 @@
 **
 **     Compilers:           ARM Compiler
 **                          Freescale C/C++ for Embedded ARM
-**                          GNU ARM C Compiler
+**                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    K51P144M100SF2RM Rev. 5, 8 May 2011
-**     Version:             rev. 1.0, 2011-06-10
+**     Version:             rev. 1.2, 2011-09-08
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MK51DZ10
@@ -30,14 +30,19 @@
 **     Revisions:
 **     - rev. 1.0 (2011-06-10)
 **         Initial version
+**     - rev. 1.1 (2011-06-29)
+**         Order of declarations changed.
+**     - rev. 1.2 (2011-09-08)
+**         Cortex_Core_Configuration extended with additional parameters.
+**         Gap between end of interrupt vector table and flash configuration field filled by default ISR.
 **
 ** ###################################################################
 */
 
 /**
  * @file MK51DZ10.h
- * @version 1.0
- * @date 2011-06-10
+ * @version 1.2
+ * @date 2011-09-08
  * @brief CMSIS Peripheral Access Layer for MK51DZ10
  *
  * CMSIS Peripheral Access Layer for MK51DZ10
@@ -46,8 +51,8 @@
 #if !defined(MK51DZ10_H_)
 #define MK51DZ10_H_                              /**< Symbol preventing repeated inclusion */
 
-/** Memory map version 1.0 */
-#define MCU_MEM_MAP_VERSION 0x0100u
+/** Memory map version 1.2 */
+#define MCU_MEM_MAP_VERSION 0x0102u
 
 /**
  * @brief Macro to access a single bit of a peripheral register (bit band region
@@ -192,17 +197,19 @@ typedef enum IRQn {
 
 
 /* ----------------------------------------------------------------------------
-   -- Cortex M4 Core Configuration
+   -- Configuration of the Cortex-M4 Processor and Core Peripherals
    ---------------------------------------------------------------------------- */
 
 /**
- * @addtogroup Cortex_Core_Configuration Cortex M4 Core Configuration
+ * @addtogroup Cortex_Core_Configuration Configuration of the Cortex-M4 Processor and Core Peripherals
  * @{
  */
 
-#define __MPU_PRESENT                  0         /**< Defines if an MPU is present or not */
-#define __NVIC_PRIO_BITS               4         /**< Number of priority bits implemented in the NVIC */
-#define __Vendor_SysTickConfig         0         /**< Vendor specific implementation of SysTickConfig is defined */
+#define __CM4_REV                      0x0001    /**< Core revision r0p1 */
+#define __MPU_PRESENT                  0         /**< MPU present or not */
+#define __NVIC_PRIO_BITS               4         /**< Number of Bits used for Priority Levels */
+#define __Vendor_SysTickConfig         0         /**< Set to 1 if different SysTick Config is used */
+#define __FPU_PRESENT                  0         /**< FPU present or not */
 
 #include "core_cm4.h"                  /* Core Peripheral Access Layer */
 #include "system_MK51DZ10.h"           /* Device specific configuration file */
@@ -1686,11 +1693,11 @@ typedef struct {
 /** CRC - Register Layout Typedef */
 typedef struct {
   union {                                          /* offset: 0x0 */
-    __IO uint32_t CRC;                               /**< CRC Data Register, offset: 0x0 */
     struct {                                         /* offset: 0x0 */
       __IO uint16_t CRCL;                              /**< CRC_CRCL register., offset: 0x0 */
       __IO uint16_t CRCH;                              /**< CRC_CRCH register., offset: 0x2 */
     } ACCESS16BIT;
+    __IO uint32_t CRC;                               /**< CRC Data Register, offset: 0x0 */
     struct {                                         /* offset: 0x0 */
       __IO uint8_t CRCLL;                              /**< CRC_CRCLL register., offset: 0x0 */
       __IO uint8_t CRCLU;                              /**< CRC_CRCLU register., offset: 0x1 */
@@ -1699,11 +1706,11 @@ typedef struct {
     } ACCESS8BIT;
   };
   union {                                          /* offset: 0x4 */
-    __IO uint32_t GPOLY;                             /**< CRC Polynomial Register, offset: 0x4 */
     struct {                                         /* offset: 0x4 */
       __IO uint16_t GPOLYL;                            /**< CRC_GPOLYL register., offset: 0x4 */
       __IO uint16_t GPOLYH;                            /**< CRC_GPOLYH register., offset: 0x6 */
     } GPOLY_ACCESS16BIT;
+    __IO uint32_t GPOLY;                             /**< CRC Polynomial Register, offset: 0x4 */
     struct {                                         /* offset: 0x4 */
       __IO uint8_t GPOLYLL;                            /**< CRC_GPOLYLL register., offset: 0x4 */
       __IO uint8_t GPOLYLU;                            /**< CRC_GPOLYLU register., offset: 0x5 */
@@ -1729,6 +1736,14 @@ typedef struct {
  * @{
  */
 
+/* CRCL Bit Fields */
+#define CRC_CRCL_CRCL_MASK                       0xFFFFu
+#define CRC_CRCL_CRCL_SHIFT                      0
+#define CRC_CRCL_CRCL(x)                         (((uint16_t)(((uint16_t)(x))<<CRC_CRCL_CRCL_SHIFT))&CRC_CRCL_CRCL_MASK)
+/* CRCH Bit Fields */
+#define CRC_CRCH_CRCH_MASK                       0xFFFFu
+#define CRC_CRCH_CRCH_SHIFT                      0
+#define CRC_CRCH_CRCH(x)                         (((uint16_t)(((uint16_t)(x))<<CRC_CRCH_CRCH_SHIFT))&CRC_CRCH_CRCH_MASK)
 /* CRC Bit Fields */
 #define CRC_CRC_LL_MASK                          0xFFu
 #define CRC_CRC_LL_SHIFT                         0
@@ -1742,14 +1757,6 @@ typedef struct {
 #define CRC_CRC_HU_MASK                          0xFF000000u
 #define CRC_CRC_HU_SHIFT                         24
 #define CRC_CRC_HU(x)                            (((uint32_t)(((uint32_t)(x))<<CRC_CRC_HU_SHIFT))&CRC_CRC_HU_MASK)
-/* CRCL Bit Fields */
-#define CRC_CRCL_CRCL_MASK                       0xFFFFu
-#define CRC_CRCL_CRCL_SHIFT                      0
-#define CRC_CRCL_CRCL(x)                         (((uint16_t)(((uint16_t)(x))<<CRC_CRCL_CRCL_SHIFT))&CRC_CRCL_CRCL_MASK)
-/* CRCH Bit Fields */
-#define CRC_CRCH_CRCH_MASK                       0xFFFFu
-#define CRC_CRCH_CRCH_SHIFT                      0
-#define CRC_CRCH_CRCH(x)                         (((uint16_t)(((uint16_t)(x))<<CRC_CRCH_CRCH_SHIFT))&CRC_CRCH_CRCH_MASK)
 /* CRCLL Bit Fields */
 #define CRC_CRCLL_CRCLL_MASK                     0xFFu
 #define CRC_CRCLL_CRCLL_SHIFT                    0
@@ -1766,13 +1773,6 @@ typedef struct {
 #define CRC_CRCHU_CRCHU_MASK                     0xFFu
 #define CRC_CRCHU_CRCHU_SHIFT                    0
 #define CRC_CRCHU_CRCHU(x)                       (((uint8_t)(((uint8_t)(x))<<CRC_CRCHU_CRCHU_SHIFT))&CRC_CRCHU_CRCHU_MASK)
-/* GPOLY Bit Fields */
-#define CRC_GPOLY_LOW_MASK                       0xFFFFu
-#define CRC_GPOLY_LOW_SHIFT                      0
-#define CRC_GPOLY_LOW(x)                         (((uint32_t)(((uint32_t)(x))<<CRC_GPOLY_LOW_SHIFT))&CRC_GPOLY_LOW_MASK)
-#define CRC_GPOLY_HIGH_MASK                      0xFFFF0000u
-#define CRC_GPOLY_HIGH_SHIFT                     16
-#define CRC_GPOLY_HIGH(x)                        (((uint32_t)(((uint32_t)(x))<<CRC_GPOLY_HIGH_SHIFT))&CRC_GPOLY_HIGH_MASK)
 /* GPOLYL Bit Fields */
 #define CRC_GPOLYL_GPOLYL_MASK                   0xFFFFu
 #define CRC_GPOLYL_GPOLYL_SHIFT                  0
@@ -1781,6 +1781,13 @@ typedef struct {
 #define CRC_GPOLYH_GPOLYH_MASK                   0xFFFFu
 #define CRC_GPOLYH_GPOLYH_SHIFT                  0
 #define CRC_GPOLYH_GPOLYH(x)                     (((uint16_t)(((uint16_t)(x))<<CRC_GPOLYH_GPOLYH_SHIFT))&CRC_GPOLYH_GPOLYH_MASK)
+/* GPOLY Bit Fields */
+#define CRC_GPOLY_LOW_MASK                       0xFFFFu
+#define CRC_GPOLY_LOW_SHIFT                      0
+#define CRC_GPOLY_LOW(x)                         (((uint32_t)(((uint32_t)(x))<<CRC_GPOLY_LOW_SHIFT))&CRC_GPOLY_LOW_MASK)
+#define CRC_GPOLY_HIGH_MASK                      0xFFFF0000u
+#define CRC_GPOLY_HIGH_SHIFT                     16
+#define CRC_GPOLY_HIGH(x)                        (((uint32_t)(((uint32_t)(x))<<CRC_GPOLY_HIGH_SHIFT))&CRC_GPOLY_HIGH_MASK)
 /* GPOLYLL Bit Fields */
 #define CRC_GPOLYLL_GPOLYLL_MASK                 0xFFu
 #define CRC_GPOLYLL_GPOLYLL_SHIFT                0
@@ -2003,8 +2010,8 @@ typedef struct {
     __IO uint32_t DADDR;                             /**< TCD Destination Address, array offset: 0x1010, array step: 0x20 */
     __IO uint16_t DOFF;                              /**< TCD Signed Destination Address Offset, array offset: 0x1014, array step: 0x20 */
     union {                                          /* offset: 0x1016, array step: 0x20 */
-      __IO uint16_t CITER_ELINKYES;                    /**< TCD Current Minor Loop Link, Major Loop Count (Channel Linking Enabled), array offset: 0x1016, array step: 0x20 */
       __IO uint16_t CITER_ELINKNO;                     /**< TCD Current Minor Loop Link, Major Loop Count (Channel Linking Disabled), array offset: 0x1016, array step: 0x20 */
+      __IO uint16_t CITER_ELINKYES;                    /**< TCD Current Minor Loop Link, Major Loop Count (Channel Linking Enabled), array offset: 0x1016, array step: 0x20 */
     };
     __IO uint32_t DLAST_SGA;                         /**< TCD Last Destination Address Adjustment/Scatter Gather Address, array offset: 0x1018, array step: 0x20 */
     __IO uint16_t CSR;                               /**< TCD Control and Status, array offset: 0x101C, array step: 0x20 */
@@ -2480,6 +2487,12 @@ typedef struct {
 #define DMA_DOFF_DOFF_MASK                       0xFFFFu
 #define DMA_DOFF_DOFF_SHIFT                      0
 #define DMA_DOFF_DOFF(x)                         (((uint16_t)(((uint16_t)(x))<<DMA_DOFF_DOFF_SHIFT))&DMA_DOFF_DOFF_MASK)
+/* CITER_ELINKNO Bit Fields */
+#define DMA_CITER_ELINKNO_CITER_MASK             0x7FFFu
+#define DMA_CITER_ELINKNO_CITER_SHIFT            0
+#define DMA_CITER_ELINKNO_CITER(x)               (((uint16_t)(((uint16_t)(x))<<DMA_CITER_ELINKNO_CITER_SHIFT))&DMA_CITER_ELINKNO_CITER_MASK)
+#define DMA_CITER_ELINKNO_ELINK_MASK             0x8000u
+#define DMA_CITER_ELINKNO_ELINK_SHIFT            15
 /* CITER_ELINKYES Bit Fields */
 #define DMA_CITER_ELINKYES_CITER_MASK            0x1FFu
 #define DMA_CITER_ELINKYES_CITER_SHIFT           0
@@ -2489,12 +2502,6 @@ typedef struct {
 #define DMA_CITER_ELINKYES_LINKCH(x)             (((uint16_t)(((uint16_t)(x))<<DMA_CITER_ELINKYES_LINKCH_SHIFT))&DMA_CITER_ELINKYES_LINKCH_MASK)
 #define DMA_CITER_ELINKYES_ELINK_MASK            0x8000u
 #define DMA_CITER_ELINKYES_ELINK_SHIFT           15
-/* CITER_ELINKNO Bit Fields */
-#define DMA_CITER_ELINKNO_CITER_MASK             0x7FFFu
-#define DMA_CITER_ELINKNO_CITER_SHIFT            0
-#define DMA_CITER_ELINKNO_CITER(x)               (((uint16_t)(((uint16_t)(x))<<DMA_CITER_ELINKNO_CITER_SHIFT))&DMA_CITER_ELINKNO_CITER_MASK)
-#define DMA_CITER_ELINKNO_ELINK_MASK             0x8000u
-#define DMA_CITER_ELINKNO_ELINK_SHIFT            15
 /* DLAST_SGA Bit Fields */
 #define DMA_DLAST_SGA_DLASTSGA_MASK              0xFFFFFFFFu
 #define DMA_DLAST_SGA_DLASTSGA_SHIFT             0
@@ -2662,6 +2669,113 @@ typedef struct {
 /**
  * @}
  */ /* end of group EWM_Peripheral_Access_Layer */
+
+
+/* ----------------------------------------------------------------------------
+   -- FB Peripheral Access Layer
+   ---------------------------------------------------------------------------- */
+
+/**
+ * @addtogroup FB_Peripheral_Access_Layer FB Peripheral Access Layer
+ * @{
+ */
+
+/** FB - Register Layout Typedef */
+typedef struct {
+  struct {                                         /* offset: 0x0, array step: 0xC */
+    __IO uint32_t CSAR;                              /**< Chip select address register, array offset: 0x0, array step: 0xC */
+    __IO uint32_t CSMR;                              /**< Chip select mask register, array offset: 0x4, array step: 0xC */
+    __IO uint32_t CSCR;                              /**< Chip select control register, array offset: 0x8, array step: 0xC */
+  } CS[6];
+       uint8_t RESERVED_0[24];
+  __IO uint32_t CSPMCR;                            /**< Chip select port multiplexing control register, offset: 0x60 */
+} FB_Type;
+
+/* ----------------------------------------------------------------------------
+   -- FB Register Masks
+   ---------------------------------------------------------------------------- */
+
+/**
+ * @addtogroup FB_Register_Masks FB Register Masks
+ * @{
+ */
+
+/* CSAR Bit Fields */
+#define FB_CSAR_BA_MASK                          0xFFFF0000u
+#define FB_CSAR_BA_SHIFT                         16
+#define FB_CSAR_BA(x)                            (((uint32_t)(((uint32_t)(x))<<FB_CSAR_BA_SHIFT))&FB_CSAR_BA_MASK)
+/* CSMR Bit Fields */
+#define FB_CSMR_V_MASK                           0x1u
+#define FB_CSMR_V_SHIFT                          0
+#define FB_CSMR_WP_MASK                          0x100u
+#define FB_CSMR_WP_SHIFT                         8
+#define FB_CSMR_BAM_MASK                         0xFFFF0000u
+#define FB_CSMR_BAM_SHIFT                        16
+#define FB_CSMR_BAM(x)                           (((uint32_t)(((uint32_t)(x))<<FB_CSMR_BAM_SHIFT))&FB_CSMR_BAM_MASK)
+/* CSCR Bit Fields */
+#define FB_CSCR_BSTW_MASK                        0x8u
+#define FB_CSCR_BSTW_SHIFT                       3
+#define FB_CSCR_BSTR_MASK                        0x10u
+#define FB_CSCR_BSTR_SHIFT                       4
+#define FB_CSCR_BEM_MASK                         0x20u
+#define FB_CSCR_BEM_SHIFT                        5
+#define FB_CSCR_PS_MASK                          0xC0u
+#define FB_CSCR_PS_SHIFT                         6
+#define FB_CSCR_PS(x)                            (((uint32_t)(((uint32_t)(x))<<FB_CSCR_PS_SHIFT))&FB_CSCR_PS_MASK)
+#define FB_CSCR_AA_MASK                          0x100u
+#define FB_CSCR_AA_SHIFT                         8
+#define FB_CSCR_BLS_MASK                         0x200u
+#define FB_CSCR_BLS_SHIFT                        9
+#define FB_CSCR_WS_MASK                          0xFC00u
+#define FB_CSCR_WS_SHIFT                         10
+#define FB_CSCR_WS(x)                            (((uint32_t)(((uint32_t)(x))<<FB_CSCR_WS_SHIFT))&FB_CSCR_WS_MASK)
+#define FB_CSCR_WRAH_MASK                        0x30000u
+#define FB_CSCR_WRAH_SHIFT                       16
+#define FB_CSCR_WRAH(x)                          (((uint32_t)(((uint32_t)(x))<<FB_CSCR_WRAH_SHIFT))&FB_CSCR_WRAH_MASK)
+#define FB_CSCR_RDAH_MASK                        0xC0000u
+#define FB_CSCR_RDAH_SHIFT                       18
+#define FB_CSCR_RDAH(x)                          (((uint32_t)(((uint32_t)(x))<<FB_CSCR_RDAH_SHIFT))&FB_CSCR_RDAH_MASK)
+#define FB_CSCR_ASET_MASK                        0x300000u
+#define FB_CSCR_ASET_SHIFT                       20
+#define FB_CSCR_ASET(x)                          (((uint32_t)(((uint32_t)(x))<<FB_CSCR_ASET_SHIFT))&FB_CSCR_ASET_MASK)
+#define FB_CSCR_EXTS_MASK                        0x400000u
+#define FB_CSCR_EXTS_SHIFT                       22
+#define FB_CSCR_SWSEN_MASK                       0x800000u
+#define FB_CSCR_SWSEN_SHIFT                      23
+#define FB_CSCR_SWS_MASK                         0xFC000000u
+#define FB_CSCR_SWS_SHIFT                        26
+#define FB_CSCR_SWS(x)                           (((uint32_t)(((uint32_t)(x))<<FB_CSCR_SWS_SHIFT))&FB_CSCR_SWS_MASK)
+/* CSPMCR Bit Fields */
+#define FB_CSPMCR_GROUP5_MASK                    0xF000u
+#define FB_CSPMCR_GROUP5_SHIFT                   12
+#define FB_CSPMCR_GROUP5(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP5_SHIFT))&FB_CSPMCR_GROUP5_MASK)
+#define FB_CSPMCR_GROUP4_MASK                    0xF0000u
+#define FB_CSPMCR_GROUP4_SHIFT                   16
+#define FB_CSPMCR_GROUP4(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP4_SHIFT))&FB_CSPMCR_GROUP4_MASK)
+#define FB_CSPMCR_GROUP3_MASK                    0xF00000u
+#define FB_CSPMCR_GROUP3_SHIFT                   20
+#define FB_CSPMCR_GROUP3(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP3_SHIFT))&FB_CSPMCR_GROUP3_MASK)
+#define FB_CSPMCR_GROUP2_MASK                    0xF000000u
+#define FB_CSPMCR_GROUP2_SHIFT                   24
+#define FB_CSPMCR_GROUP2(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP2_SHIFT))&FB_CSPMCR_GROUP2_MASK)
+#define FB_CSPMCR_GROUP1_MASK                    0xF0000000u
+#define FB_CSPMCR_GROUP1_SHIFT                   28
+#define FB_CSPMCR_GROUP1(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP1_SHIFT))&FB_CSPMCR_GROUP1_MASK)
+
+/**
+ * @}
+ */ /* end of group FB_Register_Masks */
+
+
+/* FB - Peripheral instance base addresses */
+/** Peripheral FB base address */
+#define FB_BASE                                  (0x4000C000u)
+/** Peripheral FB base pointer */
+#define FB                                       ((FB_Type *)FB_BASE)
+
+/**
+ * @}
+ */ /* end of group FB_Peripheral_Access_Layer */
 
 
 /* ----------------------------------------------------------------------------
@@ -2990,135 +3104,6 @@ typedef struct {
 /**
  * @}
  */ /* end of group FTFL_Peripheral_Access_Layer */
-
-
-/* ----------------------------------------------------------------------------
-   -- NV Peripheral Access Layer
-   ---------------------------------------------------------------------------- */
-
-/**
- * @addtogroup NV_Peripheral_Access_Layer NV Peripheral Access Layer
- * @{
- */
-
-/** NV - Register Layout Typedef */
-typedef struct {
-  __I  uint8_t BACKKEY3;                           /**< Backdoor Comparison Key 3., offset: 0x0 */
-  __I  uint8_t BACKKEY2;                           /**< Backdoor Comparison Key 2., offset: 0x1 */
-  __I  uint8_t BACKKEY1;                           /**< Backdoor Comparison Key 1., offset: 0x2 */
-  __I  uint8_t BACKKEY0;                           /**< Backdoor Comparison Key 0., offset: 0x3 */
-  __I  uint8_t BACKKEY7;                           /**< Backdoor Comparison Key 7., offset: 0x4 */
-  __I  uint8_t BACKKEY6;                           /**< Backdoor Comparison Key 6., offset: 0x5 */
-  __I  uint8_t BACKKEY5;                           /**< Backdoor Comparison Key 5., offset: 0x6 */
-  __I  uint8_t BACKKEY4;                           /**< Backdoor Comparison Key 4., offset: 0x7 */
-  __I  uint8_t FPROT3;                             /**< Non-volatile P-Flash Protection 1 - Low Register, offset: 0x8 */
-  __I  uint8_t FPROT2;                             /**< Non-volatile P-Flash Protection 1 - High Register, offset: 0x9 */
-  __I  uint8_t FPROT1;                             /**< Non-volatile P-Flash Protection 0 - Low Register, offset: 0xA */
-  __I  uint8_t FPROT0;                             /**< Non-volatile P-Flash Protection 0 - High Register, offset: 0xB */
-  __I  uint8_t FSEC;                               /**< Non-volatile Flash Security Register, offset: 0xC */
-  __I  uint8_t FOPT;                               /**< Non-volatile Flash Option Register, offset: 0xD */
-  __I  uint8_t FEPROT;                             /**< Non-volatile EERAM Protection Register, offset: 0xE */
-  __I  uint8_t FDPROT;                             /**< Non-volatile D-Flash Protection Register, offset: 0xF */
-} NV_Type;
-
-/* ----------------------------------------------------------------------------
-   -- NV Register Masks
-   ---------------------------------------------------------------------------- */
-
-/**
- * @addtogroup NV_Register_Masks NV Register Masks
- * @{
- */
-
-/* BACKKEY3 Bit Fields */
-#define NV_BACKKEY3_KEY_MASK                     0xFFu
-#define NV_BACKKEY3_KEY_SHIFT                    0
-#define NV_BACKKEY3_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY3_KEY_SHIFT))&NV_BACKKEY3_KEY_MASK)
-/* BACKKEY2 Bit Fields */
-#define NV_BACKKEY2_KEY_MASK                     0xFFu
-#define NV_BACKKEY2_KEY_SHIFT                    0
-#define NV_BACKKEY2_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY2_KEY_SHIFT))&NV_BACKKEY2_KEY_MASK)
-/* BACKKEY1 Bit Fields */
-#define NV_BACKKEY1_KEY_MASK                     0xFFu
-#define NV_BACKKEY1_KEY_SHIFT                    0
-#define NV_BACKKEY1_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY1_KEY_SHIFT))&NV_BACKKEY1_KEY_MASK)
-/* BACKKEY0 Bit Fields */
-#define NV_BACKKEY0_KEY_MASK                     0xFFu
-#define NV_BACKKEY0_KEY_SHIFT                    0
-#define NV_BACKKEY0_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY0_KEY_SHIFT))&NV_BACKKEY0_KEY_MASK)
-/* BACKKEY7 Bit Fields */
-#define NV_BACKKEY7_KEY_MASK                     0xFFu
-#define NV_BACKKEY7_KEY_SHIFT                    0
-#define NV_BACKKEY7_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY7_KEY_SHIFT))&NV_BACKKEY7_KEY_MASK)
-/* BACKKEY6 Bit Fields */
-#define NV_BACKKEY6_KEY_MASK                     0xFFu
-#define NV_BACKKEY6_KEY_SHIFT                    0
-#define NV_BACKKEY6_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY6_KEY_SHIFT))&NV_BACKKEY6_KEY_MASK)
-/* BACKKEY5 Bit Fields */
-#define NV_BACKKEY5_KEY_MASK                     0xFFu
-#define NV_BACKKEY5_KEY_SHIFT                    0
-#define NV_BACKKEY5_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY5_KEY_SHIFT))&NV_BACKKEY5_KEY_MASK)
-/* BACKKEY4 Bit Fields */
-#define NV_BACKKEY4_KEY_MASK                     0xFFu
-#define NV_BACKKEY4_KEY_SHIFT                    0
-#define NV_BACKKEY4_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY4_KEY_SHIFT))&NV_BACKKEY4_KEY_MASK)
-/* FPROT3 Bit Fields */
-#define NV_FPROT3_PROT_MASK                      0xFFu
-#define NV_FPROT3_PROT_SHIFT                     0
-#define NV_FPROT3_PROT(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FPROT3_PROT_SHIFT))&NV_FPROT3_PROT_MASK)
-/* FPROT2 Bit Fields */
-#define NV_FPROT2_PROT_MASK                      0xFFu
-#define NV_FPROT2_PROT_SHIFT                     0
-#define NV_FPROT2_PROT(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FPROT2_PROT_SHIFT))&NV_FPROT2_PROT_MASK)
-/* FPROT1 Bit Fields */
-#define NV_FPROT1_PROT_MASK                      0xFFu
-#define NV_FPROT1_PROT_SHIFT                     0
-#define NV_FPROT1_PROT(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FPROT1_PROT_SHIFT))&NV_FPROT1_PROT_MASK)
-/* FPROT0 Bit Fields */
-#define NV_FPROT0_PROT_MASK                      0xFFu
-#define NV_FPROT0_PROT_SHIFT                     0
-#define NV_FPROT0_PROT(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FPROT0_PROT_SHIFT))&NV_FPROT0_PROT_MASK)
-/* FSEC Bit Fields */
-#define NV_FSEC_SEC_MASK                         0x3u
-#define NV_FSEC_SEC_SHIFT                        0
-#define NV_FSEC_SEC(x)                           (((uint8_t)(((uint8_t)(x))<<NV_FSEC_SEC_SHIFT))&NV_FSEC_SEC_MASK)
-#define NV_FSEC_FSLACC_MASK                      0xCu
-#define NV_FSEC_FSLACC_SHIFT                     2
-#define NV_FSEC_FSLACC(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FSEC_FSLACC_SHIFT))&NV_FSEC_FSLACC_MASK)
-#define NV_FSEC_MEEN_MASK                        0x30u
-#define NV_FSEC_MEEN_SHIFT                       4
-#define NV_FSEC_MEEN(x)                          (((uint8_t)(((uint8_t)(x))<<NV_FSEC_MEEN_SHIFT))&NV_FSEC_MEEN_MASK)
-#define NV_FSEC_KEYEN_MASK                       0xC0u
-#define NV_FSEC_KEYEN_SHIFT                      6
-#define NV_FSEC_KEYEN(x)                         (((uint8_t)(((uint8_t)(x))<<NV_FSEC_KEYEN_SHIFT))&NV_FSEC_KEYEN_MASK)
-/* FOPT Bit Fields */
-#define NV_FOPT_LPBOOT_MASK                      0x1u
-#define NV_FOPT_LPBOOT_SHIFT                     0
-#define NV_FOPT_EZPORT_DIS_MASK                  0x2u
-#define NV_FOPT_EZPORT_DIS_SHIFT                 1
-/* FEPROT Bit Fields */
-#define NV_FEPROT_EPROT_MASK                     0xFFu
-#define NV_FEPROT_EPROT_SHIFT                    0
-#define NV_FEPROT_EPROT(x)                       (((uint8_t)(((uint8_t)(x))<<NV_FEPROT_EPROT_SHIFT))&NV_FEPROT_EPROT_MASK)
-/* FDPROT Bit Fields */
-#define NV_FDPROT_DPROT_MASK                     0xFFu
-#define NV_FDPROT_DPROT_SHIFT                    0
-#define NV_FDPROT_DPROT(x)                       (((uint8_t)(((uint8_t)(x))<<NV_FDPROT_DPROT_SHIFT))&NV_FDPROT_DPROT_MASK)
-
-/**
- * @}
- */ /* end of group NV_Register_Masks */
-
-
-/* NV - Peripheral instance base addresses */
-/** Peripheral FTFL_FlashConfig base address */
-#define FTFL_FlashConfig_BASE                    (0x400u)
-/** Peripheral FTFL_FlashConfig base pointer */
-#define FTFL_FlashConfig                         ((NV_Type *)FTFL_FlashConfig_BASE)
-
-/**
- * @}
- */ /* end of group NV_Peripheral_Access_Layer */
 
 
 /* ----------------------------------------------------------------------------
@@ -3596,6 +3581,91 @@ typedef struct {
 /**
  * @}
  */ /* end of group FTM_Peripheral_Access_Layer */
+
+
+/* ----------------------------------------------------------------------------
+   -- GPIO Peripheral Access Layer
+   ---------------------------------------------------------------------------- */
+
+/**
+ * @addtogroup GPIO_Peripheral_Access_Layer GPIO Peripheral Access Layer
+ * @{
+ */
+
+/** GPIO - Register Layout Typedef */
+typedef struct {
+  __IO uint32_t PDOR;                              /**< Port Data Output Register, offset: 0x0 */
+  __O  uint32_t PSOR;                              /**< Port Set Output Register, offset: 0x4 */
+  __O  uint32_t PCOR;                              /**< Port Clear Output Register, offset: 0x8 */
+  __O  uint32_t PTOR;                              /**< Port Toggle Output Register, offset: 0xC */
+  __I  uint32_t PDIR;                              /**< Port Data Input Register, offset: 0x10 */
+  __IO uint32_t PDDR;                              /**< Port Data Direction Register, offset: 0x14 */
+} GPIO_Type;
+
+/* ----------------------------------------------------------------------------
+   -- GPIO Register Masks
+   ---------------------------------------------------------------------------- */
+
+/**
+ * @addtogroup GPIO_Register_Masks GPIO Register Masks
+ * @{
+ */
+
+/* PDOR Bit Fields */
+#define GPIO_PDOR_PDO_MASK                       0xFFFFFFFFu
+#define GPIO_PDOR_PDO_SHIFT                      0
+#define GPIO_PDOR_PDO(x)                         (((uint32_t)(((uint32_t)(x))<<GPIO_PDOR_PDO_SHIFT))&GPIO_PDOR_PDO_MASK)
+/* PSOR Bit Fields */
+#define GPIO_PSOR_PTSO_MASK                      0xFFFFFFFFu
+#define GPIO_PSOR_PTSO_SHIFT                     0
+#define GPIO_PSOR_PTSO(x)                        (((uint32_t)(((uint32_t)(x))<<GPIO_PSOR_PTSO_SHIFT))&GPIO_PSOR_PTSO_MASK)
+/* PCOR Bit Fields */
+#define GPIO_PCOR_PTCO_MASK                      0xFFFFFFFFu
+#define GPIO_PCOR_PTCO_SHIFT                     0
+#define GPIO_PCOR_PTCO(x)                        (((uint32_t)(((uint32_t)(x))<<GPIO_PCOR_PTCO_SHIFT))&GPIO_PCOR_PTCO_MASK)
+/* PTOR Bit Fields */
+#define GPIO_PTOR_PTTO_MASK                      0xFFFFFFFFu
+#define GPIO_PTOR_PTTO_SHIFT                     0
+#define GPIO_PTOR_PTTO(x)                        (((uint32_t)(((uint32_t)(x))<<GPIO_PTOR_PTTO_SHIFT))&GPIO_PTOR_PTTO_MASK)
+/* PDIR Bit Fields */
+#define GPIO_PDIR_PDI_MASK                       0xFFFFFFFFu
+#define GPIO_PDIR_PDI_SHIFT                      0
+#define GPIO_PDIR_PDI(x)                         (((uint32_t)(((uint32_t)(x))<<GPIO_PDIR_PDI_SHIFT))&GPIO_PDIR_PDI_MASK)
+/* PDDR Bit Fields */
+#define GPIO_PDDR_PDD_MASK                       0xFFFFFFFFu
+#define GPIO_PDDR_PDD_SHIFT                      0
+#define GPIO_PDDR_PDD(x)                         (((uint32_t)(((uint32_t)(x))<<GPIO_PDDR_PDD_SHIFT))&GPIO_PDDR_PDD_MASK)
+
+/**
+ * @}
+ */ /* end of group GPIO_Register_Masks */
+
+
+/* GPIO - Peripheral instance base addresses */
+/** Peripheral PTA base address */
+#define PTA_BASE                                 (0x400FF000u)
+/** Peripheral PTA base pointer */
+#define PTA                                      ((GPIO_Type *)PTA_BASE)
+/** Peripheral PTB base address */
+#define PTB_BASE                                 (0x400FF040u)
+/** Peripheral PTB base pointer */
+#define PTB                                      ((GPIO_Type *)PTB_BASE)
+/** Peripheral PTC base address */
+#define PTC_BASE                                 (0x400FF080u)
+/** Peripheral PTC base pointer */
+#define PTC                                      ((GPIO_Type *)PTC_BASE)
+/** Peripheral PTD base address */
+#define PTD_BASE                                 (0x400FF0C0u)
+/** Peripheral PTD base pointer */
+#define PTD                                      ((GPIO_Type *)PTD_BASE)
+/** Peripheral PTE base address */
+#define PTE_BASE                                 (0x400FF100u)
+/** Peripheral PTE base pointer */
+#define PTE                                      ((GPIO_Type *)PTE_BASE)
+
+/**
+ * @}
+ */ /* end of group GPIO_Peripheral_Access_Layer */
 
 
 /* ----------------------------------------------------------------------------
@@ -6175,6 +6245,135 @@ typedef struct {
 
 
 /* ----------------------------------------------------------------------------
+   -- NV Peripheral Access Layer
+   ---------------------------------------------------------------------------- */
+
+/**
+ * @addtogroup NV_Peripheral_Access_Layer NV Peripheral Access Layer
+ * @{
+ */
+
+/** NV - Register Layout Typedef */
+typedef struct {
+  __I  uint8_t BACKKEY3;                           /**< Backdoor Comparison Key 3., offset: 0x0 */
+  __I  uint8_t BACKKEY2;                           /**< Backdoor Comparison Key 2., offset: 0x1 */
+  __I  uint8_t BACKKEY1;                           /**< Backdoor Comparison Key 1., offset: 0x2 */
+  __I  uint8_t BACKKEY0;                           /**< Backdoor Comparison Key 0., offset: 0x3 */
+  __I  uint8_t BACKKEY7;                           /**< Backdoor Comparison Key 7., offset: 0x4 */
+  __I  uint8_t BACKKEY6;                           /**< Backdoor Comparison Key 6., offset: 0x5 */
+  __I  uint8_t BACKKEY5;                           /**< Backdoor Comparison Key 5., offset: 0x6 */
+  __I  uint8_t BACKKEY4;                           /**< Backdoor Comparison Key 4., offset: 0x7 */
+  __I  uint8_t FPROT3;                             /**< Non-volatile P-Flash Protection 1 - Low Register, offset: 0x8 */
+  __I  uint8_t FPROT2;                             /**< Non-volatile P-Flash Protection 1 - High Register, offset: 0x9 */
+  __I  uint8_t FPROT1;                             /**< Non-volatile P-Flash Protection 0 - Low Register, offset: 0xA */
+  __I  uint8_t FPROT0;                             /**< Non-volatile P-Flash Protection 0 - High Register, offset: 0xB */
+  __I  uint8_t FSEC;                               /**< Non-volatile Flash Security Register, offset: 0xC */
+  __I  uint8_t FOPT;                               /**< Non-volatile Flash Option Register, offset: 0xD */
+  __I  uint8_t FEPROT;                             /**< Non-volatile EERAM Protection Register, offset: 0xE */
+  __I  uint8_t FDPROT;                             /**< Non-volatile D-Flash Protection Register, offset: 0xF */
+} NV_Type;
+
+/* ----------------------------------------------------------------------------
+   -- NV Register Masks
+   ---------------------------------------------------------------------------- */
+
+/**
+ * @addtogroup NV_Register_Masks NV Register Masks
+ * @{
+ */
+
+/* BACKKEY3 Bit Fields */
+#define NV_BACKKEY3_KEY_MASK                     0xFFu
+#define NV_BACKKEY3_KEY_SHIFT                    0
+#define NV_BACKKEY3_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY3_KEY_SHIFT))&NV_BACKKEY3_KEY_MASK)
+/* BACKKEY2 Bit Fields */
+#define NV_BACKKEY2_KEY_MASK                     0xFFu
+#define NV_BACKKEY2_KEY_SHIFT                    0
+#define NV_BACKKEY2_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY2_KEY_SHIFT))&NV_BACKKEY2_KEY_MASK)
+/* BACKKEY1 Bit Fields */
+#define NV_BACKKEY1_KEY_MASK                     0xFFu
+#define NV_BACKKEY1_KEY_SHIFT                    0
+#define NV_BACKKEY1_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY1_KEY_SHIFT))&NV_BACKKEY1_KEY_MASK)
+/* BACKKEY0 Bit Fields */
+#define NV_BACKKEY0_KEY_MASK                     0xFFu
+#define NV_BACKKEY0_KEY_SHIFT                    0
+#define NV_BACKKEY0_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY0_KEY_SHIFT))&NV_BACKKEY0_KEY_MASK)
+/* BACKKEY7 Bit Fields */
+#define NV_BACKKEY7_KEY_MASK                     0xFFu
+#define NV_BACKKEY7_KEY_SHIFT                    0
+#define NV_BACKKEY7_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY7_KEY_SHIFT))&NV_BACKKEY7_KEY_MASK)
+/* BACKKEY6 Bit Fields */
+#define NV_BACKKEY6_KEY_MASK                     0xFFu
+#define NV_BACKKEY6_KEY_SHIFT                    0
+#define NV_BACKKEY6_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY6_KEY_SHIFT))&NV_BACKKEY6_KEY_MASK)
+/* BACKKEY5 Bit Fields */
+#define NV_BACKKEY5_KEY_MASK                     0xFFu
+#define NV_BACKKEY5_KEY_SHIFT                    0
+#define NV_BACKKEY5_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY5_KEY_SHIFT))&NV_BACKKEY5_KEY_MASK)
+/* BACKKEY4 Bit Fields */
+#define NV_BACKKEY4_KEY_MASK                     0xFFu
+#define NV_BACKKEY4_KEY_SHIFT                    0
+#define NV_BACKKEY4_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY4_KEY_SHIFT))&NV_BACKKEY4_KEY_MASK)
+/* FPROT3 Bit Fields */
+#define NV_FPROT3_PROT_MASK                      0xFFu
+#define NV_FPROT3_PROT_SHIFT                     0
+#define NV_FPROT3_PROT(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FPROT3_PROT_SHIFT))&NV_FPROT3_PROT_MASK)
+/* FPROT2 Bit Fields */
+#define NV_FPROT2_PROT_MASK                      0xFFu
+#define NV_FPROT2_PROT_SHIFT                     0
+#define NV_FPROT2_PROT(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FPROT2_PROT_SHIFT))&NV_FPROT2_PROT_MASK)
+/* FPROT1 Bit Fields */
+#define NV_FPROT1_PROT_MASK                      0xFFu
+#define NV_FPROT1_PROT_SHIFT                     0
+#define NV_FPROT1_PROT(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FPROT1_PROT_SHIFT))&NV_FPROT1_PROT_MASK)
+/* FPROT0 Bit Fields */
+#define NV_FPROT0_PROT_MASK                      0xFFu
+#define NV_FPROT0_PROT_SHIFT                     0
+#define NV_FPROT0_PROT(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FPROT0_PROT_SHIFT))&NV_FPROT0_PROT_MASK)
+/* FSEC Bit Fields */
+#define NV_FSEC_SEC_MASK                         0x3u
+#define NV_FSEC_SEC_SHIFT                        0
+#define NV_FSEC_SEC(x)                           (((uint8_t)(((uint8_t)(x))<<NV_FSEC_SEC_SHIFT))&NV_FSEC_SEC_MASK)
+#define NV_FSEC_FSLACC_MASK                      0xCu
+#define NV_FSEC_FSLACC_SHIFT                     2
+#define NV_FSEC_FSLACC(x)                        (((uint8_t)(((uint8_t)(x))<<NV_FSEC_FSLACC_SHIFT))&NV_FSEC_FSLACC_MASK)
+#define NV_FSEC_MEEN_MASK                        0x30u
+#define NV_FSEC_MEEN_SHIFT                       4
+#define NV_FSEC_MEEN(x)                          (((uint8_t)(((uint8_t)(x))<<NV_FSEC_MEEN_SHIFT))&NV_FSEC_MEEN_MASK)
+#define NV_FSEC_KEYEN_MASK                       0xC0u
+#define NV_FSEC_KEYEN_SHIFT                      6
+#define NV_FSEC_KEYEN(x)                         (((uint8_t)(((uint8_t)(x))<<NV_FSEC_KEYEN_SHIFT))&NV_FSEC_KEYEN_MASK)
+/* FOPT Bit Fields */
+#define NV_FOPT_LPBOOT_MASK                      0x1u
+#define NV_FOPT_LPBOOT_SHIFT                     0
+#define NV_FOPT_EZPORT_DIS_MASK                  0x2u
+#define NV_FOPT_EZPORT_DIS_SHIFT                 1
+/* FEPROT Bit Fields */
+#define NV_FEPROT_EPROT_MASK                     0xFFu
+#define NV_FEPROT_EPROT_SHIFT                    0
+#define NV_FEPROT_EPROT(x)                       (((uint8_t)(((uint8_t)(x))<<NV_FEPROT_EPROT_SHIFT))&NV_FEPROT_EPROT_MASK)
+/* FDPROT Bit Fields */
+#define NV_FDPROT_DPROT_MASK                     0xFFu
+#define NV_FDPROT_DPROT_SHIFT                    0
+#define NV_FDPROT_DPROT(x)                       (((uint8_t)(((uint8_t)(x))<<NV_FDPROT_DPROT_SHIFT))&NV_FDPROT_DPROT_MASK)
+
+/**
+ * @}
+ */ /* end of group NV_Register_Masks */
+
+
+/* NV - Peripheral instance base addresses */
+/** Peripheral FTFL_FlashConfig base address */
+#define FTFL_FlashConfig_BASE                    (0x400u)
+/** Peripheral FTFL_FlashConfig base pointer */
+#define FTFL_FlashConfig                         ((NV_Type *)FTFL_FlashConfig_BASE)
+
+/**
+ * @}
+ */ /* end of group NV_Peripheral_Access_Layer */
+
+
+/* ----------------------------------------------------------------------------
    -- OPAMP Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
@@ -6689,91 +6888,6 @@ typedef struct {
 /**
  * @}
  */ /* end of group PORT_Peripheral_Access_Layer */
-
-
-/* ----------------------------------------------------------------------------
-   -- GPIO Peripheral Access Layer
-   ---------------------------------------------------------------------------- */
-
-/**
- * @addtogroup GPIO_Peripheral_Access_Layer GPIO Peripheral Access Layer
- * @{
- */
-
-/** GPIO - Register Layout Typedef */
-typedef struct {
-  __IO uint32_t PDOR;                              /**< Port Data Output Register, offset: 0x0 */
-  __O  uint32_t PSOR;                              /**< Port Set Output Register, offset: 0x4 */
-  __O  uint32_t PCOR;                              /**< Port Clear Output Register, offset: 0x8 */
-  __O  uint32_t PTOR;                              /**< Port Toggle Output Register, offset: 0xC */
-  __I  uint32_t PDIR;                              /**< Port Data Input Register, offset: 0x10 */
-  __IO uint32_t PDDR;                              /**< Port Data Direction Register, offset: 0x14 */
-} GPIO_Type;
-
-/* ----------------------------------------------------------------------------
-   -- GPIO Register Masks
-   ---------------------------------------------------------------------------- */
-
-/**
- * @addtogroup GPIO_Register_Masks GPIO Register Masks
- * @{
- */
-
-/* PDOR Bit Fields */
-#define GPIO_PDOR_PDO_MASK                       0xFFFFFFFFu
-#define GPIO_PDOR_PDO_SHIFT                      0
-#define GPIO_PDOR_PDO(x)                         (((uint32_t)(((uint32_t)(x))<<GPIO_PDOR_PDO_SHIFT))&GPIO_PDOR_PDO_MASK)
-/* PSOR Bit Fields */
-#define GPIO_PSOR_PTSO_MASK                      0xFFFFFFFFu
-#define GPIO_PSOR_PTSO_SHIFT                     0
-#define GPIO_PSOR_PTSO(x)                        (((uint32_t)(((uint32_t)(x))<<GPIO_PSOR_PTSO_SHIFT))&GPIO_PSOR_PTSO_MASK)
-/* PCOR Bit Fields */
-#define GPIO_PCOR_PTCO_MASK                      0xFFFFFFFFu
-#define GPIO_PCOR_PTCO_SHIFT                     0
-#define GPIO_PCOR_PTCO(x)                        (((uint32_t)(((uint32_t)(x))<<GPIO_PCOR_PTCO_SHIFT))&GPIO_PCOR_PTCO_MASK)
-/* PTOR Bit Fields */
-#define GPIO_PTOR_PTTO_MASK                      0xFFFFFFFFu
-#define GPIO_PTOR_PTTO_SHIFT                     0
-#define GPIO_PTOR_PTTO(x)                        (((uint32_t)(((uint32_t)(x))<<GPIO_PTOR_PTTO_SHIFT))&GPIO_PTOR_PTTO_MASK)
-/* PDIR Bit Fields */
-#define GPIO_PDIR_PDI_MASK                       0xFFFFFFFFu
-#define GPIO_PDIR_PDI_SHIFT                      0
-#define GPIO_PDIR_PDI(x)                         (((uint32_t)(((uint32_t)(x))<<GPIO_PDIR_PDI_SHIFT))&GPIO_PDIR_PDI_MASK)
-/* PDDR Bit Fields */
-#define GPIO_PDDR_PDD_MASK                       0xFFFFFFFFu
-#define GPIO_PDDR_PDD_SHIFT                      0
-#define GPIO_PDDR_PDD(x)                         (((uint32_t)(((uint32_t)(x))<<GPIO_PDDR_PDD_SHIFT))&GPIO_PDDR_PDD_MASK)
-
-/**
- * @}
- */ /* end of group GPIO_Register_Masks */
-
-
-/* GPIO - Peripheral instance base addresses */
-/** Peripheral PTA base address */
-#define PTA_BASE                                 (0x400FF000u)
-/** Peripheral PTA base pointer */
-#define PTA                                      ((GPIO_Type *)PTA_BASE)
-/** Peripheral PTB base address */
-#define PTB_BASE                                 (0x400FF040u)
-/** Peripheral PTB base pointer */
-#define PTB                                      ((GPIO_Type *)PTB_BASE)
-/** Peripheral PTC base address */
-#define PTC_BASE                                 (0x400FF080u)
-/** Peripheral PTC base pointer */
-#define PTC                                      ((GPIO_Type *)PTC_BASE)
-/** Peripheral PTD base address */
-#define PTD_BASE                                 (0x400FF0C0u)
-/** Peripheral PTD base pointer */
-#define PTD                                      ((GPIO_Type *)PTD_BASE)
-/** Peripheral PTE base address */
-#define PTE_BASE                                 (0x400FF100u)
-/** Peripheral PTE base pointer */
-#define PTE                                      ((GPIO_Type *)PTE_BASE)
-
-/**
- * @}
- */ /* end of group GPIO_Peripheral_Access_Layer */
 
 
 /* ----------------------------------------------------------------------------
@@ -9349,113 +9463,6 @@ typedef struct {
 /**
  * @}
  */ /* end of group WDOG_Peripheral_Access_Layer */
-
-
-/* ----------------------------------------------------------------------------
-   -- FB Peripheral Access Layer
-   ---------------------------------------------------------------------------- */
-
-/**
- * @addtogroup FB_Peripheral_Access_Layer FB Peripheral Access Layer
- * @{
- */
-
-/** FB - Register Layout Typedef */
-typedef struct {
-  struct {                                         /* offset: 0x0, array step: 0xC */
-    __IO uint32_t CSAR;                              /**< Chip select address register, array offset: 0x0, array step: 0xC */
-    __IO uint32_t CSMR;                              /**< Chip select mask register, array offset: 0x4, array step: 0xC */
-    __IO uint32_t CSCR;                              /**< Chip select control register, array offset: 0x8, array step: 0xC */
-  } CS[6];
-       uint8_t RESERVED_0[24];
-  __IO uint32_t CSPMCR;                            /**< Chip select port multiplexing control register, offset: 0x60 */
-} FB_Type;
-
-/* ----------------------------------------------------------------------------
-   -- FB Register Masks
-   ---------------------------------------------------------------------------- */
-
-/**
- * @addtogroup FB_Register_Masks FB Register Masks
- * @{
- */
-
-/* CSAR Bit Fields */
-#define FB_CSAR_BA_MASK                          0xFFFF0000u
-#define FB_CSAR_BA_SHIFT                         16
-#define FB_CSAR_BA(x)                            (((uint32_t)(((uint32_t)(x))<<FB_CSAR_BA_SHIFT))&FB_CSAR_BA_MASK)
-/* CSMR Bit Fields */
-#define FB_CSMR_V_MASK                           0x1u
-#define FB_CSMR_V_SHIFT                          0
-#define FB_CSMR_WP_MASK                          0x100u
-#define FB_CSMR_WP_SHIFT                         8
-#define FB_CSMR_BAM_MASK                         0xFFFF0000u
-#define FB_CSMR_BAM_SHIFT                        16
-#define FB_CSMR_BAM(x)                           (((uint32_t)(((uint32_t)(x))<<FB_CSMR_BAM_SHIFT))&FB_CSMR_BAM_MASK)
-/* CSCR Bit Fields */
-#define FB_CSCR_BSTW_MASK                        0x8u
-#define FB_CSCR_BSTW_SHIFT                       3
-#define FB_CSCR_BSTR_MASK                        0x10u
-#define FB_CSCR_BSTR_SHIFT                       4
-#define FB_CSCR_BEM_MASK                         0x20u
-#define FB_CSCR_BEM_SHIFT                        5
-#define FB_CSCR_PS_MASK                          0xC0u
-#define FB_CSCR_PS_SHIFT                         6
-#define FB_CSCR_PS(x)                            (((uint32_t)(((uint32_t)(x))<<FB_CSCR_PS_SHIFT))&FB_CSCR_PS_MASK)
-#define FB_CSCR_AA_MASK                          0x100u
-#define FB_CSCR_AA_SHIFT                         8
-#define FB_CSCR_BLS_MASK                         0x200u
-#define FB_CSCR_BLS_SHIFT                        9
-#define FB_CSCR_WS_MASK                          0xFC00u
-#define FB_CSCR_WS_SHIFT                         10
-#define FB_CSCR_WS(x)                            (((uint32_t)(((uint32_t)(x))<<FB_CSCR_WS_SHIFT))&FB_CSCR_WS_MASK)
-#define FB_CSCR_WRAH_MASK                        0x30000u
-#define FB_CSCR_WRAH_SHIFT                       16
-#define FB_CSCR_WRAH(x)                          (((uint32_t)(((uint32_t)(x))<<FB_CSCR_WRAH_SHIFT))&FB_CSCR_WRAH_MASK)
-#define FB_CSCR_RDAH_MASK                        0xC0000u
-#define FB_CSCR_RDAH_SHIFT                       18
-#define FB_CSCR_RDAH(x)                          (((uint32_t)(((uint32_t)(x))<<FB_CSCR_RDAH_SHIFT))&FB_CSCR_RDAH_MASK)
-#define FB_CSCR_ASET_MASK                        0x300000u
-#define FB_CSCR_ASET_SHIFT                       20
-#define FB_CSCR_ASET(x)                          (((uint32_t)(((uint32_t)(x))<<FB_CSCR_ASET_SHIFT))&FB_CSCR_ASET_MASK)
-#define FB_CSCR_EXTS_MASK                        0x400000u
-#define FB_CSCR_EXTS_SHIFT                       22
-#define FB_CSCR_SWSEN_MASK                       0x800000u
-#define FB_CSCR_SWSEN_SHIFT                      23
-#define FB_CSCR_SWS_MASK                         0xFC000000u
-#define FB_CSCR_SWS_SHIFT                        26
-#define FB_CSCR_SWS(x)                           (((uint32_t)(((uint32_t)(x))<<FB_CSCR_SWS_SHIFT))&FB_CSCR_SWS_MASK)
-/* CSPMCR Bit Fields */
-#define FB_CSPMCR_GROUP5_MASK                    0xF000u
-#define FB_CSPMCR_GROUP5_SHIFT                   12
-#define FB_CSPMCR_GROUP5(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP5_SHIFT))&FB_CSPMCR_GROUP5_MASK)
-#define FB_CSPMCR_GROUP4_MASK                    0xF0000u
-#define FB_CSPMCR_GROUP4_SHIFT                   16
-#define FB_CSPMCR_GROUP4(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP4_SHIFT))&FB_CSPMCR_GROUP4_MASK)
-#define FB_CSPMCR_GROUP3_MASK                    0xF00000u
-#define FB_CSPMCR_GROUP3_SHIFT                   20
-#define FB_CSPMCR_GROUP3(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP3_SHIFT))&FB_CSPMCR_GROUP3_MASK)
-#define FB_CSPMCR_GROUP2_MASK                    0xF000000u
-#define FB_CSPMCR_GROUP2_SHIFT                   24
-#define FB_CSPMCR_GROUP2(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP2_SHIFT))&FB_CSPMCR_GROUP2_MASK)
-#define FB_CSPMCR_GROUP1_MASK                    0xF0000000u
-#define FB_CSPMCR_GROUP1_SHIFT                   28
-#define FB_CSPMCR_GROUP1(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP1_SHIFT))&FB_CSPMCR_GROUP1_MASK)
-
-/**
- * @}
- */ /* end of group FB_Register_Masks */
-
-
-/* FB - Peripheral instance base addresses */
-/** Peripheral FB base address */
-#define FB_BASE                                  (0x4000C000u)
-/** Peripheral FB base pointer */
-#define FB                                       ((FB_Type *)FB_BASE)
-
-/**
- * @}
- */ /* end of group FB_Peripheral_Access_Layer */
 
 
 /*

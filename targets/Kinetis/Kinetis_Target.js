@@ -1,7 +1,7 @@
 /******************************************************************************
   Target Script for Freescale Kinetis
 
-  Copyright (c) 2010, 2011 Rowley Associates Limited.
+  Copyright (c) 2010, 2011, 2012 Rowley Associates Limited.
 
   This file may be distributed under the terms of the License Agreement
   provided with this software.
@@ -98,17 +98,28 @@ function GetPartName()
         break;
     }
   var SIM_FCFG2 = TargetInterface.peekWord(0x40048050)
+  if (((SIM_SDID>>7) & 0x7)==3)
+    PartName += "F";
+  else
+    PartName += "D";
   if (SIM_FCFG2 & (1<<23))
     {
       PartName += "N";
       Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
       Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
-      PartName += Length.toString();
+      if (((SIM_SDID>>7) & 0x7)==3)
+        Length *= 2;
+      if (Length == 1024)
+        PartName += "1M0";
+      else
+        PartName += Length.toString();
     }
   else
     {
       PartName += "X";
       Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+      if (((SIM_SDID>>7) & 0x7)==3)
+        Length *= 2;
       PartName += Length.toString();
     }
   return PartName;
@@ -116,47 +127,20 @@ function GetPartName()
 
 function MatchPartName(name)
 {
-  var SIM_SDID = TargetInterface.peekWord(0x40048024);    
-  var FamilyName = name.substring(0,4);
-  switch ((SIM_SDID>>4) & 0x7)
-    {
-      case 0: // K10
-        return FamilyName == "MK10";
-      case 1: // K20
-        return FamilyName == "MK20";        
-      case 2: // K30
-        return FamilyName == "MK30";
-      case 3: // K40
-        return FamilyName == "MK40";
-      case 4: // K60
-        return FamilyName == "MK60";
-      case 5: // K70
-        return FamilyName == "MK70";
-      case 6: // K50/K52
-        return (FamilyName == "MK50") || (FamilyName == "MK52");
-      case 7: // K51/K53
-        return (FamilyName == "MK51") || (FamilyName == "MK53");
-    }
+  return name.substring(0, 8) == GetPartName().substring(0, 8);
 }
 
 function MDMStatus()
 {
-  if (TargetInterface.implementation() == "j-link")
-    {
-      WScript.Echo("MDM not accessible using j-link");
-      return;
-    }
-  if (TargetInterface.implementation() == "P&E")
-    TargetInterface.stop();
-  var status = TargetInterface.getDebugRegister(0x01000000);
+  var status = TargetInterface.getDebugRegister(0x01000000);  
   if (status & (1<<0))
     WScript.Echo("Flash Mass Erase Acknowledge\n");
   if (status & (1<<1))
     WScript.Echo("Flash Ready\n");
   if (status & (1<<2))
     WScript.Echo("System Security\n");
-  if (status & (1<<3))
-    WScript.Echo("System Reset\n");
+  if ((status & (1<<3))==0)
+    WScript.Echo("System Is In Reset\n");
   if (status & (1<<5))
     WScript.Echo("Mass Erase Enable\n");
   if (status & (1<<6))
@@ -179,13 +163,6 @@ function MDMStatus()
 
 function MDMControl()
 {
-  if (TargetInterface.implementation() == "j-link")
-    {
-      WScript.Echo("MDM not accessible using j-link");
-      return;
-    }
-  if (TargetInterface.implementation() == "P&E")
-    TargetInterface.stop();
   var status = TargetInterface.getDebugRegister(0x01000004);
   if (status & (1<<0))
     WScript.Echo("Flash Mass Erase in Progress\n");
@@ -206,17 +183,11 @@ function MDMControl()
 }
 
 function MassErase()
-{
-  if (TargetInterface.implementation() == "j-link")
-    {
-      WScript.Echo("MDM not accessible using j-link");
-      return;
-    }
-  if (TargetInterface.implementation() == "P&E")
-    TargetInterface.stop();
+{  
   var i;
   TargetInterface.setDebugRegister(0x01000004, 0x1); 
-  for (i=0;i<100 && (TargetInterface.getDebugRegister(0x01000004)&1);i++);
-  if (i==100)
-    WScript.Error("Mass Erase timed out\n");
+  for (i=0;i<10000 && (TargetInterface.getDebugRegister(0x01000004)&1);i++);
+  if (i==10000)
+    WScript.Echo("Mass Erase timed out\n");
+  TargetInterface.setDebugRegister(0x01000004, 0x0); 
 }

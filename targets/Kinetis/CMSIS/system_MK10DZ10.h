@@ -13,11 +13,11 @@
 **
 **     Compilers:           ARM Compiler
 **                          Freescale C/C++ for Embedded ARM
-**                          GNU ARM C Compiler
+**                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    K10P144M100SF2RM, Rev. 5, 8 May 2011
-**     Version:             rev. 1.0, 2011-06-10
+**     Version:             rev. 1.2, 2011-09-08
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
@@ -39,14 +39,19 @@
 **         SIM  - bit group FSIZE in SIM_FCFG1 split into groups PFSIZE and NVMSIZE.
 **         I2S  - bit SSIEN in I2S_CR register renamed to I2SEN.
 **         SDHC - bit VOLTSEL in SDHC_VENDOR register removed.
+**     - rev. 1.1 (2011-06-29)
+**         Order of declarations changed.
+**     - rev. 1.2 (2011-09-08)
+**         Cortex_Core_Configuration extended with additional parameters.
+**         Gap between end of interrupt vector table and flash configuration field filled by default ISR.
 **
 ** ###################################################################
 */
 
 /**
  * @file MK10DZ10
- * @version 1.0
- * @date 2011-06-10
+ * @version 1.2
+ * @date 2011-09-08
  * @brief Device specific configuration file for MK10DZ10 (header file)
  *
  * Provides a system configuration function and a global variable that contains

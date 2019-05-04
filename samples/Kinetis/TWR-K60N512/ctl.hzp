@@ -1,119 +1,119 @@
 <!DOCTYPE CrossStudio_Project_File>
 <solution version="2" Name="TWR-K60N512 CTL Examples">
   <project Name="test0" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test0.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test1" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test1.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test1a" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test1a.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test1b" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test1b.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test2" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test2.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test2a" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test2a.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test3" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test3.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test4" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test4.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test4a" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test4a.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test5" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test5.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test6" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test6.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test6a" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test6a.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test6b" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test6b.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test6c" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test6c.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test7" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test7.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test8" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test8.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
   <project Name="test9" template_name="Kinetis_CTL_EXE">
-    <configuration Name="Common" Target="MK60DN512ZVMD10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/ctl/tests/test9.c"/>
       <file file_name="Kinetis_ctl_board.c"/>

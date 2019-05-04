@@ -1,0 +1,10 @@
+<!DOCTYPE Board_Memory_Definition_File>
+<Root name="$(NAME)">
+  <MemorySegment size="$(FLASHSIZE)" access="ReadOnly" start="0x00000000" name="FLASH"/>  
+  <MemorySegment size="$(FlexNVMSIZE)" access="ReadOnly" start="0x10000000" name="FlexNVM"/>
+  <MemorySegment size="$(FlexRAMSIZE)" access="ReadOnly" start="0x14000000" name="FlexRAM"/> 
+  <MemorySegment size="$(SRAMSIZE)" access="Read/Write" start="0x20000000-$(SRAMSIZE)/2" name="SRAM"/>
+  <MemorySegment size="$(SRAMSIZE)/2" access="Read/Write" start="0x20000000-$(SRAMSIZE)/2" name="SRAM_L"/>
+  <MemorySegment size="$(SRAMSIZE)/2" access="Read/Write" start="0x20000000" name="SRAM_H"/>
+  <include filename="$(TargetsDir)/Kinetis/$(SVD)_Peripherals.xml" />
+</Root>

@@ -1,6 +1,6 @@
 /*****************************************************************************
  *                                                                           *
- * Copyright (c) 2010, 2011 Rowley Associates Limited.                       *
+ * Copyright (c) 2010, 2011, 2012 Rowley Associates Limited.                 *
  *                                                                           *
  * This file may be distributed under the terms of the License Agreement     *
  * provided with this software.                                              *
@@ -10,6 +10,7 @@
  *****************************************************************************/
 
 #include <libmem.h>
+#include <string.h>
 
 #define FMC_PFAPR (*(volatile unsigned *)0x4001F000)
 #define FMC_PFB0CR (*(volatile unsigned *)0x4001F004)
@@ -43,6 +44,7 @@
 #define FCMD_PGMCHK 0x02
 #define FCMD_RDRSRC 0x03
 #define FCMD_PGM4 0x06
+#define FCMD_PGM8 0x07
 #define FCMD_ERSBLK 0x08
 #define FCMD_ERSSCR 0x09
 #define FCMD_PGMSEC 0x0b
@@ -54,12 +56,16 @@
 #define FCMD_PGMPART 0x80
 #define FCMD_SETRAM 0x81
 
-#define SECTOR_SIZE 0x800
-
+#define SIM_SDID  (*(volatile unsigned *)0x40048024)
 #define SIM_FCFG1 (*(volatile unsigned *)0x4004804C)
 #define SIM_FCFG2 (*(volatile unsigned *)0x40048050)
 
+#define INVALID_ADDRESS (unsigned char *)1
+
 unsigned FLASH_SIZE;
+unsigned char write_block[8];
+unsigned char *write_block_address=INVALID_ADDRESS;
+unsigned write_block_size;
 
 libmem_geometry_t geometry[2];
 
@@ -85,44 +91,72 @@ setFlashCmdAndAddress(unsigned char cmd, unsigned address)
 }
 
 static int
+write_current_block()
+{  
+  if (write_block_address == INVALID_ADDRESS)
+    return LIBMEM_STATUS_SUCCESS;
+#ifndef ALLOW_FCF_WRITE
+  if (LIBMEM_ADDRESS_IN_RANGE(write_block_address, (uint8_t*)0x400, (uint8_t*)(0x410-1)))
+    {
+      write_block_address = INVALID_ADDRESS;
+      return LIBMEM_STATUS_SUCCESS;
+    }
+#endif
+  if (write_block_size == 8)
+    {
+      setFlashCmdAndAddress(FCMD_PGM8, (unsigned)write_block_address);          
+      FTFL_FCCOB7 = write_block[0];
+      FTFL_FCCOB6 = write_block[1];
+      FTFL_FCCOB5 = write_block[2];
+      FTFL_FCCOB4 = write_block[3];
+      FTFL_FCCOBB = write_block[4];
+      FTFL_FCCOBA = write_block[5];
+      FTFL_FCCOB9 = write_block[6];
+      FTFL_FCCOB8 = write_block[7];
+    }
+  else
+    {
+      setFlashCmdAndAddress(FCMD_PGM4, (unsigned)write_block_address);
+      FTFL_FCCOB7 = write_block[0];
+      FTFL_FCCOB6 = write_block[1];
+      FTFL_FCCOB5 = write_block[2];
+      FTFL_FCCOB4 = write_block[3];      
+    }  
+  int res = doFlashCmd();
+  memset(write_block, 0xff, write_block_size);
+  write_block_address = INVALID_ADDRESS;  
+  return res;
+}
+
+static int
 libmem_write_impl(libmem_driver_handle_t *h, uint8_t *dest, const uint8_t *src, size_t size)
-{
-  unsigned sdest = (unsigned)dest & ~3;  
-  while (size>=4)
+{  
+  while (1)
     {
-      if (sdest >= 0x400 && sdest < 0x410) // ignore writes to the flash configuration field
-        {
-          src += 4;
-          size -= 4;         
-          sdest += 4;
+      uint8_t *block = (uint8_t *)(((uint32_t)dest) & ~(write_block_size-1));
+      uint32_t offset = dest - block;
+      uint32_t frag = write_block_size - offset;
+      if (frag > size)
+        frag = size;
+
+       /* Purge the buffer if the next write is in a different block */
+      if (block != write_block_address)
+        {         
+          int res = write_current_block();
+          if (res != LIBMEM_STATUS_SUCCESS)
+            return res;
+          if (frag != write_block_size)
+            memcpy(write_block, block, write_block_size);
         }
-      else
-        {
-          setFlashCmdAndAddress(FCMD_PGM4, sdest);          
-          FTFL_FCCOB7 = *src++;
-          FTFL_FCCOB6 = *src++;
-          FTFL_FCCOB5 = *src++;
-          FTFL_FCCOB4 = *src++;
-          size -= 4;
-          sdest += 4;
-          doFlashCmd();
-        }
-    }
-  if (size)
-    {
-      setFlashCmdAndAddress(FCMD_PGM4, sdest);
-      FTFL_FCCOB7 = *src++; size--;
-      FTFL_FCCOB6 = 0xff;
-      FTFL_FCCOB5 = 0xff;
-      FTFL_FCCOB4 = 0xff;      
-      if (size)
-        {
-          FTFL_FCCOB6 = *src++; size--;
-          if (size)
-            FTFL_FCCOB5 = *src++; size--;
-        }
-      doFlashCmd();
-    }
+      /* Copy data into buffer */
+      memcpy(write_block + offset, src, frag);
+      write_block_address = block;
+      size -= frag;
+      if (!size)
+        break;
+      dest += frag;
+      src += frag;
+   }
   return LIBMEM_STATUS_SUCCESS;
 }
 
@@ -163,16 +197,33 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
                 { 
                   setFlashCmdAndAddress(FCMD_ERSSCR, (unsigned)flashstart);
                   doFlashCmd();
-                  // Ensure that FTFL_FSEC = 0xfe
-                  if (flashstart == 0)
+#ifndef ALLOW_FCF_WRITE
+                  // Ensure that FTFL_FSEC(0x40C) = 0xfe                  
+                  if (LIBMEM_ADDRESS_IN_RANGE((uint8_t*)0x40C, flashstart, flashstart + blocksize - 1))
                     {
-                      setFlashCmdAndAddress(FCMD_PGM4, 0x40C);                      
-                      FTFL_FCCOB4 = 0xff;
-                      FTFL_FCCOB5 = 0xff;
-                      FTFL_FCCOB6 = 0xff;
-                      FTFL_FCCOB7 = 0xfe;
+                      if (write_block_size == 8)
+                        {
+                          setFlashCmdAndAddress(FCMD_PGM8, 0x408);
+                          FTFL_FCCOB7 = 0xff;
+                          FTFL_FCCOB6 = 0xff;
+                          FTFL_FCCOB5 = 0xff;
+                          FTFL_FCCOB4 = 0xff;
+                          FTFL_FCCOBB = 0xfe;
+                          FTFL_FCCOBA = 0xff;
+                          FTFL_FCCOB9 = 0xff;
+                          FTFL_FCCOB8 = 0xff;                                                                              
+                        }
+                      else
+                        {
+                          setFlashCmdAndAddress(FCMD_PGM4, 0x40C);
+                          FTFL_FCCOB7 = 0xfe;
+                          FTFL_FCCOB6 = 0xff;
+                          FTFL_FCCOB5 = 0xff;
+                          FTFL_FCCOB4 = 0xff;                                                                              
+                        }
                       doFlashCmd();
-                    }                  
+                    }
+#endif                                      
                 }
               if (erased_size)
                 *erased_size += blocksize;
@@ -191,7 +242,7 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
 static int
 libmem_flush_impl()
 {  
-  return LIBMEM_STATUS_SUCCESS;
+  return write_current_block();
 }
 
 static int
@@ -223,12 +274,34 @@ kinetis_register_libmem_driver(libmem_driver_handle_t *h)
   // turn off and invalidate any caching
   FMC_PFB0CR = (0xf<<20) | (0x1<<19);
 
+  // workout flash size, sector size and write block size
   FLASH_SIZE = ((SIM_FCFG2>>24) & 0x3f)<<13;  
   if (SIM_FCFG2 & (1<<23)) // N
     FLASH_SIZE += ((SIM_FCFG2>>16) & 0x3f)<<13;
-     
-  geometry[0].count = FLASH_SIZE/SECTOR_SIZE;
-  geometry[0].size = SECTOR_SIZE;
+
+  write_block_size = 4;
+
+  unsigned sectorSize;
+  switch ((SIM_SDID >> 7) & 0x7)
+    {
+      case 0x0:
+        sectorSize = 1*1024;
+        break;
+      case 0x1:
+      case 0x2:
+        sectorSize = 2*1024;
+        break;
+      case 0x3:
+        sectorSize = 4*1024;
+        FLASH_SIZE *= 2;
+        write_block_size = 8;
+        break;
+      default:
+        return LIBMEM_STATUS_ERROR;
+    }
+
+  geometry[0].count = FLASH_SIZE/sectorSize;
+  geometry[0].size = sectorSize;
   libmem_register_driver(h, (uint8_t *)0, FLASH_SIZE, geometry, 0, &driver_functions, &ext_driver_functions);
   return LIBMEM_STATUS_SUCCESS;
 }
