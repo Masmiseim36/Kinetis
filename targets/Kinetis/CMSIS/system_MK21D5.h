@@ -5,8 +5,8 @@
 **                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    K21RM, Rev.4, Jan 2013
-**     Version:             rev. 1.4, 2013-01-24
+**     Reference manual:    K21RM, Rev.4, Feb 2013
+**     Version:             rev. 1.6, 2013-06-24
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
@@ -31,14 +31,18 @@
 **         PDB module update - PDB0_PO1DLY register added.
 **     - rev. 1.4 (2013-01-24)
 **         Update to Rev. 4 of reference manual.
+**     - rev. 1.5 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 1.6 (2013-06-24)
+**         NV_FOPT register - NMI_DIS bit added.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK21D5
- * @version 1.4
- * @date 2013-01-24
+ * @version 1.6
+ * @date 2013-06-24
  * @brief Device specific configuration file for MK21D5 (header file)
  *
  * Provides a system configuration function and a global variable that contains

@@ -107,27 +107,37 @@
 #define MK70FN1M0xxx12 96
 #define MK70FX512xxx15 97
 #define MK70FN1M0xxx15 98
-#define MKL02Z8Vxx4 99
-#define MKL02Z16Vxx4 100
-#define MKL02Z32Vxx4 101
-#define MKL04Z8Vxx4 102
-#define MKL04Z16Vxx4 103
-#define MKL04Z32Vxx4 104
-#define MKL05Z8Vxx4 105
-#define MKL05Z16Vxx4 106
-#define MKL05Z32Vxx4 107
-#define MKL14Z32Vxx4 108
-#define MKL14Z64Vxx4 109
-#define MKL15Z32Vxx4 110
-#define MKL15Z64Vxx4 111
-#define MKL15Z128Vxx4 112
-#define MKL15Z256Vxx4 113
-#define MKL24Z32Vxx4 114
-#define MKL24Z64Vxx4 115
-#define MKL25Z32Vxx4 116
-#define MKL25Z64Vxx4 117
-#define MKL25Z128Vxx4 118
-#define MKL25Z256Vxx4 119
+#define MKE02Z16Vxx2 99
+#define MKE02Z32Vxx2 100
+#define MKE02Z64Vxx2 101
+#define MKE04Z8Vxx4 102
+#define MKL02Z8Vxx4 103
+#define MKL02Z16Vxx4 104
+#define MKL02Z32Vxx4 105
+#define MKL04Z8Vxx4 106
+#define MKL04Z16Vxx4 107
+#define MKL04Z32Vxx4 108
+#define MKL05Z8Vxx4 109
+#define MKL05Z16Vxx4 110
+#define MKL05Z32Vxx4 111
+#define MKL14Z32Vxx4 112
+#define MKL14Z64Vxx4 113
+#define MKL15Z32Vxx4 114
+#define MKL15Z64Vxx4 115
+#define MKL15Z128Vxx4 116
+#define MKL15Z256Vxx4 117
+#define MKL24Z32Vxx4 118
+#define MKL24Z64Vxx4 119
+#define MKL24Z128Vxx4 120
+#define MKL25Z32Vxx4 121
+#define MKL25Z64Vxx4 122
+#define MKL25Z128Vxx4 123
+#define MKL25Z256Vxx4 124
+#define MKL34Z64Vxx4 125
+#define MKL34Z128Vxx4 126
+#define MKL34Z256Vxx4 127
+#define MKL46Z128Vxx4 128
+#define MKL46Z256Vxx4 129
 
 #if (__TARGET_PROCESSOR == MK10DN32xxx5 )
 #include          <CMSIS/MK10D5.h>
@@ -423,6 +433,18 @@
 #elif (__TARGET_PROCESSOR == MK70FN1M0xxx15 )
 #include          <CMSIS/MK70F15.h>
 
+#elif (__TARGET_PROCESSOR == MKE02Z16Vxx2 )
+#include          <CMSIS/MKE02Z2.h>
+
+#elif (__TARGET_PROCESSOR == MKE02Z32Vxx2 )
+#include          <CMSIS/MKE02Z2.h>
+
+#elif (__TARGET_PROCESSOR == MKE02Z64Vxx2 )
+#include          <CMSIS/MKE02Z2.h>
+
+#elif (__TARGET_PROCESSOR == MKE04Z8Vxx4 )
+#include          <CMSIS/MKE04Z4.h>
+
 #elif (__TARGET_PROCESSOR == MKL02Z8Vxx4 )
 #include          <CMSIS/MKL02Z4.h>
 
@@ -474,6 +496,9 @@
 #elif (__TARGET_PROCESSOR == MKL24Z64Vxx4 )
 #include          <CMSIS/MKL24Z4.h>
 
+#elif (__TARGET_PROCESSOR == MKL24Z128Vxx4 )
+#include          <CMSIS/MKL24Z4.h>
+
 #elif (__TARGET_PROCESSOR == MKL25Z32Vxx4 )
 #include          <CMSIS/MKL25Z4.h>
 
@@ -485,6 +510,21 @@
 
 #elif (__TARGET_PROCESSOR == MKL25Z256Vxx4 )
 #include          <CMSIS/MKL25Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKL34Z64Vxx4 )
+#include          <CMSIS/MKL34Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKL34Z128Vxx4 )
+#include          <CMSIS/MKL34Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKL34Z256Vxx4 )
+#include          <CMSIS/MKL34Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKL46Z128Vxx4 )
+#include          <CMSIS/MKL46Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKL46Z256Vxx4 )
+#include          <CMSIS/MKL46Z4.h>
 
 #else
 #error bad __TARGET_PROCESSOR

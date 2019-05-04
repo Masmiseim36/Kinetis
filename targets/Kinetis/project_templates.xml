@@ -32,10 +32,13 @@
     <property name="linker_scanf_character_group_matching_enabled"/>
     <property name="c_user_include_directories" value="$(TargetsDir)/Kinetis;$(TargetsDir)/CMSIS_3/CMSIS/Include"/>
     <propertygroup name="Placement" value="Flash"/>
-    <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc"/>
+    <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc">
+      <file name="main.c" source="$(StudioDir)/samples/Shared/main.c"/>
+    </folder>
     <folder name="System Files">
       <file name="$(StudioDir)/source/thumb_crt0.s" expand="no"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no"/>
+      <file name="Kinetis_ctl_board.c" source="$(TargetsDir)/Kinetis/Kinetis_ctl_board.c"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_Target.js" expand="no">
         <property name="file_type" value="Reset Script"/>
@@ -109,6 +112,7 @@
     <folder name="System Files">
       <file name="$(StudioDir)/source/thumb_crt0.s" expand="No"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no"/>
+      <file name="Kinetis_ctl_board.c" source="$(TargetsDir)/Kinetis/Kinetis_ctl_board.c"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no"/>
       <file name="$(TargetsDir)/Kinetis/Kinetis_Target.js" expand="no">
         <property name="file_type" value="Reset Script"/>

@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2010, 2011 Rowley Associates Limited.                       *
+ * Copyright (c) 2010, 2011, 2013 Rowley Associates Limited.                 *
  *                                                                           *
  * This file may be distributed under the terms of the License Agreement     *
  * provided with this software.                                              *
@@ -11,6 +11,17 @@
 #include <ctl_api.h>
 #include <Kinetis.h>
 
+#define USEPROCESSORCLOCK
+
+#ifdef USEPROCESSORCLOCK
+#define SYSTICKDIVIDER 1
+#else
+#define SYSTICKDIVIDER 16
+#endif
+
+#define ONE_MS (SystemCoreClock/SYSTICKDIVIDER/1000)
+#define TEN_MS (ONE_MS*10)
+
 static CTL_ISR_FN_t userTimerISR;
 
 void
@@ -19,7 +30,10 @@ SysTick_Handler()
   ctl_enter_isr();
   if (SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)
     {
-      userTimerISR();        
+#ifdef CTL_TASKING
+      ctl_time_increment = (SysTick->LOAD+1)/ONE_MS;     
+#endif
+      userTimerISR();
     }
   ctl_exit_isr();
 }
@@ -60,14 +74,17 @@ ctl_mask_isr(unsigned int irq)
 void ctl_start_timer(CTL_ISR_FN_t timerFn)
 {    
   userTimerISR = timerFn;  
-  SysTick->LOAD = (SystemCoreClock/100)-1; // interrupt every 10 ms
+  SysTick->LOAD = TEN_MS-1;
   SysTick->VAL = 0;
-  SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;  
-#ifdef CTL_TASKING
-  ctl_time_increment = 10; // so increment the counter by 10 to get the ms counter
+#ifdef USEPROCESSORCLOCK
+  SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;
+#else
+  SysTick->CTRL = SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;
 #endif
+#ifdef CTL_TASKING  
   // Set PendSV priority (PendSV must have lowest priority)
   NVIC_SetPriority(PendSV_IRQn, (1 << __NVIC_PRIO_BITS) - 1);
+#endif
   // Set SysTick priority
   ctl_set_priority(SysTick_IRQn, 0);
 }
@@ -81,3 +98,36 @@ ctl_get_ticks_per_second(void)
   return 100;
 #endif
 }
+
+#ifdef CTL_TASKING
+void ctl_sleep(unsigned delay)
+{
+  if (delay > 10)
+    {
+      SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;  
+      if ((ONE_MS * delay) > 0x00FFFFFF || (ONE_MS * delay) < ONE_MS)
+        SysTick->LOAD = 0x00FFFFFF;
+      else
+        SysTick->LOAD = (ONE_MS * delay)-1;
+      SysTick->VAL = 0;
+      SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+    }
+  __asm("wfi");
+  if (delay > 10)
+    {
+      SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;      
+      SysTick->LOAD = TEN_MS-1;
+      SysTick->VAL = 0;
+      SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+    }
+}
+
+void ctl_woken()
+{  
+  if (SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk)
+    ctl_time_increment = (SysTick->LOAD+1)/ONE_MS;
+  else
+    ctl_time_increment = (SysTick->LOAD+1-SysTick->VAL)/ONE_MS;  
+  ctl_increment_tick_from_isr();
+}
+#endif

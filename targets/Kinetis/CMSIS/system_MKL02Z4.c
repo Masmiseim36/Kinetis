@@ -15,14 +15,14 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    KL02RM, Rev.2, Dec 2012
-**     Version:             rev. 1.0, 2012-10-04
+**     Version:             rev. 1.1, 2013-04-05
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2012 Freescale, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -30,14 +30,16 @@
 **     Revisions:
 **     - rev. 1.0 (2012-10-04)
 **         Initial version.
+**     - rev. 1.1 (2013-04-05)
+**         Changed start of doxygen comment.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MKL02Z4
- * @version 1.0
- * @date 2012-10-04
+ * @version 1.1
+ * @date 2013-04-05
  * @brief Device specific configuration file for MKL02Z4 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains

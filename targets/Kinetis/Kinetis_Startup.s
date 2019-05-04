@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2010, 2011, 2012 Rowley Associates Limited.                 *
+ * Copyright (c) 2010, 2011, 2012, 2013 Rowley Associates Limited.           *
  *                                                                           *
  * This file may be distributed under the terms of the License Agreement     *
  * provided with this software.                                              *
@@ -164,6 +164,10 @@ ISR_HANDLER SysTick_Handler
   #include "MK70F12.vec"
 #elif defined(MK70F15)
   #include "MK70F15.vec"
+#elif defined(MKE02Z2)
+  #include "MKE02z2.vec"
+#elif defined(MKE04Z4)
+  #include "MKE04z4.vec"
 #elif defined(MKL02Z4)
   #include "MKL02Z4.vec"
 #elif defined(MKL04Z4)
@@ -174,10 +178,20 @@ ISR_HANDLER SysTick_Handler
   #include "MKL14Z4.vec"
 #elif defined(MKL15Z4)
   #include "MKL15Z4.vec"
+#elif defined(MKL16Z4)
+  #include "MKL16Z4.vec"
 #elif defined(MKL24Z4)
   #include "MKL24Z4.vec"
 #elif defined(MKL25Z4)
   #include "MKL25Z4.vec"
+#elif defined(MKL26Z4)
+  #include "MKL26Z4.vec"
+#elif defined(MKL34Z4)
+  #include "MKL34Z4.vec"
+#elif defined(MKL36Z4)
+  #include "MKL36Z4.vec"
+#elif defined(MKL46Z4)
+  #include "MKL46Z4.vec"
 #else
   #error no vectors
 #endif
@@ -189,6 +203,18 @@ _vectors_end:
   .fill 0x400-(_vectors_end-_vectors), 1, 0xff
 BackDoorKey:
   .byte 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
+#if defined(MKE02Z2) || defined(MKE04Z4)
+RESERVED:
+  .byte 0xff, 0xff, 0xff, 0xff
+EEPROT:
+  .byte 0xff
+FPROT:
+  .byte 0xff
+FSEC:
+  .byte 0xfe
+FOPT:
+  .byte 0xff
+#else
 FPROT:
   .byte 0xff, 0xff, 0xff, 0xff
 FSEC:
@@ -199,6 +225,7 @@ FEPROT:
   .byte 0xff
 FDPROT:
   .byte 0xff
+#endif
 
   .section .init, "ax"  
   .thumb_func
@@ -273,10 +300,22 @@ l1:
 SystemInit:
 #endif  
 disableWatchDog: 
-#if defined(MKL02Z4) || defined(MKL04Z4) || defined(MKL05Z4) || defined(MKL14Z4) || defined(MKL15Z4) || defined(MKL24Z4) || defined(MKL25Z4)
+#if defined(MKL02Z4) || defined(MKL04Z4) || defined(MKL05Z4) || defined(MKL14Z4) || defined(MKL15Z4) || defined(MKL24Z4) || defined(MKL25Z4) || defined(MKL26Z4) || defined(MKL34Z4) || defined(MKL36Z4) || defined(MKL46Z4)
   ldr r0, =0x40048100
   ldr r1, =#0
   str r1, [r0]
+#elif defined(MKE02Z2) || defined(MKE04Z4)
+  ldr r0, =0x40052000
+  ldr r1, =0x0
+  strb r1, [r0, #1] // WDOG->CS2 = 0;
+  ldr r1, =#0x20c5
+  strh r1, [r0, #2] // WDOG->CNT = 0x20C5;
+  ldr r1, =#0x28D9
+  strh r1, [r0, #2] // WDOG->CNT = 0x28D9;
+  ldr r1, =#0xFFFF
+  strh r1, [r0, #4] // WDOG->TOVAL = 0xFFFF;
+  ldr r1, =#0x20
+  strb r1, [r0, #0] // WDOG->CS1 = 0x20;
 #else
   movw r0, #0x2000
   movt r0, #0x4005

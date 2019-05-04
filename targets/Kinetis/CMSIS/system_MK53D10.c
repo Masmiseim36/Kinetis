@@ -11,14 +11,14 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    K53P144M100SF2V2RM Rev. 2, Jun 2012
-**     Version:             rev. 1.3, 2012-10-29
+**     Version:             rev. 1.5, 2013-06-24
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2012 Freescale, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -33,14 +33,19 @@
 **         UART0 - Fixed register definition - CEA709.1-B (LON) registers added.
 **     - rev. 1.3 (2012-10-29)
 **         Registers updated according to the new reference manual revision - Rev. 2, Jun 2012
+**     - rev. 1.4 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 1.5 (2013-06-24)
+**         NV_FOPT register - NMI_DIS bit added.
+**         SPI - PCSIS bit group in MCR register updated.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK53D10
- * @version 1.3
- * @date 2012-10-29
+ * @version 1.5
+ * @date 2013-06-24
  * @brief Device specific configuration file for MK53D10 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -53,16 +58,14 @@
 
 #define DISABLE_WDOG    1
 
-#ifndef CLOCK_SETUP
 #define CLOCK_SETUP     0
-#endif
 /* Predefined clock setups
    0 ... Multipurpose Clock Generator (MCG) in FLL Engaged Internal (FEI) mode
          Reference clock source for MCG module is the slow internal clock source 32.768kHz
          Core clock = 41.94MHz, BusClock = 41.94MHz
    1 ... Multipurpose Clock Generator (MCG) in PLL Engaged External (PEE) mode
          Reference clock source for MCG module is an external crystal 8MHz
-         Core clock = 100MHz, BusClock = 100MHz
+         Core clock = 100MHz, BusClock = 50MHz
    2 ... Multipurpose Clock Generator (MCG) in Bypassed Low Power External (BLPE) mode
          Core clock/Bus clock derived directly from an external crystal 8MHz with no multiplication
          Core clock = 8MHz, BusClock = 8MHz
@@ -134,20 +137,20 @@ void SystemInit (void) {
   /* SIM->CLKDIV1: OUTDIV1=0,OUTDIV2=0,OUTDIV3=1,OUTDIV4=1,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0,??=0 */
   SIM->CLKDIV1 = (uint32_t)0x00110000u; /* Update system prescalers */
   /* Switch to FBE Mode */
+  /* MCG->C2: ??=0,??=0,RANGE0=2,HGO=0,EREFS=1,LP=0,IRCS=0 */
+  MCG->C2 = (uint8_t)0x24u;
   /* OSC->CR: ERCLKEN=0,??=0,EREFSTEN=0,??=0,SC2P=0,SC4P=0,SC8P=0,SC16P=0 */
   OSC->CR = (uint8_t)0x00u;
   /* MCG->C7: OSCSEL=0 */
   MCG->C7 = (uint8_t)0x00u;
-  /* MCG->C2: ??=0,??=0,RANGE0=2,HGO=0,EREFS=1,LP=0,IRCS=0 */
-  MCG->C2 = (uint8_t)0x24u;
   /* MCG->C1: CLKS=2,FRDIV=3,IREFS=0,IRCLKEN=1,IREFSTEN=0 */
   MCG->C1 = (uint8_t)0x9Au;
   /* MCG->C4: DMX32=0,DRST_DRS=0 */
   MCG->C4 &= (uint8_t)~(uint8_t)0xE0u;
-  /* MCG->C5: ??=0,PLLCLKEN=0,PLLSTEN=0,PRDIV0=3 */
-  MCG->C5 = (uint8_t)0x03u;
-  /* MCG->C6: LOLIE=0,PLLS=0,CME=0,VDIV0=0 */
-  MCG->C6 = (uint8_t)0x00u;
+  /* MCG->C5: ??=0,PLLCLKEN=0,PLLSTEN=0,PRDIV0=1 */
+  MCG->C5 = (uint8_t)0x01u;
+  /* MCG->C6: LOLIE=0,PLLS=0,CME=0,VDIV0=1 */
+  MCG->C6 = (uint8_t)0x01u;
   while((MCG->S & MCG_S_OSCINIT0_MASK) == 0u) { /* Check that the oscillator is running */
   }
   while((MCG->S & MCG_S_IREFST_MASK) != 0u) { /* Check that the source of the FLL reference clock is the external reference clock. */
@@ -155,8 +158,6 @@ void SystemInit (void) {
   while((MCG->S & 0x0Cu) != 0x08u) {    /* Wait until external reference clock is selected as MCG output */
   }
   /* Switch to PBE Mode */
-  /* MCG_C5: ??=0,PLLCLKEN=0,PLLSTEN=0,PRDIV0=1 */
-  MCG->C5 = (uint8_t)0x01u;
   /* MCG->C6: LOLIE=0,PLLS=1,CME=0,VDIV0=1 */
   MCG->C6 = (uint8_t)0x41u;
   while((MCG->S & MCG_S_PLLST_MASK) == 0u) { /* Wait until the source of the PLLS clock has switched to the PLL */
@@ -192,12 +193,12 @@ void SystemInit (void) {
   }
   while((MCG->S & MCG_S_IREFST_MASK) != 0u) { /* Check that the source of the FLL reference clock is the external reference clock. */
   }
-  while((MCG->S & 0x0CU) != 0x08u) {    /* Wait until external reference clock is selected as MCG output */
+  while((MCG->S & 0x0Cu) != 0x08u) {    /* Wait until external reference clock is selected as MCG output */
   }
   /* Switch to BLPE Mode */
   /* MCG->C2: ??=0,??=0,RANGE0=2,HGO=0,EREFS=1,LP=0,IRCS=0 */
   MCG->C2 = (uint8_t)0x24u;
-#endif /* (CLOCK_SETUP == 2) */
+#endif
 }
 
 /* ----------------------------------------------------------------------------

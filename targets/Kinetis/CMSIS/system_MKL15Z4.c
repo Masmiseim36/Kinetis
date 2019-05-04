@@ -11,14 +11,14 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    KL15P80M48SF0RM, Rev.3, Sep 2012
-**     Version:             rev. 1.3, 2012-11-22
+**     Version:             rev. 1.4, 2013-04-05
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2012 Freescale, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -33,14 +33,16 @@
 **     - rev. 1.3 (2012-11-22)
 **         MCG module - bit LOLS in MCG_S register renamed to LOLS0.
 **         NV registers - bit EZPORT_DIS in NV_FOPT register removed.
+**     - rev. 1.4 (2013-04-05)
+**         Changed start of doxygen comment.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MKL15Z4
- * @version 1.3
- * @date 2012-11-22
+ * @version 1.4
+ * @date 2013-04-05
  * @brief Device specific configuration file for MKL15Z4 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -109,7 +111,7 @@ void SystemInit (void) {
   /* Switch to FEI Mode */
   /* MCG->C1: CLKS=0,FRDIV=0,IREFS=1,IRCLKEN=1,IREFSTEN=0 */
   MCG->C1 = (uint8_t)0x06U;
-  /* MCG_C2: LOCRE0=0,??=0,RANGE0=0,HGO0=0,EREFS0=0,LP=0,IRCS=0 */
+  /* MCG->C2: LOCRE0=0,??=0,RANGE0=0,HGO0=0,EREFS0=0,LP=0,IRCS=0 */
   MCG->C2 = (uint8_t)0x00U;
   /* MCG->C4: DMX32=0,DRST_DRS=1 */
   MCG->C4 = (uint8_t)((MCG->C4 & (uint8_t)~(uint8_t)0xC0U) | (uint8_t)0x20U);
@@ -133,11 +135,11 @@ void SystemInit (void) {
   /* PORTA->PCR19: ISF=0,MUX=0 */
   PORTA->PCR[19] &= (uint32_t)~0x01000700UL;
   /* Switch to FBE Mode */
-  /* OSC0->CR: ERCLKEN=1,??=0,EREFSTEN=0,??=0,SC2P=1,SC4P=0,SC8P=0,SC16P=1 */
-  OSC0->CR = (uint8_t)0x89U;
   /* MCG->C2: LOCRE0=0,??=0,RANGE0=2,HGO0=0,EREFS0=1,LP=0,IRCS=0 */
   MCG->C2 = (uint8_t)0x24U;
-  /* MCG->C1: CLKS=2,FRDIV=3,IREFS=0,IRCLKEN=1,IREFSTEN=0 */
+  /* OSC0->CR: ERCLKEN=1,??=0,EREFSTEN=0,??=0,SC2P=1,SC4P=0,SC8P=0,SC16P=0 */
+  OSC0->CR = (uint8_t)0x80U;
+  /* MCG_C1: CLKS=2,FRDIV=3,IREFS=0,IRCLKEN=1,IREFSTEN=0 */
   MCG->C1 = (uint8_t)0x9AU;
   /* MCG->C4: DMX32=0,DRST_DRS=0 */
   MCG->C4 &= (uint8_t)~(uint8_t)0xE0U;
@@ -171,10 +173,10 @@ void SystemInit (void) {
   /* PORTA->PCR19: ISF=0,MUX=0 */
   PORTA->PCR[19] &= (uint32_t)~0x01000700UL;
   /* Switch to FBE Mode */
-  /* OSC0->CR: ERCLKEN=1,??=0,EREFSTEN=0,??=0,SC2P=1,SC4P=0,SC8P=0,SC16P=1 */
-  OSC0->CR = (uint8_t)0x89U;
   /* MCG->C2: LOCRE0=0,??=0,RANGE0=2,HGO0=0,EREFS0=1,LP=0,IRCS=0 */
   MCG->C2 = (uint8_t)0x24U;
+  /* OSC0->CR: ERCLKEN=1,??=0,EREFSTEN=0,??=0,SC2P=1,SC4P=0,SC8P=0,SC16P=0 */
+  OSC0->CR = (uint8_t)0x80U;
   /* MCG->C1: CLKS=2,FRDIV=3,IREFS=0,IRCLKEN=1,IREFSTEN=0 */
   MCG->C1 = (uint8_t)0x9AU;
   /* MCG->C4: DMX32=0,DRST_DRS=0 */

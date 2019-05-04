@@ -7,19 +7,6 @@
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
-  <project Name="dhry" template_name="Kinetis_EXE">
-    <configuration Name="Common" Target="MKL02Z32Vxx4" arm_linker_stack_size="256"/>
-    <folder Name="Source Files">
-      <file file_name="$(StudioDir)/samples/Shared/dhry_1.c">
-        <configuration Name="Common" c_preprocessor_definitions="TIME"/>
-      </file>
-      <file file_name="$(StudioDir)/samples/Shared/dhry_2.c">
-        <configuration Name="Common" c_preprocessor_definitions="TIME"/>
-      </file>
-      <file file_name="$(StudioDir)/samples/Shared/dhry_crossworks.c"/>
-      <file file_name="Kinetis_ctl_board.c"/>
-    </folder>
-  </project>
   <project Name="led" template_name="Kinetis_EXE">
     <configuration Name="Common" Target="MKL02Z32Vxx4"/>
     <folder Name="Source Files">

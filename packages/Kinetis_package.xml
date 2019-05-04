@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.9" build_version="2013041001.7155;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
+<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.10" build_version="2013080902.7634;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
 
 <targets>
   <category name="K10 Series" >
@@ -136,10 +136,26 @@
   <category name="KL2 Series" >
     <cpu name="MKL24Z32Vxx4"/>
     <cpu name="MKL24Z64Vxx4"/>
+    <cpu name="MKL24Z128Vxx4"/>
     <cpu name="MKL25Z32Vxx4"/>
     <cpu name="MKL25Z64Vxx4"/>
     <cpu name="MKL25Z128Vxx4"/>
     <cpu name="MKL25Z256Vxx4"/>
+  </category>
+  <category name="KL3 Series" >
+    <cpu name="MKL34Z64Vxx4"/>
+    <cpu name="MKL34Z128Vxx4"/>
+    <cpu name="MKL34Z256Vxx4"/>
+  </category>
+  <category name="KL4 Series" >
+    <cpu name="MKL46Z128Vxx4"/>
+    <cpu name="MKL46Z256Vxx4"/>
+  </category>
+  <category name="KE0 Series" >
+    <cpu name="MKE02Z16Vxx2"/>
+    <cpu name="MKE02Z32Vxx2"/>
+    <cpu name="MKE02Z64Vxx2"/>
+    <cpu name="MKE04Z8Vxx4"/>
   </category>
 </targets>
 
@@ -218,11 +234,7 @@
 
       <h5>Target Script</h5>
       <p>The script <a href="file:$(TargetsDir)/Kinetis/Kinetis_Target.js">Kinetis_Target.js</a> is used by the
-      debugger to identify the Kinetis part, match the project to the target and to reset the target board. The
-      reset script contains a function <b>MassErase</b>. This function can be used to unlock a secured device
-      by connecting to the device with the <b>Identify Target On Connect</b> cleared. You can then right click
-      on the target (in the targets window) and select <b>MassErase</b>. Note that the project property 
-      <b>target_extras_script</b> should be set to be <b>Extras()</b> to get the menu entry to display.</p>
+      debugger to identify the Kinetis part, match the project to the target and to reset the target board.</p>
 
       <h5>Kinetis Internal Flash Loader</h5>
       <p>The source code to the flash loaders <a href="file:$(TargetsDir)/Kinetis/Loader.hzp">(click to load solution)</a>
@@ -239,7 +251,7 @@
       selects the appropriate header file depending on the target processor selection.</p>
 
       <h5>CTL support</h5>
-      <p>The file <a href="file:$(TargetsDir)/Kinetis/Kinetis_ctl.c">Kinetis_ctl.c</a> implements the CTL system timer using the Cortex-M4
+      <p>The file <a href="file:$(TargetsDir)/Kinetis/Kinetis_ctl.c">Kinetis_ctl.c</a> implements the CTL system timer using the Cortex-M
       SysTick timer. The timer is configured to interrupt at a 10 millisecond rate and increment the CTL system timer by 10 to give a 
       millisecond timer. The implementation uses the CMSIS <b>SystemCoreClock</b> global variable to determine the CPU clock
       frequency. The CTL samples that are provided in this package have board specific files that initialise this variable.</p>
@@ -260,8 +272,23 @@
       editor tab and select 'Copy Full Path' to get the path to the filename of the firmware into the paste buffer.</p>
     </section>
 
+    <section name="Known problems">
+      <p>The part name identification and matching cannot be done for all Kinetis devices.</p>
+    </section>
+
   </documentation>
   <history>  
+    <version name="1.10">
+      <description>Added support for MKE02Z2, MKE04Z4, MKL24Z4, MKL34Z4 and MKL46Z4 devices.</description>
+      <description>A memory map file per device is now supplied. For existing projects you will need to reselect the 
+      Target property to reference the new memory map file.</description>      
+      <description>Supplied latest CMSIS devices files from Freescale.</description>
+      <description>Supplied L series flash loader that works in 1K of SRAM.</description>
+      <description>Fixed flash breakpoint support in L series flash loaders.</description>
+      <description>Added ctl_sleep and ctl_woken to Kinetis_ctl.c. These functions can be used in CTL V3 to reduce the timer interrupt
+      frequency when in low power mode.</description>
+      <description>Added test10.c to ctl tests. This file is supplied with CTL V3.</description>
+    </version>
     <version name="1.9">
       <description>Added support for MK11D5, MK12D5, MK21D5, MK22D5 and MKL02Z4 devices.</description>
        <description>Modified L series flash loader to run in 2K of SRAM - note 1K SRAM parts are not supported.</description>

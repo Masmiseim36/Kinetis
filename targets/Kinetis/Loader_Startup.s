@@ -32,8 +32,7 @@ _start:
   ldr r0, =0x40048100
   ldr r1, =#0
   str r1, [r0]
-#elif defined(K_SERIES)
-  // disable the watchdog
+#elif defined(K_SERIES)  
   movw r2, #0x2000
   movt r2, #0x4005
   movw r3, #0xC520
@@ -42,8 +41,20 @@ _start:
   strh r3, [r2, #14] 
   movw r3, #0x1D2
   strh r3, [r2]
+#elif defined(E_SERIES)
+  ldr r0, =0x40052000
+  ldr r1, =0x0
+  strb r1, [r0, #1]
+  ldr r1, =#0x20c5
+  strh r1, [r0, #2]
+  ldr r1, =#0x28D9
+  strh r1, [r0, #2]
+  ldr r1, =#0xFFFF
+  strh r1, [r0, #4]
+  ldr r1, =#0x20
+  strb r1, [r0, #0]
 #else
-#error L_SERIES or K_SERIES should be defined
+#error L_SERIES, K_SERIES or E_SERIES should be defined
 #endif
   /***************************************************************************
    * Copy loader parameter to R0 if a parameter has been supplied.           *

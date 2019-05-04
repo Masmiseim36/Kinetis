@@ -9,14 +9,14 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    K52P144M100SF2V2RM Rev. 2, Jun 2012
-**     Version:             rev. 1.3, 2012-10-29
+**     Version:             rev. 1.5, 2013-06-24
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2012 Freescale, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -31,14 +31,19 @@
 **         UART0 - Fixed register definition - CEA709.1-B (LON) registers added.
 **     - rev. 1.3 (2012-10-29)
 **         Registers updated according to the new reference manual revision - Rev. 2, Jun 2012
+**     - rev. 1.4 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 1.5 (2013-06-24)
+**         NV_FOPT register - NMI_DIS bit added.
+**         SPI - PCSIS bit group in MCR register updated.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK52D10
- * @version 1.3
- * @date 2012-10-29
+ * @version 1.5
+ * @date 2013-06-24
  * @brief Device specific configuration file for MK52D10 (header file)
  *
  * Provides a system configuration function and a global variable that contains

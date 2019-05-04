@@ -6,7 +6,7 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    K61P256M150SF3RM, Rev. 2, Dec 2011
-**     Version:             rev. 1.5, 2013-01-10
+**     Version:             rev. 1.7, 2013-06-24
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
@@ -41,14 +41,18 @@
 **     - rev. 1.5 (2013-01-10)
 **         DRY module removed.
 **         RTC security related registers removed.
+**     - rev. 1.6 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 1.7 (2013-06-24)
+**         MPU - missing region descriptor registers added.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK61F12
- * @version 1.5
- * @date 2013-01-10
+ * @version 1.7
+ * @date 2013-06-24
  * @brief Device specific configuration file for MK61F12 (header file)
  *
  * Provides a system configuration function and a global variable that contains

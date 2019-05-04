@@ -13,15 +13,15 @@
 **                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    Kxx (P1 silicon) Sub-Family Reference Manual Rev. 0, draft A Oct 2011
-**     Version:             rev. 2.0, 2012-01-15
+**     Reference manual:    K51P144M72SF1RM Rev. 0, Nov 2011
+**     Version:             rev. 2.3, 2013-06-24
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2012 Freescale Semiconductor, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -31,14 +31,21 @@
 **         Initial version.
 **     - rev. 2.0 (2012-01-15)
 **         Initial public version.
+**     - rev. 2.1 (2012-04-13)
+**         Added new #define symbol MCU_MEM_MAP_VERSION_MINOR.
+**         Added new #define symbols <peripheralType>_BASE_PTRS.
+**     - rev. 2.2 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 2.3 (2013-06-24)
+**         NV_FOPT register - NMI_DIS bit added.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK51D7
- * @version 2.0
- * @date 2012-01-15
+ * @version 2.3
+ * @date 2013-06-24
  * @brief Device specific configuration file for MK51D7 (header file)
  *
  * Provides a system configuration function and a global variable that contains

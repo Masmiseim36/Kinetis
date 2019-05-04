@@ -5,15 +5,15 @@
 **                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    K20P144M120SF3RM, Rev. 1, Oct 2011
-**     Version:             rev. 1.2, 2011-11-03
+**     Reference manual:    K20P144M120SF3RM, Rev. 2, Dec 2011
+**     Version:             rev. 1.7, 2013-06-24
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2011 Freescale Semiconductor, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -29,14 +29,31 @@
 **         Registers updated according to the new reference manual revision - Rev. 1, Oct 2011
 **         Registers of the following modules have been updated - AXBS, CAN, I2S, MCG, MPU, NFC, RCM, RTC, SDHC, SIM, WDOG
 **         The following modules have been removed - CAU, DRY, ENET
+**     - rev. 1.3 (2012-01-04)
+**         Registers updated according to the new reference manual revision - Rev. 2, Dec 2011
+**         EWM - INTEN bit in EWM_CTRL register has been added.
+**         PDB - register PDB_PO0EN renamed to PRB_POEN.
+**         PMC - BGEN bit in PMC_REGSC register has been removed.
+**         SIM - several changes in SCGC registers. Bit USBH_CLKSEL removed from SOPT2 register.
+**         UART - new bit RXOFE in regiter CFIFO and RXOF in register SFIFO.
+**     - rev. 1.4 (2012-04-13)
+**         Added new #define symbol MCU_MEM_MAP_VERSION_MINOR.
+**         Added new #define symbols <peripheralType>_BASE_PTRS.
+**     - rev. 1.5 (2012-10-19)
+**         RTC - security related registers removed.
+**         Interrupt Number Definitions updated - HardFault_IRQn has been added.
+**     - rev. 1.6 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 1.7 (2013-06-24)
+**         MPU - missing region descriptor registers added.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK20F12
- * @version 1.2
- * @date 2011-11-03
+ * @version 1.7
+ * @date 2013-06-24
  * @brief Device specific configuration file for MK20F12 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -49,9 +66,8 @@
 
 #define DISABLE_WDOG    1
 
-#ifndef CLOCK_SETUP
+
 #define CLOCK_SETUP     0
-#endif
 /* Predefined clock setups
    0 ... Multipurpose Clock Generator (MCG) in FLL Engaged Internal (FEI) mode
          Reference clock source for MCG module is the slow internal clock source 32.768kHz

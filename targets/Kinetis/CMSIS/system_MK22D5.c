@@ -5,15 +5,15 @@
 **                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    K22RM, Rev.3, Aug 2012
-**     Version:             rev. 1.3, 2012-10-11
+**     Reference manual:    K22RM, Rev.4, Feb 2013
+**     Version:             rev. 1.6, 2013-06-24
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2012 Freescale, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -28,14 +28,20 @@
 **         Updated UART0, RTC and CRC register definition.
 **     - rev. 1.3 (2012-10-11)
 **         PDB module update - PDB0_PO1DLY register added.
+**     - rev. 1.4 (2013-01-24)
+**         Update to Rev. 4 of reference manual.
+**     - rev. 1.5 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 1.6 (2013-06-24)
+**         NV_FOPT register - NMI_DIS bit added.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK22D5
- * @version 1.3
- * @date 2012-10-11
+ * @version 1.6
+ * @date 2013-06-24
  * @brief Device specific configuration file for MK22D5 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains

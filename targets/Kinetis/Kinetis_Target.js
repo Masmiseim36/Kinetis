@@ -49,8 +49,7 @@ function FLASHReset()
 }
 
 function GetPartName()
-{    
-  TargetInterface.pokeWord(0xE000EDFC, (1<<24)); 
+{  
   var status = TargetInterface.getDebugRegister(0x01000000);    
   if (status & (1<<2))
     {
@@ -64,80 +63,105 @@ function GetPartName()
     {
       TargetInterface.setDebugRegister(0x01000004, 0x10);
       TargetInterface.delay(1000);      
-    }
-  var SIM_SDID = TargetInterface.peekWord(0x40048024);
-  var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
+    }    
+  TargetInterface.pokeWord(0xE000EDFC, (1<<24));
   var PartName;
-  switch ((SIM_SDID>>20) & 0xf) 
+  var CPUID = TargetInterface.peekWord(0xE000ED00);
+  if (((CPUID>>4)&0xf)==0) // Cortex-M0
+    {      
+      if (TargetInterface.peekWord(0x40048010)) // MKE SIM-UUIDL register
+        {
+          var SIM_SRSID = TargetInterface.peekWord(0x40048000);
+          switch (SIM_SRSID >> 24)
+            {
+              case 2: // KE02            
+                PartName = "MKE02Z";            
+                break;
+              case 4: // KE04            
+                PartName = "MKE04Z";            
+                break;
+            }
+        }
+      else 
+        {
+          var SIM_SDID = TargetInterface.peekWord(0x40048024);
+          var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
+          if (((SIM_SDID>>24)&0xff) < 10)
+            PartName = "MKL0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+          else
+            PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";       
+          Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+          Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
+          PartName += Length.toString();      
+        }
+    }
+  else
     {
-      case 0: // K Series
-        switch ((SIM_SDID>>4) & 0x7)
-          {
-            case 0: // K10/K12
-              PartName = "MK10";
-              break;
-            case 1: // K20/K22
-              PartName = "MK20";
-              break;
-            case 2: // K30/K11/K61
-              PartName = "MK30";
-              break;
-            case 3: // K40/K21
-              PartName = "MK40";
-              break;
-            case 4: // K60/K62
-              PartName = "MK60";
-              break;
-            case 5: // K70
-              PartName = "MK70";
-              break;
-            case 6: // K50/K52
-              PartName = "MK50";
-              break;
-            case 7: // K51/K53
-              PartName = "MK51";
-              break;
-          }        
-        if (((SIM_SDID>>7) & 0x7)==3)
-          PartName += "F";
-        else
-          PartName += "D";
-        if (SIM_FCFG2 & (1<<23))
-          {
-            PartName += "N";
-            Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
-            Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
-            if (((SIM_SDID>>7) & 0x7)==3)
-              Length *= 2;
-            if (Length == 1024)
-              PartName += "1M0";
-            else
-              PartName += Length.toString();
-          }
-        else
-          {
-            PartName += "X";
-            Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
-            if (((SIM_SDID>>7) & 0x7)==3)
-              Length *= 2;
-            PartName += Length.toString();
-          }
-      break;
-    case 1: // KL Series
-      if (((SIM_SDID>>24)&0xff) < 10)
-        PartName = "MKL0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+      var SIM_SDID = TargetInterface.peekWord(0x40048024);
+      var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
+      switch ((SIM_SDID>>4) & 0x7)
+        {
+          case 0: // K10/K12
+            PartName = "MK10";
+            break;
+          case 1: // K20/K22
+            PartName = "MK20";
+            break;
+          case 2: // K30/K11/K61
+            PartName = "MK30";
+            break;
+          case 3: // K40/K21
+            PartName = "MK40";
+            break;
+          case 4: // K60/K62
+            PartName = "MK60";
+            break;
+          case 5: // K70
+            PartName = "MK70";
+            break;
+          case 6: // K50/K52
+            PartName = "MK50";
+            break;
+          case 7: // K51/K53
+            PartName = "MK51";
+            break;
+        }        
+      if (((SIM_SDID>>7) & 0x7)==3)
+        PartName += "F";
       else
-        PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";       
-      Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
-      PartName += Length.toString();
-      break;
+        PartName += "D";
+      if (SIM_FCFG2 & (1<<23))
+        {
+          PartName += "N";
+          Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+          Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
+          if (((SIM_SDID>>7) & 0x7)==3)
+            Length *= 2;
+          if (Length == 1024)
+            PartName += "1M0";
+          else
+            PartName += Length.toString();
+        }
+      else
+        {
+          PartName += "X";
+          Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+          if (((SIM_SDID>>7) & 0x7)==3)
+            Length *= 2;
+          PartName += Length.toString();
+        }
     }
   return PartName;
 }
 
 function MatchPartName(name)
-{
-  return name && name.substring(0, 8) == GetPartName().substring(0, 8);
+{  
+  var partName = GetPartName();
+  if (partName.length >= 8)
+    return name.substring(0, 8) == partName.substring(0, 8);
+  else (partName.length >= 6)
+    return name.substring(0, 6) == partName.substring(0, 6);
+  return false;
 }
 
 function MDMStatus()

@@ -10,14 +10,14 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    KL05P48M48SF1RM, Rev.3, Sep 2012
-**     Version:             rev. 1.4, 2012-11-22
+**     Version:             rev. 1.6, 2013-04-11
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2012 Freescale, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -35,14 +35,18 @@
 **     - rev. 1.4 (2012-11-22)
 **         MCG module - bit LOLS in MCG_S register renamed to LOLS0.
 **         NV registers - bit EZPORT_DIS in NV_FOPT register removed.
+**     - rev. 1.5 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 1.6 (2013-04-11)
+**         SystemInit methods updated with predefined initialization sequence.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MKL05Z4
- * @version 1.4
- * @date 2012-11-22
+ * @version 1.6
+ * @date 2013-04-11
  * @brief Device specific configuration file for MKL05Z4 (header file)
  *
  * Provides a system configuration function and a global variable that contains

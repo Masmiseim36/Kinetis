@@ -119,4 +119,11 @@
       <file file_name="Kinetis_ctl_board.c"/>
     </folder>
   </project>
+  <project Name="test10" template_name="Kinetis_CTL_EXE">
+    <configuration Name="Common" Target="MKL25Z128Vxx4"/>
+    <folder Name="Source Files">
+      <file file_name="$(StudioDir)/ctl/tests/test10.c"/>
+      <file file_name="Kinetis_ctl_board.c"/>
+    </folder>
+  </project>
 </solution>

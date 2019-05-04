@@ -9,14 +9,14 @@
 **                          K10P32M50SF0RM Rev. 1, Oct 2011
 **                          K10P48M50SF0RM Rev. 1, Oct 2011
 **
-**     Version:             rev. 1.0, 2011-12-15
+**     Version:             rev. 2.3, 2013-06-24
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2011 Freescale Semiconductor, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -24,14 +24,24 @@
 **     Revisions:
 **     - rev. 1.0 (2011-12-15)
 **         Initial version
+**     - rev. 2.0 (2012-03-19)
+**         PDB Peripheral register structure updated.
+**         DMA Registers and bits for unsupported DMA channels removed.
+**     - rev. 2.1 (2012-04-13)
+**         Added new #define symbol MCU_MEM_MAP_VERSION_MINOR.
+**         Added new #define symbols <peripheralType>_BASE_PTRS.
+**     - rev. 2.2 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 2.3 (2013-06-24)
+**         NV_FOPT register - NMI_DIS bit added.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK10D5
- * @version 1.0
- * @date 2011-12-15
+ * @version 2.3
+ * @date 2013-06-24
  * @brief Device specific configuration file for MK10D5 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -44,9 +54,7 @@
 
 #define DISABLE_WDOG    1
 
-#ifndef CLOCK_SETUP
 #define CLOCK_SETUP     0
-#endif
 /* Predefined clock setups
    0 ... Multipurpose Clock Generator (MCG) in FLL Engaged Internal (FEI) mode
          Reference clock source for MCG module is the slow internal clock source 32.768kHz

@@ -15,12 +15,12 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    K50P144M100SF2V2RM Rev. 2, Jun 2012
-**     Version:             rev. 1.3, 2012-10-29
+**     Version:             rev. 1.5, 2013-06-24
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MK50D10
 **
-**     Copyright: 1997 - 2012 Freescale, Inc. All Rights Reserved.
+**     Copyright: 1997 - 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -35,14 +35,19 @@
 **         UART0 - Fixed register definition - CEA709.1-B (LON) registers added.
 **     - rev. 1.3 (2012-10-29)
 **         Registers updated according to the new reference manual revision - Rev. 2, Jun 2012
+**     - rev. 1.4 (2013-04-05)
+**         Changed start of doxygen comment.
+**     - rev. 1.5 (2013-06-24)
+**         NV_FOPT register - NMI_DIS bit added.
+**         SPI - PCSIS bit group in MCR register updated.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK50D10.h
- * @version 1.3
- * @date 2012-10-29
+ * @version 1.5
+ * @date 2013-06-24
  * @brief CMSIS Peripheral Access Layer for MK50D10
  *
  * CMSIS Peripheral Access Layer for MK50D10
@@ -55,7 +60,7 @@
  * compatible) */
 #define MCU_MEM_MAP_VERSION 0x0100u
 /** Memory map minor version */
-#define MCU_MEM_MAP_VERSION_MINOR 0x0003u
+#define MCU_MEM_MAP_VERSION_MINOR 0x0005u
 
 /**
  * @brief Macro to access a single bit of a peripheral register (bit band region
@@ -70,7 +75,7 @@
    -- Interrupt vector numbers
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup Interrupt_vector_numbers Interrupt vector numbers
  * @{
  */
@@ -195,7 +200,7 @@ typedef enum IRQn {
   Reserved119_IRQn             = 103               /**< Reserved interrupt 119 */
 } IRQn_Type;
 
-/**
+/*!
  * @}
  */ /* end of group Interrupt_vector_numbers */
 
@@ -204,7 +209,7 @@ typedef enum IRQn {
    -- Cortex M4 Core Configuration
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup Cortex_Core_Configuration Cortex M4 Core Configuration
  * @{
  */
@@ -212,11 +217,12 @@ typedef enum IRQn {
 #define __MPU_PRESENT                  0         /**< Defines if an MPU is present or not */
 #define __NVIC_PRIO_BITS               4         /**< Number of priority bits implemented in the NVIC */
 #define __Vendor_SysTickConfig         0         /**< Vendor specific implementation of SysTickConfig is defined */
+#define __FPU_PRESENT                  0         /**< Defines if an FPU is present or not */
 
 #include "core_cm4.h"                  /* Core Peripheral Access Layer */
 #include "system_MK50D10.h"            /* Device specific configuration file */
 
-/**
+/*!
  * @}
  */ /* end of group Cortex_Core_Configuration */
 
@@ -225,7 +231,7 @@ typedef enum IRQn {
    -- Device Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup Peripheral_access_layer Device Peripheral Access Layer
  * @{
  */
@@ -253,7 +259,7 @@ typedef enum IRQn {
    -- ADC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup ADC_Peripheral_Access_Layer ADC Peripheral Access Layer
  * @{
  */
@@ -292,7 +298,7 @@ typedef struct {
    -- ADC Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup ADC_Register_Masks ADC Register Masks
  * @{
  */
@@ -448,7 +454,7 @@ typedef struct {
 #define ADC_CLM0_CLM0_SHIFT                      0
 #define ADC_CLM0_CLM0(x)                         (((uint32_t)(((uint32_t)(x))<<ADC_CLM0_CLM0_SHIFT))&ADC_CLM0_CLM0_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group ADC_Register_Masks */
 
@@ -465,7 +471,7 @@ typedef struct {
 /** Array initializer of ADC peripheral base pointers */
 #define ADC_BASES                                { ADC0, ADC1 }
 
-/**
+/*!
  * @}
  */ /* end of group ADC_Peripheral_Access_Layer */
 
@@ -474,7 +480,7 @@ typedef struct {
    -- AIPS Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup AIPS_Peripheral_Access_Layer AIPS Peripheral Access Layer
  * @{
  */
@@ -506,7 +512,7 @@ typedef struct {
    -- AIPS Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup AIPS_Register_Masks AIPS Register Masks
  * @{
  */
@@ -1333,7 +1339,7 @@ typedef struct {
 #define AIPS_PACRP_SP0_MASK                      0x40000000u
 #define AIPS_PACRP_SP0_SHIFT                     30
 
-/**
+/*!
  * @}
  */ /* end of group AIPS_Register_Masks */
 
@@ -1350,7 +1356,7 @@ typedef struct {
 /** Array initializer of AIPS peripheral base pointers */
 #define AIPS_BASES                               { AIPS0, AIPS1 }
 
-/**
+/*!
  * @}
  */ /* end of group AIPS_Peripheral_Access_Layer */
 
@@ -1359,7 +1365,7 @@ typedef struct {
    -- AXBS Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup AXBS_Peripheral_Access_Layer AXBS Peripheral Access Layer
  * @{
  */
@@ -1388,7 +1394,7 @@ typedef struct {
    -- AXBS Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup AXBS_Register_Masks AXBS Register Masks
  * @{
  */
@@ -1447,7 +1453,7 @@ typedef struct {
 #define AXBS_MGPCR5_AULB_SHIFT                   0
 #define AXBS_MGPCR5_AULB(x)                      (((uint32_t)(((uint32_t)(x))<<AXBS_MGPCR5_AULB_SHIFT))&AXBS_MGPCR5_AULB_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group AXBS_Register_Masks */
 
@@ -1460,7 +1466,7 @@ typedef struct {
 /** Array initializer of AXBS peripheral base pointers */
 #define AXBS_BASES                               { AXBS }
 
-/**
+/*!
  * @}
  */ /* end of group AXBS_Peripheral_Access_Layer */
 
@@ -1469,7 +1475,7 @@ typedef struct {
    -- CMP Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup CMP_Peripheral_Access_Layer CMP Peripheral Access Layer
  * @{
  */
@@ -1488,7 +1494,7 @@ typedef struct {
    -- CMP Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup CMP_Register_Masks CMP Register Masks
  * @{
  */
@@ -1550,7 +1556,7 @@ typedef struct {
 #define CMP_MUXCR_PSTM_MASK                      0x40u
 #define CMP_MUXCR_PSTM_SHIFT                     6
 
-/**
+/*!
  * @}
  */ /* end of group CMP_Register_Masks */
 
@@ -1571,7 +1577,7 @@ typedef struct {
 /** Array initializer of CMP peripheral base pointers */
 #define CMP_BASES                                { CMP0, CMP1, CMP2 }
 
-/**
+/*!
  * @}
  */ /* end of group CMP_Peripheral_Access_Layer */
 
@@ -1580,7 +1586,7 @@ typedef struct {
    -- CMT Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup CMT_Peripheral_Access_Layer CMT Peripheral Access Layer
  * @{
  */
@@ -1605,7 +1611,7 @@ typedef struct {
    -- CMT Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup CMT_Register_Masks CMT Register Masks
  * @{
  */
@@ -1673,7 +1679,7 @@ typedef struct {
 #define CMT_DMA_DMA_MASK                         0x1u
 #define CMT_DMA_DMA_SHIFT                        0
 
-/**
+/*!
  * @}
  */ /* end of group CMT_Register_Masks */
 
@@ -1686,7 +1692,7 @@ typedef struct {
 /** Array initializer of CMT peripheral base pointers */
 #define CMT_BASES                                { CMT }
 
-/**
+/*!
  * @}
  */ /* end of group CMT_Peripheral_Access_Layer */
 
@@ -1695,7 +1701,7 @@ typedef struct {
    -- CRC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup CRC_Peripheral_Access_Layer CRC Peripheral Access Layer
  * @{
  */
@@ -1741,7 +1747,7 @@ typedef struct {
    -- CRC Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup CRC_Register_Masks CRC Register Masks
  * @{
  */
@@ -1841,7 +1847,7 @@ typedef struct {
 #define CRC_CTRLHU_TOT_SHIFT                     6
 #define CRC_CTRLHU_TOT(x)                        (((uint8_t)(((uint8_t)(x))<<CRC_CTRLHU_TOT_SHIFT))&CRC_CTRLHU_TOT_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group CRC_Register_Masks */
 
@@ -1854,7 +1860,7 @@ typedef struct {
 /** Array initializer of CRC peripheral base pointers */
 #define CRC_BASES                                { CRC0 }
 
-/**
+/*!
  * @}
  */ /* end of group CRC_Peripheral_Access_Layer */
 
@@ -1863,7 +1869,7 @@ typedef struct {
    -- DAC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup DAC_Peripheral_Access_Layer DAC Peripheral Access Layer
  * @{
  */
@@ -1884,7 +1890,7 @@ typedef struct {
    -- DAC Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup DAC_Register_Masks DAC Register Masks
  * @{
  */
@@ -1940,7 +1946,7 @@ typedef struct {
 #define DAC_C2_DACBFRP_SHIFT                     4
 #define DAC_C2_DACBFRP(x)                        (((uint8_t)(((uint8_t)(x))<<DAC_C2_DACBFRP_SHIFT))&DAC_C2_DACBFRP_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group DAC_Register_Masks */
 
@@ -1957,7 +1963,7 @@ typedef struct {
 /** Array initializer of DAC peripheral base pointers */
 #define DAC_BASES                                { DAC0, DAC1 }
 
-/**
+/*!
  * @}
  */ /* end of group DAC_Peripheral_Access_Layer */
 
@@ -1966,7 +1972,7 @@ typedef struct {
    -- DMA Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup DMA_Peripheral_Access_Layer DMA Peripheral Access Layer
  * @{
  */
@@ -2040,7 +2046,7 @@ typedef struct {
    -- DMA Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup DMA_Register_Masks DMA Register Masks
  * @{
  */
@@ -2559,7 +2565,7 @@ typedef struct {
 #define DMA_BITER_ELINKYES_ELINK_MASK            0x8000u
 #define DMA_BITER_ELINKYES_ELINK_SHIFT           15
 
-/**
+/*!
  * @}
  */ /* end of group DMA_Register_Masks */
 
@@ -2572,7 +2578,7 @@ typedef struct {
 /** Array initializer of DMA peripheral base pointers */
 #define DMA_BASES                                { DMA0 }
 
-/**
+/*!
  * @}
  */ /* end of group DMA_Peripheral_Access_Layer */
 
@@ -2581,7 +2587,7 @@ typedef struct {
    -- DMAMUX Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup DMAMUX_Peripheral_Access_Layer DMAMUX Peripheral Access Layer
  * @{
  */
@@ -2595,7 +2601,7 @@ typedef struct {
    -- DMAMUX Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup DMAMUX_Register_Masks DMAMUX Register Masks
  * @{
  */
@@ -2609,7 +2615,7 @@ typedef struct {
 #define DMAMUX_CHCFG_ENBL_MASK                   0x80u
 #define DMAMUX_CHCFG_ENBL_SHIFT                  7
 
-/**
+/*!
  * @}
  */ /* end of group DMAMUX_Register_Masks */
 
@@ -2622,7 +2628,7 @@ typedef struct {
 /** Array initializer of DMAMUX peripheral base pointers */
 #define DMAMUX_BASES                             { DMAMUX }
 
-/**
+/*!
  * @}
  */ /* end of group DMAMUX_Peripheral_Access_Layer */
 
@@ -2631,7 +2637,7 @@ typedef struct {
    -- EWM Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup EWM_Peripheral_Access_Layer EWM Peripheral Access Layer
  * @{
  */
@@ -2650,7 +2656,7 @@ typedef struct {
    -- EWM Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup EWM_Register_Masks EWM Register Masks
  * @{
  */
@@ -2681,7 +2687,7 @@ typedef struct {
 #define EWM_CLKPRESCALER_CLK_DIV_SHIFT           0
 #define EWM_CLKPRESCALER_CLK_DIV(x)              (((uint8_t)(((uint8_t)(x))<<EWM_CLKPRESCALER_CLK_DIV_SHIFT))&EWM_CLKPRESCALER_CLK_DIV_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group EWM_Register_Masks */
 
@@ -2694,7 +2700,7 @@ typedef struct {
 /** Array initializer of EWM peripheral base pointers */
 #define EWM_BASES                                { EWM }
 
-/**
+/*!
  * @}
  */ /* end of group EWM_Peripheral_Access_Layer */
 
@@ -2703,7 +2709,7 @@ typedef struct {
    -- FB Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup FB_Peripheral_Access_Layer FB Peripheral Access Layer
  * @{
  */
@@ -2723,7 +2729,7 @@ typedef struct {
    -- FB Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup FB_Register_Masks FB Register Masks
  * @{
  */
@@ -2790,7 +2796,7 @@ typedef struct {
 #define FB_CSPMCR_GROUP1_SHIFT                   28
 #define FB_CSPMCR_GROUP1(x)                      (((uint32_t)(((uint32_t)(x))<<FB_CSPMCR_GROUP1_SHIFT))&FB_CSPMCR_GROUP1_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group FB_Register_Masks */
 
@@ -2803,7 +2809,7 @@ typedef struct {
 /** Array initializer of FB peripheral base pointers */
 #define FB_BASES                                 { FB }
 
-/**
+/*!
  * @}
  */ /* end of group FB_Peripheral_Access_Layer */
 
@@ -2812,7 +2818,7 @@ typedef struct {
    -- FMC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup FMC_Peripheral_Access_Layer FMC Peripheral Access Layer
  * @{
  */
@@ -2835,7 +2841,7 @@ typedef struct {
    -- FMC Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup FMC_Register_Masks FMC Register Masks
  * @{
  */
@@ -2941,7 +2947,7 @@ typedef struct {
 #define FMC_DATA_L_data_SHIFT                    0
 #define FMC_DATA_L_data(x)                       (((uint32_t)(((uint32_t)(x))<<FMC_DATA_L_data_SHIFT))&FMC_DATA_L_data_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group FMC_Register_Masks */
 
@@ -2954,7 +2960,7 @@ typedef struct {
 /** Array initializer of FMC peripheral base pointers */
 #define FMC_BASES                                { FMC }
 
-/**
+/*!
  * @}
  */ /* end of group FMC_Peripheral_Access_Layer */
 
@@ -2963,7 +2969,7 @@ typedef struct {
    -- FTFL Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup FTFL_Peripheral_Access_Layer FTFL Peripheral Access Layer
  * @{
  */
@@ -2999,7 +3005,7 @@ typedef struct {
    -- FTFL Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup FTFL_Register_Masks FTFL Register Masks
  * @{
  */
@@ -3122,7 +3128,7 @@ typedef struct {
 #define FTFL_FDPROT_DPROT_SHIFT                  0
 #define FTFL_FDPROT_DPROT(x)                     (((uint8_t)(((uint8_t)(x))<<FTFL_FDPROT_DPROT_SHIFT))&FTFL_FDPROT_DPROT_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group FTFL_Register_Masks */
 
@@ -3135,7 +3141,7 @@ typedef struct {
 /** Array initializer of FTFL peripheral base pointers */
 #define FTFL_BASES                               { FTFL }
 
-/**
+/*!
  * @}
  */ /* end of group FTFL_Peripheral_Access_Layer */
 
@@ -3144,7 +3150,7 @@ typedef struct {
    -- FTM Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup FTM_Peripheral_Access_Layer FTM Peripheral Access Layer
  * @{
  */
@@ -3184,7 +3190,7 @@ typedef struct {
    -- FTM Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup FTM_Register_Masks FTM Register Masks
  * @{
  */
@@ -3593,7 +3599,7 @@ typedef struct {
 #define FTM_PWMLOAD_LDOK_MASK                    0x200u
 #define FTM_PWMLOAD_LDOK_SHIFT                   9
 
-/**
+/*!
  * @}
  */ /* end of group FTM_Register_Masks */
 
@@ -3614,7 +3620,7 @@ typedef struct {
 /** Array initializer of FTM peripheral base pointers */
 #define FTM_BASES                                { FTM0, FTM1, FTM2 }
 
-/**
+/*!
  * @}
  */ /* end of group FTM_Peripheral_Access_Layer */
 
@@ -3623,7 +3629,7 @@ typedef struct {
    -- GPIO Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup GPIO_Peripheral_Access_Layer GPIO Peripheral Access Layer
  * @{
  */
@@ -3642,7 +3648,7 @@ typedef struct {
    -- GPIO Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup GPIO_Register_Masks GPIO Register Masks
  * @{
  */
@@ -3672,7 +3678,7 @@ typedef struct {
 #define GPIO_PDDR_PDD_SHIFT                      0
 #define GPIO_PDDR_PDD(x)                         (((uint32_t)(((uint32_t)(x))<<GPIO_PDDR_PDD_SHIFT))&GPIO_PDDR_PDD_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group GPIO_Register_Masks */
 
@@ -3701,7 +3707,7 @@ typedef struct {
 /** Array initializer of GPIO peripheral base pointers */
 #define GPIO_BASES                               { PTA, PTB, PTC, PTD, PTE }
 
-/**
+/*!
  * @}
  */ /* end of group GPIO_Peripheral_Access_Layer */
 
@@ -3710,7 +3716,7 @@ typedef struct {
    -- I2C Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup I2C_Peripheral_Access_Layer I2C Peripheral Access Layer
  * @{
  */
@@ -3735,7 +3741,7 @@ typedef struct {
    -- I2C Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup I2C_Register_Masks I2C Register Masks
  * @{
  */
@@ -3841,7 +3847,7 @@ typedef struct {
 #define I2C_SLTL_SSLT_SHIFT                      0
 #define I2C_SLTL_SSLT(x)                         (((uint8_t)(((uint8_t)(x))<<I2C_SLTL_SSLT_SHIFT))&I2C_SLTL_SSLT_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group I2C_Register_Masks */
 
@@ -3858,7 +3864,7 @@ typedef struct {
 /** Array initializer of I2C peripheral base pointers */
 #define I2C_BASES                                { I2C0, I2C1 }
 
-/**
+/*!
  * @}
  */ /* end of group I2C_Peripheral_Access_Layer */
 
@@ -3867,7 +3873,7 @@ typedef struct {
    -- I2S Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup I2S_Peripheral_Access_Layer I2S Peripheral Access Layer
  * @{
  */
@@ -3908,7 +3914,7 @@ typedef struct {
    -- I2S Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup I2S_Register_Masks I2S Register Masks
  * @{
  */
@@ -4141,7 +4147,7 @@ typedef struct {
 #define I2S_MDR_FRACT_SHIFT                      12
 #define I2S_MDR_FRACT(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_MDR_FRACT_SHIFT))&I2S_MDR_FRACT_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group I2S_Register_Masks */
 
@@ -4154,7 +4160,7 @@ typedef struct {
 /** Array initializer of I2S peripheral base pointers */
 #define I2S_BASES                                { I2S0 }
 
-/**
+/*!
  * @}
  */ /* end of group I2S_Peripheral_Access_Layer */
 
@@ -4163,7 +4169,7 @@ typedef struct {
    -- LLWU Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup LLWU_Peripheral_Access_Layer LLWU Peripheral Access Layer
  * @{
  */
@@ -4187,7 +4193,7 @@ typedef struct {
    -- LLWU Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup LLWU_Register_Masks LLWU Register Masks
  * @{
  */
@@ -4336,7 +4342,7 @@ typedef struct {
 #define LLWU_RST_LLRSTE_MASK                     0x2u
 #define LLWU_RST_LLRSTE_SHIFT                    1
 
-/**
+/*!
  * @}
  */ /* end of group LLWU_Register_Masks */
 
@@ -4349,7 +4355,7 @@ typedef struct {
 /** Array initializer of LLWU peripheral base pointers */
 #define LLWU_BASES                               { LLWU }
 
-/**
+/*!
  * @}
  */ /* end of group LLWU_Peripheral_Access_Layer */
 
@@ -4358,7 +4364,7 @@ typedef struct {
    -- LPTMR Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup LPTMR_Peripheral_Access_Layer LPTMR Peripheral Access Layer
  * @{
  */
@@ -4375,7 +4381,7 @@ typedef struct {
    -- LPTMR Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup LPTMR_Register_Masks LPTMR Register Masks
  * @{
  */
@@ -4414,7 +4420,7 @@ typedef struct {
 #define LPTMR_CNR_COUNTER_SHIFT                  0
 #define LPTMR_CNR_COUNTER(x)                     (((uint32_t)(((uint32_t)(x))<<LPTMR_CNR_COUNTER_SHIFT))&LPTMR_CNR_COUNTER_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group LPTMR_Register_Masks */
 
@@ -4427,7 +4433,7 @@ typedef struct {
 /** Array initializer of LPTMR peripheral base pointers */
 #define LPTMR_BASES                              { LPTMR0 }
 
-/**
+/*!
  * @}
  */ /* end of group LPTMR_Peripheral_Access_Layer */
 
@@ -4436,7 +4442,7 @@ typedef struct {
    -- MCG Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup MCG_Peripheral_Access_Layer MCG Peripheral Access Layer
  * @{
  */
@@ -4465,7 +4471,7 @@ typedef struct {
    -- MCG Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup MCG_Register_Masks MCG Register Masks
  * @{
  */
@@ -4581,7 +4587,7 @@ typedef struct {
 #define MCG_C8_LOCRE1_MASK                       0x80u
 #define MCG_C8_LOCRE1_SHIFT                      7
 
-/**
+/*!
  * @}
  */ /* end of group MCG_Register_Masks */
 
@@ -4594,7 +4600,7 @@ typedef struct {
 /** Array initializer of MCG peripheral base pointers */
 #define MCG_BASES                                { MCG }
 
-/**
+/*!
  * @}
  */ /* end of group MCG_Peripheral_Access_Layer */
 
@@ -4603,7 +4609,7 @@ typedef struct {
    -- MCM Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup MCM_Peripheral_Access_Layer MCM Peripheral Access Layer
  * @{
  */
@@ -4626,7 +4632,7 @@ typedef struct {
    -- MCM Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup MCM_Register_Masks MCM Register Masks
  * @{
  */
@@ -4682,7 +4688,7 @@ typedef struct {
 #define MCM_PID_PID_SHIFT                        0
 #define MCM_PID_PID(x)                           (((uint32_t)(((uint32_t)(x))<<MCM_PID_PID_SHIFT))&MCM_PID_PID_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group MCM_Register_Masks */
 
@@ -4695,7 +4701,7 @@ typedef struct {
 /** Array initializer of MCM peripheral base pointers */
 #define MCM_BASES                                { MCM }
 
-/**
+/*!
  * @}
  */ /* end of group MCM_Peripheral_Access_Layer */
 
@@ -4704,7 +4710,7 @@ typedef struct {
    -- MPU Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup MPU_Peripheral_Access_Layer MPU Peripheral Access Layer
  * @{
  */
@@ -4727,7 +4733,7 @@ typedef struct {
    -- MPU Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup MPU_Register_Masks MPU Register Masks
  * @{
  */
@@ -4854,7 +4860,7 @@ typedef struct {
 #define MPU_RGDAAC_M7RE_MASK                     0x80000000u
 #define MPU_RGDAAC_M7RE_SHIFT                    31
 
-/**
+/*!
  * @}
  */ /* end of group MPU_Register_Masks */
 
@@ -4867,7 +4873,7 @@ typedef struct {
 /** Array initializer of MPU peripheral base pointers */
 #define MPU_BASES                                { MPU }
 
-/**
+/*!
  * @}
  */ /* end of group MPU_Peripheral_Access_Layer */
 
@@ -4876,7 +4882,7 @@ typedef struct {
    -- NV Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup NV_Peripheral_Access_Layer NV Peripheral Access Layer
  * @{
  */
@@ -4905,7 +4911,7 @@ typedef struct {
    -- NV Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup NV_Register_Masks NV Register Masks
  * @{
  */
@@ -4976,6 +4982,8 @@ typedef struct {
 #define NV_FOPT_LPBOOT_SHIFT                     0
 #define NV_FOPT_EZPORT_DIS_MASK                  0x2u
 #define NV_FOPT_EZPORT_DIS_SHIFT                 1
+#define NV_FOPT_NMI_DIS_MASK                     0x4u
+#define NV_FOPT_NMI_DIS_SHIFT                    2
 /* FEPROT Bit Fields */
 #define NV_FEPROT_EPROT_MASK                     0xFFu
 #define NV_FEPROT_EPROT_SHIFT                    0
@@ -4985,7 +4993,7 @@ typedef struct {
 #define NV_FDPROT_DPROT_SHIFT                    0
 #define NV_FDPROT_DPROT(x)                       (((uint8_t)(((uint8_t)(x))<<NV_FDPROT_DPROT_SHIFT))&NV_FDPROT_DPROT_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group NV_Register_Masks */
 
@@ -4998,7 +5006,7 @@ typedef struct {
 /** Array initializer of NV peripheral base pointers */
 #define NV_BASES                                 { FTFL_FlashConfig }
 
-/**
+/*!
  * @}
  */ /* end of group NV_Peripheral_Access_Layer */
 
@@ -5007,7 +5015,7 @@ typedef struct {
    -- OPAMP Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup OPAMP_Peripheral_Access_Layer OPAMP Peripheral Access Layer
  * @{
  */
@@ -5023,7 +5031,7 @@ typedef struct {
    -- OPAMP Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup OPAMP_Register_Masks OPAMP Register Masks
  * @{
  */
@@ -5051,7 +5059,7 @@ typedef struct {
 #define OPAMP_C2_AMPPSEL_SHIFT                   4
 #define OPAMP_C2_AMPPSEL(x)                      (((uint8_t)(((uint8_t)(x))<<OPAMP_C2_AMPPSEL_SHIFT))&OPAMP_C2_AMPPSEL_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group OPAMP_Register_Masks */
 
@@ -5068,7 +5076,7 @@ typedef struct {
 /** Array initializer of OPAMP peripheral base pointers */
 #define OPAMP_BASES                              { OPAMP0, OPAMP1 }
 
-/**
+/*!
  * @}
  */ /* end of group OPAMP_Peripheral_Access_Layer */
 
@@ -5077,7 +5085,7 @@ typedef struct {
    -- OSC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup OSC_Peripheral_Access_Layer OSC Peripheral Access Layer
  * @{
  */
@@ -5091,7 +5099,7 @@ typedef struct {
    -- OSC Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup OSC_Register_Masks OSC Register Masks
  * @{
  */
@@ -5110,7 +5118,7 @@ typedef struct {
 #define OSC_CR_ERCLKEN_MASK                      0x80u
 #define OSC_CR_ERCLKEN_SHIFT                     7
 
-/**
+/*!
  * @}
  */ /* end of group OSC_Register_Masks */
 
@@ -5123,7 +5131,7 @@ typedef struct {
 /** Array initializer of OSC peripheral base pointers */
 #define OSC_BASES                                { OSC }
 
-/**
+/*!
  * @}
  */ /* end of group OSC_Peripheral_Access_Layer */
 
@@ -5132,7 +5140,7 @@ typedef struct {
    -- PDB Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup PDB_Peripheral_Access_Layer PDB Peripheral Access Layer
  * @{
  */
@@ -5163,7 +5171,7 @@ typedef struct {
    -- PDB Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup PDB_Register_Masks PDB Register Masks
  * @{
  */
@@ -5251,7 +5259,7 @@ typedef struct {
 #define PDB_PODLY_DLY1_SHIFT                     16
 #define PDB_PODLY_DLY1(x)                        (((uint32_t)(((uint32_t)(x))<<PDB_PODLY_DLY1_SHIFT))&PDB_PODLY_DLY1_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group PDB_Register_Masks */
 
@@ -5264,7 +5272,7 @@ typedef struct {
 /** Array initializer of PDB peripheral base pointers */
 #define PDB_BASES                                { PDB0 }
 
-/**
+/*!
  * @}
  */ /* end of group PDB_Peripheral_Access_Layer */
 
@@ -5273,7 +5281,7 @@ typedef struct {
    -- PIT Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup PIT_Peripheral_Access_Layer PIT Peripheral Access Layer
  * @{
  */
@@ -5294,7 +5302,7 @@ typedef struct {
    -- PIT Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup PIT_Register_Masks PIT Register Masks
  * @{
  */
@@ -5323,7 +5331,7 @@ typedef struct {
 #define PIT_TFLG_TIF_MASK                        0x1u
 #define PIT_TFLG_TIF_SHIFT                       0
 
-/**
+/*!
  * @}
  */ /* end of group PIT_Register_Masks */
 
@@ -5336,7 +5344,7 @@ typedef struct {
 /** Array initializer of PIT peripheral base pointers */
 #define PIT_BASES                                { PIT }
 
-/**
+/*!
  * @}
  */ /* end of group PIT_Peripheral_Access_Layer */
 
@@ -5345,7 +5353,7 @@ typedef struct {
    -- PMC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup PMC_Peripheral_Access_Layer PMC Peripheral Access Layer
  * @{
  */
@@ -5361,7 +5369,7 @@ typedef struct {
    -- PMC Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup PMC_Register_Masks PMC Register Masks
  * @{
  */
@@ -5398,7 +5406,7 @@ typedef struct {
 #define PMC_REGSC_BGEN_MASK                      0x10u
 #define PMC_REGSC_BGEN_SHIFT                     4
 
-/**
+/*!
  * @}
  */ /* end of group PMC_Register_Masks */
 
@@ -5411,7 +5419,7 @@ typedef struct {
 /** Array initializer of PMC peripheral base pointers */
 #define PMC_BASES                                { PMC }
 
-/**
+/*!
  * @}
  */ /* end of group PMC_Peripheral_Access_Layer */
 
@@ -5420,7 +5428,7 @@ typedef struct {
    -- PORT Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup PORT_Peripheral_Access_Layer PORT Peripheral Access Layer
  * @{
  */
@@ -5442,7 +5450,7 @@ typedef struct {
    -- PORT Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup PORT_Register_Masks PORT Register Masks
  * @{
  */
@@ -5500,7 +5508,7 @@ typedef struct {
 #define PORT_DFWR_FILT_SHIFT                     0
 #define PORT_DFWR_FILT(x)                        (((uint32_t)(((uint32_t)(x))<<PORT_DFWR_FILT_SHIFT))&PORT_DFWR_FILT_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group PORT_Register_Masks */
 
@@ -5529,7 +5537,7 @@ typedef struct {
 /** Array initializer of PORT peripheral base pointers */
 #define PORT_BASES                               { PORTA, PORTB, PORTC, PORTD, PORTE }
 
-/**
+/*!
  * @}
  */ /* end of group PORT_Peripheral_Access_Layer */
 
@@ -5538,7 +5546,7 @@ typedef struct {
    -- RCM Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup RCM_Peripheral_Access_Layer RCM Peripheral Access Layer
  * @{
  */
@@ -5558,7 +5566,7 @@ typedef struct {
    -- RCM Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup RCM_Register_Masks RCM Register Masks
  * @{
  */
@@ -5605,7 +5613,7 @@ typedef struct {
 #define RCM_MR_EZP_MS_MASK                       0x2u
 #define RCM_MR_EZP_MS_SHIFT                      1
 
-/**
+/*!
  * @}
  */ /* end of group RCM_Register_Masks */
 
@@ -5618,7 +5626,7 @@ typedef struct {
 /** Array initializer of RCM peripheral base pointers */
 #define RCM_BASES                                { RCM }
 
-/**
+/*!
  * @}
  */ /* end of group RCM_Peripheral_Access_Layer */
 
@@ -5627,7 +5635,7 @@ typedef struct {
    -- RFSYS Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup RFSYS_Peripheral_Access_Layer RFSYS Peripheral Access Layer
  * @{
  */
@@ -5641,7 +5649,7 @@ typedef struct {
    -- RFSYS Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup RFSYS_Register_Masks RFSYS Register Masks
  * @{
  */
@@ -5660,7 +5668,7 @@ typedef struct {
 #define RFSYS_REG_HH_SHIFT                       24
 #define RFSYS_REG_HH(x)                          (((uint32_t)(((uint32_t)(x))<<RFSYS_REG_HH_SHIFT))&RFSYS_REG_HH_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group RFSYS_Register_Masks */
 
@@ -5673,7 +5681,7 @@ typedef struct {
 /** Array initializer of RFSYS peripheral base pointers */
 #define RFSYS_BASES                              { RFSYS }
 
-/**
+/*!
  * @}
  */ /* end of group RFSYS_Peripheral_Access_Layer */
 
@@ -5682,7 +5690,7 @@ typedef struct {
    -- RFVBAT Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup RFVBAT_Peripheral_Access_Layer RFVBAT Peripheral Access Layer
  * @{
  */
@@ -5696,7 +5704,7 @@ typedef struct {
    -- RFVBAT Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup RFVBAT_Register_Masks RFVBAT Register Masks
  * @{
  */
@@ -5715,7 +5723,7 @@ typedef struct {
 #define RFVBAT_REG_HH_SHIFT                      24
 #define RFVBAT_REG_HH(x)                         (((uint32_t)(((uint32_t)(x))<<RFVBAT_REG_HH_SHIFT))&RFVBAT_REG_HH_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group RFVBAT_Register_Masks */
 
@@ -5728,7 +5736,7 @@ typedef struct {
 /** Array initializer of RFVBAT peripheral base pointers */
 #define RFVBAT_BASES                             { RFVBAT }
 
-/**
+/*!
  * @}
  */ /* end of group RFVBAT_Peripheral_Access_Layer */
 
@@ -5737,7 +5745,7 @@ typedef struct {
    -- RTC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup RTC_Peripheral_Access_Layer RTC Peripheral Access Layer
  * @{
  */
@@ -5761,7 +5769,7 @@ typedef struct {
    -- RTC Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup RTC_Register_Masks RTC Register Masks
  * @{
  */
@@ -5876,7 +5884,7 @@ typedef struct {
 #define RTC_RAR_IERR_MASK                        0x80u
 #define RTC_RAR_IERR_SHIFT                       7
 
-/**
+/*!
  * @}
  */ /* end of group RTC_Register_Masks */
 
@@ -5889,7 +5897,7 @@ typedef struct {
 /** Array initializer of RTC peripheral base pointers */
 #define RTC_BASES                                { RTC }
 
-/**
+/*!
  * @}
  */ /* end of group RTC_Peripheral_Access_Layer */
 
@@ -5898,7 +5906,7 @@ typedef struct {
    -- SDHC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup SDHC_Peripheral_Access_Layer SDHC Peripheral Access Layer
  * @{
  */
@@ -5935,7 +5943,7 @@ typedef struct {
    -- SDHC Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup SDHC_Register_Masks SDHC Register Masks
  * @{
  */
@@ -6313,7 +6321,7 @@ typedef struct {
 #define SDHC_HOSTVER_VVN_SHIFT                   8
 #define SDHC_HOSTVER_VVN(x)                      (((uint32_t)(((uint32_t)(x))<<SDHC_HOSTVER_VVN_SHIFT))&SDHC_HOSTVER_VVN_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group SDHC_Register_Masks */
 
@@ -6326,7 +6334,7 @@ typedef struct {
 /** Array initializer of SDHC peripheral base pointers */
 #define SDHC_BASES                               { SDHC }
 
-/**
+/*!
  * @}
  */ /* end of group SDHC_Peripheral_Access_Layer */
 
@@ -6335,7 +6343,7 @@ typedef struct {
    -- SIM Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup SIM_Peripheral_Access_Layer SIM Peripheral Access Layer
  * @{
  */
@@ -6374,7 +6382,7 @@ typedef struct {
    -- SIM Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup SIM_Register_Masks SIM Register Masks
  * @{
  */
@@ -6645,7 +6653,7 @@ typedef struct {
 #define SIM_UIDL_UID_SHIFT                       0
 #define SIM_UIDL_UID(x)                          (((uint32_t)(((uint32_t)(x))<<SIM_UIDL_UID_SHIFT))&SIM_UIDL_UID_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group SIM_Register_Masks */
 
@@ -6658,7 +6666,7 @@ typedef struct {
 /** Array initializer of SIM peripheral base pointers */
 #define SIM_BASES                                { SIM }
 
-/**
+/*!
  * @}
  */ /* end of group SIM_Peripheral_Access_Layer */
 
@@ -6667,7 +6675,7 @@ typedef struct {
    -- SMC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup SMC_Peripheral_Access_Layer SMC Peripheral Access Layer
  * @{
  */
@@ -6684,7 +6692,7 @@ typedef struct {
    -- SMC Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup SMC_Register_Masks SMC Register Masks
  * @{
  */
@@ -6718,7 +6726,7 @@ typedef struct {
 #define SMC_PMSTAT_PMSTAT_SHIFT                  0
 #define SMC_PMSTAT_PMSTAT(x)                     (((uint8_t)(((uint8_t)(x))<<SMC_PMSTAT_PMSTAT_SHIFT))&SMC_PMSTAT_PMSTAT_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group SMC_Register_Masks */
 
@@ -6731,7 +6739,7 @@ typedef struct {
 /** Array initializer of SMC peripheral base pointers */
 #define SMC_BASES                                { SMC }
 
-/**
+/*!
  * @}
  */ /* end of group SMC_Peripheral_Access_Layer */
 
@@ -6740,7 +6748,7 @@ typedef struct {
    -- SPI Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup SPI_Peripheral_Access_Layer SPI Peripheral Access Layer
  * @{
  */
@@ -6777,7 +6785,7 @@ typedef struct {
    -- SPI Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup SPI_Register_Masks SPI Register Masks
  * @{
  */
@@ -6800,7 +6808,7 @@ typedef struct {
 #define SPI_MCR_MDIS_SHIFT                       14
 #define SPI_MCR_DOZE_MASK                        0x8000u
 #define SPI_MCR_DOZE_SHIFT                       15
-#define SPI_MCR_PCSIS_MASK                       0x1F0000u
+#define SPI_MCR_PCSIS_MASK                       0x3F0000u
 #define SPI_MCR_PCSIS_SHIFT                      16
 #define SPI_MCR_PCSIS(x)                         (((uint32_t)(((uint32_t)(x))<<SPI_MCR_PCSIS_SHIFT))&SPI_MCR_PCSIS_MASK)
 #define SPI_MCR_ROOE_MASK                        0x1000000u
@@ -6979,7 +6987,7 @@ typedef struct {
 #define SPI_RXFR3_RXDATA_SHIFT                   0
 #define SPI_RXFR3_RXDATA(x)                      (((uint32_t)(((uint32_t)(x))<<SPI_RXFR3_RXDATA_SHIFT))&SPI_RXFR3_RXDATA_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group SPI_Register_Masks */
 
@@ -7000,7 +7008,7 @@ typedef struct {
 /** Array initializer of SPI peripheral base pointers */
 #define SPI_BASES                                { SPI0, SPI1, SPI2 }
 
-/**
+/*!
  * @}
  */ /* end of group SPI_Peripheral_Access_Layer */
 
@@ -7009,7 +7017,7 @@ typedef struct {
    -- TRIAMP Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup TRIAMP_Peripheral_Access_Layer TRIAMP Peripheral Access Layer
  * @{
  */
@@ -7023,7 +7031,7 @@ typedef struct {
    -- TRIAMP Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup TRIAMP_Register_Masks TRIAMP Register Masks
  * @{
  */
@@ -7034,7 +7042,7 @@ typedef struct {
 #define TRIAMP_C0_TRIAMPEN_MASK                  0x80u
 #define TRIAMP_C0_TRIAMPEN_SHIFT                 7
 
-/**
+/*!
  * @}
  */ /* end of group TRIAMP_Register_Masks */
 
@@ -7051,7 +7059,7 @@ typedef struct {
 /** Array initializer of TRIAMP peripheral base pointers */
 #define TRIAMP_BASES                             { TRIAMP0, TRIAMP1 }
 
-/**
+/*!
  * @}
  */ /* end of group TRIAMP_Peripheral_Access_Layer */
 
@@ -7060,7 +7068,7 @@ typedef struct {
    -- TSI Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup TSI_Peripheral_Access_Layer TSI Peripheral Access Layer
  * @{
  */
@@ -7087,7 +7095,7 @@ typedef struct {
    -- TSI Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup TSI_Register_Masks TSI Register Masks
  * @{
  */
@@ -7248,7 +7256,7 @@ typedef struct {
 #define TSI_THRESHOLD_LTHH_SHIFT                 16
 #define TSI_THRESHOLD_LTHH(x)                    (((uint32_t)(((uint32_t)(x))<<TSI_THRESHOLD_LTHH_SHIFT))&TSI_THRESHOLD_LTHH_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group TSI_Register_Masks */
 
@@ -7261,7 +7269,7 @@ typedef struct {
 /** Array initializer of TSI peripheral base pointers */
 #define TSI_BASES                                { TSI0 }
 
-/**
+/*!
  * @}
  */ /* end of group TSI_Peripheral_Access_Layer */
 
@@ -7270,7 +7278,7 @@ typedef struct {
    -- UART Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup UART_Peripheral_Access_Layer UART Peripheral Access Layer
  * @{
  */
@@ -7336,7 +7344,7 @@ typedef struct {
    -- UART Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup UART_Register_Masks UART Register Masks
  * @{
  */
@@ -7709,7 +7717,7 @@ typedef struct {
 #define UART_TIDT_TIDT_SHIFT                     0
 #define UART_TIDT_TIDT(x)                        (((uint8_t)(((uint8_t)(x))<<UART_TIDT_TIDT_SHIFT))&UART_TIDT_TIDT_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group UART_Register_Masks */
 
@@ -7742,7 +7750,7 @@ typedef struct {
 /** Array initializer of UART peripheral base pointers */
 #define UART_BASES                               { UART0, UART1, UART2, UART3, UART4, UART5 }
 
-/**
+/*!
  * @}
  */ /* end of group UART_Peripheral_Access_Layer */
 
@@ -7751,7 +7759,7 @@ typedef struct {
    -- USB Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup USB_Peripheral_Access_Layer USB Peripheral Access Layer
  * @{
  */
@@ -7821,7 +7829,7 @@ typedef struct {
    -- USB Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup USB_Register_Masks USB Register Masks
  * @{
  */
@@ -8062,7 +8070,7 @@ typedef struct {
 #define USB_USBFRMADJUST_ADJ_SHIFT               0
 #define USB_USBFRMADJUST_ADJ(x)                  (((uint8_t)(((uint8_t)(x))<<USB_USBFRMADJUST_ADJ_SHIFT))&USB_USBFRMADJUST_ADJ_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group USB_Register_Masks */
 
@@ -8075,7 +8083,7 @@ typedef struct {
 /** Array initializer of USB peripheral base pointers */
 #define USB_BASES                                { USB0 }
 
-/**
+/*!
  * @}
  */ /* end of group USB_Peripheral_Access_Layer */
 
@@ -8084,7 +8092,7 @@ typedef struct {
    -- USBDCD Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup USBDCD_Peripheral_Access_Layer USBDCD Peripheral Access Layer
  * @{
  */
@@ -8104,7 +8112,7 @@ typedef struct {
    -- USBDCD Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup USBDCD_Register_Masks USBDCD Register Masks
  * @{
  */
@@ -8161,7 +8169,7 @@ typedef struct {
 #define USBDCD_TIMER2_TVDPSRC_CON_SHIFT          16
 #define USBDCD_TIMER2_TVDPSRC_CON(x)             (((uint32_t)(((uint32_t)(x))<<USBDCD_TIMER2_TVDPSRC_CON_SHIFT))&USBDCD_TIMER2_TVDPSRC_CON_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group USBDCD_Register_Masks */
 
@@ -8174,7 +8182,7 @@ typedef struct {
 /** Array initializer of USBDCD peripheral base pointers */
 #define USBDCD_BASES                             { USBDCD }
 
-/**
+/*!
  * @}
  */ /* end of group USBDCD_Peripheral_Access_Layer */
 
@@ -8183,7 +8191,7 @@ typedef struct {
    -- VREF Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup VREF_Peripheral_Access_Layer VREF Peripheral Access Layer
  * @{
  */
@@ -8198,7 +8206,7 @@ typedef struct {
    -- VREF Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup VREF_Register_Masks VREF Register Masks
  * @{
  */
@@ -8222,7 +8230,7 @@ typedef struct {
 #define VREF_SC_VREFEN_MASK                      0x80u
 #define VREF_SC_VREFEN_SHIFT                     7
 
-/**
+/*!
  * @}
  */ /* end of group VREF_Register_Masks */
 
@@ -8235,7 +8243,7 @@ typedef struct {
 /** Array initializer of VREF peripheral base pointers */
 #define VREF_BASES                               { VREF }
 
-/**
+/*!
  * @}
  */ /* end of group VREF_Peripheral_Access_Layer */
 
@@ -8244,7 +8252,7 @@ typedef struct {
    -- WDOG Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup WDOG_Peripheral_Access_Layer WDOG Peripheral Access Layer
  * @{
  */
@@ -8269,7 +8277,7 @@ typedef struct {
    -- WDOG Register Masks
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup WDOG_Register_Masks WDOG Register Masks
  * @{
  */
@@ -8344,7 +8352,7 @@ typedef struct {
 #define WDOG_PRESC_PRESCVAL_SHIFT                8
 #define WDOG_PRESC_PRESCVAL(x)                   (((uint16_t)(((uint16_t)(x))<<WDOG_PRESC_PRESCVAL_SHIFT))&WDOG_PRESC_PRESCVAL_MASK)
 
-/**
+/*!
  * @}
  */ /* end of group WDOG_Register_Masks */
 
@@ -8357,7 +8365,7 @@ typedef struct {
 /** Array initializer of WDOG peripheral base pointers */
 #define WDOG_BASES                               { WDOG }
 
-/**
+/*!
  * @}
  */ /* end of group WDOG_Peripheral_Access_Layer */
 
@@ -8378,7 +8386,7 @@ typedef struct {
   #error Not supported compiler type
 #endif
 
-/**
+/*!
  * @}
  */ /* end of group Peripheral_access_layer */
 
@@ -8387,7 +8395,7 @@ typedef struct {
    -- Backward Compatibility
    ---------------------------------------------------------------------------- */
 
-/**
+/*!
  * @addtogroup Backward_Compatibility_Symbols Backward Compatibility
  * @{
  */
@@ -8404,7 +8412,7 @@ typedef struct {
 #define MCG_S_LOLS0_MASK                         MCG_S_LOLS_MASK
 #define MCG_S_LOLS0_SHIFT                        MCG_S_LOLS_SHIFT
 
-/**
+/*!
  * @}
  */ /* end of group Backward_Compatibility_Symbols */
 

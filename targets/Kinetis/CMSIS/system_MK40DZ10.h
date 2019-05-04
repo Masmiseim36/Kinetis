@@ -16,15 +16,15 @@
 **                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    K40P144M100SF2RM, Rev. 5, 8 May 2011
-**     Version:             rev. 1.2, 2011-09-08
+**     Reference manual:    K40P144M100SF2RM, Rev. 6, 6 Nov 2011
+**     Version:             rev. 1.5, 2013-04-05
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2011 Freescale Semiconductor, Inc. All Rights Reserved.
+**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -44,14 +44,25 @@
 **     - rev. 1.2 (2011-09-08)
 **         Cortex_Core_Configuration extended with additional parameters.
 **         Gap between end of interrupt vector table and flash configuration field filled by default ISR.
+**     - rev. 1.3 (2012-01-10)
+**         Registers updated according to the new reference manual revision - Rev. 6, 6 Nov 2011
+**         ADC - PGALPb bit group added.
+**         PDB - Register PO)EN renamed to POEN
+**         SDHC - WRBRSTLEN bit group added
+**         SIM - Bit DSPI0 in SCGC6 register renamed to SPI0.
+**     - rev. 1.4 (2012-04-13)
+**         Added new #define symbol MCU_MEM_MAP_VERSION_MINOR.
+**         Added new #define symbols <peripheralType>_BASE_PTRS.
+**     - rev. 1.5 (2013-04-05)
+**         Changed start of doxygen comment.
 **
 ** ###################################################################
 */
 
-/**
+/*!
  * @file MK40DZ10
- * @version 1.2
- * @date 2011-09-08
+ * @version 1.5
+ * @date 2013-04-05
  * @brief Device specific configuration file for MK40DZ10 (header file)
  *
  * Provides a system configuration function and a global variable that contains
