@@ -272,7 +272,11 @@
 #define MKW40Z160xxx4 261
 #define MKW41Z256xxx4 262
 #define MKW41Z512xxx4 263
-#define MWPR1516 264
+#define MKW35A512xxx4 264
+#define MKW35Z512xxx4 265
+#define MKW36A512xxx4 266
+#define MKW36Z512xxx4 267
+#define MWPR1516 268
 
 #if (__TARGET_PROCESSOR == MK02FN64xxx10 )
 #include          <CMSIS/MK02F12810.h>
@@ -1062,6 +1066,18 @@
 
 #elif (__TARGET_PROCESSOR == MKW41Z512xxx4 )
 #include          <CMSIS/MKW41Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKW35A512xxx4 )
+#include          <CMSIS/MKW35A4.h>
+
+#elif (__TARGET_PROCESSOR == MKW35Z512xxx4 )
+#include          <CMSIS/MKW35Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKW36A512xxx4 )
+#include          <CMSIS/MKW36A4.h>
+
+#elif (__TARGET_PROCESSOR == MKW36Z512xxx4 )
+#include          <CMSIS/MKW36Z4.h>
 
 #elif (__TARGET_PROCESSOR == MWPR1516 )
 #include          <CMSIS/MWPR1516.h>

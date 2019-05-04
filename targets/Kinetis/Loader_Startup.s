@@ -94,6 +94,7 @@ _start:
   ldr r2, =(1<<5)
   orrs r1, r2
   str r1, [r0]
+#elif defined(W35_SERIES)
 #else
 #error L_SERIES, L28_SERIES, K_SERIES, M_SERIES, V_SERIES, E_SERIES, E1_SERIES or E2_SERIES should be defined
 #endif

@@ -251,6 +251,14 @@
   #include "CMSIS/system_MKW30Z4.c"
 #elif defined(MKW31Z4)
   #include "CMSIS/system_MKW31Z4.c"
+#elif defined(MKW35A4)
+  #include "CMSIS/system_MKW35A4.c"
+#elif defined(MKW35Z4)
+  #include "CMSIS/system_MKW35Z4.c"
+#elif defined(MKW36A4)
+  #include "CMSIS/system_MKW36A4.c"
+#elif defined(MKW36Z4)
+  #include "CMSIS/system_MKW36Z4.c"
 #elif defined(MKW40Z4)
   #include "CMSIS/system_MKW40Z4.c"
 #elif defined(MKW41Z4)

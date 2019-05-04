@@ -320,6 +320,16 @@ main(int param0)
 
   write_block_size = 8;
   sectorSize = 4 * 1024;
+#elif defined(W35_SERIES)
+#define MCM_PLACR (*(volatile unsigned *)0xF000300C)
+  // turn off and invalidate any caching
+  MCM_PLACR = (1<<15) | (1<<13) | (1<<12) | (1<<11) | (1<<10);
+
+  unsigned FLASH_SIZE = ((SIM_FCFG2>>24) & 0x7f)<<13;
+  unsigned FLASH_START = 0;
+
+  write_block_size = 8;
+  sectorSize = 2 * 1024;
 #else
 #define FMC_PFB0CR (*(volatile unsigned *)0x4001F004)
   // turn off and invalidate any caching

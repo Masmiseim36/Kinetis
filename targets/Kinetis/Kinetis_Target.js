@@ -93,7 +93,7 @@ function CheckSystemSecurity()
 }
 
 function GetPartName()
-{  
+{
   CheckSystemSecurity();
   TargetInterface.pokeWord(0xE000EDFC, (1<<24));
   var PartName;
@@ -149,7 +149,7 @@ function GetPartName()
   else
     {
       var SIM_SDID = TargetInterface.peekWord(0x40048024);
-      if (((SIM_SDID)>>28) & 0xf)
+      if (((SIM_SDID)>>24) & 0xff)
         {
           switch ((SIM_SDID>>20) & 0xf)
             {
@@ -172,11 +172,37 @@ function GetPartName()
                 PartName = "MKS";
                 break;
             }
-          PartName += ((SIM_SDID>>24)&0xff).toString(16);
+          PartName += ((SIM_SDID>>28)&0xf).toString(16);
+          PartName += ((SIM_SDID>>24)&0xf).toString(16);
           if (TargetInterface.peekWord(0xE000EF40))
             ForD = "F";
           else
             ForD = "D";
+
+          // check for "e7534: SUBFAMID reads back incorrect sub-family of the Kinetis device"
+          var SIM_SOPT1 = TargetInterface.peekWord(0x4047000);
+          var RamSize = (SIM_SOPT1 >> 12) &0xF;
+          switch (PartName)
+            {
+              case "MK62":
+                // There is no K62 in the Kinetis Family --> errata e7534 found
+                PartName = "MK64";
+                break;
+              case "MK61":
+                if (RamSize == 0xB)    // RAM-Size is 256 KByte.
+                  {
+                    // There is no K61 with 256 KByte in the Kinetis Family --> errata e7534 found
+                    PartName = "MK63";
+                  }
+                break;
+              case "MK22":
+                if (RamSize == 0xB)    // RAM-Size is 256 KByte.
+                  {
+                    // There is no K22 with 256 KByte in the Kinetis Family --> errata e7534 found
+                    PartName = "MK24";
+                  }
+                break;
+            }
         }
       else
         {          
@@ -220,7 +246,7 @@ function GetPartName()
             ForD = "F";
           else
             ForD = "D";
-        }      
+        }
       var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
       if (SIM_FCFG2 & (1<<23))
         {
