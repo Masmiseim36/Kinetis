@@ -124,7 +124,10 @@ function GetPartName()
           }
       break;
     case 1: // KL Series
-      PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";       
+      if (((SIM_SDID>>24)&0xff) < 10)
+        PartName = "MKL0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+      else
+        PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";       
       Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
       PartName += Length.toString();
       break;

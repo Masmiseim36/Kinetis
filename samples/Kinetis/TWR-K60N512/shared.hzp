@@ -1,7 +1,7 @@
 <!DOCTYPE CrossStudio_Project_File>
 <solution version="2" Name="TWR-K60N512 Shared Examples">
   <project Name="debugio" template_name="Kinetis_EXE">
-    <configuration Name="Common" Target="MK60DN512Zxxx10"/>
+    <configuration Name="Common" Target="MK60DN512Zxxx10" linker_DebugIO_enabled="Yes"/>
     <folder Name="Source Files">
       <file file_name="$(StudioDir)/samples/Shared/debugio.c"/>
       <file file_name="Kinetis_ctl_board.c"/>
