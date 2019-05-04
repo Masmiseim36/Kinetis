@@ -58,12 +58,9 @@
 
 #define INVALID_ADDRESS (unsigned char *)1
 
-unsigned FLASH_SIZE;
 unsigned char write_block[8];
 unsigned char *write_block_address=INVALID_ADDRESS;
 unsigned write_block_size;
-
-libmem_geometry_t geometry[2];
 
 static int
 doFlashCmd()
@@ -80,6 +77,13 @@ doFlashCmd()
 static void
 setFlashCmdAndAddress(unsigned char cmd, unsigned address)
 {
+#ifdef HASFlexNVM
+  if (address >= 0x10000000)
+    {
+      address -= 0x10000000;
+      address += 0x800000;
+    }
+#endif
   FTFL_FCCOB0 = cmd; 
   FTFL_FCCOB1 = address>>16;
   FTFL_FCCOB2 = address>>8;
@@ -162,6 +166,10 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
   int res = LIBMEM_STATUS_SUCCESS;
   if (LIBMEM_RANGE_WITHIN_RANGE(h->start, h->start + h->size - 1, start, start + size - 1))
     {
+#ifdef HASFlexNVM
+      if (h->start == 0x10000000)
+        return res;
+#endif
       if (erased_start)
         *erased_start = h->start;
       if (erased_size)
@@ -194,8 +202,8 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
   else
     {      
       int found = 0;
-      int j = geometry[0].count;
-      int blocksize = geometry[0].size;
+      int j = h->geometry[0].count;
+      int blocksize = h->geometry[0].size;
       uint8_t *end = start + size - 1;
       uint8_t *flashstart = h->start;      
       if (erased_size)
@@ -262,12 +270,6 @@ libmem_flush_impl()
   return write_current_block();
 }
 
-static int
-libmem_inrange_impl(libmem_driver_handle_t *h, const uint8_t *dest)
-{
-  return LIBMEM_ADDRESS_IN_RANGE(dest, (uint8_t *)0, (uint8_t *)(FLASH_SIZE - 1));
-}
-
 static const libmem_driver_functions_t driver_functions =
 {       
   libmem_write_impl,
@@ -280,68 +282,90 @@ static const libmem_driver_functions_t driver_functions =
 
 static const libmem_ext_driver_functions_t ext_driver_functions =
 {
-  libmem_inrange_impl,
+  0,
   0,
   0
 };
-
-int
-kinetis_register_libmem_driver(libmem_driver_handle_t *h)
-{        
-  unsigned sectorSize;
-#define FMC_PFB0CR (*(volatile unsigned *)0x4001F004)
-  // turn off and invalidate any caching
-  FMC_PFB0CR = (0xf<<20) | (0x1<<19);
-
-  // workout flash size, sector size and write block size
-  FLASH_SIZE = ((SIM_FCFG2>>24) & 0x3f)<<13;  
-  if (SIM_FCFG2 & (1<<23)) // N
-    FLASH_SIZE += ((SIM_FCFG2>>16) & 0x3f)<<13;
-
-  write_block_size = 4;
-  
-  switch ((SIM_SDID >> 7) & 0x7)
-    {
-      case 0x0:
-        sectorSize = 1*1024;
-        break;
-      case 0x1:
-      case 0x2:
-        sectorSize = 2*1024;
-        break;
-      case 0x3:
-        sectorSize = 4*1024;
-        FLASH_SIZE *= 2;
-        write_block_size = 8;
-        break;
-      default:
-        return LIBMEM_STATUS_ERROR;
-    }
-  geometry[0].count = FLASH_SIZE/sectorSize;
-  geometry[0].size = sectorSize;
-  libmem_register_driver(h, (uint8_t *)0, FLASH_SIZE, geometry, 0, &driver_functions, &ext_driver_functions);
-  return LIBMEM_STATUS_SUCCESS;
-}
 
 #include <libmem_loader.h>
 
 extern unsigned char __RAM_segment_end__[];
 extern unsigned char __RAM_segment_used_end__[];
 
+libmem_geometry_t geometry[2];
+#ifdef HASFlexNVM
+libmem_geometry_t geometry2[2];
+#endif
+
 int
 main(int param0)
 { 
-  libmem_driver_handle_t h;    
-  int res = kinetis_register_libmem_driver(&h);
-  if (res != LIBMEM_STATUS_SUCCESS)
-    libmem_rpc_loader_exit(LIBMEM_STATUS_ERROR, "Unsupported device");   
+  int res;
+  libmem_driver_handle_t h, h1;    
+  unsigned sectorSize;
+#define FMC_PFB0CR (*(volatile unsigned *)0x4001F004)
+  // turn off and invalidate any caching
+  FMC_PFB0CR = (0xf<<20) | (0x1<<19);
+
+  // workout flash size, sector size and write block size
+  unsigned FLASH_SIZE = ((SIM_FCFG2>>24) & 0x3f)<<13;  
+  if (SIM_FCFG2 & (1<<23)) // N
+    FLASH_SIZE += ((SIM_FCFG2>>16) & 0x3f)<<13;
+
+  write_block_size = 4;
+  
+  if (param0)
+    {
+      sectorSize = (param0 & 0xf) * 1024;
+      if (sectorSize == 4 * 1024)
+        {
+          FLASH_SIZE *= 2;
+          write_block_size = 8;
+        }
+    }
+  else
+    switch ((SIM_SDID >> 7) & 0x7)
+      {
+        case 0x0:
+          sectorSize = 1 * 1024;
+          break;
+        case 0x1:
+        case 0x2:
+          sectorSize = 2 * 1024;
+          break;
+        case 0x3:
+          sectorSize = 4 * 1024;
+          FLASH_SIZE *= 2;
+          write_block_size = 8;
+          break;
+        default:
+          libmem_rpc_loader_exit(LIBMEM_STATUS_ERROR, "Unsupported device");
+          return 0;
+      }
+  geometry[0].count = FLASH_SIZE/sectorSize;
+  geometry[0].size = sectorSize;
+  libmem_register_driver(&h, (uint8_t *)0, FLASH_SIZE, geometry, 0, &driver_functions, &ext_driver_functions);
+
+#ifdef HASFlexNVM
+  sectorSize = ((param0 >> 4) & 0xf) * 1024;
+  unsigned NVM_FLASH_SIZE = ((SIM_FCFG2>>16) & 0x3f)<<13;
+  if (sectorSize == 4 * 1024)
+    NVM_FLASH_SIZE *= 2;
+  geometry2[0].count = NVM_FLASH_SIZE/sectorSize;
+  geometry2[0].size = sectorSize;
+  libmem_register_driver(&h1, (uint8_t *)0x10000000, NVM_FLASH_SIZE, geometry2, 0, &driver_functions, &ext_driver_functions);
+#endif  
+
 #if 0
   uint8_t *erase_start;
   size_t erase_size;  
-  res = libmem_erase((uint8_t *)0x0, 0x81a, &erase_start, &erase_size); 
-
-  static const unsigned char buffer[24] = { 0x1, 0x2, 0x3, 0x4,  0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf };    
-  res = libmem_write(0x0, buffer, 0x24); 
+  //res = libmem_erase((uint8_t *)0x0, 0x24, &erase_start, &erase_size); 
+  //res = libmem_erase((uint8_t *)0x10000000, 0x24, &erase_start, &erase_size);
+  res = libmem_erase_all();
+  static const unsigned char buffer1[24] = { 0x38, 0xAA, 0xFF, 0x1F,  0x45, 0x06, 0x00, 0x00,  0x65, 0x05, 0x00, 0x00,  0x67, 0x05, 0x00, 0x00 };  
+  static const unsigned char buffer2[24] = { 0xB0, 0xB5, 0x96, 0xB0,  0x00, 0xAF, 0x4F, 0xF0,  0x30, 0x00, 0x00, 0xF0,  0x41, 0xF0, 0x02, 0x42 }; 
+  res = libmem_write(0x00000000, buffer1, sizeof(buffer1)); 
+  res = libmem_write(0x10000000, buffer2, sizeof(buffer2)); 
   res = libmem_flush();
 #endif
    

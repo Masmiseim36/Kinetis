@@ -13,7 +13,7 @@ public:
   void eraseAll();  
   MemoryRegion *findMemoryRegion(unsigned address, unsigned size, unsigned &offset);
 private:
-  MemoryRegion *flash, *sram, *peripherals, *scs;
+  MemoryRegion *pflash, *dflash, *flexram, *sram, *peripherals, *scs;
   bool l_series;
 };
 

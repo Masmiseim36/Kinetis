@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.10" build_version="2013080902.7634;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
+<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.11" build_version="2013090601.7774;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
 
 <targets>
   <category name="K10 Series" >
@@ -278,6 +278,11 @@
 
   </documentation>
   <history>  
+    <version name="1.11">
+      <description>K series flash loaders support DataFlash loading and now uses a loader parameter to specify
+      the sector sizes of the program and data flashes. You will need to reselect the Target processor to update
+      your project with the correct loader parameter.</description>
+    </version>
     <version name="1.10">
       <description>Added support for MKE02Z2, MKE04Z4, MKL24Z4, MKL34Z4 and MKL46Z4 devices.</description>
       <description>A memory map file per device is now supplied. For existing projects you will need to reselect the 

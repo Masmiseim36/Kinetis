@@ -44,7 +44,7 @@ void SystemInit()
 
   ICS->C2 = 0;
 
-  SystemCoreClock = 10000000/256*1024/1;
+  SystemCoreClock = 8000000/256*1280/1;
 }
 #endif
 

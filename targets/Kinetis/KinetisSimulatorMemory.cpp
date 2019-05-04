@@ -67,14 +67,18 @@ public:
 };
 
 KinetisSimulatorMemoryImpl::KinetisSimulatorMemoryImpl() :
-  flash(0), sram(0)
+  pflash(0), dflash(0), flexram(0), sram(0)
 {
 }
 
 KinetisSimulatorMemoryImpl::~KinetisSimulatorMemoryImpl()
 {
-  if (flash)
-    delete flash;
+  if (pflash)
+    delete pflash;
+  if (dflash)
+    delete dflash;
+  if (flexram)
+    delete flexram;
   if (sram)
     delete sram;
   if (peripherals)
@@ -88,12 +92,13 @@ KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char 
 {
   l_series = strstr(argv[0], "MKL") == argv[0];
   if (argc != 5)
-    return false;
-  unsigned flashSize = strtoul(argv[1],0,0);
-  unsigned sramSize = strtoul(argv[4],0,0);
-  flash = new LittleMemoryRegion(flashSize);
-  flash->clear(0xff);  
-  sram = new LittleMemoryRegion(sramSize);   
+    return false;  
+  pflash = new LittleMemoryRegion(strtoul(argv[1],0,0));
+  pflash->clear(0xff);  
+  dflash = new LittleMemoryRegion(strtoul(argv[2],0,0));
+  dflash->clear(0xff);  
+  flexram = new LittleMemoryRegion(strtoul(argv[3],0,0));
+  sram = new LittleMemoryRegion(strtoul(argv[4],0,0));   
   peripherals = new KinetisPeripheralMemory();
   scs = new LittleMemoryRegion(0x1000);
   return true;
@@ -103,6 +108,7 @@ void
 KinetisSimulatorMemoryImpl::reset()
 {
   sram->clear(0xcd);
+  flexram->clear(0xcd);
   peripherals->reset();
   scs->clear(0x0);
 }
@@ -110,17 +116,28 @@ KinetisSimulatorMemoryImpl::reset()
 void 
 KinetisSimulatorMemoryImpl::eraseAll()
 {
-  flash->clear(0xff);
+  pflash->clear(0xff);
+  dflash->clear(0xff);
 }
 
 MemoryRegion *
 KinetisSimulatorMemoryImpl::findMemoryRegion(unsigned address, unsigned size, unsigned &offset)
 {
   MemoryRegion *m = 0;  
-  if (address < flash->size())
+  if (address < pflash->size())
     {
-      m = flash;
+      m = pflash;
       offset = address;
+    }
+  else if (!l_series && (address >= (0x10000000-(dflash->size()/4)) && address < (0x10000000+dflash->size()/4*3)))
+    {
+      m = dflash;
+      offset = address-(0x10000000-(dflash->size()/4));
+    }
+  else if (!l_series && (address >= (0x14000000-(flexram->size()/4)) && address < (0x10000000+flexram->size()/4*3)))
+    {
+      m = flexram;
+      offset = address-(0x14000000-(flexram->size()/4));
     }
   else if (l_series && (address >= (0x20000000-(sram->size()/4)) && address < (0x20000000+sram->size()/4*3)))
     {

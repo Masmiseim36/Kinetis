@@ -156,9 +156,26 @@ function GetPartName()
 
 function MatchPartName(name)
 {  
-  var partName = GetPartName();
+  var partName = GetPartName();  
   if (partName.length >= 8)
-    return name.substring(0, 8) == partName.substring(0, 8);
+    {
+      if (partName.substring(0,4) == "MK10" && name.substring(0,4) == "MK12")
+        return name.substring(4,4) == partName.substring(4,4);
+      else if (partName.substring(0,4) == "MK20" && name.substring(0,4) == "MK22")
+        return name.substring(4,4) == partName.substring(4,4);
+      else if (partName.substring(0,4) == "MK30" && (name.substring(0,4) == "MK11" || name.substring(0,4) == "MK61"))
+        return name.substring(4,4) == partName.substring(4,4);
+      else if (partName.substring(0,4) == "MK40" && name.substring(0,4) == "MK21")
+        return name.substring(4,4) == partName.substring(4,4);
+      else if (partName.substring(0,4) == "MK60" && name.substring(0,4) == "MK22")
+        return name.substring(4,4) == partName.substring(4,4);
+      else if (partName.substring(0,4) == "MK50" && name.substring(0,4) == "MK52")
+        return name.substring(4,4) == partName.substring(4,4);
+      else if (partName.substring(0,4) == "MK51" && name.substring(0,4) == "MK53")
+        return name.substring(4,4) == partName.substring(4,4);
+      else
+        return name.substring(0, 8) == partName.substring(0, 8);
+    }
   else (partName.length >= 6)
     return name.substring(0, 6) == partName.substring(0, 6);
   return false;
