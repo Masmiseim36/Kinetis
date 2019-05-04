@@ -28,6 +28,7 @@
  *             : R1 - Loader parameter 0                                     *
  *****************************************************************************/
 _start:
+  // Disable watchdog
 #if defined(L_SERIES)
   ldr r2, =0x40048100
   ldr r3, =#0
@@ -72,8 +73,18 @@ _start:
 #else
 #error L_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined
 #endif
+
+  // Copy loader parameter if supplied
+  cmp r0, #0
+  beq 1f
+  mov r0, r1
+1:
+  
+  // Set stackpointer
   ldr r2, =__stack_end__
   mov sp, r2
+
+  // Clear BSS
   ldr r2, =__bss_start__
   ldr r3, =__bss_end__
   movs r4, #0

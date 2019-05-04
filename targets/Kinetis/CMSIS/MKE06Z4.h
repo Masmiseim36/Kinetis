@@ -1,18 +1,45 @@
 /*
 ** ###################################################################
-**     Compilers:           ARM Compiler
+**     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
 **                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    MKE06P80M48SF0RM, Rev. 1, Dec 2013
-**     Version:             rev. 1.3, 2014-01-10
+**     Version:             rev. 1.4, 2014-06-18
+**     Build:               b140623
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MKE06Z4
 **
-**     Copyright: 1997 - 2014 Freescale, Inc. All Rights Reserved.
+**     Copyright (c) 1997 - 2014 Freescale Semiconductor, Inc.
+**     All rights reserved.
+**
+**     Redistribution and use in source and binary forms, with or without modification,
+**     are permitted provided that the following conditions are met:
+**
+**     o Redistributions of source code must retain the above copyright notice, this list
+**       of conditions and the following disclaimer.
+**
+**     o Redistributions in binary form must reproduce the above copyright notice, this
+**       list of conditions and the following disclaimer in the documentation and/or
+**       other materials provided with the distribution.
+**
+**     o Neither the name of Freescale Semiconductor, Inc. nor the names of its
+**       contributors may be used to endorse or promote products derived from this
+**       software without specific prior written permission.
+**
+**     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+**     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+**     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+**     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+**     ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+**     (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**     LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+**     ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+**     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+**     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -25,29 +52,29 @@
 **     - rev. 1.2 (2013-10-30)
 **         Update according to reference manual rev. 1.
 **     - rev. 1.3 (2014-01-10)
-**         CAN module: corrected address of TSIDR1 register.
-**         CAN module: corrected name of MSCAN_TDLR bit DLC to TDLC.
-**         FTM0 module: added access macro for EXTTRIG register.
-**         NVIC module: registers access macros improved.
-**         SCB module: unused bits removed, mask, shift macros improved.
+**         CAN - Corrected address of TSIDR1 register.
+**         CAN - Corrected name of MSCAN_TDLR bit DLC to TDLC.
+**         FTM0 - Added access macro for EXTTRIG register.
+**         NVIC - Registers access macros improved.
+**         SCB - Unused bits removed, mask, shift macros improved.
 **         Defines of interrupt vectors aligned to RM.
+**     - rev. 1.4 (2014-06-18)
+**         The declaration of clock configurations has been moved to separate header file system_MKE02Z2.h
+**         Module access macro {module}_BASES replaced by {module}_BASE_PTRS.
+**         I2C - Renamed status register S to S1 to match RM naming.
+**         Renamed interrupts: INT_PMC to INT_LVD_LVW, INT_ADC to ADC0,INT_WDOG to INT_Watchdog.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKE06Z4.h
- * @version 1.3
- * @date 2014-01-10
+ * @version 1.4
+ * @date 2014-06-18
  * @brief CMSIS Peripheral Access Layer for MKE06Z4
  *
  * CMSIS Peripheral Access Layer for MKE06Z4
  */
-
-#if !defined(MKE06Z4_H_)
-#define MKE06Z4_H_                               /**< Symbol preventing repeated inclusion */
-
-#endif  /* #if !defined(MKE06Z4_H_) */
 
 
 /* ----------------------------------------------------------------------------
@@ -55,7 +82,8 @@
    ---------------------------------------------------------------------------- */
 
 /* Prevention from multiple including the same memory map */
-#if !defined(MCU_MKE06Z4)  /* Check if memory map has not been already included */
+#if !defined(MKE06Z4_H_)  /* Check if memory map has not been already included */
+#define MKE06Z4_H_
 #define MCU_MKE06Z4
 
 /* Check if another memory map has not been also included */
@@ -70,7 +98,7 @@
  * compatible) */
 #define MCU_MEM_MAP_VERSION 0x0100u
 /** Memory map minor version */
-#define MCU_MEM_MAP_VERSION_MINOR 0x0003u
+#define MCU_MEM_MAP_VERSION_MINOR 0x0004u
 
 
 /* ----------------------------------------------------------------------------
@@ -83,6 +111,8 @@
  */
 
 /** Interrupt Number Definitions */
+#define NUMBER_OF_INT_VECTORS 48                 /**< Number of interrupts in the Vector table */
+
 typedef enum IRQn {
   /* Core interrupts */
   NonMaskableInt_IRQn          = -14,              /**< Non Maskable Interrupt */
@@ -97,17 +127,17 @@ typedef enum IRQn {
   Reserved18_IRQn              = 2,                /**< Reserved interrupt */
   Reserved19_IRQn              = 3,                /**< Reserved interrupt */
   Reserved20_IRQn              = 4,                /**< Reserved interrupt */
-  FTMRE_IRQn                   = 5,                /**< Command complete and read collision */
-  PMC_IRQn                     = 6,                /**< Low-voltage detect, low-voltage warning */
-  IRQ_IRQn                     = 7,                /**< External Interrupt */
-  I2C0_IRQn                    = 8,                /**< I2C0 interrupt */
-  I2C1_IRQn                    = 9,                /**< I2C1 interrupt */
+  FTMRE_IRQn                   = 5,                /**< FTMRE command complete */
+  LVD_LLW_IRQn                 = 6,                /**< Low-voltage warning */
+  IRQ_IRQn                     = 7,                /**< External interrupt */
+  I2C0_IRQn                    = 8,                /**< I2C0 single interrupt vector for all sources */
+  I2C1_IRQn                    = 9,                /**< I2C1 single interrupt vector for all sources */
   SPI0_IRQn                    = 10,               /**< SPI0 single interrupt vector for all sources */
   SPI1_IRQn                    = 11,               /**< SPI1 single interrupt vector for all sources */
   UART0_IRQn                   = 12,               /**< UART0 status and error */
   UART1_IRQn                   = 13,               /**< UART1 status and error */
   UART2_IRQn                   = 14,               /**< UART2 status and error */
-  ADC_IRQn                     = 15,               /**< ADC interrupt */
+  ADC0_IRQn                    = 15,               /**< ADC conversion complete interrupt */
   ACMP0_IRQn                   = 16,               /**< ACMP0 interrupt */
   FTM0_IRQn                    = 17,               /**< FTM0 single interrupt vector for all sources */
   FTM1_IRQn                    = 18,               /**< FTM1 single interrupt vector for all sources */
@@ -116,13 +146,13 @@ typedef enum IRQn {
   ACMP1_IRQn                   = 21,               /**< ACMP1 interrupt */
   PIT_CH0_IRQn                 = 22,               /**< PIT CH0 overflow */
   PIT_CH1_IRQn                 = 23,               /**< PIT CH1 overflow */
-  KBI0_IRQn                    = 24,               /**< Keyboard interrupt0(32bit) */
-  KBI1_IRQn                    = 25,               /**< Keyboard interrupt1(32bit) */
+  KBI0_IRQn                    = 24,               /**< KBI0 interrupt */
+  KBI1_IRQn                    = 25,               /**< KBI1 interrupt */
   Reserved42_IRQn              = 26,               /**< Reserved interrupt */
-  ICS_IRQn                     = 27,               /**< ICS interrupt */
-  WDOG_IRQn                    = 28,               /**< Watchdog timeout */
+  ICS_IRQn                     = 27,               /**< Clock loss of lock */
+  Watchdog_IRQn                = 28,               /**< Watchdog timeout */
   PWT_IRQn                     = 29,               /**< PWT interrupt */
-  MSCAN_RX_IRQn                = 30,               /**< MSCAN Rx Interrupt */
+  MSCAN_RX_IRQn                = 30,               /**< MSCAN Rx interrupt */
   MSCAN_TX_IRQn                = 31                /**< MSCAN Tx, Err and Wake-up interrupt */
 } IRQn_Type;
 
@@ -281,8 +311,10 @@ typedef struct {
 /** Peripheral ACMP1 base pointer */
 #define ACMP1                                    ((ACMP_Type *)ACMP1_BASE)
 #define ACMP1_BASE_PTR                           (ACMP1)
+/** Array initializer of ACMP peripheral base addresses */
+#define ACMP_BASE_ADDRS                          { ACMP0_BASE, ACMP1_BASE }
 /** Array initializer of ACMP peripheral base pointers */
-#define ACMP_BASES                               { ACMP0, ACMP1 }
+#define ACMP_BASE_PTRS                           { ACMP0, ACMP1 }
 
 /* ----------------------------------------------------------------------------
    -- ACMP - Register accessor macros
@@ -450,8 +482,10 @@ typedef struct {
 /** Peripheral ADC base pointer */
 #define ADC                                      ((ADC_Type *)ADC_BASE)
 #define ADC_BASE_PTR                             (ADC)
+/** Array initializer of ADC peripheral base addresses */
+#define ADC_BASE_ADDRS                           { ADC_BASE }
 /** Array initializer of ADC peripheral base pointers */
-#define ADC_BASES                                { ADC }
+#define ADC_BASE_PTRS                            { ADC }
 
 /* ----------------------------------------------------------------------------
    -- ADC - Register accessor macros
@@ -678,8 +712,10 @@ typedef struct {
 /** Peripheral CRC base pointer */
 #define CRC0                                     ((CRC_Type *)CRC_BASE)
 #define CRC_BASE_PTR                             (CRC0)
+/** Array initializer of CRC peripheral base addresses */
+#define CRC_BASE_ADDRS                           { CRC_BASE }
 /** Array initializer of CRC peripheral base pointers */
-#define CRC_BASES                                { CRC0 }
+#define CRC_BASE_PTRS                            { CRC0 }
 
 /* ----------------------------------------------------------------------------
    -- CRC - Register accessor macros
@@ -823,8 +859,10 @@ typedef struct {
 /** Peripheral FGPIOC base pointer */
 #define FGPIOC                                   ((FGPIO_Type *)FGPIOC_BASE)
 #define FGPIOC_BASE_PTR                          (FGPIOC)
+/** Array initializer of FGPIO peripheral base addresses */
+#define FGPIO_BASE_ADDRS                         { FGPIOA_BASE, FGPIOB_BASE, FGPIOC_BASE }
 /** Array initializer of FGPIO peripheral base pointers */
-#define FGPIO_BASES                              { FGPIOA, FGPIOB, FGPIOC }
+#define FGPIO_BASE_PTRS                          { FGPIOA, FGPIOB, FGPIOC }
 
 /* ----------------------------------------------------------------------------
    -- FGPIO - Register accessor macros
@@ -1369,8 +1407,10 @@ typedef struct {
 /** Peripheral FTM2 base pointer */
 #define FTM2                                     ((FTM_Type *)FTM2_BASE)
 #define FTM2_BASE_PTR                            (FTM2)
+/** Array initializer of FTM peripheral base addresses */
+#define FTM_BASE_ADDRS                           { FTM0_BASE, FTM1_BASE, FTM2_BASE }
 /** Array initializer of FTM peripheral base pointers */
-#define FTM_BASES                                { FTM0, FTM1, FTM2 }
+#define FTM_BASE_PTRS                            { FTM0, FTM1, FTM2 }
 
 /* ----------------------------------------------------------------------------
    -- FTM - Register accessor macros
@@ -1591,8 +1631,10 @@ typedef struct {
 /** Peripheral FTMRE base pointer */
 #define FTMRE                                    ((FTMRE_Type *)FTMRE_BASE)
 #define FTMRE_BASE_PTR                           (FTMRE)
+/** Array initializer of FTMRE peripheral base addresses */
+#define FTMRE_BASE_ADDRS                         { FTMRE_BASE }
 /** Array initializer of FTMRE peripheral base pointers */
-#define FTMRE_BASES                              { FTMRE }
+#define FTMRE_BASE_PTRS                          { FTMRE }
 
 /* ----------------------------------------------------------------------------
    -- FTMRE - Register accessor macros
@@ -1729,8 +1771,10 @@ typedef struct {
 /** Peripheral GPIOC base pointer */
 #define GPIOC                                    ((GPIO_Type *)GPIOC_BASE)
 #define GPIOC_BASE_PTR                           (GPIOC)
+/** Array initializer of GPIO peripheral base addresses */
+#define GPIO_BASE_ADDRS                          { GPIOA_BASE, GPIOB_BASE, GPIOC_BASE }
 /** Array initializer of GPIO peripheral base pointers */
-#define GPIO_BASES                               { GPIOA, GPIOB, GPIOC }
+#define GPIO_BASE_PTRS                           { GPIOA, GPIOB, GPIOC }
 
 /* ----------------------------------------------------------------------------
    -- GPIO - Register accessor macros
@@ -1792,7 +1836,7 @@ typedef struct {
   __IO uint8_t A1;                                 /**< I2C Address Register 1, offset: 0x0 */
   __IO uint8_t F;                                  /**< I2C Frequency Divider register, offset: 0x1 */
   __IO uint8_t C1;                                 /**< I2C Control Register 1, offset: 0x2 */
-  __IO uint8_t S;                                  /**< I2C Status register 1, offset: 0x3 */
+  __IO uint8_t S1;                                 /**< I2C Status register 1, offset: 0x3 */
   __IO uint8_t D;                                  /**< I2C Data I/O register, offset: 0x4 */
   __IO uint8_t C2;                                 /**< I2C Control Register 2, offset: 0x5 */
   __IO uint8_t FLT;                                /**< I2C Programmable Input Glitch Filter register, offset: 0x6 */
@@ -1817,7 +1861,7 @@ typedef struct {
 #define I2C_A1_REG(base)                         ((base)->A1)
 #define I2C_F_REG(base)                          ((base)->F)
 #define I2C_C1_REG(base)                         ((base)->C1)
-#define I2C_S_REG(base)                          ((base)->S)
+#define I2C_S1_REG(base)                         ((base)->S1)
 #define I2C_D_REG(base)                          ((base)->D)
 #define I2C_C2_REG(base)                         ((base)->C2)
 #define I2C_FLT_REG(base)                        ((base)->FLT)
@@ -1867,23 +1911,23 @@ typedef struct {
 #define I2C_C1_IICIE_SHIFT                       6
 #define I2C_C1_IICEN_MASK                        0x80u
 #define I2C_C1_IICEN_SHIFT                       7
-/* S Bit Fields */
-#define I2C_S_RXAK_MASK                          0x1u
-#define I2C_S_RXAK_SHIFT                         0
-#define I2C_S_IICIF_MASK                         0x2u
-#define I2C_S_IICIF_SHIFT                        1
-#define I2C_S_SRW_MASK                           0x4u
-#define I2C_S_SRW_SHIFT                          2
-#define I2C_S_RAM_MASK                           0x8u
-#define I2C_S_RAM_SHIFT                          3
-#define I2C_S_ARBL_MASK                          0x10u
-#define I2C_S_ARBL_SHIFT                         4
-#define I2C_S_BUSY_MASK                          0x20u
-#define I2C_S_BUSY_SHIFT                         5
-#define I2C_S_IAAS_MASK                          0x40u
-#define I2C_S_IAAS_SHIFT                         6
-#define I2C_S_TCF_MASK                           0x80u
-#define I2C_S_TCF_SHIFT                          7
+/* S1 Bit Fields */
+#define I2C_S1_RXAK_MASK                         0x1u
+#define I2C_S1_RXAK_SHIFT                        0
+#define I2C_S1_IICIF_MASK                        0x2u
+#define I2C_S1_IICIF_SHIFT                       1
+#define I2C_S1_SRW_MASK                          0x4u
+#define I2C_S1_SRW_SHIFT                         2
+#define I2C_S1_RAM_MASK                          0x8u
+#define I2C_S1_RAM_SHIFT                         3
+#define I2C_S1_ARBL_MASK                         0x10u
+#define I2C_S1_ARBL_SHIFT                        4
+#define I2C_S1_BUSY_MASK                         0x20u
+#define I2C_S1_BUSY_SHIFT                        5
+#define I2C_S1_IAAS_MASK                         0x40u
+#define I2C_S1_IAAS_SHIFT                        6
+#define I2C_S1_TCF_MASK                          0x80u
+#define I2C_S1_TCF_SHIFT                         7
 /* D Bit Fields */
 #define I2C_D_DATA_MASK                          0xFFu
 #define I2C_D_DATA_SHIFT                         0
@@ -1962,8 +2006,10 @@ typedef struct {
 /** Peripheral I2C1 base pointer */
 #define I2C1                                     ((I2C_Type *)I2C1_BASE)
 #define I2C1_BASE_PTR                            (I2C1)
+/** Array initializer of I2C peripheral base addresses */
+#define I2C_BASE_ADDRS                           { I2C0_BASE, I2C1_BASE }
 /** Array initializer of I2C peripheral base pointers */
-#define I2C_BASES                                { I2C0, I2C1 }
+#define I2C_BASE_PTRS                            { I2C0, I2C1 }
 
 /* ----------------------------------------------------------------------------
    -- I2C - Register accessor macros
@@ -1980,7 +2026,7 @@ typedef struct {
 #define I2C0_A1                                  I2C_A1_REG(I2C0)
 #define I2C0_F                                   I2C_F_REG(I2C0)
 #define I2C0_C1                                  I2C_C1_REG(I2C0)
-#define I2C0_S1                                  I2C_S_REG(I2C0)
+#define I2C0_S1                                  I2C_S1_REG(I2C0)
 #define I2C0_D                                   I2C_D_REG(I2C0)
 #define I2C0_C2                                  I2C_C2_REG(I2C0)
 #define I2C0_FLT                                 I2C_FLT_REG(I2C0)
@@ -1993,7 +2039,7 @@ typedef struct {
 #define I2C1_A1                                  I2C_A1_REG(I2C1)
 #define I2C1_F                                   I2C_F_REG(I2C1)
 #define I2C1_C1                                  I2C_C1_REG(I2C1)
-#define I2C1_S1                                  I2C_S_REG(I2C1)
+#define I2C1_S1                                  I2C_S1_REG(I2C1)
 #define I2C1_D                                   I2C_D_REG(I2C1)
 #define I2C1_C2                                  I2C_C2_REG(I2C1)
 #define I2C1_FLT                                 I2C_FLT_REG(I2C1)
@@ -2114,8 +2160,10 @@ typedef struct {
 /** Peripheral ICS base pointer */
 #define ICS                                      ((ICS_Type *)ICS_BASE)
 #define ICS_BASE_PTR                             (ICS)
+/** Array initializer of ICS peripheral base addresses */
+#define ICS_BASE_ADDRS                           { ICS_BASE }
 /** Array initializer of ICS peripheral base pointers */
-#define ICS_BASES                                { ICS }
+#define ICS_BASE_PTRS                            { ICS }
 
 /* ----------------------------------------------------------------------------
    -- ICS - Register accessor macros
@@ -2213,8 +2261,10 @@ typedef struct {
 /** Peripheral IRQ base pointer */
 #define IRQ                                      ((IRQ_Type *)IRQ_BASE)
 #define IRQ_BASE_PTR                             (IRQ)
+/** Array initializer of IRQ peripheral base addresses */
+#define IRQ_BASE_ADDRS                           { IRQ_BASE }
 /** Array initializer of IRQ peripheral base pointers */
-#define IRQ_BASES                                { IRQ }
+#define IRQ_BASE_PTRS                            { IRQ }
 
 /* ----------------------------------------------------------------------------
    -- IRQ - Register accessor macros
@@ -2329,8 +2379,10 @@ typedef struct {
 /** Peripheral KBI1 base pointer */
 #define KBI1                                     ((KBI_Type *)KBI1_BASE)
 #define KBI1_BASE_PTR                            (KBI1)
+/** Array initializer of KBI peripheral base addresses */
+#define KBI_BASE_ADDRS                           { KBI0_BASE, KBI1_BASE }
 /** Array initializer of KBI peripheral base pointers */
-#define KBI_BASES                                { KBI0, KBI1 }
+#define KBI_BASE_PTRS                            { KBI0, KBI1 }
 
 /* ----------------------------------------------------------------------------
    -- KBI - Register accessor macros
@@ -2445,8 +2497,10 @@ typedef struct {
 /** Peripheral MCM base pointer */
 #define MCM                                      ((MCM_Type *)MCM_BASE)
 #define MCM_BASE_PTR                             (MCM)
+/** Array initializer of MCM peripheral base addresses */
+#define MCM_BASE_ADDRS                           { MCM_BASE }
 /** Array initializer of MCM peripheral base pointers */
-#define MCM_BASES                                { MCM }
+#define MCM_BASE_PTRS                            { MCM }
 
 /* ----------------------------------------------------------------------------
    -- MCM - Register accessor macros
@@ -2859,8 +2913,10 @@ typedef struct {
 /** Peripheral MSCAN base pointer */
 #define MSCAN                                    ((MSCAN_Type *)MSCAN_BASE)
 #define MSCAN_BASE_PTR                           (MSCAN)
+/** Array initializer of MSCAN peripheral base addresses */
+#define MSCAN_BASE_ADDRS                         { MSCAN_BASE }
 /** Array initializer of MSCAN peripheral base pointers */
-#define MSCAN_BASES                              { MSCAN }
+#define MSCAN_BASE_PTRS                          { MSCAN }
 
 /* ----------------------------------------------------------------------------
    -- MSCAN - Register accessor macros
@@ -3085,8 +3141,10 @@ typedef struct {
 /** Peripheral FTMRE_FlashConfig base pointer */
 #define FTMRE_FlashConfig                        ((NV_Type *)FTMRE_FlashConfig_BASE)
 #define FTMRE_FlashConfig_BASE_PTR               (FTMRE_FlashConfig)
+/** Array initializer of NV peripheral base addresses */
+#define NV_BASE_ADDRS                            { FTMRE_FlashConfig_BASE }
 /** Array initializer of NV peripheral base pointers */
-#define NV_BASES                                 { FTMRE_FlashConfig }
+#define NV_BASE_PTRS                             { FTMRE_FlashConfig }
 
 /* ----------------------------------------------------------------------------
    -- NV - Register accessor macros
@@ -3188,8 +3246,10 @@ typedef struct {
 /** Peripheral OSC base pointer */
 #define OSC                                      ((OSC_Type *)OSC_BASE)
 #define OSC_BASE_PTR                             (OSC)
+/** Array initializer of OSC peripheral base addresses */
+#define OSC_BASE_ADDRS                           { OSC_BASE }
 /** Array initializer of OSC peripheral base pointers */
-#define OSC_BASES                                { OSC }
+#define OSC_BASE_PTRS                            { OSC }
 
 /* ----------------------------------------------------------------------------
    -- OSC - Register accessor macros
@@ -3302,8 +3362,10 @@ typedef struct {
 /** Peripheral PIT base pointer */
 #define PIT                                      ((PIT_Type *)PIT_BASE)
 #define PIT_BASE_PTR                             (PIT)
+/** Array initializer of PIT peripheral base addresses */
+#define PIT_BASE_ADDRS                           { PIT_BASE }
 /** Array initializer of PIT peripheral base pointers */
-#define PIT_BASES                                { PIT }
+#define PIT_BASE_PTRS                            { PIT }
 
 /* ----------------------------------------------------------------------------
    -- PIT - Register accessor macros
@@ -3419,8 +3481,10 @@ typedef struct {
 /** Peripheral PMC base pointer */
 #define PMC                                      ((PMC_Type *)PMC_BASE)
 #define PMC_BASE_PTR                             (PMC)
+/** Array initializer of PMC peripheral base addresses */
+#define PMC_BASE_ADDRS                           { PMC_BASE }
 /** Array initializer of PMC peripheral base pointers */
-#define PMC_BASES                                { PMC }
+#define PMC_BASE_PTRS                            { PMC }
 
 /* ----------------------------------------------------------------------------
    -- PMC - Register accessor macros
@@ -3740,8 +3804,10 @@ typedef struct {
 /** Peripheral PORT base pointer */
 #define PORT                                     ((PORT_Type *)PORT_BASE)
 #define PORT_BASE_PTR                            (PORT)
+/** Array initializer of PORT peripheral base addresses */
+#define PORT_BASE_ADDRS                          { PORT_BASE }
 /** Array initializer of PORT peripheral base pointers */
-#define PORT_BASES                               { PORT }
+#define PORT_BASE_PTRS                           { PORT }
 
 /* ----------------------------------------------------------------------------
    -- PORT - Register accessor macros
@@ -3863,8 +3929,10 @@ typedef struct {
 /** Peripheral PWT base pointer */
 #define PWT                                      ((PWT_Type *)PWT_BASE)
 #define PWT_BASE_PTR                             (PWT)
+/** Array initializer of PWT peripheral base addresses */
+#define PWT_BASE_ADDRS                           { PWT_BASE }
 /** Array initializer of PWT peripheral base pointers */
-#define PWT_BASES                                { PWT }
+#define PWT_BASE_PTRS                            { PWT }
 
 /* ----------------------------------------------------------------------------
    -- PWT - Register accessor macros
@@ -4015,8 +4083,10 @@ typedef struct {
 /** Peripheral ROM base pointer */
 #define ROM                                      ((ROM_Type *)ROM_BASE)
 #define ROM_BASE_PTR                             (ROM)
+/** Array initializer of ROM peripheral base addresses */
+#define ROM_BASE_ADDRS                           { ROM_BASE }
 /** Array initializer of ROM peripheral base pointers */
-#define ROM_BASES                                { ROM }
+#define ROM_BASE_PTRS                            { ROM }
 
 /* ----------------------------------------------------------------------------
    -- ROM - Register accessor macros
@@ -4138,8 +4208,10 @@ typedef struct {
 /** Peripheral RTC base pointer */
 #define RTC                                      ((RTC_Type *)RTC_BASE)
 #define RTC_BASE_PTR                             (RTC)
+/** Array initializer of RTC peripheral base addresses */
+#define RTC_BASE_ADDRS                           { RTC_BASE }
 /** Array initializer of RTC peripheral base pointers */
-#define RTC_BASES                                { RTC }
+#define RTC_BASE_PTRS                            { RTC }
 
 /* ----------------------------------------------------------------------------
    -- RTC - Register accessor macros
@@ -4444,8 +4516,10 @@ typedef struct {
 /** Peripheral SIM base pointer */
 #define SIM                                      ((SIM_Type *)SIM_BASE)
 #define SIM_BASE_PTR                             (SIM)
+/** Array initializer of SIM peripheral base addresses */
+#define SIM_BASE_ADDRS                           { SIM_BASE }
 /** Array initializer of SIM peripheral base pointers */
-#define SIM_BASES                                { SIM }
+#define SIM_BASE_PTRS                            { SIM }
 
 /* ----------------------------------------------------------------------------
    -- SIM - Register accessor macros
@@ -4602,8 +4676,10 @@ typedef struct {
 /** Peripheral SPI1 base pointer */
 #define SPI1                                     ((SPI_Type *)SPI1_BASE)
 #define SPI1_BASE_PTR                            (SPI1)
+/** Array initializer of SPI peripheral base addresses */
+#define SPI_BASE_ADDRS                           { SPI0_BASE, SPI1_BASE }
 /** Array initializer of SPI peripheral base pointers */
-#define SPI_BASES                                { SPI0, SPI1 }
+#define SPI_BASE_PTRS                            { SPI0, SPI1 }
 
 /* ----------------------------------------------------------------------------
    -- SPI - Register accessor macros
@@ -4832,8 +4908,10 @@ typedef struct {
 /** Peripheral UART2 base pointer */
 #define UART2                                    ((UART_Type *)UART2_BASE)
 #define UART2_BASE_PTR                           (UART2)
+/** Array initializer of UART peripheral base addresses */
+#define UART_BASE_ADDRS                          { UART0_BASE, UART1_BASE, UART2_BASE }
 /** Array initializer of UART peripheral base pointers */
-#define UART_BASES                               { UART0, UART1, UART2 }
+#define UART_BASE_PTRS                           { UART0, UART1, UART2 }
 
 /* ----------------------------------------------------------------------------
    -- UART - Register accessor macros
@@ -4898,21 +4976,21 @@ typedef struct {
   __IO uint8_t CS1;                                /**< Watchdog Control and Status Register 1, offset: 0x0 */
   __IO uint8_t CS2;                                /**< Watchdog Control and Status Register 2, offset: 0x1 */
   union {                                          /* offset: 0x2 */
-    __IO uint16_t CNT;                               /**< WDOG_CNT register., offset: 0x2 */
+    __IO uint16_t CNT;                               /**< Watchdog Counter Register., offset: 0x2 */
     struct {                                         /* offset: 0x2 */
       __I  uint8_t CNTH;                               /**< Watchdog Counter Register: High, offset: 0x2 */
       __I  uint8_t CNTL;                               /**< Watchdog Counter Register: Low, offset: 0x3 */
     } CNT8B;
   };
   union {                                          /* offset: 0x4 */
-    __IO uint16_t TOVAL;                             /**< WDOG_TOVAL register., offset: 0x4 */
+    __IO uint16_t TOVAL;                             /**< Watchdog Timeout Value Register., offset: 0x4 */
     struct {                                         /* offset: 0x4 */
       __IO uint8_t TOVALH;                             /**< Watchdog Timeout Value Register: High, offset: 0x4 */
       __IO uint8_t TOVALL;                             /**< Watchdog Timeout Value Register: Low, offset: 0x5 */
     } TOVAL8B;
   };
   union {                                          /* offset: 0x6 */
-    __IO uint16_t WIN;                               /**< WDOG_WIN register., offset: 0x6 */
+    __IO uint16_t WIN;                               /**< Watchdog Window Register., offset: 0x6 */
     struct {                                         /* offset: 0x6 */
       __IO uint8_t WINH;                               /**< Watchdog Window Register: High, offset: 0x6 */
       __IO uint8_t WINL;                               /**< Watchdog Window Register: Low, offset: 0x7 */
@@ -5031,8 +5109,10 @@ typedef struct {
 /** Peripheral WDOG base pointer */
 #define WDOG                                     ((WDOG_Type *)WDOG_BASE)
 #define WDOG_BASE_PTR                            (WDOG)
+/** Array initializer of WDOG peripheral base addresses */
+#define WDOG_BASE_ADDRS                          { WDOG_BASE }
 /** Array initializer of WDOG peripheral base pointers */
-#define WDOG_BASES                               { WDOG }
+#define WDOG_BASE_PTRS                           { WDOG }
 
 /* ----------------------------------------------------------------------------
    -- WDOG - Register accessor macros
@@ -5115,25 +5195,70 @@ typedef struct {
 #define SCB_ICSR_VECTACTIVE(x)       This_symbol_has_been_deprecated
 #define SCB_ICSR_ISRPENDING_MASK     This_symbol_has_been_deprecated
 #define SCB_ICSR_ISRPENDING_SHIFT    This_symbol_has_been_deprecated
-#define INT_LVD_LVW                INT_PMC
-#define INT_ADC0                   INT_ADC
-#define INT_Watchdog               INT_WDOG
-#define MSCAN_TDLR_DLC_MASK        MSCAN_TDLR_TDLC_MASK
-#define MSCAN_TDLR_DLC_SHIFT       MSCAN_TDLR_TDLC_SHIFT
-#define MSCAN_TDLR_DLC(x)          MSCAN_TDLR_TDLC(x)
+#define INT_LVD_LVW                  INT_PMC
+#define INT_ADC0                     INT_ADC
+#define INT_Watchdog                 INT_WDOG
+#define MSCAN_TDLR_DLC_MASK          MSCAN_TDLR_TDLC_MASK
+#define MSCAN_TDLR_DLC_SHIFT         MSCAN_TDLR_TDLC_SHIFT
+#define MSCAN_TDLR_DLC(x)            MSCAN_TDLR_TDLC(x)
+#define I2C_S_REG(base)              I2C_S1_REG(base)
+#define I2C_S_RXAK_MASK              I2C_S1_RXAK_MASK
+#define I2C_S_RXAK_SHIFT             I2C_S1_RXAK_SHIFT
+#define I2C_S_IICIF_MASK             I2C_S1_IICIF_MASK
+#define I2C_S_IICIF_SHIFT            I2C_S1_IICIF_SHIFT
+#define I2C_S_SRW_MASK               I2C_S1_SRW_MASK
+#define I2C_S_SRW_SHIFT              I2C_S1_SRW_SHIFT
+#define I2C_S_RAM_MASK               I2C_S1_RAM_MASK
+#define I2C_S_RAM_SHIFT              I2C_S1_RAM_SHIFT
+#define I2C_S_ARBL_MASK              I2C_S1_ARBL_MASK
+#define I2C_S_ARBL_SHIFT             I2C_S1_ARBL_SHIFT
+#define I2C_S_BUSY_MASK              I2C_S1_BUSY_MASK
+#define I2C_S_BUSY_SHIFT             I2C_S1_BUSY_SHIFT
+#define I2C_S_IAAS_MASK              I2C_S1_IAAS_MASK
+#define I2C_S_IAAS_SHIFT             I2C_S1_IAAS_SHIFT
+#define I2C_S_TCF_MASK               I2C_S1_TCF_MASK
+#define I2C_S_TCF_SHIFT              I2C_S1_TCF_SHIFT
+#define ACMP_BASES                   ACMP_BASE_PTRS
+#define ADC_BASES                    ADC_BASE_PTRS
+#define CRC_BASES                    CRC_BASE_PTRS
+#define FGPIO_BASES                  FGPIO_BASE_PTRS
+#define FTM_BASES                    FTM_BASE_PTRS
+#define FTMRE_BASES                  FTMRE_BASE_PTRS
+#define GPIO_BASES                   GPIO_BASE_PTRS
+#define I2C_BASES                    I2C_BASE_PTRS
+#define ICS_BASES                    ICS_BASE_PTRS
+#define IRQ_BASES                    IRQ_BASE_PTRS
+#define KBI_BASES                    KBI_BASE_PTRS
+#define MCM_BASES                    MCM_BASE_PTRS
+#define MSCAN_BASES                  MSCAN_BASE_PTRS
+#define NV_BASES                     NV_BASE_PTRS
+#define OSC_BASES                    OSC_BASE_PTRS
+#define PIT_BASES                    PIT_BASE_PTRS
+#define PMC_BASES                    PMC_BASE_PTRS
+#define PORT_BASES                   PORT_BASE_PTRS
+#define PWT_BASES                    PWT_BASE_PTRS
+#define ROM_BASES                    ROM_BASE_PTRS
+#define RTC_BASES                    RTC_BASE_PTRS
+#define SIM_BASES                    SIM_BASE_PTRS
+#define SPI_BASES                    SPI_BASE_PTRS
+#define UART_BASES                   UART_BASE_PTRS
+#define WDOG_BASES                   WDOG_BASE_PTRS
+#define INT_PMC                      INT_LVD_LVW
+#define INT_ADC                      INT_ADC0
+#define INT_WDOG                     INT_Watchdog
 
 /*!
  * @}
  */ /* end of group Backward_Compatibility_Symbols */
 
 
-#else /* #if !defined(MCU_MKE06Z4) */
+#else /* #if !defined(MKE06Z4_H_) */
   /* There is already included the same memory map. Check if it is compatible (has the same major version) */
   #if (MCU_MEM_MAP_VERSION != 0x0100u)
     #if (!defined(MCU_MEM_MAP_SUPPRESS_VERSION_WARNING))
       #warning There are included two not compatible versions of memory maps. Please check possible differences.
     #endif /* (!defined(MCU_MEM_MAP_SUPPRESS_VERSION_WARNING)) */
   #endif /* (MCU_MEM_MAP_VERSION != 0x0100u) */
-#endif  /* #if !defined(MCU_MKE06Z4) */
+#endif  /* #if !defined(MKE06Z4_H_) */
 
 /* MKE06Z4.h, eof. */

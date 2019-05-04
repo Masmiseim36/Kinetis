@@ -57,125 +57,137 @@
 #define MK22DX128xxx5 46
 #define MK22DX256xxx5 47
 #define MK22DN512xxx5 48
-#define MK22FX512xxx12 49
-#define MK22FN1M0xxx12 50
-#define MK24FN1M0xxx12 51
-#define MK30DX64xxx7 52
-#define MK30DX128xxx7 53
-#define MK30DX256xxx7 54
-#define MK30DX128Zxxx10 55
-#define MK30DX256Zxxx10 56
-#define MK30DN512Zxxx10 57
-#define MK30DX128xxx10 58
-#define MK30DX256xxx10 59
-#define MK30DN512xxx10 60
-#define MK40DX64xxx7 61
-#define MK40DX128xxx7 62
-#define MK40DX256xxx7 63
-#define MK40DX128Zxxx10 64
-#define MK40DX256Zxxx10 65
-#define MK40DN512Zxxx10 66
-#define MK40DX128xxx10 67
-#define MK40DX256xxx10 68
-#define MK40DN512xxx10 69
-#define MK50DX128xxx7 70
-#define MK50DX256xxx7 71
-#define MK50DX256xxx10 72
-#define MK50DN512xxx10 73
-#define MK50DX256Zxxx10 74
-#define MK50DN512Zxxx10 75
-#define MK51DX128xxx7 76
-#define MK51DX256xxx7 77
-#define MK51DX256xxx10 78
-#define MK51DN512xxx10 79
-#define MK51DX256Zxxx10 80
-#define MK51DN512Zxxx10 81
-#define MK52DN512xxx10 82
-#define MK52DN512Zxxx10 83
-#define MK53DX256xxx10 84
-#define MK53DN512xxx10 85
-#define MK53DX256Zxxx10 86
-#define MK53DN512Zxxx10 87
-#define MK60DN256xxx10 88
-#define MK60DX256xxx10 89
-#define MK60DN512xxx10 90
-#define MK60DN256Zxxx10 91
-#define MK60DX256Zxxx10 92
-#define MK60DN512Zxxx10 93
-#define MK60FX512xxx12 94
-#define MK60FN1M0xxx12 95
-#define MK60FX512xxx15 96
-#define MK60FN1M0xxx15 97
-#define MK61FX512xxx12 98
-#define MK61FN1M0xxx12 99
-#define MK61FX512xxx15 100
-#define MK61FN1M0xxx15 101
-#define MK63FN1M0xxx12 102
-#define MK64FX512xxx12 103
-#define MK64FN1M0xxx12 104
-#define MK70FX512xxx12 105
-#define MK70FN1M0xxx12 106
-#define MK70FX512xxx15 107
-#define MK70FN1M0xxx15 108
-#define MKE02Z16xxx2 109
-#define MKE02Z32xxx2 110
-#define MKE02Z64xxx2 111
-#define MKE02Z16xxx4 112
-#define MKE02Z32xxx4 113
-#define MKE02Z64xxx4 114
-#define MKE04Z8xxx4 115
-#define MKE04Z64xxx4 116
-#define MKE04Z128xxx4 117
-#define MKE06Z64xxx4 118
-#define MKE06Z128xxx4 119
-#define MKL02Z8xxx4 120
-#define MKL02Z16xxx4 121
-#define MKL02Z32xxx4 122
-#define MKL04Z8xxx4 123
-#define MKL04Z16xxx4 124
-#define MKL04Z32xxx4 125
-#define MKL05Z8xxx4 126
-#define MKL05Z16xxx4 127
-#define MKL05Z32xxx4 128
-#define MKL14Z32xxx4 129
-#define MKL14Z64xxx4 130
-#define MKL15Z32xxx4 131
-#define MKL15Z64xxx4 132
-#define MKL15Z128xxx4 133
-#define MKL16Z32xxx4 134
-#define MKL16Z64xxx4 135
-#define MKL16Z128xxx4 136
-#define MKL16Z256xxx4 137
-#define MKL24Z32xxx4 138
-#define MKL24Z64xxx4 139
-#define MKL25Z32xxx4 140
-#define MKL25Z64xxx4 141
-#define MKL25Z128xxx4 142
-#define MKL26Z32xxx4 143
-#define MKL26Z64xxx4 144
-#define MKL26Z128xxx4 145
-#define MKL26Z256xxx4 146
-#define MKL34Z64xxx4 147
-#define MKL36Z64xxx4 148
-#define MKL36Z128xxx4 149
-#define MKL36Z256xxx4 150
-#define MKL46Z128xxx4 151
-#define MKL46Z256xxx4 152
-#define MKM14Z64xxx5 153
-#define MKM14Z128xxx5 154
-#define MKM33Z64xxx5 155
-#define MKM33Z128xxx5 156
-#define MKM34Z128xxx5 157
-#define MKV10Z16xxx7 158
-#define MKV10Z32xxx7 159
-#define MKV31F128xxx10 160
-#define MKV31F256xxx12 161
-#define MKV31F512xxx12 162
-#define MKW01Z128xxx 163
-#define MKW21D256xxx5 164
-#define MKW21D512xxx5 165
-#define MKW22D512xxx5 166
-#define MKW24D512xxx5 167
+#define MK22FN128xxx10 49
+#define MK22FN256xxx12 50
+#define MK22FN512xxx12 51
+#define MK22FX512xxx12 52
+#define MK22FN1M0xxx12 53
+#define MK24FN1M0xxx12 54
+#define MK30DX64xxx7 55
+#define MK30DX128xxx7 56
+#define MK30DX256xxx7 57
+#define MK30DX128Zxxx10 58
+#define MK30DX256Zxxx10 59
+#define MK30DN512Zxxx10 60
+#define MK30DX128xxx10 61
+#define MK30DX256xxx10 62
+#define MK30DN512xxx10 63
+#define MK40DX64xxx7 64
+#define MK40DX128xxx7 65
+#define MK40DX256xxx7 66
+#define MK40DX128Zxxx10 67
+#define MK40DX256Zxxx10 68
+#define MK40DN512Zxxx10 69
+#define MK40DX128xxx10 70
+#define MK40DX256xxx10 71
+#define MK40DN512xxx10 72
+#define MK50DX128xxx7 73
+#define MK50DX256xxx7 74
+#define MK50DX256xxx10 75
+#define MK50DN512xxx10 76
+#define MK50DX256Zxxx10 77
+#define MK50DN512Zxxx10 78
+#define MK51DX128xxx7 79
+#define MK51DX256xxx7 80
+#define MK51DX256xxx10 81
+#define MK51DN512xxx10 82
+#define MK51DX256Zxxx10 83
+#define MK51DN512Zxxx10 84
+#define MK52DN512xxx10 85
+#define MK52DN512Zxxx10 86
+#define MK53DX256xxx10 87
+#define MK53DN512xxx10 88
+#define MK53DX256Zxxx10 89
+#define MK53DN512Zxxx10 90
+#define MK60DN256xxx10 91
+#define MK60DX256xxx10 92
+#define MK60DN512xxx10 93
+#define MK60DN256Zxxx10 94
+#define MK60DX256Zxxx10 95
+#define MK60DN512Zxxx10 96
+#define MK60FX512xxx12 97
+#define MK60FN1M0xxx12 98
+#define MK60FX512xxx15 99
+#define MK60FN1M0xxx15 100
+#define MK61FX512xxx12 101
+#define MK61FN1M0xxx12 102
+#define MK61FX512xxx15 103
+#define MK61FN1M0xxx15 104
+#define MK63FN1M0xxx12 105
+#define MK64FX512xxx12 106
+#define MK64FN1M0xxx12 107
+#define MK70FX512xxx12 108
+#define MK70FN1M0xxx12 109
+#define MK70FX512xxx15 110
+#define MK70FN1M0xxx15 111
+#define MKE02Z16xxx2 112
+#define MKE02Z32xxx2 113
+#define MKE02Z64xxx2 114
+#define MKE02Z16xxx4 115
+#define MKE02Z32xxx4 116
+#define MKE02Z64xxx4 117
+#define MKE04Z8xxx4 118
+#define MKE04Z64xxx4 119
+#define MKE04Z128xxx4 120
+#define MKE06Z64xxx4 121
+#define MKE06Z128xxx4 122
+#define SKEAZN16xxx2 123
+#define SKEAZN32xxx2 124
+#define SKEAZN64xxx2 125
+#define SKEAZN8xxx4 126
+#define SKEAZ64xxx4 127
+#define SKEAZ128xxx4 128
+#define MKL02Z8xxx4 129
+#define MKL02Z16xxx4 130
+#define MKL02Z32xxx4 131
+#define MKL03Z8xxx4 132
+#define MKL03Z16xxx4 133
+#define MKL03Z32xxx4 134
+#define MKL04Z8xxx4 135
+#define MKL04Z16xxx4 136
+#define MKL04Z32xxx4 137
+#define MKL05Z8xxx4 138
+#define MKL05Z16xxx4 139
+#define MKL05Z32xxx4 140
+#define MKL14Z32xxx4 141
+#define MKL14Z64xxx4 142
+#define MKL15Z32xxx4 143
+#define MKL15Z64xxx4 144
+#define MKL15Z128xxx4 145
+#define MKL16Z32xxx4 146
+#define MKL16Z64xxx4 147
+#define MKL16Z128xxx4 148
+#define MKL16Z256xxx4 149
+#define MKL24Z32xxx4 150
+#define MKL24Z64xxx4 151
+#define MKL25Z32xxx4 152
+#define MKL25Z64xxx4 153
+#define MKL25Z128xxx4 154
+#define MKL26Z32xxx4 155
+#define MKL26Z64xxx4 156
+#define MKL26Z128xxx4 157
+#define MKL26Z256xxx4 158
+#define MKL34Z64xxx4 159
+#define MKL36Z64xxx4 160
+#define MKL36Z128xxx4 161
+#define MKL36Z256xxx4 162
+#define MKL46Z128xxx4 163
+#define MKL46Z256xxx4 164
+#define MKM14Z64xxx5 165
+#define MKM14Z128xxx5 166
+#define MKM33Z64xxx5 167
+#define MKM33Z128xxx5 168
+#define MKM34Z128xxx5 169
+#define MKV10Z16xxx7 170
+#define MKV10Z32xxx7 171
+#define MKV31F128xxx10 172
+#define MKV31F256xxx12 173
+#define MKV31F512xxx12 174
+#define MKW01Z128xxx 175
+#define MKW21D256xxx5 176
+#define MKW21D512xxx5 177
+#define MKW22D512xxx5 178
+#define MKW24D512xxx5 179
 
 #if (__TARGET_PROCESSOR == MK10DN32xxx5 )
 #include          <CMSIS/MK10D5.h>
@@ -320,6 +332,15 @@
 
 #elif (__TARGET_PROCESSOR == MK22DN512xxx5 )
 #include          <CMSIS/MK22D5.h>
+
+#elif (__TARGET_PROCESSOR == MK22FN128xxx10 )
+#include          <CMSIS/MK22F12810.h>
+
+#elif (__TARGET_PROCESSOR == MK22FN256xxx12 )
+#include          <CMSIS/MK22F25612.h>
+
+#elif (__TARGET_PROCESSOR == MK22FN512xxx12 )
+#include          <CMSIS/MK22F51212.h>
 
 #elif (__TARGET_PROCESSOR == MK22FX512xxx12 )
 #include          <CMSIS/MK22F12.h>
@@ -534,6 +555,24 @@
 #elif (__TARGET_PROCESSOR == MKE06Z128xxx4 )
 #include          <CMSIS/MKE06Z4.h>
 
+#elif (__TARGET_PROCESSOR == SKEAZN16xxx2 )
+#include          <CMSIS/SKEAZN642.h>
+
+#elif (__TARGET_PROCESSOR == SKEAZN32xxx2 )
+#include          <CMSIS/SKEAZN642.h>
+
+#elif (__TARGET_PROCESSOR == SKEAZN64xxx2 )
+#include          <CMSIS/SKEAZN642.h>
+
+#elif (__TARGET_PROCESSOR == SKEAZN8xxx4 )
+#include          <CMSIS/SKEAZN84.h>
+
+#elif (__TARGET_PROCESSOR == SKEAZ64xxx4 )
+#include          <CMSIS/SKEAZ1284.h>
+
+#elif (__TARGET_PROCESSOR == SKEAZ128xxx4 )
+#include          <CMSIS/SKEAZ1284.h>
+
 #elif (__TARGET_PROCESSOR == MKL02Z8xxx4 )
 #include          <CMSIS/MKL02Z4.h>
 
@@ -542,6 +581,15 @@
 
 #elif (__TARGET_PROCESSOR == MKL02Z32xxx4 )
 #include          <CMSIS/MKL02Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKL03Z8xxx4 )
+#include          <CMSIS/MKL03Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKL03Z16xxx4 )
+#include          <CMSIS/MKL03Z4.h>
+
+#elif (__TARGET_PROCESSOR == MKL03Z32xxx4 )
+#include          <CMSIS/MKL03Z4.h>
 
 #elif (__TARGET_PROCESSOR == MKL04Z8xxx4 )
 #include          <CMSIS/MKL04Z4.h>

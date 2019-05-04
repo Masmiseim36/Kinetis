@@ -1,5 +1,7 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.16" build_version="2014040302.9778;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
+<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="3.1" build_version="2014091704.10391;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.1-" ses_versions="8:1-" replaces="Kinetis" dependencies="CMSIS_3">
+  <file file_name="$(TargetsDir)/Kinetis/Loader.hzp" title="Kinetis Loader Application Solution" ses_versions="0"/>
+  <file file_name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" title="Kinetis CTL Timer and Interrupt support functions" ses_versions="0"/>
 <targets>
   <category name="K1x Series" >
     <cpu name="MK10DN32xxx5"/>
@@ -52,6 +54,9 @@
     <cpu name="MK22DX128xxx5"/>
     <cpu name="MK22DX256xxx5"/>
     <cpu name="MK22DN512xxx5"/>
+    <cpu name="MK22FN128xxx10"/>
+    <cpu name="MK22FN256xxx12"/>
+    <cpu name="MK22FN512xxx12"/>
     <cpu name="MK22FX512xxx12"/>
     <cpu name="MK22FN1M0xxx12"/>
     <cpu name="MK24FN1M0xxx12"/>
@@ -123,27 +128,34 @@
     <cpu name="MK70FX512xxx15"/>
     <cpu name="MK70FN1M0xxx15"/>
   </category>
-  <category name="KE02 Series" >
+  <category name="KE0x Series" >
     <cpu name="MKE02Z16xxx2"/>
     <cpu name="MKE02Z32xxx2"/>
     <cpu name="MKE02Z64xxx2"/>
     <cpu name="MKE02Z16xxx4"/>
     <cpu name="MKE02Z32xxx4"/>
     <cpu name="MKE02Z64xxx4"/>
-  </category>
-  <category name="KE04 Series" >
     <cpu name="MKE04Z8xxx4"/>
     <cpu name="MKE04Z64xxx4"/>
     <cpu name="MKE04Z128xxx4"/>
-  </category>
-  <category name="KE06 Series" >
     <cpu name="MKE06Z64xxx4"/>
     <cpu name="MKE06Z128xxx4"/>
+  </category>
+  <category name="KEA Series" >
+    <cpu name="SKEAZN16xxx2"/>
+    <cpu name="SKEAZN32xxx2"/>
+    <cpu name="SKEAZN64xxx2"/>
+    <cpu name="SKEAZN8xxx4"/>
+    <cpu name="SKEAZ64xxx4"/>
+    <cpu name="SKEAZ128xxx4"/>
   </category>
   <category name="KL0x Series" >
     <cpu name="MKL02Z8xxx4"/>
     <cpu name="MKL02Z16xxx4"/>
     <cpu name="MKL02Z32xxx4"/>
+    <cpu name="MKL03Z8xxx4"/>
+    <cpu name="MKL03Z16xxx4"/>
+    <cpu name="MKL03Z32xxx4"/>
     <cpu name="MKL04Z8xxx4"/>
     <cpu name="MKL04Z16xxx4"/>
     <cpu name="MKL04Z32xxx4"/>
@@ -288,12 +300,6 @@
       <p>The script <a href="file:$(TargetsDir)/Kinetis/Kinetis_Target.js">Kinetis_Target.js</a> is used by the
       debugger to identify the Kinetis part, match the project to the target and to reset the target board.</p>
 
-      <h5>Kinetis Internal Flash Loader</h5>
-      <p>The source code to the flash loaders <a href="file:$(TargetsDir)/Kinetis/Loader.hzp">(click to load solution)</a>
-        for the internal Flash of the Kinetis is provided. Note that by default the Kinetis flash loaders will not program
-        the flash configuration field (0x400-0x40C) you can rebuild the loaders with the preprocessor definition ALLOW_FCF_WRITE
-        if you require this.</p>
-
       <h5>Memory Simulator</h5>
       <p>An Kinetis memory simulator is provided that simulates the memories of the various Kinetis devices. 
       The memory simulation parameter (which is set by the <b>Target Processor</b> selection) specifies the device name,
@@ -303,29 +309,8 @@
       <p>CMSIS header files are included as part of the new project setup. 
       The file <a href="file:$(TargetsDir)/Kinetis/Kinetis.h">Kinetis.h</a> is provided which
       selects the appropriate header file depending on the target processor selection.</p>
-
-      <h5>CTL support</h5>
-      <p>The file <a href="file:$(TargetsDir)/Kinetis/Kinetis_ctl.c">Kinetis_ctl.c</a> implements the CTL system timer using the Cortex-M
-      SysTick timer. The timer is configured to interrupt at a 10 millisecond rate and increment the CTL system timer by 10 to give a 
-      millisecond timer. The implementation uses the CMSIS <b>SystemCoreClock</b> global variable to determine the CPU clock
-      frequency. The CTL samples that are provided in this package have board specific files that initialise this variable.</p>
-
-      <p>The CTL interrupt support functions <b>ctl_global_interrupts_set</b>, <b>ctl_set_priority</b>, <b>ctl_unmask_isr</b> 
-      and <b>ctl_mask_isr</b> are implemented in this file. The Cortex-M4 implementations uses the lowest half of 
-      the available NVIC priorities (top bit set in the priority) for CTL interrupts and disables global interrupts by raising the 
-      NVIC basepriority above the highest CTL priority. This enables you to use the upper half of the NVIC priorities for interrupts that do not
-      use CTL and should not be disabled by CTL. The functions <b>ctl_lowest_isr_priority</b>, <b>ctl_highest_isr_priority</b>,
-      and <b>ctl_adjust_isr_priority</b> are provided to assist with setting isr priorities.</p>
+      
     </section>    
-
-    <section name="OSJTAG firmware update">
-      <p>The package contains an update to the firmware that can be loaded on to the OSJTAG hardware of the TWR CPU 
-      modules. The updated firmware improves the download and debug performance of the CrossWorks 'Kinetis OSJTAG' target 
-      interface. You'll need to use the firmware update procedure available from <a href="http://www.pemicro.com/osbdm">PE micro</a> and 
-      point the updater program at the supplied file <a href="file:$(TargetsDir)/Kinetis/osbdm-jm60_kinetis_rowley_101_0.s19">osbdm-jm60_kinetis_rowley_101_0.s19</a>.
-      You can click on the above link to get a copy of the firmware into the editor and then right click on the
-      editor tab and select 'Copy Full Path' to get the path to the filename of the firmware into the paste buffer.</p>
-    </section>
 
     <section name="Known problems">
       <p>The part name identification and matching cannot be done for all Kinetis devices.</p>
@@ -333,110 +318,11 @@
 
   </documentation>
   <history>
-    <version name="1.16">
-      <description>Added support for KE04, KE06, KV3x and KW0x devices.</description>
+    <version name="3.1">
+      <description>Added support for SKEA devices.</description>
     </version>
-    <version name="1.15">
-      <description>Support for KW2x devices.</description>
-    </version>
-    <version name="1.14">
-      <description>Support for KV1x devices.</description>
-    </version>
-    <version name="1.13">
-      <description>Renamed MK*Vxx/MK*Cxx devices to MK*xxx. You will need to reselect the
-      Target processor property for existing projects.</description>
-      <description>K-series loader solution now runs 8K of SRAM.</description>
-      <description>Added support for MKL16Z4, MKL26Z4 and MLK34Z4 devices.</description>
-      <description>Added support for MK20F12, MK21F12, MK22F12, MK24F12, MK63F12 and MK64F12 devices.</description>
-      <description>Added ctl_lowest_isr_priority/ctl_highest_isr_priority/ctl_adjust_isr_priority to Kinetis_ctl.c.</description>
-      <description>Supplied latest CMSIS devices files from Freescale.</description>
-    </version>
-    <version name="1.12">
-      <description>Added support for MKM14Z5, MKM33Z5 and MKM34Z5 devices.</description>
-      <description>Fixed erase all for L series flash loader.</description>
-    </version>
-    <version name="1.11">
-      <description>K series flash loaders support DataFlash loading and now uses a loader parameter to specify
-      the sector sizes of the program and data flashes. You will need to reselect the Target processor to update
-      your project with the correct loader parameter.</description>
-    </version>
-    <version name="1.10">
-      <description>Added support for MKE02Z2, MKE04Z4, MKL24Z4, MKL34Z4 and MKL46Z4 devices.</description>
-      <description>A memory map file per device is now supplied. For existing projects you will need to reselect the 
-      Target property to reference the new memory map file.</description>      
-      <description>Supplied latest CMSIS devices files from Freescale.</description>
-      <description>Supplied L series flash loader that works in 1K of SRAM.</description>
-      <description>Fixed flash breakpoint support in L series flash loaders.</description>
-      <description>Added ctl_sleep and ctl_woken to Kinetis_ctl.c. These functions can be used in CTL V3 to reduce the timer interrupt
-      frequency when in low power mode.</description>
-      <description>Added test10.c to ctl tests. This file is supplied with CTL V3.</description>
-    </version>
-    <version name="1.9">
-      <description>Added support for MK11D5, MK12D5, MK21D5, MK22D5 and MKL02Z4 devices.</description>
-       <description>Modified L series flash loader to run in 2K of SRAM - note 1K SRAM parts are not supported.</description>
-    </version>
-    <version name="1.8">
-      <description>Fixed VECTORS_IN_RAM initialization.</description>
-    </version>
-    <version name="1.7">
-      <description>Modified L series flash loader to run in 4K of SRAM - note that 2K and 1K parts
-      are not supported.</description>
-      <description>Samples removed - these are in their own board support packages.</description>
-      <description>New CTL projects now allocate a process stack. If you have an existing CTL project
-      then you should do similar since this is required for the CTL supplied 
-      with CrossWorks for ARM version 2.3.1.</description>
-    </version>
-    <version name="1.6">
-      <description>Fixed startup code when VECTORS_IN_RAM defined.</description>
-      <description>Added preprocessor define <b>__FPU_PRESENT=1</b> to MKxxF <b>Target</b> property group entries.</description>
-      <description>Changed startup code to fill to 0x400 rather than align to 0x400 to save Flash space.</description>
-      <description>Added memory map support for DDR.</description>
-      <description>Added TWR-K70F120M Dhrystone sample that executes in DDR.</description>
-    </version>
-    <version name="1.5">
-      <description>Added support for L series devices. CrossWorks for ARM version 2.3 is required for Cortex-M0+ support.</description>
-      <description>Supplied samples for FRDM-KL25Z.</description>
-      <description>Supplied samples for TWR-K20D72M.</description>            
-      <description>Fixed <b>Erase All</b> to set the flash security state to be unsecure.</description>
-      <description>The <b>GetPartName</b> script now handles connecting to parts that are secured (but can be mass erased) and also
-      to parts that have been erased. CrossWorks for ARM version 2.3 is required to make use of these facilities.</description>
-      <description>Removed disabling the hardware lazy FP save feature for CTL. CTL supplied in CrossWorks for ARM version 2.3
-      supports the hardware lazy FP save feature.</description>
-      <description>Removed core CMSIS header files from this package. New projects will reference the include directory 
-      <b>$(TargetsDir)/CMSIS_3/CMSIS/Include</b> of the CMSIS-3 package.
-      If you have an existing project then you will have to add <b>$(TargetsDir)/CMSIS_3/CMSIS/Include</b> to the <b>User Include Directories</b>
-      project property.</description>
-    </version>
-    <version name="1.4">
-      <description>Support for latest parts based on the sub-family name and memory size 
-      rather than specific part numbers. For example MK60DN512ZVMD10 has become MK60DN512Zxxx10. You will need to reselect
-      the <b>Target Processer</b> property for existing projects.</description>
-      <description>Updated the flash loader to handle 50Mhz and 120Mhz devices.</description>
-      <description>Modified the startup code to have part specific vector tables.</description>
-      <description>Modified the startup code to enable the FPU for devices that have one.</description>
-      <description>Supplied samples for TWR-K20D50M, TWR-K60F120M and TWR-K70F120M.</description>
-    </version>
-    <version name="1.3">
-      <description>Supplied samples for TWR-K53N512.</description>
-      <description>Supplied firmware update for OSJTAG.</description>
-      <description>Kinetis projects now have the 'GCC Target' property set to be 'arm-unknown-eabi'.</description>
-      <description>Fixed reset script to stop the target prior to accessing MDM registers for 'P&amp;E' target interface.</description>
-    </version>
-    <version name="1.2">
-      <description>Support for latest parts and new part numbering e.g MK60N512VMD100 has become MK60DN512ZVMD10. 
-      You will need to reselect the <b>Target Processor</b> property for existing projects.</description>     
-      <description>Added <b>GetPartName</b> and <b>MatchPartName</b> functions to the target script. New projects will set
-      the <b>Get Part Name Script</b> and <b>Match Part Name Script</b> project properties to enable part name detection
-      on connect and compatibility on start debugging (requires CrossWorks for ARM Version 2.1.2 and above).</description>
-      <description>Removed <b>Kinetis_SystemInit.c</b> you'll need to add the appropriate CMSIS system_MKxxDZ10.c file
-      to your project.</description>
-      <description>Startup code now supplies a default weak <b>SystemInit()</b> function that disables the watchdog.</description>
-    </version>
-    <version name="1.1">
-      <description>Fixed <b>Flash Vectors In RAM</b> placement when the <b>Enable Unused Symbol Removal</b> property is enabled.</description>
-    </version>
-    <version name="1.0">
-      <description>Initial Release.</description>
+    <version name="3.0">
+      <description>Initial release for CrossWorks V3.</description>
     </version>
   </history>
 </package>

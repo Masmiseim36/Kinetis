@@ -167,7 +167,7 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
   if (LIBMEM_RANGE_WITHIN_RANGE(h->start, h->start + h->size - 1, start, start + size - 1))
     {
 #ifdef HASFlexNVM
-      if ((unsigned)h->start == 0x10000000)
+      if (h->start == 0x10000000)
         return res;
 #endif
       if (erased_start)

@@ -134,7 +134,7 @@ KinetisSimulatorMemoryImpl::~KinetisSimulatorMemoryImpl()
 bool 
 KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char *argv[])
 {
-  l_series = (strstr(argv[0], "MKL") == argv[0]) || (strstr(argv[0], "MKE") == argv[0]) || (strstr(argv[0], "MKM") == argv[0]) || (strstr(argv[0], "MKV10") == argv[0]) || (strstr(argv[0], "MKW0") == argv[0]);
+  l_series = (strstr(argv[0], "MKL") == argv[0]) || (strstr(argv[0], "MKE") == argv[0]) || (strstr(argv[0], "MKM") == argv[0]) || (strstr(argv[0], "MKV10") == argv[0]) || (strstr(argv[0], "MKW0") == argv[0]) || (strstr(argv[0], "SKEA") == argv[0]);
   if (argc != 5)
     return false;  
   pflash = new LittleMemoryRegion(strtoul(argv[1],0,0));
@@ -143,7 +143,7 @@ KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char 
   dflash->clear(0xff);  
   flexram = new LittleMemoryRegion(strtoul(argv[3],0,0));
   sram = new LittleMemoryRegion(strtoul(argv[4],0,0));   
-  if (strstr(argv[0], "MKE"))
+  if (strstr(argv[0], "MKE") || strstr(argv[0], "SKEA"))
     peripherals = new KinetisEPeripheralMemory();
   else
     peripherals = new KinetisPeripheralMemory();

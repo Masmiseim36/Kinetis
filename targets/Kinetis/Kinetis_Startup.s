@@ -120,6 +120,12 @@ ISR_HANDLER SysTick_Handler
   #include "MK22D5.vec"
 #elif defined(MK22F12)
   #include "MK22F12.vec"
+#elif defined(MK22F12810)
+  #include "MK22F12810.vec"
+#elif defined(MK22F25612)
+  #include "MK22F25612.vec"
+#elif defined(MK22F51212)
+  #include "MK22F51212.vec"
 #elif defined(MK24F12)
   #include "MK24F12.vec"
 #elif defined(MK30D7)
@@ -170,6 +176,10 @@ ISR_HANDLER SysTick_Handler
   #include "MK63F12.vec"
 #elif defined(MK64F12)
   #include "MK64F12.vec"
+#elif defined(MK65F18)
+  #include "MK65F18.vec"
+#elif defined(MK66F18)
+  #include "MK66F18.vec"
 #elif defined(MK70F12)
   #include "MK70F12.vec"
 #elif defined(MK70F15)
@@ -186,6 +196,8 @@ ISR_HANDLER SysTick_Handler
   #include "MKE06Z4.vec"
 #elif defined(MKL02Z4)
   #include "MKL02Z4.vec"
+#elif defined(MKL03Z4)
+  #include "MKL03Z4.vec"
 #elif defined(MKL04Z4)
   #include "MKL04Z4.vec"
 #elif defined(MKL05Z4)
@@ -206,6 +218,8 @@ ISR_HANDLER SysTick_Handler
   #include "MKL34Z4.vec"
 #elif defined(MKL36Z4)
   #include "MKL36Z4.vec"
+#elif defined(MKL43Z4)
+  #include "MKL43Z4.vec"
 #elif defined(MKL46Z4)
   #include "MKL46Z4.vec"
 #elif defined(MKM13Z5)
@@ -236,6 +250,12 @@ ISR_HANDLER SysTick_Handler
   #include "MKW22D5.vec"
 #elif defined(MKW24D5)
   #include "MKW24D5.vec"
+#elif defined(SKEAZ1284)
+  #include "SKEAZ1284.vec"
+#elif defined(SKEAZN642)
+  #include "SKEAZN642.vec"
+#elif defined(SKEAZN84)
+  #include "SKEAZN84.vec"
 #else
   #error no vectors
 #endif

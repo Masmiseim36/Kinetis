@@ -6,13 +6,39 @@
 **                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
 **
-**     Reference manual:    K22P121M100SF7RM_NDA, Rev.0.4, Aug 31, 2013
-**     Version:             rev. 1.1, 2013-12-20
+**     Reference manual:    KV31P100M120SF7RM, Rev. 1, March 24, 2014
+**     Version:             rev. 1.4, 2014-05-06
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MKV31F51212
 **
-**     Copyright: 1997 - 2013 Freescale, Inc. All Rights Reserved.
+**     Copyright: 1997 - 2014 Freescale Semiconductor, Inc.
+**     All rights reserved.
+**
+**     Redistribution and use in source and binary forms, with or without modification,
+**     are permitted provided that the following conditions are met:
+**
+**     o Redistributions of source code must retain the above copyright notice, this list
+**       of conditions and the following disclaimer.
+**
+**     o Redistributions in binary form must reproduce the above copyright notice, this
+**       list of conditions and the following disclaimer in the documentation and/or
+**       other materials provided with the distribution.
+**
+**     o Neither the name of Freescale Semiconductor, Inc. nor the names of its
+**       contributors may be used to endorse or promote products derived from this
+**       software without specific prior written permission.
+**
+**     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+**     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+**     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+**     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+**     ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+**     (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**     LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+**     ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+**     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+**     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **
 **     http:                 www.freescale.com
 **     mail:                 support@freescale.com
@@ -22,23 +48,26 @@
 **         Initial version.
 **     - rev. 1.1 (2013-12-20)
 **         Update according to reference manual rev. 0.6,
+**     - rev. 1.2 (2014-01-13)
+**         Update according to reference manual rev. 0.61,
+**     - rev. 1.3 (2014-02-10)
+**         The declaration of clock configurations has been moved to separate header file system_MKV31F51212.h
+**     - rev. 1.4 (2014-05-06)
+**         Update according to reference manual rev. 1.0,
+**         Update of system and startup files.
+**         Module access macro module_BASES replaced by module_BASE_PTRS.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKV31F51212.h
- * @version 1.1
- * @date 2013-12-20
+ * @version 1.4
+ * @date 2014-05-06
  * @brief CMSIS Peripheral Access Layer for MKV31F51212
  *
  * CMSIS Peripheral Access Layer for MKV31F51212
  */
-
-#if !defined(MKV31F51212_H_)
-#define MKV31F51212_H_                           /**< Symbol preventing repeated inclusion */
-
-#endif  /* #if !defined(MKV31F51212_H_) */
 
 
 /* ----------------------------------------------------------------------------
@@ -46,7 +75,8 @@
    ---------------------------------------------------------------------------- */
 
 /* Prevention from multiple including the same memory map */
-#if !defined(MCU_MKV31F51212)  /* Check if memory map has not been already included */
+#if !defined(MKV31F51212_H_)  /* Check if memory map has not been already included */
+#define MKV31F51212_H_
 #define MCU_MKV31F51212
 
 /* Check if another memory map has not been also included */
@@ -61,7 +91,7 @@
  * compatible) */
 #define MCU_MEM_MAP_VERSION 0x0100u
 /** Memory map minor version */
-#define MCU_MEM_MAP_VERSION_MINOR 0x0001u
+#define MCU_MEM_MAP_VERSION_MINOR 0x0004u
 
 /**
  * @brief Macro to calculate address of an aliased word in the peripheral
@@ -111,6 +141,8 @@
  */
 
 /** Interrupt Number Definitions */
+#define NUMBER_OF_INT_VECTORS 102                /**< Number of interrupts in the Vector table */
+
 typedef enum IRQn {
   /* Core interrupts */
   NonMaskableInt_IRQn          = -14,              /**< Non Maskable Interrupt */
@@ -516,8 +548,10 @@ typedef struct {
 /** Peripheral ADC1 base pointer */
 #define ADC1                                     ((ADC_Type *)ADC1_BASE)
 #define ADC1_BASE_PTR                            (ADC1)
+/** Array initializer of ADC peripheral base addresses */
+#define ADC_BASE_ADDRS                           { ADC0_BASE, ADC1_BASE }
 /** Array initializer of ADC peripheral base pointers */
-#define ADC_BASES                                { ADC0, ADC1 }
+#define ADC_BASE_PTRS                            { ADC0, ADC1 }
 
 /* ----------------------------------------------------------------------------
    -- ADC - Register accessor macros
@@ -727,8 +761,10 @@ typedef struct {
 /** Peripheral CMP1 base pointer */
 #define CMP1                                     ((CMP_Type *)CMP1_BASE)
 #define CMP1_BASE_PTR                            (CMP1)
+/** Array initializer of CMP peripheral base addresses */
+#define CMP_BASE_ADDRS                           { CMP0_BASE, CMP1_BASE }
 /** Array initializer of CMP peripheral base pointers */
-#define CMP_BASES                                { CMP0, CMP1 }
+#define CMP_BASE_PTRS                            { CMP0, CMP1 }
 
 /* ----------------------------------------------------------------------------
    -- CMP - Register accessor macros
@@ -960,8 +996,10 @@ typedef struct {
 /** Peripheral CRC base pointer */
 #define CRC0                                     ((CRC_Type *)CRC_BASE)
 #define CRC_BASE_PTR                             (CRC0)
+/** Array initializer of CRC peripheral base addresses */
+#define CRC_BASE_ADDRS                           { CRC_BASE }
 /** Array initializer of CRC peripheral base pointers */
-#define CRC_BASES                                { CRC0 }
+#define CRC_BASE_PTRS                            { CRC0 }
 
 /* ----------------------------------------------------------------------------
    -- CRC - Register accessor macros
@@ -1122,8 +1160,10 @@ typedef struct {
 /** Peripheral DAC1 base pointer */
 #define DAC1                                     ((DAC_Type *)DAC1_BASE)
 #define DAC1_BASE_PTR                            (DAC1)
+/** Array initializer of DAC peripheral base addresses */
+#define DAC_BASE_ADDRS                           { DAC0_BASE, DAC1_BASE }
 /** Array initializer of DAC peripheral base pointers */
-#define DAC_BASES                                { DAC0, DAC1 }
+#define DAC_BASE_PTRS                            { DAC0, DAC1 }
 
 /* ----------------------------------------------------------------------------
    -- DAC - Register accessor macros
@@ -1934,8 +1974,10 @@ typedef struct {
 /** Peripheral DMA base pointer */
 #define DMA0                                     ((DMA_Type *)DMA_BASE)
 #define DMA_BASE_PTR                             (DMA0)
+/** Array initializer of DMA peripheral base addresses */
+#define DMA_BASE_ADDRS                           { DMA_BASE }
 /** Array initializer of DMA peripheral base pointers */
-#define DMA_BASES                                { DMA0 }
+#define DMA_BASE_PTRS                            { DMA0 }
 
 /* ----------------------------------------------------------------------------
    -- DMA - Register accessor macros
@@ -2310,8 +2352,10 @@ typedef struct {
 /** Peripheral DMAMUX base pointer */
 #define DMAMUX                                   ((DMAMUX_Type *)DMAMUX_BASE)
 #define DMAMUX_BASE_PTR                          (DMAMUX)
+/** Array initializer of DMAMUX peripheral base addresses */
+#define DMAMUX_BASE_ADDRS                        { DMAMUX_BASE }
 /** Array initializer of DMAMUX peripheral base pointers */
-#define DMAMUX_BASES                             { DMAMUX }
+#define DMAMUX_BASE_PTRS                         { DMAMUX }
 
 /* ----------------------------------------------------------------------------
    -- DMAMUX - Register accessor macros
@@ -2442,8 +2486,10 @@ typedef struct {
 /** Peripheral EWM base pointer */
 #define EWM                                      ((EWM_Type *)EWM_BASE)
 #define EWM_BASE_PTR                             (EWM)
+/** Array initializer of EWM peripheral base addresses */
+#define EWM_BASE_ADDRS                           { EWM_BASE }
 /** Array initializer of EWM peripheral base pointers */
-#define EWM_BASES                                { EWM }
+#define EWM_BASE_PTRS                            { EWM }
 
 /* ----------------------------------------------------------------------------
    -- EWM - Register accessor macros
@@ -2596,8 +2642,10 @@ typedef struct {
 /** Peripheral FB base pointer */
 #define FB                                       ((FB_Type *)FB_BASE)
 #define FB_BASE_PTR                              (FB)
+/** Array initializer of FB peripheral base addresses */
+#define FB_BASE_ADDRS                            { FB_BASE }
 /** Array initializer of FB peripheral base pointers */
-#define FB_BASES                                 { FB }
+#define FB_BASE_PTRS                             { FB }
 
 /* ----------------------------------------------------------------------------
    -- FB - Register accessor macros
@@ -2837,8 +2885,10 @@ typedef struct {
 /** Peripheral FMC base pointer */
 #define FMC                                      ((FMC_Type *)FMC_BASE)
 #define FMC_BASE_PTR                             (FMC)
+/** Array initializer of FMC peripheral base addresses */
+#define FMC_BASE_ADDRS                           { FMC_BASE }
 /** Array initializer of FMC peripheral base pointers */
-#define FMC_BASES                                { FMC }
+#define FMC_BASE_PTRS                            { FMC }
 
 /* ----------------------------------------------------------------------------
    -- FMC - Register accessor macros
@@ -3272,8 +3322,10 @@ typedef struct {
 /** Peripheral FTFA base pointer */
 #define FTFA                                     ((FTFA_Type *)FTFA_BASE)
 #define FTFA_BASE_PTR                            (FTFA)
+/** Array initializer of FTFA peripheral base addresses */
+#define FTFA_BASE_ADDRS                          { FTFA_BASE }
 /** Array initializer of FTFA peripheral base pointers */
-#define FTFA_BASES                               { FTFA }
+#define FTFA_BASE_PTRS                           { FTFA }
 
 /* ----------------------------------------------------------------------------
    -- FTFA - Register accessor macros
@@ -3859,8 +3911,10 @@ typedef struct {
 /** Peripheral FTM3 base pointer */
 #define FTM3                                     ((FTM_Type *)FTM3_BASE)
 #define FTM3_BASE_PTR                            (FTM3)
+/** Array initializer of FTM peripheral base addresses */
+#define FTM_BASE_ADDRS                           { FTM0_BASE, FTM1_BASE, FTM2_BASE, FTM3_BASE }
 /** Array initializer of FTM peripheral base pointers */
-#define FTM_BASES                                { FTM0, FTM1, FTM2, FTM3 }
+#define FTM_BASE_PTRS                            { FTM0, FTM1, FTM2, FTM3 }
 
 /* ----------------------------------------------------------------------------
    -- FTM - Register accessor macros
@@ -4137,8 +4191,10 @@ typedef struct {
 /** Peripheral PTE base pointer */
 #define PTE                                      ((GPIO_Type *)PTE_BASE)
 #define PTE_BASE_PTR                             (PTE)
+/** Array initializer of GPIO peripheral base addresses */
+#define GPIO_BASE_ADDRS                          { PTA_BASE, PTB_BASE, PTC_BASE, PTD_BASE, PTE_BASE }
 /** Array initializer of GPIO peripheral base pointers */
-#define GPIO_BASES                               { PTA, PTB, PTC, PTD, PTE }
+#define GPIO_BASE_PTRS                           { PTA, PTB, PTC, PTD, PTE }
 
 /* ----------------------------------------------------------------------------
    -- GPIO - Register accessor macros
@@ -4211,7 +4267,7 @@ typedef struct {
   __IO uint8_t A1;                                 /**< I2C Address Register 1, offset: 0x0 */
   __IO uint8_t F;                                  /**< I2C Frequency Divider register, offset: 0x1 */
   __IO uint8_t C1;                                 /**< I2C Control Register 1, offset: 0x2 */
-  __IO uint8_t S;                                  /**< I2C Status register 1, offset: 0x3 */
+  __IO uint8_t S;                                  /**< I2C Status register, offset: 0x3 */
   __IO uint8_t D;                                  /**< I2C Data I/O register, offset: 0x4 */
   __IO uint8_t C2;                                 /**< I2C Control Register 2, offset: 0x5 */
   __IO uint8_t FLT;                                /**< I2C Programmable Input Glitch Filter register, offset: 0x6 */
@@ -4385,8 +4441,10 @@ typedef struct {
 /** Peripheral I2C1 base pointer */
 #define I2C1                                     ((I2C_Type *)I2C1_BASE)
 #define I2C1_BASE_PTR                            (I2C1)
+/** Array initializer of I2C peripheral base addresses */
+#define I2C_BASE_ADDRS                           { I2C0_BASE, I2C1_BASE }
 /** Array initializer of I2C peripheral base pointers */
-#define I2C_BASES                                { I2C0, I2C1 }
+#define I2C_BASE_PTRS                            { I2C0, I2C1 }
 
 /* ----------------------------------------------------------------------------
    -- I2C - Register accessor macros
@@ -4403,7 +4461,7 @@ typedef struct {
 #define I2C0_A1                                  I2C_A1_REG(I2C0)
 #define I2C0_F                                   I2C_F_REG(I2C0)
 #define I2C0_C1                                  I2C_C1_REG(I2C0)
-#define I2C0_S1                                  I2C_S_REG(I2C0)
+#define I2C0_S                                   I2C_S_REG(I2C0)
 #define I2C0_D                                   I2C_D_REG(I2C0)
 #define I2C0_C2                                  I2C_C2_REG(I2C0)
 #define I2C0_FLT                                 I2C_FLT_REG(I2C0)
@@ -4416,7 +4474,7 @@ typedef struct {
 #define I2C1_A1                                  I2C_A1_REG(I2C1)
 #define I2C1_F                                   I2C_F_REG(I2C1)
 #define I2C1_C1                                  I2C_C1_REG(I2C1)
-#define I2C1_S1                                  I2C_S_REG(I2C1)
+#define I2C1_S                                   I2C_S_REG(I2C1)
 #define I2C1_D                                   I2C_D_REG(I2C1)
 #define I2C1_C2                                  I2C_C2_REG(I2C1)
 #define I2C1_FLT                                 I2C_FLT_REG(I2C1)
@@ -4645,8 +4703,10 @@ typedef struct {
 /** Peripheral LLWU base pointer */
 #define LLWU                                     ((LLWU_Type *)LLWU_BASE)
 #define LLWU_BASE_PTR                            (LLWU)
+/** Array initializer of LLWU peripheral base addresses */
+#define LLWU_BASE_ADDRS                          { LLWU_BASE }
 /** Array initializer of LLWU peripheral base pointers */
-#define LLWU_BASES                               { LLWU }
+#define LLWU_BASE_PTRS                           { LLWU }
 
 /* ----------------------------------------------------------------------------
    -- LLWU - Register accessor macros
@@ -4773,8 +4833,10 @@ typedef struct {
 /** Peripheral LPTMR0 base pointer */
 #define LPTMR0                                   ((LPTMR_Type *)LPTMR0_BASE)
 #define LPTMR0_BASE_PTR                          (LPTMR0)
+/** Array initializer of LPTMR peripheral base addresses */
+#define LPTMR_BASE_ADDRS                         { LPTMR0_BASE }
 /** Array initializer of LPTMR peripheral base pointers */
-#define LPTMR_BASES                              { LPTMR0 }
+#define LPTMR_BASE_PTRS                          { LPTMR0 }
 
 /* ----------------------------------------------------------------------------
    -- LPTMR - Register accessor macros
@@ -5045,8 +5107,10 @@ typedef struct {
 /** Peripheral LPUART0 base pointer */
 #define LPUART0                                  ((LPUART_Type *)LPUART0_BASE)
 #define LPUART0_BASE_PTR                         (LPUART0)
+/** Array initializer of LPUART peripheral base addresses */
+#define LPUART_BASE_ADDRS                        { LPUART0_BASE }
 /** Array initializer of LPUART peripheral base pointers */
-#define LPUART_BASES                             { LPUART0 }
+#define LPUART_BASE_PTRS                         { LPUART0 }
 
 /* ----------------------------------------------------------------------------
    -- LPUART - Register accessor macros
@@ -5267,8 +5331,10 @@ typedef struct {
 /** Peripheral MCG base pointer */
 #define MCG                                      ((MCG_Type *)MCG_BASE)
 #define MCG_BASE_PTR                             (MCG)
+/** Array initializer of MCG peripheral base addresses */
+#define MCG_BASE_ADDRS                           { MCG_BASE }
 /** Array initializer of MCG peripheral base pointers */
-#define MCG_BASES                                { MCG }
+#define MCG_BASE_PTRS                            { MCG }
 
 /* ----------------------------------------------------------------------------
    -- MCG - Register accessor macros
@@ -5320,7 +5386,7 @@ typedef struct {
   __I  uint16_t PLASC;                             /**< Crossbar Switch (AXBS) Slave Configuration, offset: 0x8 */
   __I  uint16_t PLAMC;                             /**< Crossbar Switch (AXBS) Master Configuration, offset: 0xA */
   __IO uint32_t PLACR;                             /**< Crossbar Switch (AXBS) Control Register, offset: 0xC */
-  __IO uint32_t ISR;                               /**< Interrupt Status and Control Register, offset: 0x10 */
+  __IO uint32_t ISCR;                              /**< Interrupt Status and Control Register, offset: 0x10 */
        uint8_t RESERVED_1[44];
   __IO uint32_t CPO;                               /**< Compute Operation Control Register, offset: 0x40 */
 } MCM_Type, *MCM_MemMapPtr;
@@ -5339,7 +5405,7 @@ typedef struct {
 #define MCM_PLASC_REG(base)                      ((base)->PLASC)
 #define MCM_PLAMC_REG(base)                      ((base)->PLAMC)
 #define MCM_PLACR_REG(base)                      ((base)->PLACR)
-#define MCM_ISR_REG(base)                        ((base)->ISR)
+#define MCM_ISCR_REG(base)                       ((base)->ISCR)
 #define MCM_CPO_REG(base)                        ((base)->CPO)
 
 /*!
@@ -5367,31 +5433,31 @@ typedef struct {
 /* PLACR Bit Fields */
 #define MCM_PLACR_ARB_MASK                       0x200u
 #define MCM_PLACR_ARB_SHIFT                      9
-/* ISR Bit Fields */
-#define MCM_ISR_FIOC_MASK                        0x100u
-#define MCM_ISR_FIOC_SHIFT                       8
-#define MCM_ISR_FDZC_MASK                        0x200u
-#define MCM_ISR_FDZC_SHIFT                       9
-#define MCM_ISR_FOFC_MASK                        0x400u
-#define MCM_ISR_FOFC_SHIFT                       10
-#define MCM_ISR_FUFC_MASK                        0x800u
-#define MCM_ISR_FUFC_SHIFT                       11
-#define MCM_ISR_FIXC_MASK                        0x1000u
-#define MCM_ISR_FIXC_SHIFT                       12
-#define MCM_ISR_FIDC_MASK                        0x8000u
-#define MCM_ISR_FIDC_SHIFT                       15
-#define MCM_ISR_FIOCE_MASK                       0x1000000u
-#define MCM_ISR_FIOCE_SHIFT                      24
-#define MCM_ISR_FDZCE_MASK                       0x2000000u
-#define MCM_ISR_FDZCE_SHIFT                      25
-#define MCM_ISR_FOFCE_MASK                       0x4000000u
-#define MCM_ISR_FOFCE_SHIFT                      26
-#define MCM_ISR_FUFCE_MASK                       0x8000000u
-#define MCM_ISR_FUFCE_SHIFT                      27
-#define MCM_ISR_FIXCE_MASK                       0x10000000u
-#define MCM_ISR_FIXCE_SHIFT                      28
-#define MCM_ISR_FIDCE_MASK                       0x80000000u
-#define MCM_ISR_FIDCE_SHIFT                      31
+/* ISCR Bit Fields */
+#define MCM_ISCR_FIOC_MASK                       0x100u
+#define MCM_ISCR_FIOC_SHIFT                      8
+#define MCM_ISCR_FDZC_MASK                       0x200u
+#define MCM_ISCR_FDZC_SHIFT                      9
+#define MCM_ISCR_FOFC_MASK                       0x400u
+#define MCM_ISCR_FOFC_SHIFT                      10
+#define MCM_ISCR_FUFC_MASK                       0x800u
+#define MCM_ISCR_FUFC_SHIFT                      11
+#define MCM_ISCR_FIXC_MASK                       0x1000u
+#define MCM_ISCR_FIXC_SHIFT                      12
+#define MCM_ISCR_FIDC_MASK                       0x8000u
+#define MCM_ISCR_FIDC_SHIFT                      15
+#define MCM_ISCR_FIOCE_MASK                      0x1000000u
+#define MCM_ISCR_FIOCE_SHIFT                     24
+#define MCM_ISCR_FDZCE_MASK                      0x2000000u
+#define MCM_ISCR_FDZCE_SHIFT                     25
+#define MCM_ISCR_FOFCE_MASK                      0x4000000u
+#define MCM_ISCR_FOFCE_SHIFT                     26
+#define MCM_ISCR_FUFCE_MASK                      0x8000000u
+#define MCM_ISCR_FUFCE_SHIFT                     27
+#define MCM_ISCR_FIXCE_MASK                      0x10000000u
+#define MCM_ISCR_FIXCE_SHIFT                     28
+#define MCM_ISCR_FIDCE_MASK                      0x80000000u
+#define MCM_ISCR_FIDCE_SHIFT                     31
 /* CPO Bit Fields */
 #define MCM_CPO_CPOREQ_MASK                      0x1u
 #define MCM_CPO_CPOREQ_SHIFT                     0
@@ -5411,8 +5477,10 @@ typedef struct {
 /** Peripheral MCM base pointer */
 #define MCM                                      ((MCM_Type *)MCM_BASE)
 #define MCM_BASE_PTR                             (MCM)
+/** Array initializer of MCM peripheral base addresses */
+#define MCM_BASE_ADDRS                           { MCM_BASE }
 /** Array initializer of MCM peripheral base pointers */
-#define MCM_BASES                                { MCM }
+#define MCM_BASE_PTRS                            { MCM }
 
 /* ----------------------------------------------------------------------------
    -- MCM - Register accessor macros
@@ -5429,7 +5497,7 @@ typedef struct {
 #define MCM_PLASC                                MCM_PLASC_REG(MCM)
 #define MCM_PLAMC                                MCM_PLAMC_REG(MCM)
 #define MCM_PLACR                                MCM_PLACR_REG(MCM)
-#define MCM_ISCR                                 MCM_ISR_REG(MCM)
+#define MCM_ISCR                                 MCM_ISCR_REG(MCM)
 #define MCM_CPO                                  MCM_CPO_REG(MCM)
 
 /*!
@@ -5591,8 +5659,10 @@ typedef struct {
 /** Peripheral FTFA_FlashConfig base pointer */
 #define FTFA_FlashConfig                         ((NV_Type *)FTFA_FlashConfig_BASE)
 #define FTFA_FlashConfig_BASE_PTR                (FTFA_FlashConfig)
+/** Array initializer of NV peripheral base addresses */
+#define NV_BASE_ADDRS                            { FTFA_FlashConfig_BASE }
 /** Array initializer of NV peripheral base pointers */
-#define NV_BASES                                 { FTFA_FlashConfig }
+#define NV_BASE_PTRS                             { FTFA_FlashConfig }
 
 /* ----------------------------------------------------------------------------
    -- NV - Register accessor macros
@@ -5704,8 +5774,10 @@ typedef struct {
 /** Peripheral OSC base pointer */
 #define OSC                                      ((OSC_Type *)OSC_BASE)
 #define OSC_BASE_PTR                             (OSC)
+/** Array initializer of OSC peripheral base addresses */
+#define OSC_BASE_ADDRS                           { OSC_BASE }
 /** Array initializer of OSC peripheral base pointers */
-#define OSC_BASES                                { OSC }
+#define OSC_BASE_PTRS                            { OSC }
 
 /* ----------------------------------------------------------------------------
    -- OSC - Register accessor macros
@@ -5894,8 +5966,10 @@ typedef struct {
 /** Peripheral PDB0 base pointer */
 #define PDB0                                     ((PDB_Type *)PDB0_BASE)
 #define PDB0_BASE_PTR                            (PDB0)
+/** Array initializer of PDB peripheral base addresses */
+#define PDB_BASE_ADDRS                           { PDB0_BASE }
 /** Array initializer of PDB peripheral base pointers */
-#define PDB_BASES                                { PDB0 }
+#define PDB_BASE_PTRS                            { PDB0 }
 
 /* ----------------------------------------------------------------------------
    -- PDB - Register accessor macros
@@ -6034,8 +6108,10 @@ typedef struct {
 /** Peripheral PIT base pointer */
 #define PIT                                      ((PIT_Type *)PIT_BASE)
 #define PIT_BASE_PTR                             (PIT)
+/** Array initializer of PIT peripheral base addresses */
+#define PIT_BASE_ADDRS                           { PIT_BASE }
 /** Array initializer of PIT peripheral base pointers */
-#define PIT_BASES                                { PIT }
+#define PIT_BASE_PTRS                            { PIT }
 
 /* ----------------------------------------------------------------------------
    -- PIT - Register accessor macros
@@ -6171,8 +6247,10 @@ typedef struct {
 /** Peripheral PMC base pointer */
 #define PMC                                      ((PMC_Type *)PMC_BASE)
 #define PMC_BASE_PTR                             (PMC)
+/** Array initializer of PMC peripheral base addresses */
+#define PMC_BASE_ADDRS                           { PMC_BASE }
 /** Array initializer of PMC peripheral base pointers */
-#define PMC_BASES                                { PMC }
+#define PMC_BASE_PTRS                            { PMC }
 
 /* ----------------------------------------------------------------------------
    -- PMC - Register accessor macros
@@ -6339,8 +6417,10 @@ typedef struct {
 /** Peripheral PORTE base pointer */
 #define PORTE                                    ((PORT_Type *)PORTE_BASE)
 #define PORTE_BASE_PTR                           (PORTE)
+/** Array initializer of PORT peripheral base addresses */
+#define PORT_BASE_ADDRS                          { PORTA_BASE, PORTB_BASE, PORTC_BASE, PORTD_BASE, PORTE_BASE }
 /** Array initializer of PORT peripheral base pointers */
-#define PORT_BASES                               { PORTA, PORTB, PORTC, PORTD, PORTE }
+#define PORT_BASE_PTRS                           { PORTA, PORTB, PORTC, PORTD, PORTE }
 
 /* ----------------------------------------------------------------------------
    -- PORT - Register accessor macros
@@ -6690,8 +6770,10 @@ typedef struct {
 /** Peripheral RCM base pointer */
 #define RCM                                      ((RCM_Type *)RCM_BASE)
 #define RCM_BASE_PTR                             (RCM)
+/** Array initializer of RCM peripheral base addresses */
+#define RCM_BASE_ADDRS                           { RCM_BASE }
 /** Array initializer of RCM peripheral base pointers */
-#define RCM_BASES                                { RCM }
+#define RCM_BASE_PTRS                            { RCM }
 
 /* ----------------------------------------------------------------------------
    -- RCM - Register accessor macros
@@ -6789,8 +6871,10 @@ typedef struct {
 /** Peripheral RFSYS base pointer */
 #define RFSYS                                    ((RFSYS_Type *)RFSYS_BASE)
 #define RFSYS_BASE_PTR                           (RFSYS)
+/** Array initializer of RFSYS peripheral base addresses */
+#define RFSYS_BASE_ADDRS                         { RFSYS_BASE }
 /** Array initializer of RFSYS peripheral base pointers */
-#define RFSYS_BASES                              { RFSYS }
+#define RFSYS_BASE_PTRS                          { RFSYS }
 
 /* ----------------------------------------------------------------------------
    -- RFSYS - Register accessor macros
@@ -6921,8 +7005,10 @@ typedef struct {
 /** Peripheral RNG base pointer */
 #define RNG                                      ((RNG_Type *)RNG_BASE)
 #define RNG_BASE_PTR                             (RNG)
+/** Array initializer of RNG peripheral base addresses */
+#define RNG_BASE_ADDRS                           { RNG_BASE }
 /** Array initializer of RNG peripheral base pointers */
-#define RNG_BASES                                { RNG }
+#define RNG_BASE_PTRS                            { RNG }
 
 /* ----------------------------------------------------------------------------
    -- RNG - Register accessor macros
@@ -7226,6 +7312,8 @@ typedef struct {
 #define SIM_SCGC6_ADC1_SHIFT                     7
 #define SIM_SCGC6_DAC1_MASK                      0x100u
 #define SIM_SCGC6_DAC1_SHIFT                     8
+#define SIM_SCGC6_RNGA_MASK                      0x200u
+#define SIM_SCGC6_RNGA_SHIFT                     9
 #define SIM_SCGC6_LPUART0_MASK                   0x400u
 #define SIM_SCGC6_LPUART0_SHIFT                  10
 #define SIM_SCGC6_SPI0_MASK                      0x1000u
@@ -7309,8 +7397,10 @@ typedef struct {
 /** Peripheral SIM base pointer */
 #define SIM                                      ((SIM_Type *)SIM_BASE)
 #define SIM_BASE_PTR                             (SIM)
+/** Array initializer of SIM peripheral base addresses */
+#define SIM_BASE_ADDRS                           { SIM_BASE }
 /** Array initializer of SIM peripheral base pointers */
-#define SIM_BASES                                { SIM }
+#define SIM_BASE_PTRS                            { SIM }
 
 /* ----------------------------------------------------------------------------
    -- SIM - Register accessor macros
@@ -7423,8 +7513,6 @@ typedef struct {
 #define SMC_STOPCTRL_LLSM_MASK                   0x7u
 #define SMC_STOPCTRL_LLSM_SHIFT                  0
 #define SMC_STOPCTRL_LLSM(x)                     (((uint8_t)(((uint8_t)(x))<<SMC_STOPCTRL_LLSM_SHIFT))&SMC_STOPCTRL_LLSM_MASK)
-#define SMC_STOPCTRL_LPOPO_MASK                  0x8u
-#define SMC_STOPCTRL_LPOPO_SHIFT                 3
 #define SMC_STOPCTRL_PORPO_MASK                  0x20u
 #define SMC_STOPCTRL_PORPO_SHIFT                 5
 #define SMC_STOPCTRL_PSTOPO_MASK                 0xC0u
@@ -7446,8 +7534,10 @@ typedef struct {
 /** Peripheral SMC base pointer */
 #define SMC                                      ((SMC_Type *)SMC_BASE)
 #define SMC_BASE_PTR                             (SMC)
+/** Array initializer of SMC peripheral base addresses */
+#define SMC_BASE_ADDRS                           { SMC_BASE }
 /** Array initializer of SMC peripheral base pointers */
-#define SMC_BASES                                { SMC }
+#define SMC_BASE_PTRS                            { SMC }
 
 /* ----------------------------------------------------------------------------
    -- SMC - Register accessor macros
@@ -7769,8 +7859,10 @@ typedef struct {
 /** Peripheral SPI1 base pointer */
 #define SPI1                                     ((SPI_Type *)SPI1_BASE)
 #define SPI1_BASE_PTR                            (SPI1)
+/** Array initializer of SPI peripheral base addresses */
+#define SPI_BASE_ADDRS                           { SPI0_BASE, SPI1_BASE }
 /** Array initializer of SPI peripheral base pointers */
-#define SPI_BASES                                { SPI0, SPI1 }
+#define SPI_BASE_PTRS                            { SPI0, SPI1 }
 
 /* ----------------------------------------------------------------------------
    -- SPI - Register accessor macros
@@ -8280,8 +8372,10 @@ typedef struct {
 /** Peripheral UART2 base pointer */
 #define UART2                                    ((UART_Type *)UART2_BASE)
 #define UART2_BASE_PTR                           (UART2)
+/** Array initializer of UART peripheral base addresses */
+#define UART_BASE_ADDRS                          { UART0_BASE, UART1_BASE, UART2_BASE }
 /** Array initializer of UART peripheral base pointers */
-#define UART_BASES                               { UART0, UART1, UART2 }
+#define UART_BASE_PTRS                           { UART0, UART1, UART2 }
 
 /* ----------------------------------------------------------------------------
    -- UART - Register accessor macros
@@ -8463,8 +8557,10 @@ typedef struct {
 /** Peripheral VREF base pointer */
 #define VREF                                     ((VREF_Type *)VREF_BASE)
 #define VREF_BASE_PTR                            (VREF)
+/** Array initializer of VREF peripheral base addresses */
+#define VREF_BASE_ADDRS                          { VREF_BASE }
 /** Array initializer of VREF peripheral base pointers */
-#define VREF_BASES                               { VREF }
+#define VREF_BASE_PTRS                           { VREF }
 
 /* ----------------------------------------------------------------------------
    -- VREF - Register accessor macros
@@ -8635,8 +8731,10 @@ typedef struct {
 /** Peripheral WDOG base pointer */
 #define WDOG                                     ((WDOG_Type *)WDOG_BASE)
 #define WDOG_BASE_PTR                            (WDOG)
+/** Array initializer of WDOG peripheral base addresses */
+#define WDOG_BASE_ADDRS                          { WDOG_BASE }
 /** Array initializer of WDOG peripheral base pointers */
-#define WDOG_BASES                               { WDOG }
+#define WDOG_BASE_PTRS                           { WDOG }
 
 /* ----------------------------------------------------------------------------
    -- WDOG - Register accessor macros
@@ -8703,20 +8801,51 @@ typedef struct {
  * @{
  */
 
-/* No backward compatibility issues. */
+#define  MCG_C2_EREFS0_MASK          MCG_C2_EREFS_MASK
+#define  MCG_C2_EREFS0_SHIFT         MCG_C2_EREFS_SHIFT
+#define  MCG_C2_HGO0_MASK            MCG_C2_HGO_MASK
+#define  MCG_C2_HGO0_SHIFT           MCG_C2_HGO_SHIFT
+#define  MCG_C2_RANGE0_MASK          MCG_C2_RANGE_MASK
+#define  MCG_C2_RANGE0_SHIFT         MCG_C2_RANGE_SHIFT
+#define  MCG_C2_RANGE0(x)            MCG_C2_RANGE(x)
+#define MCM_ISR_REG(base)            MCM_ISCR_REG(base)
+#define MCM_ISR_FIOC_MASK            MCM_ISCR_FIOC_MASK
+#define MCM_ISR_FIOC_SHIFT           MCM_ISCR_FIOC_SHIFT
+#define MCM_ISR_FDZC_MASK            MCM_ISCR_FDZC_MASK
+#define MCM_ISR_FDZC_SHIFT           MCM_ISCR_FDZC_SHIFT
+#define MCM_ISR_FOFC_MASK            MCM_ISCR_FOFC_MASK
+#define MCM_ISR_FOFC_SHIFT           MCM_ISCR_FOFC_SHIFT
+#define MCM_ISR_FUFC_MASK            MCM_ISCR_FUFC_MASK
+#define MCM_ISR_FUFC_SHIFT           MCM_ISCR_FUFC_SHIFT
+#define MCM_ISR_FIXC_MASK            MCM_ISCR_FIXC_MASK
+#define MCM_ISR_FIXC_SHIFT           MCM_ISCR_FIXC_SHIFT
+#define MCM_ISR_FIDC_MASK            MCM_ISCR_FIDC_MASK
+#define MCM_ISR_FIDC_SHIFT           MCM_ISCR_FIDC_SHIFT
+#define MCM_ISR_FIOCE_MASK           MCM_ISCR_FIOCE_MASK
+#define MCM_ISR_FIOCE_SHIFT          MCM_ISCR_FIOCE_SHIFT
+#define MCM_ISR_FDZCE_MASK           MCM_ISCR_FDZCE_MASK
+#define MCM_ISR_FDZCE_SHIFT          MCM_ISCR_FDZCE_SHIFT
+#define MCM_ISR_FOFCE_MASK           MCM_ISCR_FOFCE_MASK
+#define MCM_ISR_FOFCE_SHIFT          MCM_ISCR_FOFCE_SHIFT
+#define MCM_ISR_FUFCE_MASK           MCM_ISCR_FUFCE_MASK
+#define MCM_ISR_FUFCE_SHIFT          MCM_ISCR_FUFCE_SHIFT
+#define MCM_ISR_FIXCE_MASK           MCM_ISCR_FIXCE_MASK
+#define MCM_ISR_FIXCE_SHIFT          MCM_ISCR_FIXCE_SHIFT
+#define MCM_ISR_FIDCE_MASK           MCM_ISCR_FIDCE_MASK
+#define MCM_ISR_FIDCE_SHIFT          MCM_ISCR_FIDCE_SHIFT
 
 /*!
  * @}
  */ /* end of group Backward_Compatibility_Symbols */
 
 
-#else /* #if !defined(MCU_MKV31F51212) */
+#else /* #if !defined(MKV31F51212_H_) */
   /* There is already included the same memory map. Check if it is compatible (has the same major version) */
   #if (MCU_MEM_MAP_VERSION != 0x0100u)
     #if (!defined(MCU_MEM_MAP_SUPPRESS_VERSION_WARNING))
       #warning There are included two not compatible versions of memory maps. Please check possible differences.
     #endif /* (!defined(MCU_MEM_MAP_SUPPRESS_VERSION_WARNING)) */
   #endif /* (MCU_MEM_MAP_VERSION != 0x0100u) */
-#endif  /* #if !defined(MCU_MKV31F51212) */
+#endif  /* #if !defined(MKV31F51212_H_) */
 
 /* MKV31F51212.h, eof. */

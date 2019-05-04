@@ -6,6 +6,22 @@
  *                                                                           *
  * THIS FILE IS PROVIDED AS IS WITH NO WARRANTY OF ANY KIND, INCLUDING THE   *
  * WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. *
+ *
+ * This file implements the CTL system timer using the Cortex-M SysTick timer. 
+ * The timer is configured to interrupt at a 10 millisecond rate and increment 
+ * the CTL system timer by 10 to give a millisecond timer. The implementation 
+ * uses the CMSIS SystemCoreClock global variable to determine the CPU clock
+ * frequency. The CTL samples that are provided in this package have board specific 
+ * files that initialise this variable.
+ *
+ * The CTL interrupt support functions ctl_global_interrupts_set, ctl_set_priority, 
+ * ctl_unmask_isr and ctl_mask_isr are implemented in this file. The Cortex-M4 
+ * implementations uses the lowest half of the available NVIC priorities (top bit 
+ * set in the priority) for CTL interrupts and disables global interrupts by raising the 
+ * NVIC basepriority above the highest CTL priority. This enables you to use the upper 
+ * half of the NVIC priorities for interrupts that do not use CTL and should not be 
+ * disabled by CTL. The functions ctl_lowest_isr_priority, ctl_highest_isr_priority,
+ * and ctl_adjust_isr_priority are provided to assist with setting isr priorities.
  *****************************************************************************/
 
 #include <ctl_api.h>

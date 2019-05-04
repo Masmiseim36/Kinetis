@@ -13,10 +13,6 @@
 function Connect()
 {
   TargetInterface.setMaximumJTAGFrequency(8000000);
-  if (TargetInterface.implementation() == "j-link")
-    TargetInterface.setDeviceTypeProperty(TargetInterface.getProjectProperty("Target"));   
-  else if (TargetInterface.implementation() == "P&E")
-    TargetInterface.setDeviceTypeProperty("MK60N512");
 }
 
 function EnableTrace(TraceInterfaceType)
@@ -50,7 +46,12 @@ function Reset()
     {
       TargetInterface.stop(1);
       return;
-    }  
+    }
+  if (TargetInterface.implementation() == "j-link")
+    {
+      TargetInterface.resetAndStop(100);
+      return;
+    }
   if (TargetInterface.implementation() == "P&E")
     TargetInterface.stop();
   TargetInterface.setDebugRegister(0x01000004, 0x8); // set System Reset Request, 
@@ -181,7 +182,8 @@ function GetPartName()
       var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
       if (SIM_FCFG2 & (1<<23))
         {
-          PartName += "N";
+          if (PartName.substring(0,3) != "MKV")
+            PartName += "N";
           Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
           Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
           if (((SIM_SDID>>7) & 0x7)==3)
@@ -269,13 +271,13 @@ function GetPartName3()
   switch (SIM_SRSID >> 24)
     {
       case 2: // KE02
-        PartName = "MKE02Z";
+        PartName = "MKE02Z/SKEAZN64";
         break;
       case 4: // KE04
-        PartName = "MKE04Z";
+        PartName = "MKE04Z/SKEAZN8";
         break;
       case 6: // KE06
-        PartName = "MKE06Z";
+        PartName = "MKE06Z/SKEAZ128";
         break;
     }
   return PartName;
@@ -283,8 +285,18 @@ function GetPartName3()
 
 function MatchPartName3(name)
 {  
-  var partName = GetPartName3();  
-  return name.substring(0, 6) == partName.substring(0, 6);
+  var SIM_SRSID = TargetInterface.peekWord(0x40048000);
+  switch (SIM_SRSID >> 24)
+    {
+      case 2: // KE02
+        return name == "MKE02Z" || name.substring(0,8) == "SKEAZN64";       
+      case 4: // KE04
+        return name == "MKE04Z" || name.substring(0,7) == "SKEAZN8";
+      case 6: // KE06
+        return name == "MKE06Z" || name.substring(0,8) == "SKEAZ128";
+        break;
+    }
+  return 0;
 }
 
 function MDMStatus()
