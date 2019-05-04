@@ -82,7 +82,7 @@ _start:
   strh r3, [r2, #4]
   ldr r3, =#0x20
   strb r3, [r2, #0]
-#elif defined(E1_SERIES) || defined(E2_SERIES)
+#elif defined(E1_SERIES) || defined(E1_4_SERIES) || defined(E2_SERIES)
   ldr r0, =0x40052000
   ldr r1, =0xD928C520
   str r1, [r0, #4]

@@ -135,10 +135,16 @@
   #include "CMSIS/system_MKE04Z4.c"
 #elif defined(MKE06Z4)
   #include "CMSIS/system_MKE06Z4.c"
+#elif defined(MKE14Z4)
+  #include "CMSIS/system_MKE14Z4.c"
 #elif defined(MKE14Z7)
   #include "CMSIS/system_MKE14Z7.c"
+#elif defined(MKE15Z4)
+  #include "CMSIS/system_MKE15Z4.c"
 #elif defined(MKE15Z7)
   #include "CMSIS/system_MKE15Z7.c"
+#elif defined(MKE16Z4)
+  #include "CMSIS/system_MKE16Z4.c"
 #elif defined(MKE14F16)
   #include "CMSIS/system_MKE14F16.c"
 #elif defined(MKE16F16)

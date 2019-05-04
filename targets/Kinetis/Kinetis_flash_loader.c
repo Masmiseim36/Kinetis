@@ -314,6 +314,17 @@ main(int param0)
 
   write_block_size = 8;
   sectorSize = 2 * 1024;
+#elif defined(E1_4_SERIES)
+#define MCM_PLACR (*(volatile unsigned *)0xF000300C)
+  // turn off and invalidate any caching
+  MCM_PLACR = (1<<15) | (1<<13) | (1<<12) | (1<<11) | (1<<10);
+
+  // workout flash size, sector size and write block size
+  unsigned FLASH_SIZE = ((SIM_FCFG2>>24) & 0x3f)<<13;
+  unsigned FLASH_START = 0;
+
+  write_block_size = 4;
+  sectorSize = 1 * 1024;
 #elif defined(E2_SERIES)
   unsigned FLASH_SIZE = ((SIM_FCFG2>>24) & 0x7f)<<13;
   unsigned FLASH_START = 0;

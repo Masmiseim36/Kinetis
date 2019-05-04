@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="NXP" cpu_family="Kinetis" version="3.9" build_version="2018111501.12451;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.7-" replaces="Kinetis" dependencies="CMSIS-CORE">
+<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="NXP" cpu_family="Kinetis" version="3.10" build_version="2019041500.12664;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.7-" replaces="Kinetis" dependencies="CMSIS">
   <file file_name="$(TargetsDir)/Kinetis/Loader.hzp" title="Kinetis Loader Application Solution" />
   <file file_name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" title="Kinetis CTL Timer and Interrupt support functions" />
 <targets>
@@ -164,6 +164,14 @@
     <cpu name="MKE04Z128xxx4"/>
     <cpu name="MKE06Z64xxx4"/>
     <cpu name="MKE06Z128xxx4"/>
+  </category>
+  <category name="KE1x Series" >
+    <cpu name="MKE14Z32xxx4"/>
+    <cpu name="MKE14Z64xxx4"/>
+    <cpu name="MKE15Z32xxx4"/>
+    <cpu name="MKE15Z64xxx4"/>
+    <cpu name="MKE16Z32xxx4"/>
+    <cpu name="MKE16Z64xxx4"/>
     <cpu name="MKE14Z128xxx7"/>
     <cpu name="MKE14Z256xxx7"/>
     <cpu name="MKE15Z128xxx7"/>
@@ -428,6 +436,10 @@
 
   </documentation>
   <history>
+    <version name="3.10">
+      <description>Added support for KE14Z4, KE15Z4 and KE16Z4 devices.</description>
+      <description>New projects will use CMSIS-Core property group to select CMSIS headers.</description>
+    </version>
     <version name="3.9">
       <description>Fixed memory maps for K27FN2M0 and K28FN2M0 devices.</description>
       <description>Added workaround for errata e7534 in target script.</description>

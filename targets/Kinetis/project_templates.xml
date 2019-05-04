@@ -32,7 +32,8 @@
     <property name="linker_scanf_fmt_level" />
     <property name="linker_scanf_fp_enabled" />
     <property name="linker_scanf_character_group_matching_enabled" />
-    <property name="c_user_include_directories" value="$(TargetsDir)/Kinetis;$(PackagesDir)/CMSIS_4/CMSIS/Include" />
+    <property name="c_user_include_directories" value="$(TargetsDir)/Kinetis" />
+    <propertygroup name="CMSIS_CORE" value="Yes" />
     <propertygroup name="Placement" value="Flash" />
     <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc">
       <file name="main.c" source="$(StudioDir)/samples/Shared/main.c" />
@@ -101,8 +102,8 @@
     <property name="linker_scanf_fp_enabled" />
     <property name="linker_scanf_character_group_matching_enabled" />
     <property name="arm_linker_process_stack_size" value="256" />
-    <property name="c_user_include_directories" value="$(TargetsDir)/Kinetis;$(PackagesDir)/CMSIS_4/CMSIS/Include" />
-    <property name="link_use_multi_threaded_libraries" value="Yes" />
+    <property name="c_user_include_directories" value="$(TargetsDir)/Kinetis" />
+    <propertygroup name="CMSIS_CORE" value="Yes" />
     <propertygroup name="Placement" value="Flash" />
     <propertygroup name="libctl" value="Yes" />
     <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc">
