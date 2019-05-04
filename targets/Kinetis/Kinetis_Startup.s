@@ -91,39 +91,68 @@ ISR_HANDLER SysTick_Handler
 #include __VECTORS
   .section .vectors, "ax"
 _vectors_end:
-  
-  .section .vectors, "ax"
-  // fill to 0x400 for the flash configuration field
-  //.fill 0x400-(_vectors_end-_vectors), 1, 0xff
-  .org 0x400, 0xFF
-BackDoorKey:
-  .byte 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
-#if defined(E_SERIES)
-RESERVED:
-  .byte 0xff, 0xff, 0xff, 0xff
-EEPROT:
-  .byte 0xff
-FPROT:
-  .byte 0xff
-FSEC:
-  .byte 0xfe
-FOPT:
-  .byte 0xff
+    
+  // flash configuration  
+  .org 0x400, 0xff
+  .long 0xffffffff
+  .long 0xffffffff
+  .long 0xffffffff
+#if defined(MK80F25615)
+  .long 0xffff3dfe
+#elif defined(MK82F25615)
+  .long 0xffff3dfe
+#elif defined(MKE02Z4)
+  .long 0xfffeff87
+#elif defined(MKE04Z4)
+  .long 0xfffeffff
+#elif defined(MKE04Z1284)
+  .long 0xfffeffff
+#elif defined(MKE06Z4)
+  .long 0xfffeffff
+#elif defined(MKE14Z7)
+  .long 0xffff7dfe
+#elif defined(MKE15Z7)
+  .long 0xffff7dfe
+#elif defined(MKE14F16)
+  .long 0xffff7dfe
+#elif defined(MKE16F16)
+  .long 0xffff7dfe
+#elif defined(MKE18F16)
+  .long 0xffff7dfe
+#elif defined(SKEAZN642)
+  .long 0xfffeff87
+#elif defined(SKEAZN84)
+  .long 0xfffeffff
+#elif defined(SKEAZ1284)
+  .long 0xfffeffff
+#elif defined(MKL03Z4)
+  .long 0xffff3ffe
+#elif defined(MKL13Z644)
+  .long 0xffff3dfe
+#elif defined(MKL17Z644)
+  .long 0xffff3dfe
+#elif defined(MKL17Z4)
+  .long 0xffff3ffe
+#elif defined(MKL27Z644)
+  .long 0xffff3dfe
+#elif defined(MKL27Z4)
+  .long 0xffff3ffe
+#elif defined(MKL28Z7)
+  .long 0xffff3dfe
+#elif defined(MKL33Z644)
+  .long 0xffff3dfe
+#elif defined(MKL33Z4)
+  .long 0xffff3ffe
+#elif defined(MKL43Z4)
+  .long 0xffff3ffe
+#elif defined(MKL82Z7)
+  .long 0xffff3dfe
+#elif defined(MKM34Z7)
+  .long 0xffff3ffe
+#elif defined(MWPR1516)
+  .long 0xfffeffff
 #else
-FPROT:
-  .byte 0xff, 0xff, 0xff, 0xff
-FSEC:
-  .byte 0xfe
-FOPT:
-#if defined(MKL03Z4) || defined(MKL17Z4) || defined(MKL17Z644) || defined(MKL27Z4)  || defined(MKL27Z644) || defined(MKL33Z4) || defined(MKL33Z644) || defined(MKL43Z4)
-  .byte 0x3b
-#else 
-  .byte 0xff
-#endif
-FEPROT:
-  .byte 0xff
-FDPROT:
-  .byte 0xff
+  .long 0xfffffffe
 #endif
 
   .section .init, "ax"  
@@ -250,8 +279,20 @@ disableWatchDog:
   strh r1, [r0, #4]
   ldr r1, =0x20
   strb r1, [r0, #0]
+#elif defined(E1_SERIES) || defined(E2_SERIES)
+  ldr r0, =0x40052000
+  ldr r1, =0xD928C520
+  str r1, [r0, #4]
+  ldr r1, =0xffff
+  str r1, [r0, #8]
+  ldr r1, [r0]
+  ldr r2, =(1<<7)
+  bics r1, r2
+  ldr r2, =(1<<5)
+  orrs r1, r2
+  str r1, [r0]
 #else
-#error L_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined
+#error L_SERIES, L28_SERIES, K_SERIES, M_SERIES, V_SERIES, E_SERIES, E1_SERIES or E2_SERIES should be defined
 #endif
   bx lr
 

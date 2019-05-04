@@ -106,6 +106,7 @@ function GetPartName()
     {      
       var SIM_SDID = TargetInterface.peekWord(0x40048024);
       var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
+      var Length;
       switch ((SIM_SDID>>20)&0xf)
         {
           case 0:
@@ -116,22 +117,33 @@ function GetPartName()
               PartName = "MKL"+(((SIM_SDID>>24)&0xff)-0x10).toString(16)+"Z";
             else
               PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+            Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
+            break;
+          case 2:
+            if (((SIM_SDID>>24)&0xff) < 10)
+              PartName = "MKE0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            else
+              PartName = "MKE"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
             break;
           case 5:
             if (((SIM_SDID>>24)&0xff) < 10)
               PartName = "MKW0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
             else
               PartName = "MKW"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+            Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
             break;
           case 6:
             if (((SIM_SDID>>24)&0xff) < 10)
               PartName = "MKV0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
             else
               PartName = "MKV"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+            Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
             break;
         }            
-      Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
-      Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
       PartName += Length.toString();
     }
   else
@@ -146,6 +158,9 @@ function GetPartName()
                 break;
               case 1:
                 PartName = "MKL";
+                break;
+              case 2:
+                PartName = "MKE";
                 break;
               case 5:
                 PartName = "MKW";
@@ -222,8 +237,9 @@ function GetPartName()
         }
       else
         {
-          SubPartName += "X";
-          Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+          if (PartName.substring(0,3) != "MKE")
+            SubPartName += "X";
+          Length = ((SIM_FCFG2>>24) & 0x7f)<<3;
           if (((SIM_SDID>>7) & 0x7)==3)
             Length *= 2;
           SubPartName += Length.toString();

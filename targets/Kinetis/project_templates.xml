@@ -19,8 +19,8 @@
     <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No" />
     <property name="arm_target_restrict_memory_accesses" value="Yes" />
     <property name="arm_gcc_target" value="arm-unknown-eabi" />
-    <property name="arm_linker_stack_size" value="128" />
-    <property name="arm_linker_heap_size" value="128" />
+    <property name="arm_linker_stack_size" value="256" choose="yes" />
+    <property name="arm_linker_heap_size" value="128" choose="yes" />
     <property name="c_additional_options" value="-fms-extensions" />
     <property name="double_is_float" />
     <property name="linker_output_format" />
@@ -40,6 +40,7 @@
     <folder name="System Files">
       <file name="$(StudioDir)/source/thumb_crt0.s" expand="no" />
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/$(DeviceVectorsFile)" expand="no" />
     </folder>
   </project>
   <project cpu_manufacturer="NXP" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Externally Built Executable" description="An externally built executable for NXP Kinetis." type="Externally Built Executable" template_name="Kinetis_EXT_EXE">
@@ -86,8 +87,8 @@
     <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No" />
     <property name="arm_target_restrict_memory_accesses" value="Yes" />
     <property name="arm_gcc_target" value="arm-unknown-eabi" />
-    <property name="arm_linker_stack_size" value="128" />
-    <property name="arm_linker_heap_size" value="128" />
+    <property name="arm_linker_stack_size" value="256" choose="yes" />
+    <property name="arm_linker_heap_size" value="128" choose="yes" />
     <property name="c_additional_options" value="-fms-extensions" />
     <property name="double_is_float" />
     <property name="linker_output_format" />
@@ -112,7 +113,7 @@
       <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no" />
       <file name="$(TargetsDir)/Kinetis/Kinetis_ctl_board.c" />
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no" />
-      <file name="$(StudioDir)/ctl/source/threads.js" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/$(DeviceVectorsFile)" expand="no" />
     </folder>
   </project>
 </projects>

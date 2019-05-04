@@ -82,8 +82,20 @@ _start:
   strh r3, [r2, #4]
   ldr r3, =#0x20
   strb r3, [r2, #0]
+#elif defined(E1_SERIES) || defined(E2_SERIES)
+  ldr r0, =0x40052000
+  ldr r1, =0xD928C520
+  str r1, [r0, #4]
+  ldr r1, =0xffff
+  str r1, [r0, #8]
+  ldr r1, [r0]
+  ldr r2, =(1<<7)
+  bics r1, r2
+  ldr r2, =(1<<5)
+  orrs r1, r2
+  str r1, [r0]
 #else
-#error L_SERIES, L28_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined
+#error L_SERIES, L28_SERIES, K_SERIES, M_SERIES, V_SERIES, E_SERIES or E1_SERIES should be defined
 #endif
 
   // Copy loader parameter if supplied

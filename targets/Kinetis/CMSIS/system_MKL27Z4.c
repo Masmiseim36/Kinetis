@@ -1,13 +1,13 @@
 /*
 ** ###################################################################
-**     Processors:          MKL27Z256VFM4
-**                          MKL27Z128VFM4
-**                          MKL27Z256VFT4
+**     Processors:          MKL27Z128VFM4
 **                          MKL27Z128VFT4
-**                          MKL27Z256VLH4
 **                          MKL27Z128VLH4
-**                          MKL27Z256VMP4
 **                          MKL27Z128VMP4
+**                          MKL27Z256VFM4
+**                          MKL27Z256VFT4
+**                          MKL27Z256VLH4
+**                          MKL27Z256VMP4
 **
 **     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
@@ -16,15 +16,15 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    KL27P64M48SF6RM, Rev.3, Aug 2014
-**     Version:             rev. 1.5, 2014-09-05
-**     Build:               b151212
+**     Version:             rev. 1.7, 2016-06-24
+**     Build:               b160624
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright (c) 2015 Freescale Semiconductor, Inc.
+**     Copyright (c) 2016 Freescale Semiconductor, Inc.
 **     All rights reserved.
 **
 **     Redistribution and use in source and binary forms, with or without modification,
@@ -88,14 +88,19 @@
 **         USB - USB0_CTL1 was renamed to USB0_CTL register.
 **     - rev. 1.5 (2014-09-05)
 **         USB - Renamed USBEN bitfield of USB0_CTL was renamed to USBENSOFEN.
+**     - rev. 1.6 (2015-07-29)
+**         Correction of backward compatibility.
+**     - rev. 1.7 (2016-06-24)
+**         USB - OTGCTL register was removed.
+**         USB - Bit RESUME was added in CTL register.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKL27Z4
- * @version 1.5
- * @date 2014-09-05
+ * @version 1.7
+ * @date 2016-06-24
  * @brief Device specific configuration file for MKL27Z4 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -130,83 +135,7 @@ void SystemInit (void) {
   /* SIM->COPC: ??=0,COPCLKSEL=0,COPDBGEN=0,COPSTPEN=0,COPT=0,COPCLKS=0,COPW=0 */
   SIM->COPC = (uint32_t)0x00u;
 #endif /* (DISABLE_WDOG) */
-#ifdef CLOCK_SETUP
-  /* Power mode protection initialization */
-#ifdef SYSTEM_SMC_PMPROT_VALUE
-  SMC->PMPROT = SYSTEM_SMC_PMPROT_VALUE;
-#endif
 
-  /* System clock initialization */
-
-  /* Set system prescalers and clock sources */
-  SIM->CLKDIV1 = SYSTEM_SIM_CLKDIV1_VALUE;    /* Set system prescalers */
-  SIM->SOPT1 = ((SIM->SOPT1) & (uint32_t)(~(SIM_SOPT1_OSC32KSEL_MASK))) | ((SYSTEM_SIM_SOPT1_VALUE) & (SIM_SOPT1_OSC32KSEL_MASK)); /* Set 32 kHz clock source (ERCLK32K) */
-  SIM->SOPT2 = ((SIM->SOPT2) & (uint32_t)(~(
-                 SIM_SOPT2_TPMSRC_MASK |
-                 SIM_SOPT2_LPUART0SRC_MASK |
-                 SIM_SOPT2_LPUART1SRC_MASK |
-                 SIM_SOPT2_USBSRC_MASK
-                 ))) | ((SYSTEM_SIM_SOPT2_VALUE) & (
-                 SIM_SOPT2_TPMSRC_MASK |
-                 SIM_SOPT2_LPUART0SRC_MASK |
-                 SIM_SOPT2_LPUART1SRC_MASK |
-                 SIM_SOPT2_USBSRC_MASK
-                 ));   /* Select TPM, LPUARTs, USB clock sources. */
-#if (MCG_MODE == MCG_MODE_LIRC_2M || MCG_MODE == MCG_MODE_LIRC_8M || MCG_MODE == MCG_MODE_HIRC)
-  /* Set MCG and OSC0 */
-#if  (((OSC0_CR_VALUE) & OSC_CR_ERCLKEN_MASK) != 0x00U)
-  /* SIM_SCGC5: PORTA=1 */
-  SIM_SCGC5 |= SIM_SCGC5_PORTA_MASK;
-  /* PORTA_PCR3: ISF=0,MUX=0 */
-  PORTA_PCR18 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
-  if (((MCG_C2_VALUE) & MCG_C2_EREFS0_MASK) != 0x00U) {
-    PORTA_PCR19 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
-  }
-#endif
-  MCG->SC = MCG_SC_VALUE;              /* Set SC (internal reference clock divider) */
-  MCG->MC = MCG_MC_VALUE;              /* Set MC (high-frequency IRC enable, second LIRC divider) */
-  MCG->C1 = MCG_C1_VALUE;              /* Set C1 (clock source selection, int. reference enable etc.) */
-  MCG->C2 = MCG_C2_VALUE;              /* Set C2 (ext. and int. reference clock selection) */
-  OSC0->CR = OSC0_CR_VALUE;            /* Set OSC0_CR (OSCERCLK enable, oscillator capacitor load) */
-
-#else /* MCG_MODE */
-  /* Set MCG and OSC0 */
-  /* SIM_SCGC5: PORTA=1 */
-  SIM_SCGC5 |= SIM_SCGC5_PORTA_MASK;
-  /* PORTA_PCR3: ISF=0,MUX=0 */
-  PORTA_PCR18 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
-  if (((MCG_C2_VALUE) & MCG_C2_EREFS0_MASK) != 0x00U) {
-    PORTA_PCR19 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
-  }
-  MCG->SC = MCG_SC_VALUE;              /* Set SC (internal reference clock divider) */
-  MCG->C2 = MCG_C2_VALUE;              /* Set C2 (ext. and int. reference clock selection) */
-  OSC0->CR = OSC0_CR_VALUE;            /* Set OSC0_CR (OSCERCLK enable, oscillator capacitor load) */
-  MCG->C1 = MCG_C1_VALUE;              /* Set C1 (clock source selection, int. reference enable etc.) */
-  MCG->MC = MCG_MC_VALUE;              /* Set MC (high-frequency IRC enable, second LIRC divider) */
-  if (((MCG_C2_VALUE) & MCG_C2_EREFS0_MASK) != 0U) {
-    while((MCG->S & MCG_S_OSCINIT0_MASK) == 0x00U) { /* Check that the oscillator is running */
-    }
-  }
-#endif /* MCG_MODE */
-
-  /* Common for all MCG modes */
-
-#if (MCG_MODE == MCG_MODE_HIRC)
-  while((MCG->S & MCG_S_CLKST_MASK) != 0x00U) { /* Wait until high internal reference clock is selected as MCG_Lite output */
-  }
-#elif (MCG_MODE == MCG_MODE_LIRC_2M || MCG_MODE == MCG_MODE_LIRC_8M)
-  while((MCG->S & MCG_S_CLKST_MASK) != 0x04U) { /* Wait until low internal reference clock is selected as MCG_Lite output */
-  }
-#elif (MCG_MODE == MCG_MODE_EXT)
-  while((MCG->S & MCG_S_CLKST_MASK) != 0x08U) { /* Wait until external reference clock is selected as MCG_Lite output */
-  }
-#endif
-  if (((SMC_PMCTRL_VALUE) & SMC_PMCTRL_RUNM_MASK) == SMC_PMCTRL_RUNM(0x02U)) {
-    SMC->PMCTRL = (uint8_t)((SMC_PMCTRL_VALUE) & (SMC_PMCTRL_RUNM_MASK)); /* Enable VLPR mode */
-    while(SMC->PMSTAT != 0x04U) {      /* Wait until the system is in VLPR mode */
-    }
-  }
-#endif
 }
 
 /* ----------------------------------------------------------------------------

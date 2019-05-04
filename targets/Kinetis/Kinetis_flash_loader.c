@@ -303,6 +303,24 @@ main(int param0)
   int res;
   libmem_driver_handle_t h, h1;    
   unsigned sectorSize;
+#if defined(E1_SERIES)
+#define MCM_PLACR (*(volatile unsigned *)0xF000300C)
+  // turn off and invalidate any caching
+  MCM_PLACR = (1<<15) | (1<<13) | (1<<12) | (1<<11) | (1<<10);
+
+  // workout flash size, sector size and write block size
+  unsigned FLASH_SIZE = ((SIM_FCFG2>>24) & 0x3f)<<13;
+  unsigned FLASH_START = 0;
+
+  write_block_size = 8;
+  sectorSize = 2 * 1024;
+#elif defined(E2_SERIES)
+  unsigned FLASH_SIZE = ((SIM_FCFG2>>24) & 0x7f)<<13;
+  unsigned FLASH_START = 0;
+
+  write_block_size = 8;
+  sectorSize = 4 * 1024;
+#else
 #define FMC_PFB0CR (*(volatile unsigned *)0x4001F004)
   // turn off and invalidate any caching
   FMC_PFB0CR = (0xf<<20) | (0x1<<19);
@@ -350,6 +368,7 @@ main(int param0)
           return 0;
       }
 #endif
+#endif
   geometry[0].count = FLASH_SIZE/sectorSize;
   geometry[0].size = sectorSize;
   libmem_register_driver(&h, (uint8_t *)FLASH_START, FLASH_SIZE, geometry, 0, &driver_functions, &ext_driver_functions);
@@ -367,12 +386,12 @@ main(int param0)
 #if 0
   uint8_t *erase_start;
   size_t erase_size;  
-  //res = libmem_erase((uint8_t *)0x0, 0x24, &erase_start, &erase_size); 
-  //res = libmem_erase((uint8_t *)0x10000000, 0x24, &erase_start, &erase_size);
-  res = libmem_erase_all();
+  res = libmem_erase((uint8_t *)0x00000800, 0x24, &erase_start, &erase_size); 
   static const unsigned char buffer1[24] = { 0x38, 0xAA, 0xFF, 0x1F,  0x45, 0x06, 0x00, 0x00,  0x65, 0x05, 0x00, 0x00,  0x67, 0x05, 0x00, 0x00 };  
+  res = libmem_write((uint8_t *)0x00000800, buffer1, sizeof(buffer1)); 
+  res = libmem_erase((uint8_t *)0x10000000, 0x24, &erase_start, &erase_size);
+  //res = libmem_erase_all();
   static const unsigned char buffer2[24] = { 0xB0, 0xB5, 0x96, 0xB0,  0x00, 0xAF, 0x4F, 0xF0,  0x30, 0x00, 0x00, 0xF0,  0x41, 0xF0, 0x02, 0x42 }; 
-  res = libmem_write(0x00000000, buffer1, sizeof(buffer1)); 
   res = libmem_write(0x10000000, buffer2, sizeof(buffer2)); 
   res = libmem_flush();
 #endif

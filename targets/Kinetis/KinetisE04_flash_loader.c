@@ -10,7 +10,13 @@
  *****************************************************************************/
 
 #include <libmem.h>
+#if defined(E_SERIES)
 #include "CMSIS/MKE04Z4.h"
+#elif defined(E1_SERIES)
+#include "CMSIS/MKE14Z7.h"
+#else
+#error E_SERIES or E1_SERIES should be defined
+#endif
 
 #define FTFL_FSTAT_MGSTAT0  (1<<0)
 #define FTFL_FSTAT_FPVIOL   (1<<4)

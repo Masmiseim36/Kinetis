@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="NXP" cpu_family="Kinetis" version="3.6" build_version="2016032201.11528;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.5-" replaces="Kinetis" dependencies="CMSIS-CORE">
+<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="NXP" cpu_family="Kinetis" version="3.7" build_version="2016111107.11649;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.7-" replaces="Kinetis" dependencies="CMSIS-CORE">
   <file file_name="$(TargetsDir)/Kinetis/Loader.hzp" title="Kinetis Loader Application Solution" />
   <file file_name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" title="Kinetis CTL Timer and Interrupt support functions" />
 <targets>
@@ -162,6 +162,16 @@
     <cpu name="MKE04Z128xxx4"/>
     <cpu name="MKE06Z64xxx4"/>
     <cpu name="MKE06Z128xxx4"/>
+    <cpu name="MKE14Z128xxx7"/>
+    <cpu name="MKE14Z256xxx7"/>
+    <cpu name="MKE15Z128xxx7"/>
+    <cpu name="MKE15Z256xxx7"/>
+    <cpu name="MKE14F256xxx16"/>
+    <cpu name="MKE14F512xxx16"/>
+    <cpu name="MKE16F256xxx16"/>
+    <cpu name="MKE16F512xxx16"/>
+    <cpu name="MKE18F256xxx16"/>
+    <cpu name="MKE18F512xxx16"/>
   </category>
   <category name="KEA Series" >
     <cpu name="SKEAZN16xxx2"/>
@@ -260,6 +270,8 @@
   <category name="KV1x Series" >
     <cpu name="MKV10Z16xxx7"/>
     <cpu name="MKV10Z32xxx7"/>
+    <cpu name="MKV10Z64xxx7"/>
+    <cpu name="MKV10Z128xxx7"/>
     <cpu name="MKV11Z64xxx7"/>
     <cpu name="MKV11Z128xxx7"/>
   </category>
@@ -286,23 +298,27 @@
     <cpu name="MKV58F512xxx24"/>
     <cpu name="MKV58F1M0xxx24"/>
   </category>
-  <category name="KW01Z Series" >
-    <cpu name="MKW01Z128xxx"/>
+  <category name="KW0x Series" >
+    <cpu name="MKW01Z128xxx4"/>
   </category>
-  <category name="KW2xD Series" >
+  <category name="KW2x Series" >
     <cpu name="MKW21D256xxx5"/>
     <cpu name="MKW21D512xxx5"/>
     <cpu name="MKW22D512xxx5"/>
     <cpu name="MKW24D512xxx5"/>
-  </category>
-  <category name="KW20Z Series" >
     <cpu name="MKW20Z160xxx4"/>
+    <cpu name="MKW21Z256xxx4"/>
+    <cpu name="MKW21Z512xxx4"/>
   </category>
-  <category name="KW30Z Series" >
+  <category name="KW3x Series" >
     <cpu name="MKW30Z160xxx4"/>
+    <cpu name="MKW31Z256xxx4"/>
+    <cpu name="MKW31Z512xxx4"/>
   </category>
-  <category name="KW40Z Series" >
+  <category name="KW4x Series" >
     <cpu name="MKW40Z160xxx4"/>
+    <cpu name="MKW41Z256xxx4"/>
+    <cpu name="MKW41Z512xxx4"/>
   </category>
   <category name="WPR1516 Series" >
     <cpu name="MWPR1516"/>
@@ -406,6 +422,9 @@
 
   </documentation>
   <history>
+    <version name="3.7">
+      <description>Added support for KE14Z7, KE15Z7, KE14F16, KE16F16, KE18F16, KV10Z7, KW21Z4, KW31Z4 and KW41Z4 devices.</description>
+    </version>
     <version name="3.6">
       <description>Changed Freescale to NXP.</description>
     </version>

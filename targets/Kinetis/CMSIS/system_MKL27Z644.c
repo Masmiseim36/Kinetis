@@ -1,7 +1,15 @@
 /*
 ** ###################################################################
-**     Processors:          MKL27Z64VLH4
+**     Processors:          MKL27Z32VDA4
+**                          MKL27Z32VFM4
+**                          MKL27Z32VFT4
 **                          MKL27Z32VLH4
+**                          MKL27Z32VMP4
+**                          MKL27Z64VDA4
+**                          MKL27Z64VFM4
+**                          MKL27Z64VFT4
+**                          MKL27Z64VLH4
+**                          MKL27Z64VMP4
 **
 **     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
@@ -10,15 +18,15 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    KL27P64M48SF2RM, Rev. 1, Sep 2014
-**     Version:             rev. 1.4, 2014-09-22
-**     Build:               b140923
+**     Version:             rev. 1.5, 2016-06-24
+**     Build:               b160624
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright (c) 2014 Freescale Semiconductor, Inc.
+**     Copyright (c) 2016 Freescale Semiconductor, Inc.
 **     All rights reserved.
 **
 **     Redistribution and use in source and binary forms, with or without modification,
@@ -76,14 +84,17 @@
 **         UART2 - Removed RCFIFO register.
 **         USB - Removed bitfield REG_EN in CLK_RECOVER_IRC_EN register.
 **         USB - Renamed USBEN bitfield of USB0_CTL was renamed to USBENSOFEN.
+**     - rev. 1.5 (2016-06-24)
+**         USB - OTGCTL register was removed.
+**         USB - Bit RESUME was added in CTL register.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKL27Z644
- * @version 1.4
- * @date 2014-09-22
+ * @version 1.5
+ * @date 2016-06-24
  * @brief Device specific configuration file for MKL27Z644 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -113,78 +124,10 @@ void SystemInit (void) {
     PMC->REGSC |= PMC_REGSC_ACKISO_MASK; /* VLLSx recovery */
   }
 #endif
-
 #if (DISABLE_WDOG)
   /* SIM->COPC: ??=0,COPCLKSEL=0,COPDBGEN=0,COPSTPEN=0,COPT=0,COPCLKS=0,COPW=0 */
   SIM->COPC = (uint32_t)0x00u;
 #endif /* (DISABLE_WDOG) */
-
-  /* Power mode protection initialization */
-#ifdef SMC_PMPROT_VALUE
-  SMC->PMPROT = SMC_PMPROT_VALUE;
-#endif
-
-  /* System clock initialization */
-
-  /* Set system prescalers and clock sources */
-  SIM->CLKDIV1 = SYSTEM_SIM_CLKDIV1_VALUE;    /* Set system prescalers */
-  SIM->SOPT1 = ((SIM->SOPT1) & (uint32_t)(~(SIM_SOPT1_OSC32KSEL_MASK))) | ((SYSTEM_SIM_SOPT1_VALUE) & (SIM_SOPT1_OSC32KSEL_MASK)); /* Set 32 kHz clock source (ERCLK32K) */
-#define SOPT2_WRITE_MASK ((SIM_SOPT2_USBSRC_MASK) | (SIM_SOPT2_TPMSRC_MASK) | (SIM_SOPT2_LPUART0SRC_MASK) | (SIM_SOPT2_LPUART1SRC_MASK)) /* define mask of written bits. */
-  SIM->SOPT2 = ((SIM->SOPT2) & (uint32_t)(~SOPT2_WRITE_MASK)) | ((SYSTEM_SIM_SOPT2_VALUE) & SOPT2_WRITE_MASK); /* Write SIM_SOPT2 register. */
-#if (MCG_MODE == MCG_MODE_LIRC_2M || MCG_MODE == MCG_MODE_LIRC_8M || MCG_MODE == MCG_MODE_HIRC)
-  /* Set MCG and OSC0 */
-#if  (((OSC0_CR_VALUE) & OSC_CR_ERCLKEN_MASK) != 0x00U)
-  /* SIM_SCGC5: PORTA=1 */
-  SIM_SCGC5 |= SIM_SCGC5_PORTA_MASK;
-  /* PORTA_PCR3: ISF=0,MUX=0 */
-  PORTA_PCR18 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
-  if (((MCG_C2_VALUE) & MCG_C2_EREFS0_MASK) != 0x00U) {
-    PORTA_PCR19 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
-  }
-#endif
-  MCG->SC = MCG_SC_VALUE;              /* Set SC (internal reference clock divider) */
-  MCG->MC = MCG_MC_VALUE;              /* Set MC (high-frequency IRC enable, second LIRC divider) */
-  MCG->C1 = MCG_C1_VALUE;              /* Set C1 (clock source selection, int. reference enable etc.) */
-  MCG->C2 = MCG_C2_VALUE;              /* Set C2 (ext. and int. reference clock selection) */
-  OSC0->CR = OSC0_CR_VALUE;            /* Set OSC0_CR (OSCERCLK enable, oscillator capacitor load) */
-
-#else /* MCG_MODE */
-  /* Set MCG and OSC0 */
-  /* SIM_SCGC5: PORTA=1 */
-  SIM_SCGC5 |= SIM_SCGC5_PORTA_MASK;
-  /* PORTA_PCR3: ISF=0,MUX=0 */
-  PORTA_PCR18 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
-  if (((MCG_C2_VALUE) & MCG_C2_EREFS0_MASK) != 0x00U) {
-    PORTA_PCR19 &= (uint32_t)~(uint32_t)((PORT_PCR_ISF_MASK | PORT_PCR_MUX(0x07)));
-  }
-  MCG->SC = MCG_SC_VALUE;              /* Set SC (internal reference clock divider) */
-  MCG->C2 = MCG_C2_VALUE;              /* Set C2 (ext. and int. reference clock selection) */
-  OSC0->CR = OSC0_CR_VALUE;            /* Set OSC0_CR (OSCERCLK enable, oscillator capacitor load) */
-  MCG->C1 = MCG_C1_VALUE;              /* Set C1 (clock source selection, int. reference enable etc.) */
-  MCG->MC = MCG_MC_VALUE;              /* Set MC (high-frequency IRC enable, second LIRC divider) */
-  if (((MCG_C2_VALUE) & MCG_C2_EREFS0_MASK) != 0U) {
-    while((MCG->S & MCG_S_OSCINIT0_MASK) == 0x00U) { /* Check that the oscillator is running */
-    }
-  }
-#endif /* MCG_MODE */
-
-  /* Common for all MCG modes */
-
-#if (MCG_MODE == MCG_MODE_HIRC)
-  while((MCG->S & MCG_S_CLKST_MASK) != 0x00U) { /* Wait until high internal reference clock is selected as MCG_Lite output */
-  }
-#elif (MCG_MODE == MCG_MODE_LIRC_2M || MCG_MODE == MCG_MODE_LIRC_8M)
-  while((MCG->S & MCG_S_CLKST_MASK) != 0x04U) { /* Wait until low internal reference clock is selected as MCG_Lite output */
-  }
-#elif (MCG_MODE == MCG_MODE_EXT)
-  while((MCG->S & MCG_S_CLKST_MASK) != 0x08U) { /* Wait until external reference clock is selected as MCG_Lite output */
-  }
-#endif
-  if (((SMC_PMCTRL_VALUE) & SMC_PMCTRL_RUNM_MASK) == SMC_PMCTRL_RUNM(0x02U)) {
-    SMC->PMCTRL = (uint8_t)((SMC_PMCTRL_VALUE) & (SMC_PMCTRL_RUNM_MASK)); /* Enable VLPR mode */
-    while(SMC->PMSTAT != 0x04U) {      /* Wait until the system is in VLPR mode */
-    }
-  }
 
 }
 

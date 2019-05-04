@@ -11,7 +11,7 @@
 **
 **     Reference manual:    MKL28ZRM, Rev. 2, March, 2016
 **     Version:             rev. 1.12, 2015-06-03
-**     Build:               b160310
+**     Build:               b160511
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
