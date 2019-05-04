@@ -1,4 +1,4 @@
-// Copyright (c) 2013 Rowley Associates Limited.
+// Copyright (c) 2013-2014 Rowley Associates Limited.
 //
 // This file may be distributed under the terms of the License Agreement
 // provided with this software.
@@ -35,8 +35,14 @@
   #include "CMSIS/system_MK20F12.c"
 #elif defined(MK21D5)
   #include "CMSIS/system_MK21D5.c"
+#elif defined(MK21F12)
+  #include "CMSIS/system_MK21F12.c"
 #elif defined(MK22D5)
   #include "CMSIS/system_MK22D5.c"
+#elif defined(MK22F12)
+  #include "CMSIS/system_MK22F12.c"
+#elif defined(MK24F12)
+  #include "CMSIS/system_MK24F12.c"
 #elif defined(MK30D7)
   #include "CMSIS/system_MK30D7.c"
 #elif defined(MK30D10)
@@ -68,7 +74,7 @@
 #elif defined(MK53D10)
   #include "CMSIS/system_MK53D10.c"
 #elif defined(MK53DZ10)
-  #include "CMSIS/system_MK52DZ10.c"
+  #include "CMSIS/system_MK53DZ10.c"
 #elif defined(MK60D10)
   #include "CMSIS/system_MK60D10.c"
 #elif defined(MK60DZ10)
@@ -81,14 +87,16 @@
   #include "CMSIS/system_MK61F12.c"
 #elif defined(MK61F15)
   #include "CMSIS/system_MK61F15.c"
+#elif defined(MK63F12)
+  #include "CMSIS/system_MK63F12.c"
+#elif defined(MK64F12)
+  #include "CMSIS/system_MK64F12.c"
 #elif defined(MK70F12)
   #include "CMSIS/system_MK70F12.c"
 #elif defined(MK70F15)
   #include "CMSIS/system_MK70F15.c"
 #elif defined(MKE02Z2)
-  #include "CMSIS/system_MKE02z2.c"
-#elif defined(MKE04Z4)
-  #include "CMSIS/system_MKE04z4.c"
+  #include "CMSIS/system_MKE02Z2.c"
 #elif defined(MKL02Z4)
   #include "CMSIS/system_MKL02Z4.c"
 #elif defined(MKL04Z4)
@@ -113,6 +121,18 @@
   #include "CMSIS/system_MKL36Z4.c"
 #elif defined(MKL46Z4)
   #include "CMSIS/system_MKL46Z4.c"
+#elif defined(MKM13Z5)
+  #include "CMSIS/system_MKM13Z5.c"
+#elif defined(MKM14Z5)
+  #include "CMSIS/system_MKM14Z5.c"
+#elif defined(MKM32Z5)
+  #include "CMSIS/system_MKM32Z5.c"
+#elif defined(MKM33Z5)
+  #include "CMSIS/system_MKM33Z5.c"
+#elif defined(MKM34Z5)
+  #include "CMSIS/system_MKM34Z5.c"
+#elif defined(MKM38Z5)
+  #include "CMSIS/system_MKM38Z5.c"
 #else
   #error no SystemInit
 #endif

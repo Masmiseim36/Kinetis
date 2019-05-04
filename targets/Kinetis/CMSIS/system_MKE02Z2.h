@@ -6,7 +6,7 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    MKE02Z64M20SF0RM, Rev.2.1, Apr-23 2013
-**     Version:             rev. 1.2, 2013-05-07
+**     Version:             rev. 1.4, 2013-07-10
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
@@ -25,14 +25,19 @@
 **         Changed start of doxygen comment.
 **     - rev. 1.2 (2013-05-07)
 **         Update according to reference manual rev. 2.1.
+**     - rev. 1.3 (2013-06-13)
+**         Device types PTA,PTB,FPTA,FPTB changed to GPIOA,GPIOB,FGPIOA,FGPIOB.
+**     - rev. 1.4 (2013-07-10)
+**         NV - DFPROT register renamed to EEPROT.
+**         WDOG - Peripheral register layout structure has been extended with 16-bit access registers CNT, TOVAL, WIN.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKE02Z2
- * @version 1.2
- * @date 2013-05-07
+ * @version 1.4
+ * @date 2013-07-10
  * @brief Device specific configuration file for MKE02Z2 (header file)
  *
  * Provides a system configuration function and a global variable that contains

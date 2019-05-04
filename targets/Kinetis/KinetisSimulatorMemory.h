@@ -15,6 +15,7 @@ public:
 private:
   MemoryRegion *pflash, *dflash, *flexram, *sram, *peripherals, *scs;
   bool l_series;
+  unsigned sram_start, sram_end;
 };
 
 #endif

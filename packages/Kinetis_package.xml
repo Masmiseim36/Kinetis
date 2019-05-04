@@ -1,8 +1,7 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.12" build_version="2013092002.7835;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
-
+<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.13" build_version="2014021100.9049;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
 <targets>
-  <category name="K10 Series" >
+  <category name="K1x Series" >
     <cpu name="MK10DN32xxx5"/>
     <cpu name="MK10DX32xxx5"/>
     <cpu name="MK10DN64xxx5"/>
@@ -27,7 +26,7 @@
     <cpu name="MK12DX256xxx5"/>
     <cpu name="MK12DN512xxx5"/>
   </category>
-  <category name="K20 Series" >
+  <category name="K2x Series" >
     <cpu name="MK20DN32xxx5"/>
     <cpu name="MK20DX32xxx5"/>
     <cpu name="MK20DN64xxx5"/>
@@ -43,14 +42,21 @@
     <cpu name="MK20DX128xxx10"/>
     <cpu name="MK20DX256xxx10"/>
     <cpu name="MK20DN512xxx10"/>
+    <cpu name="MK20FX512xxx12"/>
+    <cpu name="MK20FN1M0xxx12"/>
     <cpu name="MK21DX128xxx5"/>
     <cpu name="MK21DX256xxx5"/>
     <cpu name="MK21DN512xxx5"/>
+    <cpu name="MK21FX512xxx12"/>
+    <cpu name="MK21FN1M0xxx12"/>
     <cpu name="MK22DX128xxx5"/>
     <cpu name="MK22DX256xxx5"/>
     <cpu name="MK22DN512xxx5"/>
+    <cpu name="MK22FX512xxx12"/>
+    <cpu name="MK22FN1M0xxx12"/>
+    <cpu name="MK24FN1M0xxx12"/>
   </category>
-  <category name="K30 Series" >
+  <category name="K3x Series" >
     <cpu name="MK30DX64xxx7"/>
     <cpu name="MK30DX128xxx7"/>
     <cpu name="MK30DX256xxx7"/>
@@ -61,7 +67,7 @@
     <cpu name="MK30DX256xxx10"/>
     <cpu name="MK30DN512xxx10"/>
   </category>
-  <category name="K40 Series" >
+  <category name="K4x Series" >
     <cpu name="MK40DX64xxx7"/>
     <cpu name="MK40DX128xxx7"/>
     <cpu name="MK40DX256xxx7"/>
@@ -72,7 +78,7 @@
     <cpu name="MK40DX256xxx10"/>
     <cpu name="MK40DN512xxx10"/>
   </category>
-  <category name="K50 Series" >
+  <category name="K5x Series" >
     <cpu name="MK50DX128xxx7"/>
     <cpu name="MK50DX256xxx7"/>
     <cpu name="MK50DX256xxx10"/>
@@ -92,7 +98,7 @@
     <cpu name="MK53DX256Zxxx10"/>
     <cpu name="MK53DN512Zxxx10"/>
   </category>
-  <category name="K60 Series" >
+  <category name="K6x Series" >
     <cpu name="MK60DN256xxx10"/>
     <cpu name="MK60DX256xxx10"/>
     <cpu name="MK60DN512xxx10"/>
@@ -107,67 +113,74 @@
     <cpu name="MK61FN1M0xxx12"/>
     <cpu name="MK61FX512xxx15"/>
     <cpu name="MK61FN1M0xxx15"/>
+    <cpu name="MK63FN1M0xxx12"/>
+    <cpu name="MK64FX512xxx12"/>
+    <cpu name="MK64FN1M0xxx12"/>
   </category>
-  <category name="K70 Series" >
+  <category name="K7x Series" >
     <cpu name="MK70FX512xxx12"/>
     <cpu name="MK70FN1M0xxx12"/>
     <cpu name="MK70FX512xxx15"/>
     <cpu name="MK70FN1M0xxx15"/>
   </category>
   <category name="KE0 Series" >
-    <cpu name="MKE02Z16Vxx2"/>
-    <cpu name="MKE02Z32Vxx2"/>
-    <cpu name="MKE02Z64Vxx2"/>
-    <cpu name="MKE04Z8Vxx4"/>
+    <cpu name="MKE02Z16xxx2"/>
+    <cpu name="MKE02Z32xxx2"/>
+    <cpu name="MKE02Z64xxx2"/>
   </category>
-  <category name="KL0 Series" >
-    <cpu name="MKL02Z8Vxx4"/>
-    <cpu name="MKL02Z16Vxx4"/>
-    <cpu name="MKL02Z32Vxx4"/>
-    <cpu name="MKL04Z8Vxx4"/>
-    <cpu name="MKL04Z16Vxx4"/>
-    <cpu name="MKL04Z32Vxx4"/>
-    <cpu name="MKL05Z8Vxx4"/>
-    <cpu name="MKL05Z16Vxx4"/>
-    <cpu name="MKL05Z32Vxx4"/>
+  <category name="KL0x Series" >
+    <cpu name="MKL02Z8xxx4"/>
+    <cpu name="MKL02Z16xxx4"/>
+    <cpu name="MKL02Z32xxx4"/>
+    <cpu name="MKL04Z8xxx4"/>
+    <cpu name="MKL04Z16xxx4"/>
+    <cpu name="MKL04Z32xxx4"/>
+    <cpu name="MKL05Z8xxx4"/>
+    <cpu name="MKL05Z16xxx4"/>
+    <cpu name="MKL05Z32xxx4"/>
   </category>
-  <category name="KL1 Series" >
-    <cpu name="MKL14Z32Vxx4"/>
-    <cpu name="MKL14Z64Vxx4"/>
-    <cpu name="MKL15Z32Vxx4"/>
-    <cpu name="MKL15Z64Vxx4"/>
-    <cpu name="MKL15Z128Vxx4"/>
-    <cpu name="MKL15Z256Vxx4"/>
+  <category name="KL1x Series" >
+    <cpu name="MKL14Z32xxx4"/>
+    <cpu name="MKL14Z64xxx4"/>
+    <cpu name="MKL15Z32xxx4"/>
+    <cpu name="MKL15Z64xxx4"/>
+    <cpu name="MKL15Z128xxx4"/>
+    <cpu name="MKL16Z32xxx4"/>
+    <cpu name="MKL16Z64xxx4"/>
+    <cpu name="MKL16Z128xxx4"/>
+    <cpu name="MKL16Z256xxx4"/>
   </category>
-  <category name="KL2 Series" >
-    <cpu name="MKL24Z32Vxx4"/>
-    <cpu name="MKL24Z64Vxx4"/>
-    <cpu name="MKL24Z128Vxx4"/>
-    <cpu name="MKL25Z32Vxx4"/>
-    <cpu name="MKL25Z64Vxx4"/>
-    <cpu name="MKL25Z128Vxx4"/>
-    <cpu name="MKL25Z256Vxx4"/>
+  <category name="KL2x Series" >
+    <cpu name="MKL24Z32xxx4"/>
+    <cpu name="MKL24Z64xxx4"/>
+    <cpu name="MKL25Z32xxx4"/>
+    <cpu name="MKL25Z64xxx4"/>
+    <cpu name="MKL25Z128xxx4"/>
+    <cpu name="MKL26Z32xxx4"/>
+    <cpu name="MKL26Z64xxx4"/>
+    <cpu name="MKL26Z128xxx4"/>
+    <cpu name="MKL26Z256xxx4"/>
   </category>
-  <category name="KL3 Series" >
-    <cpu name="MKL34Z64Vxx4"/>
-    <cpu name="MKL34Z128Vxx4"/>
-    <cpu name="MKL34Z256Vxx4"/>
+  <category name="KL3x Series" >
+    <cpu name="MKL34Z64xxx4"/>
+    <cpu name="MKL36Z64xxx4"/>
+    <cpu name="MKL36Z128xxx4"/>
+    <cpu name="MKL36Z256xxx4"/>
   </category>
-  <category name="KL4 Series" >
-    <cpu name="MKL46Z128Vxx4"/>
-    <cpu name="MKL46Z256Vxx4"/>
-  </category> 
-  <category name="KM1 Series" >
-    <cpu name="MKM14Z64Cxx5"/>
-    <cpu name="MKM14Z128Cxx5"/>
+  <category name="KL4x Series" >
+    <cpu name="MKL46Z128xxx4"/>
+    <cpu name="MKL46Z256xxx4"/>
   </category>
-  <category name="KM3 Series" >
-    <cpu name="MKM33Z64Cxx5"/>
-    <cpu name="MKM33Z128Cxx5"/>
-    <cpu name="MKM34Z128Cxx5"/>
+  <category name="KM1x Series" >
+    <cpu name="MKM14Z64xxx5"/>
+    <cpu name="MKM14Z128xxx5"/>
+  </category>
+  <category name="KM3x Series" >
+    <cpu name="MKM33Z64xxx5"/>
+    <cpu name="MKM33Z128xxx5"/>
+    <cpu name="MKM34Z128xxx5"/>
   </category>
 </targets>
-
   <documentation>
     <section name="Creating Kinetis Projects">
       <h5>To create a new Kinetis project</h5>
@@ -247,7 +260,9 @@
 
       <h5>Kinetis Internal Flash Loader</h5>
       <p>The source code to the flash loaders <a href="file:$(TargetsDir)/Kinetis/Loader.hzp">(click to load solution)</a>
-        for the internal Flash of the Kinetis is provided.</p>
+        for the internal Flash of the Kinetis is provided. Note that by default the Kinetis flash loaders will not program
+        the flash configuration field (0x400-0x40C) you can rebuild the loaders with the preprocessor definition ALLOW_FCF_WRITE
+        if you require this.</p>
 
       <h5>Memory Simulator</h5>
       <p>An Kinetis memory simulator is provided that simulates the memories of the various Kinetis devices. 
@@ -266,10 +281,11 @@
       frequency. The CTL samples that are provided in this package have board specific files that initialise this variable.</p>
 
       <p>The CTL interrupt support functions <b>ctl_global_interrupts_set</b>, <b>ctl_set_priority</b>, <b>ctl_unmask_isr</b> 
-      and <b>ctl_mask_isr</b> are implemented in this file. The implementation uses the lowest half of the available NVIC 
-      priorities (top bit set in the priority) for CTL interrupts and disables global interrupts by raising the NVIC basepriority 
-      above the highest CTL priority. This enables you to use the upper half of the NVIC priorities for interrupts that do not
-      use CTL and should not be disabled by a CTL interrupt.</p>
+      and <b>ctl_mask_isr</b> are implemented in this file. The Cortex-M4 implementations uses the lowest half of 
+      the available NVIC priorities (top bit set in the priority) for CTL interrupts and disables global interrupts by raising the 
+      NVIC basepriority above the highest CTL priority. This enables you to use the upper half of the NVIC priorities for interrupts that do not
+      use CTL and should not be disabled by CTL. The functions <b>ctl_lowest_isr_priority</b>, <b>ctl_highest_isr_priority</b>,
+      and <b>ctl_adjust_isr_priority</b> are provided to assist with setting isr priorities.</p>
     </section>    
 
     <section name="OSJTAG firmware update">
@@ -287,6 +303,15 @@
 
   </documentation>
   <history>
+    <version name="1.13">
+      <description>Renamed MK*Vxx/MK*Cxx devices to MK*xxx. You will need to reselect the
+      Target processor property for existing projects.</description>
+      <description>K-series loader solution now runs 8K of SRAM.</description>
+      <description>Added support for MKL16Z4, MKL26Z4 and MLK34Z4 devices.</description>
+      <description>Added support for MK20F12, MK21F12, MK22F12, MK24F12, MK63F12 and MK64F12 devices.</description>
+      <description>Added ctl_lowest_isr_priority/ctl_highest_isr_priority/ctl_adjust_isr_priority to Kinetis_ctl.c.</description>
+      <description>Supplied latest CMSIS devices files from Freescale.</description>
+    </version>
     <version name="1.12">
       <description>Added support for MKM14Z5, MKM33Z5 and MKM34Z5 devices.</description>
       <description>Fixed erase all for L series flash loader.</description>

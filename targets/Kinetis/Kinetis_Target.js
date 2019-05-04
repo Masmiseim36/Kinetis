@@ -10,6 +10,14 @@
   WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  ******************************************************************************/
 
+function Connect()
+{
+  if (TargetInterface.implementation() == "j-link")
+    TargetInterface.setDeviceTypeProperty(TargetInterface.getProjectProperty("Target"));   
+  else if (TargetInterface.implementation() == "P&E")
+    TargetInterface.setDeviceTypeProperty("MK60N512");
+}
+
 function EnableTrace(TraceInterfaceType)
 {
   if (TraceInterfaceType == "ETB")
@@ -19,6 +27,20 @@ function EnableTrace(TraceInterfaceType)
       v = TargetInterface.getICEBreakerRegister(CSTF_Ctrl_Reg);
       TargetInterface.setICEBreakerRegister(CSTF_Ctrl_Reg, v | 0x00000003); // EnS0 | EnS1  
     }
+  else if (TraceInterfaceType == "TracePort")
+    {
+      TargetInterface.pokeWord(0xE0080014, 0x00000000); // MCM_ETB_CNT_CTRL - enable TPIU
+      // When the TracePort is on PortA
+      TargetInterface.pokeWord(0x40048038, TargetInterface.peekWord(0x40048038)|(1<<9));  
+      TargetInterface.pokeWord(0x40048004, 0x00001000);   // TRACECLKSEL
+      TargetInterface.pokeWord(0x40049018, 0x00000700);   // TraceClock, low drive strength
+      TargetInterface.pokeWord(0x4004901C, 0x00000740);   // Trace data, High drive strength
+      TargetInterface.pokeWord(0x40049020, 0x00000740);
+      TargetInterface.pokeWord(0x40049024, 0x00000740);
+      TargetInterface.pokeWord(0x40049028, 0x00000740);
+    }
+  else if (TraceInterfaceType == "SWO")
+    TargetInterface.pokeWord(0xE0080014, 0x00000000); // MCM_ETB_CNT_CTRL - enable TPIU
 }
 
 function Reset()
@@ -53,7 +75,7 @@ function CheckSystemSecurity()
   var status = TargetInterface.getDebugRegister(0x01000000);    
   if (status & (1<<2))
     {
-      if (CWSys.popup && CWSys.popup("System Security Enabled - MassErase to unlock?\nNote that the nSRST must be connected to the debug port\n"))        
+      if (CWSys == undef || (CWSys.popup && CWSys.popup("System Security Enabled - MassErase to unlock?\nNote that the nSRST must be connected to the debug port\n")))
         MassEraseUnderNSRST();
       else
         TargetInterface.error("System Security Enabled\n");
@@ -99,6 +121,12 @@ function GetPartName()
                 else
                   PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
                 break;
+              case 6:
+                if (((SIM_SDID>>24)&0xff) < 10)
+                  PartName = "MKV0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+                else
+                  PartName = "MKV"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+                break;
             }            
           Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
           Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
@@ -108,38 +136,49 @@ function GetPartName()
   else
     {
       var SIM_SDID = TargetInterface.peekWord(0x40048024);
-      var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
-      switch ((SIM_SDID>>4) & 0x7)
+      if (((SIM_SDID)>>28) & 0xf)
         {
-          case 0: // K10/K12
-            PartName = "MK10";
-            break;
-          case 1: // K20/K22
-            PartName = "MK20";
-            break;
-          case 2: // K30/K11/K61
-            PartName = "MK30";
-            break;
-          case 3: // K40/K21
-            PartName = "MK40";
-            break;
-          case 4: // K60/K62
-            PartName = "MK60";
-            break;
-          case 5: // K70
-            PartName = "MK70";
-            break;
-          case 6: // K50/K52
-            PartName = "MK50";
-            break;
-          case 7: // K51/K53
-            PartName = "MK51";
-            break;
-        }        
-      if (((SIM_SDID>>7) & 0x7)==3)
-        PartName += "F";
+          PartName = "MK"+((SIM_SDID>>24)&0xff).toString(16);
+          if (TargetInterface.peekWord(0xE000EF40))
+            PartName += "F";
+          else
+            PartName += "D";
+        }
       else
-        PartName += "D";
+        {
+          switch ((SIM_SDID>>4) & 0x7)
+            {
+              case 0: // K10/K12
+                PartName = "MK10";
+                break;
+              case 1: // K20/K22
+                PartName = "MK20";
+                break;
+              case 2: // K30/K11/K61
+                PartName = "MK30";
+                break;
+              case 3: // K40/K21
+                PartName = "MK40";
+                break;
+              case 4: // K60/K62
+                PartName = "MK60";
+                break;
+              case 5: // K70
+                PartName = "MK70";
+                break;
+              case 6: // K50/K52
+                PartName = "MK50";
+                break;
+              case 7: // K51/K53
+                PartName = "MK51";
+                break;
+            }        
+          if (((SIM_SDID>>7) & 0x7)==3)
+            PartName += "F";
+          else
+            PartName += "D";
+        }
+      var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
       if (SIM_FCFG2 & (1<<23))
         {
           PartName += "N";
@@ -194,6 +233,7 @@ function MatchPartName(name)
 // MKM devices have the SIM module at a different address :-<
 function GetPartName2()
 {
+  TargetInterface.setMaximumJTAGFrequency(2000000);
   CheckSystemSecurity();
   TargetInterface.pokeWord(0xE000EDFC, (1<<24));
   var PartName;

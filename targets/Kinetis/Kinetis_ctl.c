@@ -47,14 +47,18 @@ ctl_set_isr(unsigned int irq,
   if (oldisr)
     *oldisr = *((CTL_ISR_FN_t*)(SCB->VTOR)+16+irq);
   *((CTL_ISR_FN_t*)(SCB->VTOR)+16+irq) = isr;
-  NVIC_SetPriority(irq, (1 << (__NVIC_PRIO_BITS - 1)) + priority);
+  ctl_set_priority(irq, priority);  
   return 1;
 }
 
 void
 ctl_set_priority(int irq, int priority)
 {
+#if defined(CTL_TASKING) && !defined(__ARM_ARCH_6M__)
   NVIC_SetPriority(irq, (1 << (__NVIC_PRIO_BITS - 1)) + priority);
+#else
+  NVIC_SetPriority(irq, priority);
+#endif
 }
 
 int
@@ -71,6 +75,25 @@ ctl_mask_isr(unsigned int irq)
   return 1;
 }
 
+int ctl_lowest_isr_priority(void)
+{
+#if defined(CTL_TASKING) && !defined(__ARM_ARCH_6M__)
+  return ((1 << (__NVIC_PRIO_BITS - 1)) - 1);
+#else
+  return ((1 << __NVIC_PRIO_BITS) - 1);
+#endif
+}
+
+int ctl_highest_isr_priority(void)
+{
+  return 0;
+}
+
+int ctl_adjust_isr_priority(int priority, int n)
+{
+  return priority - n;
+}
+
 void ctl_start_timer(CTL_ISR_FN_t timerFn)
 {    
   userTimerISR = timerFn;  
@@ -81,12 +104,12 @@ void ctl_start_timer(CTL_ISR_FN_t timerFn)
 #else
   SysTick->CTRL = SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;
 #endif
-#ifdef CTL_TASKING  
+#ifdef CTL_TASKING
   // Set PendSV priority (PendSV must have lowest priority)
-  NVIC_SetPriority(PendSV_IRQn, (1 << __NVIC_PRIO_BITS) - 1);
+  ctl_set_priority(PendSV_IRQn, ctl_lowest_isr_priority());
 #endif
   // Set SysTick priority
-  ctl_set_priority(SysTick_IRQn, 0);
+  ctl_set_priority(SysTick_IRQn, ctl_highest_isr_priority());
 }
 
 unsigned long

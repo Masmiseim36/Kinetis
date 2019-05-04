@@ -1,123 +1,119 @@
 <projects>
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Executable" description="An executable for Freescale Kinetis." type="Executable" template_name="Kinetis_EXE">
-    <configuration name="THUMB Debug"/>
-    <configuration name="THUMB Release"/>
-    <property name="arm_target_debug_interface_type" value="ADIv5"/>
-    <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml"/>
-    <propertygroup name="Target" value="Kinetis" choose="Yes"/>
-    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll"/>
-    <property name="target_get_partname_script" value="GetPartName()"/>
-    <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
-    <property name="target_reset_script" value="Reset()"/>
-    <property name="target_reset_script" configuration="Flash" value="FLASHReset()"/>
-    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)"/>
-    <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader"/>
-    <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No"/>
-    <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
-    <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
-    <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No"/>
-    <property name="arm_gcc_target" value="arm-unknown-eabi"/>
-    <property name="arm_linker_stack_size" value="128"/>
-    <property name="arm_linker_heap_size" value="128"/>
-    <property name="c_additional_options" value="-fms-extensions"/>
-    <property name="double_is_float"/>
-    <property name="linker_output_format"/>
-    <property name="linker_printf_enabled"/>
-    <property name="linker_printf_fmt_level"/>
-    <property name="linker_printf_width_precision_supported"/>
-    <property name="linker_printf_fp_enabled"/>
-    <property name="linker_scanf_enabled"/>
-    <property name="linker_scanf_fmt_level"/>
-    <property name="linker_scanf_fp_enabled"/>
-    <property name="linker_scanf_character_group_matching_enabled"/>
-    <property name="c_user_include_directories" value="$(TargetsDir)/Kinetis;$(TargetsDir)/CMSIS_3/CMSIS/Include"/>
-    <propertygroup name="Placement" value="Flash"/>
+    <configuration name="THUMB Debug" />
+    <configuration name="THUMB Release" />
+    <property name="arm_target_debug_interface_type" value="ADIv5" />
+    <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
+    <propertygroup name="Target" value="Kinetis" choose="Yes" />
+    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll" />
+    <property name="target_get_partname_script" value="GetPartName()" />
+    <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+    <property name="target_reset_script" value="Reset()" />
+    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader" />
+    <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No" />
+    <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No" />
+    <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No" />
+    <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No" />
+    <property name="arm_gcc_target" value="arm-unknown-eabi" />
+    <property name="arm_linker_stack_size" value="128" />
+    <property name="arm_linker_heap_size" value="128" />
+    <property name="c_additional_options" value="-fms-extensions" />
+    <property name="double_is_float" />
+    <property name="linker_output_format" />
+    <property name="linker_printf_enabled" />
+    <property name="linker_printf_fmt_level" />
+    <property name="linker_printf_width_precision_supported" />
+    <property name="linker_printf_fp_enabled" />
+    <property name="linker_scanf_enabled" />
+    <property name="linker_scanf_fmt_level" />
+    <property name="linker_scanf_fp_enabled" />
+    <property name="linker_scanf_character_group_matching_enabled" />
+    <property name="c_user_include_directories" value="$(TargetsDir)/Kinetis;$(TargetsDir)/CMSIS_3/CMSIS/Include" />
+    <propertygroup name="Placement" value="Flash" />
     <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc">
-      <file name="main.c" source="$(StudioDir)/samples/Shared/main.c"/>
+      <file name="main.c" source="$(StudioDir)/samples/Shared/main.c" />
     </folder>
     <folder name="System Files">
-      <file name="$(StudioDir)/source/thumb_crt0.s" expand="no"/>
-      <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no"/>
-      <file name="Kinetis_ctl_board.c" source="$(TargetsDir)/Kinetis/Kinetis_ctl_board.c"/>
-      <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no"/>
+      <file name="$(StudioDir)/source/thumb_crt0.s" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no" />
       <file name="$(TargetsDir)/Kinetis/Kinetis_Target.js" expand="no">
-        <property name="file_type" value="Reset Script"/>
+        <property name="file_type" value="Reset Script" />
       </file>
     </folder>
   </project>
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Externally Built Executable" description="An externally built executable for Freescale Kinetis." type="Externally Built Executable" template_name="Kinetis_EXT_EXE">
-    <property name="arm_target_debug_interface_type" value="ADIv5"/>
-    <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml"/>
-    <propertygroup name="Target" value="Kinetis" choose="Yes"/>
-    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll"/>
-    <property name="target_get_partname_script" value="GetPartName()"/>
-    <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
-    <property name="target_reset_script" value="Reset()"/>
-    <property name="target_reset_script" configuration="Flash" value="FLASHReset()"/>
-    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)"/>
-    <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader"/>
-    <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No"/>
-    <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
-    <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
-    <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No"/>
-    <property name="external_build_file_name"/>
-    <propertygroup name="Placement" value="Flash"/>
-    <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc"/>
+    <property name="arm_target_debug_interface_type" value="ADIv5" />
+    <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
+    <propertygroup name="Target" value="Kinetis" choose="Yes" />
+    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll" />
+    <property name="target_get_partname_script" value="GetPartName()" />
+    <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+    <property name="target_reset_script" value="Reset()" />
+    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader" />
+    <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No" />
+    <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No" />
+    <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No" />
+    <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No" />
+    <property name="external_build_file_name" />
+    <propertygroup name="Placement" value="Flash" />
+    <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc" />
     <folder name="System Files">
       <file name="$(TargetsDir)/Kinetis/Kinetis_Target.js" expand="no">
-        <property name="file_type" value="Reset Script"/>
+        <property name="file_type" value="Reset Script" />
       </file>
     </folder>
   </project>
   <project cpu_manufacturer="Freescale" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis CTL Executable" description="A CrossWorks Tasking Library executable for Freescale Kinetis." type="Executable" template_name="Kinetis_CTL_EXE">
-    <configuration name="THUMB Debug"/>
-    <configuration name="THUMB Release"/>
-    <property name="arm_target_debug_interface_type" value="ADIv5"/>
-    <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml"/>
-    <propertygroup name="Target" value="Kinetis" choose="Yes"/>
-    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll"/>
-    <property name="target_get_partname_script" value="GetPartName()"/>
-    <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)"/>
-    <property name="target_reset_script" value="Reset()"/>
-    <property name="target_reset_script" configuration="Flash" value="FLASHReset()"/>
-    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)"/>
-    <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader"/>
-    <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No"/>
-    <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
-    <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
-    <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No"/>
-    <property name="arm_gcc_target" value="arm-unknown-eabi"/>
-    <property name="arm_linker_stack_size" value="128"/>
-    <property name="arm_linker_heap_size" value="128"/>
-    <property name="c_additional_options" value="-fms-extensions"/>
-    <property name="double_is_float"/>
-    <property name="linker_output_format"/>
-    <property name="linker_printf_enabled"/>
-    <property name="linker_printf_fmt_level"/>
-    <property name="linker_printf_width_precision_supported"/>
-    <property name="linker_printf_fp_enabled"/>
-    <property name="linker_scanf_enabled"/>
-    <property name="linker_scanf_fmt_level"/>
-    <property name="linker_scanf_fp_enabled"/>
-    <property name="linker_scanf_character_group_matching_enabled"/>
-    <property name="arm_linker_process_stack_size" value="256"/>
-    <property name="c_user_include_directories" value="$(StudioDir)/ctl/include;$(TargetsDir)/Kinetis;$(TargetsDir)/CMSIS_3/CMSIS/Include"/>
-    <property name="c_preprocessor_definitions" value="NESTED_INTERRUPTS;CTL_TASKING"/>
-    <property name="link_use_multi_threaded_libraries" value="Yes"/>
-    <property name="linker_additional_files" value="$(StudioDir)/ctl/lib/libctl$(LibExt).a"/>
-    <propertygroup name="Placement" value="Flash"/>
+    <configuration name="THUMB Debug" />
+    <configuration name="THUMB Release" />
+    <property name="arm_target_debug_interface_type" value="ADIv5" />
+    <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
+    <propertygroup name="Target" value="Kinetis" choose="Yes" />
+    <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll" />
+    <property name="target_get_partname_script" value="GetPartName()" />
+    <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+    <property name="target_reset_script" value="Reset()" />
+    <property name="target_trace_initialize_script" value="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <property name="arm_target_flash_loader_type" configuration="Flash" value="LIBMEM RPC Loader" />
+    <property name="arm_target_loader_can_lock_all" configuration="Flash" value="No" />
+    <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No" />
+    <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No" />
+    <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No" />
+    <property name="arm_gcc_target" value="arm-unknown-eabi" />
+    <property name="arm_linker_stack_size" value="128" />
+    <property name="arm_linker_heap_size" value="128" />
+    <property name="c_additional_options" value="-fms-extensions" />
+    <property name="double_is_float" />
+    <property name="linker_output_format" />
+    <property name="linker_printf_enabled" />
+    <property name="linker_printf_fmt_level" />
+    <property name="linker_printf_width_precision_supported" />
+    <property name="linker_printf_fp_enabled" />
+    <property name="linker_scanf_enabled" />
+    <property name="linker_scanf_fmt_level" />
+    <property name="linker_scanf_fp_enabled" />
+    <property name="linker_scanf_character_group_matching_enabled" />
+    <property name="arm_linker_process_stack_size" value="256" />
+    <property name="c_user_include_directories" value="$(StudioDir)/ctl/include;$(TargetsDir)/Kinetis;$(TargetsDir)/CMSIS_3/CMSIS/Include" />
+    <property name="c_preprocessor_definitions" value="NESTED_INTERRUPTS;CTL_TASKING" />
+    <property name="link_use_multi_threaded_libraries" value="Yes" />
+    <property name="linker_additional_files" value="$(StudioDir)/ctl/lib/libctl$(LibExt).a" />
+    <propertygroup name="Placement" value="Flash" />
     <folder name="Source Files" filter="c;cpp;cxx;cc;h;s;asm;inc">
-      <file name="main_ctl.c" source="$(StudioDir)/ctl/source/main_ctl.c"/>
+      <file name="main_ctl.c" source="$(StudioDir)/ctl/source/main_ctl.c" />
     </folder>
     <folder name="System Files">
-      <file name="$(StudioDir)/source/thumb_crt0.s" expand="No"/>
-      <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no"/>
-      <file name="Kinetis_ctl_board.c" source="$(TargetsDir)/Kinetis/Kinetis_ctl_board.c"/>
-      <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no"/>
+      <file name="$(StudioDir)/source/thumb_crt0.s" expand="No" />
+      <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/Kinetis_ctl_board.c" />
+      <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no" />
       <file name="$(TargetsDir)/Kinetis/Kinetis_Target.js" expand="no">
-        <property name="file_type" value="Reset Script"/>
+        <property name="file_type" value="Reset Script" />
       </file>
-      <file name="$(StudioDir)/ctl/source/threads.js" expand="no"/>
+      <file name="$(StudioDir)/ctl/source/threads.js" expand="no" />
     </folder>
   </project>
 </projects>

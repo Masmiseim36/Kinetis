@@ -1,7 +1,7 @@
 <!DOCTYPE CrossStudio_Project_File>
 <solution Name="Loader" target="8" version="2">
   <project Name="Loader">
-    <configuration Name="Common" arm_architecture="v7M" arm_core_type="Cortex-M3" arm_include_exception_handlers="No" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" arm_linker_stack_size="256" arm_target_debug_interface_type="ADIv5" build_output_directory="Release" build_output_file_name="$(OutDir)/Loader.elf" c_preprocessor_definitions="LIBMEM_LIGHT;K_SERIES" gcc_entry_point="_start" gcc_optimization_level="Level 1" link_include_startup_code="No" linker_additional_files="$(StudioDir)/lib/libmem_light$(LibExt)$(LIB);$(StudioDir)/lib/libmem_loader$(LibExt)$(LIB)" linker_keep_symbols="libmem_erase;libmem_erase_all;libmem_write;libmem_flush;libmem_crc32;libmem_get_driver_sector_size" linker_memory_map_file="Loader_MemoryMap.xml" project_type="Executable" target_get_partname_script="GetPartName()" target_reset_script="FLASHReset()"/>
+    <configuration Name="Common" arm_architecture="v7M" arm_core_type="Cortex-M3" arm_include_exception_handlers="No" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" arm_linker_stack_size="256" arm_target_debug_interface_type="ADIv5" build_output_directory="Release" build_output_file_name="$(OutDir)/Loader.elf" c_preprocessor_definitions="LIBMEM_LIGHT;K_SERIES" gcc_entry_point="_start" gcc_optimization_level="Level 1" link_include_startup_code="No" linker_additional_files="$(StudioDir)/lib/libmem_light$(LibExt)$(LIB);$(StudioDir)/lib/libmem_loader$(LibExt)$(LIB)" linker_keep_symbols="libmem_erase;libmem_erase_all;libmem_write;libmem_flush;libmem_crc32;libmem_get_driver_sector_size" linker_memory_map_file="Loader_MemoryMap.xml" linker_memory_map_macros="RAMSIZE=0x2000;RAMSTART=0x1FFFF000" project_type="Executable" target_get_partname_script="GetPartName()" target_reset_script="FLASHReset()"/>
     <folder Name="Source Files">
       <file file_name="Kinetis_flash_loader.c"/>
       <file Name="Kinetis_Target.js" file_name="Kinetis_Target.js">
@@ -11,7 +11,7 @@
     </folder>
   </project>
   <project Name="Loader2">
-    <configuration Name="Common" arm_architecture="v7M" arm_core_type="Cortex-M3" arm_include_exception_handlers="No" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" arm_linker_stack_size="512" arm_target_debug_interface_type="ADIv5" build_output_directory="Release" build_output_file_name="$(OutDir)/Loader2.elf" c_preprocessor_definitions="K_SERIES;HASFlexNVM" gcc_entry_point="_start" gcc_optimization_level="Level 1" link_include_startup_code="No" linker_additional_files="$(StudioDir)/lib/libmem$(LibExt)$(LIB);$(StudioDir)/lib/libmem_loader$(LibExt)$(LIB)" linker_keep_symbols="libmem_erase;libmem_erase_all;libmem_write;libmem_flush;libmem_crc32;libmem_get_driver_sector_size" linker_memory_map_file="Loader_MemoryMap.xml" project_type="Executable" target_get_partname_script="GetPartName()" target_reset_script="FLASHReset()"/>
+    <configuration Name="Common" arm_architecture="v7M" arm_core_type="Cortex-M3" arm_include_exception_handlers="No" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" arm_linker_stack_size="512" arm_target_debug_interface_type="ADIv5" build_output_directory="Release" build_output_file_name="$(OutDir)/Loader2.elf" c_preprocessor_definitions="K_SERIES;HASFlexNVM" gcc_entry_point="_start" gcc_optimization_level="Level 1" link_include_startup_code="No" linker_additional_files="$(StudioDir)/lib/libmem$(LibExt)$(LIB);$(StudioDir)/lib/libmem_loader$(LibExt)$(LIB)" linker_keep_symbols="libmem_erase;libmem_erase_all;libmem_write;libmem_flush;libmem_crc32;libmem_get_driver_sector_size" linker_memory_map_file="Loader_MemoryMap.xml" linker_memory_map_macros="RAMSIZE=0x2000;RAMSTART=0x1FFFF000" project_type="Executable" target_get_partname_script="GetPartName()" target_reset_script="FLASHReset()"/>
     <folder Name="Source Files">
       <file file_name="Kinetis_flash_loader.c"/>
       <file Name="Kinetis_Target.js" file_name="Kinetis_Target.js">
@@ -80,5 +80,5 @@
       <file file_name="Loader_Startup.s"/>
     </folder>
   </project>
-  <configuration Name="Common" build_intermediate_directory="$(ProjectName)" gcc_debugging_level="Level 3"/>
+  <configuration Name="Common" build_intermediate_directory="$(ProjectName)" gcc_debugging_level="Level 3" linker_DebugIO_enabled="No" linker_printf_enabled="No" linker_scanf_enabled="No"/>
 </solution>

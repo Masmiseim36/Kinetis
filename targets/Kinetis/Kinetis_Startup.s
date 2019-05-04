@@ -1,5 +1,5 @@
 /*****************************************************************************
- * Copyright (c) 2010, 2011, 2012, 2013 Rowley Associates Limited.           *
+ * Copyright (c) 2010-2014 Rowley Associates Limited.                        *
  *                                                                           *
  * This file may be distributed under the terms of the License Agreement     *
  * provided with this software.                                              *
@@ -114,8 +114,14 @@ ISR_HANDLER SysTick_Handler
   #include "MK20F12.vec"
 #elif defined(MK21D5)
   #include "MK21D5.vec"
+#elif defined(MK21F12)
+  #include "MK21F12.vec"
 #elif defined(MK22D5)
   #include "MK22D5.vec"
+#elif defined(MK22F12)
+  #include "MK22F12.vec"
+#elif defined(MK24F12)
+  #include "MK24F12.vec"
 #elif defined(MK30D7)
   #include "MK30D7.vec"
 #elif defined(MK30D10)
@@ -147,7 +153,7 @@ ISR_HANDLER SysTick_Handler
 #elif defined(MK53D10)
   #include "MK53D10.vec"
 #elif defined(MK53DZ10)
-  #include "MK52DZ10.vec"
+  #include "MK53DZ10.vec"
 #elif defined(MK60D10)
   #include "MK60D10.vec"
 #elif defined(MK60DZ10)
@@ -160,14 +166,16 @@ ISR_HANDLER SysTick_Handler
   #include "MK61F12.vec"
 #elif defined(MK61F15)
   #include "MK61F15.vec"
+#elif defined(MK63F12)
+  #include "MK63F12.vec"
+#elif defined(MK64F12)
+  #include "MK64F12.vec"
 #elif defined(MK70F12)
   #include "MK70F12.vec"
 #elif defined(MK70F15)
   #include "MK70F15.vec"
 #elif defined(MKE02Z2)
-  #include "MKE02z2.vec"
-#elif defined(MKE04Z4)
-  #include "MKE04z4.vec"
+  #include "MKE02Z2.vec"
 #elif defined(MKL02Z4)
   #include "MKL02Z4.vec"
 #elif defined(MKL04Z4)
@@ -215,7 +223,7 @@ _vectors_end:
   .fill 0x400-(_vectors_end-_vectors), 1, 0xff
 BackDoorKey:
   .byte 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
-#if defined(MKE02Z2) || defined(MKE04Z4)
+#if defined(E_SERIES)
 RESERVED:
   .byte 0xff, 0xff, 0xff, 0xff
 EEPROT:
@@ -252,8 +260,7 @@ FDPROT:
   bl SystemInit
 #endif
 
-#ifdef __HAS_FPU
-#ifndef __NO_FPU
+#if defined(__FPU_PRESENT) && !defined(__SOFTFP__)
   // Enable CP11 and CP10 with CPACR |= (0xf<<20)
   movw r0, 0xED88
   movt r0, 0xE000
@@ -276,7 +283,6 @@ FDPROT:
   ldr r0, [r1]
   orrs r0, r0, #(0x3 << 24) // FZ and DN
   str r0, [r1]
-#endif
 #endif
 #endif
 
@@ -312,31 +318,11 @@ l1:
 SystemInit:
 #endif  
 disableWatchDog: 
-#if defined(MKL02Z4) || defined(MKL04Z4) || defined(MKL05Z4) || defined(MKL14Z4) || defined(MKL15Z4) || defined(MKL24Z4) || defined(MKL25Z4) || defined(MKL26Z4) || defined(MKL34Z4) || defined(MKL36Z4) || defined(MKL46Z4)
+#if defined(L_SERIES)
   ldr r0, =0x40048100
   ldr r1, =#0
   str r1, [r0]
-#elif defined(MKE02Z2) || defined(MKE04Z4)
-  ldr r0, =0x40052000
-  ldr r1, =0x0
-  strb r1, [r0, #1] // WDOG->CS2 = 0;
-  ldr r1, =#0x20c5
-  strh r1, [r0, #2] // WDOG->CNT = 0x20C5;
-  ldr r1, =#0x28D9
-  strh r1, [r0, #2] // WDOG->CNT = 0x28D9;
-  ldr r1, =#0xFFFF
-  strh r1, [r0, #4] // WDOG->TOVAL = 0xFFFF;
-  ldr r1, =#0x20
-  strb r1, [r0, #0] // WDOG->CS1 = 0x20;
-#elif defined(MKM13Z5) || defined(MKM14Z5) || defined(MKM32Z5) || defined(MKM33Z5) || defined(MKM34Z5) || defined(MKM38Z5)
-  ldr r2, =0x40053000
-  ldr r3, =0xC520
-  strh r3, [r2, #14]
-  ldr r3, =0xD928
-  strh r3, [r2, #14] 
-  ldr r3, =0x1D2
-  strh r3, [r2]
-#else
+#elif defined(K_SERIES)
   movw r0, #0x2000
   movt r0, #0x4005
   movw r1, #0xC520
@@ -345,6 +331,28 @@ disableWatchDog:
   strh r1, [r0, #14] 
   movw r1, #0x1D2
   strh r1, [r0]
+#elif defined(M_SERIES)
+  ldr r2, =0x40053000
+  ldr r3, =0xC520
+  strh r3, [r2, #14]
+  ldr r3, =0xD928
+  strh r3, [r2, #14] 
+  ldr r3, =0x1D2
+  strh r3, [r2]
+#elif defined(E_SERIES)
+  ldr r0, =0x40052000
+  ldr r1, =0x0
+  strb r1, [r0, #1]
+  ldr r1, =#0x20c5
+  strh r1, [r0, #2]
+  ldr r1, =#0x28D9
+  strh r1, [r0, #2]
+  ldr r1, =#0xFFFF
+  strh r1, [r0, #4]
+  ldr r1, =#0x20
+  strb r1, [r0, #0]
+#else
+#error L_SERIES, K_SERIES, M_SERIES or E_SERIES should be defined
 #endif
   bx lr
 

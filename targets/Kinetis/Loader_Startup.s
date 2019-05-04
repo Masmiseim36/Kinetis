@@ -62,7 +62,7 @@ _start:
   ldr r1, =#0x20
   strb r1, [r0, #0]
 #else
-#error L_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined
+#error L_SERIES, K_SERIES, M_SERIES or E_SERIES should be defined
 #endif
   /***************************************************************************
    * Copy loader parameter to R0 if a parameter has been supplied.           *

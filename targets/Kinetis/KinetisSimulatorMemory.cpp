@@ -37,7 +37,7 @@ public:
       pokeByte(MCG_S_OFFSET, 0x10);
       pokeByte(MCG_ATC_OFFSET, 0x00);
       pokeByte(MCG_ATCVH_OFFSET, 0x00);
-      pokeByte(MCG_ATCVL_OFFSET, 0x00);
+      pokeByte(MCG_ATCVL_OFFSET, 0x00);        
     } 
   void pokeByte(unsigned address, unsigned value)
     {
@@ -63,7 +63,51 @@ public:
           if (value & (1<<6)) // PLLS
             pokeByte(MCG_S_OFFSET, peekByte(MCG_S_OFFSET) | (1<<5) | (1<<6)); // set PLLST and LOCK
         }
-    }
+    }  
+};
+
+#define ICS_BASE (0x64000)
+#define ICS_C1_OFFSET (MCG_BASE+0x0)
+#define ICS_C2_OFFSET (MCG_BASE+0x1)
+#define ICS_C3_OFFSET (MCG_BASE+0x2)
+#define ICS_C4_OFFSET (MCG_BASE+0x3)
+#define ICS_S_OFFSET (MCG_BASE+0x4)
+
+class KinetisEPeripheralMemory : public LittleMemoryRegion
+{
+public:
+  KinetisEPeripheralMemory() : LittleMemoryRegion(0x100000) { }
+  void reset()
+    {     
+      pokeByte(ICS_C1_OFFSET, 0x04);
+      pokeByte(ICS_C2_OFFSET, 0x20);
+      pokeByte(ICS_C3_OFFSET, 0x00);
+      pokeByte(ICS_C4_OFFSET, 0x00);
+      pokeByte(ICS_S_OFFSET, 0x10);        
+    } 
+  void pokeByte(unsigned address, unsigned value)
+    {
+      LittleMemoryRegion::pokeByte(address, value);
+      if (address == ICS_C1_OFFSET)
+        {
+          switch ((value>>6) & 0x3)
+            {
+              case 0:
+              case 3:
+                if (value & (1<<2))
+                  pokeByte(ICS_S_OFFSET, 1<<6|1<<4);
+                else
+                  pokeByte(ICS_S_OFFSET, 1<<6);
+                break;
+              case 1:
+                pokeByte(ICS_S_OFFSET, 1<<2);
+                break;
+              case 2:
+                pokeByte(ICS_S_OFFSET, 2<<2);
+                break;
+            }
+        }
+    }  
 };
 
 KinetisSimulatorMemoryImpl::KinetisSimulatorMemoryImpl() :
@@ -90,7 +134,7 @@ KinetisSimulatorMemoryImpl::~KinetisSimulatorMemoryImpl()
 bool 
 KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char *argv[])
 {
-  l_series = strstr(argv[0], "MKL") == argv[0];
+  l_series = (strstr(argv[0], "MKL") == argv[0]) || (strstr(argv[0], "MKE") == argv[0]) || (strstr(argv[0], "MKM") == argv[0]) || (strstr(argv[0], "MKV10") == argv[0]);
   if (argc != 5)
     return false;  
   pflash = new LittleMemoryRegion(strtoul(argv[1],0,0));
@@ -99,8 +143,33 @@ KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char 
   dflash->clear(0xff);  
   flexram = new LittleMemoryRegion(strtoul(argv[3],0,0));
   sram = new LittleMemoryRegion(strtoul(argv[4],0,0));   
-  peripherals = new KinetisPeripheralMemory();
+  if (strstr(argv[0], "MKE"))
+    peripherals = new KinetisEPeripheralMemory();
+  else
+    peripherals = new KinetisPeripheralMemory();
   scs = new LittleMemoryRegion(0x1000);
+  if (l_series)
+    {
+      sram_start = 0x20000000-(sram->size()/4);
+      sram_end = 0x20000000+(sram->size()/4)*3;
+    }
+  else
+    {
+      switch (sram->size())
+        {
+          case 0x6000:
+          case 0xC000:
+          case 0x18000:
+          case 0x30000:
+            sram_start = 0x20000000-(sram->size()/3);
+            sram_end = 0x20000000+(sram->size()/3)*2;
+            break;
+          default:
+            sram_start = 0x20000000-(sram->size()/2);
+            sram_end = 0x20000000+sram->size()/2;
+            break;
+        }
+    }
   return true;
 }
 
@@ -139,15 +208,10 @@ KinetisSimulatorMemoryImpl::findMemoryRegion(unsigned address, unsigned size, un
       m = flexram;
       offset = address-(0x14000000-(flexram->size()/4));
     }
-  else if (l_series && (address >= (0x20000000-(sram->size()/4)) && address < (0x20000000+sram->size()/4*3)))
+  else if (address >= sram_start && address < sram_end)
     {
       m = sram;
-      offset = address-(0x20000000-(sram->size()/4));
-    }
-  else if (!l_series && (address >= (0x20000000-(sram->size()/2)) && address < (0x20000000+sram->size()/2)))
-    {
-      m = sram;
-      offset = address-(0x20000000-(sram->size()/2));
+      offset = address-sram_start;
     }
   else if (address >= 0x40000000 && address < 0x40100000)
     {

@@ -167,7 +167,7 @@ libmem_erase_impl(libmem_driver_handle_t *h, uint8_t *start, size_t size, uint8_
   if (LIBMEM_RANGE_WITHIN_RANGE(h->start, h->start + h->size - 1, start, start + size - 1))
     {
 #ifdef HASFlexNVM
-      if (h->start == 0x10000000)
+      if ((unsigned)h->start == 0x10000000)
         return res;
 #endif
       if (erased_start)
@@ -308,9 +308,9 @@ main(int param0)
   FMC_PFB0CR = (0xf<<20) | (0x1<<19);
 
   // workout flash size, sector size and write block size
-  unsigned FLASH_SIZE = ((SIM_FCFG2>>24) & 0x3f)<<13;  
+  unsigned FLASH_SIZE = ((SIM_FCFG2>>24) & 0x7f)<<13;  
   if (SIM_FCFG2 & (1<<23)) // N
-    FLASH_SIZE += ((SIM_FCFG2>>16) & 0x3f)<<13;
+    FLASH_SIZE += ((SIM_FCFG2>>16) & 0x7f)<<13;
 
   write_block_size = 4;
   

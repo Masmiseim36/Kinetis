@@ -6,7 +6,7 @@
 **                          IAR ANSI C/C++ Compiler for ARM
 **
 **     Reference manual:    MKE02Z64M20SF0RM, Rev.2.1, Apr-23 2013
-**     Version:             rev. 1.2, 2013-05-07
+**     Version:             rev. 1.4, 2013-07-10
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MKE02Z2
@@ -23,14 +23,19 @@
 **         Changed start of doxygen comment.
 **     - rev. 1.2 (2013-05-07)
 **         Update according to reference manual rev. 2.1.
+**     - rev. 1.3 (2013-06-13)
+**         Device types PTA,PTB,FPTA,FPTB changed to GPIOA,GPIOB,FGPIOA,FGPIOB.
+**     - rev. 1.4 (2013-07-10)
+**         NV - DFPROT register renamed to EEPROT.
+**         WDOG - Peripheral register layout structure has been extended with 16-bit access registers CNT, TOVAL, WIN.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKE02Z2.h
- * @version 1.2
- * @date 2013-05-07
+ * @version 1.4
+ * @date 2013-07-10
  * @brief CMSIS Peripheral Access Layer for MKE02Z2
  *
  * CMSIS Peripheral Access Layer for MKE02Z2
@@ -43,7 +48,7 @@
  * compatible) */
 #define MCU_MEM_MAP_VERSION 0x0100u
 /** Memory map minor version */
-#define MCU_MEM_MAP_VERSION_MINOR 0x0002u
+#define MCU_MEM_MAP_VERSION_MINOR 0x0004u
 
 
 /* ----------------------------------------------------------------------------
@@ -92,7 +97,7 @@ typedef enum IRQn {
   KBI0_IRQn                    = 24,               /**< Keyboard interrupt 0 */
   KBI1_IRQn                    = 25,               /**< Keyboard interrupt 1 */
   Reserved42_IRQn              = 26,               /**< Reserved interrupt 42 */
-  ICS_IRQn                     = 27,               /**< MCG interrupt */
+  ICS_IRQn                     = 27,               /**< ICS interrupt */
   Watchdog_IRQn                = 28,               /**< WDOG Interrupt */
   Reserved45_IRQn              = 29,               /**< Reserved interrupt 45 */
   Reserved46_IRQn              = 30,               /**< Reserved interrupt 46 */
@@ -579,16 +584,16 @@ typedef struct {
 
 
 /* FGPIO - Peripheral instance base addresses */
-/** Peripheral FPTA base address */
-#define FPTA_BASE                                (0xF8000000u)
-/** Peripheral FPTA base pointer */
-#define FPTA                                     ((FGPIO_Type *)FPTA_BASE)
-/** Peripheral FPTB base address */
-#define FPTB_BASE                                (0xF8000040u)
-/** Peripheral FPTB base pointer */
-#define FPTB                                     ((FGPIO_Type *)FPTB_BASE)
+/** Peripheral FGPIOA base address */
+#define FGPIOA_BASE                              (0xF8000000u)
+/** Peripheral FGPIOA base pointer */
+#define FGPIOA                                   ((FGPIO_Type *)FGPIOA_BASE)
+/** Peripheral FGPIOB base address */
+#define FGPIOB_BASE                              (0xF8000040u)
+/** Peripheral FGPIOB base pointer */
+#define FGPIOB                                   ((FGPIO_Type *)FGPIOB_BASE)
 /** Array initializer of FGPIO peripheral base pointers */
-#define FGPIO_BASES                              { FPTA, FPTB }
+#define FGPIO_BASES                              { FGPIOA, FGPIOB }
 
 /*!
  * @}
@@ -1255,16 +1260,16 @@ typedef struct {
 
 
 /* GPIO - Peripheral instance base addresses */
-/** Peripheral PTA base address */
-#define PTA_BASE                                 (0x400FF000u)
-/** Peripheral PTA base pointer */
-#define PTA                                      ((GPIO_Type *)PTA_BASE)
-/** Peripheral PTB base address */
-#define PTB_BASE                                 (0x400FF040u)
-/** Peripheral PTB base pointer */
-#define PTB                                      ((GPIO_Type *)PTB_BASE)
+/** Peripheral GPIOA base address */
+#define GPIOA_BASE                               (0x400FF000u)
+/** Peripheral GPIOA base pointer */
+#define GPIOA                                    ((GPIO_Type *)GPIOA_BASE)
+/** Peripheral GPIOB base address */
+#define GPIOB_BASE                               (0x400FF040u)
+/** Peripheral GPIOB base pointer */
+#define GPIOB                                    ((GPIO_Type *)GPIOB_BASE)
 /** Array initializer of GPIO peripheral base pointers */
-#define GPIO_BASES                               { PTA, PTB }
+#define GPIO_BASES                               { GPIOA, GPIOB }
 
 /*!
  * @}
@@ -1714,7 +1719,7 @@ typedef struct {
   __I  uint8_t BACKKEY6;                           /**< Backdoor Comparison Key 6, offset: 0x6 */
   __I  uint8_t BACKKEY7;                           /**< Backdoor Comparison Key 7, offset: 0x7 */
        uint8_t RESERVED_0[4];
-  __I  uint8_t DFPROT;                             /**< Non-volatile D-Flash Protection Register, offset: 0xC */
+  __I  uint8_t EEPROT;                             /**< Non-volatile E-Flash Protection Register, offset: 0xC */
   __I  uint8_t FPROT;                              /**< Non-volatile P-Flash Protection Register, offset: 0xD */
   __I  uint8_t FSEC;                               /**< Non-volatile Flash Security Register, offset: 0xE */
   __I  uint8_t FOPT;                               /**< Non-volatile Flash Option Register, offset: 0xF */
@@ -1761,12 +1766,12 @@ typedef struct {
 #define NV_BACKKEY7_KEY_MASK                     0xFFu
 #define NV_BACKKEY7_KEY_SHIFT                    0
 #define NV_BACKKEY7_KEY(x)                       (((uint8_t)(((uint8_t)(x))<<NV_BACKKEY7_KEY_SHIFT))&NV_BACKKEY7_KEY_MASK)
-/* DFPROT Bit Fields */
-#define NV_DFPROT_DPS_MASK                       0x7u
-#define NV_DFPROT_DPS_SHIFT                      0
-#define NV_DFPROT_DPS(x)                         (((uint8_t)(((uint8_t)(x))<<NV_DFPROT_DPS_SHIFT))&NV_DFPROT_DPS_MASK)
-#define NV_DFPROT_DPOPEN_MASK                    0x80u
-#define NV_DFPROT_DPOPEN_SHIFT                   7
+/* EEPROT Bit Fields */
+#define NV_EEPROT_DPS_MASK                       0x7u
+#define NV_EEPROT_DPS_SHIFT                      0
+#define NV_EEPROT_DPS(x)                         (((uint8_t)(((uint8_t)(x))<<NV_EEPROT_DPS_SHIFT))&NV_EEPROT_DPS_MASK)
+#define NV_EEPROT_DPOPEN_MASK                    0x80u
+#define NV_EEPROT_DPOPEN_SHIFT                   7
 /* FPROT Bit Fields */
 #define NV_FPROT_FPLS_MASK                       0x3u
 #define NV_FPROT_FPLS_SHIFT                      0
@@ -2765,12 +2770,27 @@ typedef struct {
 typedef struct {
   __IO uint8_t CS1;                                /**< Watchdog Control and Status Register 1, offset: 0x0 */
   __IO uint8_t CS2;                                /**< Watchdog Control and Status Register 2, offset: 0x1 */
-  __I  uint8_t CNTH;                               /**< Watchdog Counter Register: High, offset: 0x2 */
-  __I  uint8_t CNTL;                               /**< Watchdog Counter Register: Low, offset: 0x3 */
-  __IO uint8_t TOVALH;                             /**< Watchdog Timeout Value Register: High, offset: 0x4 */
-  __IO uint8_t TOVALL;                             /**< Watchdog Timeout Value Register: Low, offset: 0x5 */
-  __IO uint8_t WINH;                               /**< Watchdog Window Register: High, offset: 0x6 */
-  __IO uint8_t WINL;                               /**< Watchdog Window Register: Low, offset: 0x7 */
+  union {                                          /* offset: 0x2 */
+    __IO uint16_t CNT;                               /**< WDOG_CNT register., offset: 0x2 */
+    struct {                                         /* offset: 0x2 */
+      __I  uint8_t CNTH;                               /**< Watchdog Counter Register: High, offset: 0x2 */
+      __I  uint8_t CNTL;                               /**< Watchdog Counter Register: Low, offset: 0x3 */
+    } CNT8B;
+  };
+  union {                                          /* offset: 0x4 */
+    __IO uint16_t TOVAL;                             /**< WDOG_TOVAL register., offset: 0x4 */
+    struct {                                         /* offset: 0x4 */
+      __IO uint8_t TOVALH;                             /**< Watchdog Timeout Value Register: High, offset: 0x4 */
+      __IO uint8_t TOVALL;                             /**< Watchdog Timeout Value Register: Low, offset: 0x5 */
+    } TOVAL8B;
+  };
+  union {                                          /* offset: 0x6 */
+    __IO uint16_t WIN;                               /**< WDOG_WIN register., offset: 0x6 */
+    struct {                                         /* offset: 0x6 */
+      __IO uint8_t WINH;                               /**< Watchdog Window Register: High, offset: 0x6 */
+      __IO uint8_t WINL;                               /**< Watchdog Window Register: Low, offset: 0x7 */
+    } WIN8B;
+  };
 } WDOG_Type;
 
 /* ----------------------------------------------------------------------------
@@ -2808,6 +2828,10 @@ typedef struct {
 #define WDOG_CS2_FLG_SHIFT                       6
 #define WDOG_CS2_WIN_MASK                        0x80u
 #define WDOG_CS2_WIN_SHIFT                       7
+/* CNT Bit Fields */
+#define WDOG_CNT_CNT_MASK                        0xFFFFu
+#define WDOG_CNT_CNT_SHIFT                       0
+#define WDOG_CNT_CNT(x)                          (((uint16_t)(((uint16_t)(x))<<WDOG_CNT_CNT_SHIFT))&WDOG_CNT_CNT_MASK)
 /* CNTH Bit Fields */
 #define WDOG_CNTH_CNTHIGH_MASK                   0xFFu
 #define WDOG_CNTH_CNTHIGH_SHIFT                  0
@@ -2816,6 +2840,10 @@ typedef struct {
 #define WDOG_CNTL_CNTLOW_MASK                    0xFFu
 #define WDOG_CNTL_CNTLOW_SHIFT                   0
 #define WDOG_CNTL_CNTLOW(x)                      (((uint8_t)(((uint8_t)(x))<<WDOG_CNTL_CNTLOW_SHIFT))&WDOG_CNTL_CNTLOW_MASK)
+/* TOVAL Bit Fields */
+#define WDOG_TOVAL_TOVAL_MASK                    0xFFFFu
+#define WDOG_TOVAL_TOVAL_SHIFT                   0
+#define WDOG_TOVAL_TOVAL(x)                      (((uint16_t)(((uint16_t)(x))<<WDOG_TOVAL_TOVAL_SHIFT))&WDOG_TOVAL_TOVAL_MASK)
 /* TOVALH Bit Fields */
 #define WDOG_TOVALH_TOVALHIGH_MASK               0xFFu
 #define WDOG_TOVALH_TOVALHIGH_SHIFT              0
@@ -2824,6 +2852,10 @@ typedef struct {
 #define WDOG_TOVALL_TOVALLOW_MASK                0xFFu
 #define WDOG_TOVALL_TOVALLOW_SHIFT               0
 #define WDOG_TOVALL_TOVALLOW(x)                  (((uint8_t)(((uint8_t)(x))<<WDOG_TOVALL_TOVALLOW_SHIFT))&WDOG_TOVALL_TOVALLOW_MASK)
+/* WIN Bit Fields */
+#define WDOG_WIN_WIN_MASK                        0xFFFFu
+#define WDOG_WIN_WIN_SHIFT                       0
+#define WDOG_WIN_WIN(x)                          (((uint16_t)(((uint16_t)(x))<<WDOG_WIN_WIN_SHIFT))&WDOG_WIN_WIN_MASK)
 /* WINH Bit Fields */
 #define WDOG_WINH_WINHIGH_MASK                   0xFFu
 #define WDOG_WINH_WINHIGH_SHIFT                  0
@@ -2881,7 +2913,20 @@ typedef struct {
  * @{
  */
 
-/* No backward compatibility issues. */
+#define FPTA_BASE                         FGPIOA_BASE
+#define FPTA                              FGPIOA
+#define FPTB_BASE                         FGPIOB_BASE
+#define FPTB                              FGPIOB
+#define PTA_BASE                          GPIOA_BASE
+#define PTA                               GPIOA
+#define PTB_BASE                          GPIOB_BASE
+#define FPTB                              FGPIOB
+#define NV_DFPROT_DPS_MASK                NV_EEPROT_DPS_MASK
+#define NV_DFPROT_DPS_SHIFT               NV_EEPROT_DPS_SHIFT
+#define NV_DFPROT_DPS(x)                  NV_EEPROT_DPS(x)
+#define NV_DFPROT_DPOPEN_MASK             NV_EEPROT_DPOPEN_MASK
+#define NV_DFPROT_DPOPEN_SHIFT            NV_EEPROT_DPOPEN_SHIFT
+#define NV_DFPROT_DPOPEN_SHIFT            NV_EEPROT_DPOPEN_SHIFT
 
 /*!
  * @}
