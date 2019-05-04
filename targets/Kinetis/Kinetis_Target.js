@@ -228,10 +228,17 @@ function GetPartName()
             SubPartName += "N";
           Length = ((SIM_FCFG2>>24) & 0x7f)<<3;
           Length += ((SIM_FCFG2>>16) & 0x7f)<<3;
-          if (((SIM_SDID>>7) & 0x7)==3)
-            Length *= 2;
+          switch ((SIM_SDID>>7) & 0x7)
+            {
+              case 3:
+              case 7:
+                Length *= 2;
+                break;
+            }
           if (Length == 1024)
             SubPartName += "1M0";
+          else if (Length == 2048)
+            SubPartName += "2M0";
           else
             SubPartName += Length.toString();
         }

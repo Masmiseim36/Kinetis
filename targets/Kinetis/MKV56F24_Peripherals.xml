@@ -42780,9 +42780,16 @@
       </BitField>
     </Register>
     <Register start="0xE000E008" name="ACTLR" description="Auxiliary Control Register">
-      <BitField size="1" start="0" name="DISMCYCINT" description="Disable load/store multiple" />
-      <BitField size="1" start="1" name="DISDEFWBUF" description="Disable write buffer" />
       <BitField size="1" start="2" name="DISFOLD" description="Disable IT folding" />
+      <BitField size="1" start="26" name="DISDYNADD" description="Disables dynamic allocation of ADD and SUB instructions" />
+      <BitField size="5" start="21" name="DISISSCH1" description="Indicates instruction type might not be issued in channel 1" />
+      <BitField size="5" start="16" name="DISDI" description="Indicates nothing can be dual-issued when this instruction type is in channel 0" />
+      <BitField size="1" start="15" name="DISCRITAXIRUR" description="Disables critical AXI Read-Under-Read" />
+      <BitField size="1" start="14" name="DISBTACALLOC" description="Indicates no new entries are allocated in BTAC, but existing entries can be updated" />
+      <BitField size="1" start="13" name="DISBTACREAD" description="Indicates BTAC is not used and only static branch prediction can occur" />
+      <BitField size="1" start="12" name="DISITMATBFLUSH" description="Disables ITM and DWT ATB flush" />
+      <BitField size="1" start="11" name="DISRAMODE" description="Disables dynamic read allocate mode for Write-Back Write-Allocate memory regions" />
+      <BitField size="1" start="10" name="FPEXCODIS" description="Disables FPU exception outputs" />
     </Register>
   </RegisterGroup>
   <RegisterGroup start="0xE000E010" name="SysTick" description="24Bit System Tick Timer for use in RTOS">
@@ -42835,6 +42842,9 @@
       <BitField size="1" name="SLEEPONEXIT" start="1" description="Sleep on Exit" />
     </Register>
     <Register start="0xE000ED14" name="CCR" aka="Configuration_Control" description="Configuration and Control Register">
+      <BitField size="1" name="BP" start="18" description="Branch Predication Enable" />
+      <BitField size="1" name="IC" start="17" description="Instruction Cache Enable" />
+      <BitField size="1" name="DC" start="16" description="Data Cache Enable" />
       <BitField size="1" name="STKALIGN" start="9" description="Stack Alignment" />
       <BitField size="1" name="BFHFNMIGN" start="8" description="Bus Fault Hard Fault and NMI Ignore" />
       <BitField size="1" name="DIV_0_TRP" start="4" description="Divide by Zero Trap Enable" />
@@ -42878,6 +42888,7 @@
     </Register>
     <Register start="0xE000ED28" size="1" name="MMFSR" aka="Memory_Manage_Fault_Status">
       <BitField size="1" name="MMARVALID" start="7" />
+      <BitField size="1" name="MLSPERR" start="5" />
       <BitField size="1" name="MSTKERR" start="4" />
       <BitField size="1" name="MUNSTKERR" start="3" />
       <BitField size="1" name="DACCVIOL" start="1" />
@@ -42885,6 +42896,7 @@
     </Register>
     <Register start="0xE000ED29" size="1" name="BFSR" aka="Bus_Fault_Status">
       <BitField size="1" name="BFARVALID" start="7" />
+      <BitField size="1" name="LSPERR" start="5" />
       <BitField size="1" name="STKERR" start="4" />
       <BitField size="1" name="UNSTKERR" start="3" />
       <BitField size="1" name="IMPRECISERR" start="2" />
@@ -42948,6 +42960,69 @@
     <Register start="0xE000ED6C" name="ID_ISAR3" aka="ISAR3" access="ReadOnly" />
     <Register start="0xE000ED70" name="ID_ISAR4" aka="ISAR4" access="ReadOnly" />
   </RegisterGroup>
+  <RegisterGroup start="0xE000ED78" name="SCB">
+    <Register start="0xE000ED78" name="CLIDR" access="ReadOnly">
+      <BitField size="3" name="Ctype1" start="(1-1)*3">
+        <Enum name="No cache" start="0x0" />
+        <Enum name="Instruction cache only" start="0x1" />
+        <Enum name="Data cache only" start="0x2" />
+        <Enum name="Separate instruction and data caches" start="0x3" />
+        <Enum name="Unified cache" start="0x4" />
+      </BitField>
+      <BitField size="3" name="Ctype2" start="(2-1)*3">
+        <Enum name="No cache" start="0x0" />
+        <Enum name="Instruction cache only" start="0x1" />
+        <Enum name="Data cache only" start="0x2" />
+        <Enum name="Separate instruction and data caches" start="0x3" />
+        <Enum name="Unified cache" start="0x4" />
+      </BitField>
+      <BitField size="3" name="Ctype3" start="(3-1)*3">
+        <Enum name="No cache" start="0x0" />
+        <Enum name="Instruction cache only" start="0x1" />
+        <Enum name="Data cache only" start="0x2" />
+        <Enum name="Separate instruction and data caches" start="0x3" />
+        <Enum name="Unified cache" start="0x4" />
+      </BitField>
+      <BitField size="3" name="Ctype4" start="(4-1)*3">
+        <Enum name="No cache" start="0x0" />
+        <Enum name="Instruction cache only" start="0x1" />
+        <Enum name="Data cache only" start="0x2" />
+        <Enum name="Separate instruction and data caches" start="0x3" />
+        <Enum name="Unified cache" start="0x4" />
+      </BitField>
+      <BitField size="3" name="Ctype5" start="(5-1)*3">
+        <Enum name="No cache" start="0x0" />
+        <Enum name="Instruction cache only" start="0x1" />
+        <Enum name="Data cache only" start="0x2" />
+        <Enum name="Separate instruction and data caches" start="0x3" />
+        <Enum name="Unified cache" start="0x4" />
+      </BitField>
+      <BitField size="3" name="Ctype6" start="(6-1)*3">
+        <Enum name="No cache" start="0x0" />
+        <Enum name="Instruction cache only" start="0x1" />
+        <Enum name="Data cache only" start="0x2" />
+        <Enum name="Separate instruction and data caches" start="0x3" />
+        <Enum name="Unified cache" start="0x4" />
+      </BitField>
+      <BitField size="3" name="LoUIS" start="21" />
+      <BitField size="3" name="LoC" start="24" />
+      <BitField size="3" name="LoUU" start="27" />
+    </Register>
+    <Register start="0xE000ED7C" name="CTR" access="ReadOnly" />
+    <Register start="0xE000ED80" name="CCSIDR" access="ReadOnly">
+      <BitField size="3" name="LineSize" start="0" />
+      <BitField size="10" name="Associativity" start="3" />
+      <BitField size="15" name="NumSets" start="13" />
+      <BitField size="1" name="WA" start="28" />
+      <BitField size="1" name="RA" start="29" />
+      <BitField size="1" name="WB" start="30" />
+      <BitField size="1" name="WT" start="31" />
+    </Register>
+    <Register start="0xE000ED80" name="CSSELR" access="ReadOnly">
+      <BitField size="1" name="InD" start="0" />
+      <BitField size="3" name="Level" start="1" />
+    </Register>
+  </RegisterGroup>
   <RegisterGroup start="0xE000ED90" name="MPU">
     <Register start="0xE000ED90" name="MPU_TYPE" aka="MPU_Type" access="ReadOnly" description="MPU Type Register">
       <BitField size="8" name="IREGION" start="16" description="Number of supported MPU instruction regions" />
@@ -42989,6 +43064,110 @@
     <Register start="0xE000EF00" name="STIR" aka="SCB_SW_TRIG" access="WriteOnly" description="Software Trigger Interrupt Register">
       <BitField size="10" name="INTID" start="0" description="ID of the interrupt to trigger" />
     </Register>
+  </RegisterGroup>
+  <RegisterGroup start="0xE000EF34" name="SCB_FP">
+    <Register start="0xE000EF34" name="FPCCR" description="Floating-point Context Control Register">
+      <BitField size="1" name="ASPEN" start="31" description="Automatic State Preservation" />
+      <BitField size="1" name="LSPEN" start="30" description="Lazy State Preservation Enabled" />
+      <BitField size="1" name="MONRDY" start="8" description="Monitor Ready" />
+      <BitField size="1" name="BFRDY" start="6" description="BusFault Ready" />
+      <BitField size="1" name="MMRDY" start="5" description="MemManage Ready" />
+      <BitField size="1" name="HFRDY" start="4" description="HardFault Ready" />
+      <BitField size="1" name="THREAD" start="3" description="Thread Mode Allocated Stack Frame" />
+      <BitField size="1" name="USER" start="1" description="User Allocated Stack Frame" />
+      <BitField size="1" name="LSPACT" start="0" description="Lazy State Preservation Active" />
+    </Register>
+    <Register start="0xE000EF38" name="FPCAR" description="Floating-point Context Address Register" />
+    <Register start="0xE000EF3C" name="FPDSCR" description="Floating-point Default Status Control Register">
+      <BitField size="1" name="AHP" start="26" description="Default value for FPSCR.AHP" />
+      <BitField size="1" name="DN" start="25" description="Default value for FPSCR.DN" />
+      <BitField size="1" name="FZ" start="24" description="Default value for FPSCR.FZ" />
+      <BitField size="2" name="RMode" start="22" description="Default value for FPSCR.RMode" />
+    </Register>
+    <Register start="0xE000EF40" name="MVFR0" />
+    <Register start="0xE000EF44" name="MVFR1" />
+    <Register start="0xE000EF48" name="MVFR2" />
+  </RegisterGroup>
+  <RegisterGroup start="0xE000EF90" name="CM7">
+    <Register start="0xE000EF90" size="4" name="ITCMCR">
+      <BitField size="1" name="EN" start="0" />
+      <BitField size="2" name="RMW" start="1" />
+      <BitField size="3" name="RETEN" start="1" />
+      <BitField size="4" name="SZ" start="3">
+        <Enum name="No TCM" start="0x0" />
+        <Enum name="4KB" start="0x3" />
+        <Enum name="8KB" start="0x4" />
+        <Enum name="16KB" start="0x5" />
+        <Enum name="32KB" start="0x6" />
+        <Enum name="64KB" start="0x7" />
+        <Enum name="128KB" start="0x8" />
+        <Enum name="256KB" start="0x9" />
+        <Enum name="512KB" start="0xA" />
+        <Enum name="1MB" start="0xB" />
+        <Enum name="2MB" start="0xC" />
+        <Enum name="4MB" start="0xD" />
+        <Enum name="8MB" start="0xE" />
+        <Enum name="16MB" start="0xF" />
+      </BitField>
+    </Register>
+    <Register start="0xE000EF94" size="4" name="DTCMCR">
+      <BitField size="1" name="EN" start="0" />
+      <BitField size="2" name="RMW" start="1" />
+      <BitField size="3" name="RETEN" start="1" />
+      <BitField size="4" name="SZ" start="3">
+        <Enum name="No TCM" start="0x0" />
+        <Enum name="4KB" start="0x3" />
+        <Enum name="8KB" start="0x4" />
+        <Enum name="16KB" start="0x5" />
+        <Enum name="32KB" start="0x6" />
+        <Enum name="64KB" start="0x7" />
+        <Enum name="128KB" start="0x8" />
+        <Enum name="256KB" start="0x9" />
+        <Enum name="512KB" start="0xA" />
+        <Enum name="1MB" start="0xB" />
+        <Enum name="2MB" start="0xC" />
+        <Enum name="4MB" start="0xD" />
+        <Enum name="8MB" start="0xE" />
+        <Enum name="16MB" start="0xF" />
+      </BitField>
+    </Register>
+    <Register start="0xE000EF98" size="4" name="AHBPCR">
+      <BitField size="1" name="EN" start="0" />
+      <BitField size="4" name="SZ" start="3">
+        <Enum name="0MB" start="0x0" />
+        <Enum name="64MB" start="0x1" />
+        <Enum name="128MB" start="0x2" />
+        <Enum name="256MB" start="0x3" />
+        <Enum name="512MB" start="0x4" />
+      </BitField>
+    </Register>
+    <Register start="0xE000EF9C" size="4" name="CACR">
+      <BitField size="1" name="SIWT" start="0" />
+      <BitField size="1" name="ECCDIS" start="1" />
+      <BitField size="1" name="FORCEWT" start="2" />
+    </Register>
+    <Register start="0xE000EFA0" size="4" name="AHBSCR">
+      <BitField size="2" name="CTL" start="0" />
+      <BitField size="9" name="TPRI" start="2" />
+      <BitField size="5" name="INITCOUNT" start="11" />
+    </Register>
+    <Register start="0xE000EFA8" size="4" name="ABFSR">
+      <BitField size="1" name="ITCM" start="0" />
+      <BitField size="1" name="DTCM" start="1" />
+      <BitField size="1" name="AHBP" start="2" />
+      <BitField size="1" name="AXIM" start="3" />
+      <BitField size="1" name="EPPB" start="4" />
+      <BitField size="2" name="AXIMTYPE" start="0">
+        <Enum name="OKAY" start="0x0" />
+        <Enum name="EXOKAY" start="0x1" />
+        <Enum name="SLVERR" start="0x2" />
+        <Enum name="DECERR" start="0x3" />
+      </BitField>
+    </Register>
+    <Register start="0xE000EFB0" size="4" name="IEBR0" />
+    <Register start="0xE000EFB4" size="4" name="IEBR1" />
+    <Register start="0xE000EFB8" size="4" name="DEBR0" />
+    <Register start="0xE000EFBC" size="4" name="DEBR1" />
   </RegisterGroup>
   <RegisterGroup start="0xE000EFD0" name="ID_space">
     <Register start="0xE000EFD0" size="1" name="PID4" access="ReadOnly" />

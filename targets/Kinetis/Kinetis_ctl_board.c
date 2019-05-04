@@ -61,6 +61,10 @@
   #include "CMSIS/system_MK24F12.c"
 #elif defined(MK26F18)
   #include "CMSIS/system_MK26F18.c"
+#elif defined(MK27F15)
+  #include "CMSIS/system_MK27F15.c"
+#elif defined(MK28F15)
+  #include "CMSIS/system_MK28F15.c"
 #elif defined(MK30D7)
   #include "CMSIS/system_MK30D7.c"
 #elif defined(MK30D10)

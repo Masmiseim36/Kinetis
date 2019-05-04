@@ -359,6 +359,7 @@ main(int param0)
           sectorSize = 2 * 1024;
           break;
         case 0x3:
+        case 0x7:
           sectorSize = 4 * 1024;
           FLASH_SIZE *= 2;
           write_block_size = 8;
@@ -386,13 +387,13 @@ main(int param0)
 #if 0
   uint8_t *erase_start;
   size_t erase_size;  
-  res = libmem_erase((uint8_t *)0x00000800, 0x24, &erase_start, &erase_size); 
-  static const unsigned char buffer1[24] = { 0x38, 0xAA, 0xFF, 0x1F,  0x45, 0x06, 0x00, 0x00,  0x65, 0x05, 0x00, 0x00,  0x67, 0x05, 0x00, 0x00 };  
-  res = libmem_write((uint8_t *)0x00000800, buffer1, sizeof(buffer1)); 
-  res = libmem_erase((uint8_t *)0x10000000, 0x24, &erase_start, &erase_size);
+  res = libmem_erase((uint8_t *)0x00008000, 0x1e48, &erase_start, &erase_size); 
+  static const unsigned char buffer1[0x672] = { 0x38, 0xAA, 0xFF, 0x1F,  0x45, 0x06, 0x00, 0x00,  0x65, 0x05, 0x00, 0x00,  0x67, 0x05, 0x00, 0x00 };  
+  res = libmem_write((uint8_t *)0x00008000, buffer1, sizeof(buffer1)); 
+  res = libmem_erase((uint8_t *)0x00100000, 0x24, &erase_start, &erase_size);
   //res = libmem_erase_all();
   static const unsigned char buffer2[24] = { 0xB0, 0xB5, 0x96, 0xB0,  0x00, 0xAF, 0x4F, 0xF0,  0x30, 0x00, 0x00, 0xF0,  0x41, 0xF0, 0x02, 0x42 }; 
-  res = libmem_write(0x10000000, buffer2, sizeof(buffer2)); 
+  res = libmem_write(0x00100000, buffer2, sizeof(buffer2)); 
   res = libmem_flush();
 #endif
    

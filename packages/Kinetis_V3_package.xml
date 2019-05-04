@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="NXP" cpu_family="Kinetis" version="3.7" build_version="2016111107.11649;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.7-" replaces="Kinetis" dependencies="CMSIS-CORE">
+<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="NXP" cpu_family="Kinetis" version="3.8" build_version="2017071203.11966;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.7-" replaces="Kinetis" dependencies="CMSIS-CORE">
   <file file_name="$(TargetsDir)/Kinetis/Loader.hzp" title="Kinetis Loader Application Solution" />
   <file file_name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" title="Kinetis CTL Timer and Interrupt support functions" />
 <targets>
@@ -74,6 +74,8 @@
     <cpu name="MK24FN256xxx12"/>
     <cpu name="MK24FN1M0xxx12"/>
     <cpu name="MK26FN2M0xxx18"/>
+    <cpu name="MK27FN2M0xxx15"/>
+    <cpu name="MK28FN2M0xxx15"/>
   </category>
   <category name="K3x Series" >
     <cpu name="MK30DX64xxx7"/>
@@ -422,6 +424,9 @@
 
   </documentation>
   <history>
+    <version name="3.8">
+      <description>Added support for K27FN2M0 and K28FN2M0 devices.</description>
+    </version>
     <version name="3.7">
       <description>Added support for KE14Z7, KE15Z7, KE14F16, KE16F16, KE18F16, KV10Z7, KW21Z4, KW31Z4 and KW41Z4 devices.</description>
     </version>

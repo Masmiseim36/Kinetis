@@ -1159,6 +1159,44 @@
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
       <property name="arm_simulator_memory_simulation_parameter" value="MK26FN2M0xxx18;0x200000;0x0;0x0;0x40000;4" />
     </groupEntry>
+    <groupEntry name="MK27FN2M0xxx15" family="K2x">
+      <cdefine value="MK27FN2M0xxx15" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MK27F15" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK27FN2M0xxx15_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK27F15_Peripherals.xml" />
+      <property name="macros" value="DeviceVectorsFile=MK27F15.vec" />
+      <cdefine name="__VECTORS" value="&quot;MK27F15.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
+      <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
+      <property name="arm_architecture" value="v7EM" />
+      <property name="arm_core_type" value="Cortex-M4" />
+      <cdefine name="__HAS_FPU" value="1" />
+      <cdefine name="__FPU_PRESENT" value="1" />
+      <property name="arm_fpu_type" value="FPv4-SP-D16" />
+      <cdefine name="K_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MK27FN2M0xxx15;0x200000;0x0;0x0;0x100000;4" />
+    </groupEntry>
+    <groupEntry name="MK28FN2M0xxx15" family="K2x">
+      <cdefine value="MK28FN2M0xxx15" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MK28F15" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK28FN2M0xxx15_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK28F15_Peripherals.xml" />
+      <property name="macros" value="DeviceVectorsFile=MK28F15.vec" />
+      <cdefine name="__VECTORS" value="&quot;MK28F15.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
+      <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
+      <property name="arm_architecture" value="v7EM" />
+      <property name="arm_core_type" value="Cortex-M4" />
+      <cdefine name="__HAS_FPU" value="1" />
+      <cdefine name="__FPU_PRESENT" value="1" />
+      <property name="arm_fpu_type" value="FPv4-SP-D16" />
+      <cdefine name="K_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MK28FN2M0xxx15;0x200000;0x0;0x0;0x100000;4" />
+    </groupEntry>
     <groupEntry name="MK30DX64xxx7" family="K3x">
       <cdefine value="MK30DX64xxx7" name="__TARGET_PROCESSOR" />
       <cdefine value="1" name="MK30D7" />
