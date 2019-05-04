@@ -46,7 +46,7 @@ function Reset()
       TargetInterface.stopAndReset(1);
       return;
     }
-  if (TargetInterface.implementation() == "osjtag")
+  if (TargetInterface.implementation() == "P&E")
     TargetInterface.stop();
   TargetInterface.setDebugRegister(0x01000004, 0x8); // set System Reset Request, 
   TargetInterface.delay(1);
@@ -146,7 +146,7 @@ function MDMStatus()
       WScript.Echo("MDM not accessible using j-link");
       return;
     }
-  if (TargetInterface.implementation() == "osjtag")
+  if (TargetInterface.implementation() == "P&E")
     TargetInterface.stop();
   var status = TargetInterface.getDebugRegister(0x01000000);
   if (status & (1<<0))
@@ -184,7 +184,7 @@ function MDMControl()
       WScript.Echo("MDM not accessible using j-link");
       return;
     }
-  if (TargetInterface.implementation() == "osjtag")
+  if (TargetInterface.implementation() == "P&E")
     TargetInterface.stop();
   var status = TargetInterface.getDebugRegister(0x01000004);
   if (status & (1<<0))
@@ -212,7 +212,7 @@ function MassErase()
       WScript.Echo("MDM not accessible using j-link");
       return;
     }
-  if (TargetInterface.implementation() == "osjtag")
+  if (TargetInterface.implementation() == "P&E")
     TargetInterface.stop();
   var i;
   TargetInterface.setDebugRegister(0x01000004, 0x1); 

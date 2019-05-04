@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.2" build_version="2011091900.5206;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-">
+<package cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.3" build_version="2011092700.5222;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-">
 
 <targets>
   <category name="K10 Series" >
@@ -97,7 +97,7 @@
 </targets>
 
   <documentation>
-    <section name="1) Creating Projects">
+    <section name="1) Creating Kinetis Projects">
       <h5>To create a new Kinetis project</h5>
       <ul>
         <li>Select the <b>File &gt; New &gt; New Project</b> menu item.</li>
@@ -123,7 +123,7 @@
       </ul>          
     </section>
 
-    <section name="2) Project Specifics">
+    <section name="2) Kinetis Project Specifics">
       <h5>Target Processor</h5>
       <p>Once a project has been created you can select different target processors by right clicking on the project node in the project 
       explorer and selecting the <b>Target Processor</b> entry.</p>
@@ -199,10 +199,11 @@
       use CTL and should not be disabled by a CTL interrupt.</p>
     </section>
 
-    <section name="3) Shared Sample Projects">
+    <section name="3) CrossWorks Shared Sample Projects">
       <p>The following project files are supplied that can be used to run the standard CrossWorks shared samples.</p>
       <ul>        
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/shared.hzp">TWR-K40X256 Shared Samples (click to load project)</a></b></li>   
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K53N512/shared.hzp">TWR-K53N512 Shared Samples (click to load project)</a></b></li>   
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60N512/shared.hzp">TWR-K60N512 Shared Samples (click to load project)</a></b></li>   
       </ul>
       <p>The board specific file <b>Kinetis_ctl_board.c</b> is included in the samples that sets up the PLL (using a constructor
@@ -213,14 +214,30 @@
       <p>The following project files are supplied that can be used to run the standard CrossWorks CTL samples.</p>
       <ul>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K40X256/ctl.hzp">TWR-K40X256 CTL Samples (click to load project)</a></b></li>
+        <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K53N512/ctl.hzp">TWR-K53N512 CTL Samples (click to load project)</a></b></li>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K60N512/ctl.hzp">TWR-K60N512 CTL Samples (click to load project)</a></b></li>
       </ul>
       <p>The board specific file <b>Kinetis_ctl_board.c</b> is included in the samples that sets up the PLL (using a constructor
       function) and implements the ctl board support functions to flash a led and handle a button press.</p>
     </section>
 
+    <section name="5) OSJTAG Firmware Update">
+      <p>The package contains an update to the firmware that can be loaded on to the OSJTAG hardware of the TWR CPU 
+      modules. The updated firmware improves the download and debug performance of the CrossWorks 'Kinetis OSJTAG' target 
+      interface. You'll need to use the firmware update procedure available from <a href="http://www.pemicro.com/osbdm">PE micro</a> and 
+      point the updater program at the supplied file <a href="file:$(TargetsDir)/Kinetis/osbdm-jm60_kinetis_rowley_101_0.s19">osbdm-jm60_kinetis_rowley_101_0.s19</a>.
+      You can click on the above link to get a copy of the firmware into the editor and then right click on the
+      editor tab and select 'Copy Full Path' to get the path to the filename of the firmware into the paste buffer.</p>
+    </section>
+
   </documentation>
   <history>  
+    <version name="1.3">
+      <description>Supplied samples for TWR-K53N512.</description>
+      <description>Supplied firmware update for OSJTAG.</description>
+      <description>Kinetis projects now have the 'GCC Target' property set to be 'arm-unknown-eabi'.</description>
+      <description>Fixed reset script to stop the target prior to accessing MDM registers for 'P&amp;E' target interface.</description>
+    </version>
     <version name="1.2">
       <description>Support for latest parts and new part numbering e.g MK60N512VMD100 has become MK60DN512ZVMD10. 
       You will need to reselect the <b>Target Processor</b> property for existing projects.</description>     

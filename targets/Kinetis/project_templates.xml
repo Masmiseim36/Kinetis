@@ -18,6 +18,7 @@
     <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No"/>
+    <property name="arm_gcc_target" value="arm-unknown-eabi"/>
     <property name="arm_linker_stack_size" value="128"/>
     <property name="arm_linker_process_stack_size" value="0"/>
     <property name="arm_linker_heap_size" value="128"/>
@@ -89,6 +90,7 @@
     <property name="arm_target_loader_can_unlock_all" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_lock_range" configuration="Flash" value="No"/>
     <property name="arm_target_loader_can_unlock_range" configuration="Flash" value="No"/>
+    <property name="arm_gcc_target" value="arm-unknown-eabi"/>
     <property name="arm_linker_stack_size" value="128"/>
     <property name="arm_linker_process_stack_size" value="0"/>
     <property name="arm_linker_heap_size" value="128"/>
