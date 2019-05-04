@@ -37,15 +37,36 @@
       <BitField start="0" size="8" name="PROT" />
     </Register>
     <Register start="+0xC" size="1" name="NV_FSEC" access="ReadOnly" reset_value="0xFF" reset_mask="0xFF">
-      <BitField start="0" size="2" name="SEC" />
-      <BitField start="2" size="2" name="FSLACC" />
-      <BitField start="4" size="2" name="MEEN" />
-      <BitField start="6" size="2" name="KEYEN" />
+      <BitField start="0" size="2" name="SEC">
+        <Enum name="10" start="0b10" />
+        <Enum name="11" start="0b11" />
+      </BitField>
+      <BitField start="2" size="2" name="FSLACC">
+        <Enum name="10" start="0b10" />
+        <Enum name="11" start="0b11" />
+      </BitField>
+      <BitField start="4" size="2" name="MEEN">
+        <Enum name="10" start="0b10" />
+        <Enum name="11" start="0b11" />
+      </BitField>
+      <BitField start="6" size="2" name="KEYEN">
+        <Enum name="10" start="0b10" />
+        <Enum name="11" start="0b11" />
+      </BitField>
     </Register>
     <Register start="+0xD" size="1" name="NV_FOPT" access="ReadOnly" reset_value="0xFF" reset_mask="0xFF">
-      <BitField start="0" size="1" name="LPBOOT" />
-      <BitField start="1" size="1" name="EZPORT_DIS" />
-      <BitField start="2" size="1" name="NMI_DIS" />
+      <BitField start="0" size="1" name="LPBOOT">
+        <Enum name="00" start="0b00" />
+        <Enum name="01" start="0b01" />
+      </BitField>
+      <BitField start="1" size="1" name="EZPORT_DIS">
+        <Enum name="00" start="0b00" />
+        <Enum name="01" start="0b01" />
+      </BitField>
+      <BitField start="2" size="1" name="NMI_DIS">
+        <Enum name="00" start="0b00" />
+        <Enum name="01" start="0b01" />
+      </BitField>
     </Register>
     <Register start="+0xE" size="1" name="NV_FEPROT" access="ReadOnly" reset_value="0xFF" reset_mask="0xFF">
       <BitField start="0" size="8" name="EPROT" />
@@ -330,13 +351,10 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="8" size="2" name="ARB">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="30" size="1" name="HLP">
         <Enum name="0" start="0b0" />
@@ -362,13 +380,10 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="8" size="2" name="ARB">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="30" size="1" name="HLP">
         <Enum name="0" start="0b0" />
@@ -394,13 +409,10 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="8" size="2" name="ARB">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="30" size="1" name="HLP">
         <Enum name="0" start="0b0" />
@@ -426,13 +438,10 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="8" size="2" name="ARB">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="30" size="1" name="HLP">
         <Enum name="0" start="0b0" />
@@ -458,13 +467,10 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="8" size="2" name="ARB">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="30" size="1" name="HLP">
         <Enum name="0" start="0b0" />
@@ -482,9 +488,6 @@
         <Enum name="010" start="0b010" />
         <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
     </Register>
     <Register start="+0x900" size="4" name="AXBS_MGPCR1" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
@@ -494,9 +497,6 @@
         <Enum name="010" start="0b010" />
         <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
     </Register>
     <Register start="+0xA00" size="4" name="AXBS_MGPCR2" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
@@ -506,9 +506,6 @@
         <Enum name="010" start="0b010" />
         <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
     </Register>
     <Register start="+0xC00" size="4" name="AXBS_MGPCR4" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
@@ -518,9 +515,6 @@
         <Enum name="010" start="0b010" />
         <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
     </Register>
     <Register start="+0xD00" size="4" name="AXBS_MGPCR5" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
@@ -530,9 +524,6 @@
         <Enum name="010" start="0b010" />
         <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
     </Register>
   </RegisterGroup>
@@ -987,6 +978,54 @@
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
       </BitField>
+      <BitField start="4" size="1" name="HRS4">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="5" size="1" name="HRS5">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="6" size="1" name="HRS6">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="7" size="1" name="HRS7">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="8" size="1" name="HRS8">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="9" size="1" name="HRS9">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="10" size="1" name="HRS10">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="11" size="1" name="HRS11">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="12" size="1" name="HRS12">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="13" size="1" name="HRS13">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="14" size="1" name="HRS14">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="15" size="1" name="HRS15">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
     </Register>
     <Register start="+0x44" size="4" name="DMA_EARS" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="EDREQ_0">
@@ -1285,11 +1324,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1302,11 +1338,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1319,11 +1352,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1336,11 +1366,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1353,11 +1380,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1370,11 +1394,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1387,11 +1408,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1404,11 +1422,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1421,11 +1436,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1438,11 +1450,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1455,11 +1464,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1472,11 +1478,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1489,11 +1492,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1506,11 +1506,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1523,11 +1520,8 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
@@ -1540,14 +1534,235 @@
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="11" size="5" name="SMOD">
         <Enum name="0" start="0b0" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+0" size="4" name="DMA_TCD0_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+32" size="4" name="DMA_TCD1_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+64" size="4" name="DMA_TCD2_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+96" size="4" name="DMA_TCD3_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+128" size="4" name="DMA_TCD4_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+160" size="4" name="DMA_TCD5_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+192" size="4" name="DMA_TCD6_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+224" size="4" name="DMA_TCD7_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+256" size="4" name="DMA_TCD8_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+288" size="4" name="DMA_TCD9_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+320" size="4" name="DMA_TCD10_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+352" size="4" name="DMA_TCD11_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+384" size="4" name="DMA_TCD12_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+416" size="4" name="DMA_TCD13_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+448" size="4" name="DMA_TCD14_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+480" size="4" name="DMA_TCD15_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="32" name="NBYTES" />
+    </Register>
+    <Register start="+0x1008+0" size="4" name="DMA_TCD0_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+32" size="4" name="DMA_TCD1_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+64" size="4" name="DMA_TCD2_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+96" size="4" name="DMA_TCD3_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+128" size="4" name="DMA_TCD4_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+160" size="4" name="DMA_TCD5_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+192" size="4" name="DMA_TCD6_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+224" size="4" name="DMA_TCD7_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+256" size="4" name="DMA_TCD8_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+288" size="4" name="DMA_TCD9_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+320" size="4" name="DMA_TCD10_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+352" size="4" name="DMA_TCD11_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+384" size="4" name="DMA_TCD12_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+416" size="4" name="DMA_TCD13_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+448" size="4" name="DMA_TCD14_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1008+480" size="4" name="DMA_TCD15_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="30" name="NBYTES" />
+      <BitField start="30" size="1" name="DMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="31" size="1" name="SMLOE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
       </BitField>
     </Register>
     <Register start="+0x1008+0" size="4" name="DMA_TCD0_NBYTES_MLOFFYES" access="Read/Write" reset_value="0" reset_mask="0">
@@ -1742,230 +1957,6 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0x1008+0" size="4" name="DMA_TCD0_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+32" size="4" name="DMA_TCD1_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+64" size="4" name="DMA_TCD2_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+96" size="4" name="DMA_TCD3_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+128" size="4" name="DMA_TCD4_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+160" size="4" name="DMA_TCD5_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+192" size="4" name="DMA_TCD6_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+224" size="4" name="DMA_TCD7_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+256" size="4" name="DMA_TCD8_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+288" size="4" name="DMA_TCD9_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+320" size="4" name="DMA_TCD10_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+352" size="4" name="DMA_TCD11_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+384" size="4" name="DMA_TCD12_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+416" size="4" name="DMA_TCD13_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+448" size="4" name="DMA_TCD14_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+480" size="4" name="DMA_TCD15_NBYTES_MLOFFNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="30" name="NBYTES" />
-      <BitField start="30" size="1" name="DMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="31" size="1" name="SMLOE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1008+0" size="4" name="DMA_TCD0_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+32" size="4" name="DMA_TCD1_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+64" size="4" name="DMA_TCD2_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+96" size="4" name="DMA_TCD3_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+128" size="4" name="DMA_TCD4_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+160" size="4" name="DMA_TCD5_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+192" size="4" name="DMA_TCD6_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+224" size="4" name="DMA_TCD7_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+256" size="4" name="DMA_TCD8_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+288" size="4" name="DMA_TCD9_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+320" size="4" name="DMA_TCD10_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+352" size="4" name="DMA_TCD11_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+384" size="4" name="DMA_TCD12_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+416" size="4" name="DMA_TCD13_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+448" size="4" name="DMA_TCD14_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
-    <Register start="+0x1008+480" size="4" name="DMA_TCD15_NBYTES_MLNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="NBYTES" />
-    </Register>
     <Register start="+0x100C+0" size="4" name="DMA_TCD0_SLAST" access="Read/Write" reset_value="0" reset_mask="0">
       <BitField start="0" size="32" name="SLAST" />
     </Register>
@@ -2110,6 +2101,118 @@
     <Register start="+0x1014+480" size="2" name="DMA_TCD15_DOFF" access="Read/Write" reset_value="0" reset_mask="0">
       <BitField start="0" size="16" name="DOFF" />
     </Register>
+    <Register start="+0x1016+0" size="2" name="DMA_TCD0_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+32" size="2" name="DMA_TCD1_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+64" size="2" name="DMA_TCD2_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+96" size="2" name="DMA_TCD3_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+128" size="2" name="DMA_TCD4_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+160" size="2" name="DMA_TCD5_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+192" size="2" name="DMA_TCD6_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+224" size="2" name="DMA_TCD7_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+256" size="2" name="DMA_TCD8_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+288" size="2" name="DMA_TCD9_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+320" size="2" name="DMA_TCD10_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+352" size="2" name="DMA_TCD11_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+384" size="2" name="DMA_TCD12_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+416" size="2" name="DMA_TCD13_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+448" size="2" name="DMA_TCD14_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x1016+480" size="2" name="DMA_TCD15_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="CITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
     <Register start="+0x1016+0" size="2" name="DMA_TCD0_CITER_ELINKYES" access="Read/Write" reset_value="0" reset_mask="0">
       <BitField start="0" size="9" name="CITER" />
       <BitField start="9" size="4" name="LINKCH" />
@@ -2238,118 +2341,6 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0x1016+0" size="2" name="DMA_TCD0_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+32" size="2" name="DMA_TCD1_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+64" size="2" name="DMA_TCD2_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+96" size="2" name="DMA_TCD3_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+128" size="2" name="DMA_TCD4_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+160" size="2" name="DMA_TCD5_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+192" size="2" name="DMA_TCD6_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+224" size="2" name="DMA_TCD7_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+256" size="2" name="DMA_TCD8_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+288" size="2" name="DMA_TCD9_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+320" size="2" name="DMA_TCD10_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+352" size="2" name="DMA_TCD11_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+384" size="2" name="DMA_TCD12_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+416" size="2" name="DMA_TCD13_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+448" size="2" name="DMA_TCD14_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x1016+480" size="2" name="DMA_TCD15_CITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="CITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
     <Register start="+0x1018+0" size="4" name="DMA_TCD0_DLASTSGA" access="Read/Write" reset_value="0" reset_mask="0">
       <BitField start="0" size="32" name="DLASTSGA" />
     </Register>
@@ -2428,7 +2419,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2463,7 +2453,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2498,7 +2487,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2533,7 +2521,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2568,7 +2555,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2603,7 +2589,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2638,7 +2623,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2673,7 +2657,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2708,7 +2691,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2743,7 +2725,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2778,7 +2759,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2813,7 +2793,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2848,7 +2827,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2883,7 +2861,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2918,7 +2895,6 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -2953,9 +2929,120 @@
       <BitField start="8" size="4" name="MAJORLINKCH" />
       <BitField start="14" size="2" name="BWC">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+0" size="2" name="DMA_TCD0_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+32" size="2" name="DMA_TCD1_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+64" size="2" name="DMA_TCD2_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+96" size="2" name="DMA_TCD3_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+128" size="2" name="DMA_TCD4_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+160" size="2" name="DMA_TCD5_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+192" size="2" name="DMA_TCD6_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+224" size="2" name="DMA_TCD7_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+256" size="2" name="DMA_TCD8_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+288" size="2" name="DMA_TCD9_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+320" size="2" name="DMA_TCD10_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+352" size="2" name="DMA_TCD11_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+384" size="2" name="DMA_TCD12_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+416" size="2" name="DMA_TCD13_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+448" size="2" name="DMA_TCD14_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0x101E+480" size="2" name="DMA_TCD15_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
+      <BitField start="0" size="15" name="BITER" />
+      <BitField start="15" size="1" name="ELINK">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
       </BitField>
     </Register>
     <Register start="+0x101E+0" size="2" name="DMA_TCD0_BITER_ELINKYES" access="Read/Write" reset_value="0" reset_mask="0">
@@ -3081,118 +3168,6 @@
     <Register start="+0x101E+480" size="2" name="DMA_TCD15_BITER_ELINKYES" access="Read/Write" reset_value="0" reset_mask="0">
       <BitField start="0" size="9" name="BITER" />
       <BitField start="9" size="4" name="LINKCH" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+0" size="2" name="DMA_TCD0_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+32" size="2" name="DMA_TCD1_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+64" size="2" name="DMA_TCD2_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+96" size="2" name="DMA_TCD3_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+128" size="2" name="DMA_TCD4_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+160" size="2" name="DMA_TCD5_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+192" size="2" name="DMA_TCD6_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+224" size="2" name="DMA_TCD7_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+256" size="2" name="DMA_TCD8_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+288" size="2" name="DMA_TCD9_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+320" size="2" name="DMA_TCD10_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+352" size="2" name="DMA_TCD11_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+384" size="2" name="DMA_TCD12_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+416" size="2" name="DMA_TCD13_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+448" size="2" name="DMA_TCD14_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
-      <BitField start="15" size="1" name="ELINK">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x101E+480" size="2" name="DMA_TCD15_BITER_ELINKNO" access="Read/Write" reset_value="0" reset_mask="0">
-      <BitField start="0" size="15" name="BITER" />
       <BitField start="15" size="1" name="ELINK">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -5405,16 +5380,13 @@
       </BitField>
       <BitField start="5" size="3" name="CRC">
         <Enum name="000" start="0b000" />
-        <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
         <Enum name="011" start="0b011" />
-        <Enum name="1xx" start="0b1xx" />
       </BitField>
       <BitField start="17" size="2" name="B0MW">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="19" size="1" name="S_B_INV">
         <Enum name="0" start="0b0" />
@@ -5455,7 +5427,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="28" size="4" name="B1RWSC" />
     </Register>
@@ -6862,7 +6833,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="10" size="1" name="CLR_RXF">
         <Enum name="0" start="0b0" />
@@ -6910,9 +6880,6 @@
       </BitField>
       <BitField start="28" size="2" name="DCONF">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="30" size="1" name="CONT_SCKE">
         <Enum name="0" start="0b0" />
@@ -6925,17 +6892,6 @@
     </Register>
     <Register start="+0x8" size="4" name="SPI0_TCR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="16" size="16" name="SPI_TCNT" />
-    </Register>
-    <Register start="+0xC" size="4" name="SPI0_CTAR_SLAVE" access="Read/Write" reset_value="0x78000000" reset_mask="0xFFFFFFFF">
-      <BitField start="25" size="1" name="CPHA">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="26" size="1" name="CPOL">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="27" size="5" name="FMSZ" />
     </Register>
     <Register start="+0xC+0" size="4" name="SPI0_CTAR0" access="Read/Write" reset_value="0x78000000" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="4" name="BR" />
@@ -7031,6 +6987,17 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
+    <Register start="+0xC" size="4" name="SPI0_CTAR_SLAVE" access="Read/Write" reset_value="0x78000000" reset_mask="0xFFFFFFFF">
+      <BitField start="25" size="1" name="CPHA">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="26" size="1" name="CPOL">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="27" size="5" name="FMSZ" />
+    </Register>
     <Register start="+0x2C" size="4" name="SPI0_SR" access="Read/Write" reset_value="0x2000000" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="4" name="POPNXTPTR" />
       <BitField start="4" size="4" name="RXCTR" />
@@ -7116,12 +7083,6 @@
       <BitField start="28" size="3" name="CTAS">
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
-        <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
-        <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="31" size="1" name="CONT">
         <Enum name="0" start="0b0" />
@@ -7173,7 +7134,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="10" size="1" name="CLR_RXF">
         <Enum name="0" start="0b0" />
@@ -7221,9 +7181,6 @@
       </BitField>
       <BitField start="28" size="2" name="DCONF">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="30" size="1" name="CONT_SCKE">
         <Enum name="0" start="0b0" />
@@ -7236,17 +7193,6 @@
     </Register>
     <Register start="+0x8" size="4" name="SPI1_TCR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="16" size="16" name="SPI_TCNT" />
-    </Register>
-    <Register start="+0xC" size="4" name="SPI1_CTAR_SLAVE" access="Read/Write" reset_value="0x78000000" reset_mask="0xFFFFFFFF">
-      <BitField start="25" size="1" name="CPHA">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="26" size="1" name="CPOL">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="27" size="5" name="FMSZ" />
     </Register>
     <Register start="+0xC+0" size="4" name="SPI1_CTAR0" access="Read/Write" reset_value="0x78000000" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="4" name="BR" />
@@ -7342,6 +7288,17 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
+    <Register start="+0xC" size="4" name="SPI1_CTAR_SLAVE" access="Read/Write" reset_value="0x78000000" reset_mask="0xFFFFFFFF">
+      <BitField start="25" size="1" name="CPHA">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="26" size="1" name="CPOL">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="27" size="5" name="FMSZ" />
+    </Register>
     <Register start="+0x2C" size="4" name="SPI1_SR" access="Read/Write" reset_value="0x2000000" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="4" name="POPNXTPTR" />
       <BitField start="4" size="4" name="RXCTR" />
@@ -7427,12 +7384,6 @@
       <BitField start="28" size="3" name="CTAS">
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
-        <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
-        <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="31" size="1" name="CONT">
         <Enum name="0" start="0b0" />
@@ -7484,7 +7435,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="10" size="1" name="CLR_RXF">
         <Enum name="0" start="0b0" />
@@ -7532,9 +7482,6 @@
       </BitField>
       <BitField start="28" size="2" name="DCONF">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="30" size="1" name="CONT_SCKE">
         <Enum name="0" start="0b0" />
@@ -7547,17 +7494,6 @@
     </Register>
     <Register start="+0x8" size="4" name="SPI2_TCR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="16" size="16" name="SPI_TCNT" />
-    </Register>
-    <Register start="+0xC" size="4" name="SPI2_CTAR_SLAVE" access="Read/Write" reset_value="0x78000000" reset_mask="0xFFFFFFFF">
-      <BitField start="25" size="1" name="CPHA">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="26" size="1" name="CPOL">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="27" size="5" name="FMSZ" />
     </Register>
     <Register start="+0xC+0" size="4" name="SPI2_CTAR0" access="Read/Write" reset_value="0x78000000" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="4" name="BR" />
@@ -7653,6 +7589,17 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
+    <Register start="+0xC" size="4" name="SPI2_CTAR_SLAVE" access="Read/Write" reset_value="0x78000000" reset_mask="0xFFFFFFFF">
+      <BitField start="25" size="1" name="CPHA">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="26" size="1" name="CPOL">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+      <BitField start="27" size="5" name="FMSZ" />
+    </Register>
     <Register start="+0x2C" size="4" name="SPI2_SR" access="Read/Write" reset_value="0x2000000" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="4" name="POPNXTPTR" />
       <BitField start="4" size="4" name="RXCTR" />
@@ -7738,12 +7685,6 @@
       <BitField start="28" size="3" name="CTAS">
         <Enum name="000" start="0b000" />
         <Enum name="001" start="0b001" />
-        <Enum name="010" start="0b010" />
-        <Enum name="011" start="0b011" />
-        <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="31" size="1" name="CONT">
         <Enum name="0" start="0b0" />
@@ -8128,9 +8069,6 @@
     </Register>
   </RegisterGroup>
   <RegisterGroup name="CRC" start="0x40032000">
-    <Register start="+0" size="1" name="CRC_DATALL" access="Read/Write" reset_value="0xFF" reset_mask="0xFF">
-      <BitField start="0" size="8" name="DATALL" />
-    </Register>
     <Register start="+0" size="4" name="CRC_DATA" access="Read/Write" reset_value="0xFFFFFFFF" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="8" name="LL" />
       <BitField start="8" size="8" name="LU" />
@@ -8140,14 +8078,17 @@
     <Register start="+0" size="2" name="CRC_DATAL" access="Read/Write" reset_value="0xFFFF" reset_mask="0xFFFF">
       <BitField start="0" size="16" name="DATAL" />
     </Register>
+    <Register start="+0" size="1" name="CRC_DATALL" access="Read/Write" reset_value="0xFF" reset_mask="0xFF">
+      <BitField start="0" size="8" name="DATALL" />
+    </Register>
     <Register start="+0x1" size="1" name="CRC_DATALU" access="Read/Write" reset_value="0xFF" reset_mask="0xFF">
       <BitField start="0" size="8" name="DATALU" />
     </Register>
-    <Register start="+0x2" size="1" name="CRC_DATAHL" access="Read/Write" reset_value="0xFF" reset_mask="0xFF">
-      <BitField start="0" size="8" name="DATAHL" />
-    </Register>
     <Register start="+0x2" size="2" name="CRC_DATAH" access="Read/Write" reset_value="0xFFFF" reset_mask="0xFFFF">
       <BitField start="0" size="16" name="DATAH" />
+    </Register>
+    <Register start="+0x2" size="1" name="CRC_DATAHL" access="Read/Write" reset_value="0xFF" reset_mask="0xFF">
+      <BitField start="0" size="8" name="DATAHL" />
     </Register>
     <Register start="+0x3" size="1" name="CRC_DATAHU" access="Read/Write" reset_value="0xFF" reset_mask="0xFF">
       <BitField start="0" size="8" name="DATAHU" />
@@ -8156,11 +8097,11 @@
       <BitField start="0" size="16" name="LOW" />
       <BitField start="16" size="16" name="HIGH" />
     </Register>
-    <Register start="+0x4" size="1" name="CRC_GPOLYLL" access="Read/Write" reset_value="0xFF" reset_mask="0xFF">
-      <BitField start="0" size="8" name="GPOLYLL" />
-    </Register>
     <Register start="+0x4" size="2" name="CRC_GPOLYL" access="Read/Write" reset_value="0xFFFF" reset_mask="0xFFFF">
       <BitField start="0" size="16" name="GPOLYL" />
+    </Register>
+    <Register start="+0x4" size="1" name="CRC_GPOLYLL" access="Read/Write" reset_value="0xFF" reset_mask="0xFF">
+      <BitField start="0" size="8" name="GPOLYLL" />
     </Register>
     <Register start="+0x5" size="1" name="CRC_GPOLYLU" access="Read/Write" reset_value="0xFF" reset_mask="0xFF">
       <BitField start="0" size="8" name="GPOLYLU" />
@@ -8802,7 +8743,7 @@
     <Register start="+0x4C" size="4" name="FTM0_CNTIN" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="INIT" />
     </Register>
-    <Register start="+0x50" size="4" name="FTM0_STATUS" access="ReadOnly" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x50" size="4" name="FTM0_STATUS" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="CH0F">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -9559,7 +9500,7 @@
     <Register start="+0x4C" size="4" name="FTM1_CNTIN" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="INIT" />
     </Register>
-    <Register start="+0x50" size="4" name="FTM1_STATUS" access="ReadOnly" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x50" size="4" name="FTM1_STATUS" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="CH0F">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -10316,7 +10257,7 @@
     <Register start="+0x4C" size="4" name="FTM2_CNTIN" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="INIT" />
     </Register>
-    <Register start="+0x50" size="4" name="FTM2_STATUS" access="ReadOnly" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x50" size="4" name="FTM2_STATUS" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="CH0F">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -11199,7 +11140,7 @@
     <Register start="+0x4C" size="4" name="FTM3_CNTIN" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="INIT" />
     </Register>
-    <Register start="+0x50" size="4" name="FTM3_STATUS" access="ReadOnly" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x50" size="4" name="FTM3_STATUS" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="CH0F">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -11901,11 +11842,8 @@
         <Enum name="10101" start="0b10101" />
         <Enum name="10110" start="0b10110" />
         <Enum name="10111" start="0b10111" />
-        <Enum name="11000" start="0b11000" />
-        <Enum name="11001" start="0b11001" />
         <Enum name="11010" start="0b11010" />
         <Enum name="11011" start="0b11011" />
-        <Enum name="11100" start="0b11100" />
         <Enum name="11101" start="0b11101" />
         <Enum name="11110" start="0b11110" />
         <Enum name="11111" start="0b11111" />
@@ -11949,11 +11887,8 @@
         <Enum name="10101" start="0b10101" />
         <Enum name="10110" start="0b10110" />
         <Enum name="10111" start="0b10111" />
-        <Enum name="11000" start="0b11000" />
-        <Enum name="11001" start="0b11001" />
         <Enum name="11010" start="0b11010" />
         <Enum name="11011" start="0b11011" />
-        <Enum name="11100" start="0b11100" />
         <Enum name="11101" start="0b11101" />
         <Enum name="11110" start="0b11110" />
         <Enum name="11111" start="0b11111" />
@@ -12035,8 +11970,6 @@
       <BitField start="0" size="2" name="REFSEL">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="2" size="1" name="DMAEN">
         <Enum name="0" start="0b0" />
@@ -12163,11 +12096,8 @@
         <Enum name="10101" start="0b10101" />
         <Enum name="10110" start="0b10110" />
         <Enum name="10111" start="0b10111" />
-        <Enum name="11000" start="0b11000" />
-        <Enum name="11001" start="0b11001" />
         <Enum name="11010" start="0b11010" />
         <Enum name="11011" start="0b11011" />
-        <Enum name="11100" start="0b11100" />
         <Enum name="11101" start="0b11101" />
         <Enum name="11110" start="0b11110" />
         <Enum name="11111" start="0b11111" />
@@ -12211,11 +12141,8 @@
         <Enum name="10101" start="0b10101" />
         <Enum name="10110" start="0b10110" />
         <Enum name="10111" start="0b10111" />
-        <Enum name="11000" start="0b11000" />
-        <Enum name="11001" start="0b11001" />
         <Enum name="11010" start="0b11010" />
         <Enum name="11011" start="0b11011" />
-        <Enum name="11100" start="0b11100" />
         <Enum name="11101" start="0b11101" />
         <Enum name="11110" start="0b11110" />
         <Enum name="11111" start="0b11111" />
@@ -12297,8 +12224,6 @@
       <BitField start="0" size="2" name="REFSEL">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="2" size="1" name="DMAEN">
         <Enum name="0" start="0b0" />
@@ -12780,7 +12705,7 @@
     <Register start="+0x8" size="4" name="LPTMR0_CMR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="COMPARE" />
     </Register>
-    <Register start="+0xC" size="4" name="LPTMR0_CNR" access="ReadOnly" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="LPTMR0_CNR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="COUNTER" />
     </Register>
   </RegisterGroup>
@@ -12848,7 +12773,6 @@
       </BitField>
       <BitField start="18" size="2" name="OSC32KSEL">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
         <Enum name="11" start="0b11" />
       </BitField>
@@ -12886,13 +12810,11 @@
       </BitField>
       <BitField start="5" size="3" name="CLKOUTSEL">
         <Enum name="000" start="0b000" />
-        <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
         <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="8" size="2" name="FBSL">
         <Enum name="00" start="0b00" />
@@ -12958,7 +12880,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="24" size="1" name="FTM0CLKSEL">
         <Enum name="0" start="0b0" />
@@ -12985,11 +12906,9 @@
         <Enum name="1" start="0b1" />
       </BitField>
       <BitField start="30" size="1" name="FTM3TRG0SRC">
-        <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
       </BitField>
       <BitField start="31" size="1" name="FTM3TRG1SRC">
-        <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
@@ -12998,25 +12917,21 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="2" size="2" name="UART0RXSRC">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="4" size="2" name="UART1TXSRC">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="6" size="2" name="UART1RXSRC">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
     </Register>
     <Register start="+0x1018" size="4" name="SIM_SOPT7" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
@@ -13036,7 +12951,6 @@
         <Enum name="1100" start="0b1100" />
         <Enum name="1101" start="0b1101" />
         <Enum name="1110" start="0b1110" />
-        <Enum name="1111" start="0b1111" />
       </BitField>
       <BitField start="4" size="1" name="ADC0PRETRGSEL">
         <Enum name="0" start="0b0" />
@@ -13062,7 +12976,6 @@
         <Enum name="1100" start="0b1100" />
         <Enum name="1101" start="0b1101" />
         <Enum name="1110" start="0b1110" />
-        <Enum name="1111" start="0b1111" />
       </BitField>
       <BitField start="12" size="1" name="ADC1PRETRGSEL">
         <Enum name="0" start="0b0" />
@@ -13075,10 +12988,7 @@
     </Register>
     <Register start="+0x1024" size="4" name="SIM_SDID" access="ReadOnly" reset_value="0x300" reset_mask="0xFFFF0F80">
       <BitField start="0" size="4" name="PINID">
-        <Enum name="0000" start="0b0000" />
-        <Enum name="0001" start="0b0001" />
         <Enum name="0010" start="0b0010" />
-        <Enum name="0011" start="0b0011" />
         <Enum name="0100" start="0b0100" />
         <Enum name="0101" start="0b0101" />
         <Enum name="0110" start="0b0110" />
@@ -13087,10 +12997,7 @@
         <Enum name="1001" start="0b1001" />
         <Enum name="1010" start="0b1010" />
         <Enum name="1011" start="0b1011" />
-        <Enum name="1100" start="0b1100" />
-        <Enum name="1101" start="0b1101" />
         <Enum name="1110" start="0b1110" />
-        <Enum name="1111" start="0b1111" />
       </BitField>
       <BitField start="4" size="3" name="FAMID">
         <Enum name="000" start="0b000" />
@@ -13099,8 +13006,6 @@
         <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="7" size="5" name="DIEID" />
       <BitField start="12" size="4" name="REVID" />
@@ -13449,7 +13354,7 @@
     </Register>
   </RegisterGroup>
   <RegisterGroup name="PORTA" start="0x40049000">
-    <Register start="+0+0" size="4" name="PORTA_PCR0" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+0" size="4" name="PORTA_PCR0" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13504,7 +13409,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+4" size="4" name="PORTA_PCR1" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+4" size="4" name="PORTA_PCR1" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13559,7 +13464,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+8" size="4" name="PORTA_PCR2" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+8" size="4" name="PORTA_PCR2" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13614,7 +13519,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+12" size="4" name="PORTA_PCR3" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+12" size="4" name="PORTA_PCR3" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13669,7 +13574,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+16" size="4" name="PORTA_PCR4" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+16" size="4" name="PORTA_PCR4" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13724,7 +13629,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+20" size="4" name="PORTA_PCR5" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+20" size="4" name="PORTA_PCR5" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13779,7 +13684,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+24" size="4" name="PORTA_PCR6" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+24" size="4" name="PORTA_PCR6" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13834,7 +13739,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+28" size="4" name="PORTA_PCR7" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+28" size="4" name="PORTA_PCR7" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13889,7 +13794,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+32" size="4" name="PORTA_PCR8" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+32" size="4" name="PORTA_PCR8" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13944,7 +13849,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+36" size="4" name="PORTA_PCR9" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+36" size="4" name="PORTA_PCR9" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -13999,7 +13904,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+40" size="4" name="PORTA_PCR10" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+40" size="4" name="PORTA_PCR10" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14054,7 +13959,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+44" size="4" name="PORTA_PCR11" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+44" size="4" name="PORTA_PCR11" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14109,7 +14014,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+48" size="4" name="PORTA_PCR12" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+48" size="4" name="PORTA_PCR12" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14164,7 +14069,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+52" size="4" name="PORTA_PCR13" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+52" size="4" name="PORTA_PCR13" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14219,7 +14124,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+56" size="4" name="PORTA_PCR14" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+56" size="4" name="PORTA_PCR14" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14274,7 +14179,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+60" size="4" name="PORTA_PCR15" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+60" size="4" name="PORTA_PCR15" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14329,7 +14234,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+64" size="4" name="PORTA_PCR16" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+64" size="4" name="PORTA_PCR16" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14384,7 +14289,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+68" size="4" name="PORTA_PCR17" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+68" size="4" name="PORTA_PCR17" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14439,7 +14344,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+72" size="4" name="PORTA_PCR18" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+72" size="4" name="PORTA_PCR18" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14494,7 +14399,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+76" size="4" name="PORTA_PCR19" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+76" size="4" name="PORTA_PCR19" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14549,7 +14454,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+80" size="4" name="PORTA_PCR20" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+80" size="4" name="PORTA_PCR20" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14604,7 +14509,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+84" size="4" name="PORTA_PCR21" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+84" size="4" name="PORTA_PCR21" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14659,7 +14564,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+88" size="4" name="PORTA_PCR22" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+88" size="4" name="PORTA_PCR22" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14714,7 +14619,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+92" size="4" name="PORTA_PCR23" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+92" size="4" name="PORTA_PCR23" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14769,7 +14674,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+96" size="4" name="PORTA_PCR24" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+96" size="4" name="PORTA_PCR24" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14824,7 +14729,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+100" size="4" name="PORTA_PCR25" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+100" size="4" name="PORTA_PCR25" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14879,7 +14784,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+104" size="4" name="PORTA_PCR26" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+104" size="4" name="PORTA_PCR26" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14934,7 +14839,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+108" size="4" name="PORTA_PCR27" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+108" size="4" name="PORTA_PCR27" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -14989,7 +14894,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+112" size="4" name="PORTA_PCR28" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+112" size="4" name="PORTA_PCR28" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -15044,7 +14949,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+116" size="4" name="PORTA_PCR29" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+116" size="4" name="PORTA_PCR29" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -15099,7 +15004,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+120" size="4" name="PORTA_PCR30" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+120" size="4" name="PORTA_PCR30" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -15154,7 +15059,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0+124" size="4" name="PORTA_PCR31" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0+124" size="4" name="PORTA_PCR31" access="Read/Write" reset_value="0x742" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PS">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -20575,6 +20480,21 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
+    <Register start="+0xC0" size="4" name="PORTD_DFER" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+      <BitField start="0" size="32" name="DFE">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0xC4" size="4" name="PORTD_DFCR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+      <BitField start="0" size="1" name="CS">
+        <Enum name="0" start="0b0" />
+        <Enum name="1" start="0b1" />
+      </BitField>
+    </Register>
+    <Register start="+0xC8" size="4" name="PORTD_DFWR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+      <BitField start="0" size="5" name="FILT" />
+    </Register>
   </RegisterGroup>
   <RegisterGroup name="PORTE" start="0x4004D000">
     <Register start="+0+0" size="4" name="PORTE_PCR0" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
@@ -22654,7 +22574,7 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0x6" size="1" name="MCG_S" access="ReadOnly" reset_value="0x10" reset_mask="0xFF">
+    <Register start="+0x6" size="1" name="MCG_S" access="Read/Write" reset_value="0x10" reset_mask="0xFF">
       <BitField start="0" size="1" name="IRCST">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -22745,8 +22665,6 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0xE" size="1" name="MCG_C9" access="ReadOnly" reset_value="0" reset_mask="0xFF" />
-    <Register start="+0xF" size="1" name="MCG_C10" access="ReadOnly" reset_value="0" reset_mask="0xFF" />
   </RegisterGroup>
   <RegisterGroup name="OSC" start="0x40065000">
     <Register start="+0" size="1" name="OSC_CR" access="Read/Write" reset_value="0" reset_mask="0xFF">
@@ -22786,7 +22704,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
     </Register>
     <Register start="+0x2" size="1" name="I2C0_C1" access="Read/Write" reset_value="0" reset_mask="0xFF">
@@ -22958,7 +22875,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
     </Register>
     <Register start="+0x2" size="1" name="I2C1_C1" access="Read/Write" reset_value="0" reset_mask="0xFF">
@@ -23130,7 +23046,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
     </Register>
     <Register start="+0x2" size="1" name="I2C2_C1" access="Read/Write" reset_value="0" reset_mask="0xFF">
@@ -23554,7 +23469,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="3" size="1" name="RXFE">
         <Enum name="0" start="0b0" />
@@ -23568,7 +23482,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="7" size="1" name="TXFE">
         <Enum name="0" start="0b0" />
@@ -23666,10 +23579,6 @@
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
       </BitField>
-      <BitField start="3" size="1" name="ADTE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
       <BitField start="4" size="1" name="INITDE">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -23700,10 +23609,6 @@
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
       </BitField>
-      <BitField start="3" size="1" name="ADT">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
       <BitField start="4" size="1" name="INITD">
         <Enum name="0" start="0b0" />
         <Enum name="1" start="0b1" />
@@ -23721,8 +23626,12 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0x1B" size="1" name="UART0_WP7816" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="WTX" />
+    <Register start="+0x1B" size="1" name="UART0_WP7816T0" access="Read/Write" reset_value="0xA" reset_mask="0xFF">
+      <BitField start="0" size="8" name="WI" />
+    </Register>
+    <Register start="+0x1B" size="1" name="UART0_WP7816T1" access="Read/Write" reset_value="0xA" reset_mask="0xFF">
+      <BitField start="0" size="4" name="BWI" />
+      <BitField start="4" size="4" name="CWI" />
     </Register>
     <Register start="+0x1C" size="1" name="UART0_WN7816" access="Read/Write" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="GTN" />
@@ -23739,172 +23648,6 @@
     </Register>
     <Register start="+0x1F" size="1" name="UART0_TL7816" access="Read/Write" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="TLEN" />
-    </Register>
-    <Register start="+0x21" size="1" name="UART0_C6" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="4" size="1" name="CP">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="5" size="1" name="CE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="6" size="1" name="TX709">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="7" size="1" name="EN709">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x22" size="1" name="UART0_PCTH" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PCTH" />
-    </Register>
-    <Register start="+0x23" size="1" name="UART0_PCTL" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PCTL" />
-    </Register>
-    <Register start="+0x24" size="1" name="UART0_B1T" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="B1T" />
-    </Register>
-    <Register start="+0x25" size="1" name="UART0_SDTH" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="SDTH" />
-    </Register>
-    <Register start="+0x26" size="1" name="UART0_SDTL" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="SDTL" />
-    </Register>
-    <Register start="+0x27" size="1" name="UART0_PRE" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PREAMBLE" />
-    </Register>
-    <Register start="+0x28" size="1" name="UART0_TPL" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="TPL" />
-    </Register>
-    <Register start="+0x29" size="1" name="UART0_IE" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="1" name="TXFIE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="1" size="1" name="PSIE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="2" size="1" name="PCTEIE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="3" size="1" name="PTXIE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="4" size="1" name="PRXIE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="5" size="1" name="ISDIE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="6" size="1" name="WBEIE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x2A" size="1" name="UART0_WB" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="WBASE" />
-    </Register>
-    <Register start="+0x2B" size="1" name="UART0_S3" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="1" name="TXFF">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="1" size="1" name="PSF">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="2" size="1" name="PCTEF">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="3" size="1" name="PTXF">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="4" size="1" name="PRXF">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="5" size="1" name="ISD">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="6" size="1" name="WBEF">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="7" size="1" name="PEF">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x2C" size="1" name="UART0_S4" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="1" name="FE">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="1" size="1" name="ILCV">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-      <BitField start="2" size="2" name="CDET">
-        <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
-      </BitField>
-      <BitField start="4" size="1" name="INITF">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
-      </BitField>
-    </Register>
-    <Register start="+0x2D" size="1" name="UART0_RPL" access="ReadOnly" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="RPL" />
-    </Register>
-    <Register start="+0x2E" size="1" name="UART0_RPREL" access="ReadOnly" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="RPREL" />
-    </Register>
-    <Register start="+0x2F" size="1" name="UART0_CPW" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="CPW" />
-    </Register>
-    <Register start="+0x30" size="1" name="UART0_RIDT" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="RIDT" />
-    </Register>
-    <Register start="+0x31" size="1" name="UART0_TIDT" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="TIDT" />
-    </Register>
-    <Register start="+0x3A" size="1" name="UART0_AP7816A_T0" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="ADTI_H" />
-    </Register>
-    <Register start="+0x3B" size="1" name="UART0_AP7816B_T0" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="ADTI_L" />
-    </Register>
-    <Register start="+0x3C" size="1" name="UART0_WP7816A_T0" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="WI_H" />
-    </Register>
-    <Register start="+0x3C" size="1" name="UART0_WP7816A_T1" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="BWI_H" />
-    </Register>
-    <Register start="+0x3D" size="1" name="UART0_WP7816B_T0" access="Read/Write" reset_value="0x14" reset_mask="0xFF">
-      <BitField start="0" size="8" name="WI_L" />
-    </Register>
-    <Register start="+0x3D" size="1" name="UART0_WP7816B_T1" access="Read/Write" reset_value="0x14" reset_mask="0xFF">
-      <BitField start="0" size="8" name="BWI_L" />
-    </Register>
-    <Register start="+0x3E" size="1" name="UART0_WGP7816_T1" access="Read/Write" reset_value="0x6" reset_mask="0xFF">
-      <BitField start="0" size="4" name="BGI" />
-      <BitField start="4" size="4" name="CWI1" />
-    </Register>
-    <Register start="+0x3F" size="1" name="UART0_WP7816C_T1" access="Read/Write" reset_value="0xB" reset_mask="0xFF">
-      <BitField start="0" size="5" name="CWI2" />
     </Register>
   </RegisterGroup>
   <RegisterGroup name="UART1" start="0x4006B000">
@@ -24169,7 +23912,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="3" size="1" name="RXFE">
         <Enum name="0" start="0b0" />
@@ -24183,7 +23925,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="7" size="1" name="TXFE">
         <Enum name="0" start="0b0" />
@@ -24509,7 +24250,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="3" size="1" name="RXFE">
         <Enum name="0" start="0b0" />
@@ -24523,7 +24263,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="7" size="1" name="TXFE">
         <Enum name="0" start="0b0" />
@@ -24849,7 +24588,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="3" size="1" name="RXFE">
         <Enum name="0" start="0b0" />
@@ -24863,7 +24601,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="7" size="1" name="TXFE">
         <Enum name="0" start="0b0" />
@@ -25189,7 +24926,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="3" size="1" name="RXFE">
         <Enum name="0" start="0b0" />
@@ -25203,7 +24939,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="7" size="1" name="TXFE">
         <Enum name="0" start="0b0" />
@@ -25529,7 +25264,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="3" size="1" name="RXFE">
         <Enum name="0" start="0b0" />
@@ -25543,7 +25277,6 @@
         <Enum name="100" start="0b100" />
         <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="7" size="1" name="TXFE">
         <Enum name="0" start="0b0" />
@@ -26381,7 +26114,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="2" size="1" name="VREFST">
         <Enum name="0" start="0b0" />
@@ -26690,8 +26422,6 @@
       <BitField start="0" size="2" name="LVDV">
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
-        <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="4" size="1" name="LVDRE">
         <Enum name="0" start="0b0" />
@@ -26761,13 +26491,10 @@
     <Register start="+0x1" size="1" name="SMC_PMCTRL" access="Read/Write" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="STOPM">
         <Enum name="000" start="0b000" />
-        <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
         <Enum name="011" start="0b011" />
         <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
         <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="3" size="1" name="STOPA">
         <Enum name="0" start="0b0" />
@@ -26775,9 +26502,7 @@
       </BitField>
       <BitField start="5" size="2" name="RUNM">
         <Enum name="00" start="0b00" />
-        <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="7" size="1" name="LPWUI">
         <Enum name="0" start="0b0" />
@@ -26790,10 +26515,6 @@
         <Enum name="001" start="0b001" />
         <Enum name="010" start="0b010" />
         <Enum name="011" start="0b011" />
-        <Enum name="100" start="0b100" />
-        <Enum name="101" start="0b101" />
-        <Enum name="110" start="0b110" />
-        <Enum name="111" start="0b111" />
       </BitField>
       <BitField start="3" size="1" name="LPOPO">
         <Enum name="0" start="0b0" />
@@ -26874,7 +26595,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="2" size="1" name="RSTFLTSS">
         <Enum name="0" start="0b0" />
@@ -27077,7 +26797,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="3" size="1" name="D3CD">
         <Enum name="0" start="0b0" />
@@ -27087,7 +26806,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="6" size="1" name="CDTL">
         <Enum name="0" start="0b0" />
@@ -27101,7 +26819,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="16" size="1" name="SABGREQ">
         <Enum name="0" start="0b0" />
@@ -27166,7 +26883,6 @@
         <Enum name="0000" start="0b0000" />
         <Enum name="0001" start="0b0001" />
         <Enum name="1110" start="0b1110" />
-        <Enum name="1111" start="0b1111" />
       </BitField>
       <BitField start="24" size="1" name="RSTA">
         <Enum name="0" start="0b0" />
@@ -27516,7 +27232,6 @@
         <Enum name="0110" start="0b0110" />
         <Enum name="0111" start="0b0111" />
         <Enum name="1110" start="0b1110" />
-        <Enum name="1111" start="0b1111" />
       </BitField>
       <BitField start="4" size="1" name="BOOTACK">
         <Enum name="0" start="0b0" />
@@ -27699,7 +27414,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="3" size="2" name="DACBFWM">
         <Enum name="00" start="0b00" />
@@ -27871,7 +27585,6 @@
         <Enum name="00" start="0b00" />
         <Enum name="01" start="0b01" />
         <Enum name="10" start="0b10" />
-        <Enum name="11" start="0b11" />
       </BitField>
       <BitField start="3" size="2" name="DACBFWM">
         <Enum name="00" start="0b00" />
@@ -28092,11 +27805,21 @@
         <Enum name="1" start="0b1" />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="MCM_PLACR" access="ReadOnly" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="9" size="1" name="ARB">
-        <Enum name="0" start="0b0" />
-        <Enum name="1" start="0b1" />
+    <Register start="+0xC" size="4" name="MCM_CR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
+      <BitField start="24" size="2" name="SRAMUAP">
+        <Enum name="00" start="0b00" />
+        <Enum name="01" start="0b01" />
+        <Enum name="10" start="0b10" />
+        <Enum name="11" start="0b11" />
       </BitField>
+      <BitField start="26" size="1" name="SRAMUWP" />
+      <BitField start="28" size="2" name="SRAMLAP">
+        <Enum name="00" start="0b00" />
+        <Enum name="01" start="0b01" />
+        <Enum name="10" start="0b10" />
+        <Enum name="11" start="0b11" />
+      </BitField>
+      <BitField start="30" size="1" name="SRAMLWP" />
     </Register>
     <Register start="+0x10" size="4" name="MCM_ISCR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="1" size="1" name="IRQ">
@@ -28216,15 +27939,14 @@
       <BitField name="FTFE" start="18" size="1" />
       <BitField name="Read_Collision" start="19" size="1" />
       <BitField name="LVD_LVW" start="20" size="1" />
-      <BitField name="LLW" start="21" size="1" />
-      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="LLWU" start="21" size="1" />
+      <BitField name="WDOG_EWM" start="22" size="1" />
       <BitField name="I2C0" start="24" size="1" />
       <BitField name="I2C1" start="25" size="1" />
       <BitField name="SPI0" start="26" size="1" />
       <BitField name="SPI1" start="27" size="1" />
       <BitField name="I2S0_Tx" start="28" size="1" />
       <BitField name="I2S0_Rx" start="29" size="1" />
-      <BitField name="UART0_LON" start="30" size="1" />
       <BitField name="UART0_RX_TX" start="31" size="1" />
     </Register>
     <Register name="NVIC_ISER1" start="0xE000E104">
@@ -28252,7 +27974,7 @@
       <BitField name="USB0" start="21" size="1" />
       <BitField name="USBDCD" start="22" size="1" />
       <BitField name="DAC0" start="24" size="1" />
-      <BitField name="LPTimer" start="26" size="1" />
+      <BitField name="LPTMR0" start="26" size="1" />
       <BitField name="PORTA" start="27" size="1" />
       <BitField name="PORTB" start="28" size="1" />
       <BitField name="PORTC" start="29" size="1" />
@@ -28299,15 +28021,14 @@
       <BitField name="FTFE" start="18" size="1" />
       <BitField name="Read_Collision" start="19" size="1" />
       <BitField name="LVD_LVW" start="20" size="1" />
-      <BitField name="LLW" start="21" size="1" />
-      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="LLWU" start="21" size="1" />
+      <BitField name="WDOG_EWM" start="22" size="1" />
       <BitField name="I2C0" start="24" size="1" />
       <BitField name="I2C1" start="25" size="1" />
       <BitField name="SPI0" start="26" size="1" />
       <BitField name="SPI1" start="27" size="1" />
       <BitField name="I2S0_Tx" start="28" size="1" />
       <BitField name="I2S0_Rx" start="29" size="1" />
-      <BitField name="UART0_LON" start="30" size="1" />
       <BitField name="UART0_RX_TX" start="31" size="1" />
     </Register>
     <Register name="NVIC_ICER1" start="0xE000E184">
@@ -28335,7 +28056,7 @@
       <BitField name="USB0" start="21" size="1" />
       <BitField name="USBDCD" start="22" size="1" />
       <BitField name="DAC0" start="24" size="1" />
-      <BitField name="LPTimer" start="26" size="1" />
+      <BitField name="LPTMR0" start="26" size="1" />
       <BitField name="PORTA" start="27" size="1" />
       <BitField name="PORTB" start="28" size="1" />
       <BitField name="PORTC" start="29" size="1" />
@@ -28382,15 +28103,14 @@
       <BitField name="FTFE" start="18" size="1" />
       <BitField name="Read_Collision" start="19" size="1" />
       <BitField name="LVD_LVW" start="20" size="1" />
-      <BitField name="LLW" start="21" size="1" />
-      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="LLWU" start="21" size="1" />
+      <BitField name="WDOG_EWM" start="22" size="1" />
       <BitField name="I2C0" start="24" size="1" />
       <BitField name="I2C1" start="25" size="1" />
       <BitField name="SPI0" start="26" size="1" />
       <BitField name="SPI1" start="27" size="1" />
       <BitField name="I2S0_Tx" start="28" size="1" />
       <BitField name="I2S0_Rx" start="29" size="1" />
-      <BitField name="UART0_LON" start="30" size="1" />
       <BitField name="UART0_RX_TX" start="31" size="1" />
     </Register>
     <Register name="NVIC_ISPR1" start="0xE000E204">
@@ -28418,7 +28138,7 @@
       <BitField name="USB0" start="21" size="1" />
       <BitField name="USBDCD" start="22" size="1" />
       <BitField name="DAC0" start="24" size="1" />
-      <BitField name="LPTimer" start="26" size="1" />
+      <BitField name="LPTMR0" start="26" size="1" />
       <BitField name="PORTA" start="27" size="1" />
       <BitField name="PORTB" start="28" size="1" />
       <BitField name="PORTC" start="29" size="1" />
@@ -28465,15 +28185,14 @@
       <BitField name="FTFE" start="18" size="1" />
       <BitField name="Read_Collision" start="19" size="1" />
       <BitField name="LVD_LVW" start="20" size="1" />
-      <BitField name="LLW" start="21" size="1" />
-      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="LLWU" start="21" size="1" />
+      <BitField name="WDOG_EWM" start="22" size="1" />
       <BitField name="I2C0" start="24" size="1" />
       <BitField name="I2C1" start="25" size="1" />
       <BitField name="SPI0" start="26" size="1" />
       <BitField name="SPI1" start="27" size="1" />
       <BitField name="I2S0_Tx" start="28" size="1" />
       <BitField name="I2S0_Rx" start="29" size="1" />
-      <BitField name="UART0_LON" start="30" size="1" />
       <BitField name="UART0_RX_TX" start="31" size="1" />
     </Register>
     <Register name="NVIC_ICPR1" start="0xE000E284">
@@ -28501,7 +28220,7 @@
       <BitField name="USB0" start="21" size="1" />
       <BitField name="USBDCD" start="22" size="1" />
       <BitField name="DAC0" start="24" size="1" />
-      <BitField name="LPTimer" start="26" size="1" />
+      <BitField name="LPTMR0" start="26" size="1" />
       <BitField name="PORTA" start="27" size="1" />
       <BitField name="PORTB" start="28" size="1" />
       <BitField name="PORTC" start="29" size="1" />
@@ -28548,15 +28267,14 @@
       <BitField name="FTFE" start="18" size="1" />
       <BitField name="Read_Collision" start="19" size="1" />
       <BitField name="LVD_LVW" start="20" size="1" />
-      <BitField name="LLW" start="21" size="1" />
-      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="LLWU" start="21" size="1" />
+      <BitField name="WDOG_EWM" start="22" size="1" />
       <BitField name="I2C0" start="24" size="1" />
       <BitField name="I2C1" start="25" size="1" />
       <BitField name="SPI0" start="26" size="1" />
       <BitField name="SPI1" start="27" size="1" />
       <BitField name="I2S0_Tx" start="28" size="1" />
       <BitField name="I2S0_Rx" start="29" size="1" />
-      <BitField name="UART0_LON" start="30" size="1" />
       <BitField name="UART0_RX_TX" start="31" size="1" />
     </Register>
     <Register name="NVIC_IABR1" start="0xE000E304" access="ReadOnly">
@@ -28584,7 +28302,7 @@
       <BitField name="USB0" start="21" size="1" />
       <BitField name="USBDCD" start="22" size="1" />
       <BitField name="DAC0" start="24" size="1" />
-      <BitField name="LPTimer" start="26" size="1" />
+      <BitField name="LPTMR0" start="26" size="1" />
       <BitField name="PORTA" start="27" size="1" />
       <BitField name="PORTB" start="28" size="1" />
       <BitField name="PORTC" start="29" size="1" />
@@ -28641,8 +28359,8 @@
     </Register>
     <Register name="NVIC_IPR5" start="0xE000E414">
       <BitField name="LVD_LVW" start="4" size="4" />
-      <BitField name="LLW" start="12" size="4" />
-      <BitField name="Watchdog" start="20" size="4" />
+      <BitField name="LLWU" start="12" size="4" />
+      <BitField name="WDOG_EWM" start="20" size="4" />
     </Register>
     <Register name="NVIC_IPR6" start="0xE000E418">
       <BitField name="I2C0" start="4" size="4" />
@@ -28653,7 +28371,6 @@
     <Register name="NVIC_IPR7" start="0xE000E41C">
       <BitField name="I2S0_Tx" start="4" size="4" />
       <BitField name="I2S0_Rx" start="12" size="4" />
-      <BitField name="UART0_LON" start="20" size="4" />
       <BitField name="UART0_RX_TX" start="28" size="4" />
     </Register>
     <Register name="NVIC_IPR8" start="0xE000E420">
@@ -28693,7 +28410,7 @@
     </Register>
     <Register name="NVIC_IPR14" start="0xE000E438">
       <BitField name="DAC0" start="4" size="4" />
-      <BitField name="LPTimer" start="20" size="4" />
+      <BitField name="LPTMR0" start="20" size="4" />
       <BitField name="PORTA" start="28" size="4" />
     </Register>
     <Register name="NVIC_IPR15" start="0xE000E43C">

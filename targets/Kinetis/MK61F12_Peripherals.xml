@@ -41474,389 +41474,6 @@
       </BitField>
     </Register>
   </RegisterGroup>
-  <RegisterGroup name="NVIC" start="0xE000E100">
-    <Register start="+0" size="4" name="NVICISER0" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="SETENA" />
-    </Register>
-    <Register start="+0x4" size="4" name="NVICISER1" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="SETENA" />
-    </Register>
-    <Register start="+0x8" size="4" name="NVICISER2" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="SETENA" />
-    </Register>
-    <Register start="+0xC" size="4" name="NVICISER3" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="SETENA" />
-    </Register>
-    <Register start="+0x80" size="4" name="NVICICER0" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="CLRENA" />
-    </Register>
-    <Register start="+0x84" size="4" name="NVICICER1" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="CLRENA" />
-    </Register>
-    <Register start="+0x88" size="4" name="NVICICER2" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="CLRENA" />
-    </Register>
-    <Register start="+0x8C" size="4" name="NVICICER3" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="CLRENA" />
-    </Register>
-    <Register start="+0x100" size="4" name="NVICISPR0" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="SETPEND" />
-    </Register>
-    <Register start="+0x104" size="4" name="NVICISPR1" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="SETPEND" />
-    </Register>
-    <Register start="+0x108" size="4" name="NVICISPR2" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="SETPEND" />
-    </Register>
-    <Register start="+0x10C" size="4" name="NVICISPR3" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="SETPEND" />
-    </Register>
-    <Register start="+0x180" size="4" name="NVICICPR0" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="CLRPEND" />
-    </Register>
-    <Register start="+0x184" size="4" name="NVICICPR1" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="CLRPEND" />
-    </Register>
-    <Register start="+0x188" size="4" name="NVICICPR2" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="CLRPEND" />
-    </Register>
-    <Register start="+0x18C" size="4" name="NVICICPR3" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="CLRPEND" />
-    </Register>
-    <Register start="+0x200" size="4" name="NVICIABR0" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="ACTIVE" />
-    </Register>
-    <Register start="+0x204" size="4" name="NVICIABR1" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="ACTIVE" />
-    </Register>
-    <Register start="+0x208" size="4" name="NVICIABR2" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="ACTIVE" />
-    </Register>
-    <Register start="+0x20C" size="4" name="NVICIABR3" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="32" name="ACTIVE" />
-    </Register>
-    <Register start="+0x300" size="1" name="NVICIP0" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI0" />
-    </Register>
-    <Register start="+0x301" size="1" name="NVICIP1" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI1" />
-    </Register>
-    <Register start="+0x302" size="1" name="NVICIP2" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI2" />
-    </Register>
-    <Register start="+0x303" size="1" name="NVICIP3" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI3" />
-    </Register>
-    <Register start="+0x304" size="1" name="NVICIP4" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI4" />
-    </Register>
-    <Register start="+0x305" size="1" name="NVICIP5" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI5" />
-    </Register>
-    <Register start="+0x306" size="1" name="NVICIP6" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI6" />
-    </Register>
-    <Register start="+0x307" size="1" name="NVICIP7" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI7" />
-    </Register>
-    <Register start="+0x308" size="1" name="NVICIP8" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI8" />
-    </Register>
-    <Register start="+0x309" size="1" name="NVICIP9" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI9" />
-    </Register>
-    <Register start="+0x30A" size="1" name="NVICIP10" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI10" />
-    </Register>
-    <Register start="+0x30B" size="1" name="NVICIP11" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI11" />
-    </Register>
-    <Register start="+0x30C" size="1" name="NVICIP12" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI12" />
-    </Register>
-    <Register start="+0x30D" size="1" name="NVICIP13" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI13" />
-    </Register>
-    <Register start="+0x30E" size="1" name="NVICIP14" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI14" />
-    </Register>
-    <Register start="+0x30F" size="1" name="NVICIP15" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI15" />
-    </Register>
-    <Register start="+0x310" size="1" name="NVICIP16" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI16" />
-    </Register>
-    <Register start="+0x311" size="1" name="NVICIP17" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI17" />
-    </Register>
-    <Register start="+0x312" size="1" name="NVICIP18" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI18" />
-    </Register>
-    <Register start="+0x313" size="1" name="NVICIP19" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI19" />
-    </Register>
-    <Register start="+0x314" size="1" name="NVICIP20" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI20" />
-    </Register>
-    <Register start="+0x315" size="1" name="NVICIP21" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI21" />
-    </Register>
-    <Register start="+0x316" size="1" name="NVICIP22" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI22" />
-    </Register>
-    <Register start="+0x317" size="1" name="NVICIP23" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI23" />
-    </Register>
-    <Register start="+0x318" size="1" name="NVICIP24" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI24" />
-    </Register>
-    <Register start="+0x319" size="1" name="NVICIP25" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI25" />
-    </Register>
-    <Register start="+0x31A" size="1" name="NVICIP26" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI26" />
-    </Register>
-    <Register start="+0x31B" size="1" name="NVICIP27" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI27" />
-    </Register>
-    <Register start="+0x31C" size="1" name="NVICIP28" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI28" />
-    </Register>
-    <Register start="+0x31D" size="1" name="NVICIP29" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI29" />
-    </Register>
-    <Register start="+0x31E" size="1" name="NVICIP30" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI30" />
-    </Register>
-    <Register start="+0x31F" size="1" name="NVICIP31" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI31" />
-    </Register>
-    <Register start="+0x320" size="1" name="NVICIP32" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI32" />
-    </Register>
-    <Register start="+0x321" size="1" name="NVICIP33" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI33" />
-    </Register>
-    <Register start="+0x322" size="1" name="NVICIP34" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI34" />
-    </Register>
-    <Register start="+0x323" size="1" name="NVICIP35" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI35" />
-    </Register>
-    <Register start="+0x324" size="1" name="NVICIP36" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI36" />
-    </Register>
-    <Register start="+0x325" size="1" name="NVICIP37" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI37" />
-    </Register>
-    <Register start="+0x326" size="1" name="NVICIP38" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI38" />
-    </Register>
-    <Register start="+0x327" size="1" name="NVICIP39" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI39" />
-    </Register>
-    <Register start="+0x328" size="1" name="NVICIP40" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI40" />
-    </Register>
-    <Register start="+0x329" size="1" name="NVICIP41" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI41" />
-    </Register>
-    <Register start="+0x32A" size="1" name="NVICIP42" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI42" />
-    </Register>
-    <Register start="+0x32B" size="1" name="NVICIP43" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI43" />
-    </Register>
-    <Register start="+0x32C" size="1" name="NVICIP44" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI44" />
-    </Register>
-    <Register start="+0x32D" size="1" name="NVICIP45" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI45" />
-    </Register>
-    <Register start="+0x32E" size="1" name="NVICIP46" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI46" />
-    </Register>
-    <Register start="+0x32F" size="1" name="NVICIP47" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI47" />
-    </Register>
-    <Register start="+0x330" size="1" name="NVICIP48" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI48" />
-    </Register>
-    <Register start="+0x331" size="1" name="NVICIP49" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI49" />
-    </Register>
-    <Register start="+0x332" size="1" name="NVICIP50" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI50" />
-    </Register>
-    <Register start="+0x333" size="1" name="NVICIP51" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI51" />
-    </Register>
-    <Register start="+0x334" size="1" name="NVICIP52" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI52" />
-    </Register>
-    <Register start="+0x335" size="1" name="NVICIP53" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI53" />
-    </Register>
-    <Register start="+0x336" size="1" name="NVICIP54" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI54" />
-    </Register>
-    <Register start="+0x337" size="1" name="NVICIP55" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI55" />
-    </Register>
-    <Register start="+0x338" size="1" name="NVICIP56" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI56" />
-    </Register>
-    <Register start="+0x339" size="1" name="NVICIP57" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI57" />
-    </Register>
-    <Register start="+0x33A" size="1" name="NVICIP58" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI58" />
-    </Register>
-    <Register start="+0x33B" size="1" name="NVICIP59" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI59" />
-    </Register>
-    <Register start="+0x33C" size="1" name="NVICIP60" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI60" />
-    </Register>
-    <Register start="+0x33D" size="1" name="NVICIP61" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI61" />
-    </Register>
-    <Register start="+0x33E" size="1" name="NVICIP62" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI62" />
-    </Register>
-    <Register start="+0x33F" size="1" name="NVICIP63" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI63" />
-    </Register>
-    <Register start="+0x340" size="1" name="NVICIP64" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI64" />
-    </Register>
-    <Register start="+0x341" size="1" name="NVICIP65" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI65" />
-    </Register>
-    <Register start="+0x342" size="1" name="NVICIP66" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI66" />
-    </Register>
-    <Register start="+0x343" size="1" name="NVICIP67" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI67" />
-    </Register>
-    <Register start="+0x344" size="1" name="NVICIP68" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI68" />
-    </Register>
-    <Register start="+0x345" size="1" name="NVICIP69" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI69" />
-    </Register>
-    <Register start="+0x346" size="1" name="NVICIP70" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI70" />
-    </Register>
-    <Register start="+0x347" size="1" name="NVICIP71" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI71" />
-    </Register>
-    <Register start="+0x348" size="1" name="NVICIP72" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI72" />
-    </Register>
-    <Register start="+0x349" size="1" name="NVICIP73" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI73" />
-    </Register>
-    <Register start="+0x34A" size="1" name="NVICIP74" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI74" />
-    </Register>
-    <Register start="+0x34B" size="1" name="NVICIP75" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI75" />
-    </Register>
-    <Register start="+0x34C" size="1" name="NVICIP76" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI76" />
-    </Register>
-    <Register start="+0x34D" size="1" name="NVICIP77" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI77" />
-    </Register>
-    <Register start="+0x34E" size="1" name="NVICIP78" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI78" />
-    </Register>
-    <Register start="+0x34F" size="1" name="NVICIP79" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI79" />
-    </Register>
-    <Register start="+0x350" size="1" name="NVICIP80" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI80" />
-    </Register>
-    <Register start="+0x351" size="1" name="NVICIP81" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI81" />
-    </Register>
-    <Register start="+0x352" size="1" name="NVICIP82" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI82" />
-    </Register>
-    <Register start="+0x353" size="1" name="NVICIP83" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI83" />
-    </Register>
-    <Register start="+0x354" size="1" name="NVICIP84" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI84" />
-    </Register>
-    <Register start="+0x355" size="1" name="NVICIP85" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI85" />
-    </Register>
-    <Register start="+0x356" size="1" name="NVICIP86" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI86" />
-    </Register>
-    <Register start="+0x357" size="1" name="NVICIP87" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI87" />
-    </Register>
-    <Register start="+0x358" size="1" name="NVICIP88" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI88" />
-    </Register>
-    <Register start="+0x359" size="1" name="NVICIP89" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI89" />
-    </Register>
-    <Register start="+0x35A" size="1" name="NVICIP90" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI90" />
-    </Register>
-    <Register start="+0x35B" size="1" name="NVICIP91" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI91" />
-    </Register>
-    <Register start="+0x35C" size="1" name="NVICIP92" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI92" />
-    </Register>
-    <Register start="+0x35D" size="1" name="NVICIP93" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI93" />
-    </Register>
-    <Register start="+0x35E" size="1" name="NVICIP94" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI94" />
-    </Register>
-    <Register start="+0x35F" size="1" name="NVICIP95" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI95" />
-    </Register>
-    <Register start="+0x360" size="1" name="NVICIP96" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI96" />
-    </Register>
-    <Register start="+0x361" size="1" name="NVICIP97" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI97" />
-    </Register>
-    <Register start="+0x362" size="1" name="NVICIP98" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI98" />
-    </Register>
-    <Register start="+0x363" size="1" name="NVICIP99" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI99" />
-    </Register>
-    <Register start="+0x364" size="1" name="NVICIP100" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI100" />
-    </Register>
-    <Register start="+0x365" size="1" name="NVICIP101" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI101" />
-    </Register>
-    <Register start="+0x366" size="1" name="NVICIP102" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI102" />
-    </Register>
-    <Register start="+0x367" size="1" name="NVICIP103" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI103" />
-    </Register>
-    <Register start="+0x368" size="1" name="NVICIP104" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI104" />
-    </Register>
-    <Register start="+0x369" size="1" name="NVICIP105" access="Read/Write" reset_value="0" reset_mask="0xFF">
-      <BitField start="0" size="8" name="PRI105" />
-    </Register>
-    <Register start="+0xE00" size="4" name="NVICSTIR" access="Read/Write" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="9" name="INTID" />
-    </Register>
-  </RegisterGroup>
   <RegisterGroup name="MCM" start="0xE0080000">
     <Register start="+0x8" size="2" name="MCM_PLASC" access="Read/Write" reset_value="0x1F" reset_mask="0xFFFF">
       <BitField start="0" size="8" name="ASC">
@@ -42578,6 +42195,682 @@
         <Enum name="11" start="0b11" />
       </BitField>
     </Register>
+  </RegisterGroup>
+  <RegisterGroup name="NVIC" start="0xE000E100">
+    <Register name="NVIC_ISER0" start="0xE000E100">
+      <BitField name="DMA0_DMA16" start="0" size="1" />
+      <BitField name="DMA1_DMA17" start="1" size="1" />
+      <BitField name="DMA2_DMA18" start="2" size="1" />
+      <BitField name="DMA3_DMA19" start="3" size="1" />
+      <BitField name="DMA4_DMA20" start="4" size="1" />
+      <BitField name="DMA5_DMA21" start="5" size="1" />
+      <BitField name="DMA6_DMA22" start="6" size="1" />
+      <BitField name="DMA7_DMA23" start="7" size="1" />
+      <BitField name="DMA8_DMA24" start="8" size="1" />
+      <BitField name="DMA9_DMA25" start="9" size="1" />
+      <BitField name="DMA10_DMA26" start="10" size="1" />
+      <BitField name="DMA11_DMA27" start="11" size="1" />
+      <BitField name="DMA12_DMA28" start="12" size="1" />
+      <BitField name="DMA13_DMA29" start="13" size="1" />
+      <BitField name="DMA14_DMA30" start="14" size="1" />
+      <BitField name="DMA15_DMA31" start="15" size="1" />
+      <BitField name="DMA_Error" start="16" size="1" />
+      <BitField name="FTFE" start="18" size="1" />
+      <BitField name="LVD_LVW" start="20" size="1" />
+      <BitField name="LLW" start="21" size="1" />
+      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="RNG" start="23" size="1" />
+      <BitField name="I2C0" start="24" size="1" />
+      <BitField name="I2C1" start="25" size="1" />
+      <BitField name="SPI0" start="26" size="1" />
+      <BitField name="SPI1" start="27" size="1" />
+      <BitField name="SPI2" start="28" size="1" />
+      <BitField name="CAN0_ORed_Message_buffer" start="29" size="1" />
+      <BitField name="CAN0_Bus_Off" start="30" size="1" />
+      <BitField name="CAN0_Error" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ISER1" start="0xE000E104">
+      <BitField name="CAN0_Tx_Warning" start="0" size="1" />
+      <BitField name="CAN0_Rx_Warning" start="1" size="1" />
+      <BitField name="CAN0_Wake_Up" start="2" size="1" />
+      <BitField name="I2S0_Tx" start="3" size="1" />
+      <BitField name="I2S0_Rx" start="4" size="1" />
+      <BitField name="CAN1_ORed_Message_buffer" start="5" size="1" />
+      <BitField name="CAN1_Bus_Off" start="6" size="1" />
+      <BitField name="CAN1_Error" start="7" size="1" />
+      <BitField name="CAN1_Tx_Warning" start="8" size="1" />
+      <BitField name="CAN1_Rx_Warning" start="9" size="1" />
+      <BitField name="CAN1_Wake_Up" start="10" size="1" />
+      <BitField name="UART0_LON" start="12" size="1" />
+      <BitField name="UART0_RX_TX" start="13" size="1" />
+      <BitField name="UART0_ERR" start="14" size="1" />
+      <BitField name="UART1_RX_TX" start="15" size="1" />
+      <BitField name="UART1_ERR" start="16" size="1" />
+      <BitField name="UART2_RX_TX" start="17" size="1" />
+      <BitField name="UART2_ERR" start="18" size="1" />
+      <BitField name="UART3_RX_TX" start="19" size="1" />
+      <BitField name="UART3_ERR" start="20" size="1" />
+      <BitField name="UART4_RX_TX" start="21" size="1" />
+      <BitField name="UART4_ERR" start="22" size="1" />
+      <BitField name="UART5_RX_TX" start="23" size="1" />
+      <BitField name="UART5_ERR" start="24" size="1" />
+      <BitField name="ADC0" start="25" size="1" />
+      <BitField name="ADC1" start="26" size="1" />
+      <BitField name="CMP0" start="27" size="1" />
+      <BitField name="CMP1" start="28" size="1" />
+      <BitField name="CMP2" start="29" size="1" />
+      <BitField name="FTM0" start="30" size="1" />
+      <BitField name="FTM1" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ISER2" start="0xE000E108">
+      <BitField name="FTM2" start="0" size="1" />
+      <BitField name="CMT" start="1" size="1" />
+      <BitField name="RTC" start="2" size="1" />
+      <BitField name="RTC_Seconds" start="3" size="1" />
+      <BitField name="PIT0" start="4" size="1" />
+      <BitField name="PIT1" start="5" size="1" />
+      <BitField name="PIT2" start="6" size="1" />
+      <BitField name="PIT3" start="7" size="1" />
+      <BitField name="PDB0" start="8" size="1" />
+      <BitField name="USB0" start="9" size="1" />
+      <BitField name="USBDCD" start="10" size="1" />
+      <BitField name="ENET_1588_Timer" start="11" size="1" />
+      <BitField name="ENET_Transmit" start="12" size="1" />
+      <BitField name="ENET_Receive" start="13" size="1" />
+      <BitField name="ENET_Error" start="14" size="1" />
+      <BitField name="SDHC" start="16" size="1" />
+      <BitField name="DAC0" start="17" size="1" />
+      <BitField name="DAC1" start="18" size="1" />
+      <BitField name="TSI0" start="19" size="1" />
+      <BitField name="LPTimer" start="21" size="1" />
+      <BitField name="PORTA" start="23" size="1" />
+      <BitField name="PORTB" start="24" size="1" />
+      <BitField name="PORTC" start="25" size="1" />
+      <BitField name="PORTD" start="26" size="1" />
+      <BitField name="PORTE" start="27" size="1" />
+      <BitField name="PORTF" start="28" size="1" />
+      <BitField name="NFC" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ISER3" start="0xE000E10C">
+      <BitField name="USBHS" start="0" size="1" />
+      <BitField name="CMP3" start="2" size="1" />
+      <BitField name="Tamper" start="3" size="1" />
+      <BitField name="FTM3" start="5" size="1" />
+      <BitField name="ADC2" start="6" size="1" />
+      <BitField name="ADC3" start="7" size="1" />
+      <BitField name="I2S1_Tx" start="8" size="1" />
+      <BitField name="I2S1_Rx" start="9" size="1" />
+    </Register>
+    <Register name="NVIC_ICER0" start="0xE000E180">
+      <BitField name="DMA0_DMA16" start="0" size="1" />
+      <BitField name="DMA1_DMA17" start="1" size="1" />
+      <BitField name="DMA2_DMA18" start="2" size="1" />
+      <BitField name="DMA3_DMA19" start="3" size="1" />
+      <BitField name="DMA4_DMA20" start="4" size="1" />
+      <BitField name="DMA5_DMA21" start="5" size="1" />
+      <BitField name="DMA6_DMA22" start="6" size="1" />
+      <BitField name="DMA7_DMA23" start="7" size="1" />
+      <BitField name="DMA8_DMA24" start="8" size="1" />
+      <BitField name="DMA9_DMA25" start="9" size="1" />
+      <BitField name="DMA10_DMA26" start="10" size="1" />
+      <BitField name="DMA11_DMA27" start="11" size="1" />
+      <BitField name="DMA12_DMA28" start="12" size="1" />
+      <BitField name="DMA13_DMA29" start="13" size="1" />
+      <BitField name="DMA14_DMA30" start="14" size="1" />
+      <BitField name="DMA15_DMA31" start="15" size="1" />
+      <BitField name="DMA_Error" start="16" size="1" />
+      <BitField name="FTFE" start="18" size="1" />
+      <BitField name="LVD_LVW" start="20" size="1" />
+      <BitField name="LLW" start="21" size="1" />
+      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="RNG" start="23" size="1" />
+      <BitField name="I2C0" start="24" size="1" />
+      <BitField name="I2C1" start="25" size="1" />
+      <BitField name="SPI0" start="26" size="1" />
+      <BitField name="SPI1" start="27" size="1" />
+      <BitField name="SPI2" start="28" size="1" />
+      <BitField name="CAN0_ORed_Message_buffer" start="29" size="1" />
+      <BitField name="CAN0_Bus_Off" start="30" size="1" />
+      <BitField name="CAN0_Error" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ICER1" start="0xE000E184">
+      <BitField name="CAN0_Tx_Warning" start="0" size="1" />
+      <BitField name="CAN0_Rx_Warning" start="1" size="1" />
+      <BitField name="CAN0_Wake_Up" start="2" size="1" />
+      <BitField name="I2S0_Tx" start="3" size="1" />
+      <BitField name="I2S0_Rx" start="4" size="1" />
+      <BitField name="CAN1_ORed_Message_buffer" start="5" size="1" />
+      <BitField name="CAN1_Bus_Off" start="6" size="1" />
+      <BitField name="CAN1_Error" start="7" size="1" />
+      <BitField name="CAN1_Tx_Warning" start="8" size="1" />
+      <BitField name="CAN1_Rx_Warning" start="9" size="1" />
+      <BitField name="CAN1_Wake_Up" start="10" size="1" />
+      <BitField name="UART0_LON" start="12" size="1" />
+      <BitField name="UART0_RX_TX" start="13" size="1" />
+      <BitField name="UART0_ERR" start="14" size="1" />
+      <BitField name="UART1_RX_TX" start="15" size="1" />
+      <BitField name="UART1_ERR" start="16" size="1" />
+      <BitField name="UART2_RX_TX" start="17" size="1" />
+      <BitField name="UART2_ERR" start="18" size="1" />
+      <BitField name="UART3_RX_TX" start="19" size="1" />
+      <BitField name="UART3_ERR" start="20" size="1" />
+      <BitField name="UART4_RX_TX" start="21" size="1" />
+      <BitField name="UART4_ERR" start="22" size="1" />
+      <BitField name="UART5_RX_TX" start="23" size="1" />
+      <BitField name="UART5_ERR" start="24" size="1" />
+      <BitField name="ADC0" start="25" size="1" />
+      <BitField name="ADC1" start="26" size="1" />
+      <BitField name="CMP0" start="27" size="1" />
+      <BitField name="CMP1" start="28" size="1" />
+      <BitField name="CMP2" start="29" size="1" />
+      <BitField name="FTM0" start="30" size="1" />
+      <BitField name="FTM1" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ICER2" start="0xE000E188">
+      <BitField name="FTM2" start="0" size="1" />
+      <BitField name="CMT" start="1" size="1" />
+      <BitField name="RTC" start="2" size="1" />
+      <BitField name="RTC_Seconds" start="3" size="1" />
+      <BitField name="PIT0" start="4" size="1" />
+      <BitField name="PIT1" start="5" size="1" />
+      <BitField name="PIT2" start="6" size="1" />
+      <BitField name="PIT3" start="7" size="1" />
+      <BitField name="PDB0" start="8" size="1" />
+      <BitField name="USB0" start="9" size="1" />
+      <BitField name="USBDCD" start="10" size="1" />
+      <BitField name="ENET_1588_Timer" start="11" size="1" />
+      <BitField name="ENET_Transmit" start="12" size="1" />
+      <BitField name="ENET_Receive" start="13" size="1" />
+      <BitField name="ENET_Error" start="14" size="1" />
+      <BitField name="SDHC" start="16" size="1" />
+      <BitField name="DAC0" start="17" size="1" />
+      <BitField name="DAC1" start="18" size="1" />
+      <BitField name="TSI0" start="19" size="1" />
+      <BitField name="LPTimer" start="21" size="1" />
+      <BitField name="PORTA" start="23" size="1" />
+      <BitField name="PORTB" start="24" size="1" />
+      <BitField name="PORTC" start="25" size="1" />
+      <BitField name="PORTD" start="26" size="1" />
+      <BitField name="PORTE" start="27" size="1" />
+      <BitField name="PORTF" start="28" size="1" />
+      <BitField name="NFC" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ICER3" start="0xE000E18C">
+      <BitField name="USBHS" start="0" size="1" />
+      <BitField name="CMP3" start="2" size="1" />
+      <BitField name="Tamper" start="3" size="1" />
+      <BitField name="FTM3" start="5" size="1" />
+      <BitField name="ADC2" start="6" size="1" />
+      <BitField name="ADC3" start="7" size="1" />
+      <BitField name="I2S1_Tx" start="8" size="1" />
+      <BitField name="I2S1_Rx" start="9" size="1" />
+    </Register>
+    <Register name="NVIC_ISPR0" start="0xE000E200">
+      <BitField name="DMA0_DMA16" start="0" size="1" />
+      <BitField name="DMA1_DMA17" start="1" size="1" />
+      <BitField name="DMA2_DMA18" start="2" size="1" />
+      <BitField name="DMA3_DMA19" start="3" size="1" />
+      <BitField name="DMA4_DMA20" start="4" size="1" />
+      <BitField name="DMA5_DMA21" start="5" size="1" />
+      <BitField name="DMA6_DMA22" start="6" size="1" />
+      <BitField name="DMA7_DMA23" start="7" size="1" />
+      <BitField name="DMA8_DMA24" start="8" size="1" />
+      <BitField name="DMA9_DMA25" start="9" size="1" />
+      <BitField name="DMA10_DMA26" start="10" size="1" />
+      <BitField name="DMA11_DMA27" start="11" size="1" />
+      <BitField name="DMA12_DMA28" start="12" size="1" />
+      <BitField name="DMA13_DMA29" start="13" size="1" />
+      <BitField name="DMA14_DMA30" start="14" size="1" />
+      <BitField name="DMA15_DMA31" start="15" size="1" />
+      <BitField name="DMA_Error" start="16" size="1" />
+      <BitField name="FTFE" start="18" size="1" />
+      <BitField name="LVD_LVW" start="20" size="1" />
+      <BitField name="LLW" start="21" size="1" />
+      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="RNG" start="23" size="1" />
+      <BitField name="I2C0" start="24" size="1" />
+      <BitField name="I2C1" start="25" size="1" />
+      <BitField name="SPI0" start="26" size="1" />
+      <BitField name="SPI1" start="27" size="1" />
+      <BitField name="SPI2" start="28" size="1" />
+      <BitField name="CAN0_ORed_Message_buffer" start="29" size="1" />
+      <BitField name="CAN0_Bus_Off" start="30" size="1" />
+      <BitField name="CAN0_Error" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ISPR1" start="0xE000E204">
+      <BitField name="CAN0_Tx_Warning" start="0" size="1" />
+      <BitField name="CAN0_Rx_Warning" start="1" size="1" />
+      <BitField name="CAN0_Wake_Up" start="2" size="1" />
+      <BitField name="I2S0_Tx" start="3" size="1" />
+      <BitField name="I2S0_Rx" start="4" size="1" />
+      <BitField name="CAN1_ORed_Message_buffer" start="5" size="1" />
+      <BitField name="CAN1_Bus_Off" start="6" size="1" />
+      <BitField name="CAN1_Error" start="7" size="1" />
+      <BitField name="CAN1_Tx_Warning" start="8" size="1" />
+      <BitField name="CAN1_Rx_Warning" start="9" size="1" />
+      <BitField name="CAN1_Wake_Up" start="10" size="1" />
+      <BitField name="UART0_LON" start="12" size="1" />
+      <BitField name="UART0_RX_TX" start="13" size="1" />
+      <BitField name="UART0_ERR" start="14" size="1" />
+      <BitField name="UART1_RX_TX" start="15" size="1" />
+      <BitField name="UART1_ERR" start="16" size="1" />
+      <BitField name="UART2_RX_TX" start="17" size="1" />
+      <BitField name="UART2_ERR" start="18" size="1" />
+      <BitField name="UART3_RX_TX" start="19" size="1" />
+      <BitField name="UART3_ERR" start="20" size="1" />
+      <BitField name="UART4_RX_TX" start="21" size="1" />
+      <BitField name="UART4_ERR" start="22" size="1" />
+      <BitField name="UART5_RX_TX" start="23" size="1" />
+      <BitField name="UART5_ERR" start="24" size="1" />
+      <BitField name="ADC0" start="25" size="1" />
+      <BitField name="ADC1" start="26" size="1" />
+      <BitField name="CMP0" start="27" size="1" />
+      <BitField name="CMP1" start="28" size="1" />
+      <BitField name="CMP2" start="29" size="1" />
+      <BitField name="FTM0" start="30" size="1" />
+      <BitField name="FTM1" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ISPR2" start="0xE000E208">
+      <BitField name="FTM2" start="0" size="1" />
+      <BitField name="CMT" start="1" size="1" />
+      <BitField name="RTC" start="2" size="1" />
+      <BitField name="RTC_Seconds" start="3" size="1" />
+      <BitField name="PIT0" start="4" size="1" />
+      <BitField name="PIT1" start="5" size="1" />
+      <BitField name="PIT2" start="6" size="1" />
+      <BitField name="PIT3" start="7" size="1" />
+      <BitField name="PDB0" start="8" size="1" />
+      <BitField name="USB0" start="9" size="1" />
+      <BitField name="USBDCD" start="10" size="1" />
+      <BitField name="ENET_1588_Timer" start="11" size="1" />
+      <BitField name="ENET_Transmit" start="12" size="1" />
+      <BitField name="ENET_Receive" start="13" size="1" />
+      <BitField name="ENET_Error" start="14" size="1" />
+      <BitField name="SDHC" start="16" size="1" />
+      <BitField name="DAC0" start="17" size="1" />
+      <BitField name="DAC1" start="18" size="1" />
+      <BitField name="TSI0" start="19" size="1" />
+      <BitField name="LPTimer" start="21" size="1" />
+      <BitField name="PORTA" start="23" size="1" />
+      <BitField name="PORTB" start="24" size="1" />
+      <BitField name="PORTC" start="25" size="1" />
+      <BitField name="PORTD" start="26" size="1" />
+      <BitField name="PORTE" start="27" size="1" />
+      <BitField name="PORTF" start="28" size="1" />
+      <BitField name="NFC" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ISPR3" start="0xE000E20C">
+      <BitField name="USBHS" start="0" size="1" />
+      <BitField name="CMP3" start="2" size="1" />
+      <BitField name="Tamper" start="3" size="1" />
+      <BitField name="FTM3" start="5" size="1" />
+      <BitField name="ADC2" start="6" size="1" />
+      <BitField name="ADC3" start="7" size="1" />
+      <BitField name="I2S1_Tx" start="8" size="1" />
+      <BitField name="I2S1_Rx" start="9" size="1" />
+    </Register>
+    <Register name="NVIC_ICPR0" start="0xE000E280">
+      <BitField name="DMA0_DMA16" start="0" size="1" />
+      <BitField name="DMA1_DMA17" start="1" size="1" />
+      <BitField name="DMA2_DMA18" start="2" size="1" />
+      <BitField name="DMA3_DMA19" start="3" size="1" />
+      <BitField name="DMA4_DMA20" start="4" size="1" />
+      <BitField name="DMA5_DMA21" start="5" size="1" />
+      <BitField name="DMA6_DMA22" start="6" size="1" />
+      <BitField name="DMA7_DMA23" start="7" size="1" />
+      <BitField name="DMA8_DMA24" start="8" size="1" />
+      <BitField name="DMA9_DMA25" start="9" size="1" />
+      <BitField name="DMA10_DMA26" start="10" size="1" />
+      <BitField name="DMA11_DMA27" start="11" size="1" />
+      <BitField name="DMA12_DMA28" start="12" size="1" />
+      <BitField name="DMA13_DMA29" start="13" size="1" />
+      <BitField name="DMA14_DMA30" start="14" size="1" />
+      <BitField name="DMA15_DMA31" start="15" size="1" />
+      <BitField name="DMA_Error" start="16" size="1" />
+      <BitField name="FTFE" start="18" size="1" />
+      <BitField name="LVD_LVW" start="20" size="1" />
+      <BitField name="LLW" start="21" size="1" />
+      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="RNG" start="23" size="1" />
+      <BitField name="I2C0" start="24" size="1" />
+      <BitField name="I2C1" start="25" size="1" />
+      <BitField name="SPI0" start="26" size="1" />
+      <BitField name="SPI1" start="27" size="1" />
+      <BitField name="SPI2" start="28" size="1" />
+      <BitField name="CAN0_ORed_Message_buffer" start="29" size="1" />
+      <BitField name="CAN0_Bus_Off" start="30" size="1" />
+      <BitField name="CAN0_Error" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ICPR1" start="0xE000E284">
+      <BitField name="CAN0_Tx_Warning" start="0" size="1" />
+      <BitField name="CAN0_Rx_Warning" start="1" size="1" />
+      <BitField name="CAN0_Wake_Up" start="2" size="1" />
+      <BitField name="I2S0_Tx" start="3" size="1" />
+      <BitField name="I2S0_Rx" start="4" size="1" />
+      <BitField name="CAN1_ORed_Message_buffer" start="5" size="1" />
+      <BitField name="CAN1_Bus_Off" start="6" size="1" />
+      <BitField name="CAN1_Error" start="7" size="1" />
+      <BitField name="CAN1_Tx_Warning" start="8" size="1" />
+      <BitField name="CAN1_Rx_Warning" start="9" size="1" />
+      <BitField name="CAN1_Wake_Up" start="10" size="1" />
+      <BitField name="UART0_LON" start="12" size="1" />
+      <BitField name="UART0_RX_TX" start="13" size="1" />
+      <BitField name="UART0_ERR" start="14" size="1" />
+      <BitField name="UART1_RX_TX" start="15" size="1" />
+      <BitField name="UART1_ERR" start="16" size="1" />
+      <BitField name="UART2_RX_TX" start="17" size="1" />
+      <BitField name="UART2_ERR" start="18" size="1" />
+      <BitField name="UART3_RX_TX" start="19" size="1" />
+      <BitField name="UART3_ERR" start="20" size="1" />
+      <BitField name="UART4_RX_TX" start="21" size="1" />
+      <BitField name="UART4_ERR" start="22" size="1" />
+      <BitField name="UART5_RX_TX" start="23" size="1" />
+      <BitField name="UART5_ERR" start="24" size="1" />
+      <BitField name="ADC0" start="25" size="1" />
+      <BitField name="ADC1" start="26" size="1" />
+      <BitField name="CMP0" start="27" size="1" />
+      <BitField name="CMP1" start="28" size="1" />
+      <BitField name="CMP2" start="29" size="1" />
+      <BitField name="FTM0" start="30" size="1" />
+      <BitField name="FTM1" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ICPR2" start="0xE000E288">
+      <BitField name="FTM2" start="0" size="1" />
+      <BitField name="CMT" start="1" size="1" />
+      <BitField name="RTC" start="2" size="1" />
+      <BitField name="RTC_Seconds" start="3" size="1" />
+      <BitField name="PIT0" start="4" size="1" />
+      <BitField name="PIT1" start="5" size="1" />
+      <BitField name="PIT2" start="6" size="1" />
+      <BitField name="PIT3" start="7" size="1" />
+      <BitField name="PDB0" start="8" size="1" />
+      <BitField name="USB0" start="9" size="1" />
+      <BitField name="USBDCD" start="10" size="1" />
+      <BitField name="ENET_1588_Timer" start="11" size="1" />
+      <BitField name="ENET_Transmit" start="12" size="1" />
+      <BitField name="ENET_Receive" start="13" size="1" />
+      <BitField name="ENET_Error" start="14" size="1" />
+      <BitField name="SDHC" start="16" size="1" />
+      <BitField name="DAC0" start="17" size="1" />
+      <BitField name="DAC1" start="18" size="1" />
+      <BitField name="TSI0" start="19" size="1" />
+      <BitField name="LPTimer" start="21" size="1" />
+      <BitField name="PORTA" start="23" size="1" />
+      <BitField name="PORTB" start="24" size="1" />
+      <BitField name="PORTC" start="25" size="1" />
+      <BitField name="PORTD" start="26" size="1" />
+      <BitField name="PORTE" start="27" size="1" />
+      <BitField name="PORTF" start="28" size="1" />
+      <BitField name="NFC" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_ICPR3" start="0xE000E28C">
+      <BitField name="USBHS" start="0" size="1" />
+      <BitField name="CMP3" start="2" size="1" />
+      <BitField name="Tamper" start="3" size="1" />
+      <BitField name="FTM3" start="5" size="1" />
+      <BitField name="ADC2" start="6" size="1" />
+      <BitField name="ADC3" start="7" size="1" />
+      <BitField name="I2S1_Tx" start="8" size="1" />
+      <BitField name="I2S1_Rx" start="9" size="1" />
+    </Register>
+    <Register name="NVIC_IABR0" start="0xE000E300" access="ReadOnly">
+      <BitField name="DMA0_DMA16" start="0" size="1" />
+      <BitField name="DMA1_DMA17" start="1" size="1" />
+      <BitField name="DMA2_DMA18" start="2" size="1" />
+      <BitField name="DMA3_DMA19" start="3" size="1" />
+      <BitField name="DMA4_DMA20" start="4" size="1" />
+      <BitField name="DMA5_DMA21" start="5" size="1" />
+      <BitField name="DMA6_DMA22" start="6" size="1" />
+      <BitField name="DMA7_DMA23" start="7" size="1" />
+      <BitField name="DMA8_DMA24" start="8" size="1" />
+      <BitField name="DMA9_DMA25" start="9" size="1" />
+      <BitField name="DMA10_DMA26" start="10" size="1" />
+      <BitField name="DMA11_DMA27" start="11" size="1" />
+      <BitField name="DMA12_DMA28" start="12" size="1" />
+      <BitField name="DMA13_DMA29" start="13" size="1" />
+      <BitField name="DMA14_DMA30" start="14" size="1" />
+      <BitField name="DMA15_DMA31" start="15" size="1" />
+      <BitField name="DMA_Error" start="16" size="1" />
+      <BitField name="FTFE" start="18" size="1" />
+      <BitField name="LVD_LVW" start="20" size="1" />
+      <BitField name="LLW" start="21" size="1" />
+      <BitField name="Watchdog" start="22" size="1" />
+      <BitField name="RNG" start="23" size="1" />
+      <BitField name="I2C0" start="24" size="1" />
+      <BitField name="I2C1" start="25" size="1" />
+      <BitField name="SPI0" start="26" size="1" />
+      <BitField name="SPI1" start="27" size="1" />
+      <BitField name="SPI2" start="28" size="1" />
+      <BitField name="CAN0_ORed_Message_buffer" start="29" size="1" />
+      <BitField name="CAN0_Bus_Off" start="30" size="1" />
+      <BitField name="CAN0_Error" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_IABR1" start="0xE000E304" access="ReadOnly">
+      <BitField name="CAN0_Tx_Warning" start="0" size="1" />
+      <BitField name="CAN0_Rx_Warning" start="1" size="1" />
+      <BitField name="CAN0_Wake_Up" start="2" size="1" />
+      <BitField name="I2S0_Tx" start="3" size="1" />
+      <BitField name="I2S0_Rx" start="4" size="1" />
+      <BitField name="CAN1_ORed_Message_buffer" start="5" size="1" />
+      <BitField name="CAN1_Bus_Off" start="6" size="1" />
+      <BitField name="CAN1_Error" start="7" size="1" />
+      <BitField name="CAN1_Tx_Warning" start="8" size="1" />
+      <BitField name="CAN1_Rx_Warning" start="9" size="1" />
+      <BitField name="CAN1_Wake_Up" start="10" size="1" />
+      <BitField name="UART0_LON" start="12" size="1" />
+      <BitField name="UART0_RX_TX" start="13" size="1" />
+      <BitField name="UART0_ERR" start="14" size="1" />
+      <BitField name="UART1_RX_TX" start="15" size="1" />
+      <BitField name="UART1_ERR" start="16" size="1" />
+      <BitField name="UART2_RX_TX" start="17" size="1" />
+      <BitField name="UART2_ERR" start="18" size="1" />
+      <BitField name="UART3_RX_TX" start="19" size="1" />
+      <BitField name="UART3_ERR" start="20" size="1" />
+      <BitField name="UART4_RX_TX" start="21" size="1" />
+      <BitField name="UART4_ERR" start="22" size="1" />
+      <BitField name="UART5_RX_TX" start="23" size="1" />
+      <BitField name="UART5_ERR" start="24" size="1" />
+      <BitField name="ADC0" start="25" size="1" />
+      <BitField name="ADC1" start="26" size="1" />
+      <BitField name="CMP0" start="27" size="1" />
+      <BitField name="CMP1" start="28" size="1" />
+      <BitField name="CMP2" start="29" size="1" />
+      <BitField name="FTM0" start="30" size="1" />
+      <BitField name="FTM1" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_IABR2" start="0xE000E308" access="ReadOnly">
+      <BitField name="FTM2" start="0" size="1" />
+      <BitField name="CMT" start="1" size="1" />
+      <BitField name="RTC" start="2" size="1" />
+      <BitField name="RTC_Seconds" start="3" size="1" />
+      <BitField name="PIT0" start="4" size="1" />
+      <BitField name="PIT1" start="5" size="1" />
+      <BitField name="PIT2" start="6" size="1" />
+      <BitField name="PIT3" start="7" size="1" />
+      <BitField name="PDB0" start="8" size="1" />
+      <BitField name="USB0" start="9" size="1" />
+      <BitField name="USBDCD" start="10" size="1" />
+      <BitField name="ENET_1588_Timer" start="11" size="1" />
+      <BitField name="ENET_Transmit" start="12" size="1" />
+      <BitField name="ENET_Receive" start="13" size="1" />
+      <BitField name="ENET_Error" start="14" size="1" />
+      <BitField name="SDHC" start="16" size="1" />
+      <BitField name="DAC0" start="17" size="1" />
+      <BitField name="DAC1" start="18" size="1" />
+      <BitField name="TSI0" start="19" size="1" />
+      <BitField name="LPTimer" start="21" size="1" />
+      <BitField name="PORTA" start="23" size="1" />
+      <BitField name="PORTB" start="24" size="1" />
+      <BitField name="PORTC" start="25" size="1" />
+      <BitField name="PORTD" start="26" size="1" />
+      <BitField name="PORTE" start="27" size="1" />
+      <BitField name="PORTF" start="28" size="1" />
+      <BitField name="NFC" start="31" size="1" />
+    </Register>
+    <Register name="NVIC_IABR3" start="0xE000E30C" access="ReadOnly">
+      <BitField name="USBHS" start="0" size="1" />
+      <BitField name="CMP3" start="2" size="1" />
+      <BitField name="Tamper" start="3" size="1" />
+      <BitField name="FTM3" start="5" size="1" />
+      <BitField name="ADC2" start="6" size="1" />
+      <BitField name="ADC3" start="7" size="1" />
+      <BitField name="I2S1_Tx" start="8" size="1" />
+      <BitField name="I2S1_Rx" start="9" size="1" />
+    </Register>
+    <Register name="NVIC_IPR0" start="0xE000E400">
+      <BitField name="DMA0_DMA16" start="4" size="4" />
+      <BitField name="DMA1_DMA17" start="12" size="4" />
+      <BitField name="DMA2_DMA18" start="20" size="4" />
+      <BitField name="DMA3_DMA19" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR1" start="0xE000E404">
+      <BitField name="DMA4_DMA20" start="4" size="4" />
+      <BitField name="DMA5_DMA21" start="12" size="4" />
+      <BitField name="DMA6_DMA22" start="20" size="4" />
+      <BitField name="DMA7_DMA23" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR2" start="0xE000E408">
+      <BitField name="DMA8_DMA24" start="4" size="4" />
+      <BitField name="DMA9_DMA25" start="12" size="4" />
+      <BitField name="DMA10_DMA26" start="20" size="4" />
+      <BitField name="DMA11_DMA27" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR3" start="0xE000E40C">
+      <BitField name="DMA12_DMA28" start="4" size="4" />
+      <BitField name="DMA13_DMA29" start="12" size="4" />
+      <BitField name="DMA14_DMA30" start="20" size="4" />
+      <BitField name="DMA15_DMA31" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR4" start="0xE000E410">
+      <BitField name="DMA_Error" start="4" size="4" />
+      <BitField name="FTFE" start="20" size="4" />
+    </Register>
+    <Register name="NVIC_IPR5" start="0xE000E414">
+      <BitField name="LVD_LVW" start="4" size="4" />
+      <BitField name="LLW" start="12" size="4" />
+      <BitField name="Watchdog" start="20" size="4" />
+      <BitField name="RNG" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR6" start="0xE000E418">
+      <BitField name="I2C0" start="4" size="4" />
+      <BitField name="I2C1" start="12" size="4" />
+      <BitField name="SPI0" start="20" size="4" />
+      <BitField name="SPI1" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR7" start="0xE000E41C">
+      <BitField name="SPI2" start="4" size="4" />
+      <BitField name="CAN0_ORed_Message_buffer" start="12" size="4" />
+      <BitField name="CAN0_Bus_Off" start="20" size="4" />
+      <BitField name="CAN0_Error" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR8" start="0xE000E420">
+      <BitField name="CAN0_Tx_Warning" start="4" size="4" />
+      <BitField name="CAN0_Rx_Warning" start="12" size="4" />
+      <BitField name="CAN0_Wake_Up" start="20" size="4" />
+      <BitField name="I2S0_Tx" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR9" start="0xE000E424">
+      <BitField name="I2S0_Rx" start="4" size="4" />
+      <BitField name="CAN1_ORed_Message_buffer" start="12" size="4" />
+      <BitField name="CAN1_Bus_Off" start="20" size="4" />
+      <BitField name="CAN1_Error" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR10" start="0xE000E428">
+      <BitField name="CAN1_Tx_Warning" start="4" size="4" />
+      <BitField name="CAN1_Rx_Warning" start="12" size="4" />
+      <BitField name="CAN1_Wake_Up" start="20" size="4" />
+    </Register>
+    <Register name="NVIC_IPR11" start="0xE000E42C">
+      <BitField name="UART0_LON" start="4" size="4" />
+      <BitField name="UART0_RX_TX" start="12" size="4" />
+      <BitField name="UART0_ERR" start="20" size="4" />
+      <BitField name="UART1_RX_TX" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR12" start="0xE000E430">
+      <BitField name="UART1_ERR" start="4" size="4" />
+      <BitField name="UART2_RX_TX" start="12" size="4" />
+      <BitField name="UART2_ERR" start="20" size="4" />
+      <BitField name="UART3_RX_TX" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR13" start="0xE000E434">
+      <BitField name="UART3_ERR" start="4" size="4" />
+      <BitField name="UART4_RX_TX" start="12" size="4" />
+      <BitField name="UART4_ERR" start="20" size="4" />
+      <BitField name="UART5_RX_TX" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR14" start="0xE000E438">
+      <BitField name="UART5_ERR" start="4" size="4" />
+      <BitField name="ADC0" start="12" size="4" />
+      <BitField name="ADC1" start="20" size="4" />
+      <BitField name="CMP0" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR15" start="0xE000E43C">
+      <BitField name="CMP1" start="4" size="4" />
+      <BitField name="CMP2" start="12" size="4" />
+      <BitField name="FTM0" start="20" size="4" />
+      <BitField name="FTM1" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR16" start="0xE000E440">
+      <BitField name="FTM2" start="4" size="4" />
+      <BitField name="CMT" start="12" size="4" />
+      <BitField name="RTC" start="20" size="4" />
+      <BitField name="RTC_Seconds" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR17" start="0xE000E444">
+      <BitField name="PIT0" start="4" size="4" />
+      <BitField name="PIT1" start="12" size="4" />
+      <BitField name="PIT2" start="20" size="4" />
+      <BitField name="PIT3" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR18" start="0xE000E448">
+      <BitField name="PDB0" start="4" size="4" />
+      <BitField name="USB0" start="12" size="4" />
+      <BitField name="USBDCD" start="20" size="4" />
+      <BitField name="ENET_1588_Timer" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR19" start="0xE000E44C">
+      <BitField name="ENET_Transmit" start="4" size="4" />
+      <BitField name="ENET_Receive" start="12" size="4" />
+      <BitField name="ENET_Error" start="20" size="4" />
+    </Register>
+    <Register name="NVIC_IPR20" start="0xE000E450">
+      <BitField name="SDHC" start="4" size="4" />
+      <BitField name="DAC0" start="12" size="4" />
+      <BitField name="DAC1" start="20" size="4" />
+      <BitField name="TSI0" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR21" start="0xE000E454">
+      <BitField name="LPTimer" start="12" size="4" />
+      <BitField name="PORTA" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR22" start="0xE000E458">
+      <BitField name="PORTB" start="4" size="4" />
+      <BitField name="PORTC" start="12" size="4" />
+      <BitField name="PORTD" start="20" size="4" />
+      <BitField name="PORTE" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR23" start="0xE000E45C">
+      <BitField name="PORTF" start="4" size="4" />
+      <BitField name="NFC" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR24" start="0xE000E460">
+      <BitField name="USBHS" start="4" size="4" />
+      <BitField name="CMP3" start="20" size="4" />
+      <BitField name="Tamper" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR25" start="0xE000E464">
+      <BitField name="FTM3" start="12" size="4" />
+      <BitField name="ADC2" start="20" size="4" />
+      <BitField name="ADC3" start="28" size="4" />
+    </Register>
+    <Register name="NVIC_IPR26" start="0xE000E468">
+      <BitField name="I2S1_Tx" start="4" size="4" />
+      <BitField name="I2S1_Rx" start="12" size="4" />
+    </Register>
+    <Register name="NVIC_IPR27" start="0xE000E46C" />
+    <Register name="NVIC_IPR28" start="0xE000E470" />
+    <Register name="NVIC_IPR29" start="0xE000E474" />
+    <Register name="NVIC_IPR30" start="0xE000E478" />
   </RegisterGroup>
   <RegisterGroup start="0xE000E000" name="SCB">
     <Register start="0xE000E004" name="ICTR" aka="Interrupt_Control_Type" access="ReadOnly" description="Interrupt Controller Type Register">

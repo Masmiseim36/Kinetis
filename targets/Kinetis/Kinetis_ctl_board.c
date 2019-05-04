@@ -59,6 +59,8 @@
   #include "CMSIS/system_MK24F25612.c"
 #elif defined(MK24F12)
   #include "CMSIS/system_MK24F12.c"
+#elif defined(MK26F18)
+  #include "CMSIS/system_MK26F18.c"
 #elif defined(MK30D7)
   #include "CMSIS/system_MK30D7.c"
 #elif defined(MK30D10)
@@ -183,6 +185,8 @@
   #include "CMSIS/system_MKM34Z5.c"
 #elif defined(MKM34ZA5)
   #include "CMSIS/system_MKM34ZA5.c"
+#elif defined(MKM34Z7)
+  #include "CMSIS/system_MKM34Z7.c"
 #elif defined(MKM38Z5)
   #include "CMSIS/system_MKM38Z5.c"
 #elif defined(MKV10Z7)
