@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.5" build_version="2012092501.6372;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
+<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.6" build_version="2012102702.6503;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
 
 <targets>
   <category name="K10 Series" >
@@ -174,7 +174,11 @@
         <li><b>Flash</b> application runs in internal Flash memory.</li>
         <li><b>Flash Vectors In RAM</b> application runs in internal Flash memory with exception vectors in RAM memory.</li>
         <li><b>Flash Copy To RAM</b> application starts in internal flash and copies itself to run internal RAM memory.</li>
-        <li><b>RAM</b> application runs internal RAM memory.</li>
+        <li><b>Flash Copy To RAM2</b> application starts in internal flash and copies itself to run in two RAM memory segments.
+        Use the section placement macros property to specify the RAM names to copy to. For example 
+        <b>RAM_NAME=DDR_CODE;RAM2_NAME=DDR_DATA_WB</b> will copy the code into the <b>DDR_CODE</b> segment and the data 
+        into the <b>DDR_DATA_WB</b> segment.</li>
+        <li><b>RAM</b> application runs in internal RAM memory.</li>
       </ul>
 
       <h5>Stack and Heap Sizes</h5>
@@ -305,8 +309,9 @@
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/ctl_vfp.hzp">TWR-K70F120M CTL VFP Sample (click to load project)</a></b></li>
         <li><b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/DSP_Lib_Samples.hzp">TWR-K70F120M CMSIS-DSP Samples (click to load project)</a></b></li> 
       </ul>
-       <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
-      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press.</p>
+      <p>The board specific file <b><a href="file:$(SamplesDir)/Kinetis/TWR-K70F120M/Kinetis_ctl_board.c">Kinetis_ctl_board.c</a></b> is provided
+      that sets up PLL and implements the CTL board support functions to flash a led and handle a button press. This file
+      can be compiled with the preprocessor define WITH_DDR set to initailise the DDR controller.</p>
     </section>
 
     <section name="4) OSJTAG firmware update">
@@ -320,6 +325,13 @@
 
   </documentation>
   <history>  
+    <version name="1.6">
+      <description>Fixed startup code when VECTORS_IN_RAM defined.</description>
+      <description>Added preprocessor define <b>__FPU_PRESENT=1</b> to MKxxF <b>Target</b> property group entries.</description>
+      <description>Changed startup code to fill to 0x400 rather than align to 0x400 to save Flash space.</description>
+      <description>Added memory map support for DDR.</description>
+      <description>Added TWR-K70F120M Dhrystone sample that executes in DDR.</description>
+    </version>
     <version name="1.5">
       <description>Added support for L series devices. CrossWorks for ARM version 2.3 is required for Cortex-M0+ support.</description>
       <description>Supplied samples for FRDM-KL25Z.</description>

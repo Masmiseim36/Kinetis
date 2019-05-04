@@ -2,11 +2,14 @@
 <Root name="$(NAME)">
   <MemorySegment size="$(FLASHSIZE)" access="ReadOnly" start="0x00000000" name="FLASH"/>
   <MemorySegment size="$(FLASHSIZE)/2" access="Read/Write" start="0x00000000" name="FLASH_L"/>
-  <MemorySegment size="$(FLASHSIZE)/2" access="Read/Write" start="0x00000000+$(FLASHSIZE)/2" name="FLASH_H"/>  
+  <MemorySegment size="$(FLASHSIZE)/2" access="Read/Write" start="0x00000000+$(FLASHSIZE)/2" name="FLASH_H"/>
+  <MemorySegment size="$(DDR_CODE_SIZE:0)" access="Read/Write" start="$(DDR_CODE_START:0x08000000)" name="$(DDR_CODE_NAME:DDR_CODE)"/>
   <MemorySegment size="$(SRAMSIZE)" access="Read/Write" start="0x20000000-$(SRAMSIZE)/2" name="SRAM"/>
   <MemorySegment size="$(SRAMSIZE)/2" access="Read/Write" start="0x20000000-$(SRAMSIZE)/2" name="SRAM_L"/>
   <MemorySegment size="$(SRAMSIZE)/2" access="Read/Write" start="0x20000000" name="SRAM_H"/>
   <MemorySegment size="0x100000" access="Read/Write" start="0x40000000" name="PERIPHERALS"/>
+  <MemorySegment size="$(DDR_DATA_WB_SIZE:0)" access="Read/Write" start="$(DDR_DATA_WB_START:0x70000000)" name="$(DDR_DATA_WB_NAME:DDR_DATA_WB)"/>
+  <MemorySegment size="$(DDR_DATA_WT_SIZE:0)" access="Read/Write" start="$(DDR_DATA_WT_START:0x80000000)" name="$(DDR_DATA_WT_NAME:DDR_DATA_WT)"/>
   <include filename="$(TargetsDir)/Kinetis/$(SVD)_Peripherals.xml" no_root="1"/>
   <MemorySegment size="0x100000" access="Read/Write" start="0xE0000000" name="PPB"/>
 </Root>

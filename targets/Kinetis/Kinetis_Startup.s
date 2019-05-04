@@ -171,11 +171,12 @@ ISR_HANDLER SysTick_Handler
 #else
   #error no vectors
 #endif
+  .section .vectors, "ax"
 _vectors_end:
   
   .section .vectors, "ax"
-  // align to 0x400 for the flash configuration field
-  .balign 0x400, 0xff
+  // fill to 0x400 for the flash configuration field
+  .fill 0x400-(_vectors_end-_vectors), 1, 0xff
 BackDoorKey:
   .byte 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 FPROT:

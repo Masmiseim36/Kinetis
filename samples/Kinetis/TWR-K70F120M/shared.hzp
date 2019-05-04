@@ -48,4 +48,20 @@
       <file file_name="$(StudioDir)/samples/Shared/dhry_crossworks.c"/>
     </folder>
   </project>
+  <configuration Name="Common" linker_memory_map_macros="DDR_CODE_SIZE=0x04000000;DDR_DATA_WB_SIZE=0x04000000;DDR_DATA_WB_START=0x74000000"/>
+  <project Name="dhry_ddr" template_name="Kinetis_EXE">
+    <configuration Name="Common" Target="MK70FN1M0xxx12" Placement="Flash Copy To RAM2" linker_section_placement_macros="RAM_NAME=DDR_CODE;RAM2_NAME=DDR_DATA_WB"/>
+    <folder Name="Source Files">
+      <file file_name="$(StudioDir)/samples/Shared/dhry_1.c">
+        <configuration Name="Common" c_preprocessor_definitions="TIME"/>
+      </file>
+      <file file_name="$(StudioDir)/samples/Shared/dhry_2.c">
+        <configuration Name="Common" c_preprocessor_definitions="TIME"/>
+      </file>
+      <file file_name="$(StudioDir)/samples/Shared/dhry_crossworks.c"/>
+      <file file_name="Kinetis_ctl_board.c">
+        <configuration Name="Common" c_preprocessor_definitions="WITH_DDR"/>
+      </file>
+    </folder>
+  </project>
 </solution>

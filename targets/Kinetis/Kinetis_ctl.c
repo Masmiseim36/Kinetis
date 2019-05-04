@@ -60,7 +60,7 @@ ctl_mask_isr(unsigned int irq)
 void ctl_start_timer(CTL_ISR_FN_t timerFn)
 {    
   userTimerISR = timerFn;  
-  SysTick->LOAD = SystemCoreClock/100; // interrupt every 10 ms
+  SysTick->LOAD = (SystemCoreClock/100)-1; // interrupt every 10 ms
   SysTick->VAL = 0;
   SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;  
 #ifdef CTL_TASKING
