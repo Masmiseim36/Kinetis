@@ -2053,6 +2053,30 @@
       <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)" />
       <property name="arm_simulator_memory_simulation_parameter" value="MKM34Z128xxx5;0x20000;0x0;0x0;0x4000" />
     </groupEntry>
+    <groupEntry name="MKV10Z16xxx7" family="KV1x">
+      <cdefine value="MKV10Z16xxx7" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKV10Z7" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z16xxx7_MemoryMap.xml" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="V_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKV10Z16xxx7;0x4000;0x0;0x0;0x2000" />
+    </groupEntry>
+    <groupEntry name="MKV10Z32xxx7" family="KV1x">
+      <cdefine value="MKV10Z32xxx7" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKV10Z7" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z32xxx7_MemoryMap.xml" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="V_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKV10Z32xxx7;0x8000;0x0;0x0;0x2000" />
+    </groupEntry>
   </group>
   <group short="Section Placement" group="Build Options" long="Select a set of options based on section placement." name="Placement" default="Flash">
     <groupEntry name="Flash">

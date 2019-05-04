@@ -133,6 +133,8 @@
   #include "CMSIS/system_MKM34Z5.c"
 #elif defined(MKM38Z5)
   #include "CMSIS/system_MKM38Z5.c"
+#elif defined(MKV10Z7)
+  #include "CMSIS/system_MKV10Z7.c"
 #else
   #error no SystemInit
 #endif

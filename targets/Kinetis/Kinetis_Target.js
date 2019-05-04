@@ -138,7 +138,22 @@ function GetPartName()
       var SIM_SDID = TargetInterface.peekWord(0x40048024);
       if (((SIM_SDID)>>28) & 0xf)
         {
-          PartName = "MK"+((SIM_SDID>>24)&0xff).toString(16);
+          switch ((SIM_SDID>>20) & 0xf)
+            {
+              case 0:
+                PartName = "MK";
+                break;
+              case 1:
+                PartName = "MKL";
+                break;
+              case 5:
+                PartName = "MKW";
+                break;
+              case 6:
+                PartName = "MKV";
+                break;
+            }
+          PartName += ((SIM_SDID>>24)&0xff).toString(16);
           if (TargetInterface.peekWord(0xE000EF40))
             PartName += "F";
           else

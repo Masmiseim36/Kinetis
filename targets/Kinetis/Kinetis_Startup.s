@@ -212,6 +212,8 @@ ISR_HANDLER SysTick_Handler
   #include "MKM34Z5.vec"
 #elif defined(MKM38Z5)
   #include "MKM38Z5.vec"
+#elif defined(MKV10Z7)
+  #include "MKV10Z7.vec"
 #else
   #error no vectors
 #endif
@@ -339,6 +341,14 @@ disableWatchDog:
   strh r3, [r2, #14] 
   ldr r3, =0x1D2
   strh r3, [r2]
+#elif defined(V_SERIES)
+  ldr r2, =0x40052000
+  ldr r3, =0xC520
+  strh r3, [r2, #14]
+  ldr r3, =0xD928
+  strh r3, [r2, #14] 
+  ldr r3, =0x1D2
+  strh r3, [r2]
 #elif defined(E_SERIES)
   ldr r0, =0x40052000
   ldr r1, =0x0
@@ -352,7 +362,7 @@ disableWatchDog:
   ldr r1, =#0x20
   strb r1, [r0, #0]
 #else
-#error L_SERIES, K_SERIES, M_SERIES or E_SERIES should be defined
+#error L_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined
 #endif
   bx lr
 

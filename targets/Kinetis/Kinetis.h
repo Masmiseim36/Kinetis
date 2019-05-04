@@ -158,6 +158,8 @@
 #define MKM33Z64xxx5 147
 #define MKM33Z128xxx5 148
 #define MKM34Z128xxx5 149
+#define MKV10Z16xxx7 150
+#define MKV10Z32xxx7 151
 
 #if (__TARGET_PROCESSOR == MK10DN32xxx5 )
 #include          <CMSIS/MK10D5.h>
@@ -605,6 +607,12 @@
 
 #elif (__TARGET_PROCESSOR == MKM34Z128xxx5 )
 #include          <CMSIS/MKM34Z5.h>
+
+#elif (__TARGET_PROCESSOR == MKV10Z16xxx7 )
+#include          <CMSIS/MKV10Z7.h>
+
+#elif (__TARGET_PROCESSOR == MKV10Z32xxx7 )
+#include          <CMSIS/MKV10Z7.h>
 
 #else
 #error bad __TARGET_PROCESSOR

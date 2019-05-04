@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.13" build_version="2014021100.9049;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
+<package name="Kinetis" author="Rowley Associates Ltd" cpu_manufacturer="Freescale" cpu_family="Kinetis" version="1.14" build_version="2014022605.9342;crossworks_v2;crossworks_v2" crossstudio_versions="8:2.1-" dependencies="CMSIS_3">
 <targets>
   <category name="K1x Series" >
     <cpu name="MK10DN32xxx5"/>
@@ -303,6 +303,9 @@
 
   </documentation>
   <history>
+    <version name="1.14">
+      <description>Support for KV1x devices.</description>
+    </version>
     <version name="1.13">
       <description>Renamed MK*Vxx/MK*Cxx devices to MK*xxx. You will need to reselect the
       Target processor property for existing projects.</description>

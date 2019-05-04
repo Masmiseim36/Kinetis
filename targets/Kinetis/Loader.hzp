@@ -80,5 +80,15 @@
       <file file_name="Loader_Startup.s"/>
     </folder>
   </project>
+  <project Name="LoaderV">
+    <configuration Name="Common" arm_architecture="v6M" arm_core_type="Cortex-M0" arm_include_exception_handlers="No" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" arm_library_optimization="Small" arm_linker_stack_size="128" arm_target_debug_interface_type="ADIv5" build_output_directory="Release" build_output_file_name="$(OutDir)/LoaderV.elf" c_preprocessor_definitions="LIBMEM_LIGHT;V_SERIES" gcc_entry_point="_start" gcc_optimization_level="Optimize For Size" link_include_startup_code="No" linker_additional_files="$(StudioDir)/lib/libmem_light$(LibExt)$(LIB);$(StudioDir)/lib/libmem_loader$(LibExt)$(LIB)" linker_keep_symbols="libmem_erase;libmem_erase_all;libmem_write;libmem_flush;libmem_crc32;libmem_get_driver_sector_size" linker_memory_map_file="Loader_MemoryMap.xml" linker_memory_map_macros="RAMSIZE=0x800;RAMSTART=0x1FFFFE00" project_type="Executable" target_get_partname_script="GetPartName()" target_reset_script="FLASHReset()"/>
+    <folder Name="Source Files">
+      <file file_name="KinetisL_flash_loader.c"/>
+      <file Name="Kinetis_Target.js" file_name="Kinetis_Target.js">
+        <configuration Name="Common" file_type="Reset Script"/>
+      </file>
+      <file file_name="Loader_Startup.s"/>
+    </folder>
+  </project>
   <configuration Name="Common" build_intermediate_directory="$(ProjectName)" gcc_debugging_level="Level 3" linker_DebugIO_enabled="No" linker_printf_enabled="No" linker_scanf_enabled="No"/>
 </solution>

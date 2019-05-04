@@ -49,6 +49,14 @@ _start:
   strh r3, [r2, #14] 
   ldr r3, =0x1D2
   strh r3, [r2]
+#elif defined(V_SERIES)
+  ldr r2, =0x40052000
+  ldr r3, =0xC520
+  strh r3, [r2, #14]
+  ldr r3, =0xD928
+  strh r3, [r2, #14] 
+  ldr r3, =0x1D2
+  strh r3, [r2]
 #elif defined(E_SERIES)
   ldr r0, =0x40052000
   ldr r1, =0x0
@@ -62,7 +70,7 @@ _start:
   ldr r1, =#0x20
   strb r1, [r0, #0]
 #else
-#error L_SERIES, K_SERIES, M_SERIES or E_SERIES should be defined
+#error L_SERIES, K_SERIES, M_SERIES, V_SERIES or E_SERIES should be defined
 #endif
   /***************************************************************************
    * Copy loader parameter to R0 if a parameter has been supplied.           *
