@@ -176,6 +176,14 @@ ISR_HANDLER SysTick_Handler
   #include "MK70F15.vec"
 #elif defined(MKE02Z2)
   #include "MKE02Z2.vec"
+#elif defined(MKE02Z4)
+  #include "MKE02Z4.vec"
+#elif defined(MKE04Z1284)
+  #include "MKE04Z1284.vec"
+#elif defined(MKE04Z4)
+  #include "MKE04Z4.vec"
+#elif defined(MKE06Z4)
+  #include "MKE06Z4.vec"
 #elif defined(MKL02Z4)
   #include "MKL02Z4.vec"
 #elif defined(MKL04Z4)
@@ -214,6 +222,14 @@ ISR_HANDLER SysTick_Handler
   #include "MKM38Z5.vec"
 #elif defined(MKV10Z7)
   #include "MKV10Z7.vec"
+#elif defined(MKV31F12810)
+  #include "MKV31F12810.vec"
+#elif defined(MKV31F25612)
+  #include "MKV31F25612.vec"
+#elif defined(MKV31F51212)
+  #include "MKV31F51212.vec"
+#elif defined(MKW01Z4)
+  #include "MKW01Z4.vec"
 #elif defined(MKW21D5)
   #include "MKW21D5.vec"
 #elif defined(MKW22D5)

@@ -134,7 +134,7 @@ KinetisSimulatorMemoryImpl::~KinetisSimulatorMemoryImpl()
 bool 
 KinetisSimulatorMemoryImpl::setSpecification(bool le, unsigned argc, const char *argv[])
 {
-  l_series = (strstr(argv[0], "MKL") == argv[0]) || (strstr(argv[0], "MKE") == argv[0]) || (strstr(argv[0], "MKM") == argv[0]) || (strstr(argv[0], "MKV10") == argv[0]);
+  l_series = (strstr(argv[0], "MKL") == argv[0]) || (strstr(argv[0], "MKE") == argv[0]) || (strstr(argv[0], "MKM") == argv[0]) || (strstr(argv[0], "MKV10") == argv[0]) || (strstr(argv[0], "MKW0") == argv[0]);
   if (argc != 5)
     return false;  
   pflash = new LittleMemoryRegion(strtoul(argv[1],0,0));

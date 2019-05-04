@@ -1,7 +1,7 @@
 /******************************************************************************
   Target Script for Freescale Kinetis
 
-  Copyright (c) 2010, 2011, 2012 Rowley Associates Limited.
+  Copyright (c) 2010-2014 Rowley Associates Limited.
 
   This file may be distributed under the terms of the License Agreement
   provided with this software.
@@ -12,6 +12,7 @@
 
 function Connect()
 {
+  TargetInterface.setMaximumJTAGFrequency(8000000);
   if (TargetInterface.implementation() == "j-link")
     TargetInterface.setDeviceTypeProperty(TargetInterface.getProjectProperty("Target"));   
   else if (TargetInterface.implementation() == "P&E")
@@ -96,42 +97,26 @@ function GetPartName()
   var CPUID = TargetInterface.peekWord(0xE000ED00);
   if (((CPUID>>4)&0xf)==0) // Cortex-M0
     {      
-      if (TargetInterface.peekWord(0x40048010)) // MKE SIM-UUIDL register
+      var SIM_SDID = TargetInterface.peekWord(0x40048024);
+      var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
+      switch ((SIM_SDID>>20)&0xf)
         {
-          var SIM_SRSID = TargetInterface.peekWord(0x40048000);
-          switch (SIM_SRSID >> 24)
-            {
-              case 2: // KE02            
-                PartName = "MKE02Z";            
-                break;
-              case 4: // KE04            
-                PartName = "MKE04Z";            
-                break;
-            }
-        }
-      else 
-        {
-          var SIM_SDID = TargetInterface.peekWord(0x40048024);
-          var SIM_FCFG2 = TargetInterface.peekWord(0x40048050);
-          switch ((SIM_SDID>>20)&0xf)
-            {
-              case 1:
-                if (((SIM_SDID>>24)&0xff) < 10)
-                  PartName = "MKL0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
-                else
-                  PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
-                break;
-              case 6:
-                if (((SIM_SDID>>24)&0xff) < 10)
-                  PartName = "MKV0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
-                else
-                  PartName = "MKV"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
-                break;
-            }            
-          Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
-          Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
-          PartName += Length.toString();      
-        }
+          case 1:
+            if (((SIM_SDID>>24)&0xff) < 10)
+              PartName = "MKL0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            else
+              PartName = "MKL"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            break;
+          case 6:
+            if (((SIM_SDID>>24)&0xff) < 10)
+              PartName = "MKV0"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            else
+              PartName = "MKV"+((SIM_SDID>>24)&0xff).toString(16)+"Z";
+            break;
+        }            
+      Length = ((SIM_FCFG2>>24) & 0x3f)<<3;
+      Length += ((SIM_FCFG2>>16) & 0x3f)<<3;
+      PartName += Length.toString();
     }
   else
     {
@@ -245,7 +230,7 @@ function MatchPartName(name)
   return false;
 }
 
-// MKM devices have the SIM module at a different address :-<
+// MKM devices have the SIM module at a different address
 function GetPartName2()
 {
   TargetInterface.setMaximumJTAGFrequency(2000000);
@@ -272,6 +257,34 @@ function MatchPartName2(name)
 {  
   var partName = GetPartName2();  
   return name.substring(0, 8) == partName.substring(0, 8);
+}
+
+// MKE devices have different id scheme
+function GetPartName3()
+{
+  CheckSystemSecurity();
+  TargetInterface.pokeWord(0xE000EDFC, (1<<24));
+  var PartName;
+  var SIM_SRSID = TargetInterface.peekWord(0x40048000);
+  switch (SIM_SRSID >> 24)
+    {
+      case 2: // KE02
+        PartName = "MKE02Z";
+        break;
+      case 4: // KE04
+        PartName = "MKE04Z";
+        break;
+      case 6: // KE06
+        PartName = "MKE06Z";
+        break;
+    }
+  return PartName;
+}
+
+function MatchPartName3(name)
+{  
+  var partName = GetPartName3();  
+  return name.substring(0, 6) == partName.substring(0, 6);
 }
 
 function MDMStatus()

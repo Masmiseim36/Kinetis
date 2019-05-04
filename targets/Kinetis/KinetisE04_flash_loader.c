@@ -10,38 +10,7 @@
  *****************************************************************************/
 
 #include <libmem.h>
-
-#define   __I     volatile const       /*!< Defines 'read only' permissions                 */
-#define   __O     volatile             /*!< Defines 'write only' permissions                */
-#define   __IO    volatile             /*!< Defines 'read / write' permissions              */
-
-/** FTMRH - Register Layout Typedef */
-typedef struct {
-  __IO uint8_t FCLKDIV;                            /**< Flash Clock Divider Register, offset: 0x0 */
-  __I  uint8_t FSEC;                               /**< Flash Security Register, offset: 0x1 */
-  __IO uint8_t FCCOBIX;                            /**< Flash CCOB Index Register, offset: 0x2 */
-       uint8_t RESERVED_0[1];
-  __IO uint8_t FCNFG;                              /**< Flash Configuration Register, offset: 0x4 */
-  __IO uint8_t FERCNFG;                            /**< Flash Error Configuration Register, offset: 0x5 */
-  __IO uint8_t FSTAT;                              /**< Flash Status Register, offset: 0x6 */
-  __IO uint8_t FERSTAT;                            /**< Flash Error Status Register, offset: 0x7 */
-  __IO uint8_t FPROT;                              /**< Flash Protection Register, offset: 0x8 */
-  __IO uint8_t EEPROT;                             /**< EEPROM Protection Register, offset: 0x9 */
-  __IO uint8_t FCCOBHI;                            /**< Flash Common Command Object Register:High, offset: 0xA */
-  __IO uint8_t FCCOBLO;                            /**< Flash Common Command Object Register: Low, offset: 0xB */
-  __I  uint8_t FOPT;                               /**< Flash Option Register, offset: 0xC */
-} FTMRH_Type;
-
-/*!
- * @}
- */ /* end of group FTMRH_Register_Masks */
-
-
-/* FTMRH - Peripheral instance base addresses */
-/** Peripheral FTMRH base address */
-#define FTMRH_BASE                               (0x40020000u)
-/** Peripheral FTMRH base pointer */
-#define FTMRH                                    ((FTMRH_Type *)FTMRH_BASE)
+#include "CMSIS/MKE04Z4.h"
 
 #define FTFL_FSTAT_MGSTAT0  (1<<0)
 #define FTFL_FSTAT_FPVIOL   (1<<4)
@@ -67,10 +36,10 @@ unsigned char FCF[4] = { 0xff, 0xff, 0xfe, 0xff };
 static int
 doFlashCmd()
 {
-  FTMRH->FSTAT = FTFL_FSTAT_ACCERR | FTFL_FSTAT_FPVIOL; // Write to clear
-  FTMRH->FSTAT = FTFL_FSTAT_CCIF; // Go?
-  while(!(FTMRH->FSTAT & FTFL_FSTAT_CCIF));  // Wait
-  if (FTMRH->FSTAT & (FTFL_FSTAT_ACCERR | FTFL_FSTAT_FPVIOL | FTFL_FSTAT_MGSTAT0)) 
+  FTMRE->FSTAT = FTFL_FSTAT_ACCERR | FTFL_FSTAT_FPVIOL; // Write to clear
+  FTMRE->FSTAT = FTFL_FSTAT_CCIF; // Go?
+  while(!(FTMRE->FSTAT & FTFL_FSTAT_CCIF));  // Wait
+  if (FTMRE->FSTAT & (FTFL_FSTAT_ACCERR | FTFL_FSTAT_FPVIOL | FTFL_FSTAT_MGSTAT0)) 
     return LIBMEM_STATUS_ERROR;
   else
     return LIBMEM_STATUS_SUCCESS;
@@ -79,24 +48,24 @@ doFlashCmd()
 static void
 setFlashCmdAndAddress(unsigned char cmd, unsigned address)
 {
-  FTMRH->FCCOBIX = 0x0;
-  FTMRH->FCCOBHI = cmd; 
-  FTMRH->FCCOBLO = address>>16;
-  FTMRH->FCCOBIX = 0x1;
-  FTMRH->FCCOBHI = address>>8;
-  FTMRH->FCCOBLO = address;
+  FTMRE->FCCOBIX = 0x0;
+  FTMRE->FCCOBHI = cmd; 
+  FTMRE->FCCOBLO = address>>16;
+  FTMRE->FCCOBIX = 0x1;
+  FTMRE->FCCOBHI = address>>8;
+  FTMRE->FCCOBLO = address;
 }
 
 static int
 flashCmdProgram(unsigned address, unsigned char value[4])
 {
   setFlashCmdAndAddress(FLASH_CMD_PROGRAM, address);
-  FTMRH->FCCOBIX = 0x2;
-  FTMRH->FCCOBHI = value[1];
-  FTMRH->FCCOBLO = value[0];
-  FTMRH->FCCOBIX = 0x3;
-  FTMRH->FCCOBHI = value[3];
-  FTMRH->FCCOBLO = value[2];
+  FTMRE->FCCOBIX = 0x2;
+  FTMRE->FCCOBHI = value[1];
+  FTMRE->FCCOBLO = value[0];
+  FTMRE->FCCOBIX = 0x3;
+  FTMRE->FCCOBHI = value[3];
+  FTMRE->FCCOBLO = value[2];
   return doFlashCmd();
 }
 
@@ -156,9 +125,9 @@ libmem_write(uint8_t *dest, const uint8_t *src, size_t size)
 
 int
 libmem_erase_all(void)
-{  
-  FTMRH->FCCOBIX = 0x0;
-  FTMRH->FCCOBHI = FLASH_CMD_ERASE_ALL; 
+{        
+  FTMRE->FCCOBIX = 0x0;
+  FTMRE->FCCOBHI = FLASH_CMD_ERASE_ALL; 
   doFlashCmd();    
   flashCmdProgram(0x40C, FCF);
   return LIBMEM_STATUS_SUCCESS;
@@ -167,7 +136,7 @@ libmem_erase_all(void)
 int
 libmem_erase(uint8_t *start, size_t size, uint8_t **erased_start, size_t *erased_size)
 {
-  int res = LIBMEM_STATUS_SUCCESS;   
+  int res = LIBMEM_STATUS_SUCCESS;
   int found = 0;
   int j = FLASH_PAGE_COUNT;//geometry[0].count;
   int blocksize = FLASH_PAGE_SIZE;//geometry[0].size;
@@ -205,7 +174,7 @@ libmem_erase(uint8_t *start, size_t size, uint8_t **erased_start, size_t *erased
             return res;
         }
       flashstart += blocksize;         
-    }                
+    }            
   return res;
 }
 
@@ -221,11 +190,51 @@ libmem_crc32(const uint8_t *start, size_t size, uint32_t crc)
   return libmem_crc32_direct(start, size, crc);
 }
 
+#ifndef Loader_1K
+
 size_t
 libmem_get_driver_sector_size(const uint8_t *p)
 {
   return FLASH_PAGE_SIZE;
 }
+
+#define CPU_XTAL_CLK_HZ 8000000
+#define CPU_INT_CLK_HZ 32768
+
+unsigned getCoreClock(void) 
+{
+  uint32_t ICSOUTClock;                                                        /* Variable to store output clock frequency of the ICS module */
+  uint8_t Divider;
+
+  if ((ICS->C1 & ICS_C1_CLKS_MASK) == 0x0u) {
+    /* Output of FLL is selected */
+    if ((ICS->C1 & ICS_C1_IREFS_MASK) == 0x0u) {
+      /* External reference clock is selected */
+      ICSOUTClock = CPU_XTAL_CLK_HZ;                                         /* System oscillator drives ICS clock */
+      Divider = (uint8_t)(1u << ((ICS->C1 & ICS_C1_RDIV_MASK) >> ICS_C1_RDIV_SHIFT));
+      ICSOUTClock = (ICSOUTClock / Divider);  /* Calculate the divided FLL reference clock */
+      if ((OSC->CR & OSC_CR_RANGE_MASK) != 0x0u) {
+        ICSOUTClock /= 32u;                                                  /* If high range is enabled, additional 32 divider is active */
+      }
+    } else {
+      ICSOUTClock = CPU_INT_CLK_HZ;                                          /* The internal reference clock is selected */
+    }
+    ICSOUTClock *= 1280u;                                                    /* Apply 1280 FLL multiplier */
+  } else if ((ICS->C1 & ICS_C1_CLKS_MASK) == 0x40u) {
+    /* Internal reference clock is selected */
+    ICSOUTClock = CPU_INT_CLK_HZ;
+  } else if ((ICS->C1 & ICS_C1_CLKS_MASK) == 0x80u) {
+    /* External reference clock is selected */
+    ICSOUTClock = CPU_XTAL_CLK_HZ;
+  } else {
+    /* Reserved value */
+    return 0;
+  }
+  ICSOUTClock = ICSOUTClock >> ((ICS->C2 & ICS_C2_BDIV_MASK) >> ICS_C2_BDIV_SHIFT);
+  return (ICSOUTClock / (1u + ((SIM->CLKDIV & SIM_CLKDIV_OUTDIV1_MASK) >> SIM_CLKDIV_OUTDIV1_SHIFT)));
+}
+
+#endif
 
 #include <libmem_loader.h>
 
@@ -235,13 +244,24 @@ extern unsigned char __RAM_segment_used_end__[];
 int
 main(int param0)
 {  
-  if ((FTMRH->FCLKDIV & 0x80)==0)
-    FTMRH->FCLKDIV = 0x13;
+#ifdef Loader_1K
+  FTMRE->FCLKDIV = 0x14;
+#else
+  unsigned clock = getCoreClock();  
+  unsigned fdiv = clock/1000000 - 1;
+  unsigned uiFlashClock = clock/(fdiv + 1);
+  // ensure flash clock greater than 0.8M and less than 1.05M
+  if( uiFlashClock < 800000 )
+    fdiv = fdiv - 1;
+  else if( uiFlashClock > 1050000 )
+    fdiv = fdiv + 1;
+  FTMRE->FCLKDIV = fdiv;
+#endif
   // turn off and invalidate any caching
   #define MCM_PLACR (*(volatile unsigned *)0xF000300C)
   MCM_PLACR = 0x1BC00;
   int res = libmem_rpc_loader_start(__RAM_segment_used_end__, __RAM_segment_end__ - 1); 
-  MCM_PLACR = 0x0;
+  MCM_PLACR = 0x00800;
   libmem_rpc_loader_exit(res, 0);
   return 0;
 }

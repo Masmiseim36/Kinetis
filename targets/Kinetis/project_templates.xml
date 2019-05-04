@@ -6,6 +6,7 @@
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
     <propertygroup name="Target" value="Kinetis" choose="Yes" />
     <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll" />
+    <property name="target_connect_script" value="Connect()" />
     <property name="target_get_partname_script" value="GetPartName()" />
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
     <property name="target_reset_script" value="Reset()" />
@@ -48,6 +49,7 @@
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
     <propertygroup name="Target" value="Kinetis" choose="Yes" />
     <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll" />
+    <property name="target_connect_script" value="Connect()" />
     <property name="target_get_partname_script" value="GetPartName()" />
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
     <property name="target_reset_script" value="Reset()" />
@@ -73,6 +75,7 @@
     <property name="property_groups_file_path" value="$(TargetsDir)/Kinetis/propertyGroups.xml" />
     <propertygroup name="Target" value="Kinetis" choose="Yes" />
     <property name="arm_simulator_memory_simulation_filename" value="$(TargetsDir)/Kinetis/KinetisSimulatorMemory.dll" />
+    <property name="target_connect_script" value="Connect()" />
     <property name="target_get_partname_script" value="GetPartName()" />
     <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
     <property name="target_reset_script" value="Reset()" />
