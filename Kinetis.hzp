@@ -1037,6 +1037,7 @@
         <file file_name="targets/Kinetis/CMSIS/system_MKW21Z4.c" />
         <file file_name="targets/Kinetis/CMSIS/system_MKW21Z4.h" />
       </folder>
+      <file file_name="targets/Kinetis/CMSIS/fsl_device_registers.h" />
     </folder>
   </project>
 </solution>
