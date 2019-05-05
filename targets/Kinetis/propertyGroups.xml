@@ -6,7 +6,7 @@
       <cdefine value="1" name="MK02F12810" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK02FN64xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK02F12810_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK02F12810.vec" />
+      <property name="macros" value="DeviceName=MK02F12810" />
       <cdefine name="__VECTORS" value="&quot;MK02F12810.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -25,7 +25,7 @@
       <cdefine value="1" name="MK02F12810" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK02FN128xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK02F12810_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK02F12810.vec" />
+      <property name="macros" value="DeviceName=MK02F12810" />
       <cdefine name="__VECTORS" value="&quot;MK02F12810.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -44,7 +44,7 @@
       <cdefine value="1" name="MK10D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DN32xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D5.vec" />
+      <property name="macros" value="DeviceName=MK10D5" />
       <cdefine name="__VECTORS" value="&quot;MK10D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="1" />
@@ -61,7 +61,7 @@
       <cdefine value="1" name="MK10D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX32xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D5.vec" />
+      <property name="macros" value="DeviceName=MK10D5" />
       <cdefine name="__VECTORS" value="&quot;MK10D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="17" />
@@ -78,7 +78,7 @@
       <cdefine value="1" name="MK10D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DN64xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D5.vec" />
+      <property name="macros" value="DeviceName=MK10D5" />
       <cdefine name="__VECTORS" value="&quot;MK10D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="1" />
@@ -95,7 +95,7 @@
       <cdefine value="1" name="MK10D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX64xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D5.vec" />
+      <property name="macros" value="DeviceName=MK10D5" />
       <cdefine name="__VECTORS" value="&quot;MK10D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="17" />
@@ -112,7 +112,7 @@
       <cdefine value="1" name="MK10D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DN128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D5.vec" />
+      <property name="macros" value="DeviceName=MK10D5" />
       <cdefine name="__VECTORS" value="&quot;MK10D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="1" />
@@ -129,7 +129,7 @@
       <cdefine value="1" name="MK10D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D5.vec" />
+      <property name="macros" value="DeviceName=MK10D5" />
       <cdefine name="__VECTORS" value="&quot;MK10D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="17" />
@@ -146,7 +146,7 @@
       <cdefine value="1" name="MK10D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX64xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D7.vec" />
+      <property name="macros" value="DeviceName=MK10D7" />
       <cdefine name="__VECTORS" value="&quot;MK10D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -163,7 +163,7 @@
       <cdefine value="1" name="MK10D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D7.vec" />
+      <property name="macros" value="DeviceName=MK10D7" />
       <cdefine name="__VECTORS" value="&quot;MK10D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -180,7 +180,7 @@
       <cdefine value="1" name="MK10D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX256xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D7.vec" />
+      <property name="macros" value="DeviceName=MK10D7" />
       <cdefine name="__VECTORS" value="&quot;MK10D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -197,7 +197,7 @@
       <cdefine value="1" name="MK10DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX128Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10DZ10.vec" />
+      <property name="macros" value="DeviceName=MK10DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK10DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -214,7 +214,7 @@
       <cdefine value="1" name="MK10DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX256Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10DZ10.vec" />
+      <property name="macros" value="DeviceName=MK10DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK10DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -231,7 +231,7 @@
       <cdefine value="1" name="MK10DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DN512Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10DZ10.vec" />
+      <property name="macros" value="DeviceName=MK10DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK10DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -248,7 +248,7 @@
       <cdefine value="1" name="MK10D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX128xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D10.vec" />
+      <property name="macros" value="DeviceName=MK10D10" />
       <cdefine name="__VECTORS" value="&quot;MK10D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -265,7 +265,7 @@
       <cdefine value="1" name="MK10D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DX256xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D10.vec" />
+      <property name="macros" value="DeviceName=MK10D10" />
       <cdefine name="__VECTORS" value="&quot;MK10D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -282,7 +282,7 @@
       <cdefine value="1" name="MK10D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10DN512xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10D10.vec" />
+      <property name="macros" value="DeviceName=MK10D10" />
       <cdefine name="__VECTORS" value="&quot;MK10D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -299,7 +299,7 @@
       <cdefine value="1" name="MK10F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10FX512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10F12.vec" />
+      <property name="macros" value="DeviceName=MK10F12" />
       <cdefine name="__VECTORS" value="&quot;MK10F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -318,7 +318,7 @@
       <cdefine value="1" name="MK10F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK10FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK10F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK10F12.vec" />
+      <property name="macros" value="DeviceName=MK10F12" />
       <cdefine name="__VECTORS" value="&quot;MK10F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -337,7 +337,7 @@
       <cdefine value="1" name="MK11D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK11DX128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK11D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK11D5.vec" />
+      <property name="macros" value="DeviceName=MK11D5" />
       <cdefine name="__VECTORS" value="&quot;MK11D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -354,7 +354,7 @@
       <cdefine value="1" name="MK11D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK11DX256xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK11D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK11D5.vec" />
+      <property name="macros" value="DeviceName=MK11D5" />
       <cdefine name="__VECTORS" value="&quot;MK11D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -371,7 +371,7 @@
       <cdefine value="1" name="MK11D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK11DN512xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK11D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK11D5.vec" />
+      <property name="macros" value="DeviceName=MK11D5" />
       <cdefine name="__VECTORS" value="&quot;MK11D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -388,7 +388,7 @@
       <cdefine value="1" name="MK11DA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK11DX128Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK11DA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK11DA5.vec" />
+      <property name="macros" value="DeviceName=MK11DA5" />
       <cdefine name="__VECTORS" value="&quot;MK11DA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -405,7 +405,7 @@
       <cdefine value="1" name="MK11DA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK11DX256Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK11DA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK11DA5.vec" />
+      <property name="macros" value="DeviceName=MK11DA5" />
       <cdefine name="__VECTORS" value="&quot;MK11DA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -422,7 +422,7 @@
       <cdefine value="1" name="MK11DA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK11DN512Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK11DA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK11DA5.vec" />
+      <property name="macros" value="DeviceName=MK11DA5" />
       <cdefine name="__VECTORS" value="&quot;MK11DA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -439,7 +439,7 @@
       <cdefine value="1" name="MK12D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK12DX128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK12D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK12D5.vec" />
+      <property name="macros" value="DeviceName=MK12D5" />
       <cdefine name="__VECTORS" value="&quot;MK12D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -456,7 +456,7 @@
       <cdefine value="1" name="MK12D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK12DX256xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK12D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK12D5.vec" />
+      <property name="macros" value="DeviceName=MK12D5" />
       <cdefine name="__VECTORS" value="&quot;MK12D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -473,7 +473,7 @@
       <cdefine value="1" name="MK12D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK12DN512xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK12D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK12D5.vec" />
+      <property name="macros" value="DeviceName=MK12D5" />
       <cdefine name="__VECTORS" value="&quot;MK12D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -490,7 +490,7 @@
       <cdefine value="1" name="MK20D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DN32xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D5.vec" />
+      <property name="macros" value="DeviceName=MK20D5" />
       <cdefine name="__VECTORS" value="&quot;MK20D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="1" />
@@ -507,7 +507,7 @@
       <cdefine value="1" name="MK20D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX32xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D5.vec" />
+      <property name="macros" value="DeviceName=MK20D5" />
       <cdefine name="__VECTORS" value="&quot;MK20D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="17" />
@@ -524,7 +524,7 @@
       <cdefine value="1" name="MK20D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DN64xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D5.vec" />
+      <property name="macros" value="DeviceName=MK20D5" />
       <cdefine name="__VECTORS" value="&quot;MK20D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="1" />
@@ -541,7 +541,7 @@
       <cdefine value="1" name="MK20D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX64xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D5.vec" />
+      <property name="macros" value="DeviceName=MK20D5" />
       <cdefine name="__VECTORS" value="&quot;MK20D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="17" />
@@ -558,7 +558,7 @@
       <cdefine value="1" name="MK20D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DN128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D5.vec" />
+      <property name="macros" value="DeviceName=MK20D5" />
       <cdefine name="__VECTORS" value="&quot;MK20D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="1" />
@@ -575,7 +575,7 @@
       <cdefine value="1" name="MK20D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D5.vec" />
+      <property name="macros" value="DeviceName=MK20D5" />
       <cdefine name="__VECTORS" value="&quot;MK20D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="17" />
@@ -592,7 +592,7 @@
       <cdefine value="1" name="MK20D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX64xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D7.vec" />
+      <property name="macros" value="DeviceName=MK20D7" />
       <cdefine name="__VECTORS" value="&quot;MK20D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -609,7 +609,7 @@
       <cdefine value="1" name="MK20D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D7.vec" />
+      <property name="macros" value="DeviceName=MK20D7" />
       <cdefine name="__VECTORS" value="&quot;MK20D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -626,7 +626,7 @@
       <cdefine value="1" name="MK20D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX256xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D7.vec" />
+      <property name="macros" value="DeviceName=MK20D7" />
       <cdefine name="__VECTORS" value="&quot;MK20D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -643,7 +643,7 @@
       <cdefine value="1" name="MK20DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX128Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20DZ10.vec" />
+      <property name="macros" value="DeviceName=MK20DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK20DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -660,7 +660,7 @@
       <cdefine value="1" name="MK20DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX256Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20DZ10.vec" />
+      <property name="macros" value="DeviceName=MK20DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK20DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -677,7 +677,7 @@
       <cdefine value="1" name="MK20DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DN512Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20DZ10.vec" />
+      <property name="macros" value="DeviceName=MK20DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK20DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -694,7 +694,7 @@
       <cdefine value="1" name="MK20D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX128xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D10.vec" />
+      <property name="macros" value="DeviceName=MK20D10" />
       <cdefine name="__VECTORS" value="&quot;MK20D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -711,7 +711,7 @@
       <cdefine value="1" name="MK20D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DX256xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D10.vec" />
+      <property name="macros" value="DeviceName=MK20D10" />
       <cdefine name="__VECTORS" value="&quot;MK20D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -728,7 +728,7 @@
       <cdefine value="1" name="MK20D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20DN512xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20D10.vec" />
+      <property name="macros" value="DeviceName=MK20D10" />
       <cdefine name="__VECTORS" value="&quot;MK20D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -745,7 +745,7 @@
       <cdefine value="1" name="MK20F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20FX512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20F12.vec" />
+      <property name="macros" value="DeviceName=MK20F12" />
       <cdefine name="__VECTORS" value="&quot;MK20F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -764,7 +764,7 @@
       <cdefine value="1" name="MK20F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK20FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK20F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK20F12.vec" />
+      <property name="macros" value="DeviceName=MK20F12" />
       <cdefine name="__VECTORS" value="&quot;MK20F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -783,7 +783,7 @@
       <cdefine value="1" name="MK21D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21DX128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21D5.vec" />
+      <property name="macros" value="DeviceName=MK21D5" />
       <cdefine name="__VECTORS" value="&quot;MK21D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -800,7 +800,7 @@
       <cdefine value="1" name="MK21D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21DX256xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21D5.vec" />
+      <property name="macros" value="DeviceName=MK21D5" />
       <cdefine name="__VECTORS" value="&quot;MK21D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -817,7 +817,7 @@
       <cdefine value="1" name="MK21D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21DN512xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21D5.vec" />
+      <property name="macros" value="DeviceName=MK21D5" />
       <cdefine name="__VECTORS" value="&quot;MK21D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -834,7 +834,7 @@
       <cdefine value="1" name="MK21DA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21DX128Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21DA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21DA5.vec" />
+      <property name="macros" value="DeviceName=MK21DA5" />
       <cdefine name="__VECTORS" value="&quot;MK21DA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -851,7 +851,7 @@
       <cdefine value="1" name="MK21DA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21DX256Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21DA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21DA5.vec" />
+      <property name="macros" value="DeviceName=MK21DA5" />
       <cdefine name="__VECTORS" value="&quot;MK21DA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -868,7 +868,7 @@
       <cdefine value="1" name="MK21DA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21DN512Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21DA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21DA5.vec" />
+      <property name="macros" value="DeviceName=MK21DA5" />
       <cdefine name="__VECTORS" value="&quot;MK21DA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -885,7 +885,7 @@
       <cdefine value="1" name="MK21F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21FX512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21F12.vec" />
+      <property name="macros" value="DeviceName=MK21F12" />
       <cdefine name="__VECTORS" value="&quot;MK21F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -904,7 +904,7 @@
       <cdefine value="1" name="MK21F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21F12.vec" />
+      <property name="macros" value="DeviceName=MK21F12" />
       <cdefine name="__VECTORS" value="&quot;MK21F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -923,7 +923,7 @@
       <cdefine value="1" name="MK21FA12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21FX512Axxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21FA12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21FA12.vec" />
+      <property name="macros" value="DeviceName=MK21FA12" />
       <cdefine name="__VECTORS" value="&quot;MK21FA12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -942,7 +942,7 @@
       <cdefine value="1" name="MK21FA12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK21FN1M0Axxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK21FA12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK21FA12.vec" />
+      <property name="macros" value="DeviceName=MK21FA12" />
       <cdefine name="__VECTORS" value="&quot;MK21FA12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -961,7 +961,7 @@
       <cdefine value="1" name="MK22D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK22DX128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK22D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK22D5.vec" />
+      <property name="macros" value="DeviceName=MK22D5" />
       <cdefine name="__VECTORS" value="&quot;MK22D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -978,7 +978,7 @@
       <cdefine value="1" name="MK22D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK22DX256xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK22D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK22D5.vec" />
+      <property name="macros" value="DeviceName=MK22D5" />
       <cdefine name="__VECTORS" value="&quot;MK22D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -995,7 +995,7 @@
       <cdefine value="1" name="MK22D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK22DN512xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK22D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK22D5.vec" />
+      <property name="macros" value="DeviceName=MK22D5" />
       <cdefine name="__VECTORS" value="&quot;MK22D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1012,7 +1012,7 @@
       <cdefine value="1" name="MK22F12810" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK22FN128xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK22F12810_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK22F12810.vec" />
+      <property name="macros" value="DeviceName=MK22F12810" />
       <cdefine name="__VECTORS" value="&quot;MK22F12810.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1031,7 +1031,7 @@
       <cdefine value="1" name="MK22F25612" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK22FN256xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK22F25612_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK22F25612.vec" />
+      <property name="macros" value="DeviceName=MK22F25612" />
       <cdefine name="__VECTORS" value="&quot;MK22F25612.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1050,7 +1050,7 @@
       <cdefine value="1" name="MK22F51212" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK22FN512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK22F51212_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK22F51212.vec" />
+      <property name="macros" value="DeviceName=MK22F51212" />
       <cdefine name="__VECTORS" value="&quot;MK22F51212.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1069,7 +1069,7 @@
       <cdefine value="1" name="MK22F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK22FX512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK22F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK22F12.vec" />
+      <property name="macros" value="DeviceName=MK22F12" />
       <cdefine name="__VECTORS" value="&quot;MK22F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -1088,7 +1088,7 @@
       <cdefine value="1" name="MK22F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK22FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK22F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK22F12.vec" />
+      <property name="macros" value="DeviceName=MK22F12" />
       <cdefine name="__VECTORS" value="&quot;MK22F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -1107,7 +1107,7 @@
       <cdefine value="1" name="MK24F25612" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK24FN256xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK24F25612_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK24F25612.vec" />
+      <property name="macros" value="DeviceName=MK24F25612" />
       <cdefine name="__VECTORS" value="&quot;MK24F25612.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1126,7 +1126,7 @@
       <cdefine value="1" name="MK24F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK24FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK24F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK24F12.vec" />
+      <property name="macros" value="DeviceName=MK24F12" />
       <cdefine name="__VECTORS" value="&quot;MK24F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -1145,7 +1145,7 @@
       <cdefine value="1" name="MK26F18" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK26FN2M0xxx18_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK26F18_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK26F18.vec" />
+      <property name="macros" value="DeviceName=MK26F18" />
       <cdefine name="__VECTORS" value="&quot;MK26F18.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -1164,7 +1164,7 @@
       <cdefine value="1" name="MK27F15" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK27FN2M0xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK27F15_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK27F15.vec" />
+      <property name="macros" value="DeviceName=MK27F15" />
       <cdefine name="__VECTORS" value="&quot;MK27F15.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -1183,7 +1183,7 @@
       <cdefine value="1" name="MK28F15" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK28FN2M0xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK28F15_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK28F15.vec" />
+      <property name="macros" value="DeviceName=MK28F15" />
       <cdefine name="__VECTORS" value="&quot;MK28F15.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -1202,7 +1202,7 @@
       <cdefine value="1" name="MK30D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK30DX64xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK30D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK30D7.vec" />
+      <property name="macros" value="DeviceName=MK30D7" />
       <cdefine name="__VECTORS" value="&quot;MK30D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1219,7 +1219,7 @@
       <cdefine value="1" name="MK30D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK30DX128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK30D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK30D7.vec" />
+      <property name="macros" value="DeviceName=MK30D7" />
       <cdefine name="__VECTORS" value="&quot;MK30D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1236,7 +1236,7 @@
       <cdefine value="1" name="MK30D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK30DX256xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK30D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK30D7.vec" />
+      <property name="macros" value="DeviceName=MK30D7" />
       <cdefine name="__VECTORS" value="&quot;MK30D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1253,7 +1253,7 @@
       <cdefine value="1" name="MK30DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK30DX128Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK30DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK30DZ10.vec" />
+      <property name="macros" value="DeviceName=MK30DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK30DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1270,7 +1270,7 @@
       <cdefine value="1" name="MK30DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK30DX256Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK30DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK30DZ10.vec" />
+      <property name="macros" value="DeviceName=MK30DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK30DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1287,7 +1287,7 @@
       <cdefine value="1" name="MK30DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK30DN512Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK30DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK30DZ10.vec" />
+      <property name="macros" value="DeviceName=MK30DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK30DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1304,7 +1304,7 @@
       <cdefine value="1" name="MK30D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK30DX128xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK30D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK30D10.vec" />
+      <property name="macros" value="DeviceName=MK30D10" />
       <cdefine name="__VECTORS" value="&quot;MK30D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1321,7 +1321,7 @@
       <cdefine value="1" name="MK30D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK30DX256xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK30D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK30D10.vec" />
+      <property name="macros" value="DeviceName=MK30D10" />
       <cdefine name="__VECTORS" value="&quot;MK30D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1338,7 +1338,7 @@
       <cdefine value="1" name="MK30D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK30DN512xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK30D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK30D10.vec" />
+      <property name="macros" value="DeviceName=MK30D10" />
       <cdefine name="__VECTORS" value="&quot;MK30D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1355,7 +1355,7 @@
       <cdefine value="1" name="MK40D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK40DX64xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK40D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK40D7.vec" />
+      <property name="macros" value="DeviceName=MK40D7" />
       <cdefine name="__VECTORS" value="&quot;MK40D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1372,7 +1372,7 @@
       <cdefine value="1" name="MK40D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK40DX128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK40D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK40D7.vec" />
+      <property name="macros" value="DeviceName=MK40D7" />
       <cdefine name="__VECTORS" value="&quot;MK40D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1389,7 +1389,7 @@
       <cdefine value="1" name="MK40D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK40DX256xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK40D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK40D7.vec" />
+      <property name="macros" value="DeviceName=MK40D7" />
       <cdefine name="__VECTORS" value="&quot;MK40D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1406,7 +1406,7 @@
       <cdefine value="1" name="MK40DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK40DX128Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK40DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK40DZ10.vec" />
+      <property name="macros" value="DeviceName=MK40DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK40DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1423,7 +1423,7 @@
       <cdefine value="1" name="MK40DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK40DX256Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK40DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK40DZ10.vec" />
+      <property name="macros" value="DeviceName=MK40DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK40DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1440,7 +1440,7 @@
       <cdefine value="1" name="MK40DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK40DN512Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK40DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK40DZ10.vec" />
+      <property name="macros" value="DeviceName=MK40DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK40DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1457,7 +1457,7 @@
       <cdefine value="1" name="MK40D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK40DX128xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK40D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK40D10.vec" />
+      <property name="macros" value="DeviceName=MK40D10" />
       <cdefine name="__VECTORS" value="&quot;MK40D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1474,7 +1474,7 @@
       <cdefine value="1" name="MK40D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK40DX256xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK40D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK40D10.vec" />
+      <property name="macros" value="DeviceName=MK40D10" />
       <cdefine name="__VECTORS" value="&quot;MK40D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1491,7 +1491,7 @@
       <cdefine value="1" name="MK40D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK40DN512xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK40D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK40D10.vec" />
+      <property name="macros" value="DeviceName=MK40D10" />
       <cdefine name="__VECTORS" value="&quot;MK40D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1508,7 +1508,7 @@
       <cdefine value="1" name="MK50D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK50DX128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK50D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK50D7.vec" />
+      <property name="macros" value="DeviceName=MK50D7" />
       <cdefine name="__VECTORS" value="&quot;MK50D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1525,7 +1525,7 @@
       <cdefine value="1" name="MK50D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK50DX256xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK50D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK50D7.vec" />
+      <property name="macros" value="DeviceName=MK50D7" />
       <cdefine name="__VECTORS" value="&quot;MK50D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1542,7 +1542,7 @@
       <cdefine value="1" name="MK50D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK50DX256xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK50D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK50D10.vec" />
+      <property name="macros" value="DeviceName=MK50D10" />
       <cdefine name="__VECTORS" value="&quot;MK50D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1559,7 +1559,7 @@
       <cdefine value="1" name="MK50D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK50DN512xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK50D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK50D10.vec" />
+      <property name="macros" value="DeviceName=MK50D10" />
       <cdefine name="__VECTORS" value="&quot;MK50D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1576,7 +1576,7 @@
       <cdefine value="1" name="MK50DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK50DX256Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK50DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK50DZ10.vec" />
+      <property name="macros" value="DeviceName=MK50DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK50DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1593,7 +1593,7 @@
       <cdefine value="1" name="MK50DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK50DN512Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK50DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK50DZ10.vec" />
+      <property name="macros" value="DeviceName=MK50DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK50DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1610,7 +1610,7 @@
       <cdefine value="1" name="MK51D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK51DX128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK51D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK51D7.vec" />
+      <property name="macros" value="DeviceName=MK51D7" />
       <cdefine name="__VECTORS" value="&quot;MK51D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1627,7 +1627,7 @@
       <cdefine value="1" name="MK51D7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK51DX256xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK51D7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK51D7.vec" />
+      <property name="macros" value="DeviceName=MK51D7" />
       <cdefine name="__VECTORS" value="&quot;MK51D7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="18" />
@@ -1644,7 +1644,7 @@
       <cdefine value="1" name="MK51D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK51DX256xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK51D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK51D10.vec" />
+      <property name="macros" value="DeviceName=MK51D10" />
       <cdefine name="__VECTORS" value="&quot;MK51D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1661,7 +1661,7 @@
       <cdefine value="1" name="MK51D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK51DN512xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK51D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK51D10.vec" />
+      <property name="macros" value="DeviceName=MK51D10" />
       <cdefine name="__VECTORS" value="&quot;MK51D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1678,7 +1678,7 @@
       <cdefine value="1" name="MK51DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK51DX256Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK51DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK51DZ10.vec" />
+      <property name="macros" value="DeviceName=MK51DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK51DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1695,7 +1695,7 @@
       <cdefine value="1" name="MK51DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK51DN512Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK51DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK51DZ10.vec" />
+      <property name="macros" value="DeviceName=MK51DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK51DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1712,7 +1712,7 @@
       <cdefine value="1" name="MK52D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK52DN512xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK52D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK52D10.vec" />
+      <property name="macros" value="DeviceName=MK52D10" />
       <cdefine name="__VECTORS" value="&quot;MK52D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1729,7 +1729,7 @@
       <cdefine value="1" name="MK52DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK52DN512Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK52DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK52DZ10.vec" />
+      <property name="macros" value="DeviceName=MK52DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK52DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1746,7 +1746,7 @@
       <cdefine value="1" name="MK53D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK53DX256xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK53D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK53D10.vec" />
+      <property name="macros" value="DeviceName=MK53D10" />
       <cdefine name="__VECTORS" value="&quot;MK53D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1763,7 +1763,7 @@
       <cdefine value="1" name="MK53D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK53DN512xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK53D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK53D10.vec" />
+      <property name="macros" value="DeviceName=MK53D10" />
       <cdefine name="__VECTORS" value="&quot;MK53D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1780,7 +1780,7 @@
       <cdefine value="1" name="MK53DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK53DX256Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK53DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK53DZ10.vec" />
+      <property name="macros" value="DeviceName=MK53DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK53DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1797,7 +1797,7 @@
       <cdefine value="1" name="MK53DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK53DN512Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK53DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK53DZ10.vec" />
+      <property name="macros" value="DeviceName=MK53DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK53DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1814,7 +1814,7 @@
       <cdefine value="1" name="MK60D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60DN256xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60D10.vec" />
+      <property name="macros" value="DeviceName=MK60D10" />
       <cdefine name="__VECTORS" value="&quot;MK60D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1831,7 +1831,7 @@
       <cdefine value="1" name="MK60D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60DX256xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60D10.vec" />
+      <property name="macros" value="DeviceName=MK60D10" />
       <cdefine name="__VECTORS" value="&quot;MK60D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1848,7 +1848,7 @@
       <cdefine value="1" name="MK60D10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60DN512xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60D10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60D10.vec" />
+      <property name="macros" value="DeviceName=MK60D10" />
       <cdefine name="__VECTORS" value="&quot;MK60D10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1865,7 +1865,7 @@
       <cdefine value="1" name="MK60DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60DN256Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60DZ10.vec" />
+      <property name="macros" value="DeviceName=MK60DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK60DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1882,7 +1882,7 @@
       <cdefine value="1" name="MK60DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60DX256Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60DZ10.vec" />
+      <property name="macros" value="DeviceName=MK60DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK60DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -1899,7 +1899,7 @@
       <cdefine value="1" name="MK60DZ10" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60DN512Zxxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60DZ10_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60DZ10.vec" />
+      <property name="macros" value="DeviceName=MK60DZ10" />
       <cdefine name="__VECTORS" value="&quot;MK60DZ10.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -1916,7 +1916,7 @@
       <cdefine value="1" name="MK60F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60FX512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60F12.vec" />
+      <property name="macros" value="DeviceName=MK60F12" />
       <cdefine name="__VECTORS" value="&quot;MK60F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -1935,7 +1935,7 @@
       <cdefine value="1" name="MK60F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60F12.vec" />
+      <property name="macros" value="DeviceName=MK60F12" />
       <cdefine name="__VECTORS" value="&quot;MK60F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -1954,7 +1954,7 @@
       <cdefine value="1" name="MK60F15" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60FX512xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60F15_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60F15.vec" />
+      <property name="macros" value="DeviceName=MK60F15" />
       <cdefine name="__VECTORS" value="&quot;MK60F15.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -1973,7 +1973,7 @@
       <cdefine value="1" name="MK60F15" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK60FN1M0xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK60F15_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK60F15.vec" />
+      <property name="macros" value="DeviceName=MK60F15" />
       <cdefine name="__VECTORS" value="&quot;MK60F15.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -1992,7 +1992,7 @@
       <cdefine value="1" name="MK61F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK61FX512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK61F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK61F12.vec" />
+      <property name="macros" value="DeviceName=MK61F12" />
       <cdefine name="__VECTORS" value="&quot;MK61F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -2011,7 +2011,7 @@
       <cdefine value="1" name="MK61F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK61FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK61F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK61F12.vec" />
+      <property name="macros" value="DeviceName=MK61F12" />
       <cdefine name="__VECTORS" value="&quot;MK61F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -2030,7 +2030,7 @@
       <cdefine value="1" name="MK61F15" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK61FX512xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK61F15_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK61F15.vec" />
+      <property name="macros" value="DeviceName=MK61F15" />
       <cdefine name="__VECTORS" value="&quot;MK61F15.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -2049,7 +2049,7 @@
       <cdefine value="1" name="MK61F15" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK61FN1M0xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK61F15_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK61F15.vec" />
+      <property name="macros" value="DeviceName=MK61F15" />
       <cdefine name="__VECTORS" value="&quot;MK61F15.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -2068,7 +2068,7 @@
       <cdefine value="1" name="MK63F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK63FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK63F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK63F12.vec" />
+      <property name="macros" value="DeviceName=MK63F12" />
       <cdefine name="__VECTORS" value="&quot;MK63F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -2087,7 +2087,7 @@
       <cdefine value="1" name="MK64F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK64FX512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK64F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK64F12.vec" />
+      <property name="macros" value="DeviceName=MK64F12" />
       <cdefine name="__VECTORS" value="&quot;MK64F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -2106,7 +2106,7 @@
       <cdefine value="1" name="MK64F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK64FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK64F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK64F12.vec" />
+      <property name="macros" value="DeviceName=MK64F12" />
       <cdefine name="__VECTORS" value="&quot;MK64F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -2125,7 +2125,7 @@
       <cdefine value="1" name="MK65F18" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK65FX1M0xxx18_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK65F18_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK65F18.vec" />
+      <property name="macros" value="DeviceName=MK65F18" />
       <cdefine name="__VECTORS" value="&quot;MK65F18.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -2144,7 +2144,7 @@
       <cdefine value="1" name="MK65F18" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK65FN2M0xxx18_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK65F18_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK65F18.vec" />
+      <property name="macros" value="DeviceName=MK65F18" />
       <cdefine name="__VECTORS" value="&quot;MK65F18.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -2163,7 +2163,7 @@
       <cdefine value="1" name="MK66F18" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK66FX1M0xxx18_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK66F18_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK66F18.vec" />
+      <property name="macros" value="DeviceName=MK66F18" />
       <cdefine name="__VECTORS" value="&quot;MK66F18.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -2182,7 +2182,7 @@
       <cdefine value="1" name="MK66F18" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK66FN2M0xxx18_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK66F18_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK66F18.vec" />
+      <property name="macros" value="DeviceName=MK66F18" />
       <cdefine name="__VECTORS" value="&quot;MK66F18.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -2201,7 +2201,7 @@
       <cdefine value="1" name="MK70F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK70FX512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK70F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK70F12.vec" />
+      <property name="macros" value="DeviceName=MK70F12" />
       <cdefine name="__VECTORS" value="&quot;MK70F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -2220,7 +2220,7 @@
       <cdefine value="1" name="MK70F12" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK70FN1M0xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK70F12_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK70F12.vec" />
+      <property name="macros" value="DeviceName=MK70F12" />
       <cdefine name="__VECTORS" value="&quot;MK70F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -2239,7 +2239,7 @@
       <cdefine value="1" name="MK70F15" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK70FX512xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK70F15_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK70F15.vec" />
+      <property name="macros" value="DeviceName=MK70F15" />
       <cdefine name="__VECTORS" value="&quot;MK70F15.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="68" />
@@ -2258,7 +2258,7 @@
       <cdefine value="1" name="MK70F15" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK70FN1M0xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK70F15_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK70F15.vec" />
+      <property name="macros" value="DeviceName=MK70F15" />
       <cdefine name="__VECTORS" value="&quot;MK70F15.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="4" />
@@ -2277,7 +2277,7 @@
       <cdefine value="1" name="MK80F25615" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK80FN256xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK80F25615_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK80F25615.vec" />
+      <property name="macros" value="DeviceName=MK80F25615" />
       <cdefine name="__VECTORS" value="&quot;MK80F25615.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader3.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -2295,7 +2295,7 @@
       <cdefine value="1" name="MK82F25615" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MK82FN256xxx15_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MK82F25615_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MK82F25615.vec" />
+      <property name="macros" value="DeviceName=MK82F25615" />
       <cdefine name="__VECTORS" value="&quot;MK82F25615.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader3.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -2313,7 +2313,7 @@
       <cdefine value="1" name="MKE02Z2" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z16xxx2_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z2_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE02Z2.vec" />
+      <property name="macros" value="DeviceName=MKE02Z2" />
       <cdefine name="__VECTORS" value="&quot;MKE02Z2.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE02.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2328,7 +2328,7 @@
       <cdefine value="1" name="MKE02Z2" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z32xxx2_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z2_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE02Z2.vec" />
+      <property name="macros" value="DeviceName=MKE02Z2" />
       <cdefine name="__VECTORS" value="&quot;MKE02Z2.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE02.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2343,7 +2343,7 @@
       <cdefine value="1" name="MKE02Z2" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z64xxx2_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z2_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE02Z2.vec" />
+      <property name="macros" value="DeviceName=MKE02Z2" />
       <cdefine name="__VECTORS" value="&quot;MKE02Z2.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE02.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2358,7 +2358,7 @@
       <cdefine value="1" name="MKE02Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z16xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE02Z4.vec" />
+      <property name="macros" value="DeviceName=MKE02Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE02Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE02.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2373,7 +2373,7 @@
       <cdefine value="1" name="MKE02Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE02Z4.vec" />
+      <property name="macros" value="DeviceName=MKE02Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE02Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE02.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2388,7 +2388,7 @@
       <cdefine value="1" name="MKE02Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE02Z4.vec" />
+      <property name="macros" value="DeviceName=MKE02Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE02Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE02.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2403,7 +2403,7 @@
       <cdefine value="1" name="MKE04Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE04Z8xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE04Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE04Z4.vec" />
+      <property name="macros" value="DeviceName=MKE04Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE04Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04_1K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2418,7 +2418,7 @@
       <cdefine value="1" name="MKE04Z1284" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE04Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE04Z1284_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE04Z1284.vec" />
+      <property name="macros" value="DeviceName=MKE04Z1284" />
       <cdefine name="__VECTORS" value="&quot;MKE04Z1284.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2433,7 +2433,7 @@
       <cdefine value="1" name="MKE04Z1284" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE04Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE04Z1284_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE04Z1284.vec" />
+      <property name="macros" value="DeviceName=MKE04Z1284" />
       <cdefine name="__VECTORS" value="&quot;MKE04Z1284.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2448,7 +2448,7 @@
       <cdefine value="1" name="MKE06Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE06Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE06Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE06Z4.vec" />
+      <property name="macros" value="DeviceName=MKE06Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE06Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2463,7 +2463,7 @@
       <cdefine value="1" name="MKE06Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE06Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE06Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE06Z4.vec" />
+      <property name="macros" value="DeviceName=MKE06Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE06Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2478,7 +2478,7 @@
       <cdefine value="1" name="MKE14Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE14Z4.vec" />
+      <property name="macros" value="DeviceName=MKE14Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE14Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14_4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2493,7 +2493,7 @@
       <cdefine value="1" name="MKE14Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE14Z4.vec" />
+      <property name="macros" value="DeviceName=MKE14Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE14Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14_4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2508,7 +2508,7 @@
       <cdefine value="1" name="MKE15Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE15Z4.vec" />
+      <property name="macros" value="DeviceName=MKE15Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE15Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14_4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2523,7 +2523,7 @@
       <cdefine value="1" name="MKE15Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE15Z4.vec" />
+      <property name="macros" value="DeviceName=MKE15Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE15Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14_4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2538,7 +2538,7 @@
       <cdefine value="1" name="MKE16Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE16Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE16Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE16Z4.vec" />
+      <property name="macros" value="DeviceName=MKE16Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE16Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14_4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2553,7 +2553,7 @@
       <cdefine value="1" name="MKE16Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE16Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE16Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE16Z4.vec" />
+      <property name="macros" value="DeviceName=MKE16Z4" />
       <cdefine name="__VECTORS" value="&quot;MKE16Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14_4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2568,7 +2568,7 @@
       <cdefine value="1" name="MKE14Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14Z128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE14Z7.vec" />
+      <property name="macros" value="DeviceName=MKE14Z7" />
       <cdefine name="__VECTORS" value="&quot;MKE14Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2583,7 +2583,7 @@
       <cdefine value="1" name="MKE14Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14Z256xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE14Z7.vec" />
+      <property name="macros" value="DeviceName=MKE14Z7" />
       <cdefine name="__VECTORS" value="&quot;MKE14Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2598,7 +2598,7 @@
       <cdefine value="1" name="MKE15Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE15Z7.vec" />
+      <property name="macros" value="DeviceName=MKE15Z7" />
       <cdefine name="__VECTORS" value="&quot;MKE15Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2613,7 +2613,7 @@
       <cdefine value="1" name="MKE15Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z256xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE15Z7.vec" />
+      <property name="macros" value="DeviceName=MKE15Z7" />
       <cdefine name="__VECTORS" value="&quot;MKE15Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2628,7 +2628,7 @@
       <cdefine value="1" name="MKE14F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14F256xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE14F16.vec" />
+      <property name="macros" value="DeviceName=MKE14F16" />
       <cdefine name="__VECTORS" value="&quot;MKE14F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE18.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -2646,7 +2646,7 @@
       <cdefine value="1" name="MKE14F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14F512xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE14F16.vec" />
+      <property name="macros" value="DeviceName=MKE14F16" />
       <cdefine name="__VECTORS" value="&quot;MKE14F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE18.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -2664,7 +2664,7 @@
       <cdefine value="1" name="MKE16F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE16F256xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE16F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE16F16.vec" />
+      <property name="macros" value="DeviceName=MKE16F16" />
       <cdefine name="__VECTORS" value="&quot;MKE16F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE18.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -2682,7 +2682,7 @@
       <cdefine value="1" name="MKE16F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE16F512xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE16F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE16F16.vec" />
+      <property name="macros" value="DeviceName=MKE16F16" />
       <cdefine name="__VECTORS" value="&quot;MKE16F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE18.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -2700,7 +2700,7 @@
       <cdefine value="1" name="MKE18F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE18F256xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE18F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE18F16.vec" />
+      <property name="macros" value="DeviceName=MKE18F16" />
       <cdefine name="__VECTORS" value="&quot;MKE18F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE18.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -2718,7 +2718,7 @@
       <cdefine value="1" name="MKE18F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE18F512xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE18F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKE18F16.vec" />
+      <property name="macros" value="DeviceName=MKE18F16" />
       <cdefine name="__VECTORS" value="&quot;MKE18F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE18.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -2736,7 +2736,7 @@
       <cdefine value="1" name="SKEAZN642" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/SKEAZN16xxx2_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/SKEAZN642_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=SKEAZN642.vec" />
+      <property name="macros" value="DeviceName=SKEAZN642" />
       <cdefine name="__VECTORS" value="&quot;SKEAZN642.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE02.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2751,7 +2751,7 @@
       <cdefine value="1" name="SKEAZN642" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/SKEAZN32xxx2_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/SKEAZN642_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=SKEAZN642.vec" />
+      <property name="macros" value="DeviceName=SKEAZN642" />
       <cdefine name="__VECTORS" value="&quot;SKEAZN642.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE02.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2766,7 +2766,7 @@
       <cdefine value="1" name="SKEAZN642" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/SKEAZN64xxx2_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/SKEAZN642_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=SKEAZN642.vec" />
+      <property name="macros" value="DeviceName=SKEAZN642" />
       <cdefine name="__VECTORS" value="&quot;SKEAZN642.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE02.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2781,7 +2781,7 @@
       <cdefine value="1" name="SKEAZN84" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/SKEAZN8xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/SKEAZN84_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=SKEAZN84.vec" />
+      <property name="macros" value="DeviceName=SKEAZN84" />
       <cdefine name="__VECTORS" value="&quot;SKEAZN84.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04_1K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2796,7 +2796,7 @@
       <cdefine value="1" name="SKEAZ1284" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/SKEAZ64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/SKEAZ1284_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=SKEAZ1284.vec" />
+      <property name="macros" value="DeviceName=SKEAZ1284" />
       <cdefine name="__VECTORS" value="&quot;SKEAZ1284.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2811,7 +2811,7 @@
       <cdefine value="1" name="SKEAZ1284" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/SKEAZ128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/SKEAZ1284_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=SKEAZ1284.vec" />
+      <property name="macros" value="DeviceName=SKEAZ1284" />
       <cdefine name="__VECTORS" value="&quot;SKEAZ1284.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2826,7 +2826,7 @@
       <cdefine value="1" name="MKL02Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL02Z8xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL02Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL02Z4.vec" />
+      <property name="macros" value="DeviceName=MKL02Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL02Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_1K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2841,7 +2841,7 @@
       <cdefine value="1" name="MKL02Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL02Z16xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL02Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL02Z4.vec" />
+      <property name="macros" value="DeviceName=MKL02Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL02Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2856,7 +2856,7 @@
       <cdefine value="1" name="MKL02Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL02Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL02Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL02Z4.vec" />
+      <property name="macros" value="DeviceName=MKL02Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL02Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2871,7 +2871,7 @@
       <cdefine value="1" name="MKL03Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL03Z8xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL03Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL03Z4.vec" />
+      <property name="macros" value="DeviceName=MKL03Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL03Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2886,7 +2886,7 @@
       <cdefine value="1" name="MKL03Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL03Z16xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL03Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL03Z4.vec" />
+      <property name="macros" value="DeviceName=MKL03Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL03Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2901,7 +2901,7 @@
       <cdefine value="1" name="MKL03Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL03Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL03Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL03Z4.vec" />
+      <property name="macros" value="DeviceName=MKL03Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL03Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2916,7 +2916,7 @@
       <cdefine value="1" name="MKL04Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL04Z8xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL04Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL04Z4.vec" />
+      <property name="macros" value="DeviceName=MKL04Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL04Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_1K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2931,7 +2931,7 @@
       <cdefine value="1" name="MKL04Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL04Z16xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL04Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL04Z4.vec" />
+      <property name="macros" value="DeviceName=MKL04Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL04Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2946,7 +2946,7 @@
       <cdefine value="1" name="MKL04Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL04Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL04Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL04Z4.vec" />
+      <property name="macros" value="DeviceName=MKL04Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL04Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2961,7 +2961,7 @@
       <cdefine value="1" name="MKL05Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL05Z8xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL05Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL05Z4.vec" />
+      <property name="macros" value="DeviceName=MKL05Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL05Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_1K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2976,7 +2976,7 @@
       <cdefine value="1" name="MKL05Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL05Z16xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL05Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL05Z4.vec" />
+      <property name="macros" value="DeviceName=MKL05Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL05Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -2991,7 +2991,7 @@
       <cdefine value="1" name="MKL05Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL05Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL05Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL05Z4.vec" />
+      <property name="macros" value="DeviceName=MKL05Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL05Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3006,7 +3006,7 @@
       <cdefine value="1" name="MKL13Z644" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL13Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL13Z644_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL13Z644.vec" />
+      <property name="macros" value="DeviceName=MKL13Z644" />
       <cdefine name="__VECTORS" value="&quot;MKL13Z644.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3021,7 +3021,7 @@
       <cdefine value="1" name="MKL13Z644" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL13Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL13Z644_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL13Z644.vec" />
+      <property name="macros" value="DeviceName=MKL13Z644" />
       <cdefine name="__VECTORS" value="&quot;MKL13Z644.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3036,7 +3036,7 @@
       <cdefine value="1" name="MKL14Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL14Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL14Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL14Z4.vec" />
+      <property name="macros" value="DeviceName=MKL14Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL14Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3051,7 +3051,7 @@
       <cdefine value="1" name="MKL14Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL14Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL14Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL14Z4.vec" />
+      <property name="macros" value="DeviceName=MKL14Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL14Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3066,7 +3066,7 @@
       <cdefine value="1" name="MKL15Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL15Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL15Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL15Z4.vec" />
+      <property name="macros" value="DeviceName=MKL15Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL15Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3081,7 +3081,7 @@
       <cdefine value="1" name="MKL15Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL15Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL15Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL15Z4.vec" />
+      <property name="macros" value="DeviceName=MKL15Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL15Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3096,7 +3096,7 @@
       <cdefine value="1" name="MKL15Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL15Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL15Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL15Z4.vec" />
+      <property name="macros" value="DeviceName=MKL15Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL15Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3111,7 +3111,7 @@
       <cdefine value="1" name="MKL16Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL16Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL16Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL16Z4.vec" />
+      <property name="macros" value="DeviceName=MKL16Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL16Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3126,7 +3126,7 @@
       <cdefine value="1" name="MKL16Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL16Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL16Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL16Z4.vec" />
+      <property name="macros" value="DeviceName=MKL16Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL16Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3141,7 +3141,7 @@
       <cdefine value="1" name="MKL16Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL16Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL16Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL16Z4.vec" />
+      <property name="macros" value="DeviceName=MKL16Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL16Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3156,7 +3156,7 @@
       <cdefine value="1" name="MKL16Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL16Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL16Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL16Z4.vec" />
+      <property name="macros" value="DeviceName=MKL16Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL16Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3171,7 +3171,7 @@
       <cdefine value="1" name="MKL17Z644" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL17Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL17Z644_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL17Z644.vec" />
+      <property name="macros" value="DeviceName=MKL17Z644" />
       <cdefine name="__VECTORS" value="&quot;MKL17Z644.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3186,7 +3186,7 @@
       <cdefine value="1" name="MKL17Z644" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL17Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL17Z644_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL17Z644.vec" />
+      <property name="macros" value="DeviceName=MKL17Z644" />
       <cdefine name="__VECTORS" value="&quot;MKL17Z644.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3201,7 +3201,7 @@
       <cdefine value="1" name="MKL17Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL17Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL17Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL17Z4.vec" />
+      <property name="macros" value="DeviceName=MKL17Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL17Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3216,7 +3216,7 @@
       <cdefine value="1" name="MKL17Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL17Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL17Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL17Z4.vec" />
+      <property name="macros" value="DeviceName=MKL17Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL17Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3231,7 +3231,7 @@
       <cdefine value="1" name="MKL24Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL24Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL24Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL24Z4.vec" />
+      <property name="macros" value="DeviceName=MKL24Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL24Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3246,7 +3246,7 @@
       <cdefine value="1" name="MKL24Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL24Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL24Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL24Z4.vec" />
+      <property name="macros" value="DeviceName=MKL24Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL24Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3261,7 +3261,7 @@
       <cdefine value="1" name="MKL25Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL25Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL25Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL25Z4.vec" />
+      <property name="macros" value="DeviceName=MKL25Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL25Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3276,7 +3276,7 @@
       <cdefine value="1" name="MKL25Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL25Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL25Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL25Z4.vec" />
+      <property name="macros" value="DeviceName=MKL25Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL25Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3291,7 +3291,7 @@
       <cdefine value="1" name="MKL25Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL25Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL25Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL25Z4.vec" />
+      <property name="macros" value="DeviceName=MKL25Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL25Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3306,7 +3306,7 @@
       <cdefine value="1" name="MKL26Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL26Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL26Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL26Z4.vec" />
+      <property name="macros" value="DeviceName=MKL26Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL26Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3321,7 +3321,7 @@
       <cdefine value="1" name="MKL26Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL26Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL26Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL26Z4.vec" />
+      <property name="macros" value="DeviceName=MKL26Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL26Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3336,7 +3336,7 @@
       <cdefine value="1" name="MKL26Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL26Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL26Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL26Z4.vec" />
+      <property name="macros" value="DeviceName=MKL26Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL26Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3351,7 +3351,7 @@
       <cdefine value="1" name="MKL26Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL26Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL26Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL26Z4.vec" />
+      <property name="macros" value="DeviceName=MKL26Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL26Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3366,7 +3366,7 @@
       <cdefine value="1" name="MKL27Z644" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL27Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL27Z644_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL27Z644.vec" />
+      <property name="macros" value="DeviceName=MKL27Z644" />
       <cdefine name="__VECTORS" value="&quot;MKL27Z644.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3381,7 +3381,7 @@
       <cdefine value="1" name="MKL27Z644" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL27Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL27Z644_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL27Z644.vec" />
+      <property name="macros" value="DeviceName=MKL27Z644" />
       <cdefine name="__VECTORS" value="&quot;MKL27Z644.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3396,7 +3396,7 @@
       <cdefine value="1" name="MKL27Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL27Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL27Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL27Z4.vec" />
+      <property name="macros" value="DeviceName=MKL27Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL27Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3411,7 +3411,7 @@
       <cdefine value="1" name="MKL27Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL27Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL27Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL27Z4.vec" />
+      <property name="macros" value="DeviceName=MKL27Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL27Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3426,7 +3426,7 @@
       <cdefine value="1" name="MKL28Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL28Z512xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL28Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL28Z7.vec" />
+      <property name="macros" value="DeviceName=MKL28Z7" />
       <cdefine name="__VECTORS" value="&quot;MKL28Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL28.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3441,7 +3441,7 @@
       <cdefine value="1" name="MKL33Z644" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL33Z32xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL33Z644_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL33Z644.vec" />
+      <property name="macros" value="DeviceName=MKL33Z644" />
       <cdefine name="__VECTORS" value="&quot;MKL33Z644.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3456,7 +3456,7 @@
       <cdefine value="1" name="MKL33Z644" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL33Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL33Z644_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL33Z644.vec" />
+      <property name="macros" value="DeviceName=MKL33Z644" />
       <cdefine name="__VECTORS" value="&quot;MKL33Z644.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3471,7 +3471,7 @@
       <cdefine value="1" name="MKL33Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL33Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL33Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL33Z4.vec" />
+      <property name="macros" value="DeviceName=MKL33Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL33Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3486,7 +3486,7 @@
       <cdefine value="1" name="MKL33Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL33Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL33Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL33Z4.vec" />
+      <property name="macros" value="DeviceName=MKL33Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL33Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3501,7 +3501,7 @@
       <cdefine value="1" name="MKL34Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL34Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL34Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL34Z4.vec" />
+      <property name="macros" value="DeviceName=MKL34Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL34Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3516,7 +3516,7 @@
       <cdefine value="1" name="MKL36Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL36Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL36Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL36Z4.vec" />
+      <property name="macros" value="DeviceName=MKL36Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL36Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3531,7 +3531,7 @@
       <cdefine value="1" name="MKL36Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL36Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL36Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL36Z4.vec" />
+      <property name="macros" value="DeviceName=MKL36Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL36Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3546,7 +3546,7 @@
       <cdefine value="1" name="MKL36Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL36Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL36Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL36Z4.vec" />
+      <property name="macros" value="DeviceName=MKL36Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL36Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3561,7 +3561,7 @@
       <cdefine value="1" name="MKL43Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL43Z64xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL43Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL43Z4.vec" />
+      <property name="macros" value="DeviceName=MKL43Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL43Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3576,7 +3576,7 @@
       <cdefine value="1" name="MKL43Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL43Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL43Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL43Z4.vec" />
+      <property name="macros" value="DeviceName=MKL43Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL43Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3591,7 +3591,7 @@
       <cdefine value="1" name="MKL43Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL43Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL43Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL43Z4.vec" />
+      <property name="macros" value="DeviceName=MKL43Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL43Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3606,7 +3606,7 @@
       <cdefine value="1" name="MKL46Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL46Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL46Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL46Z4.vec" />
+      <property name="macros" value="DeviceName=MKL46Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL46Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3621,7 +3621,7 @@
       <cdefine value="1" name="MKL46Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL46Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL46Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL46Z4.vec" />
+      <property name="macros" value="DeviceName=MKL46Z4" />
       <cdefine name="__VECTORS" value="&quot;MKL46Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL_8K.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3636,7 +3636,7 @@
       <cdefine value="1" name="MKL82Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL82Z128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL82Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKL82Z7.vec" />
+      <property name="macros" value="DeviceName=MKL82Z7" />
       <cdefine name="__VECTORS" value="&quot;MKL82Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3651,7 +3651,7 @@
       <cdefine value="1" name="MKM14Z5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z64xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM14Z5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM14Z5.vec" />
+      <property name="macros" value="DeviceName=MKM14Z5" />
       <cdefine name="__VECTORS" value="&quot;MKM14Z5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3666,7 +3666,7 @@
       <cdefine value="1" name="MKM14Z5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM14Z5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM14Z5.vec" />
+      <property name="macros" value="DeviceName=MKM14Z5" />
       <cdefine name="__VECTORS" value="&quot;MKM14Z5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3681,7 +3681,7 @@
       <cdefine value="1" name="MKM14ZA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z64Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM14ZA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM14ZA5.vec" />
+      <property name="macros" value="DeviceName=MKM14ZA5" />
       <cdefine name="__VECTORS" value="&quot;MKM14ZA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3696,7 +3696,7 @@
       <cdefine value="1" name="MKM14ZA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z128Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM14ZA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM14ZA5.vec" />
+      <property name="macros" value="DeviceName=MKM14ZA5" />
       <cdefine name="__VECTORS" value="&quot;MKM14ZA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3711,7 +3711,7 @@
       <cdefine value="1" name="MKM33Z5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z64xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM33Z5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM33Z5.vec" />
+      <property name="macros" value="DeviceName=MKM33Z5" />
       <cdefine name="__VECTORS" value="&quot;MKM33Z5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3726,7 +3726,7 @@
       <cdefine value="1" name="MKM33Z5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM33Z5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM33Z5.vec" />
+      <property name="macros" value="DeviceName=MKM33Z5" />
       <cdefine name="__VECTORS" value="&quot;MKM33Z5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3741,7 +3741,7 @@
       <cdefine value="1" name="MKM33ZA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z64Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM33ZA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM33ZA5.vec" />
+      <property name="macros" value="DeviceName=MKM33ZA5" />
       <cdefine name="__VECTORS" value="&quot;MKM33ZA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3756,7 +3756,7 @@
       <cdefine value="1" name="MKM33ZA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z128Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM33ZA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM33ZA5.vec" />
+      <property name="macros" value="DeviceName=MKM33ZA5" />
       <cdefine name="__VECTORS" value="&quot;MKM33ZA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3771,7 +3771,7 @@
       <cdefine value="1" name="MKM34Z5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM34Z128xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM34Z5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM34Z5.vec" />
+      <property name="macros" value="DeviceName=MKM34Z5" />
       <cdefine name="__VECTORS" value="&quot;MKM34Z5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3786,7 +3786,7 @@
       <cdefine value="1" name="MKM34ZA5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM34Z128Axxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM34ZA5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM34ZA5.vec" />
+      <property name="macros" value="DeviceName=MKM34ZA5" />
       <cdefine name="__VECTORS" value="&quot;MKM34ZA5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3801,7 +3801,7 @@
       <cdefine value="1" name="MKM34Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM34Z256xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM34Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKM34Z7.vec" />
+      <property name="macros" value="DeviceName=MKM34Z7" />
       <cdefine name="__VECTORS" value="&quot;MKM34Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3816,7 +3816,7 @@
       <cdefine value="1" name="MKS22F25612" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKS22FN128xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKS22F25612_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKS22F25612.vec" />
+      <property name="macros" value="DeviceName=MKS22F25612" />
       <cdefine name="__VECTORS" value="&quot;MKS22F25612.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -3835,7 +3835,7 @@
       <cdefine value="1" name="MKS22F25612" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKS22FN256xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKS22F25612_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKS22F25612.vec" />
+      <property name="macros" value="DeviceName=MKS22F25612" />
       <cdefine name="__VECTORS" value="&quot;MKS22F25612.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -3854,7 +3854,7 @@
       <cdefine value="1" name="MKV10Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z16xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV10Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV10Z7.vec" />
+      <property name="macros" value="DeviceName=MKV10Z7" />
       <cdefine name="__VECTORS" value="&quot;MKV10Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3869,7 +3869,7 @@
       <cdefine value="1" name="MKV10Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z32xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV10Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV10Z7.vec" />
+      <property name="macros" value="DeviceName=MKV10Z7" />
       <cdefine name="__VECTORS" value="&quot;MKV10Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3884,7 +3884,7 @@
       <cdefine value="1" name="MKV10Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z64xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV10Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV10Z7.vec" />
+      <property name="macros" value="DeviceName=MKV10Z7" />
       <cdefine name="__VECTORS" value="&quot;MKV10Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3899,7 +3899,7 @@
       <cdefine value="1" name="MKV10Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV10Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV10Z7.vec" />
+      <property name="macros" value="DeviceName=MKV10Z7" />
       <cdefine name="__VECTORS" value="&quot;MKV10Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3914,7 +3914,7 @@
       <cdefine value="1" name="MKV11Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV11Z64xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV11Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV11Z7.vec" />
+      <property name="macros" value="DeviceName=MKV11Z7" />
       <cdefine name="__VECTORS" value="&quot;MKV11Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3929,7 +3929,7 @@
       <cdefine value="1" name="MKV11Z7" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV11Z128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV11Z7_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV11Z7.vec" />
+      <property name="macros" value="DeviceName=MKV11Z7" />
       <cdefine name="__VECTORS" value="&quot;MKV11Z7.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -3944,7 +3944,7 @@
       <cdefine value="1" name="MKV30F12810" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV30F64xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV30F12810_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV30F12810.vec" />
+      <property name="macros" value="DeviceName=MKV30F12810" />
       <cdefine name="__VECTORS" value="&quot;MKV30F12810.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -3963,7 +3963,7 @@
       <cdefine value="1" name="MKV30F12810" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV30F128xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV30F12810_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV30F12810.vec" />
+      <property name="macros" value="DeviceName=MKV30F12810" />
       <cdefine name="__VECTORS" value="&quot;MKV30F12810.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -3982,7 +3982,7 @@
       <cdefine value="1" name="MKV31F12810" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV31F128xxx10_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV31F12810_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV31F12810.vec" />
+      <property name="macros" value="DeviceName=MKV31F12810" />
       <cdefine name="__VECTORS" value="&quot;MKV31F12810.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4001,7 +4001,7 @@
       <cdefine value="1" name="MKV31F25612" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV31F256xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV31F25612_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV31F25612.vec" />
+      <property name="macros" value="DeviceName=MKV31F25612" />
       <cdefine name="__VECTORS" value="&quot;MKV31F25612.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4020,7 +4020,7 @@
       <cdefine value="1" name="MKV31F51212" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV31F512xxx12_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV31F51212_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV31F51212.vec" />
+      <property name="macros" value="DeviceName=MKV31F51212" />
       <cdefine name="__VECTORS" value="&quot;MKV31F51212.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4039,7 +4039,7 @@
       <cdefine value="1" name="MKV42F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV42F64xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV42F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV42F16.vec" />
+      <property name="macros" value="DeviceName=MKV42F16" />
       <cdefine name="__VECTORS" value="&quot;MKV42F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4058,7 +4058,7 @@
       <cdefine value="1" name="MKV42F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV42F128xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV42F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV42F16.vec" />
+      <property name="macros" value="DeviceName=MKV42F16" />
       <cdefine name="__VECTORS" value="&quot;MKV42F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4077,7 +4077,7 @@
       <cdefine value="1" name="MKV42F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV42F256xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV42F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV42F16.vec" />
+      <property name="macros" value="DeviceName=MKV42F16" />
       <cdefine name="__VECTORS" value="&quot;MKV42F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4096,7 +4096,7 @@
       <cdefine value="1" name="MKV44F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV44F64xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV44F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV44F16.vec" />
+      <property name="macros" value="DeviceName=MKV44F16" />
       <cdefine name="__VECTORS" value="&quot;MKV44F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4115,7 +4115,7 @@
       <cdefine value="1" name="MKV44F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV44F128xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV44F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV44F16.vec" />
+      <property name="macros" value="DeviceName=MKV44F16" />
       <cdefine name="__VECTORS" value="&quot;MKV44F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4134,7 +4134,7 @@
       <cdefine value="1" name="MKV44F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV44F256xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV44F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV44F16.vec" />
+      <property name="macros" value="DeviceName=MKV44F16" />
       <cdefine name="__VECTORS" value="&quot;MKV44F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4153,7 +4153,7 @@
       <cdefine value="1" name="MKV46F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV46F128xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV46F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV46F16.vec" />
+      <property name="macros" value="DeviceName=MKV46F16" />
       <cdefine name="__VECTORS" value="&quot;MKV46F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4172,7 +4172,7 @@
       <cdefine value="1" name="MKV46F16" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV46F256xxx16_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV46F16_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV46F16.vec" />
+      <property name="macros" value="DeviceName=MKV46F16" />
       <cdefine name="__VECTORS" value="&quot;MKV46F16.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4191,7 +4191,7 @@
       <cdefine value="1" name="MKV56F24" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV56F512xxx24_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV56F24_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV56F24.vec" />
+      <property name="macros" value="DeviceName=MKV56F24" />
       <cdefine name="__VECTORS" value="&quot;MKV56F24.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV5.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -4209,7 +4209,7 @@
       <cdefine value="1" name="MKV56F24" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV56F1M0xxx24_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV56F24_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV56F24.vec" />
+      <property name="macros" value="DeviceName=MKV56F24" />
       <cdefine name="__VECTORS" value="&quot;MKV56F24.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV5.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -4227,7 +4227,7 @@
       <cdefine value="1" name="MKV58F24" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV58F512xxx24_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV58F24_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV58F24.vec" />
+      <property name="macros" value="DeviceName=MKV58F24" />
       <cdefine name="__VECTORS" value="&quot;MKV58F24.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV5.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -4245,7 +4245,7 @@
       <cdefine value="1" name="MKV58F24" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV58F1M0xxx24_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV58F24_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKV58F24.vec" />
+      <property name="macros" value="DeviceName=MKV58F24" />
       <cdefine name="__VECTORS" value="&quot;MKV58F24.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV5.elf" />
       <property name="arm_architecture" value="v7EM" />
@@ -4263,7 +4263,7 @@
       <cdefine value="1" name="MKW01Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW01Z128xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW01Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW01Z4.vec" />
+      <property name="macros" value="DeviceName=MKW01Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW01Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4278,7 +4278,7 @@
       <cdefine value="1" name="MKW21D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW21D256xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW21D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW21D5.vec" />
+      <property name="macros" value="DeviceName=MKW21D5" />
       <cdefine name="__VECTORS" value="&quot;MKW21D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader2.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="34" />
@@ -4295,7 +4295,7 @@
       <cdefine value="1" name="MKW21D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW21D512xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW21D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW21D5.vec" />
+      <property name="macros" value="DeviceName=MKW21D5" />
       <cdefine name="__VECTORS" value="&quot;MKW21D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4312,7 +4312,7 @@
       <cdefine value="1" name="MKW22D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW22D512xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW22D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW22D5.vec" />
+      <property name="macros" value="DeviceName=MKW22D5" />
       <cdefine name="__VECTORS" value="&quot;MKW22D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4329,7 +4329,7 @@
       <cdefine value="1" name="MKW24D5" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW24D512xxx5_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW24D5_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW24D5.vec" />
+      <property name="macros" value="DeviceName=MKW24D5" />
       <cdefine name="__VECTORS" value="&quot;MKW24D5.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
@@ -4346,7 +4346,7 @@
       <cdefine value="1" name="MKW20Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW20Z160xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW20Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW20Z4.vec" />
+      <property name="macros" value="DeviceName=MKW20Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW20Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4361,7 +4361,7 @@
       <cdefine value="1" name="MKW21Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW21Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW21Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW21Z4.vec" />
+      <property name="macros" value="DeviceName=MKW21Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW21Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4376,7 +4376,7 @@
       <cdefine value="1" name="MKW21Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW21Z512xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW21Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW21Z4.vec" />
+      <property name="macros" value="DeviceName=MKW21Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW21Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4391,7 +4391,7 @@
       <cdefine value="1" name="MKW30Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW30Z160xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW30Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW30Z4.vec" />
+      <property name="macros" value="DeviceName=MKW30Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW30Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4406,7 +4406,7 @@
       <cdefine value="1" name="MKW31Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW31Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW31Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW31Z4.vec" />
+      <property name="macros" value="DeviceName=MKW31Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW31Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4421,7 +4421,7 @@
       <cdefine value="1" name="MKW31Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW31Z512xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW31Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW31Z4.vec" />
+      <property name="macros" value="DeviceName=MKW31Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW31Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4436,7 +4436,7 @@
       <cdefine value="1" name="MKW40Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW40Z160xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW40Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW40Z4.vec" />
+      <property name="macros" value="DeviceName=MKW40Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW40Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4451,7 +4451,7 @@
       <cdefine value="1" name="MKW41Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW41Z256xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW41Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW41Z4.vec" />
+      <property name="macros" value="DeviceName=MKW41Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW41Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4466,7 +4466,7 @@
       <cdefine value="1" name="MKW41Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW41Z512xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW41Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW41Z4.vec" />
+      <property name="macros" value="DeviceName=MKW41Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW41Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderL.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4481,7 +4481,7 @@
       <cdefine value="1" name="MKW35A4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW35A512xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW35A4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW35A4.vec" />
+      <property name="macros" value="DeviceName=MKW35A4" />
       <cdefine name="__VECTORS" value="&quot;MKW35A4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4496,7 +4496,7 @@
       <cdefine value="1" name="MKW35Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW35Z512xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW35Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW35Z4.vec" />
+      <property name="macros" value="DeviceName=MKW35Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW35Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4511,7 +4511,7 @@
       <cdefine value="1" name="MKW36A4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW36A512xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW36A4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW36A4.vec" />
+      <property name="macros" value="DeviceName=MKW36A4" />
       <cdefine name="__VECTORS" value="&quot;MKW36A4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4526,7 +4526,7 @@
       <cdefine value="1" name="MKW36Z4" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW36Z512xxx4_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW36Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MKW36Z4.vec" />
+      <property name="macros" value="DeviceName=MKW36Z4" />
       <cdefine name="__VECTORS" value="&quot;MKW36Z4.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
       <property name="arm_architecture" value="v6M" />
@@ -4541,7 +4541,7 @@
       <cdefine value="1" name="MWPR1516" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MWPR1516_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MWPR1516_Peripherals.xml" />
-      <property name="macros" value="DeviceVectorsFile=MWPR1516.vec" />
+      <property name="macros" value="DeviceName=MWPR1516" />
       <cdefine name="__VECTORS" value="&quot;MWPR1516.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE04.elf" />
       <property name="arm_architecture" value="v6M" />

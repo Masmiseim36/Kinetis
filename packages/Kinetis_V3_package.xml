@@ -1,5 +1,5 @@
 <!DOCTYPE CrossStudio_Package_Description_File>
-<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="NXP" cpu_family="Kinetis" version="3.10" build_version="2019041500.12664;crossworks_v3;crossworks_v3" crossstudio_versions="8:3.7-" replaces="Kinetis" dependencies="CMSIS">
+<package name="Kinetis_V3" author="Rowley Associates Ltd" cpu_manufacturer="NXP" cpu_family="Kinetis" version="3.11" build_version="2019041500.12664;crossworks_v3;crossworks_v3" crossstudio_versions="8:4.2-" replaces="Kinetis" dependencies="CMSIS">
   <file file_name="$(TargetsDir)/Kinetis/Loader.hzp" title="Kinetis Loader Application Solution" />
   <file file_name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" title="Kinetis CTL Timer and Interrupt support functions" />
 <targets>
@@ -436,6 +436,9 @@
 
   </documentation>
   <history>
+    <version name="3.11">
+      <description>Added System_xxx.h/.c files to new created projects</description>
+    </version>
     <version name="3.10">
       <description>Added support for KE14Z4, KE15Z4 and KE16Z4 devices.</description>
       <description>New projects will use CMSIS-Core property group to select CMSIS headers.</description>

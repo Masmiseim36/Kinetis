@@ -41,7 +41,11 @@
     <folder name="System Files">
       <file name="$(StudioDir)/source/thumb_crt0.s" expand="no" />
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no" />
-      <file name="$(TargetsDir)/Kinetis/$(DeviceVectorsFile)" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/$(DeviceName).vec" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/CMSIS/system_$(DeviceName).h" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/CMSIS/system_$(DeviceName).c" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/CMSIS/$(DeviceName).h" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/Kinetis.h" expand="no" />
     </folder>
   </project>
   <project cpu_manufacturer="NXP" cpu_name="Kinetis" cpu_generic_name="Kinetis" board_manufacturer="" board_name="" name="Kinetis Externally Built Executable" description="An externally built executable for NXP Kinetis." type="Externally Built Executable" template_name="Kinetis_EXT_EXE">
@@ -114,7 +118,10 @@
       <file name="$(TargetsDir)/Kinetis/Kinetis_ctl.c" expand="no" />
       <file name="$(TargetsDir)/Kinetis/Kinetis_ctl_board.c" />
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no" />
-      <file name="$(TargetsDir)/Kinetis/$(DeviceVectorsFile)" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/$(DeviceName).vec" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/CMSIS/system_$(DeviceName).h" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/CMSIS/system_$(DeviceName).c" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/CMSIS/$(DeviceName).h" expand="no" />
     </folder>
   </project>
 </projects>
