@@ -1038,6 +1038,24 @@
         <file file_name="targets/Kinetis/CMSIS/system_MKW21Z4.h" />
       </folder>
       <file file_name="targets/Kinetis/CMSIS/fsl_device_registers.h" />
+      <folder Name="Features">
+        <file file_name="targets/Kinetis/CMSIS/MKL82Z7_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MKV46F16_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MKV58F24_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MKV31F51212_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MKV11Z7_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK22F51212_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK28F15_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK66F18_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK02F12810_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK64F12_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MKW31Z4_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MKW41Z4_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MKL25Z4_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK80F25615_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK65F18_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK82F25615_features.h" />
+      </folder>
     </folder>
   </project>
 </solution>
