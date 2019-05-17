@@ -36,6 +36,13 @@
 	#include "MK11DA5.h"
 	/* CPU specific feature definitions */
 	#include "MK11DA5_features.h"
+#elif (defined(CPU_MK11DN512VLK5) || defined(CPU_MK11DN512VMC5) || defined(CPU_MK11DX128VLK5) || \
+	defined(CPU_MK11DX128VMC5) || defined(CPU_MK11DX256VLK5) || defined(CPU_MK11DX256VMC5) || defined(MK11D5))
+	#define K11D5_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK11D5.h"
+	/* CPU specific feature definitions */
+	#include "MK11D5_features.h"
 #elif (defined(CPU_MK12DN512VLH5) || defined(CPU_MK12DN512VLK5) || defined(CPU_MK12DN512VMC5) || \
 	defined(CPU_MK12DX128VLF5) || defined(CPU_MK12DX128VLH5) || defined(CPU_MK12DX128VLK5) || \
 	defined(CPU_MK12DX128VMC5) || defined(CPU_MK12DX256VLF5) || defined(CPU_MK12DX256VLH5) || \
@@ -45,6 +52,22 @@
 	#include "MK12D5.h"
 	/* CPU specific feature definitions */
 	#include "MK12D5_features.h"
+#elif (defined(CPU_MK20DN512VLK10) || defined(CPU_MK20DN512VLL10) || defined(CPU_MK20DN512VLQ10) || \
+	defined(CPU_MK20DN512VMC10) || defined(CPU_MK20DN512VMD10) || defined(CPU_MK20DX128VLQ10) || \
+	defined(CPU_MK20DX128VMD10) || defined(CPU_MK20DX256VLK10) || defined(CPU_MK20DX256VLL10) || \
+	defined(CPU_MK20DX256VLQ10) || defined(CPU_MK20DX256VMC10) || defined(CPU_MK20DX256VMD10) || defined(MK20D10))
+	#define K20D10_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK20D10.h"
+	/* CPU specific feature definitions */
+	#include "MK20D10_features.h"
+#elif (defined(CPU_MK21DN512VLK5) || defined(CPU_MK21DN512VMC5) || defined(CPU_MK21DX128VLK5) || \
+	defined(CPU_MK21DX128VMC5) || defined(CPU_MK21DX256VLK5) || defined(CPU_MK21DX256VMC5) || defined(MK21D5))
+	#define K21D5_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK21D5.h"
+	/* CPU specific feature definitions */
+	#include "MK21D5_features.h"
 #elif (defined(CPU_MK21DN512AVLK5) || defined(CPU_MK21DN512AVMC5) || defined(CPU_MK21DX128AVLK5) || \
 	defined(CPU_MK21DX128AVMC5) || defined(CPU_MK21DX256AVLK5) || defined(CPU_MK21DX256AVMC5) || defined(MK21DA5))
 	#define K21DA5_SERIES
@@ -52,6 +75,52 @@
 	#include "MK21DA5.h"
 	/* CPU specific feature definitions */
 	#include "MK21DA5_features.h"
+#elif (defined(CPU_MK21FN1M0VLQ12) || defined(CPU_MK21FN1M0VMC12) || defined(CPU_MK21FN1M0VMD12) || \
+	defined(CPU_MK21FX512VLQ12) || defined(CPU_MK21FX512VMC12) || defined(CPU_MK21FX512VMD12) || defined(MK21F12))
+	#define K21F12_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK21F12.h"
+	/* CPU specific feature definitions */
+	#include "MK21F12_features.h"
+#elif (defined(CPU_MK21FN1M0AVLQ12) || defined(CPU_MK21FN1M0AVMC12) || defined(CPU_MK21FN1M0AVMD12) || \
+	defined(CPU_MK21FX512AVLQ12) || defined(CPU_MK21FX512AVMC12) || defined(CPU_MK21FX512AVMD12) || defined(MK21FA12))
+	#define K21FA12_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK21FA12.h"
+	/* CPU specific feature definitions */
+	#include "MK21FA12_features.h"
+#elif (defined(CPU_MK22DN512VLH5) || defined(CPU_MK22DN512VLK5) || defined(CPU_MK22DN512VMC5) || \
+	defined(CPU_MK22DX128VLF5) || defined(CPU_MK22DX128VLH5) || defined(CPU_MK22DX128VLK5) || \
+	defined(CPU_MK22DX128VMC5) || defined(CPU_MK22DX256VLF5) || defined(CPU_MK22DX256VLH5) || \
+	defined(CPU_MK22DX256VLK5) || defined(CPU_MK22DX256VMC5) || defined(MK22D5))
+	#define K22D5_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK22D5.h"
+	/* CPU specific feature definitions */
+	#include "MK22D5_features.h"
+#elif (defined(CPU_MK22FN1M0VLH12) || defined(CPU_MK22FN1M0VLK12) || defined(CPU_MK22FN1M0VLL12) || \
+	defined(CPU_MK22FN1M0VLQ12) || defined(CPU_MK22FN1M0VMC12) || defined(CPU_MK22FN1M0VMD12) || \
+	defined(CPU_MK22FX512VLH12) || defined(CPU_MK22FX512VLK12) || defined(CPU_MK22FX512VLL12) || \
+	defined(CPU_MK22FX512VLQ12) || defined(CPU_MK22FX512VMC12) || defined(CPU_MK22FX512VMD12) || defined(MK22F12))
+	#define K22F12_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK22F12.h"
+	/* CPU specific feature definitions */
+	#include "MK22F12_features.h"
+#elif (defined(CPU_MK22FN128VDC10) || defined(CPU_MK22FN128VLH10) || defined(CPU_MK22FN128VLL10) || \
+	defined(CPU_MK22FN128VMP10) || defined(MK22F12810))
+	#define K22F12810_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK22F12810.h"
+	/* CPU specific feature definitions */
+	#include "MK22F12810_features.h"
+#elif (defined(CPU_MK22FN128CAH12) || defined(CPU_MK22FN256CAH12) || defined(CPU_MK22FN256VDC12) || \
+    defined(CPU_MK22FN256VLH12) || defined(CPU_MK22FN256VLL12) || defined(CPU_MK22FN256VMP12) || defined(MK22F25612))
+	#define K22F25612_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK22F25612.h"
+	/* CPU specific feature definitions */
+	#include "MK22F25612_features.h"
 #elif (defined(CPU_MK22FN512CAP12) || defined(CPU_MK22FN512VDC12) || defined(CPU_MK22FN512VFX12) || \
 	defined(CPU_MK22FN512VLH12) || defined(CPU_MK22FN512VLL12) || defined(CPU_MK22FN512VMP12) || defined(MK22F51212))
 	#define K22F51212_SERIES
@@ -59,12 +128,75 @@
 	#include "MK22F51212.h"
 	/* CPU specific feature definitions */
 	#include "MK22F51212_features.h"
+#elif (defined(CPU_MK22FN1M0AVLH12) || defined(CPU_MK22FN1M0AVLK12) || defined(CPU_MK22FN1M0AVLL12) || \
+	defined(CPU_MK22FN1M0AVLQ12) || defined(CPU_MK22FN1M0AVMC12) || defined(CPU_MK22FN1M0AVMD12) || \
+	defined(CPU_MK22FX512AVLH12) || defined(CPU_MK22FX512AVLK12) || defined(CPU_MK22FX512AVLL12) || \
+	defined(CPU_MK22FX512AVLQ12) || defined(CPU_MK22FX512AVMC12) || defined(CPU_MK22FX512AVMD12) || defined(MK22FA12))
+	#define K22FA12_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK22FA12.h"
+	/* CPU specific feature definitions */
+	#include "MK22FA12_features.h"
+#elif (defined(CPU_MK24FN1M0CAJ12) || defined(CPU_MK24FN1M0VDC12) || defined(CPU_MK24FN1M0VLL12) || \
+	defined(CPU_MK24FN1M0VLQ12) || defined(MK24F12))
+	#define K24F12_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK24F12.h"
+	/* CPU specific feature definitions */
+	#include "MK24F12_features.h"
+#elif (defined(CPU_MK24FN256VDC12) || defined(MK24F25612))
+	#define K24F25612_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK24F25612.h"
+	/* CPU specific feature definitions */
+	#include "MK24F25612_features.h"
+#elif (defined(CPU_MK26FN2M0CAC18) || defined(CPU_MK26FN2M0VLQ18) || defined(CPU_MK26FN2M0VMD18) || \
+	defined(CPU_MK26FN2M0VMI18) || defined(MK26F18))
+	#define K26F18_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK26F18.h"
+	/* CPU specific feature definitions */
+	#include "MK26F18_features.h"
+#elif (defined(CPU_MK27FN2M0VMI15) || defined(MK27F15))
+	#define K27F15_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK27F15.h"
+	/* CPU specific feature definitions */
+	#include "MK27F15_features.h"
+#elif (defined(CPU_MK27FN2M0AVMI15) || defined(MK27FA15))
+	#define K27FA15_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK27FA15.h"
+	/* CPU specific feature definitions */
+	#include "MK27FA15_features.h"
 #elif (defined(CPU_MK28FN2M0CAU15R) || defined(CPU_MK28FN2M0VMI15) || defined(MK28F15))
 	#define K28F15_SERIES
 	/* CMSIS-style register definitions */
 	#include "MK28F15.h"
 	/* CPU specific feature definitions */
 	#include "MK28F15_features.h"
+#elif (defined(CPU_MK28FN2M0ACAU15R) || defined(CPU_MK28FN2M0AVMI15) || defined(MK28FA15))
+	#define K28FA15_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK28FA15.h"
+	/* CPU specific feature definitions */
+	#include "MK28FA15_features.h"
+#elif (defined(CPU_MK30DN512VLK10) || defined(CPU_MK30DN512VLL10) || defined(CPU_MK30DN512VLQ10) || \
+	defined(CPU_MK30DN512VMC10) || defined(CPU_MK30DN512VMD10) || defined(CPU_MK30DX128VLQ10) || \
+	defined(CPU_MK30DX128VMD10) || defined(CPU_MK30DX256VLQ10) || defined(CPU_MK30DX256VMD10) || defined(MK30D10))
+	#define K30D10_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK30D10.h"
+	/* CPU specific feature definitions */
+	#include "MK30D10_features.h"
+#elif (defined(CPU_MK40DN512VLK10) || defined(CPU_MK40DN512VLL10) || defined(CPU_MK40DN512VLQ10) || \
+	defined(CPU_MK40DN512VMC10) || defined(CPU_MK40DN512VMD10) || defined(CPU_MK40DX128VLQ10) || \
+	defined(CPU_MK40DX128VMD10) || defined(CPU_MK40DX256VLQ10) || defined(CPU_MK40DX256VMD10) || defined(MK40D10))
+	#define K40D10_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK40D10.h"
+	/* CPU specific feature definitions */
+	#include "MK40D10_features.h"
 #elif (defined(CPU_MK60DN256VLL10) || defined(CPU_MK60DN256VLQ10) || defined(CPU_MK60DN256VMC10) || \
 	defined(CPU_MK60DN256VMD10) || defined(CPU_MK60DN512VLL10) || defined(CPU_MK60DN512VLQ10) || \
 	defined(CPU_MK60DN512VMC10) || defined(CPU_MK60DN512VMD10) || defined(CPU_MK60DX256VLL10) || \
