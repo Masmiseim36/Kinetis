@@ -1084,6 +1084,11 @@
         <file file_name="targets/Kinetis/CMSIS/MK66F18_features.h" />
         <file file_name="targets/Kinetis/CMSIS/MK80F25615_features.h" />
         <file file_name="targets/Kinetis/CMSIS/MK82F25615_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK50D10_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK51D10_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK52D10_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK53D10_features.h" />
+        <file file_name="targets/Kinetis/CMSIS/MK63F12_features.h" />
       </folder>
     </folder>
   </project>

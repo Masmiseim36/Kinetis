@@ -197,6 +197,35 @@
 	#include "MK40D10.h"
 	/* CPU specific feature definitions */
 	#include "MK40D10_features.h"
+#elif (defined(CPU_MK50DN512CLL10) || defined(CPU_MK50DN512CLQ10) || defined(CPU_MK50DN512CMC10) || \
+	defined(CPU_MK50DN512CMD10) || defined(CPU_MK50DX256CLK10) || defined(CPU_MK50DX256CLL10) || \
+	defined(CPU_MK50DX256CMC10) || defined(CPU_MK50DX256CMD10))
+	#define K50D10_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK50D10.h"
+	/* CPU specific feature definitions */
+	#include "MK50D10_features.h"
+#elif (defined(CPU_MK51DN256CLQ10) || defined(CPU_MK51DN256CMD10) || defined(CPU_MK51DN512CLL10) || \
+	defined(CPU_MK51DN512CLQ10) || defined(CPU_MK51DN512CMC10) || defined(CPU_MK51DN512CMD10) || \
+	defined(CPU_MK51DX256CLK10) || defined(CPU_MK51DX256CLL10) || defined(CPU_MK51DX256CMC10))
+	#define K51D10_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK51D10.h"
+	/* CPU specific feature definitions */
+	#include "MK51D10_features.h"
+#elif (defined(CPU_MK52DN512CLQ10) || defined(CPU_MK52DN512CMD10))
+	#define K52D10_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK52D10.h"
+	/* CPU specific feature definitions */
+	#include "MK52D10_features.h"
+#elif (defined(CPU_MK53DN512CLQ10) || defined(CPU_MK53DN512CMD10) || defined(CPU_MK53DX256CLQ10) || \
+	defined(CPU_MK53DX256CMD10))
+	#define K53D10_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK53D10.h"
+	/* CPU specific feature definitions */
+	#include "MK53D10_features.h"
 #elif (defined(CPU_MK60DN256VLL10) || defined(CPU_MK60DN256VLQ10) || defined(CPU_MK60DN256VMC10) || \
 	defined(CPU_MK60DN256VMD10) || defined(CPU_MK60DN512VLL10) || defined(CPU_MK60DN512VLQ10) || \
 	defined(CPU_MK60DN512VMC10) || defined(CPU_MK60DN512VMD10) || defined(CPU_MK60DX256VLL10) || \
@@ -206,6 +235,12 @@
 	#include "MK60D10.h"
 	/* CPU specific feature definitions */
 	#include "MK60D10_features.h"
+#elif (defined(CPU_MK63FN1M0VLQ12) || defined(CPU_MK63FN1M0VMD12))
+	#define K63F12_SERIES
+	/* CMSIS-style register definitions */
+	#include "MK63F12.h"
+	/* CPU specific feature definitions */
+	#include "MK63F12_features.h"
 #elif (defined(CPU_MK64FN1M0CAJ12) || defined(CPU_MK64FN1M0VDC12) || defined(CPU_MK64FN1M0VLL12) || \
 	defined(CPU_MK64FN1M0VLQ12) || defined(CPU_MK64FN1M0VMD12) || defined(CPU_MK64FX512VDC12) || \
 	defined(CPU_MK64FX512VLL12) || defined(CPU_MK64FX512VLQ12) || defined(CPU_MK64FX512VMD12) || defined(MK64F12))

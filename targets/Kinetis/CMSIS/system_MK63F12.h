@@ -1,24 +1,31 @@
 /*
 ** ###################################################################
-**     Processor:           MK63FN1M0VMD12
-**     Compilers:           ARM Compiler
-**                          Freescale C/C++ for Embedded ARM
+**     Processors:          MK63FN1M0VLQ12
+**                          MK63FN1M0VMD12
+**
+**     Compilers:           Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          Keil ARM C/C++ Compiler
+**                          MCUXpresso Compiler
 **
 **     Reference manual:    K63P144M120SF5RM, Rev.2, January 2014
-**     Version:             rev. 2.3, 2014-01-24
+**     Version:             rev. 2.7, 2015-02-19
+**     Build:               b181105
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2014 Freescale, Inc. All Rights Reserved.
+**     Copyright 2016 Freescale Semiconductor, Inc.
+**     Copyright 2016-2018 NXP
+**     All rights reserved.
 **
-**     http:                 www.freescale.com
-**     mail:                 support@freescale.com
+**     SPDX-License-Identifier: BSD-3-Clause
+**
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
 **     Revisions:
 **     - rev. 1.0 (2013-05-03)
@@ -30,7 +37,7 @@
 **         System initialization updated.
 **         MCG - registers updated.
 **         PORTA, PORTB, PORTC, PORTE - registers for digital filter removed.
-**     - rev. 2.1 (2013-10-29)
+**     - rev. 2.1 (2013-10-30)
 **         Definition of BITBAND macros updated to support peripherals with 32-bit acces disabled.
 **     - rev. 2.2 (2013-12-09)
 **         DMA - EARS register removed.
@@ -38,14 +45,25 @@
 **     - rev. 2.3 (2014-01-24)
 **         Update according to reference manual rev. 2
 **         ENET, MCG, MCM, SIM, USB - registers updated
+**     - rev. 2.4 (2014-02-10)
+**         The declaration of clock configurations has been moved to separate header file system_MK63F12.h
+**         Update of SystemInit() and SystemCoreClockUpdate() functions.
+**         Module access macro module_BASES replaced by module_BASE_PTRS.
+**     - rev. 2.5 (2014-08-28)
+**         Update of system files - default clock configuration changed.
+**         Update of startup files - possibility to override DefaultISR added.
+**     - rev. 2.6 (2014-10-14)
+**         Interrupt INT_LPTimer renamed to INT_LPTMR0, interrupt INT_Watchdog renamed to INT_WDOG_EWM.
+**     - rev. 2.7 (2015-02-19)
+**         Renamed interrupt vector LLW to LLWU.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MK63F12
- * @version 2.3
- * @date 2014-01-24
+ * @version 2.7
+ * @date 2015-02-19
  * @brief Device specific configuration file for MK63F12 (header file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -53,14 +71,38 @@
  * (PLL) that is part of the microcontroller device.
  */
 
-#ifndef SYSTEM_MK63F12_H_
-#define SYSTEM_MK63F12_H_                        /**< Symbol preventing repeated inclusion */
+#ifndef _SYSTEM_MK63F12_H_
+#define _SYSTEM_MK63F12_H_                       /**< Symbol preventing repeated inclusion */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include <stdint.h>
+
+
+#ifndef DISABLE_WDOG
+  #define DISABLE_WDOG                 1
+#endif
+
+/* Define clock source values */
+
+#define CPU_XTAL_CLK_HZ                50000000u           /* Value of the external crystal or oscillator clock frequency in Hz */
+#define CPU_XTAL32k_CLK_HZ             32768u              /* Value of the external 32k crystal or oscillator clock frequency in Hz */
+#define CPU_INT_SLOW_CLK_HZ            32768u              /* Value of the slow internal oscillator clock frequency in Hz  */
+#define CPU_INT_FAST_CLK_HZ            4000000u            /* Value of the fast internal oscillator clock frequency in Hz  */
+#define CPU_INT_IRC_CLK_HZ             48000000u           /* Value of the 48M internal oscillator clock frequency in Hz  */
+
+/* RTC oscillator setting */
+/* RTC_CR: SC2P=0,SC4P=0,SC8P=0,SC16P=0,CLKO=1,OSCE=1,WPS=0,UM=0,SUP=0,WPE=0,SWR=0 */
+#define SYSTEM_RTC_CR_VALUE            0x0300U             /* RTC_CR */
+
+/* Low power mode enable */
+/* SMC_PMPROT: AVLP=1,ALLS=1,AVLLS=1 */
+#define SYSTEM_SMC_PMPROT_VALUE        0x2AU               /* SMC_PMPROT */
+
+#define DEFAULT_SYSTEM_CLOCK           20971520u           /* Default System clock value */
+
 
 /**
  * @brief System clock frequency (core clock)
@@ -91,8 +133,20 @@ void SystemInit (void);
  */
 void SystemCoreClockUpdate (void);
 
+/**
+ * @brief SystemInit function hook.
+ *
+ * This weak function allows to call specific initialization code during the
+ * SystemInit() execution.This can be used when an application specific code needs
+ * to be called as close to the reset entry as possible (for example the Multicore
+ * Manager MCMGR_EarlyInit() function call).
+ * NOTE: No global r/w variables can be used in this hook function because the
+ * initialization of these variables happens after this function.
+ */
+void SystemInitHook (void);
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* #if !defined(SYSTEM_MK63F12_H_) */
+#endif  /* _SYSTEM_MK63F12_H_ */

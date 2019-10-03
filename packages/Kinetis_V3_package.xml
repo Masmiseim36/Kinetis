@@ -438,6 +438,8 @@
   <history>
     <version name="3.11">
       <description>Added System_xxx.h/.c files to new created projects</description>
+      <description>Update CMSIS-Files</description>
+      <description>Added support for MK27A and MK28A devices.</description>
     </version>
     <version name="3.10">
       <description>Added support for KE14Z4, KE15Z4 and KE16Z4 devices.</description>
