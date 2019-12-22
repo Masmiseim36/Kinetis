@@ -3896,7 +3896,7 @@
     </groupEntry>
     <groupEntry name="MKV10Z128xxx7" family="KV1x">
       <cdefine value="MKV10Z128xxx7" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKV10Z7" />
+      <cdefine value="1" name="MKV10Z128" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z128xxx7_MemoryMap.xml" />
       <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV10Z7_Peripherals.xml" />
       <property name="macros" value="DeviceName=MKV10Z7" />

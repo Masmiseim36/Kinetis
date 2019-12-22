@@ -26,12 +26,12 @@
 ** ###################################################################
 */
 
-#ifndef _MKV58F24_FEATURES_H_
-#define _MKV58F24_FEATURES_H_
+#ifndef _MKV56F24_FEATURES_H_
+#define _MKV56F24_FEATURES_H_
 
 /* SOC module features */
 
-#if defined(CPU_MKV58F1M0VLL24) || defined(CPU_MKV58F512VLL24)
+#if defined(CPU_MKV56F1M0VLL24) || defined(CPU_MKV56F512VLL24)
     /* @brief ADC16 availability on the SoC. */
     #define FSL_FEATURE_SOC_ADC16_COUNT (1)
     /* @brief AIPS availability on the SoC. */
@@ -41,7 +41,7 @@
     /* @brief AXBS availability on the SoC. */
     #define FSL_FEATURE_SOC_AXBS_COUNT (1)
     /* @brief FLEXCAN availability on the SoC. */
-    #define FSL_FEATURE_SOC_FLEXCAN_COUNT (3)
+    #define FSL_FEATURE_SOC_FLEXCAN_COUNT (2)
     /* @brief MMCAU availability on the SoC. */
     #define FSL_FEATURE_SOC_MMCAU_COUNT (1)
     /* @brief CMP availability on the SoC. */
@@ -58,8 +58,6 @@
     #define FSL_FEATURE_SOC_DSPI_COUNT (3)
     /* @brief ENC availability on the SoC. */
     #define FSL_FEATURE_SOC_ENC_COUNT (1)
-    /* @brief ENET availability on the SoC. */
-    #define FSL_FEATURE_SOC_ENET_COUNT (1)
     /* @brief EWM availability on the SoC. */
     #define FSL_FEATURE_SOC_EWM_COUNT (1)
     /* @brief FB availability on the SoC. */
@@ -120,7 +118,7 @@
     #define FSL_FEATURE_SOC_XBARA_COUNT (1)
     /* @brief XBARB availability on the SoC. */
     #define FSL_FEATURE_SOC_XBARB_COUNT (1)
-#elif defined(CPU_MKV58F1M0VLQ24) || defined(CPU_MKV58F1M0VMD24) || defined(CPU_MKV58F512VLQ24) || defined(CPU_MKV58F512VMD24)
+#elif defined(CPU_MKV56F1M0VLQ24) || defined(CPU_MKV56F1M0VMD24) || defined(CPU_MKV56F512VLQ24) || defined(CPU_MKV56F512VMD24)
     /* @brief ADC16 availability on the SoC. */
     #define FSL_FEATURE_SOC_ADC16_COUNT (1)
     /* @brief AIPS availability on the SoC. */
@@ -130,7 +128,7 @@
     /* @brief AXBS availability on the SoC. */
     #define FSL_FEATURE_SOC_AXBS_COUNT (1)
     /* @brief FLEXCAN availability on the SoC. */
-    #define FSL_FEATURE_SOC_FLEXCAN_COUNT (3)
+    #define FSL_FEATURE_SOC_FLEXCAN_COUNT (2)
     /* @brief MMCAU availability on the SoC. */
     #define FSL_FEATURE_SOC_MMCAU_COUNT (1)
     /* @brief CMP availability on the SoC. */
@@ -147,8 +145,6 @@
     #define FSL_FEATURE_SOC_DSPI_COUNT (3)
     /* @brief ENC availability on the SoC. */
     #define FSL_FEATURE_SOC_ENC_COUNT (1)
-    /* @brief ENET availability on the SoC. */
-    #define FSL_FEATURE_SOC_ENET_COUNT (1)
     /* @brief EWM availability on the SoC. */
     #define FSL_FEATURE_SOC_EWM_COUNT (1)
     /* @brief FB availability on the SoC. */
@@ -349,17 +345,6 @@
 
 /* No feature definitions */
 
-/* ENET module features */
-
-/* @brief Has buffer descriptor byte swapping (register bit field ECR[DBSWP]). */
-#define FSL_FEATURE_ENET_DMA_BIG_ENDIAN_ONLY (0)
-/* @brief Has precision time protocol (IEEE 1588) support (register bit field ECR[EN1588], registers ATCR, ATVR, ATOFF, ATPER, ATCOR, ATINC, ATSTMP). */
-#define FSL_FEATURE_ENET_SUPPORT_PTP (1)
-/* @brief Number of associated interrupt vectors. */
-#define FSL_FEATURE_ENET_INTERRUPT_COUNT (4)
-/* @brief Has threshold for the number of frames in the receive FIFO (register bit field RSEM[STAT_SECTION_EMPTY]). */
-#define FSL_FEATURE_ENET_HAS_RECEIVE_STATUS_THRESHOLD (1)
-
 /* EWM module features */
 
 /* @brief Has clock select (register CLKCTRL). */
@@ -373,7 +358,7 @@
 
 /* FLASH module features */
 
-#if defined(CPU_MKV58F1M0VLL24) || defined(CPU_MKV58F1M0VLQ24) || defined(CPU_MKV58F1M0VMD24)
+#if defined(CPU_MKV56F1M0VLL24) || defined(CPU_MKV56F1M0VLQ24) || defined(CPU_MKV56F1M0VMD24)
     /* @brief Is of type FTFA. */
     #define FSL_FEATURE_FLASH_IS_FTFA (0)
     /* @brief Is of type FTFE. */
@@ -566,7 +551,7 @@
     #define FSL_FEATURE_FLASH_FLEX_NVM_EEPROM_SIZE_FOR_EEESIZE_1110 (0xFFFF)
     /* @brief Emulated eeprom size code 1111 mapping to emulated eeprom size in bytes (0xFFFF = reserved). */
     #define FSL_FEATURE_FLASH_FLEX_NVM_EEPROM_SIZE_FOR_EEESIZE_1111 (0x0000)
-#elif defined(CPU_MKV58F512VLL24) || defined(CPU_MKV58F512VLQ24) || defined(CPU_MKV58F512VMD24)
+#elif defined(CPU_MKV56F512VLL24) || defined(CPU_MKV56F512VLQ24) || defined(CPU_MKV56F512VMD24)
     /* @brief Is of type FTFA. */
     #define FSL_FEATURE_FLASH_IS_FTFA (0)
     /* @brief Is of type FTFE. */
@@ -759,7 +744,7 @@
     #define FSL_FEATURE_FLASH_FLEX_NVM_EEPROM_SIZE_FOR_EEESIZE_1110 (0xFFFF)
     /* @brief Emulated eeprom size code 1111 mapping to emulated eeprom size in bytes (0xFFFF = reserved). */
     #define FSL_FEATURE_FLASH_FLEX_NVM_EEPROM_SIZE_FOR_EEESIZE_1111 (0x0000)
-#endif /* defined(CPU_MKV58F1M0VLL24) || defined(CPU_MKV58F1M0VLQ24) || defined(CPU_MKV58F1M0VMD24) */
+#endif /* defined(CPU_MKV56F1M0VLL24) || defined(CPU_MKV56F1M0VLQ24) || defined(CPU_MKV56F1M0VMD24) */
 
 /* FTM module features */
 
@@ -822,7 +807,7 @@
 
 /* LLWU module features */
 
-#if defined(CPU_MKV58F1M0VLL24) || defined(CPU_MKV58F512VLL24)
+#if defined(CPU_MKV56F1M0VLL24) || defined(CPU_MKV56F512VLL24)
     /* @brief Maximum number of pins (maximal index plus one) connected to LLWU device. */
     #define FSL_FEATURE_LLWU_HAS_EXTERNAL_PIN (22)
     /* @brief Has pins 8-15 connected to LLWU device. */
@@ -1055,7 +1040,7 @@
     #define FSL_FEATURE_LLWU_REG_BITWIDTH (8)
     /* @brief Has DMA Enable register (LLWU_DE). */
     #define FSL_FEATURE_LLWU_HAS_DMA_ENABLE_REG (0)
-#elif defined(CPU_MKV58F1M0VLQ24) || defined(CPU_MKV58F1M0VMD24) || defined(CPU_MKV58F512VLQ24) || defined(CPU_MKV58F512VMD24)
+#elif defined(CPU_MKV56F1M0VLQ24) || defined(CPU_MKV56F1M0VMD24) || defined(CPU_MKV56F512VLQ24) || defined(CPU_MKV56F512VMD24)
     /* @brief Maximum number of pins (maximal index plus one) connected to LLWU device. */
     #define FSL_FEATURE_LLWU_HAS_EXTERNAL_PIN (26)
     /* @brief Has pins 8-15 connected to LLWU device. */
@@ -1288,7 +1273,7 @@
     #define FSL_FEATURE_LLWU_REG_BITWIDTH (8)
     /* @brief Has DMA Enable register (LLWU_DE). */
     #define FSL_FEATURE_LLWU_HAS_DMA_ENABLE_REG (0)
-#endif /* defined(CPU_MKV58F1M0VLL24) || defined(CPU_MKV58F512VLL24) */
+#endif /* defined(CPU_MKV56F1M0VLL24) || defined(CPU_MKV56F512VLL24) */
 
 /* LPTMR module features */
 
@@ -1382,7 +1367,7 @@
 /* @brief Lowest interrupt request number. */
 #define FSL_FEATURE_INTERRUPT_IRQ_MIN (-14)
 /* @brief Highest interrupt request number. */
-#define FSL_FEATURE_INTERRUPT_IRQ_MAX (120)
+#define FSL_FEATURE_INTERRUPT_IRQ_MAX (114)
 
 /* OSC module features */
 
@@ -1879,7 +1864,7 @@
 
 /* UART module features */
 
-#if defined(CPU_MKV58F1M0VLL24) || defined(CPU_MKV58F512VLL24)
+#if defined(CPU_MKV56F1M0VLL24) || defined(CPU_MKV56F512VLL24)
     /* @brief Has receive FIFO overflow detection (bit field CFIFO[RXOFE]). */
     #define FSL_FEATURE_UART_HAS_IRQ_EXTENDED_FUNCTIONS (1)
     /* @brief Has low power features (can be enabled in wait mode via register bit C1[DOZEEN] or CTRL[DOZEEN] if the registers are 32-bit wide). */
@@ -1939,7 +1924,7 @@
     #define FSL_FEATURE_UART_HAS_WAIT_MODE_OPERATION (1)
     /* @brief Has separate DMA RX and TX requests. */
     #define FSL_FEATURE_UART_HAS_SEPARATE_DMA_RX_TX_REQn(x) (1)
-#elif defined(CPU_MKV58F1M0VLQ24) || defined(CPU_MKV58F1M0VMD24) || defined(CPU_MKV58F512VLQ24) || defined(CPU_MKV58F512VMD24)
+#elif defined(CPU_MKV56F1M0VLQ24) || defined(CPU_MKV56F1M0VMD24) || defined(CPU_MKV56F512VLQ24) || defined(CPU_MKV56F512VMD24)
     /* @brief Has receive FIFO overflow detection (bit field CFIFO[RXOFE]). */
     #define FSL_FEATURE_UART_HAS_IRQ_EXTENDED_FUNCTIONS (1)
     /* @brief Has low power features (can be enabled in wait mode via register bit C1[DOZEEN] or CTRL[DOZEEN] if the registers are 32-bit wide). */
@@ -2000,7 +1985,7 @@
     #define FSL_FEATURE_UART_HAS_WAIT_MODE_OPERATION (1)
     /* @brief Has separate DMA RX and TX requests. */
     #define FSL_FEATURE_UART_HAS_SEPARATE_DMA_RX_TX_REQn(x) (1)
-#endif /* defined(CPU_MKV58F1M0VLL24) || defined(CPU_MKV58F512VLL24) */
+#endif /* defined(CPU_MKV56F1M0VLL24) || defined(CPU_MKV56F512VLL24) */
 
 /* WDOG module features */
 
@@ -4089,5 +4074,5 @@
 /* @brief XBARB output 127 ID. */
 #define FSL_FEATURE_XBARB_OUTPUT127_ID (XBARB_OUT_RESERVED127)
 
-#endif /* _MKV58F24_FEATURES_H_ */
+#endif /* _MKV56F24_FEATURES_H_ */
 
