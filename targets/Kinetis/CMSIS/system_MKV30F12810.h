@@ -1,42 +1,57 @@
 /*
 ** ###################################################################
 **     Processors:          MKV30F128VFM10
-**                          MKV30F64VFM10
 **                          MKV30F128VLF10
-**                          MKV30F64VLF10
 **                          MKV30F128VLH10
+**                          MKV30F64VFM10
+**                          MKV30F64VLF10
 **                          MKV30F64VLH10
 **
-**     Compilers:           ARM Compiler
-**                          Freescale C/C++ for Embedded ARM
+**     Compilers:           Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          Keil ARM C/C++ Compiler
+**                          MCUXpresso Compiler
 **
 **     Reference manual:    KV30P64M100SFARM, Rev. 0, February 14, 2014
-**     Version:             rev. 0.1, 2014-02-24
+**     Version:             rev. 0.5, 2015-02-19
+**     Build:               b181105
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2014 Freescale, Inc. All Rights Reserved.
+**     Copyright 2016 Freescale Semiconductor, Inc.
+**     Copyright 2016-2018 NXP
+**     All rights reserved.
 **
-**     http:                 www.freescale.com
-**     mail:                 support@freescale.com
+**     SPDX-License-Identifier: BSD-3-Clause
+**
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
 **     Revisions:
 **     - rev. 0.1 (2014-02-24)
 **         Initial version
+**     - rev. 0.2 (2014-07-15)
+**         Module access macro module_BASES replaced by module_BASE_PTRS.
+**         Update of system and startup files.
+**     - rev. 0.3 (2014-08-28)
+**         Update of system files - default clock configuration changed.
+**         Update of startup files - possibility to override DefaultISR added.
+**     - rev. 0.4 (2014-10-14)
+**         Interrupt INT_LPTimer renamed to INT_LPTMR0, interrupt INT_Watchdog renamed to INT_WDOG_EWM.
+**     - rev. 0.5 (2015-02-19)
+**         Renamed interrupt vector LLW to LLWU.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKV30F12810
- * @version 0.1
- * @date 2014-02-24
+ * @version 0.5
+ * @date 2015-02-19
  * @brief Device specific configuration file for MKV30F12810 (header file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -44,8 +59,8 @@
  * (PLL) that is part of the microcontroller device.
  */
 
-#ifndef SYSTEM_MKV30F12810_H_
-#define SYSTEM_MKV30F12810_H_                    /**< Symbol preventing repeated inclusion */
+#ifndef _SYSTEM_MKV30F12810_H_
+#define _SYSTEM_MKV30F12810_H_                   /**< Symbol preventing repeated inclusion */
 
 #ifdef __cplusplus
 extern "C" {
@@ -54,51 +69,26 @@ extern "C" {
 #include <stdint.h>
 
 
-#define DISABLE_WDOG    1
-
-#ifndef CLOCK_SETUP
-  #define CLOCK_SETUP     0
+#ifndef DISABLE_WDOG
+  #define DISABLE_WDOG                 1
 #endif
-
-/* Predefined clock setups
-   0 ... Default  part configuration
-         Multipurpose Clock Generator (MCG) in FEI mode.
-         Reference clock source for MCG module: Slow internal reference clock
-         Core clock = 20.97152MHz
-         Bus clock  = 20.97152MHz
-   1 ... Maximum achievable clock frequency configuration
-         Multipurpose Clock Generator (MCG) in FEE mode.
-         Reference clock source for MCG module: System oscillator 0 reference clock
-         Core clock = 80MHz
-         Bus clock  = 40MHz
-   2 ... Internally clocked, ready for Very Low Power Run mode.
-         Multipurpose Clock Generator (MCG) in BLPI mode.
-         Reference clock source for MCG module: Fast internal reference clock
-         Core clock = 4MHz
-         Bus clock  = 4MHz
-   3 ... Externally clocked, ready for Very Low Power Run mode.
-         Multipurpose Clock Generator (MCG) in BLPE mode.
-         Reference clock source for MCG module: System oscillator 0 reference clock
-         Core clock = 4MHz
-         Bus clock  = 4MHz
- */
 
 /* Define clock source values */
 
-#define CPU_XTAL_CLK_HZ                 8000000u   /* Value of the external crystal or oscillator clock frequency in Hz */
-#define CPU_INT_SLOW_CLK_HZ             32768u   /* Value of the slow internal oscillator clock frequency in Hz  */
-#define CPU_INT_FAST_CLK_HZ             4000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-#define CPU_INT_IRC_CLK_HZ              48000000u /* Value of the 48M internal oscillator clock frequency in Hz  */
+#define CPU_XTAL_CLK_HZ                8000000u            /* Value of the external crystal or oscillator clock frequency in Hz */
+#define CPU_XTAL32k_CLK_HZ             0u                  /* No RTC clock available */
+#define CPU_INT_SLOW_CLK_HZ            32768u              /* Value of the slow internal oscillator clock frequency in Hz  */
+#define CPU_INT_FAST_CLK_HZ            4000000u            /* Value of the fast internal oscillator clock frequency in Hz  */
+#define CPU_INT_IRC_CLK_HZ             48000000u           /* Value of the 48M internal oscillator clock frequency in Hz  */
 
-#if (CLOCK_SETUP == 0)
-    #define DEFAULT_SYSTEM_CLOCK            20971520u /* Default System clock value */
-#elif (CLOCK_SETUP == 1)
-  #define DEFAULT_SYSTEM_CLOCK            80000000u /* Default System clock value */
-#elif (CLOCK_SETUP == 2)
-    #define DEFAULT_SYSTEM_CLOCK            4000000u /* Default System clock value */
-#elif (CLOCK_SETUP == 3)
-  #define DEFAULT_SYSTEM_CLOCK            4000000u /* Default System clock value */
-#endif
+/* RTC oscillator setting */
+
+/* Low power mode enable */
+/* SMC_PMPROT: AHSRUN=1,AVLP=1,ALLS=1,AVLLS=1 */
+#define SYSTEM_SMC_PMPROT_VALUE        0xAAU               /* SMC_PMPROT */
+
+#define DEFAULT_SYSTEM_CLOCK           20971520u           /* Default System clock value */
+
 
 /**
  * @brief System clock frequency (core clock)
@@ -129,8 +119,20 @@ void SystemInit (void);
  */
 void SystemCoreClockUpdate (void);
 
+/**
+ * @brief SystemInit function hook.
+ *
+ * This weak function allows to call specific initialization code during the
+ * SystemInit() execution.This can be used when an application specific code needs
+ * to be called as close to the reset entry as possible (for example the Multicore
+ * Manager MCMGR_EarlyInit() function call).
+ * NOTE: No global r/w variables can be used in this hook function because the
+ * initialization of these variables happens after this function.
+ */
+void SystemInitHook (void);
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* #if !defined(SYSTEM_MKV30F12810_H_) */
+#endif  /* _SYSTEM_MKV30F12810_H_ */
