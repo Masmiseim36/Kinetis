@@ -1,53 +1,25 @@
 /*
 ** ###################################################################
 **     Processor:           MKW35Z512VHT4
-**     Compilers:           Keil ARM C/C++ Compiler
-**                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
+**     Compilers:           GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          Keil ARM C/C++ Compiler
+**                          MCUXpresso Compiler
 **
-**     Reference manual:    MKW36A512RM Rev. 5, 07/2018
-**     Version:             rev. 1.3, 2018-07-06
-**     Build:               b180706
+**     Reference manual:    MKW36A512RM Rev. 7, 09/2019
+**     Version:             rev. 1.5, 2019-09-10
+**     Build:               b190910
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     The Clear BSD License
 **     Copyright 2016 Freescale Semiconductor, Inc.
-**     Copyright 2016-2018 NXP
+**     Copyright 2016-2019 NXP
 **     All rights reserved.
 **
-**     Redistribution and use in source and binary forms, with or without
-**     modification, are permitted (subject to the limitations in the
-**     disclaimer below) provided that the following conditions are met:
-**
-**     * Redistributions of source code must retain the above copyright
-**       notice, this list of conditions and the following disclaimer.
-**
-**     * Redistributions in binary form must reproduce the above copyright
-**       notice, this list of conditions and the following disclaimer in the
-**       documentation and/or other materials provided with the distribution.
-**
-**     * Neither the name of the copyright holder nor the names of its
-**       contributors may be used to endorse or promote products derived from
-**       this software without specific prior written permission.
-**
-**     NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
-**     GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
-**     HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
-**     WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-**     MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-**     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-**     LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-**     CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-**     SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-**     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-**     WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-**     OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
-**     IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**     SPDX-License-Identifier: BSD-3-Clause
 **
 **     http:                 www.nxp.com
 **     mail:                 support@nxp.com
@@ -63,14 +35,21 @@
 **         RSIM_MISC has been added.
 **     - rev. 1.3 (2018-07-06)
 **         Add FIFO and WATER registers for LPUART.
+**     - rev. 1.4 (2019-01-25)
+**         Add new part MKW35A512VFT4, MKW36A512VFT4.
+**         Add new subset MKW34A which includes part MKW34A512VFT4.
+**     - rev. 1.5 (2019-09-10)
+**         Remove reisters XACCxx, SACCxx, FACSS, FACSN in FTFE.
+**         Remove bitfields BIT1 and BIT3 in MTB.
+**         Remove bitfields ALLOW_DFT_RESETS, IPP_IBE_DFT_RESET and RADIO_DFT_RESET_SEL in RSIM.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKW35Z4
- * @version 1.3
- * @date 2018-07-06
+ * @version 1.5
+ * @date 2019-09-10
  * @brief Device specific configuration file for MKW35Z4 (header file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -104,11 +83,28 @@ extern "C" {
 
 /* Low power mode enable */
 
-/* SMC_PMPROT: ??=0,??=0,AVLP=1,??=0,??=0,??=0,AVLLS=1,??=0 */
+/* SMC_PMPROT: ?=0,?=0,AVLP=1,?=0,?=0,?=0,AVLLS=1,?=0 */
 #define SYSTEM_SMC_PMPROT_VALUE        (SMC_PMPROT_AVLP_MASK | SMC_PMPROT_ALLS_MASK | SMC_PMPROT_AVLLS_MASK) /* Mask of allowed low power modes used to initialize power modes protection register */
 
 #define DEFAULT_SYSTEM_CLOCK           20971520U           /* Default System clock value */
 
+#ifdef SUPPORT_WARMBOOT
+#define DEFAULT_WARMBOOT_SEQUENCE      0x5A5A5A5AU
+#endif
+
+
+#ifdef SUPPORT_WARMBOOT
+/**
+ * @brief Warm boot sequence
+ *
+ * The const variable WARMBOOT_SEQUENCE is added to support warm boot features.
+ * It is stored to WarmbootConfig section before entering into the mode that
+ * support warm boot. And it is used by startup code to check whether it matches what
+ * WarmbootConfig stored or not. If it matches, processor will perform a warm
+ * boot process.
+ */
+extern const uint32_t WARMBOOT_SEQUENCE;
+#endif
 
 /**
  * @brief System clock frequency (core clock)
@@ -138,6 +134,18 @@ void SystemInit (void);
  * the current core clock.
  */
 void SystemCoreClockUpdate (void);
+
+/**
+ * @brief SystemInit function hook.
+ *
+ * This weak function allows to call specific initialization code during the
+ * SystemInit() execution.This can be used when an application specific code needs
+ * to be called as close to the reset entry as possible (for example the Multicore
+ * Manager MCMGR_EarlyInit() function call).
+ * NOTE: No global r/w variables can be used in this hook function because the
+ * initialization of these variables happens after this function.
+ */
+void SystemInitHook (void);
 
 #ifdef __cplusplus
 }
