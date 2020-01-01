@@ -5,19 +5,18 @@
 **
 **     Compilers:           Keil ARM C/C++ Compiler
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          MCUXpresso Compiler
 **
 **     Reference manual:    MKW41Z512RM Rev. 0.1, 04/2016
 **     Version:             rev. 1.0, 2015-09-23
-**     Build:               b160720
+**     Build:               b170112
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MKW21Z4
 **
 **     Copyright (c) 1997 - 2016 Freescale Semiconductor, Inc.
-**     All rights reserved.
-**
+**     Copyright 2016 - 2017 NXP
 **     Redistribution and use in source and binary forms, with or without modification,
 **     are permitted provided that the following conditions are met:
 **
@@ -28,7 +27,7 @@
 **       list of conditions and the following disclaimer in the documentation and/or
 **       other materials provided with the distribution.
 **
-**     o Neither the name of Freescale Semiconductor, Inc. nor the names of its
+**     o Neither the name of the copyright holder nor the names of its
 **       contributors may be used to endorse or promote products derived from this
 **       software without specific prior written permission.
 **
@@ -43,8 +42,8 @@
 **     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 **     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **
-**     http:                 www.freescale.com
-**     mail:                 support@freescale.com
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
 **     Revisions:
 **     - rev. 1.0 (2015-09-23)
@@ -85,6 +84,9 @@
 #define NUMBER_OF_INT_VECTORS 48                 /**< Number of interrupts in the Vector table */
 
 typedef enum IRQn {
+  /* Auxiliary constants */
+  NotAvail_IRQn                = -128,             /**< Not available device specific interrupt */
+
   /* Core interrupts */
   NonMaskableInt_IRQn          = -14,              /**< Non Maskable Interrupt */
   HardFault_IRQn               = -13,              /**< Cortex-M0 SV Hard Fault Interrupt */
@@ -153,6 +155,108 @@ typedef enum IRQn {
 /*!
  * @}
  */ /* end of group Cortex_Core_Configuration */
+
+
+/* ----------------------------------------------------------------------------
+   -- Mapping Information
+   ---------------------------------------------------------------------------- */
+
+/*!
+ * @addtogroup Mapping_Information Mapping Information
+ * @{
+ */
+
+/** Mapping Information */
+/*!
+ * @addtogroup edma_request
+ * @{
+ */
+
+/*******************************************************************************
+ * Definitions
+ ******************************************************************************/
+
+/*!
+ * @brief Structure for the DMA hardware request
+ *
+ * Defines the structure for the DMA hardware request collections. The user can configure the
+ * hardware request into DMAMUX to trigger the DMA transfer accordingly. The index
+ * of the hardware request varies according  to the to SoC.
+ */
+typedef enum _dma_request_source
+{
+    kDmaRequestMux0Disable          = 0|0x100U,    /**< DMAMUX TriggerDisabled. */
+    kDmaRequestMux0Reserved1        = 1|0x100U,    /**< Reserved1 */
+    kDmaRequestMux0LPUART0Rx        = 2|0x100U,    /**< LPUART0 Receive. */
+    kDmaRequestMux0LPUART0Tx        = 3|0x100U,    /**< LPUART0 Transmit. */
+    kDmaRequestMux0Reserved4        = 4|0x100U,    /**< Reserved4 */
+    kDmaRequestMux0Reserved5        = 5|0x100U,    /**< Reserved5 */
+    kDmaRequestMux0Reserved6        = 6|0x100U,    /**< Reserved6 */
+    kDmaRequestMux0Reserved7        = 7|0x100U,    /**< Reserved7 */
+    kDmaRequestMux0Reserved8        = 8|0x100U,    /**< Reserved8 */
+    kDmaRequestMux0Reserved9        = 9|0x100U,    /**< Reserved9 */
+    kDmaRequestMux0Reserved10       = 10|0x100U,   /**< Reserved10 */
+    kDmaRequestMux0Reserved11       = 11|0x100U,   /**< Reserved11 */
+    kDmaRequestMux0Reserved12       = 12|0x100U,   /**< Reserved12 */
+    kDmaRequestMux0Reserved13       = 13|0x100U,   /**< Reserved13 */
+    kDmaRequestMux0Reserved14       = 14|0x100U,   /**< Reserved14 */
+    kDmaRequestMux0Reserved15       = 15|0x100U,   /**< Reserved15 */
+    kDmaRequestMux0SPI0Rx           = 16|0x100U,   /**< SPI0 Receive. */
+    kDmaRequestMux0SPI0Tx           = 17|0x100U,   /**< SPI0 Transmit. */
+    kDmaRequestMux0SPI1Rx           = 18|0x100U,   /**< SPI1 Receive. */
+    kDmaRequestMux0SPI1Tx           = 19|0x100U,   /**< SPI1 Transmit. */
+    kDmaRequestMux0LTC0InputFIFO    = 20|0x100U,   /**< LTC0 Input FIFO. */
+    kDmaRequestMux0LTC0OutputFIFO   = 21|0x100U,   /**< LTC0 Output FIFO. */
+    kDmaRequestMux0I2C0             = 22|0x100U,   /**< I2C0. */
+    kDmaRequestMux0I2C1             = 23|0x100U,   /**< I2C1. */
+    kDmaRequestMux0TPM0Channel0     = 24|0x100U,   /**< TPM0 C0V. */
+    kDmaRequestMux0TPM0Channel1     = 25|0x100U,   /**< TPM0 C1V. */
+    kDmaRequestMux0TPM0Channel2     = 26|0x100U,   /**< TPM0 C2V. */
+    kDmaRequestMux0TPM0Channel3     = 27|0x100U,   /**< TPM0 C3V. */
+    kDmaRequestMux0Reserved28       = 28|0x100U,   /**< Reserved28 */
+    kDmaRequestMux0Reserved29       = 29|0x100U,   /**< Reserved29 */
+    kDmaRequestMux0Reserved30       = 30|0x100U,   /**< Reserved30 */
+    kDmaRequestMux0Reserved31       = 31|0x100U,   /**< Reserved31 */
+    kDmaRequestMux0TPM1Channel0     = 32|0x100U,   /**< TPM1 C0V. */
+    kDmaRequestMux0TPM1Channel1     = 33|0x100U,   /**< TPM1 C1V. */
+    kDmaRequestMux0TPM2Channel0     = 34|0x100U,   /**< TPM2 C0V. */
+    kDmaRequestMux0TPM2Channel1     = 35|0x100U,   /**< TPM2 C1V. */
+    kDmaRequestMux0Reserved36       = 36|0x100U,   /**< Reserved36 */
+    kDmaRequestMux0Reserved37       = 37|0x100U,   /**< Reserved37 */
+    kDmaRequestMux0Reserved38       = 38|0x100U,   /**< Reserved38 */
+    kDmaRequestMux0Reserved39       = 39|0x100U,   /**< Reserved39 */
+    kDmaRequestMux0ADC0             = 40|0x100U,   /**< ADC0. */
+    kDmaRequestMux0Reserved41       = 41|0x100U,   /**< Reserved41 */
+    kDmaRequestMux0CMP0             = 42|0x100U,   /**< CMP0. */
+    kDmaRequestMux0Reserved43       = 43|0x100U,   /**< Reserved43 */
+    kDmaRequestMux0Reserved44       = 44|0x100U,   /**< Reserved44 */
+    kDmaRequestMux0DAC0             = 45|0x100U,   /**< DAC0. */
+    kDmaRequestMux0Reserved46       = 46|0x100U,   /**< Reserved46 */
+    kDmaRequestMux0CMT              = 47|0x100U,   /**< CMT. */
+    kDmaRequestMux0Reserved48       = 48|0x100U,   /**< Reserved48 */
+    kDmaRequestMux0PortA            = 49|0x100U,   /**< PTA. */
+    kDmaRequestMux0PortB            = 50|0x100U,   /**< PTB. */
+    kDmaRequestMux0PortC            = 51|0x100U,   /**< PTC. */
+    kDmaRequestMux0Reserved52       = 52|0x100U,   /**< Reserved52 */
+    kDmaRequestMux0Reserved53       = 53|0x100U,   /**< Reserved53 */
+    kDmaRequestMux0TPM0Overflow     = 54|0x100U,   /**< TPM0. */
+    kDmaRequestMux0TPM1Overflow     = 55|0x100U,   /**< TPM1. */
+    kDmaRequestMux0TPM2Overflow     = 56|0x100U,   /**< TPM2. */
+    kDmaRequestMux0TSI0             = 57|0x100U,   /**< TSI0. */
+    kDmaRequestMux0Reserved58       = 58|0x100U,   /**< Reserved58 */
+    kDmaRequestMux0Reserved59       = 59|0x100U,   /**< Reserved59 */
+    kDmaRequestMux0AlwaysOn60       = 60|0x100U,   /**< DMAMUX Always Enabled slot. */
+    kDmaRequestMux0AlwaysOn61       = 61|0x100U,   /**< DMAMUX Always Enabled slot. */
+    kDmaRequestMux0AlwaysOn62       = 62|0x100U,   /**< DMAMUX Always Enabled slot. */
+    kDmaRequestMux0AlwaysOn63       = 63|0x100U,   /**< DMAMUX Always Enabled slot. */
+} dma_request_source_t;
+
+/* @} */
+
+
+/*!
+ * @}
+ */ /* end of group Mapping_Information */
 
 
 /* ----------------------------------------------------------------------------
@@ -434,6 +538,8 @@ typedef struct {
 #define ADC_BASE_ADDRS                           { ADC0_BASE }
 /** Array initializer of ADC peripheral base pointers */
 #define ADC_BASE_PTRS                            { ADC0 }
+/** Interrupt vectors for the ADC peripheral type */
+#define ADC_IRQS                                 { ADC0_IRQn }
 
 /*!
  * @}
@@ -902,6 +1008,8 @@ typedef struct {
 #define CMP_BASE_ADDRS                           { CMP0_BASE }
 /** Array initializer of CMP peripheral base pointers */
 #define CMP_BASE_PTRS                            { CMP0 }
+/** Interrupt vectors for the CMP peripheral type */
+#define CMP_IRQS                                 { CMP0_IRQn }
 
 /*!
  * @}
@@ -1041,6 +1149,8 @@ typedef struct {
 #define CMT_BASE_ADDRS                           { CMT_BASE }
 /** Array initializer of CMT peripheral base pointers */
 #define CMT_BASE_PTRS                            { CMT }
+/** Interrupt vectors for the CMT peripheral type */
+#define CMT_IRQS                                 { CMT_IRQn }
 
 /*!
  * @}
@@ -1168,6 +1278,8 @@ typedef struct {
 #define DAC_BASE_ADDRS                           { DAC0_BASE }
 /** Array initializer of DAC peripheral base pointers */
 #define DAC_BASE_PTRS                            { DAC0 }
+/** Interrupt vectors for the DAC peripheral type */
+#define DAC_IRQS                                 { DAC0_IRQn }
 
 /*!
  * @}
@@ -1946,6 +2058,8 @@ typedef struct {
 #define DMA_BASE_ADDRS                           { DMA_BASE }
 /** Array initializer of DMA peripheral base pointers */
 #define DMA_BASE_PTRS                            { DMA0 }
+/** Interrupt vectors for the DMA peripheral type */
+#define DMA_CHN_IRQS                             { { DMA0_IRQn, DMA1_IRQn, DMA2_IRQn, DMA3_IRQn } }
 
 /*!
  * @}
@@ -2394,6 +2508,8 @@ typedef struct {
 #define FTFA_BASE_ADDRS                          { FTFA_BASE }
 /** Array initializer of FTFA peripheral base pointers */
 #define FTFA_BASE_PTRS                           { FTFA }
+/** Interrupt vectors for the FTFA peripheral type */
+#define FTFA_COMMAND_COMPLETE_IRQS               { FTFA_IRQn }
 
 /*!
  * @}
@@ -3184,6 +3300,8 @@ typedef struct {
 #define I2C_BASE_ADDRS                           { I2C0_BASE, I2C1_BASE }
 /** Array initializer of I2C peripheral base pointers */
 #define I2C_BASE_PTRS                            { I2C0, I2C1 }
+/** Interrupt vectors for the I2C peripheral type */
+#define I2C_IRQS                                 { I2C0_IRQn, I2C1_IRQn }
 
 /*!
  * @}
@@ -3419,6 +3537,8 @@ typedef struct {
 #define LLWU_BASE_ADDRS                          { LLWU_BASE }
 /** Array initializer of LLWU peripheral base pointers */
 #define LLWU_BASE_PTRS                           { LLWU }
+/** Interrupt vectors for the LLWU peripheral type */
+#define LLWU_IRQS                                { LLWU_IRQn }
 
 /*!
  * @}
@@ -3510,6 +3630,8 @@ typedef struct {
 #define LPTMR_BASE_ADDRS                         { LPTMR0_BASE }
 /** Array initializer of LPTMR peripheral base pointers */
 #define LPTMR_BASE_PTRS                          { LPTMR0 }
+/** Interrupt vectors for the LPTMR peripheral type */
+#define LPTMR_IRQS                               { LPTMR0_IRQn }
 
 /*!
  * @}
@@ -3820,6 +3942,9 @@ typedef struct {
 #define LPUART_BASE_ADDRS                        { LPUART0_BASE }
 /** Array initializer of LPUART peripheral base pointers */
 #define LPUART_BASE_PTRS                         { LPUART0 }
+/** Interrupt vectors for the LPUART peripheral type */
+#define LPUART_RX_TX_IRQS                        { LPUART0_IRQn }
+#define LPUART_ERR_IRQS                          { LPUART0_IRQn }
 
 /*!
  * @}
@@ -4089,6 +4214,8 @@ typedef struct {
 #define LTC_BASE_ADDRS                           { LTC0_BASE }
 /** Array initializer of LTC peripheral base pointers */
 #define LTC_BASE_PTRS                            { LTC0 }
+/** Interrupt vectors for the LTC peripheral type */
+#define LTC_IRQS                                 { LTC0_IRQn }
 
 /*!
  * @}
@@ -4270,6 +4397,8 @@ typedef struct {
 #define MCG_BASE_ADDRS                           { MCG_BASE }
 /** Array initializer of MCG peripheral base pointers */
 #define MCG_BASE_PTRS                            { MCG }
+/** Interrupt vectors for the MCG peripheral type */
+#define MCG_IRQS                                 { MCG_IRQn }
 
 /*!
  * @}
@@ -5020,6 +5149,8 @@ typedef struct {
 #define PIT_BASE_ADDRS                           { PIT_BASE }
 /** Array initializer of PIT peripheral base pointers */
 #define PIT_BASE_PTRS                            { PIT }
+/** Interrupt vectors for the PIT peripheral type */
+#define PIT_IRQS                                 { { PIT_IRQn, PIT_IRQn } }
 
 /*!
  * @}
@@ -5111,6 +5242,8 @@ typedef struct {
 #define PMC_BASE_ADDRS                           { PMC_BASE }
 /** Array initializer of PMC peripheral base pointers */
 #define PMC_BASE_PTRS                            { PMC }
+/** Interrupt vectors for the PMC peripheral type */
+#define PMC_IRQS                                 { LVD_LVW_DCDC_IRQn }
 
 /*!
  * @}
@@ -5217,6 +5350,8 @@ typedef struct {
 #define PORT_BASE_ADDRS                          { PORTA_BASE, PORTB_BASE, PORTC_BASE }
 /** Array initializer of PORT peripheral base pointers */
 #define PORT_BASE_PTRS                           { PORTA, PORTB, PORTC }
+/** Interrupt vectors for the PORT peripheral type */
+#define PORT_IRQS                                { PORTA_IRQn, PORTB_PORTC_IRQn, PORTB_PORTC_IRQn }
 
 /*!
  * @}
@@ -6041,6 +6176,9 @@ typedef struct {
 #define RTC_BASE_ADDRS                           { RTC_BASE }
 /** Array initializer of RTC peripheral base pointers */
 #define RTC_BASE_PTRS                            { RTC }
+/** Interrupt vectors for the RTC peripheral type */
+#define RTC_IRQS                                 { RTC_IRQn }
+#define RTC_SECONDS_IRQS                         { RTC_Seconds_IRQn }
 
 /*!
  * @}
@@ -6774,6 +6912,8 @@ typedef struct {
 #define SPI_BASE_ADDRS                           { SPI0_BASE, SPI1_BASE }
 /** Array initializer of SPI peripheral base pointers */
 #define SPI_BASE_PTRS                            { SPI0, SPI1 }
+/** Interrupt vectors for the SPI peripheral type */
+#define SPI_IRQS                                 { SPI0_IRQn, SPI1_IRQn }
 
 /*!
  * @}
@@ -7015,6 +7155,8 @@ typedef struct {
 #define TPM_BASE_ADDRS                           { TPM0_BASE, TPM1_BASE, TPM2_BASE }
 /** Array initializer of TPM peripheral base pointers */
 #define TPM_BASE_PTRS                            { TPM0, TPM1, TPM2 }
+/** Interrupt vectors for the TPM peripheral type */
+#define TPM_IRQS                                 { TPM0_IRQn, TPM1_IRQn, TPM2_IRQn }
 
 /*!
  * @}
@@ -7524,6 +7666,8 @@ typedef struct {
 #define TRNG_BASE_ADDRS                          { TRNG0_BASE }
 /** Array initializer of TRNG peripheral base pointers */
 #define TRNG_BASE_PTRS                           { TRNG0 }
+/** Interrupt vectors for the TRNG peripheral type */
+#define TRNG_IRQS                                { TRNG0_IRQn }
 
 /*!
  * @}
@@ -7639,6 +7783,8 @@ typedef struct {
 #define TSI_BASE_ADDRS                           { TSI0_BASE }
 /** Array initializer of TSI peripheral base pointers */
 #define TSI_BASE_PTRS                            { TSI0 }
+/** Interrupt vectors for the TSI peripheral type */
+#define TSI_IRQS                                 { TSI0_IRQn }
 
 /*!
  * @}
@@ -12739,6 +12885,43 @@ typedef struct {
 /*!
  * @}
  */ /* end of group Peripheral_access_layer */
+
+
+/* ----------------------------------------------------------------------------
+   -- Macros for use with bit field definitions (xxx_SHIFT, xxx_MASK).
+   ---------------------------------------------------------------------------- */
+
+/*!
+ * @addtogroup Bit_Field_Generic_Macros Macros for use with bit field definitions (xxx_SHIFT, xxx_MASK).
+ * @{
+ */
+
+#if defined(__ARMCC_VERSION)
+  #if (__ARMCC_VERSION >= 6010050)
+    #pragma clang system_header
+  #endif
+#elif defined(__IAR_SYSTEMS_ICC__)
+  #pragma system_include
+#endif
+
+/**
+ * @brief Mask and left-shift a bit field value for use in a register bit range.
+ * @param field Name of the register bit field.
+ * @param value Value of the bit field.
+ * @return Masked and shifted value.
+ */
+#define NXP_VAL2FLD(field, value)    (((value) << (field ## _SHIFT)) & (field ## _MASK))
+/**
+ * @brief Mask and right-shift a register value to extract a bit field value.
+ * @param field Name of the register bit field.
+ * @param value Value of the register.
+ * @return Masked and shifted bit field value.
+ */
+#define NXP_FLD2VAL(field, value)    (((value) & (field ## _MASK)) >> (field ## _SHIFT))
+
+/*!
+ * @}
+ */ /* end of group Bit_Field_Generic_Macros */
 
 
 /* ----------------------------------------------------------------------------

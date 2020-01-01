@@ -3,53 +3,25 @@
 **     Processors:          MKW36Z512VFP4
 **                          MKW36Z512VHT4
 **
-**     Compilers:           Keil ARM C/C++ Compiler
-**                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
+**     Compilers:           GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          Keil ARM C/C++ Compiler
+**                          MCUXpresso Compiler
 **
-**     Reference manual:    MKW36A512RM Rev. 5, 07/2018
-**     Version:             rev. 1.3, 2018-07-06
-**     Build:               b180706
+**     Reference manual:    MKW36A512RM Rev. 7, 09/2019
+**     Version:             rev. 1.5, 2019-09-10
+**     Build:               b190910
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     The Clear BSD License
 **     Copyright 2016 Freescale Semiconductor, Inc.
-**     Copyright 2016-2018 NXP
+**     Copyright 2016-2019 NXP
 **     All rights reserved.
 **
-**     Redistribution and use in source and binary forms, with or without
-**     modification, are permitted (subject to the limitations in the
-**     disclaimer below) provided that the following conditions are met:
-**
-**     * Redistributions of source code must retain the above copyright
-**       notice, this list of conditions and the following disclaimer.
-**
-**     * Redistributions in binary form must reproduce the above copyright
-**       notice, this list of conditions and the following disclaimer in the
-**       documentation and/or other materials provided with the distribution.
-**
-**     * Neither the name of the copyright holder nor the names of its
-**       contributors may be used to endorse or promote products derived from
-**       this software without specific prior written permission.
-**
-**     NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
-**     GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
-**     HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
-**     WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-**     MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-**     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-**     LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-**     CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-**     SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-**     BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-**     WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-**     OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
-**     IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**     SPDX-License-Identifier: BSD-3-Clause
 **
 **     http:                 www.nxp.com
 **     mail:                 support@nxp.com
@@ -65,14 +37,21 @@
 **         RSIM_MISC has been added.
 **     - rev. 1.3 (2018-07-06)
 **         Add FIFO and WATER registers for LPUART.
+**     - rev. 1.4 (2019-01-25)
+**         Add new part MKW35A512VFT4, MKW36A512VFT4.
+**         Add new subset MKW34A which includes part MKW34A512VFT4.
+**     - rev. 1.5 (2019-09-10)
+**         Remove reisters XACCxx, SACCxx, FACSS, FACSN in FTFE.
+**         Remove bitfields BIT1 and BIT3 in MTB.
+**         Remove bitfields ALLOW_DFT_RESETS, IPP_IBE_DFT_RESET and RADIO_DFT_RESET_SEL in RSIM.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKW36Z4
- * @version 1.3
- * @date 2018-07-06
+ * @version 1.5
+ * @date 2019-09-10
  * @brief Device specific configuration file for MKW36Z4 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -81,9 +60,17 @@
  */
 
 #include <stdint.h>
-#include "MKW36Z4.h"
+#include "fsl_device_registers.h"
 
 
+
+/* ----------------------------------------------------------------------------
+   -- Variables
+   ---------------------------------------------------------------------------- */
+
+#ifdef SUPPORT_WARMBOOT
+const uint32_t WARMBOOT_SEQUENCE = DEFAULT_WARMBOOT_SEQUENCE;
+#endif
 
 /* ----------------------------------------------------------------------------
    -- Core clock
@@ -102,6 +89,7 @@ void SystemInit (void) {
   SIM->COPC = (uint32_t)0x00u;
 #endif /* (DISABLE_WDOG) */
 
+  SystemInitHook();
 }
 
 /* ----------------------------------------------------------------------------
@@ -168,6 +156,7 @@ void SystemCoreClockUpdate (void) {
         MCGOUTClock *= 2929U;
         break;
       default:
+        MCGOUTClock *= 640U;
         break;
     }
   } else if ((MCG->C1 & MCG_C1_CLKS_MASK) == 0x40U) {
@@ -191,4 +180,12 @@ void SystemCoreClockUpdate (void) {
   } /* (!((MCG->C1 & MCG_C1_CLKS_MASK) == 0x80U)) */
   SystemCoreClock = (MCGOUTClock / (0x01U + ((SIM->CLKDIV1 & SIM_CLKDIV1_OUTDIV1_MASK) >> SIM_CLKDIV1_OUTDIV1_SHIFT)));
 
+}
+
+/* ----------------------------------------------------------------------------
+   -- SystemInitHook()
+   ---------------------------------------------------------------------------- */
+
+__attribute__ ((weak)) void SystemInitHook (void) {
+  /* Void implementation of the weak function. */
 }
