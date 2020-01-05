@@ -8,8 +8,8 @@
 **     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          MCUXpresso Compiler
 **
 **     Reference manual:    KE1xZP48M48SF0RM, Rev. 1, Sep. 2018
 **     Version:             rev. 2.0, 2018-09-17
@@ -33,7 +33,7 @@
 **     - rev. 1.0 (2018-05-09)
 **         Initial version.
 **     - rev. 2.0 (2018-09-17)
-**         Base on rev1 RM.
+**         Based on rev1 RM.
 **
 ** ###################################################################
 */
@@ -106,6 +106,18 @@ void SystemInit (void);
  * the current core clock.
  */
 void SystemCoreClockUpdate (void);
+
+/**
+ * @brief SystemInit function hook.
+ *
+ * This weak function allows to call specific initialization code during the
+ * SystemInit() execution.This can be used when an application specific code needs
+ * to be called as close to the reset entry as possible (for example the Multicore
+ * Manager MCMGR_EarlyInit() function call).
+ * NOTE: No global r/w variables can be used in this hook function because the
+ * initialization of these variables happens after this function.
+ */
+void SystemInitHook (void);
 
 #ifdef __cplusplus
 }

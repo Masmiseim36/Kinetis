@@ -13,7 +13,7 @@
 **
 **     Reference manual:    KE1xZP48M48SF0RM, Rev. 1, Sep. 2018
 **     Version:             rev. 2.0, 2018-09-17
-**     Build:               b180925
+**     Build:               b181126
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MKE14Z4

@@ -6,46 +6,24 @@
 **     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          MCUXpresso Compiler
 **
 **     Reference manual:    MKL28ZRM, Rev. 2, March, 2016
 **     Version:             rev. 1.12, 2015-06-03
-**     Build:               b160511
+**     Build:               b171205
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MKL28Z7
 **
-**     Copyright (c) 1997 - 2016 Freescale Semiconductor, Inc.
+**     Copyright 1997-2016 Freescale Semiconductor, Inc.
+**     Copyright 2016-2017 NXP
 **     All rights reserved.
 **
-**     Redistribution and use in source and binary forms, with or without modification,
-**     are permitted provided that the following conditions are met:
+**     SPDX-License-Identifier: BSD-3-Clause
 **
-**     o Redistributions of source code must retain the above copyright notice, this list
-**       of conditions and the following disclaimer.
-**
-**     o Redistributions in binary form must reproduce the above copyright notice, this
-**       list of conditions and the following disclaimer in the documentation and/or
-**       other materials provided with the distribution.
-**
-**     o Neither the name of Freescale Semiconductor, Inc. nor the names of its
-**       contributors may be used to endorse or promote products derived from this
-**       software without specific prior written permission.
-**
-**     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-**     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-**     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-**     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-**     ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-**     (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-**     LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-**     ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-**     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-**     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-**
-**     http:                 www.freescale.com
-**     mail:                 support@freescale.com
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
 **     Revisions:
 **     - rev. 1.0 (2014-12-29)
@@ -120,6 +98,9 @@
 #define NUMBER_OF_INT_VECTORS 80                 /**< Number of interrupts in the Vector table */
 
 typedef enum IRQn {
+  /* Auxiliary constants */
+  NotAvail_IRQn                = -128,             /**< Not available device specific interrupt */
+
   /* Core interrupts */
   NonMaskableInt_IRQn          = -14,              /**< Non Maskable Interrupt */
   HardFault_IRQn               = -13,              /**< Cortex-M0 SV Hard Fault Interrupt */
@@ -209,7 +190,7 @@ typedef enum IRQn {
  */
 
 #define __CM0PLUS_REV                  0x0000    /**< Core revision r0p0 */
-#define __MPU_PRESENT                  0         /**< Defines if an MPU is present or not */
+#define __MPU_PRESENT                  1         /**< Defines if an MPU is present or not */
 #define __VTOR_PRESENT                 1         /**< Defines if VTOR is present or not */
 #define __NVIC_PRIO_BITS               2         /**< Number of priority bits implemented in the NVIC */
 #define __Vendor_SysTickConfig         0         /**< Vendor specific implementation of SysTickConfig is defined */
@@ -220,6 +201,219 @@ typedef enum IRQn {
 /*!
  * @}
  */ /* end of group Cortex_Core_Configuration */
+
+
+/* ----------------------------------------------------------------------------
+   -- Mapping Information
+   ---------------------------------------------------------------------------- */
+
+/*!
+ * @addtogroup Mapping_Information Mapping Information
+ * @{
+ */
+
+/** Mapping Information */
+/*!
+ * @addtogroup edma_request
+ * @{
+ */
+
+/*******************************************************************************
+ * Definitions
+ ******************************************************************************/
+
+/*!
+ * @brief Structure for the DMA hardware request
+ *
+ * Defines the structure for the DMA hardware request collections. The user can configure the
+ * hardware request into DMAMUX to trigger the DMA transfer accordingly. The index
+ * of the hardware request varies according  to the to SoC.
+ */
+typedef enum _dma_request_source
+{
+    kDmaRequestMux0Disable          = 0|0x100U,    /**< DMAMUX TriggerDisabled. */
+    kDmaRequestMux0FlexIO0Channel0  = 1|0x100U,    /**< FLEXIO0. */
+    kDmaRequestMux0FlexIO0Channel1  = 2|0x100U,    /**< FLEXIO0. */
+    kDmaRequestMux0FlexIO0Channel2  = 3|0x100U,    /**< FLEXIO0. */
+    kDmaRequestMux0FlexIO0Channel3  = 4|0x100U,    /**< FLEXIO0. */
+    kDmaRequestMux0FlexIO0Channel4  = 5|0x100U,    /**< FLEXIO0. */
+    kDmaRequestMux0FlexIO0Channel5  = 6|0x100U,    /**< FLEXIO0. */
+    kDmaRequestMux0FlexIO0Channel6  = 7|0x100U,    /**< FLEXIO0. */
+    kDmaRequestMux0FlexIO0Channel7  = 8|0x100U,    /**< FLEXIO0. */
+    kDmaRequestMux0LPI2C0Rx         = 9|0x100U,    /**< LPI2C0 Receive. */
+    kDmaRequestMux0LPI2C0Tx         = 10|0x100U,   /**< LPI2C0 Transmit. */
+    kDmaRequestMux0LPI2C1Rx         = 11|0x100U,   /**< LPI2C1 Receive. */
+    kDmaRequestMux0LPI2C1Tx         = 12|0x100U,   /**< LPI2C1 Transmit. */
+    kDmaRequestMux0LPI2C2Rx         = 13|0x100U,   /**< LPI2C2 Receive. */
+    kDmaRequestMux0LPI2C2Tx         = 14|0x100U,   /**< LPI2C2 Transmit. */
+    kDmaRequestMux0LPUART0Rx        = 15|0x100U,   /**< LPUART0 Receive. */
+    kDmaRequestMux0LPUART0Tx        = 16|0x100U,   /**< LPUART0 Transmit. */
+    kDmaRequestMux0LPUART1Rx        = 17|0x100U,   /**< LPUART1 Receive. */
+    kDmaRequestMux0LPUART1Tx        = 18|0x100U,   /**< LPUART1 Transmit. */
+    kDmaRequestMux0LPUART2Rx        = 19|0x100U,   /**< LPUART2 Receive. */
+    kDmaRequestMux0LPUART2Tx        = 20|0x100U,   /**< LPUART2 Transmit. */
+    kDmaRequestMux0LPSPI0Rx         = 21|0x100U,   /**< LPSPI0 Receive. */
+    kDmaRequestMux0LPSPI0Tx         = 22|0x100U,   /**< LPSPI0 Transmit. */
+    kDmaRequestMux0LPSPI1Rx         = 23|0x100U,   /**< LPSPI1 Receive. */
+    kDmaRequestMux0LPSPI1Tx         = 24|0x100U,   /**< LPSPI1 Transmit. */
+    kDmaRequestMux0LPSPI2Rx         = 25|0x100U,   /**< LPSPI2 Receive. */
+    kDmaRequestMux0LPSPI2Tx         = 26|0x100U,   /**< LPSPI2 Transmit. */
+    kDmaRequestMux0TPM0Channel0     = 27|0x100U,   /**< TPM0 C0V Transmit. */
+    kDmaRequestMux0TPM0Channel1     = 28|0x100U,   /**< TPM0 C1V Transmit. */
+    kDmaRequestMux0TPM0Channel2     = 29|0x100U,   /**< TPM0 C2V Transmit. */
+    kDmaRequestMux0TPM0Channel3     = 30|0x100U,   /**< TPM0 C3V Transmit. */
+    kDmaRequestMux0TPM0Channel4     = 31|0x100U,   /**< TPM0 C4V Transmit. */
+    kDmaRequestMux0TPM0Channel5     = 32|0x100U,   /**< TPM0 C5V Transmit. */
+    kDmaRequestMux0Reserved33       = 33|0x100U,   /**< Reserved33 */
+    kDmaRequestMux0Reserved34       = 34|0x100U,   /**< Reserved34 */
+    kDmaRequestMux0TPM0Overflow     = 35|0x100U,   /**< TPM0. */
+    kDmaRequestMux0TPM1Channel0     = 36|0x100U,   /**< TPM1 C0V Transmit. */
+    kDmaRequestMux0TPM1Channel1     = 37|0x100U,   /**< TPM1 C1V Transmit. */
+    kDmaRequestMux0TPM1Overflow     = 38|0x100U,   /**< TPM1. */
+    kDmaRequestMux0TPM2Channel0     = 39|0x100U,   /**< TPM2 C0V Transmit. */
+    kDmaRequestMux0TPM2Channel1     = 40|0x100U,   /**< TPM2 C1V Transmit. */
+    kDmaRequestMux0TPM2Overflow     = 41|0x100U,   /**< TPM2. */
+    kDmaRequestMux0Reserved42       = 42|0x100U,   /**< Reserved42 */
+    kDmaRequestMux0EMVSIM0Rx        = 43|0x100U,   /**< EMVSIM0 Receive. */
+    kDmaRequestMux0EMVSIM0Tx        = 44|0x100U,   /**< EMVSIM0 Transmit. */
+    kDmaRequestMux0I2S0Rx           = 45|0x100U,   /**< I2S0 Receive. */
+    kDmaRequestMux0I2S0Tx           = 46|0x100U,   /**< I2S0 Transmit. */
+    kDmaRequestMux0PortA            = 47|0x100U,   /**< PTA. */
+    kDmaRequestMux0PortB            = 48|0x100U,   /**< PTB. */
+    kDmaRequestMux0PortC            = 49|0x100U,   /**< PTC. */
+    kDmaRequestMux0PortD            = 50|0x100U,   /**< PTD. */
+    kDmaRequestMux0PortE            = 51|0x100U,   /**< PTE. */
+    kDmaRequestMux0ADC0             = 52|0x100U,   /**< ADC0. */
+    kDmaRequestMux0Reserved53       = 53|0x100U,   /**< Reserved53 */
+    kDmaRequestMux0DAC0             = 54|0x100U,   /**< DAC0. */
+    kDmaRequestMux0Reserved55       = 55|0x100U,   /**< Reserved55 */
+    kDmaRequestMux0CMP0             = 56|0x100U,   /**< CMP0. */
+    kDmaRequestMux0CMP1             = 57|0x100U,   /**< CMP1. */
+    kDmaRequestMux0Reserved58       = 58|0x100U,   /**< Reserved58 */
+    kDmaRequestMux0Reserved59       = 59|0x100U,   /**< Reserved59 */
+    kDmaRequestMux0TSI0             = 60|0x100U,   /**< TSI0. */
+    kDmaRequestMux0LPTMR0           = 61|0x100U,   /**< LPTMR0. */
+    kDmaRequestMux0LPTMR1           = 62|0x100U,   /**< LPTMR1. */
+    kDmaRequestMux0AlwaysOn63       = 63|0x100U,   /**< DMAMUX Always Enabled slot. */
+} dma_request_source_t;
+
+/* @} */
+
+/*!
+ * @addtogroup trgmux_source
+ * @{ */
+
+/*******************************************************************************
+ * Definitions
+*******************************************************************************/
+
+/*!
+ * @brief Structure for the TRGMUX source
+ *
+ * Defines the structure for the TRGMUX source collections.
+ */
+typedef enum _trgmux_source
+{
+    kTRGMUX_SourceDisabled          = 0U,          /**< Trigger function is disabled */
+    kTRGMUX_SourcePortPin           = 1U,          /**< Port pin trigger intput is selected */
+    kTRGMUX_SourceFlexIOTimer0      = 2U,          /**< FlexIO Timer 0 input is selected */
+    kTRGMUX_SourceFlexIOTimer1      = 3U,          /**< FlexIO Timer 1 input is selected */
+    kTRGMUX_SourceFlexIOTimer2      = 4U,          /**< FlexIO Timer 2 input is selected */
+    kTRGMUX_SourceFlexIOTimer3      = 5U,          /**< FlexIO Timer 3 input is selected */
+    kTRGMUX_SourceFlexIOTimer4      = 6U,          /**< FlexIO Timer 4 input is selected */
+    kTRGMUX_SourceFlexIOTimer5      = 7U,          /**< FlexIO Timer 5 input is selected */
+    kTRGMUX_SourceFlexIOTimer6      = 8U,          /**< FlexIO Timer 6 input is selected */
+    kTRGMUX_SourceFlexIOTimer7      = 9U,          /**< FlexIO Timer 7 input is selected */
+    kTRGMUX_SourceTpm0Overflow      = 10U,         /**< TPM0 Overflow is selected */
+    kTRGMUX_SourceTpm0Ch0           = 11U,         /**< TPM0 Channel 0 is selected */
+    kTRGMUX_SourceTpm0Ch1           = 12U,         /**< TPM0 Channel 1 is selected */
+    kTRGMUX_SourceTpm1Overflow      = 13U,         /**< TPM1 Overflow is selected */
+    kTRGMUX_SourceTpm1Ch0           = 14U,         /**< TPM1 Channel 0 is selected */
+    kTRGMUX_SourceTpm1Ch1           = 15U,         /**< TPM1 Channel 1 is selected */
+    kTRGMUX_SourceLpit1Ch0          = 16U,         /**< LPIT1 Channel 0 is selected */
+    kTRGMUX_SourceLpit1Ch1          = 17U,         /**< LPIT1 Channel 1 is selected */
+    kTRGMUX_SourceLpit1Ch2          = 18U,         /**< LPIT1 Channel 2 is selected */
+    kTRGMUX_SourceLpit1Ch3          = 19U,         /**< LPIT1 Channel 3 is selected */
+    kTRGMUX_SourceLpuart0RxData     = 20U,         /**< LPUART0 RX Data is selected */
+    kTRGMUX_SourceLpuart0TxData     = 21U,         /**< LPUART0 TX Data is selected */
+    kTRGMUX_SourceLpuart0RxIdle     = 22U,         /**< LPUART0 RX Idle is selected */
+    kTRGMUX_SourceLpuart1RxData     = 23U,         /**< LPUART1 RX Data is selected */
+    kTRGMUX_SourceLpuart1TxData     = 24U,         /**< LPUART1 TX Data is selected */
+    kTRGMUX_SourceLpuart1RxIdle     = 25U,         /**< LPUART1 RX Idle is selected */
+    kTRGMUX_SourceLpi2c0MasterStop  = 26U,         /**< LPI2C0 Master STOP is selected */
+    kTRGMUX_SourceLpi2c0SlaveStop   = 27U,         /**< LPI2C0 Slave STOP is selected */
+    kTRGMUX_SourceLpi2c1MasterStop  = 28U,         /**< LPI2C1 Master STOP is selected */
+    kTRGMUX_SourceLpi2c1SlaveStop   = 29U,         /**< LPI2C1 Slave STOP is selected */
+    kTRGMUX_SourceLpspi0Frame       = 30U,         /**< LPSPI0 Frame is selected */
+    kTRGMUX_SourceLpspi0RxData      = 31U,         /**< LPSPI0 RX Data is selected */
+    kTRGMUX_SourceLpspi1Frame       = 32U,         /**< LPSPI1 Frame is selected */
+    kTRGMUX_SourceLpspi1RxData      = 33U,         /**< LPSPI1 RX Data is selected */
+    kTRGMUX_SourceRtcSecCount       = 34U,         /**< RTC Seconds Counter is selected */
+    kTRGMUX_SourceRtcAlarm          = 35U,         /**< RTC Alarm is selected */
+    kTRGMUX_SourceLptmr0Trg         = 36U,         /**< LPTMR0 Trigger is selected */
+    kTRGMUX_SourceLptmr1Trg         = 37U,         /**< LPTMR1 Trigger is selected */
+    kTRGMUX_SourceCmp0Output        = 38U,         /**< CMP0 Output is selected */
+    kTRGMUX_SourceCmp1Output        = 39U,         /**< CMP1 Output is selected */
+    kTRGMUX_SourceAdc0ConvAComplete = 40U,         /**< ADC0 Conversion A Complete is selected */
+    kTRGMUX_SourceAdc0ConvBComplete = 41U,         /**< ADC0 Conversion B Complete is selected */
+    kTRGMUX_SourcePortAPinTrg       = 42U,         /**< Port A Pin Trigger is selected */
+    kTRGMUX_SourcePortBPinTrg       = 43U,         /**< Port B Pin Trigger is selected */
+    kTRGMUX_SourcePortCPinTrg       = 44U,         /**< Port C Pin Trigger is selected */
+    kTRGMUX_SourcePortDPinTrg       = 45U,         /**< Port D Pin Trigger is selected */
+    kTRGMUX_SourcePortEPinTrg       = 46U,         /**< Port E Pin Trigger is selected */
+    kTRGMUX_SourceTpm2Overflow      = 47U,         /**< TPM2 Overflow is selected */
+    kTRGMUX_SourceTpm2Ch0           = 48U,         /**< TPM2 Channel 0 is selected */
+    kTRGMUX_SourceTpm2Ch1           = 49U,         /**< TPM2 Channel 1 is selected */
+    kTRGMUX_SourceLpit0Ch0          = 50U,         /**< LPIT0 Channel 0 is selected */
+    kTRGMUX_SourceLpit0Ch1          = 51U,         /**< LPIT0 Channel 1 is selected */
+    kTRGMUX_SourceLpit0Ch2          = 52U,         /**< LPIT0 Channel 2 is selected */
+    kTRGMUX_SourceLpit0Ch3          = 53U,         /**< LPIT0 Channel 3 is selected */
+    kTRGMUX_SourceUsbSof            = 54U,         /**< USB Start-of-Frame is selected */
+    kTRGMUX_SourceLpuart2RxData     = 55U,         /**< LPUART2 RX Data is selected */
+    kTRGMUX_SourceLpuart2TxData     = 56U,         /**< LPUART2 TX Data is selected */
+    kTRGMUX_SourceLpuart2RxIdle     = 57U,         /**< LPUART2 RX Idle is selected */
+    kTRGMUX_SourceLpi2c2MasterStop  = 58U,         /**< LPI2C2 Master STOP is selected */
+    kTRGMUX_SourceLpi2c2SlaveStop   = 59U,         /**< LPI2C2 Slave STOP is selected */
+    kTRGMUX_SourceLpspi2Frame       = 60U,         /**< LPSPI2 Frame is selected */
+    kTRGMUX_SourceLpspi2RxData      = 61U,         /**< LPSPI2 RX Data is selected */
+    kTRGMUX_SourceI2c0TxFrameSync   = 62U,         /**< I2C0 TX Frame Sync is selected */
+    kTRGMUX_SourceI2c0RxFrameSync   = 63U,         /**< I2C0 RX Frame Sync is selected */
+} trgmux_source_t;
+
+/*!
+ * @brief Structure for the TRGMUX device
+ *
+ * Defines the structure for the TRGMUX device collections.
+ */
+typedef enum _trgmux_device
+{
+    kTRGMUX_Trgmux0Dmamux0          = 0U,          /**< DMAMUX0 device trigger input */
+    kTRGMUX_Trgmux0Lpit0            = 1U,          /**< LPIT0 device trigger input */
+    kTRGMUX_Trgmux0Tpm2             = 2U,          /**< TPM2 device trigger input */
+    kTRGMUX_Trgmux1Tpm0             = 2U,          /**< TPM0 device trigger input */
+    kTRGMUX_Trgmux0Adc0             = 4U,          /**< ADC0 device trigger input */
+    kTRGMUX_Trgmux1Flexio           = 4U,          /**< FLEXIO device trigger input */
+    kTRGMUX_Trgmux0Lpuart2          = 5U,          /**< LPUART2 device trigger input */
+    kTRGMUX_Trgmux1Lpuart0          = 5U,          /**< LPUART0 device trigger input */
+    kTRGMUX_Trgmux0Lpi2c2           = 7U,          /**< LPI2C2 device trigger input */
+    kTRGMUX_Trgmux1Lpi2c0           = 7U,          /**< LPI2C0 device trigger input */
+    kTRGMUX_Trgmux0Lpspi2           = 9U,          /**< LPSPI2 device trigger input */
+    kTRGMUX_Trgmux1Lpspi0           = 9U,          /**< LPSPI0 device trigger input */
+    kTRGMUX_Trgmux0Cmp0             = 11U,         /**< CMP0 device trigger input */
+    kTRGMUX_Trgmux0Cmp1             = 12U,         /**< CMP1 device trigger input */
+    kTRGMUX_Trgmux0Dac0             = 13U,         /**< DAC0 device trigger input */
+    kTRGMUX_Trgmux1Tpm1             = 3U,          /**< TPM1 device trigger input */
+    kTRGMUX_Trgmux1Lpuart1          = 6U,          /**< LPUART1 device trigger input */
+    kTRGMUX_Trgmux1Lpi2c1           = 8U,          /**< LPI2C1 device trigger input */
+    kTRGMUX_Trgmux1Lpspi1           = 10U,         /**< LPSPI1 device trigger input */
+} trgmux_device_t;
+
+/* @} */
+
+
+/*!
+ * @}
+ */ /* end of group Mapping_Information */
 
 
 /* ----------------------------------------------------------------------------
@@ -237,8 +431,12 @@ typedef enum IRQn {
 */
 
 #if defined(__ARMCC_VERSION)
-  #pragma push
-  #pragma anon_unions
+  #if (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic push
+  #else
+    #pragma push
+    #pragma anon_unions
+  #endif
 #elif defined(__CWCC__)
   #pragma push
   #pragma cpp_extensions on
@@ -504,6 +702,8 @@ typedef struct {
 #define ADC_BASE_ADDRS                           { ADC0_BASE }
 /** Array initializer of ADC peripheral base pointers */
 #define ADC_BASE_PTRS                            { ADC0 }
+/** Interrupt vectors for the ADC peripheral type */
+#define ADC_IRQS                                 { ADC0_IRQn }
 
 /*!
  * @}
@@ -1151,6 +1351,8 @@ typedef struct {
 #define CMP_BASE_ADDRS                           { CMP0_BASE, CMP1_BASE }
 /** Array initializer of CMP peripheral base pointers */
 #define CMP_BASE_PTRS                            { CMP0, CMP1 }
+/** Interrupt vectors for the CMP peripheral type */
+#define CMP_IRQS                                 { CMP0_IRQn, CMP1_IRQn }
 
 /*!
  * @}
@@ -1469,6 +1671,8 @@ typedef struct {
 #define DAC_BASE_ADDRS                           { DAC0_BASE }
 /** Array initializer of DAC peripheral base pointers */
 #define DAC_BASE_PTRS                            { DAC0 }
+/** Interrupt vectors for the DAC peripheral type */
+#define DAC_IRQS                                 { DAC0_IRQn }
 
 /*!
  * @}
@@ -2155,6 +2359,9 @@ typedef struct {
 #define DMA_BASE_ADDRS                           { DMA0_BASE }
 /** Array initializer of DMA peripheral base pointers */
 #define DMA_BASE_PTRS                            { DMA0 }
+/** Interrupt vectors for the DMA peripheral type */
+#define DMA_CHN_IRQS                             { { DMA0_04_IRQn, DMA0_15_IRQn, DMA0_26_IRQn, DMA0_37_IRQn, DMA0_04_IRQn, DMA0_15_IRQn, DMA0_26_IRQn, DMA0_37_IRQn } }
+#define DMA_ERROR_IRQS                           { CTI0_DMA0_Error_IRQn }
 
 /*!
  * @}
@@ -2242,7 +2449,7 @@ typedef struct {
   __IO uint32_t TX_STATUS;                         /**< Transmitter Status Register, offset: 0x24 */
   __IO uint32_t PCSR;                              /**< Port Control and Status Register, offset: 0x28 */
   __I  uint32_t RX_BUF;                            /**< Receive Data Read Buffer, offset: 0x2C */
-  __IO uint32_t TX_BUF;                            /**< Transmit Data Buffer, offset: 0x30 */
+  __O  uint32_t TX_BUF;                            /**< Transmit Data Buffer, offset: 0x30 */
   __IO uint32_t TX_GETU;                           /**< Transmitter Guard ETU Value Register, offset: 0x34 */
   __IO uint32_t CWT_VAL;                           /**< Character Wait Time Value Register, offset: 0x38 */
   __IO uint32_t BWT_VAL;                           /**< Block Wait Time Value Register, offset: 0x3C */
@@ -2589,6 +2796,8 @@ typedef struct {
 #define EMVSIM_BASE_ADDRS                        { EMVSIM0_BASE }
 /** Array initializer of EMVSIM peripheral base pointers */
 #define EMVSIM_BASE_PTRS                         { EMVSIM0 }
+/** Interrupt vectors for the EMVSIM peripheral type */
+#define EMVSIM_IRQS                              { EMVSIM0_IRQn }
 
 /*!
  * @}
@@ -2993,6 +3202,8 @@ typedef struct {
 #define FLEXIO_BASE_ADDRS                        { FLEXIO0_BASE }
 /** Array initializer of FLEXIO peripheral base pointers */
 #define FLEXIO_BASE_PTRS                         { FLEXIO0 }
+/** Interrupt vectors for the FLEXIO peripheral type */
+#define FLEXIO_IRQS                              { FLEXIO0_IRQn }
 
 /*!
  * @}
@@ -3296,6 +3507,8 @@ typedef struct {
 #define FTFA_BASE_ADDRS                          { FTFA_BASE }
 /** Array initializer of FTFA peripheral base pointers */
 #define FTFA_BASE_PTRS                           { FTFA }
+/** Interrupt vectors for the FTFA peripheral type */
+#define FTFA_COMMAND_COMPLETE_IRQS               { FTFA_IRQn }
 
 /*!
  * @}
@@ -3771,6 +3984,9 @@ typedef struct {
 #define I2S_BASE_ADDRS                           { I2S0_BASE }
 /** Array initializer of I2S peripheral base pointers */
 #define I2S_BASE_PTRS                            { I2S0 }
+/** Interrupt vectors for the I2S peripheral type */
+#define I2S_RX_IRQS                              { I2S0_IRQn }
+#define I2S_TX_IRQS                              { I2S0_IRQn }
 
 /*!
  * @}
@@ -3867,6 +4083,8 @@ typedef struct {
 #define INTMUX_BASE_ADDRS                        { INTMUX0_BASE }
 /** Array initializer of INTMUX peripheral base pointers */
 #define INTMUX_BASE_PTRS                         { INTMUX0 }
+/** Interrupt vectors for the INTMUX peripheral type */
+#define INTMUX_IRQS                              { { INTMUX0_0_IRQn, INTMUX0_1_IRQn, INTMUX0_2_IRQn, INTMUX0_3_IRQn } }
 
 /*!
  * @}
@@ -4261,6 +4479,8 @@ typedef struct {
 #define LLWU_BASE_ADDRS                          { LLWU0_BASE }
 /** Array initializer of LLWU peripheral base pointers */
 #define LLWU_BASE_PTRS                           { LLWU0 }
+/** Interrupt vectors for the LLWU peripheral type */
+#define LLWU_IRQS                                { LLWU0_IRQn }
 
 /*!
  * @}
@@ -4783,6 +5003,8 @@ typedef struct {
 #define LPI2C_BASE_ADDRS                         { LPI2C0_BASE, LPI2C1_BASE, LPI2C2_BASE }
 /** Array initializer of LPI2C peripheral base pointers */
 #define LPI2C_BASE_PTRS                          { LPI2C0, LPI2C1, LPI2C2 }
+/** Interrupt vectors for the LPI2C peripheral type */
+#define LPI2C_IRQS                               { LPI2C0_IRQn, LPI2C1_IRQn, LPI2C2_IRQn }
 
 /*!
  * @}
@@ -4806,7 +5028,7 @@ typedef struct {
   __IO uint32_t MSR;                               /**< Module Status Register, offset: 0xC */
   __IO uint32_t MIER;                              /**< Module Interrupt Enable Register, offset: 0x10 */
   __IO uint32_t SETTEN;                            /**< Set Timer Enable Register, offset: 0x14 */
-  __IO uint32_t CLRTEN;                            /**< Clear Timer Enable Register, offset: 0x18 */
+  __O  uint32_t CLRTEN;                            /**< Clear Timer Enable Register, offset: 0x18 */
        uint8_t RESERVED_0[4];
   struct {                                         /* offset: 0x20, array step: 0x10 */
     __IO uint32_t TVAL;                              /**< Timer Value Register, array offset: 0x20, array step: 0x10 */
@@ -4974,6 +5196,8 @@ typedef struct {
 #define LPIT_BASE_ADDRS                          { LPIT0_BASE }
 /** Array initializer of LPIT peripheral base pointers */
 #define LPIT_BASE_PTRS                           { LPIT0 }
+/** Interrupt vectors for the LPIT peripheral type */
+#define LPIT_IRQS                                { { LPIT0_IRQn, LPIT0_IRQn, LPIT0_IRQn, LPIT0_IRQn } }
 
 /*!
  * @}
@@ -5291,6 +5515,8 @@ typedef struct {
 #define LPSPI_BASE_ADDRS                         { LPSPI0_BASE, LPSPI1_BASE, LPSPI2_BASE }
 /** Array initializer of LPSPI peripheral base pointers */
 #define LPSPI_BASE_PTRS                          { LPSPI0, LPSPI1, LPSPI2 }
+/** Interrupt vectors for the LPSPI peripheral type */
+#define LPSPI_IRQS                               { LPSPI0_IRQn, LPSPI1_IRQn, LPSPI2_IRQn }
 
 /*!
  * @}
@@ -5389,6 +5615,8 @@ typedef struct {
 #define LPTMR_BASE_ADDRS                         { LPTMR0_BASE, LPTMR1_BASE }
 /** Array initializer of LPTMR peripheral base pointers */
 #define LPTMR_BASE_PTRS                          { LPTMR0, LPTMR1 }
+/** Interrupt vectors for the LPTMR peripheral type */
+#define LPTMR_IRQS                               { LPTMR0_IRQn, LPTMR1_IRQn }
 
 /*!
  * @}
@@ -5800,6 +6028,9 @@ typedef struct {
 #define LPUART_BASE_ADDRS                        { LPUART0_BASE, LPUART1_BASE, LPUART2_BASE }
 /** Array initializer of LPUART peripheral base pointers */
 #define LPUART_BASE_PTRS                         { LPUART0, LPUART1, LPUART2 }
+/** Interrupt vectors for the LPUART peripheral type */
+#define LPUART_RX_TX_IRQS                        { LPUART0_IRQn, LPUART1_IRQn, LPUART2_IRQn }
+#define LPUART_ERR_IRQS                          { LPUART0_IRQn, LPUART1_IRQn, LPUART2_IRQn }
 
 /*!
  * @}
@@ -6946,621 +7177,158 @@ typedef struct {
 
 
 /* ----------------------------------------------------------------------------
-   -- PCC0 Peripheral Access Layer
+   -- PCC Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
 /*!
- * @addtogroup PCC0_Peripheral_Access_Layer PCC0 Peripheral Access Layer
+ * @addtogroup PCC_Peripheral_Access_Layer PCC Peripheral Access Layer
  * @{
  */
 
-/** PCC0 - Register Layout Typedef */
+/** PCC - Register Layout Typedef */
 typedef struct {
-       uint8_t RESERVED_0[32];
-  __IO uint32_t PCC_DMA0;                          /**< PCC CLKCFG Register, offset: 0x20 */
-       uint8_t RESERVED_1[92];
-  __IO uint32_t PCC_FLASH;                         /**< PCC CLKCFG Register, offset: 0x80 */
-  __IO uint32_t PCC_DMAMUX0;                       /**< PCC CLKCFG Register, offset: 0x84 */
-       uint8_t RESERVED_2[8];
-  __IO uint32_t PCC_INTMUX0;                       /**< PCC CLKCFG Register, offset: 0x90 */
-       uint8_t RESERVED_3[36];
-  __IO uint32_t PCC_TPM2;                          /**< PCC CLKCFG Register, offset: 0xB8 */
-       uint8_t RESERVED_4[4];
-  __IO uint32_t PCC_LPIT0;                         /**< PCC CLKCFG Register, offset: 0xC0 */
-       uint8_t RESERVED_5[12];
-  __IO uint32_t PCC_LPTMR0;                        /**< PCC CLKCFG Register, offset: 0xD0 */
-       uint8_t RESERVED_6[12];
-  __IO uint32_t PCC_RTC;                           /**< PCC CLKCFG Register, offset: 0xE0 */
-       uint8_t RESERVED_7[20];
-  __IO uint32_t PCC_LPSPI2;                        /**< PCC CLKCFG Register, offset: 0xF8 */
-       uint8_t RESERVED_8[12];
-  __IO uint32_t PCC_LPI2C2;                        /**< PCC CLKCFG Register, offset: 0x108 */
-       uint8_t RESERVED_9[12];
-  __IO uint32_t PCC_LPUART2;                       /**< PCC CLKCFG Register, offset: 0x118 */
-       uint8_t RESERVED_10[20];
-  __IO uint32_t PCC_SAI0;                          /**< PCC CLKCFG Register, offset: 0x130 */
-       uint8_t RESERVED_11[4];
-  __IO uint32_t PCC_EMVSIM0;                       /**< PCC CLKCFG Register, offset: 0x138 */
-       uint8_t RESERVED_12[24];
-  __IO uint32_t PCC_USB0FS;                        /**< PCC CLKCFG Register, offset: 0x154 */
-       uint8_t RESERVED_13[16];
-  __IO uint32_t PCC_PORTA;                         /**< PCC CLKCFG Register, offset: 0x168 */
-  __IO uint32_t PCC_PORTB;                         /**< PCC CLKCFG Register, offset: 0x16C */
-  __IO uint32_t PCC_PORTC;                         /**< PCC CLKCFG Register, offset: 0x170 */
-  __IO uint32_t PCC_PORTD;                         /**< PCC CLKCFG Register, offset: 0x174 */
-  __IO uint32_t PCC_PORTE;                         /**< PCC CLKCFG Register, offset: 0x178 */
-       uint8_t RESERVED_14[12];
-  __IO uint32_t PCC_TSI0;                          /**< PCC CLKCFG Register, offset: 0x188 */
-       uint8_t RESERVED_15[12];
-  __IO uint32_t PCC_ADC0;                          /**< PCC CLKCFG Register, offset: 0x198 */
-       uint8_t RESERVED_16[12];
-  __IO uint32_t PCC_DAC0;                          /**< PCC CLKCFG Register, offset: 0x1A8 */
-       uint8_t RESERVED_17[12];
-  __IO uint32_t PCC_CMP0;                          /**< PCC CLKCFG Register, offset: 0x1B8 */
-       uint8_t RESERVED_18[12];
-  __IO uint32_t PCC_VREF;                          /**< PCC CLKCFG Register, offset: 0x1C8 */
-       uint8_t RESERVED_19[20];
-  __IO uint32_t PCC_CRC;                           /**< PCC CLKCFG Register, offset: 0x1E0 */
-} PCC0_Type;
+  __IO uint32_t CLKCFG[121];                       /**< PCC CLKCFG Register, array offset: 0x0, array step: 0x4 */
+} PCC_Type;
 
 /* ----------------------------------------------------------------------------
-   -- PCC0 Register Masks
+   -- PCC Register Masks
    ---------------------------------------------------------------------------- */
 
 /*!
- * @addtogroup PCC0_Register_Masks PCC0 Register Masks
+ * @addtogroup PCC_Register_Masks PCC Register Masks
  * @{
  */
 
-/*! @name PCC_DMA0 - PCC CLKCFG Register */
-#define PCC0_PCC_DMA0_INUSE_MASK                 (0x20000000U)
-#define PCC0_PCC_DMA0_INUSE_SHIFT                (29U)
-#define PCC0_PCC_DMA0_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_DMA0_INUSE_SHIFT)) & PCC0_PCC_DMA0_INUSE_MASK)
-#define PCC0_PCC_DMA0_CGC_MASK                   (0x40000000U)
-#define PCC0_PCC_DMA0_CGC_SHIFT                  (30U)
-#define PCC0_PCC_DMA0_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_DMA0_CGC_SHIFT)) & PCC0_PCC_DMA0_CGC_MASK)
-#define PCC0_PCC_DMA0_PR_MASK                    (0x80000000U)
-#define PCC0_PCC_DMA0_PR_SHIFT                   (31U)
-#define PCC0_PCC_DMA0_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_DMA0_PR_SHIFT)) & PCC0_PCC_DMA0_PR_MASK)
+/*! @name CLKCFG - PCC CLKCFG Register */
+#define PCC_CLKCFG_PCD_MASK                      (0x7U)
+#define PCC_CLKCFG_PCD_SHIFT                     (0U)
+#define PCC_CLKCFG_PCD(x)                        (((uint32_t)(((uint32_t)(x)) << PCC_CLKCFG_PCD_SHIFT)) & PCC_CLKCFG_PCD_MASK)
+#define PCC_CLKCFG_FRAC_MASK                     (0x8U)
+#define PCC_CLKCFG_FRAC_SHIFT                    (3U)
+#define PCC_CLKCFG_FRAC(x)                       (((uint32_t)(((uint32_t)(x)) << PCC_CLKCFG_FRAC_SHIFT)) & PCC_CLKCFG_FRAC_MASK)
+#define PCC_CLKCFG_PCS_MASK                      (0x7000000U)
+#define PCC_CLKCFG_PCS_SHIFT                     (24U)
+#define PCC_CLKCFG_PCS(x)                        (((uint32_t)(((uint32_t)(x)) << PCC_CLKCFG_PCS_SHIFT)) & PCC_CLKCFG_PCS_MASK)
+#define PCC_CLKCFG_INUSE_MASK                    (0x20000000U)
+#define PCC_CLKCFG_INUSE_SHIFT                   (29U)
+#define PCC_CLKCFG_INUSE(x)                      (((uint32_t)(((uint32_t)(x)) << PCC_CLKCFG_INUSE_SHIFT)) & PCC_CLKCFG_INUSE_MASK)
+#define PCC_CLKCFG_CGC_MASK                      (0x40000000U)
+#define PCC_CLKCFG_CGC_SHIFT                     (30U)
+#define PCC_CLKCFG_CGC(x)                        (((uint32_t)(((uint32_t)(x)) << PCC_CLKCFG_CGC_SHIFT)) & PCC_CLKCFG_CGC_MASK)
+#define PCC_CLKCFG_PR_MASK                       (0x80000000U)
+#define PCC_CLKCFG_PR_SHIFT                      (31U)
+#define PCC_CLKCFG_PR(x)                         (((uint32_t)(((uint32_t)(x)) << PCC_CLKCFG_PR_SHIFT)) & PCC_CLKCFG_PR_MASK)
 
-/*! @name PCC_FLASH - PCC CLKCFG Register */
-#define PCC0_PCC_FLASH_INUSE_MASK                (0x20000000U)
-#define PCC0_PCC_FLASH_INUSE_SHIFT               (29U)
-#define PCC0_PCC_FLASH_INUSE(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_FLASH_INUSE_SHIFT)) & PCC0_PCC_FLASH_INUSE_MASK)
-#define PCC0_PCC_FLASH_CGC_MASK                  (0x40000000U)
-#define PCC0_PCC_FLASH_CGC_SHIFT                 (30U)
-#define PCC0_PCC_FLASH_CGC(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_FLASH_CGC_SHIFT)) & PCC0_PCC_FLASH_CGC_MASK)
-#define PCC0_PCC_FLASH_PR_MASK                   (0x80000000U)
-#define PCC0_PCC_FLASH_PR_SHIFT                  (31U)
-#define PCC0_PCC_FLASH_PR(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_FLASH_PR_SHIFT)) & PCC0_PCC_FLASH_PR_MASK)
-
-/*! @name PCC_DMAMUX0 - PCC CLKCFG Register */
-#define PCC0_PCC_DMAMUX0_INUSE_MASK              (0x20000000U)
-#define PCC0_PCC_DMAMUX0_INUSE_SHIFT             (29U)
-#define PCC0_PCC_DMAMUX0_INUSE(x)                (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_DMAMUX0_INUSE_SHIFT)) & PCC0_PCC_DMAMUX0_INUSE_MASK)
-#define PCC0_PCC_DMAMUX0_CGC_MASK                (0x40000000U)
-#define PCC0_PCC_DMAMUX0_CGC_SHIFT               (30U)
-#define PCC0_PCC_DMAMUX0_CGC(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_DMAMUX0_CGC_SHIFT)) & PCC0_PCC_DMAMUX0_CGC_MASK)
-#define PCC0_PCC_DMAMUX0_PR_MASK                 (0x80000000U)
-#define PCC0_PCC_DMAMUX0_PR_SHIFT                (31U)
-#define PCC0_PCC_DMAMUX0_PR(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_DMAMUX0_PR_SHIFT)) & PCC0_PCC_DMAMUX0_PR_MASK)
-
-/*! @name PCC_INTMUX0 - PCC CLKCFG Register */
-#define PCC0_PCC_INTMUX0_INUSE_MASK              (0x20000000U)
-#define PCC0_PCC_INTMUX0_INUSE_SHIFT             (29U)
-#define PCC0_PCC_INTMUX0_INUSE(x)                (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_INTMUX0_INUSE_SHIFT)) & PCC0_PCC_INTMUX0_INUSE_MASK)
-#define PCC0_PCC_INTMUX0_CGC_MASK                (0x40000000U)
-#define PCC0_PCC_INTMUX0_CGC_SHIFT               (30U)
-#define PCC0_PCC_INTMUX0_CGC(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_INTMUX0_CGC_SHIFT)) & PCC0_PCC_INTMUX0_CGC_MASK)
-#define PCC0_PCC_INTMUX0_PR_MASK                 (0x80000000U)
-#define PCC0_PCC_INTMUX0_PR_SHIFT                (31U)
-#define PCC0_PCC_INTMUX0_PR(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_INTMUX0_PR_SHIFT)) & PCC0_PCC_INTMUX0_PR_MASK)
-
-/*! @name PCC_TPM2 - PCC CLKCFG Register */
-#define PCC0_PCC_TPM2_PCS_MASK                   (0x7000000U)
-#define PCC0_PCC_TPM2_PCS_SHIFT                  (24U)
-#define PCC0_PCC_TPM2_PCS(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_TPM2_PCS_SHIFT)) & PCC0_PCC_TPM2_PCS_MASK)
-#define PCC0_PCC_TPM2_INUSE_MASK                 (0x20000000U)
-#define PCC0_PCC_TPM2_INUSE_SHIFT                (29U)
-#define PCC0_PCC_TPM2_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_TPM2_INUSE_SHIFT)) & PCC0_PCC_TPM2_INUSE_MASK)
-#define PCC0_PCC_TPM2_CGC_MASK                   (0x40000000U)
-#define PCC0_PCC_TPM2_CGC_SHIFT                  (30U)
-#define PCC0_PCC_TPM2_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_TPM2_CGC_SHIFT)) & PCC0_PCC_TPM2_CGC_MASK)
-#define PCC0_PCC_TPM2_PR_MASK                    (0x80000000U)
-#define PCC0_PCC_TPM2_PR_SHIFT                   (31U)
-#define PCC0_PCC_TPM2_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_TPM2_PR_SHIFT)) & PCC0_PCC_TPM2_PR_MASK)
-
-/*! @name PCC_LPIT0 - PCC CLKCFG Register */
-#define PCC0_PCC_LPIT0_PCS_MASK                  (0x7000000U)
-#define PCC0_PCC_LPIT0_PCS_SHIFT                 (24U)
-#define PCC0_PCC_LPIT0_PCS(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPIT0_PCS_SHIFT)) & PCC0_PCC_LPIT0_PCS_MASK)
-#define PCC0_PCC_LPIT0_INUSE_MASK                (0x20000000U)
-#define PCC0_PCC_LPIT0_INUSE_SHIFT               (29U)
-#define PCC0_PCC_LPIT0_INUSE(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPIT0_INUSE_SHIFT)) & PCC0_PCC_LPIT0_INUSE_MASK)
-#define PCC0_PCC_LPIT0_CGC_MASK                  (0x40000000U)
-#define PCC0_PCC_LPIT0_CGC_SHIFT                 (30U)
-#define PCC0_PCC_LPIT0_CGC(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPIT0_CGC_SHIFT)) & PCC0_PCC_LPIT0_CGC_MASK)
-#define PCC0_PCC_LPIT0_PR_MASK                   (0x80000000U)
-#define PCC0_PCC_LPIT0_PR_SHIFT                  (31U)
-#define PCC0_PCC_LPIT0_PR(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPIT0_PR_SHIFT)) & PCC0_PCC_LPIT0_PR_MASK)
-
-/*! @name PCC_LPTMR0 - PCC CLKCFG Register */
-#define PCC0_PCC_LPTMR0_INUSE_MASK               (0x20000000U)
-#define PCC0_PCC_LPTMR0_INUSE_SHIFT              (29U)
-#define PCC0_PCC_LPTMR0_INUSE(x)                 (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPTMR0_INUSE_SHIFT)) & PCC0_PCC_LPTMR0_INUSE_MASK)
-#define PCC0_PCC_LPTMR0_CGC_MASK                 (0x40000000U)
-#define PCC0_PCC_LPTMR0_CGC_SHIFT                (30U)
-#define PCC0_PCC_LPTMR0_CGC(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPTMR0_CGC_SHIFT)) & PCC0_PCC_LPTMR0_CGC_MASK)
-#define PCC0_PCC_LPTMR0_PR_MASK                  (0x80000000U)
-#define PCC0_PCC_LPTMR0_PR_SHIFT                 (31U)
-#define PCC0_PCC_LPTMR0_PR(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPTMR0_PR_SHIFT)) & PCC0_PCC_LPTMR0_PR_MASK)
-
-/*! @name PCC_RTC - PCC CLKCFG Register */
-#define PCC0_PCC_RTC_INUSE_MASK                  (0x20000000U)
-#define PCC0_PCC_RTC_INUSE_SHIFT                 (29U)
-#define PCC0_PCC_RTC_INUSE(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_RTC_INUSE_SHIFT)) & PCC0_PCC_RTC_INUSE_MASK)
-#define PCC0_PCC_RTC_CGC_MASK                    (0x40000000U)
-#define PCC0_PCC_RTC_CGC_SHIFT                   (30U)
-#define PCC0_PCC_RTC_CGC(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_RTC_CGC_SHIFT)) & PCC0_PCC_RTC_CGC_MASK)
-#define PCC0_PCC_RTC_PR_MASK                     (0x80000000U)
-#define PCC0_PCC_RTC_PR_SHIFT                    (31U)
-#define PCC0_PCC_RTC_PR(x)                       (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_RTC_PR_SHIFT)) & PCC0_PCC_RTC_PR_MASK)
-
-/*! @name PCC_LPSPI2 - PCC CLKCFG Register */
-#define PCC0_PCC_LPSPI2_PCS_MASK                 (0x7000000U)
-#define PCC0_PCC_LPSPI2_PCS_SHIFT                (24U)
-#define PCC0_PCC_LPSPI2_PCS(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPSPI2_PCS_SHIFT)) & PCC0_PCC_LPSPI2_PCS_MASK)
-#define PCC0_PCC_LPSPI2_INUSE_MASK               (0x20000000U)
-#define PCC0_PCC_LPSPI2_INUSE_SHIFT              (29U)
-#define PCC0_PCC_LPSPI2_INUSE(x)                 (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPSPI2_INUSE_SHIFT)) & PCC0_PCC_LPSPI2_INUSE_MASK)
-#define PCC0_PCC_LPSPI2_CGC_MASK                 (0x40000000U)
-#define PCC0_PCC_LPSPI2_CGC_SHIFT                (30U)
-#define PCC0_PCC_LPSPI2_CGC(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPSPI2_CGC_SHIFT)) & PCC0_PCC_LPSPI2_CGC_MASK)
-#define PCC0_PCC_LPSPI2_PR_MASK                  (0x80000000U)
-#define PCC0_PCC_LPSPI2_PR_SHIFT                 (31U)
-#define PCC0_PCC_LPSPI2_PR(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPSPI2_PR_SHIFT)) & PCC0_PCC_LPSPI2_PR_MASK)
-
-/*! @name PCC_LPI2C2 - PCC CLKCFG Register */
-#define PCC0_PCC_LPI2C2_PCS_MASK                 (0x7000000U)
-#define PCC0_PCC_LPI2C2_PCS_SHIFT                (24U)
-#define PCC0_PCC_LPI2C2_PCS(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPI2C2_PCS_SHIFT)) & PCC0_PCC_LPI2C2_PCS_MASK)
-#define PCC0_PCC_LPI2C2_INUSE_MASK               (0x20000000U)
-#define PCC0_PCC_LPI2C2_INUSE_SHIFT              (29U)
-#define PCC0_PCC_LPI2C2_INUSE(x)                 (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPI2C2_INUSE_SHIFT)) & PCC0_PCC_LPI2C2_INUSE_MASK)
-#define PCC0_PCC_LPI2C2_CGC_MASK                 (0x40000000U)
-#define PCC0_PCC_LPI2C2_CGC_SHIFT                (30U)
-#define PCC0_PCC_LPI2C2_CGC(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPI2C2_CGC_SHIFT)) & PCC0_PCC_LPI2C2_CGC_MASK)
-#define PCC0_PCC_LPI2C2_PR_MASK                  (0x80000000U)
-#define PCC0_PCC_LPI2C2_PR_SHIFT                 (31U)
-#define PCC0_PCC_LPI2C2_PR(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPI2C2_PR_SHIFT)) & PCC0_PCC_LPI2C2_PR_MASK)
-
-/*! @name PCC_LPUART2 - PCC CLKCFG Register */
-#define PCC0_PCC_LPUART2_PCS_MASK                (0x7000000U)
-#define PCC0_PCC_LPUART2_PCS_SHIFT               (24U)
-#define PCC0_PCC_LPUART2_PCS(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPUART2_PCS_SHIFT)) & PCC0_PCC_LPUART2_PCS_MASK)
-#define PCC0_PCC_LPUART2_INUSE_MASK              (0x20000000U)
-#define PCC0_PCC_LPUART2_INUSE_SHIFT             (29U)
-#define PCC0_PCC_LPUART2_INUSE(x)                (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPUART2_INUSE_SHIFT)) & PCC0_PCC_LPUART2_INUSE_MASK)
-#define PCC0_PCC_LPUART2_CGC_MASK                (0x40000000U)
-#define PCC0_PCC_LPUART2_CGC_SHIFT               (30U)
-#define PCC0_PCC_LPUART2_CGC(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPUART2_CGC_SHIFT)) & PCC0_PCC_LPUART2_CGC_MASK)
-#define PCC0_PCC_LPUART2_PR_MASK                 (0x80000000U)
-#define PCC0_PCC_LPUART2_PR_SHIFT                (31U)
-#define PCC0_PCC_LPUART2_PR(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_LPUART2_PR_SHIFT)) & PCC0_PCC_LPUART2_PR_MASK)
-
-/*! @name PCC_SAI0 - PCC CLKCFG Register */
-#define PCC0_PCC_SAI0_PCS_MASK                   (0x7000000U)
-#define PCC0_PCC_SAI0_PCS_SHIFT                  (24U)
-#define PCC0_PCC_SAI0_PCS(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_SAI0_PCS_SHIFT)) & PCC0_PCC_SAI0_PCS_MASK)
-#define PCC0_PCC_SAI0_INUSE_MASK                 (0x20000000U)
-#define PCC0_PCC_SAI0_INUSE_SHIFT                (29U)
-#define PCC0_PCC_SAI0_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_SAI0_INUSE_SHIFT)) & PCC0_PCC_SAI0_INUSE_MASK)
-#define PCC0_PCC_SAI0_CGC_MASK                   (0x40000000U)
-#define PCC0_PCC_SAI0_CGC_SHIFT                  (30U)
-#define PCC0_PCC_SAI0_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_SAI0_CGC_SHIFT)) & PCC0_PCC_SAI0_CGC_MASK)
-#define PCC0_PCC_SAI0_PR_MASK                    (0x80000000U)
-#define PCC0_PCC_SAI0_PR_SHIFT                   (31U)
-#define PCC0_PCC_SAI0_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_SAI0_PR_SHIFT)) & PCC0_PCC_SAI0_PR_MASK)
-
-/*! @name PCC_EMVSIM0 - PCC CLKCFG Register */
-#define PCC0_PCC_EMVSIM0_PCS_MASK                (0x7000000U)
-#define PCC0_PCC_EMVSIM0_PCS_SHIFT               (24U)
-#define PCC0_PCC_EMVSIM0_PCS(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_EMVSIM0_PCS_SHIFT)) & PCC0_PCC_EMVSIM0_PCS_MASK)
-#define PCC0_PCC_EMVSIM0_INUSE_MASK              (0x20000000U)
-#define PCC0_PCC_EMVSIM0_INUSE_SHIFT             (29U)
-#define PCC0_PCC_EMVSIM0_INUSE(x)                (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_EMVSIM0_INUSE_SHIFT)) & PCC0_PCC_EMVSIM0_INUSE_MASK)
-#define PCC0_PCC_EMVSIM0_CGC_MASK                (0x40000000U)
-#define PCC0_PCC_EMVSIM0_CGC_SHIFT               (30U)
-#define PCC0_PCC_EMVSIM0_CGC(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_EMVSIM0_CGC_SHIFT)) & PCC0_PCC_EMVSIM0_CGC_MASK)
-#define PCC0_PCC_EMVSIM0_PR_MASK                 (0x80000000U)
-#define PCC0_PCC_EMVSIM0_PR_SHIFT                (31U)
-#define PCC0_PCC_EMVSIM0_PR(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_EMVSIM0_PR_SHIFT)) & PCC0_PCC_EMVSIM0_PR_MASK)
-
-/*! @name PCC_USB0FS - PCC CLKCFG Register */
-#define PCC0_PCC_USB0FS_PCD_MASK                 (0x7U)
-#define PCC0_PCC_USB0FS_PCD_SHIFT                (0U)
-#define PCC0_PCC_USB0FS_PCD(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_USB0FS_PCD_SHIFT)) & PCC0_PCC_USB0FS_PCD_MASK)
-#define PCC0_PCC_USB0FS_FRAC_MASK                (0x8U)
-#define PCC0_PCC_USB0FS_FRAC_SHIFT               (3U)
-#define PCC0_PCC_USB0FS_FRAC(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_USB0FS_FRAC_SHIFT)) & PCC0_PCC_USB0FS_FRAC_MASK)
-#define PCC0_PCC_USB0FS_PCS_MASK                 (0x7000000U)
-#define PCC0_PCC_USB0FS_PCS_SHIFT                (24U)
-#define PCC0_PCC_USB0FS_PCS(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_USB0FS_PCS_SHIFT)) & PCC0_PCC_USB0FS_PCS_MASK)
-#define PCC0_PCC_USB0FS_INUSE_MASK               (0x20000000U)
-#define PCC0_PCC_USB0FS_INUSE_SHIFT              (29U)
-#define PCC0_PCC_USB0FS_INUSE(x)                 (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_USB0FS_INUSE_SHIFT)) & PCC0_PCC_USB0FS_INUSE_MASK)
-#define PCC0_PCC_USB0FS_CGC_MASK                 (0x40000000U)
-#define PCC0_PCC_USB0FS_CGC_SHIFT                (30U)
-#define PCC0_PCC_USB0FS_CGC(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_USB0FS_CGC_SHIFT)) & PCC0_PCC_USB0FS_CGC_MASK)
-#define PCC0_PCC_USB0FS_PR_MASK                  (0x80000000U)
-#define PCC0_PCC_USB0FS_PR_SHIFT                 (31U)
-#define PCC0_PCC_USB0FS_PR(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_USB0FS_PR_SHIFT)) & PCC0_PCC_USB0FS_PR_MASK)
-
-/*! @name PCC_PORTA - PCC CLKCFG Register */
-#define PCC0_PCC_PORTA_INUSE_MASK                (0x20000000U)
-#define PCC0_PCC_PORTA_INUSE_SHIFT               (29U)
-#define PCC0_PCC_PORTA_INUSE(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTA_INUSE_SHIFT)) & PCC0_PCC_PORTA_INUSE_MASK)
-#define PCC0_PCC_PORTA_CGC_MASK                  (0x40000000U)
-#define PCC0_PCC_PORTA_CGC_SHIFT                 (30U)
-#define PCC0_PCC_PORTA_CGC(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTA_CGC_SHIFT)) & PCC0_PCC_PORTA_CGC_MASK)
-#define PCC0_PCC_PORTA_PR_MASK                   (0x80000000U)
-#define PCC0_PCC_PORTA_PR_SHIFT                  (31U)
-#define PCC0_PCC_PORTA_PR(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTA_PR_SHIFT)) & PCC0_PCC_PORTA_PR_MASK)
-
-/*! @name PCC_PORTB - PCC CLKCFG Register */
-#define PCC0_PCC_PORTB_INUSE_MASK                (0x20000000U)
-#define PCC0_PCC_PORTB_INUSE_SHIFT               (29U)
-#define PCC0_PCC_PORTB_INUSE(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTB_INUSE_SHIFT)) & PCC0_PCC_PORTB_INUSE_MASK)
-#define PCC0_PCC_PORTB_CGC_MASK                  (0x40000000U)
-#define PCC0_PCC_PORTB_CGC_SHIFT                 (30U)
-#define PCC0_PCC_PORTB_CGC(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTB_CGC_SHIFT)) & PCC0_PCC_PORTB_CGC_MASK)
-#define PCC0_PCC_PORTB_PR_MASK                   (0x80000000U)
-#define PCC0_PCC_PORTB_PR_SHIFT                  (31U)
-#define PCC0_PCC_PORTB_PR(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTB_PR_SHIFT)) & PCC0_PCC_PORTB_PR_MASK)
-
-/*! @name PCC_PORTC - PCC CLKCFG Register */
-#define PCC0_PCC_PORTC_INUSE_MASK                (0x20000000U)
-#define PCC0_PCC_PORTC_INUSE_SHIFT               (29U)
-#define PCC0_PCC_PORTC_INUSE(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTC_INUSE_SHIFT)) & PCC0_PCC_PORTC_INUSE_MASK)
-#define PCC0_PCC_PORTC_CGC_MASK                  (0x40000000U)
-#define PCC0_PCC_PORTC_CGC_SHIFT                 (30U)
-#define PCC0_PCC_PORTC_CGC(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTC_CGC_SHIFT)) & PCC0_PCC_PORTC_CGC_MASK)
-#define PCC0_PCC_PORTC_PR_MASK                   (0x80000000U)
-#define PCC0_PCC_PORTC_PR_SHIFT                  (31U)
-#define PCC0_PCC_PORTC_PR(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTC_PR_SHIFT)) & PCC0_PCC_PORTC_PR_MASK)
-
-/*! @name PCC_PORTD - PCC CLKCFG Register */
-#define PCC0_PCC_PORTD_INUSE_MASK                (0x20000000U)
-#define PCC0_PCC_PORTD_INUSE_SHIFT               (29U)
-#define PCC0_PCC_PORTD_INUSE(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTD_INUSE_SHIFT)) & PCC0_PCC_PORTD_INUSE_MASK)
-#define PCC0_PCC_PORTD_CGC_MASK                  (0x40000000U)
-#define PCC0_PCC_PORTD_CGC_SHIFT                 (30U)
-#define PCC0_PCC_PORTD_CGC(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTD_CGC_SHIFT)) & PCC0_PCC_PORTD_CGC_MASK)
-#define PCC0_PCC_PORTD_PR_MASK                   (0x80000000U)
-#define PCC0_PCC_PORTD_PR_SHIFT                  (31U)
-#define PCC0_PCC_PORTD_PR(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTD_PR_SHIFT)) & PCC0_PCC_PORTD_PR_MASK)
-
-/*! @name PCC_PORTE - PCC CLKCFG Register */
-#define PCC0_PCC_PORTE_INUSE_MASK                (0x20000000U)
-#define PCC0_PCC_PORTE_INUSE_SHIFT               (29U)
-#define PCC0_PCC_PORTE_INUSE(x)                  (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTE_INUSE_SHIFT)) & PCC0_PCC_PORTE_INUSE_MASK)
-#define PCC0_PCC_PORTE_CGC_MASK                  (0x40000000U)
-#define PCC0_PCC_PORTE_CGC_SHIFT                 (30U)
-#define PCC0_PCC_PORTE_CGC(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTE_CGC_SHIFT)) & PCC0_PCC_PORTE_CGC_MASK)
-#define PCC0_PCC_PORTE_PR_MASK                   (0x80000000U)
-#define PCC0_PCC_PORTE_PR_SHIFT                  (31U)
-#define PCC0_PCC_PORTE_PR(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_PORTE_PR_SHIFT)) & PCC0_PCC_PORTE_PR_MASK)
-
-/*! @name PCC_TSI0 - PCC CLKCFG Register */
-#define PCC0_PCC_TSI0_INUSE_MASK                 (0x20000000U)
-#define PCC0_PCC_TSI0_INUSE_SHIFT                (29U)
-#define PCC0_PCC_TSI0_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_TSI0_INUSE_SHIFT)) & PCC0_PCC_TSI0_INUSE_MASK)
-#define PCC0_PCC_TSI0_CGC_MASK                   (0x40000000U)
-#define PCC0_PCC_TSI0_CGC_SHIFT                  (30U)
-#define PCC0_PCC_TSI0_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_TSI0_CGC_SHIFT)) & PCC0_PCC_TSI0_CGC_MASK)
-#define PCC0_PCC_TSI0_PR_MASK                    (0x80000000U)
-#define PCC0_PCC_TSI0_PR_SHIFT                   (31U)
-#define PCC0_PCC_TSI0_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_TSI0_PR_SHIFT)) & PCC0_PCC_TSI0_PR_MASK)
-
-/*! @name PCC_ADC0 - PCC CLKCFG Register */
-#define PCC0_PCC_ADC0_PCS_MASK                   (0x7000000U)
-#define PCC0_PCC_ADC0_PCS_SHIFT                  (24U)
-#define PCC0_PCC_ADC0_PCS(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_ADC0_PCS_SHIFT)) & PCC0_PCC_ADC0_PCS_MASK)
-#define PCC0_PCC_ADC0_INUSE_MASK                 (0x20000000U)
-#define PCC0_PCC_ADC0_INUSE_SHIFT                (29U)
-#define PCC0_PCC_ADC0_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_ADC0_INUSE_SHIFT)) & PCC0_PCC_ADC0_INUSE_MASK)
-#define PCC0_PCC_ADC0_CGC_MASK                   (0x40000000U)
-#define PCC0_PCC_ADC0_CGC_SHIFT                  (30U)
-#define PCC0_PCC_ADC0_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_ADC0_CGC_SHIFT)) & PCC0_PCC_ADC0_CGC_MASK)
-#define PCC0_PCC_ADC0_PR_MASK                    (0x80000000U)
-#define PCC0_PCC_ADC0_PR_SHIFT                   (31U)
-#define PCC0_PCC_ADC0_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_ADC0_PR_SHIFT)) & PCC0_PCC_ADC0_PR_MASK)
-
-/*! @name PCC_DAC0 - PCC CLKCFG Register */
-#define PCC0_PCC_DAC0_INUSE_MASK                 (0x20000000U)
-#define PCC0_PCC_DAC0_INUSE_SHIFT                (29U)
-#define PCC0_PCC_DAC0_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_DAC0_INUSE_SHIFT)) & PCC0_PCC_DAC0_INUSE_MASK)
-#define PCC0_PCC_DAC0_CGC_MASK                   (0x40000000U)
-#define PCC0_PCC_DAC0_CGC_SHIFT                  (30U)
-#define PCC0_PCC_DAC0_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_DAC0_CGC_SHIFT)) & PCC0_PCC_DAC0_CGC_MASK)
-#define PCC0_PCC_DAC0_PR_MASK                    (0x80000000U)
-#define PCC0_PCC_DAC0_PR_SHIFT                   (31U)
-#define PCC0_PCC_DAC0_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_DAC0_PR_SHIFT)) & PCC0_PCC_DAC0_PR_MASK)
-
-/*! @name PCC_CMP0 - PCC CLKCFG Register */
-#define PCC0_PCC_CMP0_INUSE_MASK                 (0x20000000U)
-#define PCC0_PCC_CMP0_INUSE_SHIFT                (29U)
-#define PCC0_PCC_CMP0_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_CMP0_INUSE_SHIFT)) & PCC0_PCC_CMP0_INUSE_MASK)
-#define PCC0_PCC_CMP0_CGC_MASK                   (0x40000000U)
-#define PCC0_PCC_CMP0_CGC_SHIFT                  (30U)
-#define PCC0_PCC_CMP0_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_CMP0_CGC_SHIFT)) & PCC0_PCC_CMP0_CGC_MASK)
-#define PCC0_PCC_CMP0_PR_MASK                    (0x80000000U)
-#define PCC0_PCC_CMP0_PR_SHIFT                   (31U)
-#define PCC0_PCC_CMP0_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_CMP0_PR_SHIFT)) & PCC0_PCC_CMP0_PR_MASK)
-
-/*! @name PCC_VREF - PCC CLKCFG Register */
-#define PCC0_PCC_VREF_INUSE_MASK                 (0x20000000U)
-#define PCC0_PCC_VREF_INUSE_SHIFT                (29U)
-#define PCC0_PCC_VREF_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_VREF_INUSE_SHIFT)) & PCC0_PCC_VREF_INUSE_MASK)
-#define PCC0_PCC_VREF_CGC_MASK                   (0x40000000U)
-#define PCC0_PCC_VREF_CGC_SHIFT                  (30U)
-#define PCC0_PCC_VREF_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_VREF_CGC_SHIFT)) & PCC0_PCC_VREF_CGC_MASK)
-#define PCC0_PCC_VREF_PR_MASK                    (0x80000000U)
-#define PCC0_PCC_VREF_PR_SHIFT                   (31U)
-#define PCC0_PCC_VREF_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_VREF_PR_SHIFT)) & PCC0_PCC_VREF_PR_MASK)
-
-/*! @name PCC_CRC - PCC CLKCFG Register */
-#define PCC0_PCC_CRC_INUSE_MASK                  (0x20000000U)
-#define PCC0_PCC_CRC_INUSE_SHIFT                 (29U)
-#define PCC0_PCC_CRC_INUSE(x)                    (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_CRC_INUSE_SHIFT)) & PCC0_PCC_CRC_INUSE_MASK)
-#define PCC0_PCC_CRC_CGC_MASK                    (0x40000000U)
-#define PCC0_PCC_CRC_CGC_SHIFT                   (30U)
-#define PCC0_PCC_CRC_CGC(x)                      (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_CRC_CGC_SHIFT)) & PCC0_PCC_CRC_CGC_MASK)
-#define PCC0_PCC_CRC_PR_MASK                     (0x80000000U)
-#define PCC0_PCC_CRC_PR_SHIFT                    (31U)
-#define PCC0_PCC_CRC_PR(x)                       (((uint32_t)(((uint32_t)(x)) << PCC0_PCC_CRC_PR_SHIFT)) & PCC0_PCC_CRC_PR_MASK)
+/* The count of PCC_CLKCFG */
+#define PCC_CLKCFG_COUNT                         (121U)
 
 
 /*!
  * @}
- */ /* end of group PCC0_Register_Masks */
+ */ /* end of group PCC_Register_Masks */
 
 
-/* PCC0 - Peripheral instance base addresses */
+/* PCC - Peripheral instance base addresses */
 /** Peripheral PCC0 base address */
 #define PCC0_BASE                                (0x4007A000u)
 /** Peripheral PCC0 base pointer */
-#define PCC0                                     ((PCC0_Type *)PCC0_BASE)
-/** Array initializer of PCC0 peripheral base addresses */
-#define PCC0_BASE_ADDRS                          { PCC0_BASE }
-/** Array initializer of PCC0 peripheral base pointers */
-#define PCC0_BASE_PTRS                           { PCC0 }
-
-/*!
- * @}
- */ /* end of group PCC0_Peripheral_Access_Layer */
-
-
-/* ----------------------------------------------------------------------------
-   -- PCC1 Peripheral Access Layer
-   ---------------------------------------------------------------------------- */
-
-/*!
- * @addtogroup PCC1_Peripheral_Access_Layer PCC1 Peripheral Access Layer
- * @{
- */
-
-/** PCC1 - Register Layout Typedef */
-typedef struct {
-       uint8_t RESERVED_0[148];
-  __IO uint32_t PCC_TRNG;                          /**< PCC CLKCFG Register, offset: 0x94 */
-       uint8_t RESERVED_1[24];
-  __IO uint32_t PCC_TPM0;                          /**< PCC CLKCFG Register, offset: 0xB0 */
-  __IO uint32_t PCC_TPM1;                          /**< PCC CLKCFG Register, offset: 0xB4 */
-       uint8_t RESERVED_2[28];
-  __IO uint32_t PCC_LPTMR1;                        /**< PCC CLKCFG Register, offset: 0xD4 */
-       uint8_t RESERVED_3[24];
-  __IO uint32_t PCC_LPSPI0;                        /**< PCC CLKCFG Register, offset: 0xF0 */
-  __IO uint32_t PCC_LPSPI1;                        /**< PCC CLKCFG Register, offset: 0xF4 */
-       uint8_t RESERVED_4[8];
-  __IO uint32_t PCC_LPI2C0;                        /**< PCC CLKCFG Register, offset: 0x100 */
-  __IO uint32_t PCC_LPI2C1;                        /**< PCC CLKCFG Register, offset: 0x104 */
-       uint8_t RESERVED_5[8];
-  __IO uint32_t PCC_LPUART0;                       /**< PCC CLKCFG Register, offset: 0x110 */
-  __IO uint32_t PCC_LPUART1;                       /**< PCC CLKCFG Register, offset: 0x114 */
-       uint8_t RESERVED_6[16];
-  __IO uint32_t PCC_FLEXIO0;                       /**< PCC CLKCFG Register, offset: 0x128 */
-       uint8_t RESERVED_7[144];
-  __IO uint32_t PCC_CMP1;                          /**< PCC CLKCFG Register, offset: 0x1BC */
-} PCC1_Type;
-
-/* ----------------------------------------------------------------------------
-   -- PCC1 Register Masks
-   ---------------------------------------------------------------------------- */
-
-/*!
- * @addtogroup PCC1_Register_Masks PCC1 Register Masks
- * @{
- */
-
-/*! @name PCC_TRNG - PCC CLKCFG Register */
-#define PCC1_PCC_TRNG_INUSE_MASK                 (0x20000000U)
-#define PCC1_PCC_TRNG_INUSE_SHIFT                (29U)
-#define PCC1_PCC_TRNG_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TRNG_INUSE_SHIFT)) & PCC1_PCC_TRNG_INUSE_MASK)
-#define PCC1_PCC_TRNG_CGC_MASK                   (0x40000000U)
-#define PCC1_PCC_TRNG_CGC_SHIFT                  (30U)
-#define PCC1_PCC_TRNG_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TRNG_CGC_SHIFT)) & PCC1_PCC_TRNG_CGC_MASK)
-#define PCC1_PCC_TRNG_PR_MASK                    (0x80000000U)
-#define PCC1_PCC_TRNG_PR_SHIFT                   (31U)
-#define PCC1_PCC_TRNG_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TRNG_PR_SHIFT)) & PCC1_PCC_TRNG_PR_MASK)
-
-/*! @name PCC_TPM0 - PCC CLKCFG Register */
-#define PCC1_PCC_TPM0_PCS_MASK                   (0x7000000U)
-#define PCC1_PCC_TPM0_PCS_SHIFT                  (24U)
-#define PCC1_PCC_TPM0_PCS(x)                     (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TPM0_PCS_SHIFT)) & PCC1_PCC_TPM0_PCS_MASK)
-#define PCC1_PCC_TPM0_INUSE_MASK                 (0x20000000U)
-#define PCC1_PCC_TPM0_INUSE_SHIFT                (29U)
-#define PCC1_PCC_TPM0_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TPM0_INUSE_SHIFT)) & PCC1_PCC_TPM0_INUSE_MASK)
-#define PCC1_PCC_TPM0_CGC_MASK                   (0x40000000U)
-#define PCC1_PCC_TPM0_CGC_SHIFT                  (30U)
-#define PCC1_PCC_TPM0_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TPM0_CGC_SHIFT)) & PCC1_PCC_TPM0_CGC_MASK)
-#define PCC1_PCC_TPM0_PR_MASK                    (0x80000000U)
-#define PCC1_PCC_TPM0_PR_SHIFT                   (31U)
-#define PCC1_PCC_TPM0_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TPM0_PR_SHIFT)) & PCC1_PCC_TPM0_PR_MASK)
-
-/*! @name PCC_TPM1 - PCC CLKCFG Register */
-#define PCC1_PCC_TPM1_PCS_MASK                   (0x7000000U)
-#define PCC1_PCC_TPM1_PCS_SHIFT                  (24U)
-#define PCC1_PCC_TPM1_PCS(x)                     (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TPM1_PCS_SHIFT)) & PCC1_PCC_TPM1_PCS_MASK)
-#define PCC1_PCC_TPM1_INUSE_MASK                 (0x20000000U)
-#define PCC1_PCC_TPM1_INUSE_SHIFT                (29U)
-#define PCC1_PCC_TPM1_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TPM1_INUSE_SHIFT)) & PCC1_PCC_TPM1_INUSE_MASK)
-#define PCC1_PCC_TPM1_CGC_MASK                   (0x40000000U)
-#define PCC1_PCC_TPM1_CGC_SHIFT                  (30U)
-#define PCC1_PCC_TPM1_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TPM1_CGC_SHIFT)) & PCC1_PCC_TPM1_CGC_MASK)
-#define PCC1_PCC_TPM1_PR_MASK                    (0x80000000U)
-#define PCC1_PCC_TPM1_PR_SHIFT                   (31U)
-#define PCC1_PCC_TPM1_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_TPM1_PR_SHIFT)) & PCC1_PCC_TPM1_PR_MASK)
-
-/*! @name PCC_LPTMR1 - PCC CLKCFG Register */
-#define PCC1_PCC_LPTMR1_INUSE_MASK               (0x20000000U)
-#define PCC1_PCC_LPTMR1_INUSE_SHIFT              (29U)
-#define PCC1_PCC_LPTMR1_INUSE(x)                 (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPTMR1_INUSE_SHIFT)) & PCC1_PCC_LPTMR1_INUSE_MASK)
-#define PCC1_PCC_LPTMR1_CGC_MASK                 (0x40000000U)
-#define PCC1_PCC_LPTMR1_CGC_SHIFT                (30U)
-#define PCC1_PCC_LPTMR1_CGC(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPTMR1_CGC_SHIFT)) & PCC1_PCC_LPTMR1_CGC_MASK)
-#define PCC1_PCC_LPTMR1_PR_MASK                  (0x80000000U)
-#define PCC1_PCC_LPTMR1_PR_SHIFT                 (31U)
-#define PCC1_PCC_LPTMR1_PR(x)                    (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPTMR1_PR_SHIFT)) & PCC1_PCC_LPTMR1_PR_MASK)
-
-/*! @name PCC_LPSPI0 - PCC CLKCFG Register */
-#define PCC1_PCC_LPSPI0_PCS_MASK                 (0x7000000U)
-#define PCC1_PCC_LPSPI0_PCS_SHIFT                (24U)
-#define PCC1_PCC_LPSPI0_PCS(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPSPI0_PCS_SHIFT)) & PCC1_PCC_LPSPI0_PCS_MASK)
-#define PCC1_PCC_LPSPI0_INUSE_MASK               (0x20000000U)
-#define PCC1_PCC_LPSPI0_INUSE_SHIFT              (29U)
-#define PCC1_PCC_LPSPI0_INUSE(x)                 (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPSPI0_INUSE_SHIFT)) & PCC1_PCC_LPSPI0_INUSE_MASK)
-#define PCC1_PCC_LPSPI0_CGC_MASK                 (0x40000000U)
-#define PCC1_PCC_LPSPI0_CGC_SHIFT                (30U)
-#define PCC1_PCC_LPSPI0_CGC(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPSPI0_CGC_SHIFT)) & PCC1_PCC_LPSPI0_CGC_MASK)
-#define PCC1_PCC_LPSPI0_PR_MASK                  (0x80000000U)
-#define PCC1_PCC_LPSPI0_PR_SHIFT                 (31U)
-#define PCC1_PCC_LPSPI0_PR(x)                    (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPSPI0_PR_SHIFT)) & PCC1_PCC_LPSPI0_PR_MASK)
-
-/*! @name PCC_LPSPI1 - PCC CLKCFG Register */
-#define PCC1_PCC_LPSPI1_PCS_MASK                 (0x7000000U)
-#define PCC1_PCC_LPSPI1_PCS_SHIFT                (24U)
-#define PCC1_PCC_LPSPI1_PCS(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPSPI1_PCS_SHIFT)) & PCC1_PCC_LPSPI1_PCS_MASK)
-#define PCC1_PCC_LPSPI1_INUSE_MASK               (0x20000000U)
-#define PCC1_PCC_LPSPI1_INUSE_SHIFT              (29U)
-#define PCC1_PCC_LPSPI1_INUSE(x)                 (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPSPI1_INUSE_SHIFT)) & PCC1_PCC_LPSPI1_INUSE_MASK)
-#define PCC1_PCC_LPSPI1_CGC_MASK                 (0x40000000U)
-#define PCC1_PCC_LPSPI1_CGC_SHIFT                (30U)
-#define PCC1_PCC_LPSPI1_CGC(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPSPI1_CGC_SHIFT)) & PCC1_PCC_LPSPI1_CGC_MASK)
-#define PCC1_PCC_LPSPI1_PR_MASK                  (0x80000000U)
-#define PCC1_PCC_LPSPI1_PR_SHIFT                 (31U)
-#define PCC1_PCC_LPSPI1_PR(x)                    (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPSPI1_PR_SHIFT)) & PCC1_PCC_LPSPI1_PR_MASK)
-
-/*! @name PCC_LPI2C0 - PCC CLKCFG Register */
-#define PCC1_PCC_LPI2C0_PCS_MASK                 (0x7000000U)
-#define PCC1_PCC_LPI2C0_PCS_SHIFT                (24U)
-#define PCC1_PCC_LPI2C0_PCS(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPI2C0_PCS_SHIFT)) & PCC1_PCC_LPI2C0_PCS_MASK)
-#define PCC1_PCC_LPI2C0_INUSE_MASK               (0x20000000U)
-#define PCC1_PCC_LPI2C0_INUSE_SHIFT              (29U)
-#define PCC1_PCC_LPI2C0_INUSE(x)                 (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPI2C0_INUSE_SHIFT)) & PCC1_PCC_LPI2C0_INUSE_MASK)
-#define PCC1_PCC_LPI2C0_CGC_MASK                 (0x40000000U)
-#define PCC1_PCC_LPI2C0_CGC_SHIFT                (30U)
-#define PCC1_PCC_LPI2C0_CGC(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPI2C0_CGC_SHIFT)) & PCC1_PCC_LPI2C0_CGC_MASK)
-#define PCC1_PCC_LPI2C0_PR_MASK                  (0x80000000U)
-#define PCC1_PCC_LPI2C0_PR_SHIFT                 (31U)
-#define PCC1_PCC_LPI2C0_PR(x)                    (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPI2C0_PR_SHIFT)) & PCC1_PCC_LPI2C0_PR_MASK)
-
-/*! @name PCC_LPI2C1 - PCC CLKCFG Register */
-#define PCC1_PCC_LPI2C1_PCS_MASK                 (0x7000000U)
-#define PCC1_PCC_LPI2C1_PCS_SHIFT                (24U)
-#define PCC1_PCC_LPI2C1_PCS(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPI2C1_PCS_SHIFT)) & PCC1_PCC_LPI2C1_PCS_MASK)
-#define PCC1_PCC_LPI2C1_INUSE_MASK               (0x20000000U)
-#define PCC1_PCC_LPI2C1_INUSE_SHIFT              (29U)
-#define PCC1_PCC_LPI2C1_INUSE(x)                 (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPI2C1_INUSE_SHIFT)) & PCC1_PCC_LPI2C1_INUSE_MASK)
-#define PCC1_PCC_LPI2C1_CGC_MASK                 (0x40000000U)
-#define PCC1_PCC_LPI2C1_CGC_SHIFT                (30U)
-#define PCC1_PCC_LPI2C1_CGC(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPI2C1_CGC_SHIFT)) & PCC1_PCC_LPI2C1_CGC_MASK)
-#define PCC1_PCC_LPI2C1_PR_MASK                  (0x80000000U)
-#define PCC1_PCC_LPI2C1_PR_SHIFT                 (31U)
-#define PCC1_PCC_LPI2C1_PR(x)                    (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPI2C1_PR_SHIFT)) & PCC1_PCC_LPI2C1_PR_MASK)
-
-/*! @name PCC_LPUART0 - PCC CLKCFG Register */
-#define PCC1_PCC_LPUART0_PCS_MASK                (0x7000000U)
-#define PCC1_PCC_LPUART0_PCS_SHIFT               (24U)
-#define PCC1_PCC_LPUART0_PCS(x)                  (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPUART0_PCS_SHIFT)) & PCC1_PCC_LPUART0_PCS_MASK)
-#define PCC1_PCC_LPUART0_INUSE_MASK              (0x20000000U)
-#define PCC1_PCC_LPUART0_INUSE_SHIFT             (29U)
-#define PCC1_PCC_LPUART0_INUSE(x)                (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPUART0_INUSE_SHIFT)) & PCC1_PCC_LPUART0_INUSE_MASK)
-#define PCC1_PCC_LPUART0_CGC_MASK                (0x40000000U)
-#define PCC1_PCC_LPUART0_CGC_SHIFT               (30U)
-#define PCC1_PCC_LPUART0_CGC(x)                  (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPUART0_CGC_SHIFT)) & PCC1_PCC_LPUART0_CGC_MASK)
-#define PCC1_PCC_LPUART0_PR_MASK                 (0x80000000U)
-#define PCC1_PCC_LPUART0_PR_SHIFT                (31U)
-#define PCC1_PCC_LPUART0_PR(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPUART0_PR_SHIFT)) & PCC1_PCC_LPUART0_PR_MASK)
-
-/*! @name PCC_LPUART1 - PCC CLKCFG Register */
-#define PCC1_PCC_LPUART1_PCS_MASK                (0x7000000U)
-#define PCC1_PCC_LPUART1_PCS_SHIFT               (24U)
-#define PCC1_PCC_LPUART1_PCS(x)                  (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPUART1_PCS_SHIFT)) & PCC1_PCC_LPUART1_PCS_MASK)
-#define PCC1_PCC_LPUART1_INUSE_MASK              (0x20000000U)
-#define PCC1_PCC_LPUART1_INUSE_SHIFT             (29U)
-#define PCC1_PCC_LPUART1_INUSE(x)                (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPUART1_INUSE_SHIFT)) & PCC1_PCC_LPUART1_INUSE_MASK)
-#define PCC1_PCC_LPUART1_CGC_MASK                (0x40000000U)
-#define PCC1_PCC_LPUART1_CGC_SHIFT               (30U)
-#define PCC1_PCC_LPUART1_CGC(x)                  (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPUART1_CGC_SHIFT)) & PCC1_PCC_LPUART1_CGC_MASK)
-#define PCC1_PCC_LPUART1_PR_MASK                 (0x80000000U)
-#define PCC1_PCC_LPUART1_PR_SHIFT                (31U)
-#define PCC1_PCC_LPUART1_PR(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_LPUART1_PR_SHIFT)) & PCC1_PCC_LPUART1_PR_MASK)
-
-/*! @name PCC_FLEXIO0 - PCC CLKCFG Register */
-#define PCC1_PCC_FLEXIO0_PCS_MASK                (0x7000000U)
-#define PCC1_PCC_FLEXIO0_PCS_SHIFT               (24U)
-#define PCC1_PCC_FLEXIO0_PCS(x)                  (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_FLEXIO0_PCS_SHIFT)) & PCC1_PCC_FLEXIO0_PCS_MASK)
-#define PCC1_PCC_FLEXIO0_INUSE_MASK              (0x20000000U)
-#define PCC1_PCC_FLEXIO0_INUSE_SHIFT             (29U)
-#define PCC1_PCC_FLEXIO0_INUSE(x)                (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_FLEXIO0_INUSE_SHIFT)) & PCC1_PCC_FLEXIO0_INUSE_MASK)
-#define PCC1_PCC_FLEXIO0_CGC_MASK                (0x40000000U)
-#define PCC1_PCC_FLEXIO0_CGC_SHIFT               (30U)
-#define PCC1_PCC_FLEXIO0_CGC(x)                  (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_FLEXIO0_CGC_SHIFT)) & PCC1_PCC_FLEXIO0_CGC_MASK)
-#define PCC1_PCC_FLEXIO0_PR_MASK                 (0x80000000U)
-#define PCC1_PCC_FLEXIO0_PR_SHIFT                (31U)
-#define PCC1_PCC_FLEXIO0_PR(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_FLEXIO0_PR_SHIFT)) & PCC1_PCC_FLEXIO0_PR_MASK)
-
-/*! @name PCC_CMP1 - PCC CLKCFG Register */
-#define PCC1_PCC_CMP1_INUSE_MASK                 (0x20000000U)
-#define PCC1_PCC_CMP1_INUSE_SHIFT                (29U)
-#define PCC1_PCC_CMP1_INUSE(x)                   (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_CMP1_INUSE_SHIFT)) & PCC1_PCC_CMP1_INUSE_MASK)
-#define PCC1_PCC_CMP1_CGC_MASK                   (0x40000000U)
-#define PCC1_PCC_CMP1_CGC_SHIFT                  (30U)
-#define PCC1_PCC_CMP1_CGC(x)                     (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_CMP1_CGC_SHIFT)) & PCC1_PCC_CMP1_CGC_MASK)
-#define PCC1_PCC_CMP1_PR_MASK                    (0x80000000U)
-#define PCC1_PCC_CMP1_PR_SHIFT                   (31U)
-#define PCC1_PCC_CMP1_PR(x)                      (((uint32_t)(((uint32_t)(x)) << PCC1_PCC_CMP1_PR_SHIFT)) & PCC1_PCC_CMP1_PR_MASK)
-
-
-/*!
- * @}
- */ /* end of group PCC1_Register_Masks */
-
-
-/* PCC1 - Peripheral instance base addresses */
+#define PCC0                                     ((PCC_Type *)PCC0_BASE)
 /** Peripheral PCC1 base address */
 #define PCC1_BASE                                (0x400FA000u)
 /** Peripheral PCC1 base pointer */
-#define PCC1                                     ((PCC1_Type *)PCC1_BASE)
-/** Array initializer of PCC1 peripheral base addresses */
-#define PCC1_BASE_ADDRS                          { PCC1_BASE }
-/** Array initializer of PCC1 peripheral base pointers */
-#define PCC1_BASE_PTRS                           { PCC1 }
+#define PCC1                                     ((PCC_Type *)PCC1_BASE)
+/** Array initializer of PCC peripheral base addresses */
+#define PCC_BASE_ADDRS                           { PCC0_BASE, PCC1_BASE }
+/** Array initializer of PCC peripheral base pointers */
+#define PCC_BASE_PTRS                            { PCC0, PCC1 }
+#define PCC_INSTANCE_MASK      0xF
+#define PCC_INSTANCE_SHIFT     12
+#define PCC_PERIPHERAL_MASK    0xFFF
+#define PCC_PERIPHERAL_SHIFT   0
+#define PCC_INSTANCE_0    0
+#define PCC_INSTANCE_1    1
+
+#define PCC_DMA0_INDEX      ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 8)
+#define PCC_FLASH_INDEX     ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 32)
+#define PCC_DMAMUX0_INDEX   ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 33)
+#define PCC_INTMUX0_INDEX   ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 36)
+#define PCC_TPM2_INDEX      ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 46)
+#define PCC_LPIT0_INDEX     ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 48)
+#define PCC_LPTMR0_INDEX    ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 52)
+#define PCC_RTC_INDEX       ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 56)
+#define PCC_LPSPI2_INDEX    ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 62)
+#define PCC_LPI2C2_INDEX    ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 66)
+#define PCC_LPUART2_INDEX   ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 70)
+#define PCC_SAI0_INDEX      ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 76)
+#define PCC_EMVSIM0_INDEX   ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 78)
+#define PCC_USB0FS_INDEX    ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 85)
+#define PCC_PORTA_INDEX     ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 90)
+#define PCC_PORTB_INDEX     ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 91)
+#define PCC_PORTC_INDEX     ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 92)
+#define PCC_PORTD_INDEX     ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 93)
+#define PCC_PORTE_INDEX     ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 94)
+#define PCC_TSI0_INDEX      ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 98)
+#define PCC_ADC0_INDEX      ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 102)
+#define PCC_DAC0_INDEX      ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 106)
+#define PCC_CMP0_INDEX      ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 110)
+#define PCC_VREF_INDEX      ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 114)
+#define PCC_CRC_INDEX       ((uint16_t)((PCC_INSTANCE_0 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 120)
+#define PCC_DMA0            (PCC0->CLKCFG[8])
+#define PCC_FLASH           (PCC0->CLKCFG[32])
+#define PCC_DMAMUX0         (PCC0->CLKCFG[33])
+#define PCC_INTMUX0         (PCC0->CLKCFG[36])
+#define PCC_TPM2            (PCC0->CLKCFG[46])
+#define PCC_LPIT0           (PCC0->CLKCFG[48])
+#define PCC_LPTMR0          (PCC0->CLKCFG[52])
+#define PCC_RTC             (PCC0->CLKCFG[56])
+#define PCC_LPSPI2          (PCC0->CLKCFG[62])
+#define PCC_LPI2C2          (PCC0->CLKCFG[66])
+#define PCC_LPUART2         (PCC0->CLKCFG[70])
+#define PCC_SAI0            (PCC0->CLKCFG[76])
+#define PCC_EMVSIM0         (PCC0->CLKCFG[78])
+#define PCC_USB0FS          (PCC0->CLKCFG[85])
+#define PCC_PORTA           (PCC0->CLKCFG[90])
+#define PCC_PORTB           (PCC0->CLKCFG[91])
+#define PCC_PORTC           (PCC0->CLKCFG[92])
+#define PCC_PORTD           (PCC0->CLKCFG[93])
+#define PCC_PORTE           (PCC0->CLKCFG[94])
+#define PCC_TSI0            (PCC0->CLKCFG[98])
+#define PCC_ADC0            (PCC0->CLKCFG[102])
+#define PCC_DAC0            (PCC0->CLKCFG[106])
+#define PCC_CMP0            (PCC0->CLKCFG[110])
+#define PCC_VREF            (PCC0->CLKCFG[114])
+#define PCC_CRC             (PCC0->CLKCFG[120])
+
+#define PCC_TRNG_INDEX      ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 37)
+#define PCC_TPM0_INDEX      ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 44)
+#define PCC_TPM1_INDEX      ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 45)
+#define PCC_LPTMR1_INDEX    ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 53)
+#define PCC_LPSPI0_INDEX    ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 60)
+#define PCC_LPSPI1_INDEX    ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 61)
+#define PCC_LPI2C0_INDEX    ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 64)
+#define PCC_LPI2C1_INDEX    ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 65)
+#define PCC_LPUART0_INDEX   ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 68)
+#define PCC_LPUART1_INDEX   ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 69)
+#define PCC_FLEXIO0_INDEX   ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 74)
+#define PCC_PORTM_INDEX     ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 96)
+#define PCC_CMP1_INDEX      ((uint16_t)((PCC_INSTANCE_1 & PCC_INSTANCE_MASK) << PCC_INSTANCE_SHIFT) | 111)
+#define PCC_TRNG            (PCC1->CLKCFG[37])
+#define PCC_TPM0            (PCC1->CLKCFG[44])
+#define PCC_TPM1            (PCC1->CLKCFG[45])
+#define PCC_LPTMR1          (PCC1->CLKCFG[53])
+#define PCC_LPSPI0          (PCC1->CLKCFG[60])
+#define PCC_LPSPI1          (PCC1->CLKCFG[61])
+#define PCC_LPI2C0          (PCC1->CLKCFG[64])
+#define PCC_LPI2C1          (PCC1->CLKCFG[65])
+#define PCC_LPUART0         (PCC1->CLKCFG[68])
+#define PCC_LPUART1         (PCC1->CLKCFG[69])
+#define PCC_FLEXIO0         (PCC1->CLKCFG[74])
+#define PCC_CMP1            (PCC1->CLKCFG[111])
+
 
 /*!
  * @}
- */ /* end of group PCC1_Peripheral_Access_Layer */
+ */ /* end of group PCC_Peripheral_Access_Layer */
 
 
 /* ----------------------------------------------------------------------------
@@ -7691,6 +7459,8 @@ typedef struct {
 #define PMC_BASE_ADDRS                           { PMC_BASE }
 /** Array initializer of PMC peripheral base pointers */
 #define PMC_BASE_PTRS                            { PMC }
+/** Interrupt vectors for the PMC peripheral type */
+#define PMC_IRQS                                 { PMC_IRQn }
 
 /*!
  * @}
@@ -7715,10 +7485,6 @@ typedef struct {
   __O  uint32_t GICHR;                             /**< Global Interrupt Control High Register, offset: 0x8C */
        uint8_t RESERVED_0[16];
   __IO uint32_t ISFR;                              /**< Interrupt Status Flag Register, offset: 0xA0 */
-       uint8_t RESERVED_1[28];
-  __IO uint32_t DFER;                              /**< Digital Filter Enable Register, offset: 0xC0 */
-  __IO uint32_t DFCR;                              /**< Digital Filter Clock Register, offset: 0xC4 */
-  __IO uint32_t DFWR;                              /**< Digital Filter Width Register, offset: 0xC8 */
 } PORT_Type;
 
 /* ----------------------------------------------------------------------------
@@ -7802,21 +7568,6 @@ typedef struct {
 #define PORT_ISFR_ISF_SHIFT                      (0U)
 #define PORT_ISFR_ISF(x)                         (((uint32_t)(((uint32_t)(x)) << PORT_ISFR_ISF_SHIFT)) & PORT_ISFR_ISF_MASK)
 
-/*! @name DFER - Digital Filter Enable Register */
-#define PORT_DFER_DFE_MASK                       (0xFFFFFFFFU)
-#define PORT_DFER_DFE_SHIFT                      (0U)
-#define PORT_DFER_DFE(x)                         (((uint32_t)(((uint32_t)(x)) << PORT_DFER_DFE_SHIFT)) & PORT_DFER_DFE_MASK)
-
-/*! @name DFCR - Digital Filter Clock Register */
-#define PORT_DFCR_CS_MASK                        (0x1U)
-#define PORT_DFCR_CS_SHIFT                       (0U)
-#define PORT_DFCR_CS(x)                          (((uint32_t)(((uint32_t)(x)) << PORT_DFCR_CS_SHIFT)) & PORT_DFCR_CS_MASK)
-
-/*! @name DFWR - Digital Filter Width Register */
-#define PORT_DFWR_FILT_MASK                      (0x1FU)
-#define PORT_DFWR_FILT_SHIFT                     (0U)
-#define PORT_DFWR_FILT(x)                        (((uint32_t)(((uint32_t)(x)) << PORT_DFWR_FILT_SHIFT)) & PORT_DFWR_FILT_MASK)
-
 
 /*!
  * @}
@@ -7848,6 +7599,8 @@ typedef struct {
 #define PORT_BASE_ADDRS                          { PORTA_BASE, PORTB_BASE, PORTC_BASE, PORTD_BASE, PORTE_BASE }
 /** Array initializer of PORT peripheral base pointers */
 #define PORT_BASE_PTRS                           { PORTA, PORTB, PORTC, PORTD, PORTE }
+/** Interrupt vectors for the PORT peripheral type */
+#define PORT_IRQS                                { PORTA_IRQn, PORTB_IRQn, PORTC_IRQn, PORTD_IRQn, PORTE_IRQn }
 
 /*!
  * @}
@@ -8077,6 +7830,8 @@ typedef struct {
 #define RCM_BASE_ADDRS                           { RCM_BASE }
 /** Array initializer of RCM peripheral base pointers */
 #define RCM_BASE_PTRS                            { RCM }
+/** Interrupt vectors for the RCM peripheral type */
+#define RCM_IRQS                                 { RCM_IRQn }
 
 /*!
  * @}
@@ -8310,6 +8065,9 @@ typedef struct {
 #define RTC_BASE_ADDRS                           { RTC_BASE }
 /** Array initializer of RTC peripheral base pointers */
 #define RTC_BASE_PTRS                            { RTC }
+/** Interrupt vectors for the RTC peripheral type */
+#define RTC_IRQS                                 { RTC_IRQn }
+#define RTC_SECONDS_IRQS                         { RTC_Seconds_IRQn }
 
 /*!
  * @}
@@ -8656,6 +8414,8 @@ typedef struct {
 #define SCG_BASE_ADDRS                           { SCG_BASE }
 /** Array initializer of SCG peripheral base pointers */
 #define SCG_BASE_PTRS                            { SCG }
+/** Interrupt vectors for the SCG peripheral type */
+#define SCG_IRQS                                 { SCG_IRQn }
 
 /*!
  * @}
@@ -9248,6 +9008,8 @@ typedef struct {
 #define TPM_BASE_ADDRS                           { TPM0_BASE, TPM1_BASE, TPM2_BASE }
 /** Array initializer of TPM peripheral base pointers */
 #define TPM_BASE_PTRS                            { TPM0, TPM1, TPM2 }
+/** Interrupt vectors for the TPM peripheral type */
+#define TPM_IRQS                                 { TPM0_IRQn, TPM1_IRQn, TPM2_IRQn }
 
 /*!
  * @}
@@ -9255,313 +9017,118 @@ typedef struct {
 
 
 /* ----------------------------------------------------------------------------
-   -- TRGMUX0 Peripheral Access Layer
+   -- TRGMUX Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
 /*!
- * @addtogroup TRGMUX0_Peripheral_Access_Layer TRGMUX0 Peripheral Access Layer
+ * @addtogroup TRGMUX_Peripheral_Access_Layer TRGMUX Peripheral Access Layer
  * @{
  */
 
-/** TRGMUX0 - Register Layout Typedef */
+/** TRGMUX - Register Layout Typedef */
 typedef struct {
-  __IO uint32_t TRGMUX_DMAMUX0;                    /**< TRGMUX TRGCFG Register, offset: 0x0 */
-  __IO uint32_t TRGMUX_LPIT0;                      /**< TRGMUX TRGCFG Register, offset: 0x4 */
-  __IO uint32_t TRGMUX_TPM2;                       /**< TRGMUX TRGCFG Register, offset: 0x8 */
-       uint8_t RESERVED_0[4];
-  __IO uint32_t TRGMUX_ADC0;                       /**< TRGMUX TRGCFG Register, offset: 0x10 */
-  __IO uint32_t TRGMUX_LPUART2;                    /**< TRGMUX TRGCFG Register, offset: 0x14 */
-       uint8_t RESERVED_1[4];
-  __IO uint32_t TRGMUX_LPI2C2;                     /**< TRGMUX TRGCFG Register, offset: 0x1C */
-       uint8_t RESERVED_2[4];
-  __IO uint32_t TRGMUX_LPSPI2;                     /**< TRGMUX TRGCFG Register, offset: 0x24 */
-       uint8_t RESERVED_3[4];
-  __IO uint32_t TRGMUX_CMP0;                       /**< TRGMUX TRGCFG Register, offset: 0x2C */
-  __IO uint32_t TRGMUX_CMP1;                       /**< TRGMUX TRGCFG Register, offset: 0x30 */
-  __IO uint32_t TRGMUX_DAC0;                       /**< TRGMUX TRGCFG Register, offset: 0x34 */
-} TRGMUX0_Type;
+  __IO uint32_t TRGCFG[14];                        /**< TRGMUX TRGCFG Register, array offset: 0x0, array step: 0x4 */
+} TRGMUX_Type;
 
 /* ----------------------------------------------------------------------------
-   -- TRGMUX0 Register Masks
+   -- TRGMUX Register Masks
    ---------------------------------------------------------------------------- */
 
 /*!
- * @addtogroup TRGMUX0_Register_Masks TRGMUX0 Register Masks
+ * @addtogroup TRGMUX_Register_Masks TRGMUX Register Masks
  * @{
  */
 
-/*! @name TRGMUX_DMAMUX0 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL0_MASK         (0x3FU)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL0_SHIFT        (0U)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL0(x)           (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_DMAMUX0_SEL0_SHIFT)) & TRGMUX0_TRGMUX_DMAMUX0_SEL0_MASK)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL1_MASK         (0x3F00U)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL1_SHIFT        (8U)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL1(x)           (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_DMAMUX0_SEL1_SHIFT)) & TRGMUX0_TRGMUX_DMAMUX0_SEL1_MASK)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL2_MASK         (0x3F0000U)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL2_SHIFT        (16U)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL2(x)           (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_DMAMUX0_SEL2_SHIFT)) & TRGMUX0_TRGMUX_DMAMUX0_SEL2_MASK)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL3_MASK         (0x3F000000U)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL3_SHIFT        (24U)
-#define TRGMUX0_TRGMUX_DMAMUX0_SEL3(x)           (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_DMAMUX0_SEL3_SHIFT)) & TRGMUX0_TRGMUX_DMAMUX0_SEL3_MASK)
-#define TRGMUX0_TRGMUX_DMAMUX0_LK_MASK           (0x80000000U)
-#define TRGMUX0_TRGMUX_DMAMUX0_LK_SHIFT          (31U)
-#define TRGMUX0_TRGMUX_DMAMUX0_LK(x)             (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_DMAMUX0_LK_SHIFT)) & TRGMUX0_TRGMUX_DMAMUX0_LK_MASK)
+/*! @name TRGCFG - TRGMUX TRGCFG Register */
+#define TRGMUX_TRGCFG_SEL0_MASK                  (0x3FU)
+#define TRGMUX_TRGCFG_SEL0_SHIFT                 (0U)
+#define TRGMUX_TRGCFG_SEL0(x)                    (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGCFG_SEL0_SHIFT)) & TRGMUX_TRGCFG_SEL0_MASK)
+#define TRGMUX_TRGCFG_SEL1_MASK                  (0x3F00U)
+#define TRGMUX_TRGCFG_SEL1_SHIFT                 (8U)
+#define TRGMUX_TRGCFG_SEL1(x)                    (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGCFG_SEL1_SHIFT)) & TRGMUX_TRGCFG_SEL1_MASK)
+#define TRGMUX_TRGCFG_SEL2_MASK                  (0x3F0000U)
+#define TRGMUX_TRGCFG_SEL2_SHIFT                 (16U)
+#define TRGMUX_TRGCFG_SEL2(x)                    (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGCFG_SEL2_SHIFT)) & TRGMUX_TRGCFG_SEL2_MASK)
+#define TRGMUX_TRGCFG_SEL3_MASK                  (0x3F000000U)
+#define TRGMUX_TRGCFG_SEL3_SHIFT                 (24U)
+#define TRGMUX_TRGCFG_SEL3(x)                    (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGCFG_SEL3_SHIFT)) & TRGMUX_TRGCFG_SEL3_MASK)
+#define TRGMUX_TRGCFG_LK_MASK                    (0x80000000U)
+#define TRGMUX_TRGCFG_LK_SHIFT                   (31U)
+#define TRGMUX_TRGCFG_LK(x)                      (((uint32_t)(((uint32_t)(x)) << TRGMUX_TRGCFG_LK_SHIFT)) & TRGMUX_TRGCFG_LK_MASK)
 
-/*! @name TRGMUX_LPIT0 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_LPIT0_SEL0_MASK           (0x3FU)
-#define TRGMUX0_TRGMUX_LPIT0_SEL0_SHIFT          (0U)
-#define TRGMUX0_TRGMUX_LPIT0_SEL0(x)             (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPIT0_SEL0_SHIFT)) & TRGMUX0_TRGMUX_LPIT0_SEL0_MASK)
-#define TRGMUX0_TRGMUX_LPIT0_SEL1_MASK           (0x3F00U)
-#define TRGMUX0_TRGMUX_LPIT0_SEL1_SHIFT          (8U)
-#define TRGMUX0_TRGMUX_LPIT0_SEL1(x)             (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPIT0_SEL1_SHIFT)) & TRGMUX0_TRGMUX_LPIT0_SEL1_MASK)
-#define TRGMUX0_TRGMUX_LPIT0_SEL2_MASK           (0x3F0000U)
-#define TRGMUX0_TRGMUX_LPIT0_SEL2_SHIFT          (16U)
-#define TRGMUX0_TRGMUX_LPIT0_SEL2(x)             (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPIT0_SEL2_SHIFT)) & TRGMUX0_TRGMUX_LPIT0_SEL2_MASK)
-#define TRGMUX0_TRGMUX_LPIT0_SEL3_MASK           (0x3F000000U)
-#define TRGMUX0_TRGMUX_LPIT0_SEL3_SHIFT          (24U)
-#define TRGMUX0_TRGMUX_LPIT0_SEL3(x)             (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPIT0_SEL3_SHIFT)) & TRGMUX0_TRGMUX_LPIT0_SEL3_MASK)
-#define TRGMUX0_TRGMUX_LPIT0_LK_MASK             (0x80000000U)
-#define TRGMUX0_TRGMUX_LPIT0_LK_SHIFT            (31U)
-#define TRGMUX0_TRGMUX_LPIT0_LK(x)               (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPIT0_LK_SHIFT)) & TRGMUX0_TRGMUX_LPIT0_LK_MASK)
-
-/*! @name TRGMUX_TPM2 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_TPM2_SEL0_MASK            (0x3FU)
-#define TRGMUX0_TRGMUX_TPM2_SEL0_SHIFT           (0U)
-#define TRGMUX0_TRGMUX_TPM2_SEL0(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_TPM2_SEL0_SHIFT)) & TRGMUX0_TRGMUX_TPM2_SEL0_MASK)
-#define TRGMUX0_TRGMUX_TPM2_SEL1_MASK            (0x3F00U)
-#define TRGMUX0_TRGMUX_TPM2_SEL1_SHIFT           (8U)
-#define TRGMUX0_TRGMUX_TPM2_SEL1(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_TPM2_SEL1_SHIFT)) & TRGMUX0_TRGMUX_TPM2_SEL1_MASK)
-#define TRGMUX0_TRGMUX_TPM2_SEL2_MASK            (0x3F0000U)
-#define TRGMUX0_TRGMUX_TPM2_SEL2_SHIFT           (16U)
-#define TRGMUX0_TRGMUX_TPM2_SEL2(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_TPM2_SEL2_SHIFT)) & TRGMUX0_TRGMUX_TPM2_SEL2_MASK)
-#define TRGMUX0_TRGMUX_TPM2_LK_MASK              (0x80000000U)
-#define TRGMUX0_TRGMUX_TPM2_LK_SHIFT             (31U)
-#define TRGMUX0_TRGMUX_TPM2_LK(x)                (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_TPM2_LK_SHIFT)) & TRGMUX0_TRGMUX_TPM2_LK_MASK)
-
-/*! @name TRGMUX_ADC0 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_ADC0_SEL0_MASK            (0x3FU)
-#define TRGMUX0_TRGMUX_ADC0_SEL0_SHIFT           (0U)
-#define TRGMUX0_TRGMUX_ADC0_SEL0(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_ADC0_SEL0_SHIFT)) & TRGMUX0_TRGMUX_ADC0_SEL0_MASK)
-#define TRGMUX0_TRGMUX_ADC0_SEL1_MASK            (0x3F00U)
-#define TRGMUX0_TRGMUX_ADC0_SEL1_SHIFT           (8U)
-#define TRGMUX0_TRGMUX_ADC0_SEL1(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_ADC0_SEL1_SHIFT)) & TRGMUX0_TRGMUX_ADC0_SEL1_MASK)
-#define TRGMUX0_TRGMUX_ADC0_LK_MASK              (0x80000000U)
-#define TRGMUX0_TRGMUX_ADC0_LK_SHIFT             (31U)
-#define TRGMUX0_TRGMUX_ADC0_LK(x)                (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_ADC0_LK_SHIFT)) & TRGMUX0_TRGMUX_ADC0_LK_MASK)
-
-/*! @name TRGMUX_LPUART2 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_LPUART2_SEL0_MASK         (0x3FU)
-#define TRGMUX0_TRGMUX_LPUART2_SEL0_SHIFT        (0U)
-#define TRGMUX0_TRGMUX_LPUART2_SEL0(x)           (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPUART2_SEL0_SHIFT)) & TRGMUX0_TRGMUX_LPUART2_SEL0_MASK)
-#define TRGMUX0_TRGMUX_LPUART2_LK_MASK           (0x80000000U)
-#define TRGMUX0_TRGMUX_LPUART2_LK_SHIFT          (31U)
-#define TRGMUX0_TRGMUX_LPUART2_LK(x)             (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPUART2_LK_SHIFT)) & TRGMUX0_TRGMUX_LPUART2_LK_MASK)
-
-/*! @name TRGMUX_LPI2C2 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_LPI2C2_SEL0_MASK          (0x3FU)
-#define TRGMUX0_TRGMUX_LPI2C2_SEL0_SHIFT         (0U)
-#define TRGMUX0_TRGMUX_LPI2C2_SEL0(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPI2C2_SEL0_SHIFT)) & TRGMUX0_TRGMUX_LPI2C2_SEL0_MASK)
-#define TRGMUX0_TRGMUX_LPI2C2_LK_MASK            (0x80000000U)
-#define TRGMUX0_TRGMUX_LPI2C2_LK_SHIFT           (31U)
-#define TRGMUX0_TRGMUX_LPI2C2_LK(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPI2C2_LK_SHIFT)) & TRGMUX0_TRGMUX_LPI2C2_LK_MASK)
-
-/*! @name TRGMUX_LPSPI2 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_LPSPI2_SEL0_MASK          (0x3FU)
-#define TRGMUX0_TRGMUX_LPSPI2_SEL0_SHIFT         (0U)
-#define TRGMUX0_TRGMUX_LPSPI2_SEL0(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPSPI2_SEL0_SHIFT)) & TRGMUX0_TRGMUX_LPSPI2_SEL0_MASK)
-#define TRGMUX0_TRGMUX_LPSPI2_LK_MASK            (0x80000000U)
-#define TRGMUX0_TRGMUX_LPSPI2_LK_SHIFT           (31U)
-#define TRGMUX0_TRGMUX_LPSPI2_LK(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_LPSPI2_LK_SHIFT)) & TRGMUX0_TRGMUX_LPSPI2_LK_MASK)
-
-/*! @name TRGMUX_CMP0 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_CMP0_SEL0_MASK            (0x3FU)
-#define TRGMUX0_TRGMUX_CMP0_SEL0_SHIFT           (0U)
-#define TRGMUX0_TRGMUX_CMP0_SEL0(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_CMP0_SEL0_SHIFT)) & TRGMUX0_TRGMUX_CMP0_SEL0_MASK)
-#define TRGMUX0_TRGMUX_CMP0_LK_MASK              (0x80000000U)
-#define TRGMUX0_TRGMUX_CMP0_LK_SHIFT             (31U)
-#define TRGMUX0_TRGMUX_CMP0_LK(x)                (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_CMP0_LK_SHIFT)) & TRGMUX0_TRGMUX_CMP0_LK_MASK)
-
-/*! @name TRGMUX_CMP1 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_CMP1_SEL0_MASK            (0x3FU)
-#define TRGMUX0_TRGMUX_CMP1_SEL0_SHIFT           (0U)
-#define TRGMUX0_TRGMUX_CMP1_SEL0(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_CMP1_SEL0_SHIFT)) & TRGMUX0_TRGMUX_CMP1_SEL0_MASK)
-#define TRGMUX0_TRGMUX_CMP1_LK_MASK              (0x80000000U)
-#define TRGMUX0_TRGMUX_CMP1_LK_SHIFT             (31U)
-#define TRGMUX0_TRGMUX_CMP1_LK(x)                (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_CMP1_LK_SHIFT)) & TRGMUX0_TRGMUX_CMP1_LK_MASK)
-
-/*! @name TRGMUX_DAC0 - TRGMUX TRGCFG Register */
-#define TRGMUX0_TRGMUX_DAC0_SEL0_MASK            (0x3FU)
-#define TRGMUX0_TRGMUX_DAC0_SEL0_SHIFT           (0U)
-#define TRGMUX0_TRGMUX_DAC0_SEL0(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_DAC0_SEL0_SHIFT)) & TRGMUX0_TRGMUX_DAC0_SEL0_MASK)
-#define TRGMUX0_TRGMUX_DAC0_LK_MASK              (0x80000000U)
-#define TRGMUX0_TRGMUX_DAC0_LK_SHIFT             (31U)
-#define TRGMUX0_TRGMUX_DAC0_LK(x)                (((uint32_t)(((uint32_t)(x)) << TRGMUX0_TRGMUX_DAC0_LK_SHIFT)) & TRGMUX0_TRGMUX_DAC0_LK_MASK)
+/* The count of TRGMUX_TRGCFG */
+#define TRGMUX_TRGCFG_COUNT                      (14U)
 
 
 /*!
  * @}
- */ /* end of group TRGMUX0_Register_Masks */
+ */ /* end of group TRGMUX_Register_Masks */
 
 
-/* TRGMUX0 - Peripheral instance base addresses */
+/* TRGMUX - Peripheral instance base addresses */
 /** Peripheral TRGMUX0 base address */
 #define TRGMUX0_BASE                             (0x40027000u)
 /** Peripheral TRGMUX0 base pointer */
-#define TRGMUX0                                  ((TRGMUX0_Type *)TRGMUX0_BASE)
-/** Array initializer of TRGMUX0 peripheral base addresses */
-#define TRGMUX0_BASE_ADDRS                       { TRGMUX0_BASE }
-/** Array initializer of TRGMUX0 peripheral base pointers */
-#define TRGMUX0_BASE_PTRS                        { TRGMUX0 }
-
-/*!
- * @}
- */ /* end of group TRGMUX0_Peripheral_Access_Layer */
-
-
-/* ----------------------------------------------------------------------------
-   -- TRGMUX1 Peripheral Access Layer
-   ---------------------------------------------------------------------------- */
-
-/*!
- * @addtogroup TRGMUX1_Peripheral_Access_Layer TRGMUX1 Peripheral Access Layer
- * @{
- */
-
-/** TRGMUX1 - Register Layout Typedef */
-typedef struct {
-       uint8_t RESERVED_0[8];
-  __IO uint32_t TRGMUX_TPM0;                       /**< TRGMUX TRGCFG Register, offset: 0x8 */
-  __IO uint32_t TRGMUX_TPM1;                       /**< TRGMUX TRGCFG Register, offset: 0xC */
-  __IO uint32_t TRGMUX_FLEXIO;                     /**< TRGMUX TRGCFG Register, offset: 0x10 */
-  __IO uint32_t TRGMUX_LPUART0;                    /**< TRGMUX TRGCFG Register, offset: 0x14 */
-  __IO uint32_t TRGMUX_LPUART1;                    /**< TRGMUX TRGCFG Register, offset: 0x18 */
-  __IO uint32_t TRGMUX_LPI2C0;                     /**< TRGMUX TRGCFG Register, offset: 0x1C */
-  __IO uint32_t TRGMUX_LPI2C1;                     /**< TRGMUX TRGCFG Register, offset: 0x20 */
-  __IO uint32_t TRGMUX_LPSPI0;                     /**< TRGMUX TRGCFG Register, offset: 0x24 */
-  __IO uint32_t TRGMUX_LPSPI1;                     /**< TRGMUX TRGCFG Register, offset: 0x28 */
-} TRGMUX1_Type;
-
-/* ----------------------------------------------------------------------------
-   -- TRGMUX1 Register Masks
-   ---------------------------------------------------------------------------- */
-
-/*!
- * @addtogroup TRGMUX1_Register_Masks TRGMUX1 Register Masks
- * @{
- */
-
-/*! @name TRGMUX_TPM0 - TRGMUX TRGCFG Register */
-#define TRGMUX1_TRGMUX_TPM0_SEL0_MASK            (0x3FU)
-#define TRGMUX1_TRGMUX_TPM0_SEL0_SHIFT           (0U)
-#define TRGMUX1_TRGMUX_TPM0_SEL0(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_TPM0_SEL0_SHIFT)) & TRGMUX1_TRGMUX_TPM0_SEL0_MASK)
-#define TRGMUX1_TRGMUX_TPM0_SEL1_MASK            (0x3F00U)
-#define TRGMUX1_TRGMUX_TPM0_SEL1_SHIFT           (8U)
-#define TRGMUX1_TRGMUX_TPM0_SEL1(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_TPM0_SEL1_SHIFT)) & TRGMUX1_TRGMUX_TPM0_SEL1_MASK)
-#define TRGMUX1_TRGMUX_TPM0_SEL2_MASK            (0x3F0000U)
-#define TRGMUX1_TRGMUX_TPM0_SEL2_SHIFT           (16U)
-#define TRGMUX1_TRGMUX_TPM0_SEL2(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_TPM0_SEL2_SHIFT)) & TRGMUX1_TRGMUX_TPM0_SEL2_MASK)
-#define TRGMUX1_TRGMUX_TPM0_LK_MASK              (0x80000000U)
-#define TRGMUX1_TRGMUX_TPM0_LK_SHIFT             (31U)
-#define TRGMUX1_TRGMUX_TPM0_LK(x)                (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_TPM0_LK_SHIFT)) & TRGMUX1_TRGMUX_TPM0_LK_MASK)
-
-/*! @name TRGMUX_TPM1 - TRGMUX TRGCFG Register */
-#define TRGMUX1_TRGMUX_TPM1_SEL0_MASK            (0x3FU)
-#define TRGMUX1_TRGMUX_TPM1_SEL0_SHIFT           (0U)
-#define TRGMUX1_TRGMUX_TPM1_SEL0(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_TPM1_SEL0_SHIFT)) & TRGMUX1_TRGMUX_TPM1_SEL0_MASK)
-#define TRGMUX1_TRGMUX_TPM1_SEL1_MASK            (0x3F00U)
-#define TRGMUX1_TRGMUX_TPM1_SEL1_SHIFT           (8U)
-#define TRGMUX1_TRGMUX_TPM1_SEL1(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_TPM1_SEL1_SHIFT)) & TRGMUX1_TRGMUX_TPM1_SEL1_MASK)
-#define TRGMUX1_TRGMUX_TPM1_SEL2_MASK            (0x3F0000U)
-#define TRGMUX1_TRGMUX_TPM1_SEL2_SHIFT           (16U)
-#define TRGMUX1_TRGMUX_TPM1_SEL2(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_TPM1_SEL2_SHIFT)) & TRGMUX1_TRGMUX_TPM1_SEL2_MASK)
-#define TRGMUX1_TRGMUX_TPM1_LK_MASK              (0x80000000U)
-#define TRGMUX1_TRGMUX_TPM1_LK_SHIFT             (31U)
-#define TRGMUX1_TRGMUX_TPM1_LK(x)                (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_TPM1_LK_SHIFT)) & TRGMUX1_TRGMUX_TPM1_LK_MASK)
-
-/*! @name TRGMUX_FLEXIO - TRGMUX TRGCFG Register */
-#define TRGMUX1_TRGMUX_FLEXIO_SEL0_MASK          (0x3FU)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL0_SHIFT         (0U)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL0(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_FLEXIO_SEL0_SHIFT)) & TRGMUX1_TRGMUX_FLEXIO_SEL0_MASK)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL1_MASK          (0x3F00U)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL1_SHIFT         (8U)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL1(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_FLEXIO_SEL1_SHIFT)) & TRGMUX1_TRGMUX_FLEXIO_SEL1_MASK)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL2_MASK          (0x3F0000U)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL2_SHIFT         (16U)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL2(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_FLEXIO_SEL2_SHIFT)) & TRGMUX1_TRGMUX_FLEXIO_SEL2_MASK)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL3_MASK          (0x3F000000U)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL3_SHIFT         (24U)
-#define TRGMUX1_TRGMUX_FLEXIO_SEL3(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_FLEXIO_SEL3_SHIFT)) & TRGMUX1_TRGMUX_FLEXIO_SEL3_MASK)
-#define TRGMUX1_TRGMUX_FLEXIO_LK_MASK            (0x80000000U)
-#define TRGMUX1_TRGMUX_FLEXIO_LK_SHIFT           (31U)
-#define TRGMUX1_TRGMUX_FLEXIO_LK(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_FLEXIO_LK_SHIFT)) & TRGMUX1_TRGMUX_FLEXIO_LK_MASK)
-
-/*! @name TRGMUX_LPUART0 - TRGMUX TRGCFG Register */
-#define TRGMUX1_TRGMUX_LPUART0_SEL0_MASK         (0x3FU)
-#define TRGMUX1_TRGMUX_LPUART0_SEL0_SHIFT        (0U)
-#define TRGMUX1_TRGMUX_LPUART0_SEL0(x)           (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPUART0_SEL0_SHIFT)) & TRGMUX1_TRGMUX_LPUART0_SEL0_MASK)
-#define TRGMUX1_TRGMUX_LPUART0_LK_MASK           (0x80000000U)
-#define TRGMUX1_TRGMUX_LPUART0_LK_SHIFT          (31U)
-#define TRGMUX1_TRGMUX_LPUART0_LK(x)             (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPUART0_LK_SHIFT)) & TRGMUX1_TRGMUX_LPUART0_LK_MASK)
-
-/*! @name TRGMUX_LPUART1 - TRGMUX TRGCFG Register */
-#define TRGMUX1_TRGMUX_LPUART1_SEL0_MASK         (0x3FU)
-#define TRGMUX1_TRGMUX_LPUART1_SEL0_SHIFT        (0U)
-#define TRGMUX1_TRGMUX_LPUART1_SEL0(x)           (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPUART1_SEL0_SHIFT)) & TRGMUX1_TRGMUX_LPUART1_SEL0_MASK)
-#define TRGMUX1_TRGMUX_LPUART1_LK_MASK           (0x80000000U)
-#define TRGMUX1_TRGMUX_LPUART1_LK_SHIFT          (31U)
-#define TRGMUX1_TRGMUX_LPUART1_LK(x)             (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPUART1_LK_SHIFT)) & TRGMUX1_TRGMUX_LPUART1_LK_MASK)
-
-/*! @name TRGMUX_LPI2C0 - TRGMUX TRGCFG Register */
-#define TRGMUX1_TRGMUX_LPI2C0_SEL0_MASK          (0x3FU)
-#define TRGMUX1_TRGMUX_LPI2C0_SEL0_SHIFT         (0U)
-#define TRGMUX1_TRGMUX_LPI2C0_SEL0(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPI2C0_SEL0_SHIFT)) & TRGMUX1_TRGMUX_LPI2C0_SEL0_MASK)
-#define TRGMUX1_TRGMUX_LPI2C0_LK_MASK            (0x80000000U)
-#define TRGMUX1_TRGMUX_LPI2C0_LK_SHIFT           (31U)
-#define TRGMUX1_TRGMUX_LPI2C0_LK(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPI2C0_LK_SHIFT)) & TRGMUX1_TRGMUX_LPI2C0_LK_MASK)
-
-/*! @name TRGMUX_LPI2C1 - TRGMUX TRGCFG Register */
-#define TRGMUX1_TRGMUX_LPI2C1_SEL0_MASK          (0x3FU)
-#define TRGMUX1_TRGMUX_LPI2C1_SEL0_SHIFT         (0U)
-#define TRGMUX1_TRGMUX_LPI2C1_SEL0(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPI2C1_SEL0_SHIFT)) & TRGMUX1_TRGMUX_LPI2C1_SEL0_MASK)
-#define TRGMUX1_TRGMUX_LPI2C1_LK_MASK            (0x80000000U)
-#define TRGMUX1_TRGMUX_LPI2C1_LK_SHIFT           (31U)
-#define TRGMUX1_TRGMUX_LPI2C1_LK(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPI2C1_LK_SHIFT)) & TRGMUX1_TRGMUX_LPI2C1_LK_MASK)
-
-/*! @name TRGMUX_LPSPI0 - TRGMUX TRGCFG Register */
-#define TRGMUX1_TRGMUX_LPSPI0_SEL0_MASK          (0x3FU)
-#define TRGMUX1_TRGMUX_LPSPI0_SEL0_SHIFT         (0U)
-#define TRGMUX1_TRGMUX_LPSPI0_SEL0(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPSPI0_SEL0_SHIFT)) & TRGMUX1_TRGMUX_LPSPI0_SEL0_MASK)
-#define TRGMUX1_TRGMUX_LPSPI0_LK_MASK            (0x80000000U)
-#define TRGMUX1_TRGMUX_LPSPI0_LK_SHIFT           (31U)
-#define TRGMUX1_TRGMUX_LPSPI0_LK(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPSPI0_LK_SHIFT)) & TRGMUX1_TRGMUX_LPSPI0_LK_MASK)
-
-/*! @name TRGMUX_LPSPI1 - TRGMUX TRGCFG Register */
-#define TRGMUX1_TRGMUX_LPSPI1_SEL0_MASK          (0x3FU)
-#define TRGMUX1_TRGMUX_LPSPI1_SEL0_SHIFT         (0U)
-#define TRGMUX1_TRGMUX_LPSPI1_SEL0(x)            (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPSPI1_SEL0_SHIFT)) & TRGMUX1_TRGMUX_LPSPI1_SEL0_MASK)
-#define TRGMUX1_TRGMUX_LPSPI1_LK_MASK            (0x80000000U)
-#define TRGMUX1_TRGMUX_LPSPI1_LK_SHIFT           (31U)
-#define TRGMUX1_TRGMUX_LPSPI1_LK(x)              (((uint32_t)(((uint32_t)(x)) << TRGMUX1_TRGMUX_LPSPI1_LK_SHIFT)) & TRGMUX1_TRGMUX_LPSPI1_LK_MASK)
-
-
-/*!
- * @}
- */ /* end of group TRGMUX1_Register_Masks */
-
-
-/* TRGMUX1 - Peripheral instance base addresses */
+#define TRGMUX0                                  ((TRGMUX_Type *)TRGMUX0_BASE)
 /** Peripheral TRGMUX1 base address */
 #define TRGMUX1_BASE                             (0x400A7000u)
 /** Peripheral TRGMUX1 base pointer */
-#define TRGMUX1                                  ((TRGMUX1_Type *)TRGMUX1_BASE)
-/** Array initializer of TRGMUX1 peripheral base addresses */
-#define TRGMUX1_BASE_ADDRS                       { TRGMUX1_BASE }
-/** Array initializer of TRGMUX1 peripheral base pointers */
-#define TRGMUX1_BASE_PTRS                        { TRGMUX1 }
+#define TRGMUX1                                  ((TRGMUX_Type *)TRGMUX1_BASE)
+/** Array initializer of TRGMUX peripheral base addresses */
+#define TRGMUX_BASE_ADDRS                        { TRGMUX0_BASE, TRGMUX1_BASE }
+/** Array initializer of TRGMUX peripheral base pointers */
+#define TRGMUX_BASE_PTRS                         { TRGMUX0, TRGMUX1 }
+#define TRGMUX_INSTANCE_MASK      0xF
+#define TRGMUX_INSTANCE_SHIFT     12
+#define TRGMUX_PERIPHERAL_MASK    0xFFF
+#define TRGMUX_PERIPHERAL_SHIFT   0
+#define TRGMUX_INSTANCE_0    0
+#define TRGMUX_INSTANCE_1    1
+
+#define TRGMUX_DMAMUX0_INDEX   ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 0)
+#define TRGMUX_LPIT0_INDEX     ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 1)
+#define TRGMUX_TPM2_INDEX      ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 2)
+#define TRGMUX_ADC0_INDEX      ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 4)
+#define TRGMUX_LPUART2_INDEX   ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 5)
+#define TRGMUX_LPI2C2_INDEX    ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 7)
+#define TRGMUX_LPSPI2_INDEX    ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 9)
+#define TRGMUX_CMP0_INDEX      ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 11)
+#define TRGMUX_CMP1_INDEX      ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 12)
+#define TRGMUX_DAC0_INDEX      ((uint16_t)((TRGMUX_INSTANCE_0 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 13)
+#define TRGMUX_DMAMUX0         (TRGMUX0->TRGCFG[0])
+#define TRGMUX_LPIT0           (TRGMUX0->TRGCFG[1])
+#define TRGMUX_TPM2            (TRGMUX0->TRGCFG[2])
+#define TRGMUX_ADC0            (TRGMUX0->TRGCFG[4])
+#define TRGMUX_LPUART2         (TRGMUX0->TRGCFG[5])
+#define TRGMUX_LPI2C2          (TRGMUX0->TRGCFG[7])
+#define TRGMUX_LPSPI2          (TRGMUX0->TRGCFG[9])
+#define TRGMUX_CMP0            (TRGMUX0->TRGCFG[11])
+#define TRGMUX_CMP1            (TRGMUX0->TRGCFG[12])
+#define TRGMUX_DAC0            (TRGMUX0->TRGCFG[13])
+
+#define TRGMUX_TPM0_INDEX      ((uint16_t)((TRGMUX_INSTANCE_1 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 2)
+#define TRGMUX_TPM1_INDEX      ((uint16_t)((TRGMUX_INSTANCE_1 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 3)
+#define TRGMUX_FLEXIO_INDEX    ((uint16_t)((TRGMUX_INSTANCE_1 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 4)
+#define TRGMUX_LPUART0_INDEX   ((uint16_t)((TRGMUX_INSTANCE_1 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 5)
+#define TRGMUX_LPUART1_INDEX   ((uint16_t)((TRGMUX_INSTANCE_1 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 6)
+#define TRGMUX_LPI2C0_INDEX    ((uint16_t)((TRGMUX_INSTANCE_1 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 7)
+#define TRGMUX_LPI2C1_INDEX    ((uint16_t)((TRGMUX_INSTANCE_1 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 8)
+#define TRGMUX_LPSPI0_INDEX    ((uint16_t)((TRGMUX_INSTANCE_1 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 9)
+#define TRGMUX_LPSPI1_INDEX    ((uint16_t)((TRGMUX_INSTANCE_1 & TRGMUX_INSTANCE_MASK) << TRGMUX_INSTANCE_SHIFT) | 10)
+#define TRGMUX_TPM0            (TRGMUX1->TRGCFG[2])
+#define TRGMUX_TPM1            (TRGMUX1->TRGCFG[3])
+#define TRGMUX_FLEXIO          (TRGMUX1->TRGCFG[4])
+#define TRGMUX_LPUART0         (TRGMUX1->TRGCFG[5])
+#define TRGMUX_LPUART1         (TRGMUX1->TRGCFG[6])
+#define TRGMUX_LPI2C0          (TRGMUX1->TRGCFG[7])
+#define TRGMUX_LPI2C1          (TRGMUX1->TRGCFG[8])
+#define TRGMUX_LPSPI0          (TRGMUX1->TRGCFG[9])
+#define TRGMUX_LPSPI1          (TRGMUX1->TRGCFG[10])
+
 
 /*!
  * @}
- */ /* end of group TRGMUX1_Peripheral_Access_Layer */
+ */ /* end of group TRGMUX_Peripheral_Access_Layer */
 
 
 /* ----------------------------------------------------------------------------
@@ -10066,6 +9633,8 @@ typedef struct {
 #define TRNG_BASE_ADDRS                          { TRNG_BASE }
 /** Array initializer of TRNG peripheral base pointers */
 #define TRNG_BASE_PTRS                           { TRNG }
+/** Interrupt vectors for the TRNG peripheral type */
+#define TRNG_IRQS                                { TRNG_IRQn }
 
 /*!
  * @}
@@ -10184,6 +9753,8 @@ typedef struct {
 #define TSI_BASE_ADDRS                           { TSI0_BASE }
 /** Array initializer of TSI peripheral base pointers */
 #define TSI_BASE_PTRS                            { TSI0 }
+/** Interrupt vectors for the TSI peripheral type */
+#define TSI_IRQS                                 { TSI0_IRQn }
 
 /*!
  * @}
@@ -10714,6 +10285,8 @@ typedef struct {
 #define USB_BASE_ADDRS                           { USB0_BASE }
 /** Array initializer of USB peripheral base pointers */
 #define USB_BASE_PTRS                            { USB0 }
+/** Interrupt vectors for the USB peripheral type */
+#define USB_IRQS                                 { USB0_IRQn }
 
 /*!
  * @}
@@ -10912,6 +10485,8 @@ typedef struct {
 #define WDOG_BASE_ADDRS                          { WDOG0_BASE }
 /** Array initializer of WDOG peripheral base pointers */
 #define WDOG_BASE_PTRS                           { WDOG0 }
+/** Interrupt vectors for the WDOG peripheral type */
+#define WDOG_IRQS                                { WDOG0_IRQn }
 #define WDOG_UPDATE_KEY                          (0xD928C520U)
 #define WDOG_REFRESH_KEY                         (0xB480A602U)
 
@@ -10926,7 +10501,11 @@ typedef struct {
 */
 
 #if defined(__ARMCC_VERSION)
-  #pragma pop
+  #if (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic pop
+  #else
+    #pragma pop
+  #endif
 #elif defined(__CWCC__)
   #pragma pop
 #elif defined(__GNUC__)
@@ -10940,6 +10519,43 @@ typedef struct {
 /*!
  * @}
  */ /* end of group Peripheral_access_layer */
+
+
+/* ----------------------------------------------------------------------------
+   -- Macros for use with bit field definitions (xxx_SHIFT, xxx_MASK).
+   ---------------------------------------------------------------------------- */
+
+/*!
+ * @addtogroup Bit_Field_Generic_Macros Macros for use with bit field definitions (xxx_SHIFT, xxx_MASK).
+ * @{
+ */
+
+#if defined(__ARMCC_VERSION)
+  #if (__ARMCC_VERSION >= 6010050)
+    #pragma clang system_header
+  #endif
+#elif defined(__IAR_SYSTEMS_ICC__)
+  #pragma system_include
+#endif
+
+/**
+ * @brief Mask and left-shift a bit field value for use in a register bit range.
+ * @param field Name of the register bit field.
+ * @param value Value of the bit field.
+ * @return Masked and shifted value.
+ */
+#define NXP_VAL2FLD(field, value)    (((value) << (field ## _SHIFT)) & (field ## _MASK))
+/**
+ * @brief Mask and right-shift a register value to extract a bit field value.
+ * @param field Name of the register bit field.
+ * @param value Value of the register.
+ * @return Masked and shifted bit field value.
+ */
+#define NXP_FLD2VAL(field, value)    (((value) & (field ## _MASK)) >> (field ## _SHIFT))
+
+/*!
+ * @}
+ */ /* end of group Bit_Field_Generic_Macros */
 
 
 /* ----------------------------------------------------------------------------

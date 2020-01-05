@@ -12,48 +12,25 @@
 **     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          MCUXpresso Compiler
 **
 **     Reference manual:    KL27P64M48SF6RM, Rev.3, Aug 2014
-**     Version:             rev. 1.7, 2016-06-24
-**     Build:               b160624
+**     Version:             rev. 1.8, 2016-06-24
+**     Build:               b180801
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright (c) 2016 Freescale Semiconductor, Inc.
-**     All rights reserved.
+**     Copyright 2016 Freescale Semiconductor, Inc.
+**     Copyright 2016-2018 NXP
 **
-**     Redistribution and use in source and binary forms, with or without modification,
-**     are permitted provided that the following conditions are met:
+**     SPDX-License-Identifier: BSD-3-Clause
 **
-**     o Redistributions of source code must retain the above copyright notice, this list
-**       of conditions and the following disclaimer.
-**
-**     o Redistributions in binary form must reproduce the above copyright notice, this
-**       list of conditions and the following disclaimer in the documentation and/or
-**       other materials provided with the distribution.
-**
-**     o Neither the name of Freescale Semiconductor, Inc. nor the names of its
-**       contributors may be used to endorse or promote products derived from this
-**       software without specific prior written permission.
-**
-**     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-**     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-**     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-**     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-**     ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-**     (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-**     LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-**     ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-**     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-**     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-**
-**     http:                 www.freescale.com
-**     mail:                 support@freescale.com
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
 **     Revisions:
 **     - rev. 1.0 (2014-03-27)
@@ -90,7 +67,9 @@
 **         USB - Renamed USBEN bitfield of USB0_CTL was renamed to USBENSOFEN.
 **     - rev. 1.6 (2015-07-29)
 **         Correction of backward compatibility.
-**     - rev. 1.7 (2016-06-24)
+**     - rev. 1.7 (2016-02-02)
+**         FGPIO - Add FGPIO registers.
+**     - rev. 1.8 (2016-06-24)
 **         USB - OTGCTL register was removed.
 **         USB - Bit RESUME was added in CTL register.
 **
@@ -99,7 +78,7 @@
 
 /*!
  * @file MKL27Z4
- * @version 1.7
+ * @version 1.8
  * @date 2016-06-24
  * @brief Device specific configuration file for MKL27Z4 (implementation file)
  *
@@ -109,7 +88,7 @@
  */
 
 #include <stdint.h>
-#include "MKL27Z4.h"
+#include "fsl_device_registers.h"
 
 
 
@@ -126,16 +105,17 @@ uint32_t SystemCoreClock = DEFAULT_SYSTEM_CLOCK;
 void SystemInit (void) {
 
 #if (ACK_ISOLATION)
-  if(PMC->REGSC &  PMC_REGSC_ACKISO_MASK) {
+  if((PMC->REGSC &  PMC_REGSC_ACKISO_MASK) != 0U) {
     PMC->REGSC |= PMC_REGSC_ACKISO_MASK; /* VLLSx recovery */
   }
 #endif
 
 #if (DISABLE_WDOG)
-  /* SIM->COPC: ??=0,COPCLKSEL=0,COPDBGEN=0,COPSTPEN=0,COPT=0,COPCLKS=0,COPW=0 */
+  /* SIM->COPC: ?=0,COPCLKSEL=0,COPDBGEN=0,COPSTPEN=0,COPT=0,COPCLKS=0,COPW=0 */
   SIM->COPC = (uint32_t)0x00u;
 #endif /* (DISABLE_WDOG) */
 
+  SystemInitHook();
 }
 
 /* ----------------------------------------------------------------------------
@@ -163,4 +143,12 @@ void SystemCoreClockUpdate (void) {
   } /* (!((MCG->S & MCG_S_CLKST_MASK) == 0x08U)) */
   SystemCoreClock = (MCGOUTClock / (0x01U + ((SIM->CLKDIV1 & SIM_CLKDIV1_OUTDIV1_MASK) >> SIM_CLKDIV1_OUTDIV1_SHIFT)));
 
+}
+
+/* ----------------------------------------------------------------------------
+   -- SystemInitHook()
+   ---------------------------------------------------------------------------- */
+
+__attribute__ ((weak)) void SystemInitHook (void) {
+  /* Void implementation of the weak function. */
 }
