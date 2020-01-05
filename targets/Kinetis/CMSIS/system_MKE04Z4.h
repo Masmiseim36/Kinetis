@@ -1,39 +1,43 @@
 /*
 ** ###################################################################
-**     Compilers:           ARM Compiler
+**     Processors:          MKE04Z8VFK4
+**                          MKE04Z8VTG4
+**                          MKE04Z8VWJ4
+**
+**     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          MCUXpresso Compiler
 **
-**     Reference manual:    MKE04Z24M48SF0RM, Rev.1, May-23 2013; KEAZ8RM, Rev.1, Sep 2013
-**     Version:             rev. 1.2, 2014-02-10
+**     Reference manual:    MKE04P24M48SF0RM Rev 4
+**     Version:             rev. 1.0, 2017-05-19
+**     Build:               b180802
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2014 Freescale, Inc. All Rights Reserved.
+**     Copyright 2016 Freescale Semiconductor, Inc.
+**     Copyright 2016-2018 NXP
 **
-**     http:                 www.freescale.com
-**     mail:                 support@freescale.com
+**     SPDX-License-Identifier: BSD-3-Clause
+**
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2013-05-09)
+**     - rev. 1.0 (2017-05-19)
 **         Initial version.
-**     - rev. 1.1 (2013-10-29)
-**         Definition of BITBAND macros updated to support peripherals with 32-bit acces disabled.
-**     - rev. 1.2 (2014-02-10)
-**         The declaration of clock configurations has been moved to separate header file system_MKE04Z4.h
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKE04Z4
- * @version 1.2
- * @date 2014-02-10
+ * @version 1.0
+ * @date 2017-05-19
  * @brief Device specific configuration file for MKE04Z4 (header file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -41,8 +45,8 @@
  * (PLL) that is part of the microcontroller device.
  */
 
-#ifndef SYSTEM_MKE04Z4_H_
-#define SYSTEM_MKE04Z4_H_                        /**< Symbol preventing repeated inclusion */
+#ifndef _SYSTEM_MKE04Z4_H_
+#define _SYSTEM_MKE04Z4_H_                       /**< Symbol preventing repeated inclusion */
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,50 +55,16 @@ extern "C" {
 #include <stdint.h>
 
 
-#define DISABLE_WDOG    1
-
-#ifndef CLOCK_SETUP
-  #define CLOCK_SETUP   0
+#ifndef DISABLE_WDOG
+  #define DISABLE_WDOG      1
 #endif
-/* Predefined clock setups
-   0 ... Internal Clock Source (ICS) in FLL Engaged Internal (FEI) mode
-         Default  part configuration.
-         Reference clock source for ICS module is the slow internal clock source 32.768kHz
-         Core clock = 20.97MHz, BusClock = 20.97MHz
-   1 ... Internal Clock Source (ICS) in FLL Engaged External (FEE) mode
-         Maximum achievable clock frequency configuration.
-         Reference clock source for ICS module is an external 8MHz crystal
-         Core clock = 40MHz, BusClock = 20MHz
-   2 ... Internal Clock Source (ICS) in Bypassed Low Power Internal (FBILP) mode
-         Core clock/Bus clock derived directly from an  internal clock 32.769kHz with no multiplication
-         The clock settings is ready for Very Low Power Run mode.
-         Core clock = 32.769kHz, BusClock = 32.769kHz
-   3 ... Internal Clock Source (ICS) in Bypassed Low Power External (BLPE) mode
-         Core clock/Bus clock derived directly from the external 8MHz crystal
-         The clock settings is ready for Very Low Power Run mode.
-         Core clock = 8MHz, BusClock = 8MHz
-*/
 
-/*----------------------------------------------------------------------------
-  Define clock source values
- *----------------------------------------------------------------------------*/
-#if (CLOCK_SETUP == 0)
-    #define CPU_XTAL_CLK_HZ                 8000000u /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_CLK_HZ                  32768u   /* Value of the internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            20971520u /* Default System clock value */
-#elif (CLOCK_SETUP == 1)
-    #define CPU_XTAL_CLK_HZ                 8000000u /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_CLK_HZ                  32768u   /* Value of the internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            40000000u /* Default System clock value */
-#elif (CLOCK_SETUP == 2)
-    #define CPU_XTAL_CLK_HZ                 8000000u /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_CLK_HZ                  32768u   /* Value of the internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            32768u   /* Default System clock value */
-#elif (CLOCK_SETUP == 3)
-    #define CPU_XTAL_CLK_HZ                 8000000u /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_CLK_HZ                  32768u   /* Value of the internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            8000000u /* Default System clock value */
-#endif /* (CLOCK_SETUP == 4) */
+/* Define clock source values */
+
+#define CPU_XTAL_CLK_HZ                8000000UL            /* Value of the external crystal or oscillator clock frequency in Hz */
+#define CPU_INT_IRC_CLK_HZ             37500UL              /* Value of the 32k internal oscillator clock frequency in Hz  */
+
+#define DEFAULT_SYSTEM_CLOCK           24000000UL           /* Default System clock value */
 
 
 /**
@@ -126,8 +96,20 @@ void SystemInit (void);
  */
 void SystemCoreClockUpdate (void);
 
+/**
+ * @brief SystemInit function hook.
+ *
+ * This weak function allows to call specific initialization code during the
+ * SystemInit() execution.This can be used when an application specific code needs
+ * to be called as close to the reset entry as possible (for example the Multicore
+ * Manager MCMGR_EarlyInit() function call).
+ * NOTE: No global r/w variables can be used in this hook function because the
+ * initialization of these variables happens after this function.
+ */
+void SystemInitHook (void);
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* #if !defined(SYSTEM_MKE04Z4_H_) */
+#endif  /* _SYSTEM_MKE04Z4_H_ */

@@ -13,7 +13,7 @@
 **
 **     Reference manual:    KE1xZP48M48SF0RM, Rev. 1, Sep. 2018
 **     Version:             rev. 2.0, 2018-09-17
-**     Build:               b180925
+**     Build:               b181126
 **
 **     Abstract:
 **         CMSIS Peripheral Access Layer for MKE15Z4
@@ -10891,15 +10891,15 @@ typedef struct {
 #define TSI_SSC0_SSC_PRESCALE_NUM_MASK           (0xFFU)
 #define TSI_SSC0_SSC_PRESCALE_NUM_SHIFT          (0U)
 /*! SSC_PRESCALE_NUM - SSC_PRESCALE_NUM
- *  0b00000000..div2(2^0*2)
- *  0b00000001..div4(2^1*2)
- *  0b00000011..div8(2^2*2)
- *  0b00000111..div16(2^3*2)
- *  0b00001111..div32(2^4*2)
- *  0b00011111..div64(2^5*2)
- *  0b00111111..div128(2^6*2)
- *  0b01111111..div256(2^7*2)
- *  0b11111111..div512(2^8*2)
+ *  0b00000000..div1
+ *  0b00000001..div2
+ *  0b00000011..div4
+ *  0b00000111..div8
+ *  0b00001111..div16
+ *  0b00011111..div32
+ *  0b00111111..div64
+ *  0b01111111..div128
+ *  0b11111111..div256
  */
 #define TSI_SSC0_SSC_PRESCALE_NUM(x)             (((uint32_t)(((uint32_t)(x)) << TSI_SSC0_SSC_PRESCALE_NUM_SHIFT)) & TSI_SSC0_SSC_PRESCALE_NUM_MASK)
 #define TSI_SSC0_BASE_NOCHARGE_NUM_MASK          (0xF0000U)
@@ -11032,22 +11032,22 @@ typedef struct {
 #define TSI_SSC2_MOVE_NOCHARGE_MIN_MASK          (0xF0000000U)
 #define TSI_SSC2_MOVE_NOCHARGE_MIN_SHIFT         (28U)
 /*! MOVE_NOCHARGE_MIN - MOVE_NOCHARGE_MIN
- *  0b0000..The SSC output bit 1's min period will be (1 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycle of system clock.
- *  0b0001..The SSC output bit 1's min period will be (2 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b0010..The SSC output bit 1's min period will be (3 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b0011..The SSC output bit 1's min period will be (4 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b0100..The SSC output bit 1's min period will be (5 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b0101..The SSC output bit 1's min period will be (6 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b0110..The SSC output bit 1's min period will be (7 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b0111..The SSC output bit 1's min period will be (8 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b1000..The SSC output bit 1's min period will be (9 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b1001..The SSC output bit 1's min period will be (10 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b1010..The SSC output bit 1's min period will be (11 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b1011..The SSC output bit 1's min period will be (12 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b1100..The SSC output bit 1's min period will be (13 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b1101..The SSC output bit 1's min period will be (14 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b1110..The SSC output bit 1's min period will be (15 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
- *  0b1111..The SSC output bit 1's min period will be (16 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of system clock.
+ *  0b0000..The SSC output bit 1's min period will be (1 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycle of divided system clock.
+ *  0b0001..The SSC output bit 1's min period will be (2 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b0010..The SSC output bit 1's min period will be (3 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b0011..The SSC output bit 1's min period will be (4 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b0100..The SSC output bit 1's min period will be (5 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b0101..The SSC output bit 1's min period will be (6 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b0110..The SSC output bit 1's min period will be (7 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b0111..The SSC output bit 1's min period will be (8 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b1000..The SSC output bit 1's min period will be (9 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b1001..The SSC output bit 1's min period will be (10 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b1010..The SSC output bit 1's min period will be (11 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b1011..The SSC output bit 1's min period will be (12 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b1100..The SSC output bit 1's min period will be (13 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b1101..The SSC output bit 1's min period will be (14 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b1110..The SSC output bit 1's min period will be (15 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
+ *  0b1111..The SSC output bit 1's min period will be (16 + TSI_SSC0[BASE_ NOCHARGE_NUM]) clock cycles of divided system clock.
  */
 #define TSI_SSC2_MOVE_NOCHARGE_MIN(x)            (((uint32_t)(((uint32_t)(x)) << TSI_SSC2_MOVE_NOCHARGE_MIN_SHIFT)) & TSI_SSC2_MOVE_NOCHARGE_MIN_MASK)
 /*! @} */

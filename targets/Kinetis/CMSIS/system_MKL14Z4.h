@@ -1,27 +1,58 @@
 /*
 ** ###################################################################
-**     Processors:          MKL14Z64FM4
-**                          MKL14Z64FT4
-**                          MKL14Z64LH4
+**     Processors:          MKL14Z32VFM4
+**                          MKL14Z32VFT4
+**                          MKL14Z32VLH4
+**                          MKL14Z32VLK4
+**                          MKL14Z64VFM4
+**                          MKL14Z64VFT4
+**                          MKL14Z64VLH4
 **                          MKL14Z64VLK4
 **
-**     Compilers:           ARM Compiler
+**     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          MCUXpresso Compiler
 **
 **     Reference manual:    KL14P80M48SF0RM, Rev.3, Sep 2012
-**     Version:             rev. 1.4, 2013-04-05
+**     Version:             rev. 2.3, 2015-02-19
+**     Build:               b170112
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2013 Freescale, Inc. All Rights Reserved.
+**     Copyright (c) 2016 Freescale Semiconductor, Inc.
+**     Copyright 2016 - 2017 NXP
+**     Redistribution and use in source and binary forms, with or without modification,
+**     are permitted provided that the following conditions are met:
 **
-**     http:                 www.freescale.com
-**     mail:                 support@freescale.com
+**     o Redistributions of source code must retain the above copyright notice, this list
+**       of conditions and the following disclaimer.
+**
+**     o Redistributions in binary form must reproduce the above copyright notice, this
+**       list of conditions and the following disclaimer in the documentation and/or
+**       other materials provided with the distribution.
+**
+**     o Neither the name of the copyright holder nor the names of its
+**       contributors may be used to endorse or promote products derived from this
+**       software without specific prior written permission.
+**
+**     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+**     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+**     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+**     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+**     ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+**     (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**     LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+**     ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+**     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+**     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
 **     Revisions:
 **     - rev. 1.0 (2012-06-21)
@@ -35,14 +66,25 @@
 **         NV registers - bit EZPORT_DIS in NV_FOPT register removed.
 **     - rev. 1.4 (2013-04-05)
 **         Changed start of doxygen comment.
+**     - rev. 2.0 (2014-08-22)
+**         Register accessor macros added to the memory map.
+**         Symbols for Processor Expert memory map compatibility added to the memory map.
+**         Module access macro module_BASES replaced by module_BASE_PTRS.
+**         System initialization and startup updated.
+**     - rev. 2.1 (2014-08-28)
+**         Update of startup files - possibility to override DefaultISR added.
+**     - rev. 2.2 (2014-10-14)
+**         Interrupt INT_LPTimer renamed to INT_LPTMR0.
+**     - rev. 2.3 (2015-02-19)
+**         Renamed interrupt vector LLW to LLWU.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKL14Z4
- * @version 1.4
- * @date 2013-04-05
+ * @version 2.3
+ * @date 2015-02-19
  * @brief Device specific configuration file for MKL14Z4 (header file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -50,14 +92,36 @@
  * (PLL) that is part of the microcontroller device.
  */
 
-#ifndef SYSTEM_MKL14Z4_H_
-#define SYSTEM_MKL14Z4_H_                        /**< Symbol preventing repeated inclusion */
+#ifndef _SYSTEM_MKL14Z4_H_
+#define _SYSTEM_MKL14Z4_H_                       /**< Symbol preventing repeated inclusion */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include <stdint.h>
+
+
+#ifndef DISABLE_WDOG
+  #define DISABLE_WDOG                 1
+#endif
+
+
+
+/* Define clock source values */
+
+#define CPU_XTAL_CLK_HZ                8000000u            /* Value of the external crystal or oscillator clock frequency in Hz */
+#define CPU_INT_SLOW_CLK_HZ            32768u              /* Value of the slow internal oscillator clock frequency in Hz */
+#define CPU_INT_FAST_CLK_HZ            4000000u            /* Value of the fast internal oscillator clock frequency in Hz */
+
+/* RTC oscillator setting */
+
+/* Low power mode enable */
+/* SMC_PMPROT: AVLP=1,ALLS=1,AVLLS=1 */
+#define SYSTEM_SMC_PMPROT_VALUE        0x2AU               /* SMC_PMPROT */
+
+#define DEFAULT_SYSTEM_CLOCK           20971520u           /* Default System clock value */
+
 
 /**
  * @brief System clock frequency (core clock)
@@ -92,4 +156,4 @@ void SystemCoreClockUpdate (void);
 }
 #endif
 
-#endif  /* #if !defined(SYSTEM_MKL14Z4_H_) */
+#endif  /* _SYSTEM_MKL14Z4_H_ */

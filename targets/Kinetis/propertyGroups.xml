@@ -3631,6 +3631,21 @@
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
       <property name="arm_simulator_memory_simulation_parameter" value="MKL46Z256xxx4;0x40000;0x0;0x0;0x8000;4" />
     </groupEntry>
+    <groupEntry name="MKL81Z128xxx7" family="KL8x">
+      <cdefine value="MKL81Z128xxx7" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKL81Z7" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKL81Z128xxx7_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKL81Z7_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKL81Z7" />
+      <cdefine name="__VECTORS" value="&quot;MKL81Z7.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderV.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="V_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKL82Z128xxx7;0x20000;0x0;0x0;0x18000;4" />
+    </groupEntry>
     <groupEntry name="MKL82Z128xxx7" family="KL8x">
       <cdefine value="MKL82Z128xxx7" name="__TARGET_PROCESSOR" />
       <cdefine value="1" name="MKL82Z7" />

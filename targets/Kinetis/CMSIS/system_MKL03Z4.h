@@ -1,44 +1,49 @@
 /*
 ** ###################################################################
-**     Processors:          MKL03Z32CAF4
-**                          MKL03Z32VFG4
-**                          MKL03Z16VFG4
-**                          MKL03Z8VFG4
-**                          MKL03Z32VFK4
+**     Processors:          MKL03Z16VFG4
 **                          MKL03Z16VFK4
+**                          MKL03Z32CAF4
+**                          MKL03Z32VFG4
+**                          MKL03Z32VFK4
+**                          MKL03Z8VFG4
 **                          MKL03Z8VFK4
 **
-**     Compilers:           ARM Compiler
+**     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          MCUXpresso Compiler
 **
 **     Reference manual:    KL03P24M48SF0RM, Rev 2, Apr 2014
-**     Version:             rev. 1.2, 2014-04-30
+**     Version:             rev. 1.4, 2014-08-28
+**     Build:               b170713
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2014 Freescale Semiconductor, Inc.
+**     The Clear BSD License
+**     Copyright 2016 Freescale Semiconductor, Inc.
+**     Copyright 2016-2017 NXP
 **     All rights reserved.
-**
+**     
 **     Redistribution and use in source and binary forms, with or without modification,
-**     are permitted provided that the following conditions are met:
+**     are permitted (subject to the limitations in the disclaimer below) provided
+**      that the following conditions are met:
 **
-**     o Redistributions of source code must retain the above copyright notice, this list
+**     1. Redistributions of source code must retain the above copyright notice, this list
 **       of conditions and the following disclaimer.
 **
-**     o Redistributions in binary form must reproduce the above copyright notice, this
+**     2. Redistributions in binary form must reproduce the above copyright notice, this
 **       list of conditions and the following disclaimer in the documentation and/or
 **       other materials provided with the distribution.
 **
-**     o Neither the name of Freescale Semiconductor, Inc. nor the names of its
+**     3. Neither the name of the copyright holder nor the names of its
 **       contributors may be used to endorse or promote products derived from this
 **       software without specific prior written permission.
 **
+**     NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE.
 **     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 **     ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 **     WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -50,8 +55,8 @@
 **     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 **     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **
-**     http:                 www.freescale.com
-**     mail:                 support@freescale.com
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
 **     Revisions:
 **     - rev. 1.0 (2013-12-11)
@@ -62,14 +67,20 @@
 **         Added register file system (RFSYS).
 **     - rev. 1.2 (2014-04-30)
 **         PEx compatibility macros has been added.
+**     - rev. 1.3 (2014-06-27)
+**         I2C_S1 register was renamed.
+**         GPIO - Modules PTA,PTB renamed to GPIOA,GPIOB.
+**     - rev. 1.4 (2014-08-28)
+**         Update of system files - default clock configuration changed.
+**         Update of startup files - possibility to override DefaultISR added.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKL03Z4
- * @version 1.2
- * @date 2014-04-30
+ * @version 1.4
+ * @date 2014-08-28
  * @brief Device specific configuration file for MKL03Z4 (header file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -77,8 +88,8 @@
  * (PLL) that is part of the microcontroller device.
  */
 
-#ifndef SYSTEM_MKL03Z4_H_
-#define SYSTEM_MKL03Z4_H_                        /**< Symbol preventing repeated inclusion */
+#ifndef _SYSTEM_MKL03Z4_H_
+#define _SYSTEM_MKL03Z4_H_                       /**< Symbol preventing repeated inclusion */
 
 #ifdef __cplusplus
 extern "C" {
@@ -87,54 +98,24 @@ extern "C" {
 #include <stdint.h>
 
 
-#define DISABLE_WDOG    1
-
-#ifndef CLOCK_SETUP
-  #define CLOCK_SETUP   0
+#ifndef DISABLE_WDOG
+  #define DISABLE_WDOG  1
 #endif
-/* Predefined clock setups
-   0 ... Multipurpose Clock Generator Lite (MCG_Lite) in Low-frequency Internal Reference Clock 8 MHz (LIRC 8 MHz) mode
-         Default part configuration.
-         Core clock/Bus clock derived from the internal clock source 8 MHz
-         Core clock = 4MHz, BusClock = 2MHz
-   1 ... Multipurpose Clock Generator Lite (MCG_Lite) in High-frequency Internal Reference Clock (HIRC) mode
-         Maximum achievable clock frequency configuration using internal clock.
-         Core clock/Bus clock derived from the internal clock source 48MHz
-         Core clock = 48MHz, BusClock = 24MHz
-   2 ... Multipurpose Clock Generator Lite (MCG_Lite) in External Oscillator (EXT) mode
-         Core clock/Bus clock derived directly from the external crystal 32.768kHz
-         The clock settings is ready for Very Low Power Run mode.
-         Core clock = 32.768kHz, BusClock = 32.768kHz
-   3 ... Multipurpose Clock Generator Lite (MCG_Lite) in Low-frequency Internal Reference Clock 2 MHz (LIRC 2 MHz) mode
-         Core clock/Bus clock derived from the internal clock source 2 MHz
-         The clock settings is ready for Very Low Power Run mode.
-         Core clock = 2MHz, BusClock = 1MHz
-*/
 
-/*----------------------------------------------------------------------------
-  Define clock source values
- *----------------------------------------------------------------------------*/
-#if (CLOCK_SETUP == 0)
-    #define CPU_XTAL_CLK_HZ                 32768u    /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             8000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            4000000u  /* Default System clock value */
-#elif (CLOCK_SETUP == 1)
-    #define CPU_XTAL_CLK_HZ                 32768u    /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             8000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            48000000u /* Default System clock value */
-#elif (CLOCK_SETUP == 2)
-    #define CPU_XTAL_CLK_HZ                 32768u    /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             8000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            32768u    /* Default System clock value */
-#elif (CLOCK_SETUP == 3)
-    #define CPU_XTAL_CLK_HZ                 32768u    /* Value of the external crystal or oscillator clock frequency in Hz */
-    #define CPU_INT_SLOW_CLK_HZ             2000000u  /* Value of the slow internal oscillator clock frequency in Hz  */
-    #define CPU_INT_FAST_CLK_HZ             48000000u /* Value of the fast internal oscillator clock frequency in Hz  */
-    #define DEFAULT_SYSTEM_CLOCK            2000000u  /* Default System clock value */
-#endif /* (CLOCK_SETUP == 4) */
+#define ACK_ISOLATION   1
+
+/* Define clock source values */
+
+#define CPU_XTAL_CLK_HZ                32768u              /* Value of the external crystal or oscillator clock frequency in Hz */
+#define CPU_INT_FAST_CLK_HZ            48000000u           /* Value of the fast internal oscillator clock frequency in Hz  */
+#define CPU_INT_IRC_CLK_HZ             48000000u           /* Value of the 48M internal oscillator clock frequency in Hz  */
+
+/* Low power mode enable */
+/* SMC_PMPROT: AVLP=1,AVLLS=1 */
+#define SYSTEM_SMC_PMPROT_VALUE        0x22u               /* SMC_PMPROT */
+
+#define DEFAULT_SYSTEM_CLOCK           8000000u            /* Default System clock value */
+#define CPU_INT_SLOW_CLK_HZ            8000000u            /* Value of the slow internal oscillator clock frequency in Hz  */
 
 
 /**
@@ -170,4 +151,4 @@ void SystemCoreClockUpdate (void);
 }
 #endif
 
-#endif  /* #if !defined(SYSTEM_MKL03Z4_H_) */
+#endif  /* _SYSTEM_MKL03Z4_H_ */

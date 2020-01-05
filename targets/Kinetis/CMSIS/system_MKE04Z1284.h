@@ -1,44 +1,48 @@
 /*
 ** ###################################################################
-**     Compilers:           ARM Compiler
+**     Processors:          MKE04Z128VLD4
+**                          MKE04Z128VLH4
+**                          MKE04Z128VLK4
+**                          MKE04Z128VQH4
+**                          MKE04Z64VLD4
+**                          MKE04Z64VLH4
+**                          MKE04Z64VLK4
+**                          MKE04Z64VQH4
+**
+**     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          MCUXpresso Compiler
 **
-**     Reference manuals:   MKE06P80M48SF0RM, Rev. 1, Dec 2013
-**                          MKE04P80M48SF0RM, Rev. 1, Dec 2013
-**
-**     Version:             rev. 1.2, 2014-01-10
+**     Reference manual:    MKE04P80M48SF0RM Rev 4
+**     Version:             rev. 1.0, 2017-05-19
+**     Build:               b180802
 **
 **     Abstract:
 **         Provides a system configuration function and a global variable that
 **         contains the system frequency. It configures the device and initializes
 **         the oscillator (PLL) that is part of the microcontroller device.
 **
-**     Copyright: 2014 Freescale, Inc. All Rights Reserved.
+**     Copyright 2016 Freescale Semiconductor, Inc.
+**     Copyright 2016-2018 NXP
 **
-**     http:                 www.freescale.com
-**     mail:                 support@freescale.com
+**     SPDX-License-Identifier: BSD-3-Clause
+**
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
 **     Revisions:
-**     - rev. 1.0 (2013-07-30)
+**     - rev. 1.0 (2017-05-19)
 **         Initial version.
-**     - rev. 1.1 (2013-10-29)
-**         Definition of BITBAND macros updated to support peripherals with 32-bit acces disabled.
-**     - rev. 1.2 (2014-01-10)
-**         FTM0 module: added access macro for EXTTRIG register.
-**         NVIC module: registers access macros improved.
-**         SCB module: unused bits removed, mask, shift macros improved.
-**         Defines of interrupt vectors aligned to RM.
 **
 ** ###################################################################
 */
 
 /*!
  * @file MKE04Z1284
- * @version 1.2
- * @date 2014-01-10
+ * @version 1.0
+ * @date 2017-05-19
  * @brief Device specific configuration file for MKE04Z1284 (header file)
  *
  * Provides a system configuration function and a global variable that contains
@@ -46,14 +50,27 @@
  * (PLL) that is part of the microcontroller device.
  */
 
-#ifndef SYSTEM_MKE04Z1284_H_
-#define SYSTEM_MKE04Z1284_H_                     /**< Symbol preventing repeated inclusion */
+#ifndef _SYSTEM_MKE04Z1284_H_
+#define _SYSTEM_MKE04Z1284_H_                    /**< Symbol preventing repeated inclusion */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include <stdint.h>
+
+
+#ifndef DISABLE_WDOG
+  #define DISABLE_WDOG      1
+#endif
+
+/* Define clock source values */
+
+#define CPU_XTAL_CLK_HZ                8000000UL            /* Value of the external crystal or oscillator clock frequency in Hz */
+#define CPU_INT_IRC_CLK_HZ             37500UL              /* Value of the 32k internal oscillator clock frequency in Hz  */
+
+#define DEFAULT_SYSTEM_CLOCK           24000000UL           /* Default System clock value */
+
 
 /**
  * @brief System clock frequency (core clock)
@@ -84,8 +101,20 @@ void SystemInit (void);
  */
 void SystemCoreClockUpdate (void);
 
+/**
+ * @brief SystemInit function hook.
+ *
+ * This weak function allows to call specific initialization code during the
+ * SystemInit() execution.This can be used when an application specific code needs
+ * to be called as close to the reset entry as possible (for example the Multicore
+ * Manager MCMGR_EarlyInit() function call).
+ * NOTE: No global r/w variables can be used in this hook function because the
+ * initialization of these variables happens after this function.
+ */
+void SystemInitHook (void);
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* #if !defined(SYSTEM_MKE04Z1284_H_) */
+#endif  /* _SYSTEM_MKE04Z1284_H_ */

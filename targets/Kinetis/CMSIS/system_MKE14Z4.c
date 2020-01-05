@@ -8,8 +8,8 @@
 **     Compilers:           Keil ARM C/C++ Compiler
 **                          Freescale C/C++ for Embedded ARM
 **                          GNU C Compiler
-**                          GNU C Compiler - CodeSourcery Sourcery G++
 **                          IAR ANSI C/C++ Compiler for ARM
+**                          MCUXpresso Compiler
 **
 **     Reference manual:    KE1xZP48M48SF0RM, Rev. 1, Sep. 2018
 **     Version:             rev. 2.0, 2018-09-17
@@ -33,7 +33,7 @@
 **     - rev. 1.0 (2018-05-09)
 **         Initial version.
 **     - rev. 2.0 (2018-09-17)
-**         Base on rev1 RM.
+**         Based on rev1 RM.
 **
 ** ###################################################################
 */
@@ -50,7 +50,7 @@
  */
 
 #include <stdint.h>
-#include "MKE14Z4.h"
+#include "fsl_device_registers.h"
 
 
 
@@ -72,6 +72,7 @@ void SystemInit (void) {
   WDOG->CS = (uint32_t) ((WDOG->CS) & ~WDOG_CS_EN_MASK) | WDOG_CS_UPDATE_MASK;
 #endif /* (DISABLE_WDOG) */
 
+  SystemInitHook();
 }
 
 /* ----------------------------------------------------------------------------
@@ -106,4 +107,12 @@ void SystemCoreClockUpdate (void) {
   }
   SystemCoreClock = (SCGOUTClock / Divider);
 
+}
+
+/* ----------------------------------------------------------------------------
+   -- SystemInitHook()
+   ---------------------------------------------------------------------------- */
+
+__attribute__ ((weak)) void SystemInitHook (void) {
+  /* Void implementation of the weak function. */
 }
