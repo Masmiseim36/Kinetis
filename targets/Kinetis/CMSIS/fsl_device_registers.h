@@ -561,6 +561,15 @@
 	#include "MKL82Z7.h"
 	/* CPU specific feature definitions */
 	#include "MKL82Z7_features.h"
+	
+#elif (defined(CPU_MKM35Z256VLL7) || defined(CPU_MKM35Z256VLL7R) || defined(CPU_MKM35Z256VLQ7) || \
+    defined(CPU_MKM35Z256VLQ7R) || defined(CPU_MKM35Z512VLL7) || defined(CPU_MKM35Z512VLL7R) || \
+    defined(CPU_MKM35Z512VLQ7) || defined(CPU_MKM35Z512VLQ7R))
+	#define KM35Z7_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKM35Z7.h"
+	/* CPU specific feature definitions */
+	#include "MKM35Z7_features.h"
 
 #elif (defined(CPU_MKV10Z16VFM7) || defined(CPU_MKV10Z16VLC7) || defined(CPU_MKV10Z16VLF7) || \
 	defined(CPU_MKV10Z32VFM7) || defined(CPU_MKV10Z32VLC7) || defined(CPU_MKV10Z32VLF7) || defined(MKV11Z7))
@@ -672,12 +681,18 @@
 	#include "MKW24D5.h"
 	/* CPU specific feature definitions */
 	#include "MKW24D5_features.h"
-#êlif (defined(CPU_MKW31Z256VHT4) || defined(CPU_MKW31Z512CAT4) || defined(CPU_MKW31Z512VHT4) || defined(MKW31Z4))
+#elif (defined(CPU_MKW31Z256VHT4) || defined(CPU_MKW31Z512CAT4) || defined(CPU_MKW31Z512VHT4) || defined(MKW31Z4))
 	#define KW31Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKW31Z4.h"
 	/* CPU specific feature definitions */
 	#include "MKW31Z4_features.h"
+#elif (defined(CPU_MKW34A512VFT4))
+	#define KW34A4_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKW34A4.h"
+	/* CPU specific feature definitions */
+	#include "MKW34A4_features.h"
 #elif (defined(CPU_MKW35A512VFP4) || defined(CPU_MKW35A512VFT4) || defined(MKW35A4))
 	#define KW35A4_SERIES
 	/* CMSIS-style register definitions */
@@ -702,6 +717,36 @@
 	#include "MKW36Z4.h"
 	/* CPU specific feature definitions */
 	#include "MKW36Z4_features.h"
+#elif (defined(CPU_MKW37A512VFT4))
+	#define KW37A4_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKW37A4.h"
+	/* CPU specific feature definitions */
+	#include "MKW37A4_features.h"
+#elif (defined(CPU_MKW37Z512VFT4))
+	#define KW37Z4_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKW37Z4.h"
+	/* CPU specific feature definitions */
+	#include "MKW37Z4_features.h"
+#elif (defined(CPU_MKW38A512VFT4))
+	#define KW38A4_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKW38A4.h"
+	/* CPU specific feature definitions */
+	#include "MKW38A4_features.h"
+#elif (defined(CPU_MKW38Z512VFT4))
+	#define KW38Z4_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKW38Z4.h"
+	/* CPU specific feature definitions */
+	#include "MKW38Z4_features.h"
+#elif (defined(CPU_MKW39A512VFT4))
+	#define KW39A4_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKW39A4.h"
+	/* CPU specific feature definitions */
+	#include "MKW39A4_features.h"
 #elif (defined(CPU_MKW41Z256VHT4) || defined(CPU_MKW41Z512CAT4) || defined(CPU_MKW41Z512VHT4) || defined(MKW41Z4))
 	#define KW41Z4_SERIES
 	/* CMSIS-style register definitions */
