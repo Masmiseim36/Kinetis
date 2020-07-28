@@ -3856,6 +3856,38 @@
       <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)" />
       <property name="arm_simulator_memory_simulation_parameter" value="MKM34Z256xxx7;0x40000;0x0;0x0;0x8000;4" />
     </groupEntry>
+    <groupEntry name="MKM35Z256xxx7" family="KM3x">
+      <cdefine value="MKM35Z256xxx7" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKM35Z7" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM35Z256xxx7_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM35Z7_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKM35Z7" />
+      <cdefine name="__VECTORS" value="&quot;MKM35Z7.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="M_SERIES" />
+      <cdefine name="CPU_MKM35Z256VLL7" />
+      <property name="target_get_partname_script" value="GetPartName2()" />
+      <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKM35Z256xxx7;0x40000;0x0;0x0;0x8000;4" />
+    </groupEntry>
+    <groupEntry name="MKM35Z512xxx7" family="KM3x">
+      <cdefine value="MKM35Z512xxx7" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKM35Z7" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM35Z512xxx7_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM35Z7_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKM35Z7" />
+      <cdefine name="__VECTORS" value="&quot;MKM35Z7.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderM.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="M_SERIES" />
+      <cdefine name="CPU_MKM35Z512VLL7" />
+      <property name="target_get_partname_script" value="GetPartName2()" />
+      <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKM35Z256xxx7;0x40000;0x0;0x0;0x8000;4" />
+    </groupEntry>
     <groupEntry name="MKM38Z128xxx5" family="KM3x">
       <cdefine value="MKM38Z128xxx5" name="__TARGET_PROCESSOR" />
       <cdefine value="1" name="MKM38Z5" />
