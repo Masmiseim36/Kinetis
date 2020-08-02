@@ -3903,13 +3903,51 @@
       <property name="target_match_partname_script" value="MatchPartName2(&quot;$(Target)&quot;)" />
       <property name="arm_simulator_memory_simulation_parameter" value="MKM38Z128xxx5;0x40000;0x0;0x0;0x8000;4" />
     </groupEntry>
+    <groupEntry name="MKS20FN128xxx12" family="KS2x">
+      <cdefine value="MKS20FN128xxx12" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKS20F25612" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKS20FN128xxx12_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKS20F12_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKS20F12" />
+      <cdefine name="__VECTORS" value="&quot;MKS20F12.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
+      <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
+      <property name="arm_architecture" value="v7EM" />
+      <property name="arm_core_type" value="Cortex-M4" />
+      <cdefine name="__HAS_FPU" value="1" />
+      <cdefine name="__FPU_PRESENT" value="1" />
+      <property name="arm_fpu_type" value="FPv4-SP-D16" />
+      <cdefine name="K_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKS20FN128xxx12;0x20000;0x0;0x0;0x10000;2" />
+    </groupEntry>
+    <groupEntry name="MKS20FN256xxx12" family="KS2x">
+      <cdefine value="MKS20FN256xxx12" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKS20F25612" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKS20FN256xxx12_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKS20F12_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKS20F12" />
+      <cdefine name="__VECTORS" value="&quot;MKS20F12.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
+      <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
+      <property name="arm_architecture" value="v7EM" />
+      <property name="arm_core_type" value="Cortex-M4" />
+      <cdefine name="__HAS_FPU" value="1" />
+      <cdefine name="__FPU_PRESENT" value="1" />
+      <property name="arm_fpu_type" value="FPv4-SP-D16" />
+      <cdefine name="K_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKS20FN256xxx12;0x40000;0x0;0x0;0x10000;2" />
+    </groupEntry>
     <groupEntry name="MKS22FN128xxx12" family="KS2x">
       <cdefine value="MKS22FN128xxx12" name="__TARGET_PROCESSOR" />
       <cdefine value="1" name="MKS22F25612" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKS22FN128xxx12_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKS22F25612_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKS22F25612" />
-      <cdefine name="__VECTORS" value="&quot;MKS22F25612.vec&quot;" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKS22F12_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKS22F12" />
+      <cdefine name="__VECTORS" value="&quot;MKS22F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
       <property name="arm_architecture" value="v7EM" />
@@ -3926,9 +3964,9 @@
       <cdefine value="MKS22FN256xxx12" name="__TARGET_PROCESSOR" />
       <cdefine value="1" name="MKS22F25612" />
       <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKS22FN256xxx12_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKS22F25612_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKS22F25612" />
-      <cdefine name="__VECTORS" value="&quot;MKS22F25612.vec&quot;" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKS22F12_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKS22F12" />
+      <cdefine name="__VECTORS" value="&quot;MKS22F12.vec&quot;" />
       <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader.elf" />
       <property name="arm_target_loader_parameter" configuration="Flash" value="2" />
       <property name="arm_architecture" value="v7EM" />
