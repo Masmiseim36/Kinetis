@@ -23430,7 +23430,7 @@
       </BitField>
       <BitField start="3" size="1" name="OR" description="Receiver Overrun Flag">
         <Enum name="0" start="0b0" description="No overrun has occurred since the last time the flag was cleared." />
-        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occured." />
+        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occurred." />
       </BitField>
       <BitField start="4" size="1" name="IDLE" description="Idle Line Flag">
         <Enum name="0" start="0b0" description="Receiver input is either active now or has never become active since the IDLE flag was last cleared." />
@@ -23902,7 +23902,7 @@
       </BitField>
       <BitField start="3" size="1" name="OR" description="Receiver Overrun Flag">
         <Enum name="0" start="0b0" description="No overrun has occurred since the last time the flag was cleared." />
-        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occured." />
+        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occurred." />
       </BitField>
       <BitField start="4" size="1" name="IDLE" description="Idle Line Flag">
         <Enum name="0" start="0b0" description="Receiver input is either active now or has never become active since the IDLE flag was last cleared." />
@@ -24240,7 +24240,7 @@
       </BitField>
       <BitField start="3" size="1" name="OR" description="Receiver Overrun Flag">
         <Enum name="0" start="0b0" description="No overrun has occurred since the last time the flag was cleared." />
-        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occured." />
+        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occurred." />
       </BitField>
       <BitField start="4" size="1" name="IDLE" description="Idle Line Flag">
         <Enum name="0" start="0b0" description="Receiver input is either active now or has never become active since the IDLE flag was last cleared." />

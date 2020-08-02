@@ -1,4 +1,4 @@
-<Processor name="MKE15Z4" description="MKE15Z32VLD4,MKE15Z32VLF4,MKE15Z64VLD4,MKE15Z64VLF4">
+<Processor name="MKE15Z4" description="MKE15Z32VFP4,MKE15Z32VLD4,MKE15Z32VLF4,MKE15Z64VFP4,MKE15Z64VLD4,MKE15Z64VLF4">
   <RegisterGroup name="FTFA_FlashConfig" start="0x400" description="Flash configuration field">
     <Register start="+0" size="1" name="NV_BACKKEY3" access="ReadOnly" description="Backdoor Comparison Key 3." reset_value="0xFF" reset_mask="0xFF">
       <BitField start="0" size="8" name="KEY" description="Backdoor Comparison Key." />
