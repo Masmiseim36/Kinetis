@@ -4561,6 +4561,156 @@
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
       <property name="arm_simulator_memory_simulation_parameter" value="MKW31Z512xxx4;0x80000;0x0;0x0;0x20000;4" />
     </groupEntry>
+    <groupEntry name="MKW34A512xxx4" family="KW3x">
+      <cdefine value="MKW34A512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW34A4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW34A512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW34A4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW34A4" />
+      <cdefine name="__VECTORS" value="&quot;MKW34A4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW34A512xxx4;0x80000;0x0;0x0;0x10000;4" />
+    </groupEntry>
+    <groupEntry name="MKW35A512xxx4" family="KW3x">
+      <cdefine value="MKW35A512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW35A4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW35A512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW35A4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW35A4" />
+      <cdefine name="__VECTORS" value="&quot;MKW35A4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW35A512xxx4;0x80000;0x0;0x0;0x10000;4" />
+    </groupEntry>
+    <groupEntry name="MKW35Z512xxx4" family="KW3x">
+      <cdefine value="MKW35Z512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW35Z4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW35Z512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW35Z4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW35Z4" />
+      <cdefine name="__VECTORS" value="&quot;MKW35Z4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW35Z512xxx4;0x80000;0x0;0x0;0x10000;4" />
+    </groupEntry>
+    <groupEntry name="MKW36A512xxx4" family="KW3x">
+      <cdefine value="MKW36A512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW36A4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW36A512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW36A4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW36A4" />
+      <cdefine name="__VECTORS" value="&quot;MKW36A4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW36A512xxx4;0x40000;0x40000;0x0;0x10000;4" />
+    </groupEntry>
+    <groupEntry name="MKW36Z512xxx4" family="KW3x">
+      <cdefine value="MKW36Z512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW36Z4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW36Z512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW36Z4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW36Z4" />
+      <cdefine name="__VECTORS" value="&quot;MKW36Z4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW36Z512xxx4;0x40000;0x40000;0x0;0x10000;4" />
+    </groupEntry>
+    <groupEntry name="MKW37A512xxx4" family="KW3x">
+      <cdefine value="MKW37A512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW37A4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW37A512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW37A4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW37A4" />
+      <cdefine name="__VECTORS" value="&quot;MKW37A4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW37A512xxx4;0x40000;0x40000;0x0;0x10000;4" />
+    </groupEntry>
+    <groupEntry name="MKW37Z512xxx4" family="KW3x">
+      <cdefine value="MKW37Z512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW37Z4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW37Z512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW37Z4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW37Z4" />
+      <cdefine name="__VECTORS" value="&quot;MKW37Z4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW37Z512xxx4;0x40000;0x40000;0x0;0x10000;4" />
+    </groupEntry>
+    <groupEntry name="MKW38A512xxx4" family="KW3x">
+      <cdefine value="MKW38A512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW38A4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW38A512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW38A4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW38A4" />
+      <cdefine name="__VECTORS" value="&quot;MKW38A4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW38A512xxx4;0x40000;0x40000;0x0;0x10000;4" />
+    </groupEntry>
+    <groupEntry name="MKW38Z512xxx4" family="KW3x">
+      <cdefine value="MKW38Z512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW38Z4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW38Z512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW38Z4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW38Z4" />
+      <cdefine name="__VECTORS" value="&quot;MKW38Z4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW38Z512xxx4;0x40000;0x40000;0x0;0x10000;4" />
+    </groupEntry>
+    <groupEntry name="MKW39A512xxx4" family="KW3x">
+      <cdefine value="MKW39A512xxx4" name="__TARGET_PROCESSOR" />
+      <cdefine value="1" name="MKW39A4" />
+      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW39A512xxx4_MemoryMap.xml" />
+      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW39A4_Peripherals.xml" />
+      <property name="macros" value="DeviceName=MKW39A4" />
+      <cdefine name="__VECTORS" value="&quot;MKW39A4.vec&quot;" />
+      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
+      <property name="arm_architecture" value="v6M" />
+      <property name="arm_core_type" value="Cortex-M0" />
+      <cdefine name="W35_SERIES" />
+      <property name="target_get_partname_script" value="GetPartName()" />
+      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+      <property name="arm_simulator_memory_simulation_parameter" value="MKW39A512xxx4;0x40000;0x40000;0x0;0x10000;4" />
+    </groupEntry>
     <groupEntry name="MKW40Z160xxx4" family="KW4x">
       <cdefine value="MKW40Z160xxx4" name="__TARGET_PROCESSOR" />
       <cdefine value="1" name="MKW40Z4" />
@@ -4605,156 +4755,6 @@
       <property name="target_get_partname_script" value="GetPartName()" />
       <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
       <property name="arm_simulator_memory_simulation_parameter" value="MKW41Z512xxx4;0x80000;0x0;0x0;0x20000;4" />
-    </groupEntry>
-    <groupEntry name="MKW34A512xxx4" family="KW4x">
-      <cdefine value="MKW34A512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW34A4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW34A512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW34A4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW34A4" />
-      <cdefine name="__VECTORS" value="&quot;MKW34A4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW34A512xxx4;0x80000;0x0;0x0;0x10000;4" />
-    </groupEntry>
-    <groupEntry name="MKW35A512xxx4" family="KW4x">
-      <cdefine value="MKW35A512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW35A4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW35A512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW35A4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW35A4" />
-      <cdefine name="__VECTORS" value="&quot;MKW35A4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW35A512xxx4;0x80000;0x0;0x0;0x10000;4" />
-    </groupEntry>
-    <groupEntry name="MKW35Z512xxx4" family="KW4x">
-      <cdefine value="MKW35Z512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW35Z4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW35Z512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW35Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW35Z4" />
-      <cdefine name="__VECTORS" value="&quot;MKW35Z4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW35Z512xxx4;0x80000;0x0;0x0;0x10000;4" />
-    </groupEntry>
-    <groupEntry name="MKW36A512xxx4" family="KW4x">
-      <cdefine value="MKW36A512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW36A4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW36A512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW36A4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW36A4" />
-      <cdefine name="__VECTORS" value="&quot;MKW36A4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW36A512xxx4;0x40000;0x40000;0x0;0x10000;4" />
-    </groupEntry>
-    <groupEntry name="MKW36Z512xxx4" family="KW4x">
-      <cdefine value="MKW36Z512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW36Z4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW36Z512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW36Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW36Z4" />
-      <cdefine name="__VECTORS" value="&quot;MKW36Z4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW36Z512xxx4;0x40000;0x40000;0x0;0x10000;4" />
-    </groupEntry>
-    <groupEntry name="MKW37A512xxx4" family="KW4x">
-      <cdefine value="MKW37A512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW37A4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW37A512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW37A4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW37A4" />
-      <cdefine name="__VECTORS" value="&quot;MKW37A4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW37A512xxx4;0x40000;0x40000;0x0;0x10000;4" />
-    </groupEntry>
-    <groupEntry name="MKW37Z512xxx4" family="KW4x">
-      <cdefine value="MKW37Z512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW37Z4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW37Z512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW37Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW37Z4" />
-      <cdefine name="__VECTORS" value="&quot;MKW37Z4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW37Z512xxx4;0x40000;0x40000;0x0;0x10000;4" />
-    </groupEntry>
-    <groupEntry name="MKW38A512xxx4" family="KW4x">
-      <cdefine value="MKW38A512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW38A4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW38A512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW38A4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW38A4" />
-      <cdefine name="__VECTORS" value="&quot;MKW38A4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW38A512xxx4;0x40000;0x40000;0x0;0x10000;4" />
-    </groupEntry>
-    <groupEntry name="MKW38Z512xxx4" family="KW4x">
-      <cdefine value="MKW38Z512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW38Z4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW38Z512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW38Z4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW38Z4" />
-      <cdefine name="__VECTORS" value="&quot;MKW38Z4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW38Z512xxx4;0x40000;0x40000;0x0;0x10000;4" />
-    </groupEntry>
-    <groupEntry name="MKW39A512xxx4" family="KW4x">
-      <cdefine value="MKW39A512xxx4" name="__TARGET_PROCESSOR" />
-      <cdefine value="1" name="MKW39A4" />
-      <property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKW39A512xxx4_MemoryMap.xml" />
-      <property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKW39A4_Peripherals.xml" />
-      <property name="macros" value="DeviceName=MKW39A4" />
-      <cdefine name="__VECTORS" value="&quot;MKW39A4.vec&quot;" />
-      <property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/Loader4.elf" />
-      <property name="arm_architecture" value="v6M" />
-      <property name="arm_core_type" value="Cortex-M0" />
-      <cdefine name="W35_SERIES" />
-      <property name="target_get_partname_script" value="GetPartName()" />
-      <property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-      <property name="arm_simulator_memory_simulation_parameter" value="MKW39A512xxx4;0x40000;0x40000;0x0;0x10000;4" />
     </groupEntry>
     <groupEntry name="MWPR1516" family="WPR1516">
       <cdefine value="MWPR1516" name="__TARGET_PROCESSOR" />
