@@ -569,6 +569,20 @@
 	#include "MKM35Z7.h"
 	/* CPU specific feature definitions */
 	#include "MKM35Z7_features.h"
+#elif (defined(CPU_MKS20FN128VFT12) || defined(CPU_MKS20FN128VLH12) || defined(CPU_MKS20FN128VLL12) || \
+	defined(CPU_MKS20FN256VFT12) || defined(CPU_MKS20FN256VLH12) || defined(CPU_MKS20FN256VLL12))
+	#define KS20F12_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKS20F12.h"
+	/* CPU specific feature definitions */
+	#include "MKS20F12_features.h"
+#elif (defined(CPU_MKS22FN128VFT12) || defined(CPU_MKS22FN128VLH12) || defined(CPU_MKS22FN128VLL12) || \
+	defined(CPU_MKS22FN256VFT12) || defined(CPU_MKS22FN256VLH12) || defined(CPU_MKS22FN256VLL12))
+	#define KS22F12_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKS22F12.h"
+	/* CPU specific feature definitions */
+	#include "MKS22F12_features.h"
 #elif (defined(CPU_MKV10Z16VFM7) || defined(CPU_MKV10Z16VLC7) || defined(CPU_MKV10Z16VLF7) || \
 	defined(CPU_MKV10Z32VFM7) || defined(CPU_MKV10Z32VLC7) || defined(CPU_MKV10Z32VLF7) || defined(MKV11Z7))
 	#define KV10Z7_SERIES

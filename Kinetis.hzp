@@ -1021,6 +1021,25 @@
             </folder>
           </folder>
         </folder>
+        <folder Name="KS Family">
+          <file file_name="targets/Kinetis/CMSIS/MKS20F12.h" />
+          <file file_name="targets/Kinetis/CMSIS/MKS20F12_features.h" />
+          <file file_name="targets/Kinetis/CMSIS/system_MKS20F12.c" />
+          <file file_name="targets/Kinetis/CMSIS/system_MKS20F12.h" />
+          <file file_name="targets/Kinetis/MKS20F12.vec" />
+          <file file_name="targets/Kinetis/MKS20F12_Peripherals.xml" />
+          <file file_name="targets/Kinetis/MKS20FN128xxx12_MemoryMap.xml" />
+          <file file_name="targets/Kinetis/MKS20FN256xxx12_MemoryMap.xml" />
+          <file file_name="targets/Kinetis/CMSIS/MKS22F12.h" />
+          <file file_name="targets/Kinetis/CMSIS/MKS22F12_features.h" />
+          <file file_name="targets/Kinetis/CMSIS/system_MKS22F12.c" />
+          <file file_name="targets/Kinetis/CMSIS/system_MKS22F12.h" />
+          <file file_name="targets/Kinetis/MKS22F12.vec" />
+          <file file_name="targets/Kinetis/MKS22F12.xml" />
+          <file file_name="targets/Kinetis/MKS22F12_Peripherals.xml" />
+          <file file_name="targets/Kinetis/MKS22FN128xxx12_MemoryMap.xml" />
+          <file file_name="targets/Kinetis/MKS22FN256xxx12_MemoryMap.xml" />
+        </folder>
         <folder Name="KV Family">
           <folder Name="KV1x Family">
             <file file_name="targets/Kinetis/CMSIS/MKV10Z7.h" />
@@ -1320,13 +1339,6 @@
           <file file_name="targets/Kinetis/SKEAZN64xxx2_MemoryMap.xml" />
           <file file_name="targets/Kinetis/CMSIS/system_SKEAZN642.c" />
           <file file_name="targets/Kinetis/CMSIS/system_SKEAZN642.h" />
-          <file file_name="targets/Kinetis/CMSIS/MKS22F25612.h" />
-          <file file_name="targets/Kinetis/CMSIS/system_MKS22F25612.c" />
-          <file file_name="targets/Kinetis/CMSIS/system_MKS22F25612.h" />
-          <file file_name="targets/Kinetis/MKS22F25612.vec" />
-          <file file_name="targets/Kinetis/MKS22F25612_Peripherals.xml" />
-          <file file_name="targets/Kinetis/MKS22FN128xxx12_MemoryMap.xml" />
-          <file file_name="targets/Kinetis/MKS22FN256xxx12_MemoryMap.xml" />
         </folder>
       </folder>
       <file file_name="targets/Kinetis/CMSIS/fsl_device_registers.h" />
