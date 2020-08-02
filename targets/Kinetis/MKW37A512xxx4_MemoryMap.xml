@@ -1,8 +1,8 @@
 <!DOCTYPE Board_Memory_Definition_File>
-<Root name="MKW36Z512xxx4">
+<Root name="MKW37A512xxx4">
 	<MemorySegment size="0x40000"  access="ReadOnly"   start="0x00000000" name="FLASH" />
 	<MemorySegment size="0x40000"  access="ReadOnly"   start="0x10000000" name="FlexNVM" />
-	<MemorySegment size="0x0"      access="ReadOnly"   start="0x14000000" name="FlexRAM" />
+	<MemorySegment size="0x200"    access="ReadOnly"   start="0x14000000" name="FlexRAM" />
 	<MemorySegment size="0x10000"  access="Read/Write" start="0x1fffc000" name="SRAM" />
 	<MemorySegment size="0x4000"   access="Read/Write" start="0x1fffc000" name="SRAM_L" />
 	<MemorySegment size="0xc000"   access="Read/Write" start="0x20000000" name="SRAM_H" />
