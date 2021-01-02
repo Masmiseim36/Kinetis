@@ -22,12 +22,12 @@ This package enhances the original package by
   - MKS20
 - Add Aditional Files to the Project template
   - fsl_device_registers.h
-  - system_<Device>.h/.c
-  - <Device>.h
+  - system_\<Device>.h/.c
+  - \<Device>.h
 - use new introduced DeviceName macro for adding the controller specific files to the project
 
 ## Build and Install
 
 The Package is provided unpacked and has to be packed before it can be installed. For this open the Project File located in the root of the project with the Crossworks IDE (File Kinetis.hzp). Then “compile" it like a normal project (Build -> Build Kinetis). This will create the CPU-Support package in the root-Folder of the project (-> Kinetis.hzq).
-To install the new created package, go to Tools -> Packages -> Manually Install Packages and choose the new File.
+To install the new created package, go to Tools -> Packages -> Manually Install Packages and choose the new File.  
 ![Package Manager](./doc/Menu_PackageManagerManual.png)
