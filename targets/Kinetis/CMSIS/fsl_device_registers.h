@@ -385,7 +385,7 @@
 
 #elif (defined(CPU_MKL02Z16VFG4) || defined(CPU_MKL02Z16VFK4) || defined(CPU_MKL02Z16VFM4) || \
 	defined(CPU_MKL02Z32CAF4) || defined(CPU_MKL02Z32VFG4) || defined(CPU_MKL02Z32VFK4) || \
-	defined(CPU_MKL02Z32VFM4) || defined(CPU_MKL02Z8VFG4) || defined(MKL02Z4))
+	defined(CPU_MKL02Z32VFM4) || defined(CPU_MKL02Z8VFG4))
 	#define KL02Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKL02Z4.h"
@@ -393,16 +393,32 @@
 	#include "MKL02Z4_features.h"
 #elif (defined(CPU_MKL03Z16VFG4) || defined(CPU_MKL03Z16VFK4) || defined(CPU_MKL03Z32CAF4) || \
 	defined(CPU_MKL03Z32VFG4) || defined(CPU_MKL03Z32VFK4) || defined(CPU_MKL03Z8VFG4) || \
-	defined(CPU_MKL03Z8VFK4) || defined(MKL03Z4))
+	defined(CPU_MKL03Z8VFK4))
 	#define KL03Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKL03Z4.h"
 	/* CPU specific feature definitions */
 	#include "MKL03Z4_features.h"
+#elif (defined(CPU_MKL04Z8VFK4) || defined(CPU_MKL04Z8VLC4) || defined(CPU_MKL04Z8VFM4) || \
+	defined(CPU_MKL04Z16VFK4) || defined(CPU_MKL04Z16VLC4) || defined(CPU_MKL04Z16VFM4) || defined(CPU_MKL04Z16VLF4) || \
+	defined(CPU_MKL04Z32VFK4) || defined(CPU_MKL04Z32VLC4) || defined(CPU_MKL04Z32VFM4) || defined(CPU_MKL04Z32VLF4))
+	#define KL04Z4_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKL04Z4.h"
+	/* CPU specific feature definitions */
+//	#include "MKL04Z4_features.h"
+#elif (defined(CPU_MKL05Z8VFK4) || defined(CPU_MKL05Z8VLC4) || defined(CPU_MKL05Z8VFM4) || \
+	defined(CPU_MKL05Z16VFK4) || defined(CPU_MKL05Z16VLC4) || defined(CPU_MKL05Z16VFM4) || defined(CPU_MKL05Z16VLF4) || \
+	defined(CPU_MKL05Z32VFK4) || defined(CPU_MKL05Z32VLC4) || defined(CPU_MKL05Z32VFM4) || defined(CPU_MKL05Z32VLF4))
+	#define KL05Z4_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKL05Z5.h"
+	/* CPU specific feature definitions */
+//	#include "MKL05Z5_features.h"
 #elif (defined(CPU_MKL13Z32VFM4) || defined(CPU_MKL13Z32VFT4) || defined(CPU_MKL13Z32VLH4) || \
 	defined(CPU_MKL13Z32VLK4) || defined(CPU_MKL13Z32VMP4) || defined(CPU_MKL13Z64VFM4) || \
 	defined(CPU_MKL13Z64VFT4) || defined(CPU_MKL13Z64VLH4) || defined(CPU_MKL13Z64VLK4) || \
-	defined(CPU_MKL13Z64VMP4) || defined(MKL13Z644))
+	defined(CPU_MKL13Z64VMP4))
 	#define KL13Z644_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKL13Z644.h"
@@ -420,7 +436,7 @@
 	defined(CPU_MKL15Z128VLH4) || defined(CPU_MKL15Z128VLK4) || defined(CPU_MKL15Z32VFM4) || \
 	defined(CPU_MKL15Z32VFT4) || defined(CPU_MKL15Z32VLH4) || defined(CPU_MKL15Z32VLK4) || \
 	defined(CPU_MKL15Z64VFM4) || defined(CPU_MKL15Z64VFT4) || defined(CPU_MKL15Z64VLH4) || \
-	defined(CPU_MKL15Z64VLK4) || defined(MKL15Z4))
+	defined(CPU_MKL15Z64VLK4))
 	#define KL15Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKL15Z4.h"
@@ -429,7 +445,7 @@
 #elif (defined(CPU_MKL16Z128VFM4) || defined(CPU_MKL16Z128VFT4) || defined(CPU_MKL16Z128VLH4) || \
 	defined(CPU_MKL16Z256VLH4) || defined(CPU_MKL16Z256VMP4) || defined(CPU_MKL16Z32VFM4) || \
 	defined(CPU_MKL16Z32VFT4) || defined(CPU_MKL16Z32VLH4) || defined(CPU_MKL16Z64VFM4) || \
-	defined(CPU_MKL16Z64VFT4) || defined(CPU_MKL16Z64VLH4) || defined(MKL16Z4))
+	defined(CPU_MKL16Z64VFT4) || defined(CPU_MKL16Z64VLH4))
 	#define KL16Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKL16Z4.h"
@@ -437,7 +453,7 @@
 	#include "MKL16Z4_features.h"
 #elif (defined(CPU_MKL17Z128VFM4) || defined(CPU_MKL17Z128VFT4) || defined(CPU_MKL17Z128VLH4) || \
 	defined(CPU_MKL17Z128VMP4) || defined(CPU_MKL17Z256VFM4) || defined(CPU_MKL17Z256VFT4) || \
-	defined(CPU_MKL17Z256VLH4) || defined(CPU_MKL17Z256VMP4) || defined(MKL17Z4))
+	defined(CPU_MKL17Z256VLH4) || defined(CPU_MKL17Z256VMP4))
 	#define KL17Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKL17Z4.h"
@@ -446,7 +462,7 @@
 #elif (defined(CPU_MKL17Z32VDA4) || defined(CPU_MKL17Z32VFM4) || defined(CPU_MKL17Z32VFT4) || \
 	defined(CPU_MKL17Z32VLH4) || defined(CPU_MKL17Z32VMP4) || defined(CPU_MKL17Z64VDA4) || \
 	defined(CPU_MKL17Z64VFM4) || defined(CPU_MKL17Z64VFT4) || defined(CPU_MKL17Z64VLH4) || \
-	defined(CPU_MKL17Z64VMP4) || defined(MKL17Z644))
+	defined(CPU_MKL17Z64VMP4))
 	#define KL17Z644_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKL17Z644.h"

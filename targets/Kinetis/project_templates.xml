@@ -120,6 +120,7 @@
       <file name="$(TargetsDir)/Kinetis/Kinetis_ctl_board.c" />
       <file name="$(TargetsDir)/Kinetis/Kinetis_Startup.s" expand="no" />
       <file name="$(TargetsDir)/Kinetis/$(DeviceName).vec" expand="no" />
+      <file name="$(TargetsDir)/Kinetis/CMSIS/$(DeviceName)_features.h" expand="no" />
       <file name="$(TargetsDir)/Kinetis/CMSIS/fsl_device_registers.h" expand="no" />
       <file name="$(TargetsDir)/Kinetis/CMSIS/system_$(DeviceName).h" expand="no" />
       <file name="$(TargetsDir)/Kinetis/CMSIS/system_$(DeviceName).c" expand="no" />
