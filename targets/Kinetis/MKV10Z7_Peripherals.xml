@@ -1241,7 +1241,23 @@
         <Enum name="0" start="0b0" description="Doze mode has no effect on the module." />
         <Enum name="1" start="0b1" description="Doze mode disables the module." />
       </BitField>
-      <BitField start="16" size="5" name="PCSIS" description="Peripheral Chip Select x Inactive State">
+      <BitField start="16" size="1" name="PCSIS0" description="Peripheral Chip Select x Inactive State">
+        <Enum name="0" start="0b00000" description="The inactive state of PCSx is low." />
+        <Enum name="1" start="0b00001" description="The inactive state of PCSx is high." />
+      </BitField>
+      <BitField start="17" size="1" name="PCSIS1" description="Peripheral Chip Select x Inactive State">
+        <Enum name="0" start="0b00000" description="The inactive state of PCSx is low." />
+        <Enum name="1" start="0b00001" description="The inactive state of PCSx is high." />
+      </BitField>
+      <BitField start="18" size="1" name="PCSIS2" description="Peripheral Chip Select x Inactive State">
+        <Enum name="0" start="0b00000" description="The inactive state of PCSx is low." />
+        <Enum name="1" start="0b00001" description="The inactive state of PCSx is high." />
+      </BitField>
+      <BitField start="19" size="1" name="PCSIS3" description="Peripheral Chip Select x Inactive State">
+        <Enum name="0" start="0b00000" description="The inactive state of PCSx is low." />
+        <Enum name="1" start="0b00001" description="The inactive state of PCSx is high." />
+      </BitField>
+      <BitField start="20" size="1" name="PCSIS4" description="Peripheral Chip Select x Inactive State">
         <Enum name="0" start="0b00000" description="The inactive state of PCSx is low." />
         <Enum name="1" start="0b00001" description="The inactive state of PCSx is high." />
       </BitField>
@@ -1447,7 +1463,23 @@
     </Register>
     <Register start="+0x34" size="4" name="SPI0_PUSHR" access="Read/Write" description="PUSH TX FIFO Register In Master Mode" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="TXDATA" description="Transmit Data" />
-      <BitField start="16" size="5" name="PCS" description="Select which PCS signals are to be asserted for the transfer">
+      <BitField start="16" size="1" name="PCS0" description="Select which PCS signals are to be asserted for the transfer">
+        <Enum name="0" start="0b00000" description="Negate the PCS[x] signal." />
+        <Enum name="1" start="0b00001" description="Assert the PCS[x] signal." />
+      </BitField>
+      <BitField start="17" size="1" name="PCS1" description="Select which PCS signals are to be asserted for the transfer">
+        <Enum name="0" start="0b00000" description="Negate the PCS[x] signal." />
+        <Enum name="1" start="0b00001" description="Assert the PCS[x] signal." />
+      </BitField>
+      <BitField start="18" size="1" name="PCS2" description="Select which PCS signals are to be asserted for the transfer">
+        <Enum name="0" start="0b00000" description="Negate the PCS[x] signal." />
+        <Enum name="1" start="0b00001" description="Assert the PCS[x] signal." />
+      </BitField>
+      <BitField start="19" size="1" name="PCS3" description="Select which PCS signals are to be asserted for the transfer">
+        <Enum name="0" start="0b00000" description="Negate the PCS[x] signal." />
+        <Enum name="1" start="0b00001" description="Assert the PCS[x] signal." />
+      </BitField>
+      <BitField start="20" size="1" name="PCS4" description="Select which PCS signals are to be asserted for the transfer">
         <Enum name="0" start="0b00000" description="Negate the PCS[x] signal." />
         <Enum name="1" start="0b00001" description="Assert the PCS[x] signal." />
       </BitField>
@@ -1685,42 +1717,266 @@
       <BitField start="0" size="16" name="IDLY" description="PDB Interrupt Delay" />
     </Register>
     <Register start="+0x10+0" size="4" name="PDB0_CH0C1" access="Read/Write" description="Channel n Control register 1" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="8" name="EN" description="PDB Channel Pre-Trigger Enable">
+      <BitField start="0" size="1" name="EN0" description="PDB Channel Pre-Trigger Enable">
         <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
         <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
       </BitField>
-      <BitField start="8" size="8" name="TOS" description="PDB Channel Pre-Trigger Output Select">
+      <BitField start="1" size="1" name="EN1" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="2" size="1" name="EN2" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="3" size="1" name="EN3" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="4" size="1" name="EN4" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="5" size="1" name="EN5" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="6" size="1" name="EN6" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="7" size="1" name="EN7" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="8" size="1" name="TOS0" description="PDB Channel Pre-Trigger Output Select">
         <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
         <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
       </BitField>
-      <BitField start="16" size="8" name="BB" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+      <BitField start="9" size="1" name="TOS1" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="10" size="1" name="TOS2" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="11" size="1" name="TOS3" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="12" size="1" name="TOS4" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="13" size="1" name="TOS5" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="14" size="1" name="TOS6" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="15" size="1" name="TOS7" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="16" size="1" name="BB0" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="17" size="1" name="BB1" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="18" size="1" name="BB2" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="19" size="1" name="BB3" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="20" size="1" name="BB4" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="21" size="1" name="BB5" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="22" size="1" name="BB6" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="23" size="1" name="BB7" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
         <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
         <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
       </BitField>
     </Register>
     <Register start="+0x10+40" size="4" name="PDB0_CH1C1" access="Read/Write" description="Channel n Control register 1" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="8" name="EN" description="PDB Channel Pre-Trigger Enable">
+      <BitField start="0" size="1" name="EN0" description="PDB Channel Pre-Trigger Enable">
         <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
         <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
       </BitField>
-      <BitField start="8" size="8" name="TOS" description="PDB Channel Pre-Trigger Output Select">
+      <BitField start="1" size="1" name="EN1" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="2" size="1" name="EN2" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="3" size="1" name="EN3" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="4" size="1" name="EN4" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="5" size="1" name="EN5" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="6" size="1" name="EN6" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="7" size="1" name="EN7" description="PDB Channel Pre-Trigger Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger enabled." />
+      </BitField>
+      <BitField start="8" size="1" name="TOS0" description="PDB Channel Pre-Trigger Output Select">
         <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
         <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
       </BitField>
-      <BitField start="16" size="8" name="BB" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+      <BitField start="9" size="1" name="TOS1" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="10" size="1" name="TOS2" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="11" size="1" name="TOS3" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="12" size="1" name="TOS4" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="13" size="1" name="TOS5" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="14" size="1" name="TOS6" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="15" size="1" name="TOS7" description="PDB Channel Pre-Trigger Output Select">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger is in bypassed mode. The pre-trigger asserts one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SWTRIG is written with 1." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger asserts when the counter reaches the channel delay register and one peripheral clock cycle after a rising edge is detected on selected trigger input source or software trigger is selected and SETRIG is written with 1." />
+      </BitField>
+      <BitField start="16" size="1" name="BB0" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="17" size="1" name="BB1" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="18" size="1" name="BB2" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="19" size="1" name="BB3" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="20" size="1" name="BB4" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="21" size="1" name="BB5" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="22" size="1" name="BB6" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
+        <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
+        <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
+      </BitField>
+      <BitField start="23" size="1" name="BB7" description="PDB Channel Pre-Trigger Back-to-Back Operation Enable">
         <Enum name="0" start="0b0" description="PDB channel's corresponding pre-trigger back-to-back operation disabled." />
         <Enum name="1" start="0b1" description="PDB channel's corresponding pre-trigger back-to-back operation enabled." />
       </BitField>
     </Register>
     <Register start="+0x14+0" size="4" name="PDB0_CH0S" access="Read/Write" description="Channel n Status register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="8" name="ERR" description="PDB Channel Sequence Error Flags">
+      <BitField start="0" size="1" name="ERR0" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="1" size="1" name="ERR1" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="2" size="1" name="ERR2" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="3" size="1" name="ERR3" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="4" size="1" name="ERR4" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="5" size="1" name="ERR5" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="6" size="1" name="ERR6" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="7" size="1" name="ERR7" description="PDB Channel Sequence Error Flags">
         <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
         <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
       </BitField>
       <BitField start="16" size="8" name="CF" description="PDB Channel Flags" />
     </Register>
     <Register start="+0x14+40" size="4" name="PDB0_CH1S" access="Read/Write" description="Channel n Status register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="8" name="ERR" description="PDB Channel Sequence Error Flags">
+      <BitField start="0" size="1" name="ERR0" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="1" size="1" name="ERR1" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="2" size="1" name="ERR2" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="3" size="1" name="ERR3" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="4" size="1" name="ERR4" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="5" size="1" name="ERR5" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="6" size="1" name="ERR6" description="PDB Channel Sequence Error Flags">
+        <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
+        <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
+      </BitField>
+      <BitField start="7" size="1" name="ERR7" description="PDB Channel Sequence Error Flags">
         <Enum name="0" start="0b0" description="Sequence error not detected on PDB channel's corresponding pre-trigger." />
         <Enum name="1" start="0b1" description="Sequence error detected on PDB channel's corresponding pre-trigger. ADCn block can be triggered for a conversion by one pre-trigger from PDB channel n. When one conversion, which is triggered by one of the pre-triggers from PDB channel n, is in progress, new trigger from PDB channel's corresponding pre-trigger m cannot be accepted by ADCn, and ERR[m] is set. Writing 0's to clear the sequence error flags." />
       </BitField>
@@ -1752,7 +2008,35 @@
       <BitField start="0" size="16" name="INT" description="DAC Interval" />
     </Register>
     <Register start="+0x190" size="4" name="PDB0_POEN" access="Read/Write" description="Pulse-Out n Enable register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="8" name="POEN" description="PDB Pulse-Out Enable">
+      <BitField start="0" size="1" name="POEN0" description="PDB Pulse-Out Enable">
+        <Enum name="0" start="0b0" description="PDB Pulse-Out disabled" />
+        <Enum name="1" start="0b1" description="PDB Pulse-Out enabled" />
+      </BitField>
+      <BitField start="1" size="1" name="POEN1" description="PDB Pulse-Out Enable">
+        <Enum name="0" start="0b0" description="PDB Pulse-Out disabled" />
+        <Enum name="1" start="0b1" description="PDB Pulse-Out enabled" />
+      </BitField>
+      <BitField start="2" size="1" name="POEN2" description="PDB Pulse-Out Enable">
+        <Enum name="0" start="0b0" description="PDB Pulse-Out disabled" />
+        <Enum name="1" start="0b1" description="PDB Pulse-Out enabled" />
+      </BitField>
+      <BitField start="3" size="1" name="POEN3" description="PDB Pulse-Out Enable">
+        <Enum name="0" start="0b0" description="PDB Pulse-Out disabled" />
+        <Enum name="1" start="0b1" description="PDB Pulse-Out enabled" />
+      </BitField>
+      <BitField start="4" size="1" name="POEN4" description="PDB Pulse-Out Enable">
+        <Enum name="0" start="0b0" description="PDB Pulse-Out disabled" />
+        <Enum name="1" start="0b1" description="PDB Pulse-Out enabled" />
+      </BitField>
+      <BitField start="5" size="1" name="POEN5" description="PDB Pulse-Out Enable">
+        <Enum name="0" start="0b0" description="PDB Pulse-Out disabled" />
+        <Enum name="1" start="0b1" description="PDB Pulse-Out enabled" />
+      </BitField>
+      <BitField start="6" size="1" name="POEN6" description="PDB Pulse-Out Enable">
+        <Enum name="0" start="0b0" description="PDB Pulse-Out disabled" />
+        <Enum name="1" start="0b1" description="PDB Pulse-Out enabled" />
+      </BitField>
+      <BitField start="7" size="1" name="POEN7" description="PDB Pulse-Out Enable">
         <Enum name="0" start="0b0" description="PDB Pulse-Out disabled" />
         <Enum name="1" start="0b1" description="PDB Pulse-Out enabled" />
       </BitField>
@@ -13432,7 +13716,7 @@
       </BitField>
       <BitField start="3" size="1" name="OR" description="Receiver Overrun Flag">
         <Enum name="0" start="0b0" description="No overrun has occurred since the last time the flag was cleared." />
-        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occured." />
+        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occurred." />
       </BitField>
       <BitField start="4" size="1" name="IDLE" description="Idle Line Flag">
         <Enum name="0" start="0b0" description="Receiver input is either active now or has never become active since the IDLE flag was last cleared." />
@@ -13762,7 +14046,7 @@
       </BitField>
       <BitField start="3" size="1" name="OR" description="Receiver Overrun Flag">
         <Enum name="0" start="0b0" description="No overrun has occurred since the last time the flag was cleared." />
-        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occured." />
+        <Enum name="1" start="0b1" description="Overrun has occurred or the overrun flag has not been cleared since the last overrun occurred." />
       </BitField>
       <BitField start="4" size="1" name="IDLE" description="Idle Line Flag">
         <Enum name="0" start="0b0" description="Receiver input is either active now or has never become active since the IDLE flag was last cleared." />
