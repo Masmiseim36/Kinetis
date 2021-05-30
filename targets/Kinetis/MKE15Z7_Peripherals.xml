@@ -238,7 +238,7 @@
         <Enum name="EEI7_1" start="0x1" description="The assertion of the error signal for corresponding channel generates an error interrupt request" />
       </BitField>
     </Register>
-    <Register start="+0x18" size="1" name="DMA_CEEI" access="WriteOnly" description="Clear Enable Error Interrupt Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x18" size="1" name="DMA_CEEI" access="Read/Write" description="Clear Enable Error Interrupt Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CEEI" description="Clear Enable Error Interrupt" />
       <BitField start="6" size="1" name="CAEE" description="Clear All Enable Error Interrupts">
         <Enum name="CAEE_0" start="0" description="Clear only the EEI bit specified in the CEEI field" />
@@ -249,7 +249,7 @@
         <Enum name="NOP_1" start="0x1" description="No operation, ignore the other bits in this register" />
       </BitField>
     </Register>
-    <Register start="+0x19" size="1" name="DMA_SEEI" access="WriteOnly" description="Set Enable Error Interrupt Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x19" size="1" name="DMA_SEEI" access="Read/Write" description="Set Enable Error Interrupt Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="SEEI" description="Set Enable Error Interrupt" />
       <BitField start="6" size="1" name="SAEE" description="Sets All Enable Error Interrupts">
         <Enum name="SAEE_0" start="0" description="Set only the EEI bit specified in the SEEI field." />
@@ -260,7 +260,7 @@
         <Enum name="NOP_1" start="0x1" description="No operation, ignore the other bits in this register" />
       </BitField>
     </Register>
-    <Register start="+0x1A" size="1" name="DMA_CERQ" access="WriteOnly" description="Clear Enable Request Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x1A" size="1" name="DMA_CERQ" access="Read/Write" description="Clear Enable Request Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CERQ" description="Clear Enable Request" />
       <BitField start="6" size="1" name="CAER" description="Clear All Enable Requests">
         <Enum name="CAER_0" start="0" description="Clear only the ERQ bit specified in the CERQ field" />
@@ -271,7 +271,7 @@
         <Enum name="NOP_1" start="0x1" description="No operation, ignore the other bits in this register" />
       </BitField>
     </Register>
-    <Register start="+0x1B" size="1" name="DMA_SERQ" access="WriteOnly" description="Set Enable Request Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x1B" size="1" name="DMA_SERQ" access="Read/Write" description="Set Enable Request Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="SERQ" description="Set Enable Request" />
       <BitField start="6" size="1" name="SAER" description="Set All Enable Requests">
         <Enum name="SAER_0" start="0" description="Set only the ERQ bit specified in the SERQ field" />
@@ -282,7 +282,7 @@
         <Enum name="NOP_1" start="0x1" description="No operation, ignore the other bits in this register" />
       </BitField>
     </Register>
-    <Register start="+0x1C" size="1" name="DMA_CDNE" access="WriteOnly" description="Clear DONE Status Bit Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x1C" size="1" name="DMA_CDNE" access="Read/Write" description="Clear DONE Status Bit Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CDNE" description="Clear DONE Bit" />
       <BitField start="6" size="1" name="CADN" description="Clears All DONE Bits">
         <Enum name="CADN_0" start="0" description="Clears only the TCDn_CSR[DONE] bit specified in the CDNE field" />
@@ -293,7 +293,7 @@
         <Enum name="NOP_1" start="0x1" description="No operation, ignore the other bits in this register" />
       </BitField>
     </Register>
-    <Register start="+0x1D" size="1" name="DMA_SSRT" access="WriteOnly" description="Set START Bit Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x1D" size="1" name="DMA_SSRT" access="Read/Write" description="Set START Bit Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="SSRT" description="Set START Bit" />
       <BitField start="6" size="1" name="SAST" description="Set All START Bits (activates all channels)">
         <Enum name="SAST_0" start="0" description="Set only the TCDn_CSR[START] bit specified in the SSRT field" />
@@ -304,7 +304,7 @@
         <Enum name="NOP_1" start="0x1" description="No operation, ignore the other bits in this register" />
       </BitField>
     </Register>
-    <Register start="+0x1E" size="1" name="DMA_CERR" access="WriteOnly" description="Clear Error Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x1E" size="1" name="DMA_CERR" access="Read/Write" description="Clear Error Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CERR" description="Clear Error Indicator" />
       <BitField start="6" size="1" name="CAEI" description="Clear All Error Indicators">
         <Enum name="CAEI_0" start="0" description="Clear only the ERR bit specified in the CERR field" />
@@ -315,7 +315,7 @@
         <Enum name="NOP_1" start="0x1" description="No operation, ignore the other bits in this register" />
       </BitField>
     </Register>
-    <Register start="+0x1F" size="1" name="DMA_CINT" access="WriteOnly" description="Clear Interrupt Request Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x1F" size="1" name="DMA_CINT" access="Read/Write" description="Clear Interrupt Request Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CINT" description="Clear Interrupt Request" />
       <BitField start="6" size="1" name="CAIR" description="Clear All Interrupt Requests">
         <Enum name="CAIR_0" start="0" description="Clear only the INT bit specified in the CINT field" />
@@ -462,7 +462,7 @@
         <Enum name="EDREQ_7_1" start="0x1" description="Enable asynchronous DMA request for channel 7." />
       </BitField>
     </Register>
-    <Register start="+0x100+0" size="1" name="DMA_DCHPRI3" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x100" size="1" name="DMA_DCHPRI3" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CHPRI" description="Channel n Arbitration Priority" />
       <BitField start="6" size="1" name="DPA" description="Disable Preempt Ability.">
         <Enum name="DPA_0" start="0" description="Channel n can suspend a lower priority channel." />
@@ -473,7 +473,7 @@
         <Enum name="ECP_1" start="0x1" description="Channel n can be temporarily suspended by the service request of a higher priority channel." />
       </BitField>
     </Register>
-    <Register start="+0x100+1" size="1" name="DMA_DCHPRI2" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x101" size="1" name="DMA_DCHPRI2" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CHPRI" description="Channel n Arbitration Priority" />
       <BitField start="6" size="1" name="DPA" description="Disable Preempt Ability.">
         <Enum name="DPA_0" start="0" description="Channel n can suspend a lower priority channel." />
@@ -484,7 +484,7 @@
         <Enum name="ECP_1" start="0x1" description="Channel n can be temporarily suspended by the service request of a higher priority channel." />
       </BitField>
     </Register>
-    <Register start="+0x100+2" size="1" name="DMA_DCHPRI1" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x102" size="1" name="DMA_DCHPRI1" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CHPRI" description="Channel n Arbitration Priority" />
       <BitField start="6" size="1" name="DPA" description="Disable Preempt Ability.">
         <Enum name="DPA_0" start="0" description="Channel n can suspend a lower priority channel." />
@@ -495,7 +495,7 @@
         <Enum name="ECP_1" start="0x1" description="Channel n can be temporarily suspended by the service request of a higher priority channel." />
       </BitField>
     </Register>
-    <Register start="+0x100+3" size="1" name="DMA_DCHPRI0" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x103" size="1" name="DMA_DCHPRI0" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CHPRI" description="Channel n Arbitration Priority" />
       <BitField start="6" size="1" name="DPA" description="Disable Preempt Ability.">
         <Enum name="DPA_0" start="0" description="Channel n can suspend a lower priority channel." />
@@ -506,7 +506,7 @@
         <Enum name="ECP_1" start="0x1" description="Channel n can be temporarily suspended by the service request of a higher priority channel." />
       </BitField>
     </Register>
-    <Register start="+0x100+4" size="1" name="DMA_DCHPRI7" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x104" size="1" name="DMA_DCHPRI7" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CHPRI" description="Channel n Arbitration Priority" />
       <BitField start="6" size="1" name="DPA" description="Disable Preempt Ability.">
         <Enum name="DPA_0" start="0" description="Channel n can suspend a lower priority channel." />
@@ -517,7 +517,7 @@
         <Enum name="ECP_1" start="0x1" description="Channel n can be temporarily suspended by the service request of a higher priority channel." />
       </BitField>
     </Register>
-    <Register start="+0x100+5" size="1" name="DMA_DCHPRI6" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x105" size="1" name="DMA_DCHPRI6" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CHPRI" description="Channel n Arbitration Priority" />
       <BitField start="6" size="1" name="DPA" description="Disable Preempt Ability.">
         <Enum name="DPA_0" start="0" description="Channel n can suspend a lower priority channel." />
@@ -528,7 +528,7 @@
         <Enum name="ECP_1" start="0x1" description="Channel n can be temporarily suspended by the service request of a higher priority channel." />
       </BitField>
     </Register>
-    <Register start="+0x100+6" size="1" name="DMA_DCHPRI5" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x106" size="1" name="DMA_DCHPRI5" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CHPRI" description="Channel n Arbitration Priority" />
       <BitField start="6" size="1" name="DPA" description="Disable Preempt Ability.">
         <Enum name="DPA_0" start="0" description="Channel n can suspend a lower priority channel." />
@@ -539,7 +539,7 @@
         <Enum name="ECP_1" start="0x1" description="Channel n can be temporarily suspended by the service request of a higher priority channel." />
       </BitField>
     </Register>
-    <Register start="+0x100+7" size="1" name="DMA_DCHPRI4" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x107" size="1" name="DMA_DCHPRI4" access="Read/Write" description="Channel n Priority Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="3" name="CHPRI" description="Channel n Arbitration Priority" />
       <BitField start="6" size="1" name="DPA" description="Disable Preempt Ability.">
         <Enum name="DPA_0" start="0" description="Channel n can suspend a lower priority channel." />
@@ -1605,40 +1605,40 @@
     <Register start="+0x3" size="1" name="FTFE_FOPT" access="ReadOnly" description="Flash Option Register" reset_value="0" reset_mask="0">
       <BitField start="0" size="8" name="OPT" description="Nonvolatile Option" />
     </Register>
-    <Register start="+0x4+0" size="1" name="FTFE_FCCOB3" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x4" size="1" name="FTFE_FCCOB3" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+1" size="1" name="FTFE_FCCOB2" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x5" size="1" name="FTFE_FCCOB2" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+2" size="1" name="FTFE_FCCOB1" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x6" size="1" name="FTFE_FCCOB1" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+3" size="1" name="FTFE_FCCOB0" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x7" size="1" name="FTFE_FCCOB0" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+4" size="1" name="FTFE_FCCOB7" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x8" size="1" name="FTFE_FCCOB7" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+5" size="1" name="FTFE_FCCOB6" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x9" size="1" name="FTFE_FCCOB6" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+6" size="1" name="FTFE_FCCOB5" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0xA" size="1" name="FTFE_FCCOB5" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+7" size="1" name="FTFE_FCCOB4" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0xB" size="1" name="FTFE_FCCOB4" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+8" size="1" name="FTFE_FCCOBB" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0xC" size="1" name="FTFE_FCCOBB" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+9" size="1" name="FTFE_FCCOBA" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0xD" size="1" name="FTFE_FCCOBA" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+10" size="1" name="FTFE_FCCOB9" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0xE" size="1" name="FTFE_FCCOB9" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
-    <Register start="+0x4+11" size="1" name="FTFE_FCCOB8" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
+    <Register start="+0xF" size="1" name="FTFE_FCCOB8" access="Read/Write" description="Flash Common Command Object Registers" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="CCOBn" description="The FCCOB register provides a command code and relevant parameters to the memory controller" />
     </Register>
     <Register start="+0x10+0" size="1" name="FTFE_FPROT3" access="Read/Write" description="Program Flash Protection Registers" reset_value="0" reset_mask="0">
@@ -4869,126 +4869,6 @@
         <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
       </BitField>
     </Register>
-    <Register start="+0xC+32" size="4" name="FTM1_C4SC" access="Read/Write" description="Channel (n) Status And Control" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="DMA" description="DMA Enable">
-        <Enum name="DMA_0" start="0" description="Disable DMA transfers." />
-        <Enum name="DMA_1" start="0x1" description="Enable DMA transfers." />
-      </BitField>
-      <BitField start="1" size="1" name="ICRST" description="FTM counter reset by the selected input capture event.">
-        <Enum name="ICRST_0" start="0" description="FTM counter is not reset when the selected channel (n) input event is detected." />
-        <Enum name="ICRST_1" start="0x1" description="FTM counter is reset when the selected channel (n) input event is detected." />
-      </BitField>
-      <BitField start="2" size="1" name="ELSA" description="Channel (n) Edge or Level Select" />
-      <BitField start="3" size="1" name="ELSB" description="Channel (n) Edge or Level Select" />
-      <BitField start="4" size="1" name="MSA" description="Channel (n) Mode Select" />
-      <BitField start="5" size="1" name="MSB" description="Channel (n) Mode Select" />
-      <BitField start="6" size="1" name="CHIE" description="Channel (n) Interrupt Enable">
-        <Enum name="CHIE_0" start="0" description="Disable channel (n) interrupt. Use software polling." />
-        <Enum name="CHIE_1" start="0x1" description="Enable channel (n) interrupt." />
-      </BitField>
-      <BitField start="7" size="1" name="CHF" description="Channel (n) Flag">
-        <Enum name="CHF_0" start="0" description="No channel (n) event has occurred." />
-        <Enum name="CHF_1" start="0x1" description="A channel (n) event has occurred." />
-      </BitField>
-      <BitField start="8" size="1" name="TRIGMODE" description="Trigger mode control">
-        <Enum name="TRIGMODE_0" start="0" description="Channel outputs will generate the normal PWM outputs without generating a pulse." />
-        <Enum name="TRIGMODE_1" start="0x1" description="If a match in the channel occurs, a trigger generation on channel output will happen. The trigger pulse width has one FTM clock cycle." />
-      </BitField>
-      <BitField start="9" size="1" name="CHIS" description="Channel (n) Input State">
-        <Enum name="CHIS_0" start="0" description="The channel (n) input is zero." />
-        <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
-      </BitField>
-    </Register>
-    <Register start="+0xC+40" size="4" name="FTM1_C5SC" access="Read/Write" description="Channel (n) Status And Control" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="DMA" description="DMA Enable">
-        <Enum name="DMA_0" start="0" description="Disable DMA transfers." />
-        <Enum name="DMA_1" start="0x1" description="Enable DMA transfers." />
-      </BitField>
-      <BitField start="1" size="1" name="ICRST" description="FTM counter reset by the selected input capture event.">
-        <Enum name="ICRST_0" start="0" description="FTM counter is not reset when the selected channel (n) input event is detected." />
-        <Enum name="ICRST_1" start="0x1" description="FTM counter is reset when the selected channel (n) input event is detected." />
-      </BitField>
-      <BitField start="2" size="1" name="ELSA" description="Channel (n) Edge or Level Select" />
-      <BitField start="3" size="1" name="ELSB" description="Channel (n) Edge or Level Select" />
-      <BitField start="4" size="1" name="MSA" description="Channel (n) Mode Select" />
-      <BitField start="5" size="1" name="MSB" description="Channel (n) Mode Select" />
-      <BitField start="6" size="1" name="CHIE" description="Channel (n) Interrupt Enable">
-        <Enum name="CHIE_0" start="0" description="Disable channel (n) interrupt. Use software polling." />
-        <Enum name="CHIE_1" start="0x1" description="Enable channel (n) interrupt." />
-      </BitField>
-      <BitField start="7" size="1" name="CHF" description="Channel (n) Flag">
-        <Enum name="CHF_0" start="0" description="No channel (n) event has occurred." />
-        <Enum name="CHF_1" start="0x1" description="A channel (n) event has occurred." />
-      </BitField>
-      <BitField start="8" size="1" name="TRIGMODE" description="Trigger mode control">
-        <Enum name="TRIGMODE_0" start="0" description="Channel outputs will generate the normal PWM outputs without generating a pulse." />
-        <Enum name="TRIGMODE_1" start="0x1" description="If a match in the channel occurs, a trigger generation on channel output will happen. The trigger pulse width has one FTM clock cycle." />
-      </BitField>
-      <BitField start="9" size="1" name="CHIS" description="Channel (n) Input State">
-        <Enum name="CHIS_0" start="0" description="The channel (n) input is zero." />
-        <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
-      </BitField>
-    </Register>
-    <Register start="+0xC+48" size="4" name="FTM1_C6SC" access="Read/Write" description="Channel (n) Status And Control" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="DMA" description="DMA Enable">
-        <Enum name="DMA_0" start="0" description="Disable DMA transfers." />
-        <Enum name="DMA_1" start="0x1" description="Enable DMA transfers." />
-      </BitField>
-      <BitField start="1" size="1" name="ICRST" description="FTM counter reset by the selected input capture event.">
-        <Enum name="ICRST_0" start="0" description="FTM counter is not reset when the selected channel (n) input event is detected." />
-        <Enum name="ICRST_1" start="0x1" description="FTM counter is reset when the selected channel (n) input event is detected." />
-      </BitField>
-      <BitField start="2" size="1" name="ELSA" description="Channel (n) Edge or Level Select" />
-      <BitField start="3" size="1" name="ELSB" description="Channel (n) Edge or Level Select" />
-      <BitField start="4" size="1" name="MSA" description="Channel (n) Mode Select" />
-      <BitField start="5" size="1" name="MSB" description="Channel (n) Mode Select" />
-      <BitField start="6" size="1" name="CHIE" description="Channel (n) Interrupt Enable">
-        <Enum name="CHIE_0" start="0" description="Disable channel (n) interrupt. Use software polling." />
-        <Enum name="CHIE_1" start="0x1" description="Enable channel (n) interrupt." />
-      </BitField>
-      <BitField start="7" size="1" name="CHF" description="Channel (n) Flag">
-        <Enum name="CHF_0" start="0" description="No channel (n) event has occurred." />
-        <Enum name="CHF_1" start="0x1" description="A channel (n) event has occurred." />
-      </BitField>
-      <BitField start="8" size="1" name="TRIGMODE" description="Trigger mode control">
-        <Enum name="TRIGMODE_0" start="0" description="Channel outputs will generate the normal PWM outputs without generating a pulse." />
-        <Enum name="TRIGMODE_1" start="0x1" description="If a match in the channel occurs, a trigger generation on channel output will happen. The trigger pulse width has one FTM clock cycle." />
-      </BitField>
-      <BitField start="9" size="1" name="CHIS" description="Channel (n) Input State">
-        <Enum name="CHIS_0" start="0" description="The channel (n) input is zero." />
-        <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
-      </BitField>
-    </Register>
-    <Register start="+0xC+56" size="4" name="FTM1_C7SC" access="Read/Write" description="Channel (n) Status And Control" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="DMA" description="DMA Enable">
-        <Enum name="DMA_0" start="0" description="Disable DMA transfers." />
-        <Enum name="DMA_1" start="0x1" description="Enable DMA transfers." />
-      </BitField>
-      <BitField start="1" size="1" name="ICRST" description="FTM counter reset by the selected input capture event.">
-        <Enum name="ICRST_0" start="0" description="FTM counter is not reset when the selected channel (n) input event is detected." />
-        <Enum name="ICRST_1" start="0x1" description="FTM counter is reset when the selected channel (n) input event is detected." />
-      </BitField>
-      <BitField start="2" size="1" name="ELSA" description="Channel (n) Edge or Level Select" />
-      <BitField start="3" size="1" name="ELSB" description="Channel (n) Edge or Level Select" />
-      <BitField start="4" size="1" name="MSA" description="Channel (n) Mode Select" />
-      <BitField start="5" size="1" name="MSB" description="Channel (n) Mode Select" />
-      <BitField start="6" size="1" name="CHIE" description="Channel (n) Interrupt Enable">
-        <Enum name="CHIE_0" start="0" description="Disable channel (n) interrupt. Use software polling." />
-        <Enum name="CHIE_1" start="0x1" description="Enable channel (n) interrupt." />
-      </BitField>
-      <BitField start="7" size="1" name="CHF" description="Channel (n) Flag">
-        <Enum name="CHF_0" start="0" description="No channel (n) event has occurred." />
-        <Enum name="CHF_1" start="0x1" description="A channel (n) event has occurred." />
-      </BitField>
-      <BitField start="8" size="1" name="TRIGMODE" description="Trigger mode control">
-        <Enum name="TRIGMODE_0" start="0" description="Channel outputs will generate the normal PWM outputs without generating a pulse." />
-        <Enum name="TRIGMODE_1" start="0x1" description="If a match in the channel occurs, a trigger generation on channel output will happen. The trigger pulse width has one FTM clock cycle." />
-      </BitField>
-      <BitField start="9" size="1" name="CHIS" description="Channel (n) Input State">
-        <Enum name="CHIS_0" start="0" description="The channel (n) input is zero." />
-        <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
-      </BitField>
-    </Register>
     <Register start="+0x10+0" size="4" name="FTM1_C0V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="VAL" description="Channel Value" />
     </Register>
@@ -4999,18 +4879,6 @@
       <BitField start="0" size="16" name="VAL" description="Channel Value" />
     </Register>
     <Register start="+0x10+24" size="4" name="FTM1_C3V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="16" name="VAL" description="Channel Value" />
-    </Register>
-    <Register start="+0x10+32" size="4" name="FTM1_C4V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="16" name="VAL" description="Channel Value" />
-    </Register>
-    <Register start="+0x10+40" size="4" name="FTM1_C5V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="16" name="VAL" description="Channel Value" />
-    </Register>
-    <Register start="+0x10+48" size="4" name="FTM1_C6V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="16" name="VAL" description="Channel Value" />
-    </Register>
-    <Register start="+0x10+56" size="4" name="FTM1_C7V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="VAL" description="Channel Value" />
     </Register>
     <Register start="+0x4C" size="4" name="FTM1_CNTIN" access="Read/Write" description="Counter Initial Value" reset_value="0" reset_mask="0xFFFFFFFF">
@@ -5931,126 +5799,6 @@
         <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
       </BitField>
     </Register>
-    <Register start="+0xC+32" size="4" name="FTM2_C4SC" access="Read/Write" description="Channel (n) Status And Control" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="DMA" description="DMA Enable">
-        <Enum name="DMA_0" start="0" description="Disable DMA transfers." />
-        <Enum name="DMA_1" start="0x1" description="Enable DMA transfers." />
-      </BitField>
-      <BitField start="1" size="1" name="ICRST" description="FTM counter reset by the selected input capture event.">
-        <Enum name="ICRST_0" start="0" description="FTM counter is not reset when the selected channel (n) input event is detected." />
-        <Enum name="ICRST_1" start="0x1" description="FTM counter is reset when the selected channel (n) input event is detected." />
-      </BitField>
-      <BitField start="2" size="1" name="ELSA" description="Channel (n) Edge or Level Select" />
-      <BitField start="3" size="1" name="ELSB" description="Channel (n) Edge or Level Select" />
-      <BitField start="4" size="1" name="MSA" description="Channel (n) Mode Select" />
-      <BitField start="5" size="1" name="MSB" description="Channel (n) Mode Select" />
-      <BitField start="6" size="1" name="CHIE" description="Channel (n) Interrupt Enable">
-        <Enum name="CHIE_0" start="0" description="Disable channel (n) interrupt. Use software polling." />
-        <Enum name="CHIE_1" start="0x1" description="Enable channel (n) interrupt." />
-      </BitField>
-      <BitField start="7" size="1" name="CHF" description="Channel (n) Flag">
-        <Enum name="CHF_0" start="0" description="No channel (n) event has occurred." />
-        <Enum name="CHF_1" start="0x1" description="A channel (n) event has occurred." />
-      </BitField>
-      <BitField start="8" size="1" name="TRIGMODE" description="Trigger mode control">
-        <Enum name="TRIGMODE_0" start="0" description="Channel outputs will generate the normal PWM outputs without generating a pulse." />
-        <Enum name="TRIGMODE_1" start="0x1" description="If a match in the channel occurs, a trigger generation on channel output will happen. The trigger pulse width has one FTM clock cycle." />
-      </BitField>
-      <BitField start="9" size="1" name="CHIS" description="Channel (n) Input State">
-        <Enum name="CHIS_0" start="0" description="The channel (n) input is zero." />
-        <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
-      </BitField>
-    </Register>
-    <Register start="+0xC+40" size="4" name="FTM2_C5SC" access="Read/Write" description="Channel (n) Status And Control" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="DMA" description="DMA Enable">
-        <Enum name="DMA_0" start="0" description="Disable DMA transfers." />
-        <Enum name="DMA_1" start="0x1" description="Enable DMA transfers." />
-      </BitField>
-      <BitField start="1" size="1" name="ICRST" description="FTM counter reset by the selected input capture event.">
-        <Enum name="ICRST_0" start="0" description="FTM counter is not reset when the selected channel (n) input event is detected." />
-        <Enum name="ICRST_1" start="0x1" description="FTM counter is reset when the selected channel (n) input event is detected." />
-      </BitField>
-      <BitField start="2" size="1" name="ELSA" description="Channel (n) Edge or Level Select" />
-      <BitField start="3" size="1" name="ELSB" description="Channel (n) Edge or Level Select" />
-      <BitField start="4" size="1" name="MSA" description="Channel (n) Mode Select" />
-      <BitField start="5" size="1" name="MSB" description="Channel (n) Mode Select" />
-      <BitField start="6" size="1" name="CHIE" description="Channel (n) Interrupt Enable">
-        <Enum name="CHIE_0" start="0" description="Disable channel (n) interrupt. Use software polling." />
-        <Enum name="CHIE_1" start="0x1" description="Enable channel (n) interrupt." />
-      </BitField>
-      <BitField start="7" size="1" name="CHF" description="Channel (n) Flag">
-        <Enum name="CHF_0" start="0" description="No channel (n) event has occurred." />
-        <Enum name="CHF_1" start="0x1" description="A channel (n) event has occurred." />
-      </BitField>
-      <BitField start="8" size="1" name="TRIGMODE" description="Trigger mode control">
-        <Enum name="TRIGMODE_0" start="0" description="Channel outputs will generate the normal PWM outputs without generating a pulse." />
-        <Enum name="TRIGMODE_1" start="0x1" description="If a match in the channel occurs, a trigger generation on channel output will happen. The trigger pulse width has one FTM clock cycle." />
-      </BitField>
-      <BitField start="9" size="1" name="CHIS" description="Channel (n) Input State">
-        <Enum name="CHIS_0" start="0" description="The channel (n) input is zero." />
-        <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
-      </BitField>
-    </Register>
-    <Register start="+0xC+48" size="4" name="FTM2_C6SC" access="Read/Write" description="Channel (n) Status And Control" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="DMA" description="DMA Enable">
-        <Enum name="DMA_0" start="0" description="Disable DMA transfers." />
-        <Enum name="DMA_1" start="0x1" description="Enable DMA transfers." />
-      </BitField>
-      <BitField start="1" size="1" name="ICRST" description="FTM counter reset by the selected input capture event.">
-        <Enum name="ICRST_0" start="0" description="FTM counter is not reset when the selected channel (n) input event is detected." />
-        <Enum name="ICRST_1" start="0x1" description="FTM counter is reset when the selected channel (n) input event is detected." />
-      </BitField>
-      <BitField start="2" size="1" name="ELSA" description="Channel (n) Edge or Level Select" />
-      <BitField start="3" size="1" name="ELSB" description="Channel (n) Edge or Level Select" />
-      <BitField start="4" size="1" name="MSA" description="Channel (n) Mode Select" />
-      <BitField start="5" size="1" name="MSB" description="Channel (n) Mode Select" />
-      <BitField start="6" size="1" name="CHIE" description="Channel (n) Interrupt Enable">
-        <Enum name="CHIE_0" start="0" description="Disable channel (n) interrupt. Use software polling." />
-        <Enum name="CHIE_1" start="0x1" description="Enable channel (n) interrupt." />
-      </BitField>
-      <BitField start="7" size="1" name="CHF" description="Channel (n) Flag">
-        <Enum name="CHF_0" start="0" description="No channel (n) event has occurred." />
-        <Enum name="CHF_1" start="0x1" description="A channel (n) event has occurred." />
-      </BitField>
-      <BitField start="8" size="1" name="TRIGMODE" description="Trigger mode control">
-        <Enum name="TRIGMODE_0" start="0" description="Channel outputs will generate the normal PWM outputs without generating a pulse." />
-        <Enum name="TRIGMODE_1" start="0x1" description="If a match in the channel occurs, a trigger generation on channel output will happen. The trigger pulse width has one FTM clock cycle." />
-      </BitField>
-      <BitField start="9" size="1" name="CHIS" description="Channel (n) Input State">
-        <Enum name="CHIS_0" start="0" description="The channel (n) input is zero." />
-        <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
-      </BitField>
-    </Register>
-    <Register start="+0xC+56" size="4" name="FTM2_C7SC" access="Read/Write" description="Channel (n) Status And Control" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="DMA" description="DMA Enable">
-        <Enum name="DMA_0" start="0" description="Disable DMA transfers." />
-        <Enum name="DMA_1" start="0x1" description="Enable DMA transfers." />
-      </BitField>
-      <BitField start="1" size="1" name="ICRST" description="FTM counter reset by the selected input capture event.">
-        <Enum name="ICRST_0" start="0" description="FTM counter is not reset when the selected channel (n) input event is detected." />
-        <Enum name="ICRST_1" start="0x1" description="FTM counter is reset when the selected channel (n) input event is detected." />
-      </BitField>
-      <BitField start="2" size="1" name="ELSA" description="Channel (n) Edge or Level Select" />
-      <BitField start="3" size="1" name="ELSB" description="Channel (n) Edge or Level Select" />
-      <BitField start="4" size="1" name="MSA" description="Channel (n) Mode Select" />
-      <BitField start="5" size="1" name="MSB" description="Channel (n) Mode Select" />
-      <BitField start="6" size="1" name="CHIE" description="Channel (n) Interrupt Enable">
-        <Enum name="CHIE_0" start="0" description="Disable channel (n) interrupt. Use software polling." />
-        <Enum name="CHIE_1" start="0x1" description="Enable channel (n) interrupt." />
-      </BitField>
-      <BitField start="7" size="1" name="CHF" description="Channel (n) Flag">
-        <Enum name="CHF_0" start="0" description="No channel (n) event has occurred." />
-        <Enum name="CHF_1" start="0x1" description="A channel (n) event has occurred." />
-      </BitField>
-      <BitField start="8" size="1" name="TRIGMODE" description="Trigger mode control">
-        <Enum name="TRIGMODE_0" start="0" description="Channel outputs will generate the normal PWM outputs without generating a pulse." />
-        <Enum name="TRIGMODE_1" start="0x1" description="If a match in the channel occurs, a trigger generation on channel output will happen. The trigger pulse width has one FTM clock cycle." />
-      </BitField>
-      <BitField start="9" size="1" name="CHIS" description="Channel (n) Input State">
-        <Enum name="CHIS_0" start="0" description="The channel (n) input is zero." />
-        <Enum name="CHIS_1" start="0x1" description="The channel (n) input is one." />
-      </BitField>
-    </Register>
     <Register start="+0x10+0" size="4" name="FTM2_C0V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="VAL" description="Channel Value" />
     </Register>
@@ -6061,18 +5809,6 @@
       <BitField start="0" size="16" name="VAL" description="Channel Value" />
     </Register>
     <Register start="+0x10+24" size="4" name="FTM2_C3V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="16" name="VAL" description="Channel Value" />
-    </Register>
-    <Register start="+0x10+32" size="4" name="FTM2_C4V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="16" name="VAL" description="Channel Value" />
-    </Register>
-    <Register start="+0x10+40" size="4" name="FTM2_C5V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="16" name="VAL" description="Channel Value" />
-    </Register>
-    <Register start="+0x10+48" size="4" name="FTM2_C6V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="16" name="VAL" description="Channel Value" />
-    </Register>
-    <Register start="+0x10+56" size="4" name="FTM2_C7V" access="Read/Write" description="Channel (n) Value" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="VAL" description="Channel Value" />
     </Register>
     <Register start="+0x4C" size="4" name="FTM2_CNTIN" access="Read/Write" description="Counter Initial Value" reset_value="0" reset_mask="0xFFFFFFFF">
@@ -9681,7 +9417,7 @@
         <Enum name="DETECTED" start="0x1" description="Configured interrupt is detected. If the pin is configured to generate a DMA request, then the corresponding flag will be cleared automatically at the completion of the requested DMA transfer. Otherwise, the flag remains set until a logic 1 is written to the flag. If the pin is configured for a level sensitive interrupt and the pin remains asserted, then the flag is set again immediately after it is cleared." />
       </BitField>
     </Register>
-    <Register start="+0x80" size="4" name="PORTA_GPCLR" access="WriteOnly" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x80" size="4" name="PORTA_GPCLR" access="Read/Write" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -9748,7 +9484,7 @@
         <Enum name="GPWE_1" start="0x1" description="Corresponding Pin Control Register is updated with the value in GPWD." />
       </BitField>
     </Register>
-    <Register start="+0x84" size="4" name="PORTA_GPCHR" access="WriteOnly" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x84" size="4" name="PORTA_GPCHR" access="Read/Write" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -11590,7 +11326,7 @@
         <Enum name="DETECTED" start="0x1" description="Configured interrupt is detected. If the pin is configured to generate a DMA request, then the corresponding flag will be cleared automatically at the completion of the requested DMA transfer. Otherwise, the flag remains set until a logic 1 is written to the flag. If the pin is configured for a level sensitive interrupt and the pin remains asserted, then the flag is set again immediately after it is cleared." />
       </BitField>
     </Register>
-    <Register start="+0x80" size="4" name="PORTB_GPCLR" access="WriteOnly" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x80" size="4" name="PORTB_GPCLR" access="Read/Write" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -11657,7 +11393,7 @@
         <Enum name="GPWE_1" start="0x1" description="Corresponding Pin Control Register is updated with the value in GPWD." />
       </BitField>
     </Register>
-    <Register start="+0x84" size="4" name="PORTB_GPCHR" access="WriteOnly" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x84" size="4" name="PORTB_GPCHR" access="Read/Write" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -13499,7 +13235,7 @@
         <Enum name="DETECTED" start="0x1" description="Configured interrupt is detected. If the pin is configured to generate a DMA request, then the corresponding flag will be cleared automatically at the completion of the requested DMA transfer. Otherwise, the flag remains set until a logic 1 is written to the flag. If the pin is configured for a level sensitive interrupt and the pin remains asserted, then the flag is set again immediately after it is cleared." />
       </BitField>
     </Register>
-    <Register start="+0x80" size="4" name="PORTC_GPCLR" access="WriteOnly" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x80" size="4" name="PORTC_GPCLR" access="Read/Write" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -13566,7 +13302,7 @@
         <Enum name="GPWE_1" start="0x1" description="Corresponding Pin Control Register is updated with the value in GPWD." />
       </BitField>
     </Register>
-    <Register start="+0x84" size="4" name="PORTC_GPCHR" access="WriteOnly" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x84" size="4" name="PORTC_GPCHR" access="Read/Write" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -15408,7 +15144,7 @@
         <Enum name="DETECTED" start="0x1" description="Configured interrupt is detected. If the pin is configured to generate a DMA request, then the corresponding flag will be cleared automatically at the completion of the requested DMA transfer. Otherwise, the flag remains set until a logic 1 is written to the flag. If the pin is configured for a level sensitive interrupt and the pin remains asserted, then the flag is set again immediately after it is cleared." />
       </BitField>
     </Register>
-    <Register start="+0x80" size="4" name="PORTD_GPCLR" access="WriteOnly" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x80" size="4" name="PORTD_GPCLR" access="Read/Write" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -15475,7 +15211,7 @@
         <Enum name="GPWE_1" start="0x1" description="Corresponding Pin Control Register is updated with the value in GPWD." />
       </BitField>
     </Register>
-    <Register start="+0x84" size="4" name="PORTD_GPCHR" access="WriteOnly" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x84" size="4" name="PORTD_GPCHR" access="Read/Write" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -17317,7 +17053,7 @@
         <Enum name="DETECTED" start="0x1" description="Configured interrupt is detected. If the pin is configured to generate a DMA request, then the corresponding flag will be cleared automatically at the completion of the requested DMA transfer. Otherwise, the flag remains set until a logic 1 is written to the flag. If the pin is configured for a level sensitive interrupt and the pin remains asserted, then the flag is set again immediately after it is cleared." />
       </BitField>
     </Register>
-    <Register start="+0x80" size="4" name="PORTE_GPCLR" access="WriteOnly" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x80" size="4" name="PORTE_GPCLR" access="Read/Write" description="Global Pin Control Low Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -17384,7 +17120,7 @@
         <Enum name="GPWE_1" start="0x1" description="Corresponding Pin Control Register is updated with the value in GPWD." />
       </BitField>
     </Register>
-    <Register start="+0x84" size="4" name="PORTE_GPCHR" access="WriteOnly" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x84" size="4" name="PORTE_GPCHR" access="Read/Write" description="Global Pin Control High Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="16" name="GPWD" description="Global Pin Write Data" />
       <BitField start="16" size="1" name="GPWE0" description="Global Pin Write Enable">
         <Enum name="GPWE_0" start="0" description="Corresponding Pin Control Register is not updated with the value in GPWD." />
@@ -18532,7 +18268,7 @@
       <BitField start="2" size="1" name="INEN" description="Input Enable." />
       <BitField start="3" size="1" name="INTEN" description="Interrupt Enable." />
     </Register>
-    <Register start="+0x1" size="1" name="EWM_SERV" access="WriteOnly" description="Service Register" reset_value="0" reset_mask="0xFF">
+    <Register start="+0x1" size="1" name="EWM_SERV" access="Read/Write" description="Service Register" reset_value="0" reset_mask="0xFF">
       <BitField start="0" size="8" name="SERVICE" description="The EWM refresh mechanism requires the CPU to write two values to the SERV register: a first data byte of 0xB4, followed by a second data byte of 0x2C" />
     </Register>
     <Register start="+0x2" size="1" name="EWM_CMPL" access="Read/Write" description="Compare Low Register" reset_value="0" reset_mask="0xFF">
@@ -18909,16 +18645,6 @@
       </BitField>
     </Register>
     <Register start="+0x104" size="4" name="SCG_SOSCDIV" access="Read/Write" description="System OSC Divide Register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="3" name="SOSCDIV1" description="System OSC Clock Divide 1">
-        <Enum name="DISABLED" start="0" description="Output disabled" />
-        <Enum name="DIV1" start="0x1" description="Divide by 1" />
-        <Enum name="DIV2" start="0x2" description="Divide by 2" />
-        <Enum name="DIV4" start="0x3" description="Divide by 4" />
-        <Enum name="DIV8" start="0x4" description="Divide by 8" />
-        <Enum name="DIV16" start="0x5" description="Divide by 16" />
-        <Enum name="DIV32" start="0x6" description="Divide by 32" />
-        <Enum name="DIV64" start="0x7" description="Divide by 64" />
-      </BitField>
       <BitField start="8" size="3" name="SOSCDIV2" description="System OSC Clock Divide 2">
         <Enum name="DISABLED" start="0" description="Output disabled" />
         <Enum name="DIV1" start="0x1" description="Divide by 1" />
@@ -18933,16 +18659,16 @@
     <Register start="+0x108" size="4" name="SCG_SOSCCFG" access="Read/Write" description="System Oscillator Configuration Register" reset_value="0x10" reset_mask="0xFFFFFFFF">
       <BitField start="2" size="1" name="EREFS" description="External Reference Select">
         <Enum name="ERC" start="0" description="External reference clock selected" />
-        <Enum name="OSC" start="0x1" description="Internal crystal oscillator of OSC requested." />
+        <Enum name="OSC" start="0x1" description="Internal crystal oscillator of OSC selected." />
       </BitField>
       <BitField start="3" size="1" name="HGO" description="High Gain Oscillator Select">
-        <Enum name="LOW_POWER" start="0" description="Configure crystal oscillator for low-power operation" />
+        <Enum name="LOW_POWER" start="0" description="Configure crystal oscillator for low-gain operation" />
         <Enum name="HIGH_GAIN" start="0x1" description="Configure crystal oscillator for high-gain operation" />
       </BitField>
       <BitField start="4" size="2" name="RANGE" description="System OSC Range Select">
-        <Enum name="LOW" start="0x1" description="Low frequency range selected for the crystal oscillator of 32 kHz to 40 kHz." />
-        <Enum name="MEDIUM" start="0x2" description="Medium frequency range selected for the crytstal oscillator of 1 Mhz to 8 Mhz." />
-        <Enum name="HIGH" start="0x3" description="High frequency range selected for the crystal oscillator of 8 Mhz to 32 Mhz." />
+        <Enum name="LOW" start="0x1" description="Low frequency range selected for the crystal oscillator" />
+        <Enum name="MEDIUM" start="0x2" description="Medium frequency range selected for the crytstal oscillator" />
+        <Enum name="HIGH" start="0x3" description="High frequency range selected for the crystal oscillator" />
       </BitField>
     </Register>
     <Register start="+0x200" size="4" name="SCG_SIRCCSR" access="Read/Write" description="Slow IRC Control Status Register" reset_value="0x1000005" reset_mask="0xFFFFFFFF">
@@ -18972,16 +18698,6 @@
       </BitField>
     </Register>
     <Register start="+0x204" size="4" name="SCG_SIRCDIV" access="Read/Write" description="Slow IRC Divide Register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="3" name="SIRCDIV1" description="Slow IRC Clock Divide 1">
-        <Enum name="DISABLED" start="0" description="Output disabled" />
-        <Enum name="DIV1" start="0x1" description="Divide by 1" />
-        <Enum name="DIV2" start="0x2" description="Divide by 2" />
-        <Enum name="DIV4" start="0x3" description="Divide by 4" />
-        <Enum name="DIV8" start="0x4" description="Divide by 8" />
-        <Enum name="DIV16" start="0x5" description="Divide by 16" />
-        <Enum name="DIV32" start="0x6" description="Divide by 32" />
-        <Enum name="DIV64" start="0x7" description="Divide by 64" />
-      </BitField>
       <BitField start="8" size="3" name="SIRCDIV2" description="Slow IRC Clock Divide 2">
         <Enum name="DISABLED" start="0" description="Output disabled" />
         <Enum name="DIV1" start="0x1" description="Divide by 1" />
@@ -18999,7 +18715,7 @@
         <Enum name="HIGH" start="0x1" description="Slow IRC high range clock (8 MHz )" />
       </BitField>
     </Register>
-    <Register start="+0x300" size="4" name="SCG_FIRCCSR" access="Read/Write" description="Fast IRC Control Status Register" reset_value="0x1" reset_mask="0xFFFFFFFF">
+    <Register start="+0x300" size="4" name="SCG_FIRCCSR" access="Read/Write" description="Fast IRC Control Status Register" reset_value="0x3000001" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="FIRCEN" description="Fast IRC Enable">
         <Enum name="DISABLED" start="0" description="Fast IRC is disabled" />
         <Enum name="ENABLED" start="0x1" description="Fast IRC is enabled" />
@@ -19042,16 +18758,6 @@
       </BitField>
     </Register>
     <Register start="+0x304" size="4" name="SCG_FIRCDIV" access="Read/Write" description="Fast IRC Divide Register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="3" name="FIRCDIV1" description="Fast IRC Clock Divide 1">
-        <Enum name="DISABLED" start="0" description="Output disabled" />
-        <Enum name="DIV1" start="0x1" description="Divide by 1" />
-        <Enum name="DIV2" start="0x2" description="Divide by 2" />
-        <Enum name="DIV4" start="0x3" description="Divide by 4" />
-        <Enum name="DIV8" start="0x4" description="Divide by 8" />
-        <Enum name="DIV16" start="0x5" description="Divide by 16" />
-        <Enum name="DIV32" start="0x6" description="Divide by 32" />
-        <Enum name="DIV64" start="0x7" description="Divide by 64" />
-      </BitField>
       <BitField start="8" size="3" name="FIRCDIV2" description="Fast IRC Clock Divide 2">
         <Enum name="DISABLED" start="0" description="Output disabled" />
         <Enum name="DIV1" start="0x1" description="Divide by 1" />
@@ -19131,16 +18837,6 @@
       </BitField>
     </Register>
     <Register start="+0x504" size="4" name="SCG_LPFLLDIV" access="Read/Write" description="Low Power FLL Divide Register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="3" name="LPFLLDIV1" description="LPFLL Clock Divide 1">
-        <Enum name="DISABLED" start="0" description="Output disabled" />
-        <Enum name="DIV1" start="0x1" description="Divide by 1" />
-        <Enum name="DIV2" start="0x2" description="Divide by 2" />
-        <Enum name="DIV4" start="0x3" description="Divide by 4" />
-        <Enum name="DIV8" start="0x4" description="Divide by 8" />
-        <Enum name="DIV16" start="0x5" description="Divide by 16" />
-        <Enum name="DIV32" start="0x6" description="Divide by 32" />
-        <Enum name="DIV64" start="0x7" description="Divide by 64" />
-      </BitField>
       <BitField start="8" size="3" name="LPFLLDIV2" description="LPFLL Clock Divide 2">
         <Enum name="DISABLED" start="0" description="Output disabled" />
         <Enum name="DIV1" start="0x1" description="Divide by 1" />
@@ -19221,10 +18917,10 @@
     <Register start="+0x9C" size="4" name="PCC_ADC1" access="Read/Write" description="PCC Register" reset_value="0xC0000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19242,10 +18938,10 @@
     <Register start="+0xB0" size="4" name="PCC_LPSPI0" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19263,10 +18959,10 @@
     <Register start="+0xB4" size="4" name="PCC_LPSPI1" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19312,10 +19008,10 @@
     <Register start="+0xDC" size="4" name="PCC_LPIT0" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19375,10 +19071,10 @@
     <Register start="+0xEC" size="4" name="PCC_ADC0" access="Read/Write" description="PCC Register" reset_value="0xC0000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19410,10 +19106,10 @@
     <Register start="+0x100" size="4" name="PCC_LPTMR0" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19529,10 +19225,10 @@
     <Register start="+0x168" size="4" name="PCC_FLEXIO" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19578,10 +19274,10 @@
     <Register start="+0x198" size="4" name="PCC_LPI2C0" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19599,10 +19295,10 @@
     <Register start="+0x19C" size="4" name="PCC_LPI2C1" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19620,10 +19316,10 @@
     <Register start="+0x1A8" size="4" name="PCC_LPUART0" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19641,10 +19337,10 @@
     <Register start="+0x1AC" size="4" name="PCC_LPUART1" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19662,10 +19358,10 @@
     <Register start="+0x1B0" size="4" name="PCC_LPUART2" access="Read/Write" description="PCC Register" reset_value="0x80000000" reset_mask="0xFFFFFFFF">
       <BitField start="24" size="3" name="PCS" description="Peripheral Clock Source Select">
         <Enum name="PCS_0" start="0" description="Clock is off (or test clock is enabled)." />
-        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Platform Clock(scg_sosc_plat_clk)." />
-        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_plat_clk), (maximum is 8MHz)." />
-        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_plat_clk), (maximum is 48MHz)." />
-        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_plat_clk)." />
+        <Enum name="PCS_1" start="0x1" description="OSCCLK - System Oscillator Bus Clock(scg_sosc_slow_clk)." />
+        <Enum name="PCS_2" start="0x2" description="SCGIRCLK - Slow IRC Clock(scg_sirc_slow_clk), (maximum is 8MHz)." />
+        <Enum name="PCS_3" start="0x3" description="SCGFIRCLK - Fast IRC Clock(scg_firc_slow_clk), (maximum is 48MHz)." />
+        <Enum name="PCS_6" start="0x6" description="SCGPCLK System PLL clock(scg_spll_slow_clk)." />
       </BitField>
       <BitField start="29" size="1" name="INUSE" description="Clock Gate Control">
         <Enum name="INUSE_0" start="0" description="Peripheral is not being used." />
@@ -19939,7 +19635,7 @@
       <BitField start="0" size="8" name="TXCOUNT" description="Transmit FIFO Count" />
       <BitField start="16" size="8" name="RXCOUNT" description="Receive FIFO Count" />
     </Register>
-    <Register start="+0x60" size="4" name="LPI2C0_MTDR" access="WriteOnly" description="Master Transmit Data Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x60" size="4" name="LPI2C0_MTDR" access="Read/Write" description="Master Transmit Data Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="8" name="DATA" description="Transmit Data" />
       <BitField start="8" size="3" name="CMD" description="Command Data">
         <Enum name="CMD_0" start="0" description="Transmit DATA[7:0]." />
@@ -20182,7 +19878,7 @@
         <Enum name="TXNACK_1" start="0x1" description="Transmit NACK for received word." />
       </BitField>
     </Register>
-    <Register start="+0x160" size="4" name="LPI2C0_STDR" access="WriteOnly" description="Slave Transmit Data Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x160" size="4" name="LPI2C0_STDR" access="Read/Write" description="Slave Transmit Data Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="8" name="DATA" description="Transmit Data" />
     </Register>
     <Register start="+0x170" size="4" name="LPI2C0_SRDR" access="ReadOnly" description="Slave Receive Data Register" reset_value="0x4000" reset_mask="0xFFFFFFFF">
@@ -20427,7 +20123,7 @@
       <BitField start="0" size="8" name="TXCOUNT" description="Transmit FIFO Count" />
       <BitField start="16" size="8" name="RXCOUNT" description="Receive FIFO Count" />
     </Register>
-    <Register start="+0x60" size="4" name="LPI2C1_MTDR" access="WriteOnly" description="Master Transmit Data Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x60" size="4" name="LPI2C1_MTDR" access="Read/Write" description="Master Transmit Data Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="8" name="DATA" description="Transmit Data" />
       <BitField start="8" size="3" name="CMD" description="Command Data">
         <Enum name="CMD_0" start="0" description="Transmit DATA[7:0]." />
@@ -20670,7 +20366,7 @@
         <Enum name="TXNACK_1" start="0x1" description="Transmit NACK for received word." />
       </BitField>
     </Register>
-    <Register start="+0x160" size="4" name="LPI2C1_STDR" access="WriteOnly" description="Slave Transmit Data Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x160" size="4" name="LPI2C1_STDR" access="Read/Write" description="Slave Transmit Data Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="8" name="DATA" description="Transmit Data" />
     </Register>
     <Register start="+0x170" size="4" name="LPI2C1_SRDR" access="ReadOnly" description="Slave Receive Data Register" reset_value="0x4000" reset_mask="0xFFFFFFFF">
@@ -20738,7 +20434,7 @@
         <Enum name="MATCFG_0" start="0" description="Address Match Wakeup" />
         <Enum name="MATCFG_1" start="0x1" description="Idle Match Wakeup" />
         <Enum name="MATCFG_2" start="0x2" description="Match On and Match Off" />
-        <Enum name="MATCFG_3" start="0x3" description="no description available" />
+        <Enum name="MATCFG_3" start="0x3" description="Enables RWU on Data Match and Match On/Off for transmitter CTS input" />
       </BitField>
       <BitField start="20" size="1" name="RIDMAE" description="Receiver Idle DMA Enable">
         <Enum name="RIDMAE_0" start="0" description="DMA request disabled." />
@@ -21005,7 +20701,7 @@
       </BitField>
       <BitField start="3" size="1" name="RXRTSE" description="Receiver request-to-send enable">
         <Enum name="RXRTSE_0" start="0" description="The receiver has no effect on RTS." />
-        <Enum name="RXRTSE_1" start="0x1" description="no description available" />
+        <Enum name="RXRTSE_1" start="0x1" description="RTS is deasserted if the receiver data register is full or a start bit has been detected that would cause the receiver data register to become full. RTS is asserted if the receiver data register is not full and has not detected a start bit that would cause the receiver data register to become full." />
       </BitField>
       <BitField start="4" size="1" name="TXCTSC" description="Transmit CTS Configuration">
         <Enum name="TXCTSC_0" start="0" description="CTS input is sampled at the start of each character." />
@@ -21159,7 +20855,7 @@
         <Enum name="MATCFG_0" start="0" description="Address Match Wakeup" />
         <Enum name="MATCFG_1" start="0x1" description="Idle Match Wakeup" />
         <Enum name="MATCFG_2" start="0x2" description="Match On and Match Off" />
-        <Enum name="MATCFG_3" start="0x3" description="no description available" />
+        <Enum name="MATCFG_3" start="0x3" description="Enables RWU on Data Match and Match On/Off for transmitter CTS input" />
       </BitField>
       <BitField start="20" size="1" name="RIDMAE" description="Receiver Idle DMA Enable">
         <Enum name="RIDMAE_0" start="0" description="DMA request disabled." />
@@ -21426,7 +21122,7 @@
       </BitField>
       <BitField start="3" size="1" name="RXRTSE" description="Receiver request-to-send enable">
         <Enum name="RXRTSE_0" start="0" description="The receiver has no effect on RTS." />
-        <Enum name="RXRTSE_1" start="0x1" description="no description available" />
+        <Enum name="RXRTSE_1" start="0x1" description="RTS is deasserted if the receiver data register is full or a start bit has been detected that would cause the receiver data register to become full. RTS is asserted if the receiver data register is not full and has not detected a start bit that would cause the receiver data register to become full." />
       </BitField>
       <BitField start="4" size="1" name="TXCTSC" description="Transmit CTS Configuration">
         <Enum name="TXCTSC_0" start="0" description="CTS input is sampled at the start of each character." />
@@ -21580,7 +21276,7 @@
         <Enum name="MATCFG_0" start="0" description="Address Match Wakeup" />
         <Enum name="MATCFG_1" start="0x1" description="Idle Match Wakeup" />
         <Enum name="MATCFG_2" start="0x2" description="Match On and Match Off" />
-        <Enum name="MATCFG_3" start="0x3" description="no description available" />
+        <Enum name="MATCFG_3" start="0x3" description="Enables RWU on Data Match and Match On/Off for transmitter CTS input" />
       </BitField>
       <BitField start="20" size="1" name="RIDMAE" description="Receiver Idle DMA Enable">
         <Enum name="RIDMAE_0" start="0" description="DMA request disabled." />
@@ -21847,7 +21543,7 @@
       </BitField>
       <BitField start="3" size="1" name="RXRTSE" description="Receiver request-to-send enable">
         <Enum name="RXRTSE_0" start="0" description="The receiver has no effect on RTS." />
-        <Enum name="RXRTSE_1" start="0x1" description="no description available" />
+        <Enum name="RXRTSE_1" start="0x1" description="RTS is deasserted if the receiver data register is full or a start bit has been detected that would cause the receiver data register to become full. RTS is asserted if the receiver data register is not full and has not detected a start bit that would cause the receiver data register to become full." />
       </BitField>
       <BitField start="4" size="1" name="TXCTSC" description="Transmit CTS Configuration">
         <Enum name="TXCTSC_0" start="0" description="CTS input is sampled at the start of each character." />
@@ -22735,7 +22431,7 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="GPIOA_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="GPIOA_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTSO0" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
@@ -22865,7 +22561,7 @@
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="GPIOA_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="GPIOA_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTCO0" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
@@ -22995,7 +22691,7 @@
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="GPIOA_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="GPIOA_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTTO0" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />
@@ -23517,7 +23213,7 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="GPIOB_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="GPIOB_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTSO0" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
@@ -23647,7 +23343,7 @@
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="GPIOB_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="GPIOB_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTCO0" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
@@ -23777,7 +23473,7 @@
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="GPIOB_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="GPIOB_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTTO0" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />
@@ -24299,7 +23995,7 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="GPIOC_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="GPIOC_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTSO0" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
@@ -24429,7 +24125,7 @@
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="GPIOC_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="GPIOC_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTCO0" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
@@ -24559,7 +24255,7 @@
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="GPIOC_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="GPIOC_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTTO0" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />
@@ -25081,7 +24777,7 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="GPIOD_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="GPIOD_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTSO0" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
@@ -25211,7 +24907,7 @@
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="GPIOD_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="GPIOD_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTCO0" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
@@ -25341,7 +25037,7 @@
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="GPIOD_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="GPIOD_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTTO0" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />
@@ -25863,7 +25559,7 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="GPIOE_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="GPIOE_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTSO0" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
@@ -25993,7 +25689,7 @@
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="GPIOE_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="GPIOE_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTCO0" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
@@ -26123,7 +25819,7 @@
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="GPIOE_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="GPIOE_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="1" name="PTTO0" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />
@@ -26652,7 +26348,7 @@
   </RegisterGroup>
   <RegisterGroup name="CoreDebug" start="0xE000EDF0" description="Core Debug Registers">
     <Register start="+0" size="4" name="DHCSR_Read" access="Read/Write" description="Debug Halting Control and Status Register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="C_DEBUGEN" description="Halting debug enable bit. If a debugger writes to DHCSR to change the value of this bit from 0 to 1, it must also write 0 to the C_MASKINTS bit, otherwise behavior is UNPREDICTABLE.This bit can only be set to 1 from the DAP, it cannot be set to 1 under software control.This bit is 0 after a Power-on reset.">
+      <BitField start="0" size="1" name="C_DEBUGEN" description="Halting debug enable bit. If a debugger writes to DHCSR to change the value of this bit from 0 to 1, it must also write 0 to the C_MASKINTS bit, otherwise behavior is UNPREDICTABLE. This bit can only be set to 1 from the DAP, it cannot be set to 1 under software control. This bit is 0 after a Power-on reset.">
         <Enum name="C_DEBUGEN_0" start="0" description="Disabled" />
         <Enum name="C_DEBUGEN_1" start="0x1" description="Enabled" />
       </BitField>
@@ -26660,15 +26356,15 @@
         <Enum name="C_HALT_0" start="0" description="No effect." />
         <Enum name="C_HALT_1" start="0x1" description="Halt the processor." />
       </BitField>
-      <BitField start="2" size="1" name="C_STEP" description="Processor step bit.This bit is UNKNOWN after a Power-on reset.">
+      <BitField start="2" size="1" name="C_STEP" description="Processor step bit. This bit is UNKNOWN after a Power-on reset.">
         <Enum name="C_STEP_0" start="0" description="No effect." />
         <Enum name="C_STEP_1" start="0x1" description="Step the processor." />
       </BitField>
-      <BitField start="3" size="1" name="C_MASKINTS" description="C_MASKINTS bit. When debug is enabled, the debugger can write to this bit to mask PendSV, SysTick and external configurable interrupts. The effect of any attempt to change the value of this bit is UNPREDICTABLE unless both:- before the write to DHCSR, the value of the C_HALT bit is 1.- the write to the DHCSR that changes the C_MASKINTS bit also writes 1 to the C_HALT bit.This means that a single write to DHCSR cannot set the C_HALT to 0 and change the value of the C_MASKINTS bit.The bit does not affect NMI. When DHCSR.C_DEBUGEN is set to 0, the value of this bit is UNKNOWN.This bit is UNKNOWN after a Power-on reset.">
+      <BitField start="3" size="1" name="C_MASKINTS" description="C_MASKINTS bit. When debug is enabled, the debugger can write to this bit to mask PendSV, SysTick and external configurable interrupts. The effect of any attempt to change the value of this bit is UNPREDICTABLE unless both: - before the write to DHCSR, the value of the C_HALT bit is 1. - the write to the DHCSR that changes the C_MASKINTS bit also writes 1 to the C_HALT bit. This means that a single write to DHCSR cannot set the C_HALT to 0 and change the value of the C_MASKINTS bit. The bit does not affect NMI. When DHCSR.C_DEBUGEN is set to 0, the value of this bit is UNKNOWN. This bit is UNKNOWN after a Power-on reset.">
         <Enum name="C_MASKINTS_0" start="0" description="Do not mask." />
         <Enum name="C_MASKINTS_1" start="0x1" description="Mask PenSV, SysTick and external configurable interrupts." />
       </BitField>
-      <BitField start="16" size="1" name="S_REGRDY" description="S_REGRDY bit. A handshake flag for transfers through the DCRDR:- Writing to DCRSR clears the bit to 0.- Completion of the DCRDR transfer then sets the bit to 1.This bit is valid only when the processor is in Debug state, otherwise the bit is UNKNOWN.">
+      <BitField start="16" size="1" name="S_REGRDY" description="S_REGRDY bit. A handshake flag for transfers through the DCRDR: - Writing to DCRSR clears the bit to 0. - Completion of the DCRDR transfer then sets the bit to 1. This bit is valid only when the processor is in Debug state, otherwise the bit is UNKNOWN.">
         <Enum name="S_REGRDY_0" start="0" description="There has been a write to the DCRDR, but the transfer is not complete." />
         <Enum name="S_REGRDY_1" start="0x1" description="The transfer to or from the DCRDR is complete." />
       </BitField>
@@ -26676,25 +26372,25 @@
         <Enum name="S_HALT_0" start="0" description="Not in Debug state." />
         <Enum name="S_HALT_1" start="0x1" description="In Debug state." />
       </BitField>
-      <BitField start="18" size="1" name="S_SLEEP" description="S_SLEEP bit. Indicates whether the processor is sleeping.The debugger must set the C_HALT bit to 1 to gain control, or wait for an interrupt or other wakeup event to wakeup the system.">
+      <BitField start="18" size="1" name="S_SLEEP" description="S_SLEEP bit. Indicates whether the processor is sleeping. The debugger must set the C_HALT bit to 1 to gain control, or wait for an interrupt or other wakeup event to wakeup the system.">
         <Enum name="S_SLEEP_0" start="0" description="Not sleeping." />
         <Enum name="S_SLEEP_1" start="0x1" description="Sleeping." />
       </BitField>
-      <BitField start="19" size="1" name="S_LOCKUP" description="S_LOCKUP bit. Indicates whether the processor is locked up because of an unrecoverable exception.This bit can only be read as 1 by a remote debugger, using the DAP. The value of 1 indicates that the processor is running but locked up.The bit clears to 0 when the processor enters Debug state.">
+      <BitField start="19" size="1" name="S_LOCKUP" description="S_LOCKUP bit. Indicates whether the processor is locked up because of an unrecoverable exception. This bit can only be read as 1 by a remote debugger, using the DAP. The value of 1 indicates that the processor is running but locked up. The bit clears to 0 when the processor enters Debug state.">
         <Enum name="S_LOCKUP_0" start="0" description="Not locked up" />
         <Enum name="S_LOCKUP_1" start="0x1" description="Locked up" />
       </BitField>
-      <BitField start="24" size="1" name="S_RETIRE_ST" description="S_RETIRE_ST bit. Indicates whether the processor has completed the execution of an instruction since the last read of DHCSR.This is a sticky bit, that clears to 0 on a read of DHCSR.A debugger can check this bit to determine if the processor is stalled on a load, store or fetch access.This bit is UNKNOWN after a Power-on or Local reset, but then is set to 1 as soon as the processor executes and retires an instruction.">
+      <BitField start="24" size="1" name="S_RETIRE_ST" description="S_RETIRE_ST bit. Indicates whether the processor has completed the execution of an instruction since the last read of DHCSR. This is a sticky bit, that clears to 0 on a read of DHCSR. A debugger can check this bit to determine if the processor is stalled on a load, store or fetch access. This bit is UNKNOWN after a Power-on or Local reset, but then is set to 1 as soon as the processor executes and retires an instruction.">
         <Enum name="S_RETIRE_ST_0" start="0" description="No instruction retired since last DHCSR read." />
         <Enum name="S_RETIRE_ST_1" start="0x1" description="At least one instruction retired since last DHCSR read." />
       </BitField>
-      <BitField start="25" size="1" name="S_RESET_ST" description="S_RESET_ST bit. Indicates whether the processor has been reset since the last read of DHCSR.This is a sticky bit, that clears to 0 on a read of DHCSR.">
+      <BitField start="25" size="1" name="S_RESET_ST" description="S_RESET_ST bit. Indicates whether the processor has been reset since the last read of DHCSR. This is a sticky bit, that clears to 0 on a read of DHCSR.">
         <Enum name="S_RESET_ST_0" start="0" description="No reset since last DHCSR read." />
         <Enum name="S_RESET_ST_1" start="0x1" description="At least one reset since last DHCSR read." />
       </BitField>
     </Register>
     <Register start="+0" size="4" name="DHCSR_Write" access="Read/Write" description="Debug Halting Control and Status Register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="C_DEBUGEN" description="Halting debug enable bit. If a debugger writes to DHCSR to change the value of this bit from 0 to 1, it must also write 0 to the C_MASKINTS bit, otherwise behavior is UNPREDICTABLE.This bit can only be set to 1 from the DAP, it cannot be set to 1 under software control.This bit is 0 after a Power-on reset.">
+      <BitField start="0" size="1" name="C_DEBUGEN" description="Halting debug enable bit. If a debugger writes to DHCSR to change the value of this bit from 0 to 1, it must also write 0 to the C_MASKINTS bit, otherwise behavior is UNPREDICTABLE. This bit can only be set to 1 from the DAP, it cannot be set to 1 under software control. This bit is 0 after a Power-on reset.">
         <Enum name="C_DEBUGEN_0" start="0" description="Disabled" />
         <Enum name="C_DEBUGEN_1" start="0x1" description="Enabled" />
       </BitField>
@@ -26702,15 +26398,15 @@
         <Enum name="C_HALT_0" start="0" description="No effect." />
         <Enum name="C_HALT_1" start="0x1" description="Halt the processor." />
       </BitField>
-      <BitField start="2" size="1" name="C_STEP" description="Processor step bit.This bit is UNKNOWN after a Power-on reset.">
+      <BitField start="2" size="1" name="C_STEP" description="Processor step bit. This bit is UNKNOWN after a Power-on reset.">
         <Enum name="C_STEP_0" start="0" description="No effect." />
         <Enum name="C_STEP_1" start="0x1" description="Step the processor." />
       </BitField>
-      <BitField start="3" size="1" name="C_MASKINTS" description="C_MASKINTS bit. When debug is enabled, the debugger can write to this bit to mask PendSV, SysTick and external configurable interrupts. The effect of any attempt to change the value of this bit is UNPREDICTABLE unless both:- before the write to DHCSR, the value of the C_HALT bit is 1.- the write to the DHCSR that changes the C_MASKINTS bit also writes 1 to the C_HALT bit.This means that a single write to DHCSR cannot set the C_HALT to 0 and change the value of the C_MASKINTS bit.The bit does not affect NMI. When DHCSR.C_DEBUGEN is set to 0, the value of this bit is UNKNOWN.This bit is UNKNOWN after a Power-on reset.">
+      <BitField start="3" size="1" name="C_MASKINTS" description="C_MASKINTS bit. When debug is enabled, the debugger can write to this bit to mask PendSV, SysTick and external configurable interrupts. The effect of any attempt to change the value of this bit is UNPREDICTABLE unless both: - before the write to DHCSR, the value of the C_HALT bit is 1. - the write to the DHCSR that changes the C_MASKINTS bit also writes 1 to the C_HALT bit. This means that a single write to DHCSR cannot set the C_HALT to 0 and change the value of the C_MASKINTS bit. The bit does not affect NMI. When DHCSR.C_DEBUGEN is set to 0, the value of this bit is UNKNOWN. This bit is UNKNOWN after a Power-on reset.">
         <Enum name="C_MASKINTS_0" start="0" description="Do not mask." />
         <Enum name="C_MASKINTS_1" start="0x1" description="Mask PenSV, SysTick and external configurable interrupts." />
       </BitField>
-      <BitField start="16" size="16" name="DBGKEY" description="Debug key:Software must write 0xA05F to this field to enable write accesses to bits [15:0], otherwise the processor ignores the write access." />
+      <BitField start="16" size="16" name="DBGKEY" description="Debug key: Software must write 0xA05F to this field to enable write accesses to bits [15:0], otherwise the processor ignores the write access." />
     </Register>
     <Register start="+0x4" size="4" name="DCRSR" access="Read/Write" description="Debug Core Register Selector Register" reset_value="0" reset_mask="0">
       <BitField start="0" size="5" name="REGSEL" description="REGSEL bits. Specifies the ARM core register, special-purpose register, or Floating-point extension register, to transfer." />
@@ -26720,14 +26416,14 @@
       </BitField>
     </Register>
     <Register start="+0x8" size="4" name="DCRDR" access="Read/Write" description="Debug Core Register Data Register" reset_value="0" reset_mask="0">
-      <BitField start="0" size="32" name="DBGTMP" description="DBGTMP bits. Data temporary cache, for reading and writing the ARM core registers, special-purpose registers, and Floating-point extension registers.The value of this register is UNKNOWN:- on reset- if the processor is in Debug state, the debugger has written to DCRSR since entering Debug state and DHCSR.S_REGRDY is set to 0." />
+      <BitField start="0" size="32" name="DBGTMP" description="DBGTMP bits. Data temporary cache, for reading and writing the ARM core registers, special-purpose registers, and Floating-point extension registers. The value of this register is UNKNOWN: - on reset - if the processor is in Debug state, the debugger has written to DCRSR since entering Debug state and DHCSR.S_REGRDY is set to 0." />
     </Register>
     <Register start="+0xC" size="4" name="DEMCR" access="Read/Write" description="Debug Exception and Monitor Control Register" reset_value="0" reset_mask="0xFFFFFFFF">
-      <BitField start="0" size="1" name="VC_CORERESET" description="VC_CORERESET bit. Enable Reset Vector Catch. This causes a Local reset to halt a running system.If DHCSR.C_DEBUGEN is set to 0, the processor ignores the value of this bit.">
+      <BitField start="0" size="1" name="VC_CORERESET" description="VC_CORERESET bit. Enable Reset Vector Catch. This causes a Local reset to halt a running system. If DHCSR.C_DEBUGEN is set to 0, the processor ignores the value of this bit.">
         <Enum name="VC_CORERESET_0" start="0" description="Reset Vector Catch disabled." />
         <Enum name="VC_CORERESET_1" start="0x1" description="Reset Vector Catch enabled." />
       </BitField>
-      <BitField start="10" size="1" name="VC_HARDERR" description="VC_HARDERR bit. Enable halting debug trap on a HardFault exception.If DHCSR.C_DEBUGEN is set to 0, the processor ignores the value of this bit.">
+      <BitField start="10" size="1" name="VC_HARDERR" description="VC_HARDERR bit. Enable halting debug trap on a HardFault exception. If DHCSR.C_DEBUGEN is set to 0, the processor ignores the value of this bit.">
         <Enum name="VC_HARDERR_0" start="0" description="Halting debug trap disabled." />
         <Enum name="VC_HARDERR_1" start="0x1" description="Halting debug trap enabled." />
       </BitField>
@@ -27104,19 +26800,19 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="FGPIOA_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="FGPIOA_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTSO" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="FGPIOA_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="FGPIOA_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTCO" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="FGPIOA_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="FGPIOA_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTTO" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />
@@ -27142,19 +26838,19 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="FGPIOB_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="FGPIOB_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTSO" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="FGPIOB_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="FGPIOB_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTCO" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="FGPIOB_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="FGPIOB_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTTO" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />
@@ -27180,19 +26876,19 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="FGPIOC_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="FGPIOC_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTSO" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="FGPIOC_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="FGPIOC_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTCO" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="FGPIOC_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="FGPIOC_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTTO" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />
@@ -27218,19 +26914,19 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="FGPIOD_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="FGPIOD_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTSO" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="FGPIOD_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="FGPIOD_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTCO" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="FGPIOD_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="FGPIOD_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTTO" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />
@@ -27256,19 +26952,19 @@
         <Enum name="PDO_1" start="0x1" description="Logic level 1 is driven on pin, provided pin is configured for general-purpose output." />
       </BitField>
     </Register>
-    <Register start="+0x4" size="4" name="FGPIOE_PSOR" access="WriteOnly" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x4" size="4" name="FGPIOE_PSOR" access="Read/Write" description="Port Set Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTSO" description="Port Set Output">
         <Enum name="PTSO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTSO_1" start="0x1" description="Corresponding bit in PDORn is set to logic 1." />
       </BitField>
     </Register>
-    <Register start="+0x8" size="4" name="FGPIOE_PCOR" access="WriteOnly" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0x8" size="4" name="FGPIOE_PCOR" access="Read/Write" description="Port Clear Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTCO" description="Port Clear Output">
         <Enum name="PTCO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTCO_1" start="0x1" description="Corresponding bit in PDORn is cleared to logic 0." />
       </BitField>
     </Register>
-    <Register start="+0xC" size="4" name="FGPIOE_PTOR" access="WriteOnly" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
+    <Register start="+0xC" size="4" name="FGPIOE_PTOR" access="Read/Write" description="Port Toggle Output Register" reset_value="0" reset_mask="0xFFFFFFFF">
       <BitField start="0" size="32" name="PTTO" description="Port Toggle Output">
         <Enum name="PTTO_0" start="0" description="Corresponding bit in PDORn does not change." />
         <Enum name="PTTO_1" start="0x1" description="Corresponding bit in PDORn is set to the inverse of its existing logic state." />

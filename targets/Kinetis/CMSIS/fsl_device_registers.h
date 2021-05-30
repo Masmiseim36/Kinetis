@@ -577,6 +577,12 @@
 	#include "MKL82Z7.h"
 	/* CPU specific feature definitions */
 	#include "MKL82Z7_features.h"
+#elif (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
+	#define KM34Z7_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKM34Z7.h"
+	/* CPU specific feature definitions */
+	#include "MKM34Z7_features.h"
 #elif (defined(CPU_MKM35Z256VLL7) || defined(CPU_MKM35Z256VLL7R) || defined(CPU_MKM35Z256VLQ7) || \
 	defined(CPU_MKM35Z256VLQ7R) || defined(CPU_MKM35Z512VLL7) || defined(CPU_MKM35Z512VLL7R) || \
 	defined(CPU_MKM35Z512VLQ7) || defined(CPU_MKM35Z512VLQ7R))

@@ -42,7 +42,7 @@
 **         MCG - registers updated.
 **         PORTA, PORTB, PORTC, PORTE - registers for digital filter removed.
 **     - rev. 2.1 (2013-10-30)
-**         Definition of BITBAND macros updated to support peripherals with 32-bit access disabled.
+**         Definition of BITBAND macros updated to support peripherals with 32-bit acces disabled.
 **     - rev. 2.2 (2013-12-09)
 **         DMA - EARS register removed.
 **         AIPS0, AIPS1 - MPRA register updated.
