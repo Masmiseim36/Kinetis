@@ -1002,6 +1002,7 @@
               <file file_name="targets/Kinetis/MKM34ZA5.vec" />
               <file file_name="targets/Kinetis/MKM34ZA5_Peripherals.xml" />
               <file file_name="targets/Kinetis/MKM34Z128Axxx5_MemoryMap.xml" />
+              <file file_name="targets/Kinetis/CMSIS/MKM34Z7_features.h" />
             </folder>
             <folder Name="KM35 Family">
               <file file_name="targets/Kinetis/CMSIS/MKM35Z7.h" />
