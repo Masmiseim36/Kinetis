@@ -244,6 +244,108 @@ typedef enum IRQn {
 
 
 /* ----------------------------------------------------------------------------
+   -- Mapping Information
+   ---------------------------------------------------------------------------- */
+
+/*!
+ * @addtogroup Mapping_Information Mapping Information
+ * @{
+ */
+
+/** Mapping Information */
+/*!
+ * @addtogroup edma_request
+ * @{
+ */
+
+/*******************************************************************************
+ * Definitions
+ ******************************************************************************/
+
+/*!
+ * @brief Structure for the DMA hardware request
+ *
+ * Defines the structure for the DMA hardware request collections. The user can configure the
+ * hardware request into DMAMUX to trigger the DMA transfer accordingly. The index
+ * of the hardware request varies according  to the to SoC.
+ */
+typedef enum _dma_request_source
+{
+    kDmaRequestMux0Disable          = 0|0x100U,    /**< Disable */
+    kDmaRequestMux0Reserved1        = 1|0x100U,    /**< Reserved1 */
+    kDmaRequestMux0UART0Rx          = 2|0x100U,    /**< UART0 receive complete */
+    kDmaRequestMux0UART0Tx          = 3|0x100U,    /**< UART0 transmit complete */
+    kDmaRequestMux0UART1Rx          = 4|0x100U,    /**< UART1 receive complete */
+    kDmaRequestMux0UART1Tx          = 5|0x100U,    /**< UART1 transmit complete */
+    kDmaRequestMux0UART2Rx          = 6|0x100U,    /**< UART2 receive complete */
+    kDmaRequestMux0UART2Tx          = 7|0x100U,    /**< UART2 transmit complete */
+    kDmaRequestMux0UART3Rx          = 8|0x100U,    /**< UART3 receive complete */
+    kDmaRequestMux0UART3Tx          = 9|0x100U,    /**< UART3 transmit complete */
+    kDmaRequestMux0UART4Rx          = 10|0x100U,   /**< UART4 receive complete */
+    kDmaRequestMux0UART4Tx          = 11|0x100U,   /**< UART4 transmit complete */
+    kDmaRequestMux0UART5Rx          = 12|0x100U,   /**< UART5 receive complete */
+    kDmaRequestMux0UART5Tx          = 13|0x100U,   /**< UART5 transmit complete */
+    kDmaRequestMux0I2S0Rx           = 14|0x100U,   /**< I2S0 receive complete */
+    kDmaRequestMux0I2S0Tx           = 15|0x100U,   /**< I2S0 transmit complete */
+    kDmaRequestMux0SPI0Rx           = 16|0x100U,   /**< SPI0 receive complete */
+    kDmaRequestMux0SPI0Tx           = 17|0x100U,   /**< SPI0 transmit complete */
+    kDmaRequestMux0SPI1Rx           = 18|0x100U,   /**< SPI1 receive complete */
+    kDmaRequestMux0SPI1Tx           = 19|0x100U,   /**< SPI1 transmit complete */
+    kDmaRequestMux0Reserved20       = 20|0x100U,   /**< Reserved 20 */
+    kDmaRequestMux0Reserved21       = 21|0x100U,   /**< Reserved 21 */
+    kDmaRequestMux0I2C0             = 22|0x100U,   /**< I2C0 transmission complete */
+    kDmaRequestMux0I2C1             = 23|0x100U,   /**< I2C1 transmission complete */
+    kDmaRequestMux0FTM0Channel0     = 24|0x100U,   /**< FTM0 channel 0 event (CMP or CAP) */
+    kDmaRequestMux0FTM0Channel1     = 25|0x100U,   /**< FTM0 channel 1 event (CMP or CAP) */
+    kDmaRequestMux0FTM0Channel2     = 26|0x100U,   /**< FTM0 channel 2 event (CMP or CAP) */
+    kDmaRequestMux0FTM0Channel3     = 27|0x100U,   /**< FTM0 channel 3 event (CMP or CAP) */
+    kDmaRequestMux0FTM0Channel4     = 28|0x100U,   /**< FTM0 channel 4 event (CMP or CAP) */
+    kDmaRequestMux0FTM0Channel5     = 29|0x100U,   /**< FTM0 channel 5 event (CMP or CAP) */
+    kDmaRequestMux0FTM0Channel6     = 30|0x100U,   /**< FTM0 channel 6 event (CMP or CAP) */
+    kDmaRequestMux0FTM0Channel7     = 31|0x100U,   /**< FTM0 channel 7 event (CMP or CAP) */
+    kDmaRequestMux0FTM1Channel0     = 32|0x100U,   /**< FTM1 channel 0 event (CMP or CAP) */
+    kDmaRequestMux0FTM1Channel1     = 33|0x100U,   /**< FTM1 channel 1 event (CMP or CAP) */
+    kDmaRequestMux0FTM2Channel0     = 34|0x100U,   /**< FTM2 channel 0 event (CMP or CAP) */
+    kDmaRequestMux0FTM2Channel1     = 35|0x100U,   /**< FTM2 channel 1 event (CMP or CAP) */
+    kDmaRequestMux0FTM3Channel0     = 36|0x100U,   /**< FTM3 channel 0 event (CMP or CAP) */
+    kDmaRequestMux0FTM3Channel1     = 37|0x100U,   /**< FTM3 channel 1 event (CMP or CAP) */
+    kDmaRequestMux0FTM3Channel2     = 38|0x100U,   /**< FTM3 channel 2 event (CMP or CAP) */
+    kDmaRequestMux0FTM1Channel3     = 39|0x100U,   /**< FTM1 channel 3 event (CMP or CAP) */
+    kDmaRequestMux0ADC0             = 40|0x100U,   /**< ADC0 conversion complete */
+    kDmaRequestMux0ADC1             = 41|0x100U,   /**< ADC1 conversion complete */
+    kDmaRequestMux0CMP0             = 42|0x100U,   /**< CMP0 Output */
+    kDmaRequestMux0CMP1             = 43|0x100U,   /**< CMP1 Output */
+    kDmaRequestMux0CMP2             = 44|0x100U,   /**< CMP2 Output */
+    kDmaRequestMux0DAC0             = 45|0x100U,   /**< DAC0 buffer pointer reaches upper or lower limit */
+    kDmaRequestMux0DAC1             = 46|0x100U,   /**< DAC1 buffer pointer reaches upper or lower limit */
+    kDmaRequestMux0CMT              = 47|0x100U,   /**< CMT end of modulation cycle event */
+    kDmaRequestMux0PDB0             = 48|0x100U,   /**< PDB0 programmable interrupt delay event */
+    kDmaRequestMux0PortA            = 49|0x100U,   /**< PORTA rising, falling or both edges */
+    kDmaRequestMux0PortB            = 50|0x100U,   /**< PORTB rising, falling or both edges */
+    kDmaRequestMux0PortC            = 51|0x100U,   /**< PORTC rising, falling or both edges */
+    kDmaRequestMux0PortD            = 52|0x100U,   /**< PORTD rising, falling or both edges */
+    kDmaRequestMux0PortE            = 53|0x100U,   /**< PORTE rising, falling or both edges */
+    kDmaRequestMux0FTM3Channel4     = 54|0x100U,   /**< FTM3 channel 2 event (CMP or CAP) */
+    kDmaRequestMux0FTM3Channel5     = 55|0x100U,   /**< FTM3 channel 2 event (CMP or CAP) */
+    kDmaRequestMux0FTM3Channel6     = 56|0x100U,   /**< FTM3 channel 2 event (CMP or CAP) */
+    kDmaRequestMux0FTM3Channel7     = 57|0x100U,   /**< FTM3 channel 2 event (CMP or CAP) */
+    kDmaRequestMux0AlwaysOn58       = 58|0x100U,   /**< Always enabled 58 */
+    kDmaRequestMux0AlwaysOn59       = 59|0x100U,   /**< Always enabled 59 */
+    kDmaRequestMux0AlwaysOn60       = 60|0x100U,   /**< Always enabled 60 */
+    kDmaRequestMux0AlwaysOn61       = 61|0x100U,   /**< Always enabled 61 */
+    kDmaRequestMux0AlwaysOn62       = 62|0x100U,   /**< Always enabled 62 */
+    kDmaRequestMux0AlwaysOn63       = 63|0x100U,   /**< Always enabled 63 */
+} dma_request_source_t;
+
+/* @} */
+
+
+/*!
+ * @}
+ */ /* end of group Mapping_Information */
+
+
+/* ----------------------------------------------------------------------------
    -- Device Peripheral Access Layer
    ---------------------------------------------------------------------------- */
 
@@ -1762,6 +1864,10 @@ typedef struct {
 #define CAN_CS_CODE_MASK                         0xF000000u
 #define CAN_CS_CODE_SHIFT                        24
 #define CAN_CS_CODE(x)                           (((uint32_t)(((uint32_t)(x))<<CAN_CS_CODE_SHIFT))&CAN_CS_CODE_MASK)
+
+/* The count of CAN_CS */
+#define CAN_CS_COUNT                             (16U)
+
 /* ID Bit Fields */
 #define CAN_ID_EXT_MASK                          0x3FFFFu
 #define CAN_ID_EXT_SHIFT                         0
@@ -1817,8 +1923,18 @@ typedef struct {
 #define CAN1_BASE                                (0x400A4000u)
 /** Peripheral CAN1 base pointer */
 #define CAN1                                     ((CAN_Type *)CAN1_BASE)
+/** Array initializer of CAN peripheral base addresses */
+#define CAN_BASE_ADDRS                           { CAN0_BASE, CAN1_BASE }
 /** Array initializer of CAN peripheral base pointers */
 #define CAN_BASES                                { CAN0, CAN1 }
+#define CAN_BASE_PTRS                            { CAN0, CAN1 }
+/** Interrupt vectors for the CAN peripheral type */
+#define CAN_Rx_Warning_IRQS                      { CAN0_Rx_Warning_IRQn, CAN1_Rx_Warning_IRQn }
+#define CAN_Tx_Warning_IRQS                      { CAN0_Tx_Warning_IRQn, CAN1_Tx_Warning_IRQn }
+#define CAN_Wake_Up_IRQS                         { CAN0_Wake_Up_IRQn, CAN1_Wake_Up_IRQn }
+#define CAN_Error_IRQS                           { CAN0_Error_IRQn, CAN1_Error_IRQn }
+#define CAN_Bus_Off_IRQS                         { CAN0_Bus_Off_IRQn, CAN1_Bus_Off_IRQn }
+#define CAN_ORed_Message_buffer_IRQS             { CAN0_ORed_Message_buffer_IRQn, CAN1_ORed_Message_buffer_IRQn }
 
 /*!
  * @}
@@ -3071,8 +3187,14 @@ typedef struct {
 #define DMA_BASE                                 (0x40008000u)
 /** Peripheral DMA base pointer */
 #define DMA0                                     ((DMA_Type *)DMA_BASE)
+/** Array initializer of DMA peripheral base addresses */
+#define DMA_BASE_ADDRS                           { DMA_BASE }
 /** Array initializer of DMA peripheral base pointers */
 #define DMA_BASES                                { DMA0 }
+#define DMA_BASE_PTRS                            { DMA0 }
+/** Interrupt vectors for the DMA peripheral type */
+#define DMA_CHN_IRQS                             { { DMA0_IRQn, DMA1_IRQn, DMA2_IRQn, DMA3_IRQn, DMA4_IRQn, DMA5_IRQn, DMA6_IRQn, DMA7_IRQn, DMA8_IRQn, DMA9_IRQn, DMA10_IRQn, DMA11_IRQn, DMA12_IRQn, DMA13_IRQn, DMA14_IRQn, DMA15_IRQn } }
+#define DMA_ERROR_IRQS                           { DMA_Error_IRQn }
 
 /*!
  * @}
@@ -4693,6 +4815,30 @@ typedef struct {
 #define PTE                                      ((GPIO_Type *)PTE_BASE)
 /** Array initializer of GPIO peripheral base pointers */
 #define GPIO_BASES                               { PTA, PTB, PTC, PTD, PTE }
+/** Peripheral GPIOA base address */
+#define GPIOA_BASE                               (0x400FF000u)
+/** Peripheral GPIOA base pointer */
+#define GPIOA                                    ((GPIO_Type *)GPIOA_BASE)
+/** Peripheral GPIOB base address */
+#define GPIOB_BASE                               (0x400FF040u)
+/** Peripheral GPIOB base pointer */
+#define GPIOB                                    ((GPIO_Type *)GPIOB_BASE)
+/** Peripheral GPIOC base address */
+#define GPIOC_BASE                               (0x400FF080u)
+/** Peripheral GPIOC base pointer */
+#define GPIOC                                    ((GPIO_Type *)GPIOC_BASE)
+/** Peripheral GPIOD base address */
+#define GPIOD_BASE                               (0x400FF0C0u)
+/** Peripheral GPIOD base pointer */
+#define GPIOD                                    ((GPIO_Type *)GPIOD_BASE)
+/** Peripheral GPIOE base address */
+#define GPIOE_BASE                               (0x400FF100u)
+/** Peripheral GPIOE base pointer */
+#define GPIOE                                    ((GPIO_Type *)GPIOE_BASE)
+/** Array initializer of GPIO peripheral base addresses */
+#define GPIO_BASE_ADDRS                          { GPIOA_BASE, GPIOB_BASE, GPIOC_BASE, GPIOD_BASE, GPIOE_BASE }
+/** Array initializer of GPIO peripheral base pointers */
+#define GPIO_BASE_PTRS                           { GPIOA, GPIOB, GPIOC, GPIOD, GPIOE }
 
 /*!
  * @}
@@ -6527,8 +6673,13 @@ typedef struct {
 #define PORTE_BASE                               (0x4004D000u)
 /** Peripheral PORTE base pointer */
 #define PORTE                                    ((PORT_Type *)PORTE_BASE)
+/** Array initializer of PORT peripheral base addresses */
+#define PORT_BASE_ADDRS                          { PORTA_BASE, PORTB_BASE, PORTC_BASE, PORTD_BASE, PORTE_BASE }
 /** Array initializer of PORT peripheral base pointers */
 #define PORT_BASES                               { PORTA, PORTB, PORTC, PORTD, PORTE }
+#define PORT_BASE_PTRS                           { PORTA, PORTB, PORTC, PORTD, PORTE }
+/** Interrupt vectors for the PORT peripheral type */
+#define PORT_IRQS                                { PORTA_IRQn, PORTB_IRQn, PORTC_IRQn, PORTD_IRQn, PORTE_IRQn }
 
 /*!
  * @}
@@ -7431,8 +7582,10 @@ typedef struct {
 #define SIM_SOPT2_CMTUARTPAD_SHIFT               11
 #define SIM_SOPT2_TRACECLKSEL_MASK               0x1000u
 #define SIM_SOPT2_TRACECLKSEL_SHIFT              12
+#define SIM_SOPT2_TRACECLKSEL(x)                 (((uint32_t)(((uint32_t)(x)) << SIM_SOPT2_TRACECLKSEL_SHIFT)) & SIM_SOPT2_TRACECLKSEL_MASK)
 #define SIM_SOPT2_PLLFLLSEL_MASK                 0x10000u
 #define SIM_SOPT2_PLLFLLSEL_SHIFT                16
+#define SIM_SOPT2_PLLFLLSEL(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_SOPT2_PLLFLLSEL_SHIFT)) & SIM_SOPT2_PLLFLLSEL_MASK)
 #define SIM_SOPT2_USBSRC_MASK                    0x40000u
 #define SIM_SOPT2_USBSRC_SHIFT                   18
 #define SIM_SOPT2_TIMESRC_MASK                   0x300000u
@@ -7960,8 +8113,13 @@ typedef struct {
 #define SPI2_BASE                                (0x400AC000u)
 /** Peripheral SPI2 base pointer */
 #define SPI2                                     ((SPI_Type *)SPI2_BASE)
+/** Array initializer of SPI peripheral base addresses */
+#define SPI_BASE_ADDRS                           { SPI0_BASE, SPI1_BASE, SPI2_BASE }
 /** Array initializer of SPI peripheral base pointers */
 #define SPI_BASES                                { SPI0, SPI1, SPI2 }
+#define SPI_BASE_PTRS                            { SPI0, SPI1, SPI2 }
+/** Interrupt vectors for the SPI peripheral type */
+#define SPI_IRQS                                 { SPI0_IRQn, SPI1_IRQn, SPI2_IRQn }
 
 /*!
  * @}
@@ -8595,8 +8753,15 @@ typedef struct {
 #define UART5_BASE                               (0x400EB000u)
 /** Peripheral UART5 base pointer */
 #define UART5                                    ((UART_Type *)UART5_BASE)
+/** Array initializer of UART peripheral base addresses */
+#define UART_BASE_ADDRS                          { UART0_BASE, UART1_BASE, UART2_BASE, UART3_BASE, UART4_BASE, UART5_BASE }
 /** Array initializer of UART peripheral base pointers */
 #define UART_BASES                               { UART0, UART1, UART2, UART3, UART4, UART5 }
+#define UART_BASE_PTRS                           { UART0, UART1, UART2, UART3, UART4, UART5 }
+/** Interrupt vectors for the UART peripheral type */
+#define UART_RX_TX_IRQS                          { UART0_RX_TX_IRQn, UART1_RX_TX_IRQn, UART2_RX_TX_IRQn, UART3_RX_TX_IRQn, UART4_RX_TX_IRQn, UART5_RX_TX_IRQn }
+#define UART_ERR_IRQS                            { UART0_ERR_IRQn, UART1_ERR_IRQn, UART2_ERR_IRQn, UART3_ERR_IRQn, UART4_ERR_IRQn, UART5_ERR_IRQn }
+#define UART_LON_IRQS                            { UART0_LON_IRQn, NotAvail_IRQn, NotAvail_IRQn, NotAvail_IRQn, NotAvail_IRQn, NotAvail_IRQn }
 
 /*!
  * @}
