@@ -323,7 +323,7 @@
 	#include "MK70F12.h"
 	/* CPU specific feature definitions */
 //	#include "MK70F12_features.h" // Not available for this device
-#elif (defined(CPU_MK70FX512VMJ15) || defined(CPU_MK70FN1M0VMJ15)
+#elif (defined(CPU_MK70FX512VMJ15) || defined(CPU_MK70FN1M0VMJ15))
 	#define K70F15_SERIES
 	/* CMSIS-style register definitions */
 	#include "MK70F15.h"
