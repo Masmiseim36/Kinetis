@@ -626,12 +626,31 @@
 	/* CPU specific feature definitions */
 	#include "MKL82Z7_features.h"
 
+#elif (defined(CPU_MKM14Z128ACHH5) || defined(CPU_MKM14Z64ACHH5))
+	#define KM14ZA5_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKM14ZA5.h"
+	/* CPU specific feature definitions */
+	#include "MKM14ZA5_features.h"
+#elif (defined(CPU_MKM33Z128ACLH5) || defined(CPU_MKM33Z128ACLL5) || defined(CPU_MKM33Z64ACLH5) || \
+	defined(CPU_MKM33Z64ACLL5))
+	#define KM33ZA5_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKM33ZA5.h"
+	/* CPU specific feature definitions */
+	#include "MKM33ZA5_features.h"
 #elif (defined(CPU_MKM34Z256VLL7) || defined(CPU_MKM34Z256VLQ7))
 	#define KM34Z7_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKM34Z7.h"
 	/* CPU specific feature definitions */
 	#include "MKM34Z7_features.h"
+#elif (defined(CPU_MKM34Z128ACLL5))
+	#define KM34ZA5_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKM34ZA5.h"
+	/* CPU specific feature definitions */
+	#include "MKM34ZA5_features.h"
 #elif (defined(CPU_MKM35Z256VLL7) || defined(CPU_MKM35Z256VLL7R) || defined(CPU_MKM35Z256VLQ7) || \
 	defined(CPU_MKM35Z256VLQ7R) || defined(CPU_MKM35Z512VLL7) || defined(CPU_MKM35Z512VLL7R) || \
 	defined(CPU_MKM35Z512VLQ7) || defined(CPU_MKM35Z512VLQ7R))
@@ -655,7 +674,7 @@
 	/* CPU specific feature definitions */
 	#include "MKS22F12_features.h"
 #elif (defined(CPU_MKV10Z16VFM7) || defined(CPU_MKV10Z16VLC7) || defined(CPU_MKV10Z16VLF7) || \
-	defined(CPU_MKV10Z32VFM7) || defined(CPU_MKV10Z32VLC7) || defined(CPU_MKV10Z32VLF7) || defined(MKV11Z7))
+	defined(CPU_MKV10Z32VFM7) || defined(CPU_MKV10Z32VLC7) || defined(CPU_MKV10Z32VLF7))
 	#define KV10Z7_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV10Z7.h"
@@ -663,7 +682,7 @@
 	#include "MKV10Z7_features.h"
 #elif (defined(CPU_MKV10Z128VFM7) || defined(CPU_MKV10Z128VLC7) || defined(CPU_MKV10Z128VLF7) || \
 	defined(CPU_MKV10Z128VLH7) || defined(CPU_MKV10Z64VFM7) || defined(CPU_MKV10Z64VLC7) || \
-	defined(CPU_MKV10Z64VLF7) || defined(CPU_MKV10Z64VLH7) || defined(MKV10Z128))
+	defined(CPU_MKV10Z64VLF7) || defined(CPU_MKV10Z64VLH7))
 	#define KV10Z1287_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV10Z1287.h"
@@ -671,32 +690,32 @@
 	#include "MKV10Z1287_features.h"
 #elif (defined(CPU_MKV11Z128VFM7) || defined(CPU_MKV11Z128VLC7) || defined(CPU_MKV11Z128VLF7) || \
 	defined(CPU_MKV11Z128VLH7) || defined(CPU_MKV11Z64VFM7) || defined(CPU_MKV11Z64VLC7) || \
-	defined(CPU_MKV11Z64VLF7) || defined(CPU_MKV11Z64VLH7) || defined(MKV11Z7))
+	defined(CPU_MKV11Z64VLF7) || defined(CPU_MKV11Z64VLH7))
 	#define KV11Z7_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV11Z7.h"
 	/* CPU specific feature definitions */
 	#include "MKV11Z7_features.h"
 #elif (defined(CPU_MKV30F128VFM10) || defined(CPU_MKV30F128VLF10) || defined(CPU_MKV30F128VLH10) || \
-	defined(CPU_MKV30F64VFM10) || defined(CPU_MKV30F64VLF10) || defined(CPU_MKV30F64VLH10) || defined(MKV30F12810))
+	defined(CPU_MKV30F64VFM10) || defined(CPU_MKV30F64VLF10) || defined(CPU_MKV30F64VLH10))
 	#define KV30F12810_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV30F12810.h"
 	/* CPU specific feature definitions */
 	#include "MKV30F12810_features.h"
-#elif (defined(CPU_MKV31F128VLH10) || defined(CPU_MKV31F128VLL10) || defined(MKV31F12810))
+#elif (defined(CPU_MKV31F128VLH10) || defined(CPU_MKV31F128VLL10))
 	#define KV31F12810_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV31F12810.h"
 	/* CPU specific feature definitions */
 	#include "MKV31F12810_features.h"
-#elif (defined(CPU_MKV31F256VLH12) || defined(CPU_MKV31F256VLL12) || defined(MKV31F25612))
+#elif (defined(CPU_MKV31F256VLH12) || defined(CPU_MKV31F256VLL12))
 	#define KV31F25612_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV31F25612.h"
 	/* CPU specific feature definitions */
 	#include "MKV31F25612_features.h"
-#elif (defined(CPU_MKV31F512VLH12) || defined(CPU_MKV31F512VLL12) || defined(MKV31F51212))
+#elif (defined(CPU_MKV31F512VLH12) || defined(CPU_MKV31F512VLL12))
 	#define KV31F51212_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV31F51212.h"
@@ -704,7 +723,7 @@
 	#include "MKV31F51212_features.h"
 #elif (defined(CPU_MKV42F128VLF16) || defined(CPU_MKV42F128VLH16) || defined(CPU_MKV42F128VLL16) || \
 	defined(CPU_MKV42F256VLH16) || defined(CPU_MKV42F256VLL16) || defined(CPU_MKV42F64VLF16) || \
-	defined(CPU_MKV42F64VLH16) || defined(MKV42F16))
+	defined(CPU_MKV42F64VLH16))
 	#define KV42F16_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV42F16.h"
@@ -712,14 +731,14 @@
 	#include "MKV42F16_features.h"
 #elif (defined(CPU_MKV44F128VLF16) || defined(CPU_MKV44F128VLH16) || defined(CPU_MKV44F128VLL16) || \
 	defined(CPU_MKV44F256VLH16) || defined(CPU_MKV44F256VLL16) || defined(CPU_MKV44F64VLF16) || \
-	defined(CPU_MKV44F64VLH16) || defined(MKV44F16))
+	defined(CPU_MKV44F64VLH16))
 	#define KV44F16_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV44F16.h"
 	/* CPU specific feature definitions */
 	#include "MKV44F16_features.h"
 #elif (defined(CPU_MKV46F128VLH16) || defined(CPU_MKV46F128VLL16) || defined(CPU_MKV46F256VLH16) || \
-	defined(CPU_MKV46F256VLL16) || defined(MKV46F16))
+	defined(CPU_MKV46F256VLL16))
 	#define KV46F16_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKV46F16.h"

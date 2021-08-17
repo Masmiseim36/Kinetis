@@ -957,6 +957,7 @@
             <file file_name="targets/Kinetis/MKM14ZA5_Peripherals.xml" />
             <file file_name="targets/Kinetis/MKM14Z64Axxx5_MemoryMap.xml" />
             <file file_name="targets/Kinetis/MKM14Z128Axxx5_MemoryMap.xml" />
+            <file file_name="targets/Kinetis/CMSIS/MKM14ZA5_features.h" />
           </folder>
           <folder Name="KM3x Family">
             <folder Name="KM32 Family">
@@ -982,6 +983,7 @@
               <file file_name="targets/Kinetis/MKM33ZA5_Peripherals.xml" />
               <file file_name="targets/Kinetis/MKM33Z64Axxx5_MemoryMap.xml" />
               <file file_name="targets/Kinetis/MKM33Z128Axxx5_MemoryMap.xml" />
+              <file file_name="targets/Kinetis/CMSIS/MKM33ZA5_features.h" />
             </folder>
             <folder Name="KM34 Family">
               <file file_name="targets/Kinetis/CMSIS/MKM34Z5.h" />
@@ -1003,6 +1005,7 @@
               <file file_name="targets/Kinetis/MKM34ZA5_Peripherals.xml" />
               <file file_name="targets/Kinetis/MKM34Z128Axxx5_MemoryMap.xml" />
               <file file_name="targets/Kinetis/CMSIS/MKM34Z7_features.h" />
+              <file file_name="targets/Kinetis/CMSIS/MKM34ZA5_features.h" />
             </folder>
             <folder Name="KM35 Family">
               <file file_name="targets/Kinetis/CMSIS/MKM35Z7.h" />

@@ -3745,6 +3745,7 @@
 		<groupEntry name="MKM14Z64xxx5" family="KM1x">
 			<cdefine value="MKM14Z64xxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM14Z5" />
+			<cdefine value="1" name="CPU_MKM14Z64CHH5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z64xxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM14Z5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM14Z5" />
@@ -3760,6 +3761,7 @@
 		<groupEntry name="MKM14Z128xxx5" family="KM1x">
 			<cdefine value="MKM14Z128xxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM14Z5" />
+			<cdefine value="1" name="CPU_MKM14Z128CHH5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z128xxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM14Z5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM14Z5" />
@@ -3775,6 +3777,7 @@
 		<groupEntry name="MKM14Z64Axxx5" family="KM1x">
 			<cdefine value="MKM14Z64Axxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM14ZA5" />
+			<cdefine value="1" name="CPU_MKM14Z64ACHH5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z64Axxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM14ZA5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM14ZA5" />
@@ -3790,6 +3793,7 @@
 		<groupEntry name="MKM14Z128Axxx5" family="KM1x">
 			<cdefine value="MKM14Z128Axxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM14ZA5" />
+			<cdefine value="1" name="CPU_MKM14Z128ACHH5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM14Z128Axxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM14ZA5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM14ZA5" />
@@ -3820,6 +3824,7 @@
 		<groupEntry name="MKM33Z64xxx5" family="KM3x">
 			<cdefine value="MKM33Z64xxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM33Z5" />
+			<cdefine value="1" name="CPU_MKM33Z64CLH5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z64xxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM33Z5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM33Z5" />
@@ -3835,6 +3840,7 @@
 		<groupEntry name="MKM33Z128xxx5" family="KM3x">
 			<cdefine value="MKM33Z128xxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM33Z5" />
+			<cdefine value="1" name="CPU_MKM33Z128CLH5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z128xxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM33Z5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM33Z5" />
@@ -3850,6 +3856,7 @@
 		<groupEntry name="MKM33Z64Axxx5" family="KM3x">
 			<cdefine value="MKM33Z64Axxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM33ZA5" />
+			<cdefine value="1" name="CPU_MKM33Z64ACLH5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z64Axxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM33ZA5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM33ZA5" />
@@ -3865,6 +3872,7 @@
 		<groupEntry name="MKM33Z128Axxx5" family="KM3x">
 			<cdefine value="MKM33Z128Axxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM33ZA5" />
+			<cdefine value="1" name="CPU_MKM33Z128ACLH5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM33Z128Axxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM33ZA5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM33ZA5" />
@@ -3880,6 +3888,7 @@
 		<groupEntry name="MKM34Z128xxx5" family="KM3x">
 			<cdefine value="MKM34Z128xxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM34Z5" />
+			<cdefine value="1" name="CPU_MKM34Z128CLL5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM34Z128xxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM34Z5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM34Z5" />
@@ -3895,6 +3904,7 @@
 		<groupEntry name="MKM34Z128Axxx5" family="KM3x">
 			<cdefine value="MKM34Z128Axxx5" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM34ZA5" />
+			<cdefine value="1" name="CPU_MKM34Z128ACLL5" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM34Z128Axxx5_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM34ZA5_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM34ZA5" />
@@ -3910,6 +3920,7 @@
 		<groupEntry name="MKM34Z256xxx7" family="KM3x">
 			<cdefine value="MKM34Z256xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM34Z7" />
+			<cdefine value="1" name="CPU_MKM34Z256VLL7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM34Z256xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM34Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM34Z7" />
@@ -3925,6 +3936,7 @@
 		<groupEntry name="MKM35Z256xxx7" family="KM3x">
 			<cdefine value="MKM35Z256xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM35Z7" />
+			<cdefine value="1" name="CPU_MKM35Z256VLL7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM35Z256xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM35Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM35Z7" />
@@ -3941,6 +3953,7 @@
 		<groupEntry name="MKM35Z512xxx7" family="KM3x">
 			<cdefine value="MKM35Z512xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKM35Z7" />
+			<cdefine value="1" name="CPU_MKM35Z512VLL7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKM35Z512xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKM35Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKM35Z7" />
@@ -4048,6 +4061,7 @@
 		<groupEntry name="MKV10Z16xxx7" family="KV1x">
 			<cdefine value="MKV10Z16xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV10Z7" />
+			<cdefine value="1" name="CPU_MKV10Z16VFM7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z16xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV10Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV10Z7" />
@@ -4063,6 +4077,7 @@
 		<groupEntry name="MKV10Z32xxx7" family="KV1x">
 			<cdefine value="MKV10Z32xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV10Z7" />
+			<cdefine value="1" name="CPU_MKV10Z32VFM7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z32xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV10Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV10Z7" />
@@ -4078,6 +4093,7 @@
 		<groupEntry name="MKV10Z64xxx7" family="KV1x">
 			<cdefine value="MKV10Z64xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV10Z7" />
+			<cdefine value="1" name="CPU_MKV10Z64VFM7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z64xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV10Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV10Z7" />
@@ -4093,6 +4109,7 @@
 		<groupEntry name="MKV10Z128xxx7" family="KV1x">
 			<cdefine value="MKV10Z128xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV10Z128" />
+			<cdefine value="1" name="CPU_MKV10Z128VFM7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV10Z128xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV10Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV10Z7" />
@@ -4108,6 +4125,7 @@
 		<groupEntry name="MKV11Z64xxx7" family="KV1x">
 			<cdefine value="MKV11Z64xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV11Z7" />
+			<cdefine value="1" name="CPU_MKV11Z64VFM7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV11Z64xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV11Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV11Z7" />
@@ -4123,6 +4141,7 @@
 		<groupEntry name="MKV11Z128xxx7" family="KV1x">
 			<cdefine value="MKV11Z128xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV11Z7" />
+			<cdefine value="1" name="CPU_MKV11Z128VFM7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV11Z128xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV11Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV11Z7" />
@@ -4138,6 +4157,7 @@
 		<groupEntry name="MKV30F64xxx10" family="KV3x">
 			<cdefine value="MKV30F64xxx10" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV30F12810" />
+			<cdefine value="1" name="CPU_MKV30F64VFM10" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV30F64xxx10_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV30F12810_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV30F12810" />
@@ -4157,6 +4177,7 @@
 		<groupEntry name="MKV30F128xxx10" family="KV3x">
 			<cdefine value="MKV30F128xxx10" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV30F12810" />
+			<cdefine value="1" name="CPU_MKV30F128VFM10" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV30F128xxx10_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV30F12810_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV30F12810" />
@@ -4176,6 +4197,7 @@
 		<groupEntry name="MKV31F128xxx10" family="KV3x">
 			<cdefine value="MKV31F128xxx10" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV31F12810" />
+			<cdefine value="1" name="CPU_MKV31F128VLH10" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV31F128xxx10_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV31F12810_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV31F12810" />
@@ -4195,6 +4217,7 @@
 		<groupEntry name="MKV31F256xxx12" family="KV3x">
 			<cdefine value="MKV31F256xxx12" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV31F25612" />
+			<cdefine value="1" name="CPU_MKV31F256VLH12" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV31F256xxx12_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV31F25612_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV31F25612" />
@@ -4214,6 +4237,7 @@
 		<groupEntry name="MKV31F512xxx12" family="KV3x">
 			<cdefine value="MKV31F512xxx12" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV31F51212" />
+			<cdefine value="1" name="CPU_MKV31F512VLH12" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV31F512xxx12_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV31F51212_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV31F51212" />
@@ -4233,6 +4257,7 @@
 		<groupEntry name="MKV42F64xxx16" family="KV4x">
 			<cdefine value="MKV42F64xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV42F16" />
+			<cdefine value="1" name="CPU_MKV42F64VLF16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV42F64xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV42F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV42F16" />
@@ -4252,6 +4277,7 @@
 		<groupEntry name="MKV42F128xxx16" family="KV4x">
 			<cdefine value="MKV42F128xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV42F16" />
+			<cdefine value="1" name="CPU_MKV42F128VLF16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV42F128xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV42F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV42F16" />
@@ -4271,6 +4297,7 @@
 		<groupEntry name="MKV42F256xxx16" family="KV4x">
 			<cdefine value="MKV42F256xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV42F16" />
+			<cdefine value="1" name="CPU_MKV42F256VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV42F256xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV42F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV42F16" />
@@ -4290,6 +4317,7 @@
 		<groupEntry name="MKV44F64xxx16" family="KV4x">
 			<cdefine value="MKV44F64xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV44F16" />
+			<cdefine value="1" name="CPU_MKV44F64VLF16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV44F64xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV44F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV44F16" />
@@ -4309,6 +4337,7 @@
 		<groupEntry name="MKV44F128xxx16" family="KV4x">
 			<cdefine value="MKV44F128xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV44F16" />
+			<cdefine value="1" name="CPU_MKV44F128VLF16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV44F128xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV44F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV44F16" />
@@ -4328,6 +4357,7 @@
 		<groupEntry name="MKV44F256xxx16" family="KV4x">
 			<cdefine value="MKV44F256xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV44F16" />
+			<cdefine value="1" name="CPU_MKV44F256VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV44F256xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV44F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV44F16" />
@@ -4347,6 +4377,7 @@
 		<groupEntry name="MKV46F128xxx16" family="KV4x">
 			<cdefine value="MKV46F128xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV46F16" />
+			<cdefine value="1" name="CPU_MKV46F128VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV46F128xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV46F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV46F16" />
@@ -4366,6 +4397,7 @@
 		<groupEntry name="MKV46F256xxx16" family="KV4x">
 			<cdefine value="MKV46F256xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV46F16" />
+			<cdefine value="1" name="CPU_MKV46F256VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV46F256xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV46F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV46F16" />
@@ -4385,6 +4417,7 @@
 		<groupEntry name="MKV56F512xxx24" family="KV5x">
 			<cdefine value="MKV56F512xxx24" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV56F24" />
+			<cdefine value="1" name="CPU_MKV56F512VLL24" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV56F512xxx24_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV56F24_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV56F24" />
@@ -4403,6 +4436,7 @@
 		<groupEntry name="MKV56F1M0xxx24" family="KV5x">
 			<cdefine value="MKV56F1M0xxx24" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV56F24" />
+			<cdefine value="1" name="CPU_MKV56F1M0VLL24" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV56F1M0xxx24_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV56F24_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV56F24" />
@@ -4421,6 +4455,7 @@
 		<groupEntry name="MKV58F512xxx24" family="KV5x">
 			<cdefine value="MKV58F512xxx24" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV58F24" />
+			<cdefine value="1" name="CPU_MKV58F512VLL24" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV58F512xxx24_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV58F24_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV58F24" />
@@ -4439,6 +4474,7 @@
 		<groupEntry name="MKV58F1M0xxx24" family="KV5x">
 			<cdefine value="MKV58F1M0xxx24" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKV58F24" />
+			<cdefine value="1" name="CPU_MKV58F1M0VLL24" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKV58F1M0xxx24_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKV58F24_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKV58F24" />
