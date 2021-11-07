@@ -342,17 +342,23 @@
 	/* CPU specific feature definitions */
 	#include "MK82F25615_features.h"
 
+#elif (defined(CPU_MKE02Z16VLD2) || defined(CPU_MKE02Z32VQH2) || defined(CPU_MKE02Z64VQH2))
+	#define KE02Z4_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKE02Z2.h"
+	/* CPU specific feature definitions */
+//	#include "MKE02Z2_features.h"
 #elif (defined(CPU_MKE02Z16VFM4) || defined(CPU_MKE02Z16VLC4) || defined(CPU_MKE02Z16VLD4) || \
 	defined(CPU_MKE02Z32VFM4) || defined(CPU_MKE02Z32VLC4) || defined(CPU_MKE02Z32VLD4) || \
 	defined(CPU_MKE02Z32VLH4) || defined(CPU_MKE02Z32VQH4) || defined(CPU_MKE02Z64VFM4) || \
 	defined(CPU_MKE02Z64VLC4) || defined(CPU_MKE02Z64VLD4) || defined(CPU_MKE02Z64VLH4) || \
-	defined(CPU_MKE02Z64VQH4) || defined(MKE02Z4))
+	defined(CPU_MKE02Z64VQH4))
 	#define KE02Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE02Z4.h"
 	/* CPU specific feature definitions */
 	#include "MKE02Z4_features.h"
-#elif (defined(CPU_MKE04Z8VFK4) || defined(CPU_MKE04Z8VTG4) || defined(CPU_MKE04Z8VWJ4) || defined(MKE04Z4))
+#elif (defined(CPU_MKE04Z8VFK4) || defined(CPU_MKE04Z8VTG4) || defined(CPU_MKE04Z8VWJ4))
 	#define KE04Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE04Z4.h"
@@ -360,7 +366,7 @@
 	#include "MKE04Z4_features.h"
 #elif (defined(CPU_MKE04Z128VLD4) || defined(CPU_MKE04Z128VLH4) || defined(CPU_MKE04Z128VLK4) || \
 	defined(CPU_MKE04Z128VQH4) || defined(CPU_MKE04Z64VLD4) || defined(CPU_MKE04Z64VLH4) || \
-	defined(CPU_MKE04Z64VLK4) || defined(CPU_MKE04Z64VQH4) || defined(MKE04Z1284))
+	defined(CPU_MKE04Z64VLK4) || defined(CPU_MKE04Z64VQH4))
 	#define KE04Z1284_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE04Z1284.h"
@@ -368,63 +374,84 @@
 	#include "MKE04Z1284_features.h"
 #elif (defined(CPU_MKE06Z128VLD4) || defined(CPU_MKE06Z128VLH4) || defined(CPU_MKE06Z128VLK4) || \
 	defined(CPU_MKE06Z128VQH4) || defined(CPU_MKE06Z64VLD4) || defined(CPU_MKE06Z64VLH4) || \
-	defined(CPU_MKE06Z64VLK4) || defined(CPU_MKE06Z64VQH4) || defined(MKE06Z4))
+	defined(CPU_MKE06Z64VLK4) || defined(CPU_MKE06Z64VQH4))
 	#define KE06Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE06Z4.h"
 	/* CPU specific feature definitions */
 	#include "MKE06Z4_features.h"
+#elif (defined(CPU_MKE12Z128VLH7) || defined(CPU_MKE12Z128VLL7) || defined(CPU_MKE12Z256VLH7) || \
+    defined(CPU_MKE12Z256VLL7))
+	#define KE12Z7_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKE12Z7.h"
+	/* CPU specific feature definitions */
+	#include "MKE12Z7_features.h"
+#elif (defined(CPU_MKE13Z128VLH7) || defined(CPU_MKE13Z128VLL7) || defined(CPU_MKE13Z256VLH7) || \
+    defined(CPU_MKE13Z256VLL7))
+	#define KE13Z7_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKE13Z7.h"
+	/* CPU specific feature definitions */
+	#include "MKE13Z7_features.h"
 #elif (defined(CPU_MKE14F256VLH16) || defined(CPU_MKE14F256VLL16) || defined(CPU_MKE14F512VLH16) || \
-	defined(CPU_MKE14F512VLL16) || defined(MKE14F16))
+	defined(CPU_MKE14F512VLL16))
 	#define KE14F16_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE14F16.h"
 	/* CPU specific feature definitions */
 	#include "MKE14F16_features.h"
 #elif (defined(CPU_MKE14Z32VLD4) || defined(CPU_MKE14Z32VLF4) || defined(CPU_MKE14Z64VLD4) || \
-	defined(CPU_MKE14Z64VLF4) || defined(MKE14Z4))
+	defined(CPU_MKE14Z64VLF4))
 	#define KE14Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE14Z4.h"
 	/* CPU specific feature definitions */
 	#include "MKE14Z4_features.h"
 #elif (defined(CPU_MKE14Z128VLH7) || defined(CPU_MKE14Z128VLL7) || defined(CPU_MKE14Z256VLH7) || \
-	defined(CPU_MKE14Z256VLL7) || defined(MKE14Z7))
+	defined(CPU_MKE14Z256VLL7))
 	#define KE14Z7_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE14Z7.h"
 	/* CPU specific feature definitions */
 	#include "MKE14Z7_features.h"
 #elif (defined(CPU_MKE15Z32VLD4) || defined(CPU_MKE15Z32VLF4) || defined(CPU_MKE15Z64VLD4) || \
-	defined(CPU_MKE15Z64VLF4) || defined(MKE15Z4))
+	defined(CPU_MKE15Z64VLF4))
 	#define KE15Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE15Z4.h"
 	/* CPU specific feature definitions */
 	#include "MKE15Z4_features.h"
 #elif (defined(CPU_MKE15Z128VLH7) || defined(CPU_MKE15Z128VLL7) || defined(CPU_MKE15Z256VLH7) || \
-	defined(CPU_MKE15Z256VLL7) || defined(MKE15Z7))
+	defined(CPU_MKE15Z256VLL7))
 	#define KE15Z7_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE15Z7.h"
 	/* CPU specific feature definitions */
 	#include "MKE15Z7_features.h"
 #elif (defined(CPU_MKE16F256VLH16) || defined(CPU_MKE16F256VLL16) || defined(CPU_MKE16F512VLH16) || \
-	defined(CPU_MKE16F512VLL16) || defined(MKE16F16))
+	defined(CPU_MKE16F512VLL16))
 	#define KE16F16_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE16F16.h"
 	/* CPU specific feature definitions */
 	#include "MKE16F16_features.h"
 #elif (defined(CPU_MKE16Z32VLD4) || defined(CPU_MKE16Z32VLF4) || defined(CPU_MKE16Z64VLD4) || \
-	defined(CPU_MKE16Z64VLF4) || defined(MKE16Z4))
+	defined(CPU_MKE16Z64VLF4))
 	#define KE16Z4_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE16Z4.h"
 	/* CPU specific feature definitions */
 	#include "MKE16Z4_features.h"
+#elif (defined(CPU_MKE17Z128VLH7) || defined(CPU_MKE17Z128VLL7) || defined(CPU_MKE17Z256VLH7) || \
+    defined(CPU_MKE17Z256VLL7))
+	#define KE17Z7_SERIES
+	/* CMSIS-style register definitions */
+	#include "MKE17Z7.h"
+	/* CPU specific feature definitions */
+	#include "MKE17Z7_features.h"
 #elif (defined(CPU_MKE18F256VLH16) || defined(CPU_MKE18F256VLL16) || defined(CPU_MKE18F512VLH16) || \
-	defined(CPU_MKE18F512VLL16) || defined(MKE18F16))
+	defined(CPU_MKE18F512VLL16))
 	#define KE18F16_SERIES
 	/* CMSIS-style register definitions */
 	#include "MKE18F16.h"

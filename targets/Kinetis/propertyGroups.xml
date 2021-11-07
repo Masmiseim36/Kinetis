@@ -2349,7 +2349,7 @@
 		<groupEntry name="MKE02Z16xxx2" family="KE0x">
 			<cdefine value="MKE02Z16xxx2" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE02Z2" />
-			<cdefine value="1" name="CPU_MKE02Z16VFM4" />
+			<cdefine value="1" name="CPU_MKE02Z16VLD2" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z16xxx2_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z2_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE02Z2" />
@@ -2365,6 +2365,7 @@
 		<groupEntry name="MKE02Z32xxx2" family="KE0x">
 			<cdefine value="MKE02Z32xxx2" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE02Z2" />
+			<cdefine value="1" name="CPU_MKE02Z32VQH2" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z32xxx2_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z2_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE02Z2" />
@@ -2380,6 +2381,7 @@
 		<groupEntry name="MKE02Z64xxx2" family="KE0x">
 			<cdefine value="MKE02Z64xxx2" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE02Z2" />
+			<cdefine value="1" name="CPU_MKE02Z64VQH2" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z64xxx2_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z2_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE02Z2" />
@@ -2395,6 +2397,7 @@
 		<groupEntry name="MKE02Z16xxx4" family="KE0x">
 			<cdefine value="MKE02Z16xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE02Z4" />
+			<cdefine value="1" name="CPU_MKE02Z16VFM4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z16xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE02Z4" />
@@ -2410,6 +2413,7 @@
 		<groupEntry name="MKE02Z32xxx4" family="KE0x">
 			<cdefine value="MKE02Z32xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE02Z4" />
+			<cdefine value="1" name="CPU_MKE02Z32VFM4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z32xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE02Z4" />
@@ -2425,6 +2429,7 @@
 		<groupEntry name="MKE02Z64xxx4" family="KE0x">
 			<cdefine value="MKE02Z64xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE02Z4" />
+			<cdefine value="1" name="CPU_MKE02Z64VFM4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE02Z64xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE02Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE02Z4" />
@@ -2440,6 +2445,7 @@
 		<groupEntry name="MKE04Z8xxx4" family="KE0x">
 			<cdefine value="MKE04Z8xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE04Z4" />
+			<cdefine value="1" name="CPU_MKE04Z8VFK4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE04Z8xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE04Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE04Z4" />
@@ -2455,6 +2461,7 @@
 		<groupEntry name="MKE04Z64xxx4" family="KE0x">
 			<cdefine value="MKE04Z64xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE04Z1284" />
+			<cdefine value="1" name="CPU_MKE04Z64VLD4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE04Z64xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE04Z1284_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE04Z1284" />
@@ -2470,6 +2477,7 @@
 		<groupEntry name="MKE04Z128xxx4" family="KE0x">
 			<cdefine value="MKE04Z128xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE04Z1284" />
+			<cdefine value="1" name="CPU_MKE04Z128VLD4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE04Z128xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE04Z1284_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE04Z1284" />
@@ -2485,6 +2493,7 @@
 		<groupEntry name="MKE06Z64xxx4" family="KE0x">
 			<cdefine value="MKE06Z64xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE06Z4" />
+			<cdefine value="1" name="CPU_MKE06Z64VLH4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE06Z64xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE06Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE06Z4" />
@@ -2500,6 +2509,7 @@
 		<groupEntry name="MKE06Z128xxx4" family="KE0x">
 			<cdefine value="MKE06Z128xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE06Z4" />
+			<cdefine value="1" name="CPU_MKE06Z128VLH4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE06Z128xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE06Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE06Z4" />
@@ -2515,6 +2525,7 @@
 		<groupEntry name="MKE14Z32xxx4" family="KE1x">
 			<cdefine value="MKE14Z32xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE14Z4" />
+			<cdefine value="1" name="CPU_MKE14Z32VLD4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14Z32xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE14Z4" />
@@ -2530,6 +2541,7 @@
 		<groupEntry name="MKE14Z64xxx4" family="KE1x">
 			<cdefine value="MKE14Z64xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE14Z4" />
+			<cdefine value="1" name="CPU_MKE14Z64VLD4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14Z64xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE14Z4" />
@@ -2545,6 +2557,7 @@
 		<groupEntry name="MKE15Z32xxx4" family="KE1x">
 			<cdefine value="MKE15Z32xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE15Z4" />
+			<cdefine value="1" name="CPU_MKE15Z32VLD4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z32xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE15Z4" />
@@ -2560,6 +2573,7 @@
 		<groupEntry name="MKE15Z64xxx4" family="KE1x">
 			<cdefine value="MKE15Z64xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE15Z4" />
+			<cdefine value="1" name="CPU_MKE15Z64VLD4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z64xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE15Z4" />
@@ -2575,6 +2589,7 @@
 		<groupEntry name="MKE16Z32xxx4" family="KE1x">
 			<cdefine value="MKE16Z32xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE16Z4" />
+			<cdefine value="1" name="CPU_MKE16Z32VLD4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE16Z32xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE16Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE16Z4" />
@@ -2590,6 +2605,7 @@
 		<groupEntry name="MKE16Z64xxx4" family="KE1x">
 			<cdefine value="MKE16Z64xxx4" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE16Z4" />
+			<cdefine value="1" name="CPU_MKE16Z64VLD4" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE16Z64xxx4_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE16Z4_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE16Z4" />
@@ -2605,6 +2621,7 @@
 		<groupEntry name="MKE14Z128xxx7" family="KE1x">
 			<cdefine value="MKE14Z128xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE14Z7" />
+			<cdefine value="1" name="CPU_MKE14Z128VLH7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14Z128xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE14Z7" />
@@ -2620,6 +2637,7 @@
 		<groupEntry name="MKE14Z256xxx7" family="KE1x">
 			<cdefine value="MKE14Z256xxx7" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE14Z7" />
+			<cdefine value="1" name="CPU_MKE14Z256VLH7" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14Z256xxx7_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14Z7_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE14Z7" />
@@ -2632,39 +2650,10 @@
 			<property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
 			<property name="arm_simulator_memory_simulation_parameter" value="MKE14Z256xxx7;0x40000;0x8000;0x800;0x8000;4" />
 		</groupEntry>
-		<groupEntry name="MKE15Z128xxx7" family="KE1x">
-			<cdefine value="MKE15Z128xxx7" name="__TARGET_PROCESSOR" />
-			<cdefine value="1" name="MKE15Z7" />
-			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z128xxx7_MemoryMap.xml" />
-			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z7_Peripherals.xml" />
-			<property name="macros" value="DeviceName=MKE15Z7" />
-			<cdefine name="__VECTORS" value="&quot;MKE15Z7.vec&quot;" />
-			<property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14.elf" />
-			<property name="arm_architecture" value="v6M" />
-			<property name="arm_core_type" value="Cortex-M0" />
-			<cdefine name="E1_SERIES" />
-			<property name="target_get_partname_script" value="GetPartName()" />
-			<property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-			<property name="arm_simulator_memory_simulation_parameter" value="MKE15Z128xxx7;0x20000;0x8000;0x800;0x4000;4" />
-		</groupEntry>
-		<groupEntry name="MKE15Z256xxx7" family="KE1x">
-			<cdefine value="MKE15Z256xxx7" name="__TARGET_PROCESSOR" />
-			<cdefine value="1" name="MKE15Z7" />
-			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z256xxx7_MemoryMap.xml" />
-			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z7_Peripherals.xml" />
-			<property name="macros" value="DeviceName=MKE15Z7" />
-			<cdefine name="__VECTORS" value="&quot;MKE15Z7.vec&quot;" />
-			<property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14.elf" />
-			<property name="arm_architecture" value="v6M" />
-			<property name="arm_core_type" value="Cortex-M0" />
-			<cdefine name="E1_SERIES" />
-			<property name="target_get_partname_script" value="GetPartName()" />
-			<property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
-			<property name="arm_simulator_memory_simulation_parameter" value="MKE15Z256xxx7;0x40000;0x8000;0x800;0x8000;4" />
-		</groupEntry>
 		<groupEntry name="MKE14F256xxx16" family="KE1x">
 			<cdefine value="MKE14F256xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE14F16" />
+			<cdefine value="1" name="CPU_MKE14F256VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14F256xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE14F16" />
@@ -2683,6 +2672,7 @@
 		<groupEntry name="MKE14F512xxx16" family="KE1x">
 			<cdefine value="MKE14F512xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE14F16" />
+			<cdefine value="1" name="CPU_MKE14F512VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE14F512xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE14F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE14F16" />
@@ -2698,9 +2688,42 @@
 			<property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
 			<property name="arm_simulator_memory_simulation_parameter" value="MKE14F512xxx16;0x80000;0x10000;0x1000;0x4000;2" />
 		</groupEntry>
+		<groupEntry name="MKE15Z128xxx7" family="KE1x">
+			<cdefine value="MKE15Z128xxx7" name="__TARGET_PROCESSOR" />
+			<cdefine value="1" name="MKE15Z7" />
+			<cdefine value="1" name="CPU_MKE15Z128VLH7" />
+			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z128xxx7_MemoryMap.xml" />
+			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z7_Peripherals.xml" />
+			<property name="macros" value="DeviceName=MKE15Z7" />
+			<cdefine name="__VECTORS" value="&quot;MKE15Z7.vec&quot;" />
+			<property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14.elf" />
+			<property name="arm_architecture" value="v6M" />
+			<property name="arm_core_type" value="Cortex-M0" />
+			<cdefine name="E1_SERIES" />
+			<property name="target_get_partname_script" value="GetPartName()" />
+			<property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+			<property name="arm_simulator_memory_simulation_parameter" value="MKE15Z128xxx7;0x20000;0x8000;0x800;0x4000;4" />
+		</groupEntry>
+		<groupEntry name="MKE15Z256xxx7" family="KE1x">
+			<cdefine value="MKE15Z256xxx7" name="__TARGET_PROCESSOR" />
+			<cdefine value="1" name="MKE15Z7" />
+			<cdefine value="1" name="CPU_MKE15Z256VLH7" />
+			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE15Z256xxx7_MemoryMap.xml" />
+			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE15Z7_Peripherals.xml" />
+			<property name="macros" value="DeviceName=MKE15Z7" />
+			<cdefine name="__VECTORS" value="&quot;MKE15Z7.vec&quot;" />
+			<property name="arm_target_flash_loader_file_path" configuration="Flash" value="$(TargetsDir)/Kinetis/Release/LoaderE14.elf" />
+			<property name="arm_architecture" value="v6M" />
+			<property name="arm_core_type" value="Cortex-M0" />
+			<cdefine name="E1_SERIES" />
+			<property name="target_get_partname_script" value="GetPartName()" />
+			<property name="target_match_partname_script" value="MatchPartName(&quot;$(Target)&quot;)" />
+			<property name="arm_simulator_memory_simulation_parameter" value="MKE15Z256xxx7;0x40000;0x8000;0x800;0x8000;4" />
+		</groupEntry>
 		<groupEntry name="MKE16F256xxx16" family="KE1x">
 			<cdefine value="MKE16F256xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE16F16" />
+			<cdefine value="1" name="CPU_MKE16F256VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE16F256xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE16F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE16F16" />
@@ -2719,6 +2742,7 @@
 		<groupEntry name="MKE16F512xxx16" family="KE1x">
 			<cdefine value="MKE16F512xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE16F16" />
+			<cdefine value="1" name="CPU_MKE16F512VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE16F512xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE16F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE16F16" />
@@ -2737,6 +2761,7 @@
 		<groupEntry name="MKE18F256xxx16" family="KE1x">
 			<cdefine value="MKE18F256xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE18F16" />
+			<cdefine value="1" name="CPU_MKE18F256VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE18F256xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE18F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE18F16" />
@@ -2755,6 +2780,7 @@
 		<groupEntry name="MKE18F512xxx16" family="KE1x">
 			<cdefine value="MKE18F512xxx16" name="__TARGET_PROCESSOR" />
 			<cdefine value="1" name="MKE18F16" />
+			<cdefine value="1" name="CPU_MKE18F512VLH16" />
 			<property name="linker_memory_map_file" value="$(TargetsDir)/Kinetis/MKE18F512xxx16_MemoryMap.xml" />
 			<property name="debug_register_definition_file" value="$(TargetsDir)/Kinetis/MKE18F16_Peripherals.xml" />
 			<property name="macros" value="DeviceName=MKE18F16" />

@@ -649,6 +649,22 @@
             <file file_name="targets/Kinetis/CMSIS/system_MKE06Z4.h" />
           </folder>
           <folder Name="KE1x Family">
+            <folder Name="KE12 Family">
+              <file file_name="targets/Kinetis/MKE12Z128xxx7_MemoryMap.xml" />
+              <file file_name="targets/Kinetis/MKE12Z256xxx7_MemoryMap.xml" />
+              <file file_name="targets/Kinetis/MKE12Z7.vec" />
+              <file file_name="targets/Kinetis/MKE12Z7_Peripherals.xml" />
+              <file file_name="targets/Kinetis/CMSIS/MKE12Z7.h" />
+              <file file_name="targets/Kinetis/CMSIS/MKE12Z7_features.h" />
+            </folder>
+            <folder Name="KE13 Family">
+              <file file_name="targets/Kinetis/MKE13Z7.vec" />
+              <file file_name="targets/Kinetis/MKE13Z7_Peripherals.xml" />
+              <file file_name="targets/Kinetis/MKE13Z128xxx7_MemoryMap.xml" />
+              <file file_name="targets/Kinetis/MKE13Z256xxx7_MemoryMap.xml" />
+              <file file_name="targets/Kinetis/CMSIS/MKE13Z7.h" />
+              <file file_name="targets/Kinetis/CMSIS/MKE13Z7_features.h" />
+            </folder>
             <folder Name="KE14 Family">
               <file file_name="targets/Kinetis/CMSIS/MKE14F16.h" />
               <file file_name="targets/Kinetis/CMSIS/MKE14F16_features.h" />
@@ -710,6 +726,14 @@
               <file file_name="targets/Kinetis/MKE16Z64xxx4_MemoryMap.xml" />
               <file file_name="targets/Kinetis/CMSIS/system_MKE16Z4.c" />
               <file file_name="targets/Kinetis/CMSIS/system_MKE16Z4.h" />
+            </folder>
+            <folder Name="KE17 Family">
+              <file file_name="targets/Kinetis/MKE17Z128xxx7_MemoryMap.xml" />
+              <file file_name="targets/Kinetis/MKE17Z256xxx7_MemoryMap.xml" />
+              <file file_name="targets/Kinetis/MKE17Z7.vec" />
+              <file file_name="targets/Kinetis/MKE17Z7_Peripherals.xml" />
+              <file file_name="targets/Kinetis/CMSIS/MKE17Z7.h" />
+              <file file_name="targets/Kinetis/CMSIS/MKE17Z7_features.h" />
             </folder>
             <folder Name="KE18 Family">
               <file file_name="targets/Kinetis/CMSIS/MKE18F16.h" />
