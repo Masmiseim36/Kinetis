@@ -3,7 +3,7 @@
   <project Name="Kinetis CPU Support">
     <configuration
       Name="Common"
-      combine_command="$(StudioDir)/bin/mkpkg -c &quot;$(CombiningOutputFilePath)&quot; ."
+      combine_command="$(StudioDir)/bin/mkpkg -exclude ./Convert.sh -exclude ./Extract.sh -exclude ./Kinetis.hzp -exclude ./Kinetis.hzs -exclude ./Kinetis.hzq -exclude ./readme.md -exclude ./.gitignore -c &quot;$(CombiningOutputFilePath)&quot; ."
       combine_output_filepath="$(ProjectDir)/Kinetis.hzq"
       project_directory=""
       project_type="Combining" />
