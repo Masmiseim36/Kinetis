@@ -1,11 +1,11 @@
 <!DOCTYPE Board_Memory_Definition_File>
 <Root name="MKV42F64xxx16">
-  <MemorySegment size="0x10000" access="ReadOnly" start="0x00000000" name="FLASH" />
-  <MemorySegment size="0x10000/2" access="Read/Write" start="0x00000000" name="FLASH_L" />
-  <MemorySegment size="0x10000/2" access="Read/Write" start="0x00000000+0x10000/2" name="FLASH_H" />
-  <MemorySegment size="0x4000" access="Read/Write" start="0x1fffe000" name="SRAM" />
-  <MemorySegment size="0x2000" access="Read/Write" start="0x1fffe000" name="SRAM_L" />
-  <MemorySegment size="0x2000" access="Read/Write" start="0x20000000" name="SRAM_H" />
-  <MemorySegment size="0x100000" access="Read/Write" start="0x40000000" name="PERIPHERALS" />
-  <MemorySegment size="0x100000" access="Read/Write" start="0xE0000000" name="PPB" />
+  <MemorySegment size="$(FLASH_SIZE:0x10000)"    access="ReadOnly"   start="$(FLASH_START:0x00000000)"            name="FLASH" />
+  <MemorySegment size="$(FLASHL_SIZE:0x10000/2)" access="Read/Write" start="$(FLASHL_START:0x00000000)"           name="FLASH_L" />
+  <MemorySegment size="$(FLASHH_SIZE:0x10000/2)" access="Read/Write" start="$(FLASHH_START:0x00000000+0x10000/2)" name="FLASH_H" />
+  <MemorySegment size="$(SRAM_SIZE:0x04000)"     access="Read/Write" start="$(SRAM_START:0x1fffe000)"             name="SRAM" />
+  <MemorySegment size="$(SRAML_SIZE:0x02000)"    access="Read/Write" start="$(SRAML_START:0x1fffe000)"            name="SRAM_L" />
+  <MemorySegment size="$(SRAMH_SIZE:0x02000)"    access="Read/Write" start="$(SRAMH_START:0x20000000)"            name="SRAM_H" />
+  <MemorySegment size="0x100000"                 access="Read/Write" start="0x40000000"                           name="PERIPHERALS" />
+  <MemorySegment size="0x100000"                 access="Read/Write" start="0xE0000000"                           name="PPB" />
 </Root>
