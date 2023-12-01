@@ -8102,23 +8102,33 @@ typedef struct {
 #define RTC_WAR_LRW_SHIFT                        6
 #define RTC_WAR_IERW_MASK                        0x80u
 #define RTC_WAR_IERW_SHIFT                       7
-/* RAR Bit Fields */
-#define RTC_RAR_TSRR_MASK                        0x1u
-#define RTC_RAR_TSRR_SHIFT                       0
-#define RTC_RAR_TPRR_MASK                        0x2u
-#define RTC_RAR_TPRR_SHIFT                       1
-#define RTC_RAR_TARR_MASK                        0x4u
-#define RTC_RAR_TARR_SHIFT                       2
-#define RTC_RAR_TCRR_MASK                        0x8u
-#define RTC_RAR_TCRR_SHIFT                       3
-#define RTC_RAR_CRR_MASK                         0x10u
-#define RTC_RAR_CRR_SHIFT                        4
-#define RTC_RAR_SRR_MASK                         0x20u
-#define RTC_RAR_SRR_SHIFT                        5
-#define RTC_RAR_LRR_MASK                         0x40u
-#define RTC_RAR_LRR_SHIFT                        6
-#define RTC_RAR_IERR_MASK                        0x80u
-#define RTC_RAR_IERR_SHIFT                       7
+
+/*! @name RAR - RTC Read Access Register */
+#define RTC_RAR_TSRR_MASK                        (0x1U)
+#define RTC_RAR_TSRR_SHIFT                       (0U)
+#define RTC_RAR_TSRR(x)                          (((uint32_t)(((uint32_t)(x)) << RTC_RAR_TSRR_SHIFT)) & RTC_RAR_TSRR_MASK)
+#define RTC_RAR_TPRR_MASK                        (0x2U)
+#define RTC_RAR_TPRR_SHIFT                       (1U)
+#define RTC_RAR_TPRR(x)                          (((uint32_t)(((uint32_t)(x)) << RTC_RAR_TPRR_SHIFT)) & RTC_RAR_TPRR_MASK)
+#define RTC_RAR_TARR_MASK                        (0x4U)
+#define RTC_RAR_TARR_SHIFT                       (2U)
+#define RTC_RAR_TARR(x)                          (((uint32_t)(((uint32_t)(x)) << RTC_RAR_TARR_SHIFT)) & RTC_RAR_TARR_MASK)
+#define RTC_RAR_TCRR_MASK                        (0x8U)
+#define RTC_RAR_TCRR_SHIFT                       (3U)
+#define RTC_RAR_TCRR(x)                          (((uint32_t)(((uint32_t)(x)) << RTC_RAR_TCRR_SHIFT)) & RTC_RAR_TCRR_MASK)
+#define RTC_RAR_CRR_MASK                         (0x10U)
+#define RTC_RAR_CRR_SHIFT                        (4U)
+#define RTC_RAR_CRR(x)                           (((uint32_t)(((uint32_t)(x)) << RTC_RAR_CRR_SHIFT)) & RTC_RAR_CRR_MASK)
+#define RTC_RAR_SRR_MASK                         (0x20U)
+#define RTC_RAR_SRR_SHIFT                        (5U)
+#define RTC_RAR_SRR(x)                           (((uint32_t)(((uint32_t)(x)) << RTC_RAR_SRR_SHIFT)) & RTC_RAR_SRR_MASK)
+#define RTC_RAR_LRR_MASK                         (0x40U)
+#define RTC_RAR_LRR_SHIFT                        (6U)
+#define RTC_RAR_LRR(x)                           (((uint32_t)(((uint32_t)(x)) << RTC_RAR_LRR_SHIFT)) & RTC_RAR_LRR_MASK)
+#define RTC_RAR_IERR_MASK                        (0x80U)
+#define RTC_RAR_IERR_SHIFT                       (7U)
+#define RTC_RAR_IERR(x)                          (((uint32_t)(((uint32_t)(x)) << RTC_RAR_IERR_SHIFT)) & RTC_RAR_IERR_MASK)
+
 
 /*!
  * @}
@@ -8130,8 +8140,14 @@ typedef struct {
 #define RTC_BASE                                 (0x4003D000u)
 /** Peripheral RTC base pointer */
 #define RTC                                      ((RTC_Type *)RTC_BASE)
+/** Array initializer of RTC peripheral base addresses */
+#define RTC_BASE_ADDRS                           { RTC_BASE }
 /** Array initializer of RTC peripheral base pointers */
 #define RTC_BASES                                { RTC }
+#define RTC_BASE_PTRS                            { RTC }
+/** Interrupt vectors for the RTC peripheral type */
+#define RTC_IRQS                                 { RTC_IRQn }
+#define RTC_SECONDS_IRQS                         { RTC_Seconds_IRQn }
 
 /*!
  * @}
@@ -8149,28 +8165,28 @@ typedef struct {
 
 /** SDHC - Register Layout Typedef */
 typedef struct {
-  __IO uint32_t DSADDR;                            /**< DMA System Address Register, offset: 0x0 */
-  __IO uint32_t BLKATTR;                           /**< Block Attributes Register, offset: 0x4 */
-  __IO uint32_t CMDARG;                            /**< Command Argument Register, offset: 0x8 */
-  __IO uint32_t XFERTYP;                           /**< Transfer Type Register, offset: 0xC */
+  __IO uint32_t DSADDR;                            /**< DMA System Address register, offset: 0x0 */
+  __IO uint32_t BLKATTR;                           /**< Block Attributes register, offset: 0x4 */
+  __IO uint32_t CMDARG;                            /**< Command Argument register, offset: 0x8 */
+  __IO uint32_t XFERTYP;                           /**< Transfer Type register, offset: 0xC */
   __I  uint32_t CMDRSP[4];                         /**< Command Response 0..Command Response 3, array offset: 0x10, array step: 0x4 */
-  __IO uint32_t DATPORT;                           /**< Buffer Data Port Register, offset: 0x20 */
-  __I  uint32_t PRSSTAT;                           /**< Present State Register, offset: 0x24 */
-  __IO uint32_t PROCTL;                            /**< Protocol Control Register, offset: 0x28 */
-  __IO uint32_t SYSCTL;                            /**< System Control Register, offset: 0x2C */
-  __IO uint32_t IRQSTAT;                           /**< Interrupt Status Register, offset: 0x30 */
-  __IO uint32_t IRQSTATEN;                         /**< Interrupt Status Enable Register, offset: 0x34 */
-  __IO uint32_t IRQSIGEN;                          /**< Interrupt Signal Enable Register, offset: 0x38 */
+  __IO uint32_t DATPORT;                           /**< Buffer Data Port register, offset: 0x20 */
+  __I  uint32_t PRSSTAT;                           /**< Present State register, offset: 0x24 */
+  __IO uint32_t PROCTL;                            /**< Protocol Control register, offset: 0x28 */
+  __IO uint32_t SYSCTL;                            /**< System Control register, offset: 0x2C */
+  __IO uint32_t IRQSTAT;                           /**< Interrupt Status register, offset: 0x30 */
+  __IO uint32_t IRQSTATEN;                         /**< Interrupt Status Enable register, offset: 0x34 */
+  __IO uint32_t IRQSIGEN;                          /**< Interrupt Signal Enable register, offset: 0x38 */
   __I  uint32_t AC12ERR;                           /**< Auto CMD12 Error Status Register, offset: 0x3C */
   __I  uint32_t HTCAPBLT;                          /**< Host Controller Capabilities, offset: 0x40 */
   __IO uint32_t WML;                               /**< Watermark Level Register, offset: 0x44 */
        uint8_t RESERVED_0[8];
-  __O  uint32_t FEVT;                              /**< Force Event Register, offset: 0x50 */
-  __I  uint32_t ADMAES;                            /**< ADMA Error Status Register, offset: 0x54 */
-  __IO uint32_t ADSADDR;                           /**< ADMA System Address Register, offset: 0x58 */
+  __O  uint32_t FEVT;                              /**< Force Event register, offset: 0x50 */
+  __I  uint32_t ADMAES;                            /**< ADMA Error Status register, offset: 0x54 */
+  __IO uint32_t ADSADDR;                           /**< ADMA System Addressregister, offset: 0x58 */
        uint8_t RESERVED_1[100];
-  __IO uint32_t VENDOR;                            /**< Vendor Specific Register, offset: 0xC0 */
-  __IO uint32_t MMCBOOT;                           /**< MMC Boot Register, offset: 0xC4 */
+  __IO uint32_t VENDOR;                            /**< Vendor Specific register, offset: 0xC0 */
+  __IO uint32_t MMCBOOT;                           /**< MMC Boot register, offset: 0xC4 */
        uint8_t RESERVED_2[52];
   __I  uint32_t HOSTVER;                           /**< Host Controller Version, offset: 0xFC */
 } SDHC_Type;
@@ -8184,381 +8200,537 @@ typedef struct {
  * @{
  */
 
-/* DSADDR Bit Fields */
-#define SDHC_DSADDR_DSADDR_MASK                  0xFFFFFFFCu
-#define SDHC_DSADDR_DSADDR_SHIFT                 2
-#define SDHC_DSADDR_DSADDR(x)                    (((uint32_t)(((uint32_t)(x))<<SDHC_DSADDR_DSADDR_SHIFT))&SDHC_DSADDR_DSADDR_MASK)
-/* BLKATTR Bit Fields */
-#define SDHC_BLKATTR_BLKSIZE_MASK                0x1FFFu
-#define SDHC_BLKATTR_BLKSIZE_SHIFT               0
-#define SDHC_BLKATTR_BLKSIZE(x)                  (((uint32_t)(((uint32_t)(x))<<SDHC_BLKATTR_BLKSIZE_SHIFT))&SDHC_BLKATTR_BLKSIZE_MASK)
-#define SDHC_BLKATTR_BLKCNT_MASK                 0xFFFF0000u
-#define SDHC_BLKATTR_BLKCNT_SHIFT                16
-#define SDHC_BLKATTR_BLKCNT(x)                   (((uint32_t)(((uint32_t)(x))<<SDHC_BLKATTR_BLKCNT_SHIFT))&SDHC_BLKATTR_BLKCNT_MASK)
-/* CMDARG Bit Fields */
-#define SDHC_CMDARG_CMDARG_MASK                  0xFFFFFFFFu
-#define SDHC_CMDARG_CMDARG_SHIFT                 0
-#define SDHC_CMDARG_CMDARG(x)                    (((uint32_t)(((uint32_t)(x))<<SDHC_CMDARG_CMDARG_SHIFT))&SDHC_CMDARG_CMDARG_MASK)
-/* XFERTYP Bit Fields */
-#define SDHC_XFERTYP_DMAEN_MASK                  0x1u
-#define SDHC_XFERTYP_DMAEN_SHIFT                 0
-#define SDHC_XFERTYP_BCEN_MASK                   0x2u
-#define SDHC_XFERTYP_BCEN_SHIFT                  1
-#define SDHC_XFERTYP_AC12EN_MASK                 0x4u
-#define SDHC_XFERTYP_AC12EN_SHIFT                2
-#define SDHC_XFERTYP_DTDSEL_MASK                 0x10u
-#define SDHC_XFERTYP_DTDSEL_SHIFT                4
-#define SDHC_XFERTYP_MSBSEL_MASK                 0x20u
-#define SDHC_XFERTYP_MSBSEL_SHIFT                5
-#define SDHC_XFERTYP_RSPTYP_MASK                 0x30000u
-#define SDHC_XFERTYP_RSPTYP_SHIFT                16
-#define SDHC_XFERTYP_RSPTYP(x)                   (((uint32_t)(((uint32_t)(x))<<SDHC_XFERTYP_RSPTYP_SHIFT))&SDHC_XFERTYP_RSPTYP_MASK)
-#define SDHC_XFERTYP_CCCEN_MASK                  0x80000u
-#define SDHC_XFERTYP_CCCEN_SHIFT                 19
-#define SDHC_XFERTYP_CICEN_MASK                  0x100000u
-#define SDHC_XFERTYP_CICEN_SHIFT                 20
-#define SDHC_XFERTYP_DPSEL_MASK                  0x200000u
-#define SDHC_XFERTYP_DPSEL_SHIFT                 21
-#define SDHC_XFERTYP_CMDTYP_MASK                 0xC00000u
-#define SDHC_XFERTYP_CMDTYP_SHIFT                22
-#define SDHC_XFERTYP_CMDTYP(x)                   (((uint32_t)(((uint32_t)(x))<<SDHC_XFERTYP_CMDTYP_SHIFT))&SDHC_XFERTYP_CMDTYP_MASK)
-#define SDHC_XFERTYP_CMDINX_MASK                 0x3F000000u
-#define SDHC_XFERTYP_CMDINX_SHIFT                24
-#define SDHC_XFERTYP_CMDINX(x)                   (((uint32_t)(((uint32_t)(x))<<SDHC_XFERTYP_CMDINX_SHIFT))&SDHC_XFERTYP_CMDINX_MASK)
-/* CMDRSP Bit Fields */
-#define SDHC_CMDRSP_CMDRSP0_MASK                 0xFFFFFFFFu
-#define SDHC_CMDRSP_CMDRSP0_SHIFT                0
-#define SDHC_CMDRSP_CMDRSP0(x)                   (((uint32_t)(((uint32_t)(x))<<SDHC_CMDRSP_CMDRSP0_SHIFT))&SDHC_CMDRSP_CMDRSP0_MASK)
-#define SDHC_CMDRSP_CMDRSP1_MASK                 0xFFFFFFFFu
-#define SDHC_CMDRSP_CMDRSP1_SHIFT                0
-#define SDHC_CMDRSP_CMDRSP1(x)                   (((uint32_t)(((uint32_t)(x))<<SDHC_CMDRSP_CMDRSP1_SHIFT))&SDHC_CMDRSP_CMDRSP1_MASK)
-#define SDHC_CMDRSP_CMDRSP2_MASK                 0xFFFFFFFFu
-#define SDHC_CMDRSP_CMDRSP2_SHIFT                0
-#define SDHC_CMDRSP_CMDRSP2(x)                   (((uint32_t)(((uint32_t)(x))<<SDHC_CMDRSP_CMDRSP2_SHIFT))&SDHC_CMDRSP_CMDRSP2_MASK)
-#define SDHC_CMDRSP_CMDRSP3_MASK                 0xFFFFFFFFu
-#define SDHC_CMDRSP_CMDRSP3_SHIFT                0
-#define SDHC_CMDRSP_CMDRSP3(x)                   (((uint32_t)(((uint32_t)(x))<<SDHC_CMDRSP_CMDRSP3_SHIFT))&SDHC_CMDRSP_CMDRSP3_MASK)
-/* DATPORT Bit Fields */
-#define SDHC_DATPORT_DATCONT_MASK                0xFFFFFFFFu
-#define SDHC_DATPORT_DATCONT_SHIFT               0
-#define SDHC_DATPORT_DATCONT(x)                  (((uint32_t)(((uint32_t)(x))<<SDHC_DATPORT_DATCONT_SHIFT))&SDHC_DATPORT_DATCONT_MASK)
-/* PRSSTAT Bit Fields */
-#define SDHC_PRSSTAT_CIHB_MASK                   0x1u
-#define SDHC_PRSSTAT_CIHB_SHIFT                  0
-#define SDHC_PRSSTAT_CDIHB_MASK                  0x2u
-#define SDHC_PRSSTAT_CDIHB_SHIFT                 1
-#define SDHC_PRSSTAT_DLA_MASK                    0x4u
-#define SDHC_PRSSTAT_DLA_SHIFT                   2
-#define SDHC_PRSSTAT_SDSTB_MASK                  0x8u
-#define SDHC_PRSSTAT_SDSTB_SHIFT                 3
-#define SDHC_PRSSTAT_IPGOFF_MASK                 0x10u
-#define SDHC_PRSSTAT_IPGOFF_SHIFT                4
-#define SDHC_PRSSTAT_HCKOFF_MASK                 0x20u
-#define SDHC_PRSSTAT_HCKOFF_SHIFT                5
-#define SDHC_PRSSTAT_PEROFF_MASK                 0x40u
-#define SDHC_PRSSTAT_PEROFF_SHIFT                6
-#define SDHC_PRSSTAT_SDOFF_MASK                  0x80u
-#define SDHC_PRSSTAT_SDOFF_SHIFT                 7
-#define SDHC_PRSSTAT_WTA_MASK                    0x100u
-#define SDHC_PRSSTAT_WTA_SHIFT                   8
-#define SDHC_PRSSTAT_RTA_MASK                    0x200u
-#define SDHC_PRSSTAT_RTA_SHIFT                   9
-#define SDHC_PRSSTAT_BWEN_MASK                   0x400u
-#define SDHC_PRSSTAT_BWEN_SHIFT                  10
-#define SDHC_PRSSTAT_BREN_MASK                   0x800u
-#define SDHC_PRSSTAT_BREN_SHIFT                  11
-#define SDHC_PRSSTAT_CINS_MASK                   0x10000u
-#define SDHC_PRSSTAT_CINS_SHIFT                  16
-#define SDHC_PRSSTAT_CLSL_MASK                   0x800000u
-#define SDHC_PRSSTAT_CLSL_SHIFT                  23
-#define SDHC_PRSSTAT_DLSL_MASK                   0xFF000000u
-#define SDHC_PRSSTAT_DLSL_SHIFT                  24
-#define SDHC_PRSSTAT_DLSL(x)                     (((uint32_t)(((uint32_t)(x))<<SDHC_PRSSTAT_DLSL_SHIFT))&SDHC_PRSSTAT_DLSL_MASK)
-/* PROCTL Bit Fields */
-#define SDHC_PROCTL_LCTL_MASK                    0x1u
-#define SDHC_PROCTL_LCTL_SHIFT                   0
-#define SDHC_PROCTL_DTW_MASK                     0x6u
-#define SDHC_PROCTL_DTW_SHIFT                    1
-#define SDHC_PROCTL_DTW(x)                       (((uint32_t)(((uint32_t)(x))<<SDHC_PROCTL_DTW_SHIFT))&SDHC_PROCTL_DTW_MASK)
-#define SDHC_PROCTL_D3CD_MASK                    0x8u
-#define SDHC_PROCTL_D3CD_SHIFT                   3
-#define SDHC_PROCTL_EMODE_MASK                   0x30u
-#define SDHC_PROCTL_EMODE_SHIFT                  4
-#define SDHC_PROCTL_EMODE(x)                     (((uint32_t)(((uint32_t)(x))<<SDHC_PROCTL_EMODE_SHIFT))&SDHC_PROCTL_EMODE_MASK)
-#define SDHC_PROCTL_CDTL_MASK                    0x40u
-#define SDHC_PROCTL_CDTL_SHIFT                   6
-#define SDHC_PROCTL_CDSS_MASK                    0x80u
-#define SDHC_PROCTL_CDSS_SHIFT                   7
-#define SDHC_PROCTL_DMAS_MASK                    0x300u
-#define SDHC_PROCTL_DMAS_SHIFT                   8
-#define SDHC_PROCTL_DMAS(x)                      (((uint32_t)(((uint32_t)(x))<<SDHC_PROCTL_DMAS_SHIFT))&SDHC_PROCTL_DMAS_MASK)
-#define SDHC_PROCTL_SABGREQ_MASK                 0x10000u
-#define SDHC_PROCTL_SABGREQ_SHIFT                16
-#define SDHC_PROCTL_CREQ_MASK                    0x20000u
-#define SDHC_PROCTL_CREQ_SHIFT                   17
-#define SDHC_PROCTL_RWCTL_MASK                   0x40000u
-#define SDHC_PROCTL_RWCTL_SHIFT                  18
-#define SDHC_PROCTL_IABG_MASK                    0x80000u
-#define SDHC_PROCTL_IABG_SHIFT                   19
-#define SDHC_PROCTL_WECINT_MASK                  0x1000000u
-#define SDHC_PROCTL_WECINT_SHIFT                 24
-#define SDHC_PROCTL_WECINS_MASK                  0x2000000u
-#define SDHC_PROCTL_WECINS_SHIFT                 25
-#define SDHC_PROCTL_WECRM_MASK                   0x4000000u
-#define SDHC_PROCTL_WECRM_SHIFT                  26
-/* SYSCTL Bit Fields */
-#define SDHC_SYSCTL_IPGEN_MASK                   0x1u
-#define SDHC_SYSCTL_IPGEN_SHIFT                  0
-#define SDHC_SYSCTL_HCKEN_MASK                   0x2u
-#define SDHC_SYSCTL_HCKEN_SHIFT                  1
-#define SDHC_SYSCTL_PEREN_MASK                   0x4u
-#define SDHC_SYSCTL_PEREN_SHIFT                  2
-#define SDHC_SYSCTL_SDCLKEN_MASK                 0x8u
-#define SDHC_SYSCTL_SDCLKEN_SHIFT                3
-#define SDHC_SYSCTL_DVS_MASK                     0xF0u
-#define SDHC_SYSCTL_DVS_SHIFT                    4
-#define SDHC_SYSCTL_DVS(x)                       (((uint32_t)(((uint32_t)(x))<<SDHC_SYSCTL_DVS_SHIFT))&SDHC_SYSCTL_DVS_MASK)
-#define SDHC_SYSCTL_SDCLKFS_MASK                 0xFF00u
-#define SDHC_SYSCTL_SDCLKFS_SHIFT                8
-#define SDHC_SYSCTL_SDCLKFS(x)                   (((uint32_t)(((uint32_t)(x))<<SDHC_SYSCTL_SDCLKFS_SHIFT))&SDHC_SYSCTL_SDCLKFS_MASK)
-#define SDHC_SYSCTL_DTOCV_MASK                   0xF0000u
-#define SDHC_SYSCTL_DTOCV_SHIFT                  16
-#define SDHC_SYSCTL_DTOCV(x)                     (((uint32_t)(((uint32_t)(x))<<SDHC_SYSCTL_DTOCV_SHIFT))&SDHC_SYSCTL_DTOCV_MASK)
-#define SDHC_SYSCTL_RSTA_MASK                    0x1000000u
-#define SDHC_SYSCTL_RSTA_SHIFT                   24
-#define SDHC_SYSCTL_RSTC_MASK                    0x2000000u
-#define SDHC_SYSCTL_RSTC_SHIFT                   25
-#define SDHC_SYSCTL_RSTD_MASK                    0x4000000u
-#define SDHC_SYSCTL_RSTD_SHIFT                   26
-#define SDHC_SYSCTL_INITA_MASK                   0x8000000u
-#define SDHC_SYSCTL_INITA_SHIFT                  27
-/* IRQSTAT Bit Fields */
-#define SDHC_IRQSTAT_CC_MASK                     0x1u
-#define SDHC_IRQSTAT_CC_SHIFT                    0
-#define SDHC_IRQSTAT_TC_MASK                     0x2u
-#define SDHC_IRQSTAT_TC_SHIFT                    1
-#define SDHC_IRQSTAT_BGE_MASK                    0x4u
-#define SDHC_IRQSTAT_BGE_SHIFT                   2
-#define SDHC_IRQSTAT_DINT_MASK                   0x8u
-#define SDHC_IRQSTAT_DINT_SHIFT                  3
-#define SDHC_IRQSTAT_BWR_MASK                    0x10u
-#define SDHC_IRQSTAT_BWR_SHIFT                   4
-#define SDHC_IRQSTAT_BRR_MASK                    0x20u
-#define SDHC_IRQSTAT_BRR_SHIFT                   5
-#define SDHC_IRQSTAT_CINS_MASK                   0x40u
-#define SDHC_IRQSTAT_CINS_SHIFT                  6
-#define SDHC_IRQSTAT_CRM_MASK                    0x80u
-#define SDHC_IRQSTAT_CRM_SHIFT                   7
-#define SDHC_IRQSTAT_CINT_MASK                   0x100u
-#define SDHC_IRQSTAT_CINT_SHIFT                  8
-#define SDHC_IRQSTAT_CTOE_MASK                   0x10000u
-#define SDHC_IRQSTAT_CTOE_SHIFT                  16
-#define SDHC_IRQSTAT_CCE_MASK                    0x20000u
-#define SDHC_IRQSTAT_CCE_SHIFT                   17
-#define SDHC_IRQSTAT_CEBE_MASK                   0x40000u
-#define SDHC_IRQSTAT_CEBE_SHIFT                  18
-#define SDHC_IRQSTAT_CIE_MASK                    0x80000u
-#define SDHC_IRQSTAT_CIE_SHIFT                   19
-#define SDHC_IRQSTAT_DTOE_MASK                   0x100000u
-#define SDHC_IRQSTAT_DTOE_SHIFT                  20
-#define SDHC_IRQSTAT_DCE_MASK                    0x200000u
-#define SDHC_IRQSTAT_DCE_SHIFT                   21
-#define SDHC_IRQSTAT_DEBE_MASK                   0x400000u
-#define SDHC_IRQSTAT_DEBE_SHIFT                  22
-#define SDHC_IRQSTAT_AC12E_MASK                  0x1000000u
-#define SDHC_IRQSTAT_AC12E_SHIFT                 24
-#define SDHC_IRQSTAT_DMAE_MASK                   0x10000000u
-#define SDHC_IRQSTAT_DMAE_SHIFT                  28
-/* IRQSTATEN Bit Fields */
-#define SDHC_IRQSTATEN_CCSEN_MASK                0x1u
-#define SDHC_IRQSTATEN_CCSEN_SHIFT               0
-#define SDHC_IRQSTATEN_TCSEN_MASK                0x2u
-#define SDHC_IRQSTATEN_TCSEN_SHIFT               1
-#define SDHC_IRQSTATEN_BGESEN_MASK               0x4u
-#define SDHC_IRQSTATEN_BGESEN_SHIFT              2
-#define SDHC_IRQSTATEN_DINTSEN_MASK              0x8u
-#define SDHC_IRQSTATEN_DINTSEN_SHIFT             3
-#define SDHC_IRQSTATEN_BWRSEN_MASK               0x10u
-#define SDHC_IRQSTATEN_BWRSEN_SHIFT              4
-#define SDHC_IRQSTATEN_BRRSEN_MASK               0x20u
-#define SDHC_IRQSTATEN_BRRSEN_SHIFT              5
-#define SDHC_IRQSTATEN_CINSEN_MASK               0x40u
-#define SDHC_IRQSTATEN_CINSEN_SHIFT              6
-#define SDHC_IRQSTATEN_CRMSEN_MASK               0x80u
-#define SDHC_IRQSTATEN_CRMSEN_SHIFT              7
-#define SDHC_IRQSTATEN_CINTSEN_MASK              0x100u
-#define SDHC_IRQSTATEN_CINTSEN_SHIFT             8
-#define SDHC_IRQSTATEN_CTOESEN_MASK              0x10000u
-#define SDHC_IRQSTATEN_CTOESEN_SHIFT             16
-#define SDHC_IRQSTATEN_CCESEN_MASK               0x20000u
-#define SDHC_IRQSTATEN_CCESEN_SHIFT              17
-#define SDHC_IRQSTATEN_CEBESEN_MASK              0x40000u
-#define SDHC_IRQSTATEN_CEBESEN_SHIFT             18
-#define SDHC_IRQSTATEN_CIESEN_MASK               0x80000u
-#define SDHC_IRQSTATEN_CIESEN_SHIFT              19
-#define SDHC_IRQSTATEN_DTOESEN_MASK              0x100000u
-#define SDHC_IRQSTATEN_DTOESEN_SHIFT             20
-#define SDHC_IRQSTATEN_DCESEN_MASK               0x200000u
-#define SDHC_IRQSTATEN_DCESEN_SHIFT              21
-#define SDHC_IRQSTATEN_DEBESEN_MASK              0x400000u
-#define SDHC_IRQSTATEN_DEBESEN_SHIFT             22
-#define SDHC_IRQSTATEN_AC12ESEN_MASK             0x1000000u
-#define SDHC_IRQSTATEN_AC12ESEN_SHIFT            24
-#define SDHC_IRQSTATEN_DMAESEN_MASK              0x10000000u
-#define SDHC_IRQSTATEN_DMAESEN_SHIFT             28
-/* IRQSIGEN Bit Fields */
-#define SDHC_IRQSIGEN_CCIEN_MASK                 0x1u
-#define SDHC_IRQSIGEN_CCIEN_SHIFT                0
-#define SDHC_IRQSIGEN_TCIEN_MASK                 0x2u
-#define SDHC_IRQSIGEN_TCIEN_SHIFT                1
-#define SDHC_IRQSIGEN_BGEIEN_MASK                0x4u
-#define SDHC_IRQSIGEN_BGEIEN_SHIFT               2
-#define SDHC_IRQSIGEN_DINTIEN_MASK               0x8u
-#define SDHC_IRQSIGEN_DINTIEN_SHIFT              3
-#define SDHC_IRQSIGEN_BWRIEN_MASK                0x10u
-#define SDHC_IRQSIGEN_BWRIEN_SHIFT               4
-#define SDHC_IRQSIGEN_BRRIEN_MASK                0x20u
-#define SDHC_IRQSIGEN_BRRIEN_SHIFT               5
-#define SDHC_IRQSIGEN_CINSIEN_MASK               0x40u
-#define SDHC_IRQSIGEN_CINSIEN_SHIFT              6
-#define SDHC_IRQSIGEN_CRMIEN_MASK                0x80u
-#define SDHC_IRQSIGEN_CRMIEN_SHIFT               7
-#define SDHC_IRQSIGEN_CINTIEN_MASK               0x100u
-#define SDHC_IRQSIGEN_CINTIEN_SHIFT              8
-#define SDHC_IRQSIGEN_CTOEIEN_MASK               0x10000u
-#define SDHC_IRQSIGEN_CTOEIEN_SHIFT              16
-#define SDHC_IRQSIGEN_CCEIEN_MASK                0x20000u
-#define SDHC_IRQSIGEN_CCEIEN_SHIFT               17
-#define SDHC_IRQSIGEN_CEBEIEN_MASK               0x40000u
-#define SDHC_IRQSIGEN_CEBEIEN_SHIFT              18
-#define SDHC_IRQSIGEN_CIEIEN_MASK                0x80000u
-#define SDHC_IRQSIGEN_CIEIEN_SHIFT               19
-#define SDHC_IRQSIGEN_DTOEIEN_MASK               0x100000u
-#define SDHC_IRQSIGEN_DTOEIEN_SHIFT              20
-#define SDHC_IRQSIGEN_DCEIEN_MASK                0x200000u
-#define SDHC_IRQSIGEN_DCEIEN_SHIFT               21
-#define SDHC_IRQSIGEN_DEBEIEN_MASK               0x400000u
-#define SDHC_IRQSIGEN_DEBEIEN_SHIFT              22
-#define SDHC_IRQSIGEN_AC12EIEN_MASK              0x1000000u
-#define SDHC_IRQSIGEN_AC12EIEN_SHIFT             24
-#define SDHC_IRQSIGEN_DMAEIEN_MASK               0x10000000u
-#define SDHC_IRQSIGEN_DMAEIEN_SHIFT              28
-/* AC12ERR Bit Fields */
-#define SDHC_AC12ERR_AC12NE_MASK                 0x1u
-#define SDHC_AC12ERR_AC12NE_SHIFT                0
-#define SDHC_AC12ERR_AC12TOE_MASK                0x2u
-#define SDHC_AC12ERR_AC12TOE_SHIFT               1
-#define SDHC_AC12ERR_AC12EBE_MASK                0x4u
-#define SDHC_AC12ERR_AC12EBE_SHIFT               2
-#define SDHC_AC12ERR_AC12CE_MASK                 0x8u
-#define SDHC_AC12ERR_AC12CE_SHIFT                3
-#define SDHC_AC12ERR_AC12IE_MASK                 0x10u
-#define SDHC_AC12ERR_AC12IE_SHIFT                4
-#define SDHC_AC12ERR_CNIBAC12E_MASK              0x80u
-#define SDHC_AC12ERR_CNIBAC12E_SHIFT             7
-/* HTCAPBLT Bit Fields */
-#define SDHC_HTCAPBLT_MBL_MASK                   0x70000u
-#define SDHC_HTCAPBLT_MBL_SHIFT                  16
-#define SDHC_HTCAPBLT_MBL(x)                     (((uint32_t)(((uint32_t)(x))<<SDHC_HTCAPBLT_MBL_SHIFT))&SDHC_HTCAPBLT_MBL_MASK)
-#define SDHC_HTCAPBLT_ADMAS_MASK                 0x100000u
-#define SDHC_HTCAPBLT_ADMAS_SHIFT                20
-#define SDHC_HTCAPBLT_HSS_MASK                   0x200000u
-#define SDHC_HTCAPBLT_HSS_SHIFT                  21
-#define SDHC_HTCAPBLT_DMAS_MASK                  0x400000u
-#define SDHC_HTCAPBLT_DMAS_SHIFT                 22
-#define SDHC_HTCAPBLT_SRS_MASK                   0x800000u
-#define SDHC_HTCAPBLT_SRS_SHIFT                  23
-#define SDHC_HTCAPBLT_VS33_MASK                  0x1000000u
-#define SDHC_HTCAPBLT_VS33_SHIFT                 24
-#define SDHC_HTCAPBLT_VS30_MASK                  0x2000000u
-#define SDHC_HTCAPBLT_VS30_SHIFT                 25
-#define SDHC_HTCAPBLT_VS18_MASK                  0x4000000u
-#define SDHC_HTCAPBLT_VS18_SHIFT                 26
-/* WML Bit Fields */
-#define SDHC_WML_RDWML_MASK                      0xFFu
-#define SDHC_WML_RDWML_SHIFT                     0
-#define SDHC_WML_RDWML(x)                        (((uint32_t)(((uint32_t)(x))<<SDHC_WML_RDWML_SHIFT))&SDHC_WML_RDWML_MASK)
-#define SDHC_WML_WRWML_MASK                      0xFF0000u
-#define SDHC_WML_WRWML_SHIFT                     16
-#define SDHC_WML_WRWML(x)                        (((uint32_t)(((uint32_t)(x))<<SDHC_WML_WRWML_SHIFT))&SDHC_WML_WRWML_MASK)
+/*! @name DSADDR - DMA System Address register */
+#define SDHC_DSADDR_DSADDR_MASK                  (0xFFFFFFFCU)
+#define SDHC_DSADDR_DSADDR_SHIFT                 (2U)
+#define SDHC_DSADDR_DSADDR(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_DSADDR_DSADDR_SHIFT)) & SDHC_DSADDR_DSADDR_MASK)
+
+/*! @name BLKATTR - Block Attributes register */
+#define SDHC_BLKATTR_BLKSIZE_MASK                (0x1FFFU)
+#define SDHC_BLKATTR_BLKSIZE_SHIFT               (0U)
+#define SDHC_BLKATTR_BLKSIZE(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_BLKATTR_BLKSIZE_SHIFT)) & SDHC_BLKATTR_BLKSIZE_MASK)
+#define SDHC_BLKATTR_BLKCNT_MASK                 (0xFFFF0000U)
+#define SDHC_BLKATTR_BLKCNT_SHIFT                (16U)
+#define SDHC_BLKATTR_BLKCNT(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_BLKATTR_BLKCNT_SHIFT)) & SDHC_BLKATTR_BLKCNT_MASK)
+
+/*! @name CMDARG - Command Argument register */
+#define SDHC_CMDARG_CMDARG_MASK                  (0xFFFFFFFFU)
+#define SDHC_CMDARG_CMDARG_SHIFT                 (0U)
+#define SDHC_CMDARG_CMDARG(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_CMDARG_CMDARG_SHIFT)) & SDHC_CMDARG_CMDARG_MASK)
+
+/*! @name XFERTYP - Transfer Type register */
+#define SDHC_XFERTYP_DMAEN_MASK                  (0x1U)
+#define SDHC_XFERTYP_DMAEN_SHIFT                 (0U)
+#define SDHC_XFERTYP_DMAEN(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_DMAEN_SHIFT)) & SDHC_XFERTYP_DMAEN_MASK)
+#define SDHC_XFERTYP_BCEN_MASK                   (0x2U)
+#define SDHC_XFERTYP_BCEN_SHIFT                  (1U)
+#define SDHC_XFERTYP_BCEN(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_BCEN_SHIFT)) & SDHC_XFERTYP_BCEN_MASK)
+#define SDHC_XFERTYP_AC12EN_MASK                 (0x4U)
+#define SDHC_XFERTYP_AC12EN_SHIFT                (2U)
+#define SDHC_XFERTYP_AC12EN(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_AC12EN_SHIFT)) & SDHC_XFERTYP_AC12EN_MASK)
+#define SDHC_XFERTYP_DTDSEL_MASK                 (0x10U)
+#define SDHC_XFERTYP_DTDSEL_SHIFT                (4U)
+#define SDHC_XFERTYP_DTDSEL(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_DTDSEL_SHIFT)) & SDHC_XFERTYP_DTDSEL_MASK)
+#define SDHC_XFERTYP_MSBSEL_MASK                 (0x20U)
+#define SDHC_XFERTYP_MSBSEL_SHIFT                (5U)
+#define SDHC_XFERTYP_MSBSEL(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_MSBSEL_SHIFT)) & SDHC_XFERTYP_MSBSEL_MASK)
+#define SDHC_XFERTYP_RSPTYP_MASK                 (0x30000U)
+#define SDHC_XFERTYP_RSPTYP_SHIFT                (16U)
+#define SDHC_XFERTYP_RSPTYP(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_RSPTYP_SHIFT)) & SDHC_XFERTYP_RSPTYP_MASK)
+#define SDHC_XFERTYP_CCCEN_MASK                  (0x80000U)
+#define SDHC_XFERTYP_CCCEN_SHIFT                 (19U)
+#define SDHC_XFERTYP_CCCEN(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_CCCEN_SHIFT)) & SDHC_XFERTYP_CCCEN_MASK)
+#define SDHC_XFERTYP_CICEN_MASK                  (0x100000U)
+#define SDHC_XFERTYP_CICEN_SHIFT                 (20U)
+#define SDHC_XFERTYP_CICEN(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_CICEN_SHIFT)) & SDHC_XFERTYP_CICEN_MASK)
+#define SDHC_XFERTYP_DPSEL_MASK                  (0x200000U)
+#define SDHC_XFERTYP_DPSEL_SHIFT                 (21U)
+#define SDHC_XFERTYP_DPSEL(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_DPSEL_SHIFT)) & SDHC_XFERTYP_DPSEL_MASK)
+#define SDHC_XFERTYP_CMDTYP_MASK                 (0xC00000U)
+#define SDHC_XFERTYP_CMDTYP_SHIFT                (22U)
+#define SDHC_XFERTYP_CMDTYP(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_CMDTYP_SHIFT)) & SDHC_XFERTYP_CMDTYP_MASK)
+#define SDHC_XFERTYP_CMDINX_MASK                 (0x3F000000U)
+#define SDHC_XFERTYP_CMDINX_SHIFT                (24U)
+#define SDHC_XFERTYP_CMDINX(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_XFERTYP_CMDINX_SHIFT)) & SDHC_XFERTYP_CMDINX_MASK)
+
+/*! @name CMDRSP - Command Response 0..Command Response 3 */
+#define SDHC_CMDRSP_CMDRSP0_MASK                 (0xFFFFFFFFU)
+#define SDHC_CMDRSP_CMDRSP0_SHIFT                (0U)
+#define SDHC_CMDRSP_CMDRSP0(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_CMDRSP_CMDRSP0_SHIFT)) & SDHC_CMDRSP_CMDRSP0_MASK)
+#define SDHC_CMDRSP_CMDRSP1_MASK                 (0xFFFFFFFFU)
+#define SDHC_CMDRSP_CMDRSP1_SHIFT                (0U)
+#define SDHC_CMDRSP_CMDRSP1(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_CMDRSP_CMDRSP1_SHIFT)) & SDHC_CMDRSP_CMDRSP1_MASK)
+#define SDHC_CMDRSP_CMDRSP2_MASK                 (0xFFFFFFFFU)
+#define SDHC_CMDRSP_CMDRSP2_SHIFT                (0U)
+#define SDHC_CMDRSP_CMDRSP2(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_CMDRSP_CMDRSP2_SHIFT)) & SDHC_CMDRSP_CMDRSP2_MASK)
+#define SDHC_CMDRSP_CMDRSP3_MASK                 (0xFFFFFFFFU)
+#define SDHC_CMDRSP_CMDRSP3_SHIFT                (0U)
+#define SDHC_CMDRSP_CMDRSP3(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_CMDRSP_CMDRSP3_SHIFT)) & SDHC_CMDRSP_CMDRSP3_MASK)
+
+/* The count of SDHC_CMDRSP */
+#define SDHC_CMDRSP_COUNT                        (4U)
+
+/*! @name DATPORT - Buffer Data Port register */
+#define SDHC_DATPORT_DATCONT_MASK                (0xFFFFFFFFU)
+#define SDHC_DATPORT_DATCONT_SHIFT               (0U)
+#define SDHC_DATPORT_DATCONT(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_DATPORT_DATCONT_SHIFT)) & SDHC_DATPORT_DATCONT_MASK)
+
+/*! @name PRSSTAT - Present State register */
+#define SDHC_PRSSTAT_CIHB_MASK                   (0x1U)
+#define SDHC_PRSSTAT_CIHB_SHIFT                  (0U)
+#define SDHC_PRSSTAT_CIHB(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_CIHB_SHIFT)) & SDHC_PRSSTAT_CIHB_MASK)
+#define SDHC_PRSSTAT_CDIHB_MASK                  (0x2U)
+#define SDHC_PRSSTAT_CDIHB_SHIFT                 (1U)
+#define SDHC_PRSSTAT_CDIHB(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_CDIHB_SHIFT)) & SDHC_PRSSTAT_CDIHB_MASK)
+#define SDHC_PRSSTAT_DLA_MASK                    (0x4U)
+#define SDHC_PRSSTAT_DLA_SHIFT                   (2U)
+#define SDHC_PRSSTAT_DLA(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_DLA_SHIFT)) & SDHC_PRSSTAT_DLA_MASK)
+#define SDHC_PRSSTAT_SDSTB_MASK                  (0x8U)
+#define SDHC_PRSSTAT_SDSTB_SHIFT                 (3U)
+#define SDHC_PRSSTAT_SDSTB(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_SDSTB_SHIFT)) & SDHC_PRSSTAT_SDSTB_MASK)
+#define SDHC_PRSSTAT_IPGOFF_MASK                 (0x10U)
+#define SDHC_PRSSTAT_IPGOFF_SHIFT                (4U)
+#define SDHC_PRSSTAT_IPGOFF(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_IPGOFF_SHIFT)) & SDHC_PRSSTAT_IPGOFF_MASK)
+#define SDHC_PRSSTAT_HCKOFF_MASK                 (0x20U)
+#define SDHC_PRSSTAT_HCKOFF_SHIFT                (5U)
+#define SDHC_PRSSTAT_HCKOFF(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_HCKOFF_SHIFT)) & SDHC_PRSSTAT_HCKOFF_MASK)
+#define SDHC_PRSSTAT_PEROFF_MASK                 (0x40U)
+#define SDHC_PRSSTAT_PEROFF_SHIFT                (6U)
+#define SDHC_PRSSTAT_PEROFF(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_PEROFF_SHIFT)) & SDHC_PRSSTAT_PEROFF_MASK)
+#define SDHC_PRSSTAT_SDOFF_MASK                  (0x80U)
+#define SDHC_PRSSTAT_SDOFF_SHIFT                 (7U)
+#define SDHC_PRSSTAT_SDOFF(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_SDOFF_SHIFT)) & SDHC_PRSSTAT_SDOFF_MASK)
+#define SDHC_PRSSTAT_WTA_MASK                    (0x100U)
+#define SDHC_PRSSTAT_WTA_SHIFT                   (8U)
+#define SDHC_PRSSTAT_WTA(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_WTA_SHIFT)) & SDHC_PRSSTAT_WTA_MASK)
+#define SDHC_PRSSTAT_RTA_MASK                    (0x200U)
+#define SDHC_PRSSTAT_RTA_SHIFT                   (9U)
+#define SDHC_PRSSTAT_RTA(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_RTA_SHIFT)) & SDHC_PRSSTAT_RTA_MASK)
+#define SDHC_PRSSTAT_BWEN_MASK                   (0x400U)
+#define SDHC_PRSSTAT_BWEN_SHIFT                  (10U)
+#define SDHC_PRSSTAT_BWEN(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_BWEN_SHIFT)) & SDHC_PRSSTAT_BWEN_MASK)
+#define SDHC_PRSSTAT_BREN_MASK                   (0x800U)
+#define SDHC_PRSSTAT_BREN_SHIFT                  (11U)
+#define SDHC_PRSSTAT_BREN(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_BREN_SHIFT)) & SDHC_PRSSTAT_BREN_MASK)
+#define SDHC_PRSSTAT_CINS_MASK                   (0x10000U)
+#define SDHC_PRSSTAT_CINS_SHIFT                  (16U)
+#define SDHC_PRSSTAT_CINS(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_CINS_SHIFT)) & SDHC_PRSSTAT_CINS_MASK)
+#define SDHC_PRSSTAT_CLSL_MASK                   (0x800000U)
+#define SDHC_PRSSTAT_CLSL_SHIFT                  (23U)
+#define SDHC_PRSSTAT_CLSL(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_CLSL_SHIFT)) & SDHC_PRSSTAT_CLSL_MASK)
+#define SDHC_PRSSTAT_DLSL_MASK                   (0xFF000000U)
+#define SDHC_PRSSTAT_DLSL_SHIFT                  (24U)
+#define SDHC_PRSSTAT_DLSL(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_PRSSTAT_DLSL_SHIFT)) & SDHC_PRSSTAT_DLSL_MASK)
+
+/*! @name PROCTL - Protocol Control register */
+#define SDHC_PROCTL_LCTL_MASK                    (0x1U)
+#define SDHC_PROCTL_LCTL_SHIFT                   (0U)
+#define SDHC_PROCTL_LCTL(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_LCTL_SHIFT)) & SDHC_PROCTL_LCTL_MASK)
+#define SDHC_PROCTL_DTW_MASK                     (0x6U)
+#define SDHC_PROCTL_DTW_SHIFT                    (1U)
+#define SDHC_PROCTL_DTW(x)                       (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_DTW_SHIFT)) & SDHC_PROCTL_DTW_MASK)
+#define SDHC_PROCTL_D3CD_MASK                    (0x8U)
+#define SDHC_PROCTL_D3CD_SHIFT                   (3U)
+#define SDHC_PROCTL_D3CD(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_D3CD_SHIFT)) & SDHC_PROCTL_D3CD_MASK)
+#define SDHC_PROCTL_EMODE_MASK                   (0x30U)
+#define SDHC_PROCTL_EMODE_SHIFT                  (4U)
+#define SDHC_PROCTL_EMODE(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_EMODE_SHIFT)) & SDHC_PROCTL_EMODE_MASK)
+#define SDHC_PROCTL_CDTL_MASK                    (0x40U)
+#define SDHC_PROCTL_CDTL_SHIFT                   (6U)
+#define SDHC_PROCTL_CDTL(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_CDTL_SHIFT)) & SDHC_PROCTL_CDTL_MASK)
+#define SDHC_PROCTL_CDSS_MASK                    (0x80U)
+#define SDHC_PROCTL_CDSS_SHIFT                   (7U)
+#define SDHC_PROCTL_CDSS(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_CDSS_SHIFT)) & SDHC_PROCTL_CDSS_MASK)
+#define SDHC_PROCTL_DMAS_MASK                    (0x300U)
+#define SDHC_PROCTL_DMAS_SHIFT                   (8U)
+#define SDHC_PROCTL_DMAS(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_DMAS_SHIFT)) & SDHC_PROCTL_DMAS_MASK)
+#define SDHC_PROCTL_SABGREQ_MASK                 (0x10000U)
+#define SDHC_PROCTL_SABGREQ_SHIFT                (16U)
+#define SDHC_PROCTL_SABGREQ(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_SABGREQ_SHIFT)) & SDHC_PROCTL_SABGREQ_MASK)
+#define SDHC_PROCTL_CREQ_MASK                    (0x20000U)
+#define SDHC_PROCTL_CREQ_SHIFT                   (17U)
+#define SDHC_PROCTL_CREQ(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_CREQ_SHIFT)) & SDHC_PROCTL_CREQ_MASK)
+#define SDHC_PROCTL_RWCTL_MASK                   (0x40000U)
+#define SDHC_PROCTL_RWCTL_SHIFT                  (18U)
+#define SDHC_PROCTL_RWCTL(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_RWCTL_SHIFT)) & SDHC_PROCTL_RWCTL_MASK)
+#define SDHC_PROCTL_IABG_MASK                    (0x80000U)
+#define SDHC_PROCTL_IABG_SHIFT                   (19U)
+#define SDHC_PROCTL_IABG(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_IABG_SHIFT)) & SDHC_PROCTL_IABG_MASK)
+#define SDHC_PROCTL_WECINT_MASK                  (0x1000000U)
+#define SDHC_PROCTL_WECINT_SHIFT                 (24U)
+#define SDHC_PROCTL_WECINT(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_WECINT_SHIFT)) & SDHC_PROCTL_WECINT_MASK)
+#define SDHC_PROCTL_WECINS_MASK                  (0x2000000U)
+#define SDHC_PROCTL_WECINS_SHIFT                 (25U)
+#define SDHC_PROCTL_WECINS(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_WECINS_SHIFT)) & SDHC_PROCTL_WECINS_MASK)
+#define SDHC_PROCTL_WECRM_MASK                   (0x4000000U)
+#define SDHC_PROCTL_WECRM_SHIFT                  (26U)
+#define SDHC_PROCTL_WECRM(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_PROCTL_WECRM_SHIFT)) & SDHC_PROCTL_WECRM_MASK)
+
+/*! @name SYSCTL - System Control register */
+#define SDHC_SYSCTL_IPGEN_MASK                   (0x1U)
+#define SDHC_SYSCTL_IPGEN_SHIFT                  (0U)
+#define SDHC_SYSCTL_IPGEN(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_IPGEN_SHIFT)) & SDHC_SYSCTL_IPGEN_MASK)
+#define SDHC_SYSCTL_HCKEN_MASK                   (0x2U)
+#define SDHC_SYSCTL_HCKEN_SHIFT                  (1U)
+#define SDHC_SYSCTL_HCKEN(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_HCKEN_SHIFT)) & SDHC_SYSCTL_HCKEN_MASK)
+#define SDHC_SYSCTL_PEREN_MASK                   (0x4U)
+#define SDHC_SYSCTL_PEREN_SHIFT                  (2U)
+#define SDHC_SYSCTL_PEREN(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_PEREN_SHIFT)) & SDHC_SYSCTL_PEREN_MASK)
+#define SDHC_SYSCTL_SDCLKEN_MASK                 (0x8U)
+#define SDHC_SYSCTL_SDCLKEN_SHIFT                (3U)
+#define SDHC_SYSCTL_SDCLKEN(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_SDCLKEN_SHIFT)) & SDHC_SYSCTL_SDCLKEN_MASK)
+#define SDHC_SYSCTL_DVS_MASK                     (0xF0U)
+#define SDHC_SYSCTL_DVS_SHIFT                    (4U)
+#define SDHC_SYSCTL_DVS(x)                       (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_DVS_SHIFT)) & SDHC_SYSCTL_DVS_MASK)
+#define SDHC_SYSCTL_SDCLKFS_MASK                 (0xFF00U)
+#define SDHC_SYSCTL_SDCLKFS_SHIFT                (8U)
+#define SDHC_SYSCTL_SDCLKFS(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_SDCLKFS_SHIFT)) & SDHC_SYSCTL_SDCLKFS_MASK)
+#define SDHC_SYSCTL_DTOCV_MASK                   (0xF0000U)
+#define SDHC_SYSCTL_DTOCV_SHIFT                  (16U)
+#define SDHC_SYSCTL_DTOCV(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_DTOCV_SHIFT)) & SDHC_SYSCTL_DTOCV_MASK)
+#define SDHC_SYSCTL_RSTA_MASK                    (0x1000000U)
+#define SDHC_SYSCTL_RSTA_SHIFT                   (24U)
+#define SDHC_SYSCTL_RSTA(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_RSTA_SHIFT)) & SDHC_SYSCTL_RSTA_MASK)
+#define SDHC_SYSCTL_RSTC_MASK                    (0x2000000U)
+#define SDHC_SYSCTL_RSTC_SHIFT                   (25U)
+#define SDHC_SYSCTL_RSTC(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_RSTC_SHIFT)) & SDHC_SYSCTL_RSTC_MASK)
+#define SDHC_SYSCTL_RSTD_MASK                    (0x4000000U)
+#define SDHC_SYSCTL_RSTD_SHIFT                   (26U)
+#define SDHC_SYSCTL_RSTD(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_RSTD_SHIFT)) & SDHC_SYSCTL_RSTD_MASK)
+#define SDHC_SYSCTL_INITA_MASK                   (0x8000000U)
+#define SDHC_SYSCTL_INITA_SHIFT                  (27U)
+#define SDHC_SYSCTL_INITA(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_SYSCTL_INITA_SHIFT)) & SDHC_SYSCTL_INITA_MASK)
+
+/*! @name IRQSTAT - Interrupt Status register */
+#define SDHC_IRQSTAT_CC_MASK                     (0x1U)
+#define SDHC_IRQSTAT_CC_SHIFT                    (0U)
+#define SDHC_IRQSTAT_CC(x)                       (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_CC_SHIFT)) & SDHC_IRQSTAT_CC_MASK)
+#define SDHC_IRQSTAT_TC_MASK                     (0x2U)
+#define SDHC_IRQSTAT_TC_SHIFT                    (1U)
+#define SDHC_IRQSTAT_TC(x)                       (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_TC_SHIFT)) & SDHC_IRQSTAT_TC_MASK)
+#define SDHC_IRQSTAT_BGE_MASK                    (0x4U)
+#define SDHC_IRQSTAT_BGE_SHIFT                   (2U)
+#define SDHC_IRQSTAT_BGE(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_BGE_SHIFT)) & SDHC_IRQSTAT_BGE_MASK)
+#define SDHC_IRQSTAT_DINT_MASK                   (0x8U)
+#define SDHC_IRQSTAT_DINT_SHIFT                  (3U)
+#define SDHC_IRQSTAT_DINT(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_DINT_SHIFT)) & SDHC_IRQSTAT_DINT_MASK)
+#define SDHC_IRQSTAT_BWR_MASK                    (0x10U)
+#define SDHC_IRQSTAT_BWR_SHIFT                   (4U)
+#define SDHC_IRQSTAT_BWR(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_BWR_SHIFT)) & SDHC_IRQSTAT_BWR_MASK)
+#define SDHC_IRQSTAT_BRR_MASK                    (0x20U)
+#define SDHC_IRQSTAT_BRR_SHIFT                   (5U)
+#define SDHC_IRQSTAT_BRR(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_BRR_SHIFT)) & SDHC_IRQSTAT_BRR_MASK)
+#define SDHC_IRQSTAT_CINS_MASK                   (0x40U)
+#define SDHC_IRQSTAT_CINS_SHIFT                  (6U)
+#define SDHC_IRQSTAT_CINS(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_CINS_SHIFT)) & SDHC_IRQSTAT_CINS_MASK)
+#define SDHC_IRQSTAT_CRM_MASK                    (0x80U)
+#define SDHC_IRQSTAT_CRM_SHIFT                   (7U)
+#define SDHC_IRQSTAT_CRM(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_CRM_SHIFT)) & SDHC_IRQSTAT_CRM_MASK)
+#define SDHC_IRQSTAT_CINT_MASK                   (0x100U)
+#define SDHC_IRQSTAT_CINT_SHIFT                  (8U)
+#define SDHC_IRQSTAT_CINT(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_CINT_SHIFT)) & SDHC_IRQSTAT_CINT_MASK)
+#define SDHC_IRQSTAT_CTOE_MASK                   (0x10000U)
+#define SDHC_IRQSTAT_CTOE_SHIFT                  (16U)
+#define SDHC_IRQSTAT_CTOE(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_CTOE_SHIFT)) & SDHC_IRQSTAT_CTOE_MASK)
+#define SDHC_IRQSTAT_CCE_MASK                    (0x20000U)
+#define SDHC_IRQSTAT_CCE_SHIFT                   (17U)
+#define SDHC_IRQSTAT_CCE(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_CCE_SHIFT)) & SDHC_IRQSTAT_CCE_MASK)
+#define SDHC_IRQSTAT_CEBE_MASK                   (0x40000U)
+#define SDHC_IRQSTAT_CEBE_SHIFT                  (18U)
+#define SDHC_IRQSTAT_CEBE(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_CEBE_SHIFT)) & SDHC_IRQSTAT_CEBE_MASK)
+#define SDHC_IRQSTAT_CIE_MASK                    (0x80000U)
+#define SDHC_IRQSTAT_CIE_SHIFT                   (19U)
+#define SDHC_IRQSTAT_CIE(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_CIE_SHIFT)) & SDHC_IRQSTAT_CIE_MASK)
+#define SDHC_IRQSTAT_DTOE_MASK                   (0x100000U)
+#define SDHC_IRQSTAT_DTOE_SHIFT                  (20U)
+#define SDHC_IRQSTAT_DTOE(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_DTOE_SHIFT)) & SDHC_IRQSTAT_DTOE_MASK)
+#define SDHC_IRQSTAT_DCE_MASK                    (0x200000U)
+#define SDHC_IRQSTAT_DCE_SHIFT                   (21U)
+#define SDHC_IRQSTAT_DCE(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_DCE_SHIFT)) & SDHC_IRQSTAT_DCE_MASK)
+#define SDHC_IRQSTAT_DEBE_MASK                   (0x400000U)
+#define SDHC_IRQSTAT_DEBE_SHIFT                  (22U)
+#define SDHC_IRQSTAT_DEBE(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_DEBE_SHIFT)) & SDHC_IRQSTAT_DEBE_MASK)
+#define SDHC_IRQSTAT_AC12E_MASK                  (0x1000000U)
+#define SDHC_IRQSTAT_AC12E_SHIFT                 (24U)
+#define SDHC_IRQSTAT_AC12E(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_AC12E_SHIFT)) & SDHC_IRQSTAT_AC12E_MASK)
+#define SDHC_IRQSTAT_DMAE_MASK                   (0x10000000U)
+#define SDHC_IRQSTAT_DMAE_SHIFT                  (28U)
+#define SDHC_IRQSTAT_DMAE(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTAT_DMAE_SHIFT)) & SDHC_IRQSTAT_DMAE_MASK)
+
+/*! @name IRQSTATEN - Interrupt Status Enable register */
+#define SDHC_IRQSTATEN_CCSEN_MASK                (0x1U)
+#define SDHC_IRQSTATEN_CCSEN_SHIFT               (0U)
+#define SDHC_IRQSTATEN_CCSEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_CCSEN_SHIFT)) & SDHC_IRQSTATEN_CCSEN_MASK)
+#define SDHC_IRQSTATEN_TCSEN_MASK                (0x2U)
+#define SDHC_IRQSTATEN_TCSEN_SHIFT               (1U)
+#define SDHC_IRQSTATEN_TCSEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_TCSEN_SHIFT)) & SDHC_IRQSTATEN_TCSEN_MASK)
+#define SDHC_IRQSTATEN_BGESEN_MASK               (0x4U)
+#define SDHC_IRQSTATEN_BGESEN_SHIFT              (2U)
+#define SDHC_IRQSTATEN_BGESEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_BGESEN_SHIFT)) & SDHC_IRQSTATEN_BGESEN_MASK)
+#define SDHC_IRQSTATEN_DINTSEN_MASK              (0x8U)
+#define SDHC_IRQSTATEN_DINTSEN_SHIFT             (3U)
+#define SDHC_IRQSTATEN_DINTSEN(x)                (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_DINTSEN_SHIFT)) & SDHC_IRQSTATEN_DINTSEN_MASK)
+#define SDHC_IRQSTATEN_BWRSEN_MASK               (0x10U)
+#define SDHC_IRQSTATEN_BWRSEN_SHIFT              (4U)
+#define SDHC_IRQSTATEN_BWRSEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_BWRSEN_SHIFT)) & SDHC_IRQSTATEN_BWRSEN_MASK)
+#define SDHC_IRQSTATEN_BRRSEN_MASK               (0x20U)
+#define SDHC_IRQSTATEN_BRRSEN_SHIFT              (5U)
+#define SDHC_IRQSTATEN_BRRSEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_BRRSEN_SHIFT)) & SDHC_IRQSTATEN_BRRSEN_MASK)
+#define SDHC_IRQSTATEN_CINSEN_MASK               (0x40U)
+#define SDHC_IRQSTATEN_CINSEN_SHIFT              (6U)
+#define SDHC_IRQSTATEN_CINSEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_CINSEN_SHIFT)) & SDHC_IRQSTATEN_CINSEN_MASK)
+#define SDHC_IRQSTATEN_CRMSEN_MASK               (0x80U)
+#define SDHC_IRQSTATEN_CRMSEN_SHIFT              (7U)
+#define SDHC_IRQSTATEN_CRMSEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_CRMSEN_SHIFT)) & SDHC_IRQSTATEN_CRMSEN_MASK)
+#define SDHC_IRQSTATEN_CINTSEN_MASK              (0x100U)
+#define SDHC_IRQSTATEN_CINTSEN_SHIFT             (8U)
+#define SDHC_IRQSTATEN_CINTSEN(x)                (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_CINTSEN_SHIFT)) & SDHC_IRQSTATEN_CINTSEN_MASK)
+#define SDHC_IRQSTATEN_CTOESEN_MASK              (0x10000U)
+#define SDHC_IRQSTATEN_CTOESEN_SHIFT             (16U)
+#define SDHC_IRQSTATEN_CTOESEN(x)                (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_CTOESEN_SHIFT)) & SDHC_IRQSTATEN_CTOESEN_MASK)
+#define SDHC_IRQSTATEN_CCESEN_MASK               (0x20000U)
+#define SDHC_IRQSTATEN_CCESEN_SHIFT              (17U)
+#define SDHC_IRQSTATEN_CCESEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_CCESEN_SHIFT)) & SDHC_IRQSTATEN_CCESEN_MASK)
+#define SDHC_IRQSTATEN_CEBESEN_MASK              (0x40000U)
+#define SDHC_IRQSTATEN_CEBESEN_SHIFT             (18U)
+#define SDHC_IRQSTATEN_CEBESEN(x)                (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_CEBESEN_SHIFT)) & SDHC_IRQSTATEN_CEBESEN_MASK)
+#define SDHC_IRQSTATEN_CIESEN_MASK               (0x80000U)
+#define SDHC_IRQSTATEN_CIESEN_SHIFT              (19U)
+#define SDHC_IRQSTATEN_CIESEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_CIESEN_SHIFT)) & SDHC_IRQSTATEN_CIESEN_MASK)
+#define SDHC_IRQSTATEN_DTOESEN_MASK              (0x100000U)
+#define SDHC_IRQSTATEN_DTOESEN_SHIFT             (20U)
+#define SDHC_IRQSTATEN_DTOESEN(x)                (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_DTOESEN_SHIFT)) & SDHC_IRQSTATEN_DTOESEN_MASK)
+#define SDHC_IRQSTATEN_DCESEN_MASK               (0x200000U)
+#define SDHC_IRQSTATEN_DCESEN_SHIFT              (21U)
+#define SDHC_IRQSTATEN_DCESEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_DCESEN_SHIFT)) & SDHC_IRQSTATEN_DCESEN_MASK)
+#define SDHC_IRQSTATEN_DEBESEN_MASK              (0x400000U)
+#define SDHC_IRQSTATEN_DEBESEN_SHIFT             (22U)
+#define SDHC_IRQSTATEN_DEBESEN(x)                (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_DEBESEN_SHIFT)) & SDHC_IRQSTATEN_DEBESEN_MASK)
+#define SDHC_IRQSTATEN_AC12ESEN_MASK             (0x1000000U)
+#define SDHC_IRQSTATEN_AC12ESEN_SHIFT            (24U)
+#define SDHC_IRQSTATEN_AC12ESEN(x)               (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_AC12ESEN_SHIFT)) & SDHC_IRQSTATEN_AC12ESEN_MASK)
+#define SDHC_IRQSTATEN_DMAESEN_MASK              (0x10000000U)
+#define SDHC_IRQSTATEN_DMAESEN_SHIFT             (28U)
+#define SDHC_IRQSTATEN_DMAESEN(x)                (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSTATEN_DMAESEN_SHIFT)) & SDHC_IRQSTATEN_DMAESEN_MASK)
+
+/*! @name IRQSIGEN - Interrupt Signal Enable register */
+#define SDHC_IRQSIGEN_CCIEN_MASK                 (0x1U)
+#define SDHC_IRQSIGEN_CCIEN_SHIFT                (0U)
+#define SDHC_IRQSIGEN_CCIEN(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_CCIEN_SHIFT)) & SDHC_IRQSIGEN_CCIEN_MASK)
+#define SDHC_IRQSIGEN_TCIEN_MASK                 (0x2U)
+#define SDHC_IRQSIGEN_TCIEN_SHIFT                (1U)
+#define SDHC_IRQSIGEN_TCIEN(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_TCIEN_SHIFT)) & SDHC_IRQSIGEN_TCIEN_MASK)
+#define SDHC_IRQSIGEN_BGEIEN_MASK                (0x4U)
+#define SDHC_IRQSIGEN_BGEIEN_SHIFT               (2U)
+#define SDHC_IRQSIGEN_BGEIEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_BGEIEN_SHIFT)) & SDHC_IRQSIGEN_BGEIEN_MASK)
+#define SDHC_IRQSIGEN_DINTIEN_MASK               (0x8U)
+#define SDHC_IRQSIGEN_DINTIEN_SHIFT              (3U)
+#define SDHC_IRQSIGEN_DINTIEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_DINTIEN_SHIFT)) & SDHC_IRQSIGEN_DINTIEN_MASK)
+#define SDHC_IRQSIGEN_BWRIEN_MASK                (0x10U)
+#define SDHC_IRQSIGEN_BWRIEN_SHIFT               (4U)
+#define SDHC_IRQSIGEN_BWRIEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_BWRIEN_SHIFT)) & SDHC_IRQSIGEN_BWRIEN_MASK)
+#define SDHC_IRQSIGEN_BRRIEN_MASK                (0x20U)
+#define SDHC_IRQSIGEN_BRRIEN_SHIFT               (5U)
+#define SDHC_IRQSIGEN_BRRIEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_BRRIEN_SHIFT)) & SDHC_IRQSIGEN_BRRIEN_MASK)
+#define SDHC_IRQSIGEN_CINSIEN_MASK               (0x40U)
+#define SDHC_IRQSIGEN_CINSIEN_SHIFT              (6U)
+#define SDHC_IRQSIGEN_CINSIEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_CINSIEN_SHIFT)) & SDHC_IRQSIGEN_CINSIEN_MASK)
+#define SDHC_IRQSIGEN_CRMIEN_MASK                (0x80U)
+#define SDHC_IRQSIGEN_CRMIEN_SHIFT               (7U)
+#define SDHC_IRQSIGEN_CRMIEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_CRMIEN_SHIFT)) & SDHC_IRQSIGEN_CRMIEN_MASK)
+#define SDHC_IRQSIGEN_CINTIEN_MASK               (0x100U)
+#define SDHC_IRQSIGEN_CINTIEN_SHIFT              (8U)
+#define SDHC_IRQSIGEN_CINTIEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_CINTIEN_SHIFT)) & SDHC_IRQSIGEN_CINTIEN_MASK)
+#define SDHC_IRQSIGEN_CTOEIEN_MASK               (0x10000U)
+#define SDHC_IRQSIGEN_CTOEIEN_SHIFT              (16U)
+#define SDHC_IRQSIGEN_CTOEIEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_CTOEIEN_SHIFT)) & SDHC_IRQSIGEN_CTOEIEN_MASK)
+#define SDHC_IRQSIGEN_CCEIEN_MASK                (0x20000U)
+#define SDHC_IRQSIGEN_CCEIEN_SHIFT               (17U)
+#define SDHC_IRQSIGEN_CCEIEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_CCEIEN_SHIFT)) & SDHC_IRQSIGEN_CCEIEN_MASK)
+#define SDHC_IRQSIGEN_CEBEIEN_MASK               (0x40000U)
+#define SDHC_IRQSIGEN_CEBEIEN_SHIFT              (18U)
+#define SDHC_IRQSIGEN_CEBEIEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_CEBEIEN_SHIFT)) & SDHC_IRQSIGEN_CEBEIEN_MASK)
+#define SDHC_IRQSIGEN_CIEIEN_MASK                (0x80000U)
+#define SDHC_IRQSIGEN_CIEIEN_SHIFT               (19U)
+#define SDHC_IRQSIGEN_CIEIEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_CIEIEN_SHIFT)) & SDHC_IRQSIGEN_CIEIEN_MASK)
+#define SDHC_IRQSIGEN_DTOEIEN_MASK               (0x100000U)
+#define SDHC_IRQSIGEN_DTOEIEN_SHIFT              (20U)
+#define SDHC_IRQSIGEN_DTOEIEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_DTOEIEN_SHIFT)) & SDHC_IRQSIGEN_DTOEIEN_MASK)
+#define SDHC_IRQSIGEN_DCEIEN_MASK                (0x200000U)
+#define SDHC_IRQSIGEN_DCEIEN_SHIFT               (21U)
+#define SDHC_IRQSIGEN_DCEIEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_DCEIEN_SHIFT)) & SDHC_IRQSIGEN_DCEIEN_MASK)
+#define SDHC_IRQSIGEN_DEBEIEN_MASK               (0x400000U)
+#define SDHC_IRQSIGEN_DEBEIEN_SHIFT              (22U)
+#define SDHC_IRQSIGEN_DEBEIEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_DEBEIEN_SHIFT)) & SDHC_IRQSIGEN_DEBEIEN_MASK)
+#define SDHC_IRQSIGEN_AC12EIEN_MASK              (0x1000000U)
+#define SDHC_IRQSIGEN_AC12EIEN_SHIFT             (24U)
+#define SDHC_IRQSIGEN_AC12EIEN(x)                (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_AC12EIEN_SHIFT)) & SDHC_IRQSIGEN_AC12EIEN_MASK)
+#define SDHC_IRQSIGEN_DMAEIEN_MASK               (0x10000000U)
+#define SDHC_IRQSIGEN_DMAEIEN_SHIFT              (28U)
+#define SDHC_IRQSIGEN_DMAEIEN(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_IRQSIGEN_DMAEIEN_SHIFT)) & SDHC_IRQSIGEN_DMAEIEN_MASK)
+
+/*! @name AC12ERR - Auto CMD12 Error Status Register */
+#define SDHC_AC12ERR_AC12NE_MASK                 (0x1U)
+#define SDHC_AC12ERR_AC12NE_SHIFT                (0U)
+#define SDHC_AC12ERR_AC12NE(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_AC12ERR_AC12NE_SHIFT)) & SDHC_AC12ERR_AC12NE_MASK)
+#define SDHC_AC12ERR_AC12TOE_MASK                (0x2U)
+#define SDHC_AC12ERR_AC12TOE_SHIFT               (1U)
+#define SDHC_AC12ERR_AC12TOE(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_AC12ERR_AC12TOE_SHIFT)) & SDHC_AC12ERR_AC12TOE_MASK)
+#define SDHC_AC12ERR_AC12EBE_MASK                (0x4U)
+#define SDHC_AC12ERR_AC12EBE_SHIFT               (2U)
+#define SDHC_AC12ERR_AC12EBE(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_AC12ERR_AC12EBE_SHIFT)) & SDHC_AC12ERR_AC12EBE_MASK)
+#define SDHC_AC12ERR_AC12CE_MASK                 (0x8U)
+#define SDHC_AC12ERR_AC12CE_SHIFT                (3U)
+#define SDHC_AC12ERR_AC12CE(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_AC12ERR_AC12CE_SHIFT)) & SDHC_AC12ERR_AC12CE_MASK)
+#define SDHC_AC12ERR_AC12IE_MASK                 (0x10U)
+#define SDHC_AC12ERR_AC12IE_SHIFT                (4U)
+#define SDHC_AC12ERR_AC12IE(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_AC12ERR_AC12IE_SHIFT)) & SDHC_AC12ERR_AC12IE_MASK)
+#define SDHC_AC12ERR_CNIBAC12E_MASK              (0x80U)
+#define SDHC_AC12ERR_CNIBAC12E_SHIFT             (7U)
+#define SDHC_AC12ERR_CNIBAC12E(x)                (((uint32_t)(((uint32_t)(x)) << SDHC_AC12ERR_CNIBAC12E_SHIFT)) & SDHC_AC12ERR_CNIBAC12E_MASK)
+
+/*! @name HTCAPBLT - Host Controller Capabilities */
+#define SDHC_HTCAPBLT_MBL_MASK                   (0x70000U)
+#define SDHC_HTCAPBLT_MBL_SHIFT                  (16U)
+#define SDHC_HTCAPBLT_MBL(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_HTCAPBLT_MBL_SHIFT)) & SDHC_HTCAPBLT_MBL_MASK)
+#define SDHC_HTCAPBLT_ADMAS_MASK                 (0x100000U)
+#define SDHC_HTCAPBLT_ADMAS_SHIFT                (20U)
+#define SDHC_HTCAPBLT_ADMAS(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_HTCAPBLT_ADMAS_SHIFT)) & SDHC_HTCAPBLT_ADMAS_MASK)
+#define SDHC_HTCAPBLT_HSS_MASK                   (0x200000U)
+#define SDHC_HTCAPBLT_HSS_SHIFT                  (21U)
+#define SDHC_HTCAPBLT_HSS(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_HTCAPBLT_HSS_SHIFT)) & SDHC_HTCAPBLT_HSS_MASK)
+#define SDHC_HTCAPBLT_DMAS_MASK                  (0x400000U)
+#define SDHC_HTCAPBLT_DMAS_SHIFT                 (22U)
+#define SDHC_HTCAPBLT_DMAS(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_HTCAPBLT_DMAS_SHIFT)) & SDHC_HTCAPBLT_DMAS_MASK)
+#define SDHC_HTCAPBLT_SRS_MASK                   (0x800000U)
+#define SDHC_HTCAPBLT_SRS_SHIFT                  (23U)
+#define SDHC_HTCAPBLT_SRS(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_HTCAPBLT_SRS_SHIFT)) & SDHC_HTCAPBLT_SRS_MASK)
+#define SDHC_HTCAPBLT_VS33_MASK                  (0x1000000U)
+#define SDHC_HTCAPBLT_VS33_SHIFT                 (24U)
+#define SDHC_HTCAPBLT_VS33(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_HTCAPBLT_VS33_SHIFT)) & SDHC_HTCAPBLT_VS33_MASK)
+#define SDHC_HTCAPBLT_VS30_MASK                  (0x2000000U)
+#define SDHC_HTCAPBLT_VS30_SHIFT                 (25U)
+#define SDHC_HTCAPBLT_VS30(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_HTCAPBLT_VS30_SHIFT)) & SDHC_HTCAPBLT_VS30_MASK)
+#define SDHC_HTCAPBLT_VS18_MASK                  (0x4000000U)
+#define SDHC_HTCAPBLT_VS18_SHIFT                 (26U)
+#define SDHC_HTCAPBLT_VS18(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_HTCAPBLT_VS18_SHIFT)) & SDHC_HTCAPBLT_VS18_MASK)
+
+/*! @name WML - Watermark Level Register */
+#define SDHC_WML_RDWML_MASK                      (0xFFU)
+#define SDHC_WML_RDWML_SHIFT                     (0U)
+#define SDHC_WML_RDWML(x)                        (((uint32_t)(((uint32_t)(x)) << SDHC_WML_RDWML_SHIFT)) & SDHC_WML_RDWML_MASK)
+#define SDHC_WML_WRWML_MASK                      (0xFF0000U)
+#define SDHC_WML_WRWML_SHIFT                     (16U)
+#define SDHC_WML_WRWML(x)                        (((uint32_t)(((uint32_t)(x)) << SDHC_WML_WRWML_SHIFT)) & SDHC_WML_WRWML_MASK)
 #define SDHC_WML_WRBRSTLEN_MASK                  0x1F000000u
 #define SDHC_WML_WRBRSTLEN_SHIFT                 24
-#define SDHC_WML_WRBRSTLEN(x)                    (((uint32_t)(((uint32_t)(x))<<SDHC_WML_WRBRSTLEN_SHIFT))&SDHC_WML_WRBRSTLEN_MASK)
-/* FEVT Bit Fields */
-#define SDHC_FEVT_AC12NE_MASK                    0x1u
-#define SDHC_FEVT_AC12NE_SHIFT                   0
-#define SDHC_FEVT_AC12TOE_MASK                   0x2u
-#define SDHC_FEVT_AC12TOE_SHIFT                  1
-#define SDHC_FEVT_AC12CE_MASK                    0x4u
-#define SDHC_FEVT_AC12CE_SHIFT                   2
-#define SDHC_FEVT_AC12EBE_MASK                   0x8u
-#define SDHC_FEVT_AC12EBE_SHIFT                  3
-#define SDHC_FEVT_AC12IE_MASK                    0x10u
-#define SDHC_FEVT_AC12IE_SHIFT                   4
-#define SDHC_FEVT_CNIBAC12E_MASK                 0x80u
-#define SDHC_FEVT_CNIBAC12E_SHIFT                7
-#define SDHC_FEVT_CTOE_MASK                      0x10000u
-#define SDHC_FEVT_CTOE_SHIFT                     16
-#define SDHC_FEVT_CCE_MASK                       0x20000u
-#define SDHC_FEVT_CCE_SHIFT                      17
-#define SDHC_FEVT_CEBE_MASK                      0x40000u
-#define SDHC_FEVT_CEBE_SHIFT                     18
-#define SDHC_FEVT_CIE_MASK                       0x80000u
-#define SDHC_FEVT_CIE_SHIFT                      19
-#define SDHC_FEVT_DTOE_MASK                      0x100000u
-#define SDHC_FEVT_DTOE_SHIFT                     20
-#define SDHC_FEVT_DCE_MASK                       0x200000u
-#define SDHC_FEVT_DCE_SHIFT                      21
-#define SDHC_FEVT_DEBE_MASK                      0x400000u
-#define SDHC_FEVT_DEBE_SHIFT                     22
-#define SDHC_FEVT_AC12E_MASK                     0x1000000u
-#define SDHC_FEVT_AC12E_SHIFT                    24
-#define SDHC_FEVT_DMAE_MASK                      0x10000000u
-#define SDHC_FEVT_DMAE_SHIFT                     28
-#define SDHC_FEVT_CINT_MASK                      0x80000000u
-#define SDHC_FEVT_CINT_SHIFT                     31
-/* ADMAES Bit Fields */
-#define SDHC_ADMAES_ADMAES_MASK                  0x3u
-#define SDHC_ADMAES_ADMAES_SHIFT                 0
-#define SDHC_ADMAES_ADMAES(x)                    (((uint32_t)(((uint32_t)(x))<<SDHC_ADMAES_ADMAES_SHIFT))&SDHC_ADMAES_ADMAES_MASK)
-#define SDHC_ADMAES_ADMALME_MASK                 0x4u
-#define SDHC_ADMAES_ADMALME_SHIFT                2
-#define SDHC_ADMAES_ADMADCE_MASK                 0x8u
-#define SDHC_ADMAES_ADMADCE_SHIFT                3
-/* ADSADDR Bit Fields */
-#define SDHC_ADSADDR_ADSADDR_MASK                0xFFFFFFFCu
-#define SDHC_ADSADDR_ADSADDR_SHIFT               2
-#define SDHC_ADSADDR_ADSADDR(x)                  (((uint32_t)(((uint32_t)(x))<<SDHC_ADSADDR_ADSADDR_SHIFT))&SDHC_ADSADDR_ADSADDR_MASK)
-/* VENDOR Bit Fields */
-#define SDHC_VENDOR_EXTDMAEN_MASK                0x1u
-#define SDHC_VENDOR_EXTDMAEN_SHIFT               0
-#define SDHC_VENDOR_EXBLKNU_MASK                 0x2u
-#define SDHC_VENDOR_EXBLKNU_SHIFT                1
-#define SDHC_VENDOR_INTSTVAL_MASK                0xFF0000u
-#define SDHC_VENDOR_INTSTVAL_SHIFT               16
-#define SDHC_VENDOR_INTSTVAL(x)                  (((uint32_t)(((uint32_t)(x))<<SDHC_VENDOR_INTSTVAL_SHIFT))&SDHC_VENDOR_INTSTVAL_MASK)
-/* MMCBOOT Bit Fields */
-#define SDHC_MMCBOOT_DTOCVACK_MASK               0xFu
-#define SDHC_MMCBOOT_DTOCVACK_SHIFT              0
-#define SDHC_MMCBOOT_DTOCVACK(x)                 (((uint32_t)(((uint32_t)(x))<<SDHC_MMCBOOT_DTOCVACK_SHIFT))&SDHC_MMCBOOT_DTOCVACK_MASK)
-#define SDHC_MMCBOOT_BOOTACK_MASK                0x10u
-#define SDHC_MMCBOOT_BOOTACK_SHIFT               4
-#define SDHC_MMCBOOT_BOOTMODE_MASK               0x20u
-#define SDHC_MMCBOOT_BOOTMODE_SHIFT              5
-#define SDHC_MMCBOOT_BOOTEN_MASK                 0x40u
-#define SDHC_MMCBOOT_BOOTEN_SHIFT                6
-#define SDHC_MMCBOOT_AUTOSABGEN_MASK             0x80u
-#define SDHC_MMCBOOT_AUTOSABGEN_SHIFT            7
-#define SDHC_MMCBOOT_BOOTBLKCNT_MASK             0xFFFF0000u
-#define SDHC_MMCBOOT_BOOTBLKCNT_SHIFT            16
-#define SDHC_MMCBOOT_BOOTBLKCNT(x)               (((uint32_t)(((uint32_t)(x))<<SDHC_MMCBOOT_BOOTBLKCNT_SHIFT))&SDHC_MMCBOOT_BOOTBLKCNT_MASK)
-/* HOSTVER Bit Fields */
-#define SDHC_HOSTVER_SVN_MASK                    0xFFu
-#define SDHC_HOSTVER_SVN_SHIFT                   0
-#define SDHC_HOSTVER_SVN(x)                      (((uint32_t)(((uint32_t)(x))<<SDHC_HOSTVER_SVN_SHIFT))&SDHC_HOSTVER_SVN_MASK)
-#define SDHC_HOSTVER_VVN_MASK                    0xFF00u
-#define SDHC_HOSTVER_VVN_SHIFT                   8
-#define SDHC_HOSTVER_VVN(x)                      (((uint32_t)(((uint32_t)(x))<<SDHC_HOSTVER_VVN_SHIFT))&SDHC_HOSTVER_VVN_MASK)
+#define SDHC_WML_WRBRSTLEN(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_WML_WRBRSTLEN_SHIFT)) & SDHC_WML_WRBRSTLEN_MASK)
+
+/*! @name FEVT - Force Event register */
+#define SDHC_FEVT_AC12NE_MASK                    (0x1U)
+#define SDHC_FEVT_AC12NE_SHIFT                   (0U)
+#define SDHC_FEVT_AC12NE(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_AC12NE_SHIFT)) & SDHC_FEVT_AC12NE_MASK)
+#define SDHC_FEVT_AC12TOE_MASK                   (0x2U)
+#define SDHC_FEVT_AC12TOE_SHIFT                  (1U)
+#define SDHC_FEVT_AC12TOE(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_AC12TOE_SHIFT)) & SDHC_FEVT_AC12TOE_MASK)
+#define SDHC_FEVT_AC12CE_MASK                    (0x4U)
+#define SDHC_FEVT_AC12CE_SHIFT                   (2U)
+#define SDHC_FEVT_AC12CE(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_AC12CE_SHIFT)) & SDHC_FEVT_AC12CE_MASK)
+#define SDHC_FEVT_AC12EBE_MASK                   (0x8U)
+#define SDHC_FEVT_AC12EBE_SHIFT                  (3U)
+#define SDHC_FEVT_AC12EBE(x)                     (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_AC12EBE_SHIFT)) & SDHC_FEVT_AC12EBE_MASK)
+#define SDHC_FEVT_AC12IE_MASK                    (0x10U)
+#define SDHC_FEVT_AC12IE_SHIFT                   (4U)
+#define SDHC_FEVT_AC12IE(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_AC12IE_SHIFT)) & SDHC_FEVT_AC12IE_MASK)
+#define SDHC_FEVT_CNIBAC12E_MASK                 (0x80U)
+#define SDHC_FEVT_CNIBAC12E_SHIFT                (7U)
+#define SDHC_FEVT_CNIBAC12E(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_CNIBAC12E_SHIFT)) & SDHC_FEVT_CNIBAC12E_MASK)
+#define SDHC_FEVT_CTOE_MASK                      (0x10000U)
+#define SDHC_FEVT_CTOE_SHIFT                     (16U)
+#define SDHC_FEVT_CTOE(x)                        (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_CTOE_SHIFT)) & SDHC_FEVT_CTOE_MASK)
+#define SDHC_FEVT_CCE_MASK                       (0x20000U)
+#define SDHC_FEVT_CCE_SHIFT                      (17U)
+#define SDHC_FEVT_CCE(x)                         (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_CCE_SHIFT)) & SDHC_FEVT_CCE_MASK)
+#define SDHC_FEVT_CEBE_MASK                      (0x40000U)
+#define SDHC_FEVT_CEBE_SHIFT                     (18U)
+#define SDHC_FEVT_CEBE(x)                        (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_CEBE_SHIFT)) & SDHC_FEVT_CEBE_MASK)
+#define SDHC_FEVT_CIE_MASK                       (0x80000U)
+#define SDHC_FEVT_CIE_SHIFT                      (19U)
+#define SDHC_FEVT_CIE(x)                         (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_CIE_SHIFT)) & SDHC_FEVT_CIE_MASK)
+#define SDHC_FEVT_DTOE_MASK                      (0x100000U)
+#define SDHC_FEVT_DTOE_SHIFT                     (20U)
+#define SDHC_FEVT_DTOE(x)                        (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_DTOE_SHIFT)) & SDHC_FEVT_DTOE_MASK)
+#define SDHC_FEVT_DCE_MASK                       (0x200000U)
+#define SDHC_FEVT_DCE_SHIFT                      (21U)
+#define SDHC_FEVT_DCE(x)                         (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_DCE_SHIFT)) & SDHC_FEVT_DCE_MASK)
+#define SDHC_FEVT_DEBE_MASK                      (0x400000U)
+#define SDHC_FEVT_DEBE_SHIFT                     (22U)
+#define SDHC_FEVT_DEBE(x)                        (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_DEBE_SHIFT)) & SDHC_FEVT_DEBE_MASK)
+#define SDHC_FEVT_AC12E_MASK                     (0x1000000U)
+#define SDHC_FEVT_AC12E_SHIFT                    (24U)
+#define SDHC_FEVT_AC12E(x)                       (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_AC12E_SHIFT)) & SDHC_FEVT_AC12E_MASK)
+#define SDHC_FEVT_DMAE_MASK                      (0x10000000U)
+#define SDHC_FEVT_DMAE_SHIFT                     (28U)
+#define SDHC_FEVT_DMAE(x)                        (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_DMAE_SHIFT)) & SDHC_FEVT_DMAE_MASK)
+#define SDHC_FEVT_CINT_MASK                      (0x80000000U)
+#define SDHC_FEVT_CINT_SHIFT                     (31U)
+#define SDHC_FEVT_CINT(x)                        (((uint32_t)(((uint32_t)(x)) << SDHC_FEVT_CINT_SHIFT)) & SDHC_FEVT_CINT_MASK)
+
+/*! @name ADMAES - ADMA Error Status register */
+#define SDHC_ADMAES_ADMAES_MASK                  (0x3U)
+#define SDHC_ADMAES_ADMAES_SHIFT                 (0U)
+#define SDHC_ADMAES_ADMAES(x)                    (((uint32_t)(((uint32_t)(x)) << SDHC_ADMAES_ADMAES_SHIFT)) & SDHC_ADMAES_ADMAES_MASK)
+#define SDHC_ADMAES_ADMALME_MASK                 (0x4U)
+#define SDHC_ADMAES_ADMALME_SHIFT                (2U)
+#define SDHC_ADMAES_ADMALME(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_ADMAES_ADMALME_SHIFT)) & SDHC_ADMAES_ADMALME_MASK)
+#define SDHC_ADMAES_ADMADCE_MASK                 (0x8U)
+#define SDHC_ADMAES_ADMADCE_SHIFT                (3U)
+#define SDHC_ADMAES_ADMADCE(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_ADMAES_ADMADCE_SHIFT)) & SDHC_ADMAES_ADMADCE_MASK)
+
+/*! @name ADSADDR - ADMA System Addressregister */
+#define SDHC_ADSADDR_ADSADDR_MASK                (0xFFFFFFFCU)
+#define SDHC_ADSADDR_ADSADDR_SHIFT               (2U)
+#define SDHC_ADSADDR_ADSADDR(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_ADSADDR_ADSADDR_SHIFT)) & SDHC_ADSADDR_ADSADDR_MASK)
+
+/*! @name VENDOR - Vendor Specific register */
+#define SDHC_VENDOR_EXTDMAEN_MASK                (0x1U)
+#define SDHC_VENDOR_EXTDMAEN_SHIFT               (0U)
+#define SDHC_VENDOR_EXTDMAEN(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_VENDOR_EXTDMAEN_SHIFT)) & SDHC_VENDOR_EXTDMAEN_MASK)
+#define SDHC_VENDOR_EXBLKNU_MASK                 (0x2U)
+#define SDHC_VENDOR_EXBLKNU_SHIFT                (1U)
+#define SDHC_VENDOR_EXBLKNU(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_VENDOR_EXBLKNU_SHIFT)) & SDHC_VENDOR_EXBLKNU_MASK)
+#define SDHC_VENDOR_INTSTVAL_MASK                (0xFF0000U)
+#define SDHC_VENDOR_INTSTVAL_SHIFT               (16U)
+#define SDHC_VENDOR_INTSTVAL(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_VENDOR_INTSTVAL_SHIFT)) & SDHC_VENDOR_INTSTVAL_MASK)
+
+/*! @name MMCBOOT - MMC Boot register */
+#define SDHC_MMCBOOT_DTOCVACK_MASK               (0xFU)
+#define SDHC_MMCBOOT_DTOCVACK_SHIFT              (0U)
+#define SDHC_MMCBOOT_DTOCVACK(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_MMCBOOT_DTOCVACK_SHIFT)) & SDHC_MMCBOOT_DTOCVACK_MASK)
+#define SDHC_MMCBOOT_BOOTACK_MASK                (0x10U)
+#define SDHC_MMCBOOT_BOOTACK_SHIFT               (4U)
+#define SDHC_MMCBOOT_BOOTACK(x)                  (((uint32_t)(((uint32_t)(x)) << SDHC_MMCBOOT_BOOTACK_SHIFT)) & SDHC_MMCBOOT_BOOTACK_MASK)
+#define SDHC_MMCBOOT_BOOTMODE_MASK               (0x20U)
+#define SDHC_MMCBOOT_BOOTMODE_SHIFT              (5U)
+#define SDHC_MMCBOOT_BOOTMODE(x)                 (((uint32_t)(((uint32_t)(x)) << SDHC_MMCBOOT_BOOTMODE_SHIFT)) & SDHC_MMCBOOT_BOOTMODE_MASK)
+#define SDHC_MMCBOOT_BOOTEN_MASK                 (0x40U)
+#define SDHC_MMCBOOT_BOOTEN_SHIFT                (6U)
+#define SDHC_MMCBOOT_BOOTEN(x)                   (((uint32_t)(((uint32_t)(x)) << SDHC_MMCBOOT_BOOTEN_SHIFT)) & SDHC_MMCBOOT_BOOTEN_MASK)
+#define SDHC_MMCBOOT_AUTOSABGEN_MASK             (0x80U)
+#define SDHC_MMCBOOT_AUTOSABGEN_SHIFT            (7U)
+#define SDHC_MMCBOOT_AUTOSABGEN(x)               (((uint32_t)(((uint32_t)(x)) << SDHC_MMCBOOT_AUTOSABGEN_SHIFT)) & SDHC_MMCBOOT_AUTOSABGEN_MASK)
+#define SDHC_MMCBOOT_BOOTBLKCNT_MASK             (0xFFFF0000U)
+#define SDHC_MMCBOOT_BOOTBLKCNT_SHIFT            (16U)
+#define SDHC_MMCBOOT_BOOTBLKCNT(x)               (((uint32_t)(((uint32_t)(x)) << SDHC_MMCBOOT_BOOTBLKCNT_SHIFT)) & SDHC_MMCBOOT_BOOTBLKCNT_MASK)
+
+/*! @name HOSTVER - Host Controller Version */
+#define SDHC_HOSTVER_SVN_MASK                    (0xFFU)
+#define SDHC_HOSTVER_SVN_SHIFT                   (0U)
+#define SDHC_HOSTVER_SVN(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_HOSTVER_SVN_SHIFT)) & SDHC_HOSTVER_SVN_MASK)
+#define SDHC_HOSTVER_VVN_MASK                    (0xFF00U)
+#define SDHC_HOSTVER_VVN_SHIFT                   (8U)
+#define SDHC_HOSTVER_VVN(x)                      (((uint32_t)(((uint32_t)(x)) << SDHC_HOSTVER_VVN_SHIFT)) & SDHC_HOSTVER_VVN_MASK)
+
 
 /*!
  * @}
@@ -8570,8 +8742,13 @@ typedef struct {
 #define SDHC_BASE                                (0x400B1000u)
 /** Peripheral SDHC base pointer */
 #define SDHC                                     ((SDHC_Type *)SDHC_BASE)
+/** Array initializer of SDHC peripheral base addresses */
+#define SDHC_BASE_ADDRS                          { SDHC_BASE }
 /** Array initializer of SDHC peripheral base pointers */
 #define SDHC_BASES                               { SDHC }
+#define SDHC_BASE_PTRS                           { SDHC }
+/** Interrupt vectors for the SDHC peripheral type */
+#define SDHC_IRQS                                { SDHC_IRQn }
 
 /*!
  * @}
@@ -8625,279 +8802,369 @@ typedef struct {
  * @{
  */
 
-/* SOPT1 Bit Fields */
-#define SIM_SOPT1_RAMSIZE_MASK                   0xF000u
-#define SIM_SOPT1_RAMSIZE_SHIFT                  12
-#define SIM_SOPT1_RAMSIZE(x)                     (((uint32_t)(((uint32_t)(x))<<SIM_SOPT1_RAMSIZE_SHIFT))&SIM_SOPT1_RAMSIZE_MASK)
-#define SIM_SOPT1_OSC32KSEL_MASK                 0x80000u
-#define SIM_SOPT1_OSC32KSEL_SHIFT                19
-#define SIM_SOPT1_MS_MASK                        0x800000u
-#define SIM_SOPT1_MS_SHIFT                       23
-#define SIM_SOPT1_USBSTBY_MASK                   0x40000000u
-#define SIM_SOPT1_USBSTBY_SHIFT                  30
-#define SIM_SOPT1_USBREGEN_MASK                  0x80000000u
-#define SIM_SOPT1_USBREGEN_SHIFT                 31
-/* SOPT2 Bit Fields */
-#define SIM_SOPT2_MCGCLKSEL_MASK                 0x1u
-#define SIM_SOPT2_MCGCLKSEL_SHIFT                0
-#define SIM_SOPT2_FBSL_MASK                      0x300u
-#define SIM_SOPT2_FBSL_SHIFT                     8
+/*! @name SOPT1 - System Options Register 1 */
+#define SIM_SOPT1_RAMSIZE_MASK                   (0xF000U)
+#define SIM_SOPT1_RAMSIZE_SHIFT                  (12U)
+#define SIM_SOPT1_RAMSIZE(x)                     (((uint32_t)(((uint32_t)(x)) << SIM_SOPT1_RAMSIZE_SHIFT)) & SIM_SOPT1_RAMSIZE_MASK)
+#define SIM_SOPT1_OSC32KSEL_MASK                 (0x80000U)
+#define SIM_SOPT1_OSC32KSEL_SHIFT                (19)
+#define SIM_SOPT1_OSC32KSEL(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_SOPT1_OSC32KSEL_SHIFT)) & SIM_SOPT1_OSC32KSEL_MASK)
+#define SIM_SOPT1_MS_MASK                        (0x800000U)
+#define SIM_SOPT1_MS_SHIFT                       (23U)
+#define SIM_SOPT1_USBVSTBY(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SOPT1_USBVSTBY_SHIFT)) & SIM_SOPT1_USBVSTBY_MASK)
+#define SIM_SOPT1_USBSTBY_MASK                   (0x40000000U)
+#define SIM_SOPT1_USBSTBY_SHIFT                  (30U)
+#define SIM_SOPT1_USBSSTBY(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SOPT1_USBSSTBY_SHIFT)) & SIM_SOPT1_USBSSTBY_MASK)
+#define SIM_SOPT1_USBREGEN_MASK                  (0x80000000U)
+#define SIM_SOPT1_USBREGEN_SHIFT                 (31U)
+#define SIM_SOPT1_USBREGEN(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SOPT1_USBREGEN_SHIFT)) & SIM_SOPT1_USBREGEN_MASK)
+
+/*! @name SOPT2 - System Options Register 2 */
+#define SIM_SOPT2_MCGCLKSEL_MASK                 (0x1U)
+#define SIM_SOPT2_MCGCLKSEL_SHIFT                (0U)
+#define SIM_SOPT2_FBSL_MASK                      (0x300U)
+#define SIM_SOPT2_FBSL_SHIFT                     (8U)
 #define SIM_SOPT2_FBSL(x)                        (((uint32_t)(((uint32_t)(x))<<SIM_SOPT2_FBSL_SHIFT))&SIM_SOPT2_FBSL_MASK)
-#define SIM_SOPT2_CMTUARTPAD_MASK                0x800u
-#define SIM_SOPT2_CMTUARTPAD_SHIFT               11
-#define SIM_SOPT2_TRACECLKSEL_MASK               0x1000u
-#define SIM_SOPT2_TRACECLKSEL_SHIFT              12
+#define SIM_SOPT2_CMTUARTPAD_MASK                (0x800U)
+#define SIM_SOPT2_CMTUARTPAD_SHIFT               (11U)
+#define SIM_SOPT2_TRACECLKSEL_MASK               (0x1000U)
+#define SIM_SOPT2_TRACECLKSEL_SHIFT              (12U)
 #define SIM_SOPT2_TRACECLKSEL(x)                 (((uint32_t)(((uint32_t)(x)) << SIM_SOPT2_TRACECLKSEL_SHIFT)) & SIM_SOPT2_TRACECLKSEL_MASK)
-#define SIM_SOPT2_PLLFLLSEL_MASK                 0x10000u
-#define SIM_SOPT2_PLLFLLSEL_SHIFT                16
+#define SIM_SOPT2_PLLFLLSEL_MASK                 (0x10000U)
+#define SIM_SOPT2_PLLFLLSEL_SHIFT                (16U)
 #define SIM_SOPT2_PLLFLLSEL(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_SOPT2_PLLFLLSEL_SHIFT)) & SIM_SOPT2_PLLFLLSEL_MASK)
-#define SIM_SOPT2_USBSRC_MASK                    0x40000u
-#define SIM_SOPT2_USBSRC_SHIFT                   18
-#define SIM_SOPT2_TIMESRC_MASK                   0x300000u
-#define SIM_SOPT2_TIMESRC_SHIFT                  20
-#define SIM_SOPT2_TIMESRC(x)                     (((uint32_t)(((uint32_t)(x))<<SIM_SOPT2_TIMESRC_SHIFT))&SIM_SOPT2_TIMESRC_MASK)
+#define SIM_SOPT2_USBSRC_MASK                    (0x40000U)
+#define SIM_SOPT2_USBSRC_SHIFT                   (18U)
+#define SIM_SOPT2_USBSRC(x)                      (((uint32_t)(((uint32_t)(x)) << SIM_SOPT2_USBSRC_SHIFT)) & SIM_SOPT2_USBSRC_MASK)
+#define SIM_SOPT2_TIMESRC_MASK                   (0x300000U)
+#define SIM_SOPT2_TIMESRC_SHIFT                  (20U)
+#define SIM_SOPT2_TIMESRC(x)                     (((uint32_t)(((uint32_t)(x)) << SIM_SOPT2_TIMESRC_SHIFT)) & SIM_SOPT2_TIMESRC_MASK)
 #define SIM_SOPT2_I2SSRC_MASK                    0x3000000u
 #define SIM_SOPT2_I2SSRC_SHIFT                   24
-#define SIM_SOPT2_I2SSRC(x)                      (((uint32_t)(((uint32_t)(x))<<SIM_SOPT2_I2SSRC_SHIFT))&SIM_SOPT2_I2SSRC_MASK)
-#define SIM_SOPT2_SDHCSRC_MASK                   0x30000000u
-#define SIM_SOPT2_SDHCSRC_SHIFT                  28
-#define SIM_SOPT2_SDHCSRC(x)                     (((uint32_t)(((uint32_t)(x))<<SIM_SOPT2_SDHCSRC_SHIFT))&SIM_SOPT2_SDHCSRC_MASK)
-/* SOPT4 Bit Fields */
-#define SIM_SOPT4_FTM0FLT0_MASK                  0x1u
-#define SIM_SOPT4_FTM0FLT0_SHIFT                 0
-#define SIM_SOPT4_FTM0FLT1_MASK                  0x2u
-#define SIM_SOPT4_FTM0FLT1_SHIFT                 1
-#define SIM_SOPT4_FTM0FLT2_MASK                  0x4u
-#define SIM_SOPT4_FTM0FLT2_SHIFT                 2
-#define SIM_SOPT4_FTM1FLT0_MASK                  0x10u
-#define SIM_SOPT4_FTM1FLT0_SHIFT                 4
-#define SIM_SOPT4_FTM2FLT0_MASK                  0x100u
-#define SIM_SOPT4_FTM2FLT0_SHIFT                 8
-#define SIM_SOPT4_FTM1CH0SRC_MASK                0xC0000u
-#define SIM_SOPT4_FTM1CH0SRC_SHIFT               18
-#define SIM_SOPT4_FTM1CH0SRC(x)                  (((uint32_t)(((uint32_t)(x))<<SIM_SOPT4_FTM1CH0SRC_SHIFT))&SIM_SOPT4_FTM1CH0SRC_MASK)
-#define SIM_SOPT4_FTM2CH0SRC_MASK                0x300000u
-#define SIM_SOPT4_FTM2CH0SRC_SHIFT               20
-#define SIM_SOPT4_FTM2CH0SRC(x)                  (((uint32_t)(((uint32_t)(x))<<SIM_SOPT4_FTM2CH0SRC_SHIFT))&SIM_SOPT4_FTM2CH0SRC_MASK)
-#define SIM_SOPT4_FTM0CLKSEL_MASK                0x1000000u
-#define SIM_SOPT4_FTM0CLKSEL_SHIFT               24
-#define SIM_SOPT4_FTM1CLKSEL_MASK                0x2000000u
-#define SIM_SOPT4_FTM1CLKSEL_SHIFT               25
-#define SIM_SOPT4_FTM2CLKSEL_MASK                0x4000000u
-#define SIM_SOPT4_FTM2CLKSEL_SHIFT               26
-/* SOPT5 Bit Fields */
-#define SIM_SOPT5_UART0TXSRC_MASK                0x3u
-#define SIM_SOPT5_UART0TXSRC_SHIFT               0
-#define SIM_SOPT5_UART0TXSRC(x)                  (((uint32_t)(((uint32_t)(x))<<SIM_SOPT5_UART0TXSRC_SHIFT))&SIM_SOPT5_UART0TXSRC_MASK)
-#define SIM_SOPT5_UART0RXSRC_MASK                0xCu
-#define SIM_SOPT5_UART0RXSRC_SHIFT               2
-#define SIM_SOPT5_UART0RXSRC(x)                  (((uint32_t)(((uint32_t)(x))<<SIM_SOPT5_UART0RXSRC_SHIFT))&SIM_SOPT5_UART0RXSRC_MASK)
-#define SIM_SOPT5_UARTTXSRC_MASK                 0x30u
-#define SIM_SOPT5_UARTTXSRC_SHIFT                4
-#define SIM_SOPT5_UARTTXSRC(x)                   (((uint32_t)(((uint32_t)(x))<<SIM_SOPT5_UARTTXSRC_SHIFT))&SIM_SOPT5_UARTTXSRC_MASK)
-#define SIM_SOPT5_UART1RXSRC_MASK                0xC0u
-#define SIM_SOPT5_UART1RXSRC_SHIFT               6
-#define SIM_SOPT5_UART1RXSRC(x)                  (((uint32_t)(((uint32_t)(x))<<SIM_SOPT5_UART1RXSRC_SHIFT))&SIM_SOPT5_UART1RXSRC_MASK)
+#define SIM_SOPT2_I2SSRC(x)                      (((uint32_t)(((uint32_t)(x)) << SIM_SOPT2_I2SSRC_SHIFT)) & SIM_SOPT2_I2SSRC_MASK)
+#define SIM_SOPT2_SDHCSRC_MASK                   (0x30000000U)
+#define SIM_SOPT2_SDHCSRC_SHIFT                  (28U)
+#define SIM_SOPT2_SDHCSRC(x)                     (((uint32_t)(((uint32_t)(x)) << SIM_SOPT2_SDHCSRC_SHIFT)) & SIM_SOPT2_SDHCSRC_MASK)
+
+/*! @name SOPT4 - System Options Register 4 */
+#define SIM_SOPT4_FTM0FLT0_MASK                  (0x1U)
+#define SIM_SOPT4_FTM0FLT0_SHIFT                 (0U)
+#define SIM_SOPT4_FTM0FLT0(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM0FLT0_SHIFT)) & SIM_SOPT4_FTM0FLT0_MASK)
+#define SIM_SOPT4_FTM0FLT1_MASK                  (0x2U)
+#define SIM_SOPT4_FTM0FLT1_SHIFT                 (1U)
+#define SIM_SOPT4_FTM0FLT1(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM0FLT1_SHIFT)) & SIM_SOPT4_FTM0FLT1_MASK)
+#define SIM_SOPT4_FTM0FLT2_MASK                  (0x4U)
+#define SIM_SOPT4_FTM0FLT2_SHIFT                 (2U)
+#define SIM_SOPT4_FTM0FLT2(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM0FLT2_SHIFT)) & SIM_SOPT4_FTM0FLT2_MASK)
+#define SIM_SOPT4_FTM1FLT0_MASK                  (0x10U)
+#define SIM_SOPT4_FTM1FLT0_SHIFT                 (4U)
+#define SIM_SOPT4_FTM1FLT0(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM1FLT0_SHIFT)) & SIM_SOPT4_FTM1FLT0_MASK)
+#define SIM_SOPT4_FTM2FLT0_MASK                  (0x100U)
+#define SIM_SOPT4_FTM2FLT0_SHIFT                 (8U)
+#define SIM_SOPT4_FTM2FLT0(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM2FLT0_SHIFT)) & SIM_SOPT4_FTM2FLT0_MASK)
+#define SIM_SOPT4_FTM1CH0SRC_MASK                (0xC0000U)
+#define SIM_SOPT4_FTM1CH0SRC_SHIFT               (18U)
+#define SIM_SOPT4_FTM1CH0SRC(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM1CH0SRC_SHIFT)) & SIM_SOPT4_FTM1CH0SRC_MASK)
+#define SIM_SOPT4_FTM2CH0SRC_MASK                (0x300000U)
+#define SIM_SOPT4_FTM2CH0SRC_SHIFT               (20U)
+#define SIM_SOPT4_FTM2CH0SRC(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM2CH0SRC_SHIFT)) & SIM_SOPT4_FTM2CH0SRC_MASK)
+#define SIM_SOPT4_FTM0CLKSEL_MASK                (0x1000000U)
+#define SIM_SOPT4_FTM0CLKSEL_SHIFT               (24U)
+#define SIM_SOPT4_FTM0CLKSEL(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM0CLKSEL_SHIFT)) & SIM_SOPT4_FTM0CLKSEL_MASK)
+#define SIM_SOPT4_FTM1CLKSEL_MASK                (0x2000000U)
+#define SIM_SOPT4_FTM1CLKSEL_SHIFT               (25U)
+#define SIM_SOPT4_FTM1CLKSEL(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM1CLKSEL_SHIFT)) & SIM_SOPT4_FTM1CLKSEL_MASK)
+#define SIM_SOPT4_FTM2CLKSEL_MASK                (0x4000000U)
+#define SIM_SOPT4_FTM2CLKSEL_SHIFT               (26U)
+#define SIM_SOPT4_FTM2CLKSEL(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT4_FTM2CLKSEL_SHIFT)) & SIM_SOPT4_FTM2CLKSEL_MASK)
+
+/*! @name SOPT5 - System Options Register 5 */
+#define SIM_SOPT5_UART0TXSRC_MASK                (0x3U)
+#define SIM_SOPT5_UART0TXSRC_SHIFT               (0U)
+#define SIM_SOPT5_UART0TXSRC(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT5_UART0TXSRC_SHIFT)) & SIM_SOPT5_UART0TXSRC_MASK)
+#define SIM_SOPT5_UART0RXSRC_MASK                (0xCU)
+#define SIM_SOPT5_UART0RXSRC_SHIFT               (2U)
+#define SIM_SOPT5_UART0RXSRC(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT5_UART0RXSRC_SHIFT)) & SIM_SOPT5_UART0RXSRC_MASK)
+#define SIM_SOPT5_UARTTXSRC_MASK                 (0x30U)
+#define SIM_SOPT5_UARTTXSRC_SHIFT                (4U)
+#define SIM_SOPT5_UARTTXSRC(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_SOPT5_UARTTXSRC_SHIFT)) & SIM_SOPT5_UARTTXSRC_MASK)
+#define SIM_SOPT5_UART1RXSRC_MASK                (0xC0U)
+#define SIM_SOPT5_UART1RXSRC_SHIFT               (6U)
+#define SIM_SOPT5_UART1RXSRC(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT5_UART1RXSRC_SHIFT)) & SIM_SOPT5_UART1RXSRC_MASK)
+
 /* SOPT6 Bit Fields */
-#define SIM_SOPT6_RSTFLTSEL_MASK                 0x1F000000u
-#define SIM_SOPT6_RSTFLTSEL_SHIFT                24
+#define SIM_SOPT6_RSTFLTSEL_MASK                 (0x1F000000U)
+#define SIM_SOPT6_RSTFLTSEL_SHIFT                (24U)
 #define SIM_SOPT6_RSTFLTSEL(x)                   (((uint32_t)(((uint32_t)(x))<<SIM_SOPT6_RSTFLTSEL_SHIFT))&SIM_SOPT6_RSTFLTSEL_MASK)
-#define SIM_SOPT6_RSTFLTEN_MASK                  0xE0000000u
-#define SIM_SOPT6_RSTFLTEN_SHIFT                 29
+#define SIM_SOPT6_RSTFLTEN_MASK                  (0xE0000000U)
+#define SIM_SOPT6_RSTFLTEN_SHIFT                 (29U)
 #define SIM_SOPT6_RSTFLTEN(x)                    (((uint32_t)(((uint32_t)(x))<<SIM_SOPT6_RSTFLTEN_SHIFT))&SIM_SOPT6_RSTFLTEN_MASK)
-/* SOPT7 Bit Fields */
-#define SIM_SOPT7_ADC0TRGSEL_MASK                0xFu
-#define SIM_SOPT7_ADC0TRGSEL_SHIFT               0
-#define SIM_SOPT7_ADC0TRGSEL(x)                  (((uint32_t)(((uint32_t)(x))<<SIM_SOPT7_ADC0TRGSEL_SHIFT))&SIM_SOPT7_ADC0TRGSEL_MASK)
-#define SIM_SOPT7_ADC0PRETRGSEL_MASK             0x10u
-#define SIM_SOPT7_ADC0PRETRGSEL_SHIFT            4
-#define SIM_SOPT7_ADC0ALTTRGEN_MASK              0x80u
-#define SIM_SOPT7_ADC0ALTTRGEN_SHIFT             7
-#define SIM_SOPT7_ADC1TRGSEL_MASK                0xF00u
-#define SIM_SOPT7_ADC1TRGSEL_SHIFT               8
-#define SIM_SOPT7_ADC1TRGSEL(x)                  (((uint32_t)(((uint32_t)(x))<<SIM_SOPT7_ADC1TRGSEL_SHIFT))&SIM_SOPT7_ADC1TRGSEL_MASK)
-#define SIM_SOPT7_ADC1PRETRGSEL_MASK             0x1000u
-#define SIM_SOPT7_ADC1PRETRGSEL_SHIFT            12
-#define SIM_SOPT7_ADC1ALTTRGEN_MASK              0x8000u
-#define SIM_SOPT7_ADC1ALTTRGEN_SHIFT             15
-/* SDID Bit Fields */
-#define SIM_SDID_PINID_MASK                      0xFu
-#define SIM_SDID_PINID_SHIFT                     0
-#define SIM_SDID_PINID(x)                        (((uint32_t)(((uint32_t)(x))<<SIM_SDID_PINID_SHIFT))&SIM_SDID_PINID_MASK)
-#define SIM_SDID_FAMID_MASK                      0x70u
-#define SIM_SDID_FAMID_SHIFT                     4
-#define SIM_SDID_FAMID(x)                        (((uint32_t)(((uint32_t)(x))<<SIM_SDID_FAMID_SHIFT))&SIM_SDID_FAMID_MASK)
-#define SIM_SDID_REVID_MASK                      0xF000u
-#define SIM_SDID_REVID_SHIFT                     12
-#define SIM_SDID_REVID(x)                        (((uint32_t)(((uint32_t)(x))<<SIM_SDID_REVID_SHIFT))&SIM_SDID_REVID_MASK)
-/* SCGC1 Bit Fields */
-#define SIM_SCGC1_UART4_MASK                     0x400u
-#define SIM_SCGC1_UART4_SHIFT                    10
-#define SIM_SCGC1_UART5_MASK                     0x800u
-#define SIM_SCGC1_UART5_SHIFT                    11
-/* SCGC2 Bit Fields */
-#define SIM_SCGC2_ENET_MASK                      0x1u
-#define SIM_SCGC2_ENET_SHIFT                     0
-#define SIM_SCGC2_DAC0_MASK                      0x1000u
-#define SIM_SCGC2_DAC0_SHIFT                     12
-#define SIM_SCGC2_DAC1_MASK                      0x2000u
-#define SIM_SCGC2_DAC1_SHIFT                     13
-/* SCGC3 Bit Fields */
-#define SIM_SCGC3_RNGB_MASK                      0x1u
-#define SIM_SCGC3_RNGB_SHIFT                     0
-#define SIM_SCGC3_FLEXCAN1_MASK                  0x10u
-#define SIM_SCGC3_FLEXCAN1_SHIFT                 4
-#define SIM_SCGC3_SPI2_MASK                      0x1000u
-#define SIM_SCGC3_SPI2_SHIFT                     12
-#define SIM_SCGC3_SDHC_MASK                      0x20000u
-#define SIM_SCGC3_SDHC_SHIFT                     17
-#define SIM_SCGC3_FTM2_MASK                      0x1000000u
-#define SIM_SCGC3_FTM2_SHIFT                     24
-#define SIM_SCGC3_ADC1_MASK                      0x8000000u
-#define SIM_SCGC3_ADC1_SHIFT                     27
-/* SCGC4 Bit Fields */
-#define SIM_SCGC4_EWM_MASK                       0x2u
-#define SIM_SCGC4_EWM_SHIFT                      1
-#define SIM_SCGC4_CMT_MASK                       0x4u
-#define SIM_SCGC4_CMT_SHIFT                      2
-#define SIM_SCGC4_I2C0_MASK                      0x40u
-#define SIM_SCGC4_I2C0_SHIFT                     6
-#define SIM_SCGC4_I2C1_MASK                      0x80u
-#define SIM_SCGC4_I2C1_SHIFT                     7
-#define SIM_SCGC4_UART0_MASK                     0x400u
-#define SIM_SCGC4_UART0_SHIFT                    10
-#define SIM_SCGC4_UART1_MASK                     0x800u
-#define SIM_SCGC4_UART1_SHIFT                    11
-#define SIM_SCGC4_UART2_MASK                     0x1000u
-#define SIM_SCGC4_UART2_SHIFT                    12
-#define SIM_SCGC4_UART3_MASK                     0x2000u
-#define SIM_SCGC4_UART3_SHIFT                    13
-#define SIM_SCGC4_USBOTG_MASK                    0x40000u
-#define SIM_SCGC4_USBOTG_SHIFT                   18
-#define SIM_SCGC4_CMP_MASK                       0x80000u
-#define SIM_SCGC4_CMP_SHIFT                      19
-#define SIM_SCGC4_VREF_MASK                      0x100000u
-#define SIM_SCGC4_VREF_SHIFT                     20
-#define SIM_SCGC4_LLWU_MASK                      0x10000000u
-#define SIM_SCGC4_LLWU_SHIFT                     28
-/* SCGC5 Bit Fields */
-#define SIM_SCGC5_LPTIMER_MASK                   0x1u
-#define SIM_SCGC5_LPTIMER_SHIFT                  0
+
+/*! @name SOPT7 - System Options Register 7 */
+#define SIM_SOPT7_ADC0TRGSEL_MASK                (0xFU)
+#define SIM_SOPT7_ADC0TRGSEL_SHIFT               (0U)
+#define SIM_SOPT7_ADC0TRGSEL(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT7_ADC0TRGSEL_SHIFT)) & SIM_SOPT7_ADC0TRGSEL_MASK)
+#define SIM_SOPT7_ADC0PRETRGSEL_MASK             (0x10U)
+#define SIM_SOPT7_ADC0PRETRGSEL_SHIFT            (4U)
+#define SIM_SOPT7_ADC0PRETRGSEL(x)               (((uint32_t)(((uint32_t)(x)) << SIM_SOPT7_ADC0PRETRGSEL_SHIFT)) & SIM_SOPT7_ADC0PRETRGSEL_MASK)
+#define SIM_SOPT7_ADC0ALTTRGEN_MASK              (0x80U)
+#define SIM_SOPT7_ADC0ALTTRGEN_SHIFT             (7U)
+#define SIM_SOPT7_ADC0ALTTRGEN(x)                (((uint32_t)(((uint32_t)(x)) << SIM_SOPT7_ADC0ALTTRGEN_SHIFT)) & SIM_SOPT7_ADC0ALTTRGEN_MASK)
+#define SIM_SOPT7_ADC1TRGSEL_MASK                (0xF00U)
+#define SIM_SOPT7_ADC1TRGSEL_SHIFT               (8U)
+#define SIM_SOPT7_ADC1TRGSEL(x)                  (((uint32_t)(((uint32_t)(x)) << SIM_SOPT7_ADC1TRGSEL_SHIFT)) & SIM_SOPT7_ADC1TRGSEL_MASK)
+#define SIM_SOPT7_ADC1PRETRGSEL_MASK             (0x1000U)
+#define SIM_SOPT7_ADC1PRETRGSEL_SHIFT            (12U)
+#define SIM_SOPT7_ADC1PRETRGSEL(x)               (((uint32_t)(((uint32_t)(x)) << SIM_SOPT7_ADC1PRETRGSEL_SHIFT)) & SIM_SOPT7_ADC1PRETRGSEL_MASK)
+#define SIM_SOPT7_ADC1ALTTRGEN_MASK              (0x8000U)
+#define SIM_SOPT7_ADC1ALTTRGEN_SHIFT             (15U)
+#define SIM_SOPT7_ADC1ALTTRGEN(x)                (((uint32_t)(((uint32_t)(x)) << SIM_SOPT7_ADC1ALTTRGEN_SHIFT)) & SIM_SOPT7_ADC1ALTTRGEN_MASK)
+
+/*! @name SDID - System Device Identification Register */
+#define SIM_SDID_PINID_MASK                      (0xFU)
+#define SIM_SDID_PINID_SHIFT                     (0U)
+#define SIM_SDID_PINID(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SDID_PINID_SHIFT)) & SIM_SDID_PINID_MASK)
+#define SIM_SDID_FAMID_MASK                      (0x70U)
+#define SIM_SDID_FAMID_SHIFT                     (4U)
+#define SIM_SDID_FAMID(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SDID_FAMID_SHIFT)) & SIM_SDID_FAMID_MASK)
+#define SIM_SDID_REVID_MASK                      (0xF000U)
+#define SIM_SDID_REVID_SHIFT                     (12U)
+#define SIM_SDID_REVID(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SDID_REVID_SHIFT)) & SIM_SDID_REVID_MASK)
+
+/*! @name SCGC1 - System Clock Gating Control Register 1 */
+#define SIM_SCGC1_UART4_MASK                     (0x400U)
+#define SIM_SCGC1_UART4_SHIFT                    (10U)
+#define SIM_SCGC1_UART4(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC1_UART4_SHIFT)) & SIM_SCGC1_UART4_MASK)
+#define SIM_SCGC1_UART5_MASK                     (0x800U)
+#define SIM_SCGC1_UART5_SHIFT                    (11U)
+#define SIM_SCGC1_UART5(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC1_UART5_SHIFT)) & SIM_SCGC1_UART5_MASK)
+
+/*! @name SCGC2 - System Clock Gating Control Register 2 */
+#define SIM_SCGC2_ENET_MASK                      (0x1U)
+#define SIM_SCGC2_ENET_SHIFT                     (0U)
+#define SIM_SCGC2_ENET(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC2_ENET_SHIFT)) & SIM_SCGC2_ENET_MASK)
+#define SIM_SCGC2_DAC0_MASK                      (0x1000U)
+#define SIM_SCGC2_DAC0_SHIFT                     (12U)
+#define SIM_SCGC2_DAC0(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC2_DAC0_SHIFT)) & SIM_SCGC2_DAC0_MASK)
+#define SIM_SCGC2_DAC1_MASK                      (0x2000U)
+#define SIM_SCGC2_DAC1_SHIFT                     (13U)
+#define SIM_SCGC2_DAC1(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC2_DAC1_SHIFT)) & SIM_SCGC2_DAC1_MASK)
+
+/*! @name SCGC3 - System Clock Gating Control Register 3 */
+#define SIM_SCGC3_RNGB_MASK                      (0x1U)
+#define SIM_SCGC3_RNGB_SHIFT                     (0U)
+#define SIM_SCGC3_RNGB(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC3_RNGB_SHIFT)) & SIM_SCGC3_RNGB_MASK)
+#define SIM_SCGC3_FLEXCAN1_MASK                  (0x10U)
+#define SIM_SCGC3_FLEXCAN1_SHIFT                 (4U)
+#define SIM_SCGC3_FLEXCAN1(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SCGC3_FLEXCAN1_SHIFT)) & SIM_SCGC3_FLEXCAN1_MASK)
+#define SIM_SCGC3_SPI2_MASK                      (0x1000U)
+#define SIM_SCGC3_SPI2_SHIFT                     (12U)
+#define SIM_SCGC3_SPI2(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC3_SPI2_SHIFT)) & SIM_SCGC3_SPI2_MASK)
+#define SIM_SCGC3_SDHC_MASK                      (0x20000U)
+#define SIM_SCGC3_SDHC_SHIFT                     (17U)
+#define SIM_SCGC3_SDHC(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC3_SDHC_SHIFT)) & SIM_SCGC3_SDHC_MASK)
+#define SIM_SCGC3_FTM2_MASK                      (0x1000000U)
+#define SIM_SCGC3_FTM2_SHIFT                     (24U)
+#define SIM_SCGC3_FTM2(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC3_FTM2_SHIFT)) & SIM_SCGC3_FTM2_MASK)
+#define SIM_SCGC3_ADC1_MASK                      (0x8000000U)
+#define SIM_SCGC3_ADC1_SHIFT                     (27U)
+#define SIM_SCGC3_ADC1(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC3_ADC1_SHIFT)) & SIM_SCGC3_ADC1_MASK)
+
+/*! @name SCGC4 - System Clock Gating Control Register 4 */
+#define SIM_SCGC4_EWM_MASK                       (0x2U)
+#define SIM_SCGC4_EWM_SHIFT                      (1U)
+#define SIM_SCGC4_EWM(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_EWM_SHIFT)) & SIM_SCGC4_EWM_MASK)
+#define SIM_SCGC4_CMT_MASK                       (0x4U)
+#define SIM_SCGC4_CMT_SHIFT                      (2U)
+#define SIM_SCGC4_CMT(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_CMT_SHIFT)) & SIM_SCGC4_CMT_MASK)
+#define SIM_SCGC4_I2C0_MASK                      (0x40U)
+#define SIM_SCGC4_I2C0_SHIFT                     (6U)
+#define SIM_SCGC4_I2C0(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_I2C0_SHIFT)) & SIM_SCGC4_I2C0_MASK)
+#define SIM_SCGC4_I2C1_MASK                      (0x80U)
+#define SIM_SCGC4_I2C1_SHIFT                     (7U)
+#define SIM_SCGC4_I2C1(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_I2C1_SHIFT)) & SIM_SCGC4_I2C1_MASK)
+#define SIM_SCGC4_UART0_MASK                     (0x400U)
+#define SIM_SCGC4_UART0_SHIFT                    (10U)
+#define SIM_SCGC4_UART0(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_UART0_SHIFT)) & SIM_SCGC4_UART0_MASK)
+#define SIM_SCGC4_UART1_MASK                     (0x800U)
+#define SIM_SCGC4_UART1_SHIFT                    (11U)
+#define SIM_SCGC4_UART1(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_UART1_SHIFT)) & SIM_SCGC4_UART1_MASK)
+#define SIM_SCGC4_UART2_MASK                     (0x1000U)
+#define SIM_SCGC4_UART2_SHIFT                    (12U)
+#define SIM_SCGC4_UART2(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_UART2_SHIFT)) & SIM_SCGC4_UART2_MASK)
+#define SIM_SCGC4_UART3_MASK                     (0x2000U)
+#define SIM_SCGC4_UART3_SHIFT                    (13U)
+#define SIM_SCGC4_UART3(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_UART3_SHIFT)) & SIM_SCGC4_UART3_MASK)
+#define SIM_SCGC4_USBOTG_MASK                    (0x40000U)
+#define SIM_SCGC4_USBOTG_SHIFT                   (18U)
+#define SIM_SCGC4_USBOTG(x)                      (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_USBOTG_SHIFT)) & SIM_SCGC4_USBOTG_MASK)
+#define SIM_SCGC4_CMP_MASK                       (0x80000U)
+#define SIM_SCGC4_CMP_SHIFT                      (19U)
+#define SIM_SCGC4_CMP(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_CMP_SHIFT)) & SIM_SCGC4_CMP_MASK)
+#define SIM_SCGC4_VREF_MASK                      (0x100000U)
+#define SIM_SCGC4_VREF_SHIFT                     (20U)
+#define SIM_SCGC4_VREF(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_VREF_SHIFT)) & SIM_SCGC4_VREF_MASK)
+#define SIM_SCGC4_LLWU_MASK                      (0x10000000U)
+#define SIM_SCGC4_LLWU_SHIFT                     (28U)
+#define SIM_SCGC4_LLWU(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC4_LLWU_SHIFT)) & SIM_SCGC4_LLWU_MASK)
+
+/*! @name SCGC5 - System Clock Gating Control Register 5 */
+#define SIM_SCGC5_LPTIMER_MASK                   (0x1U)
+#define SIM_SCGC5_LPTIMER_SHIFT                  (0U)
+#define SIM_SCGC5_LPTIMER(x)                     (((uint32_t)(((uint32_t)(x)) << SIM_SCGC5_LPTIMER_SHIFT)) & SIM_SCGC5_LPTIMER_MASK)
 #define SIM_SCGC5_REGFILE_MASK                   0x2u
 #define SIM_SCGC5_REGFILE_SHIFT                  1
-#define SIM_SCGC5_TSI_MASK                       0x20u
-#define SIM_SCGC5_TSI_SHIFT                      5
-#define SIM_SCGC5_PORTA_MASK                     0x200u
-#define SIM_SCGC5_PORTA_SHIFT                    9
-#define SIM_SCGC5_PORTB_MASK                     0x400u
-#define SIM_SCGC5_PORTB_SHIFT                    10
-#define SIM_SCGC5_PORTC_MASK                     0x800u
-#define SIM_SCGC5_PORTC_SHIFT                    11
-#define SIM_SCGC5_PORTD_MASK                     0x1000u
-#define SIM_SCGC5_PORTD_SHIFT                    12
-#define SIM_SCGC5_PORTE_MASK                     0x2000u
-#define SIM_SCGC5_PORTE_SHIFT                    13
-/* SCGC6 Bit Fields */
-#define SIM_SCGC6_FTFL_MASK                      0x1u
-#define SIM_SCGC6_FTFL_SHIFT                     0
-#define SIM_SCGC6_DMAMUX_MASK                    0x2u
-#define SIM_SCGC6_DMAMUX_SHIFT                   1
-#define SIM_SCGC6_FLEXCAN0_MASK                  0x10u
-#define SIM_SCGC6_FLEXCAN0_SHIFT                 4
-#define SIM_SCGC6_SPI0_MASK                      0x1000u
-#define SIM_SCGC6_SPI0_SHIFT                     12
-#define SIM_SCGC6_SPI1_MASK                      0x2000u
-#define SIM_SCGC6_SPI1_SHIFT                     13
-#define SIM_SCGC6_I2S_MASK                       0x8000u
-#define SIM_SCGC6_I2S_SHIFT                      15
-#define SIM_SCGC6_CRC_MASK                       0x40000u
-#define SIM_SCGC6_CRC_SHIFT                      18
-#define SIM_SCGC6_USBDCD_MASK                    0x200000u
-#define SIM_SCGC6_USBDCD_SHIFT                   21
-#define SIM_SCGC6_PDB_MASK                       0x400000u
-#define SIM_SCGC6_PDB_SHIFT                      22
-#define SIM_SCGC6_PIT_MASK                       0x800000u
-#define SIM_SCGC6_PIT_SHIFT                      23
-#define SIM_SCGC6_FTM0_MASK                      0x1000000u
-#define SIM_SCGC6_FTM0_SHIFT                     24
-#define SIM_SCGC6_FTM1_MASK                      0x2000000u
-#define SIM_SCGC6_FTM1_SHIFT                     25
-#define SIM_SCGC6_ADC0_MASK                      0x8000000u
-#define SIM_SCGC6_ADC0_SHIFT                     27
-#define SIM_SCGC6_RTC_MASK                       0x20000000u
-#define SIM_SCGC6_RTC_SHIFT                      29
-/* SCGC7 Bit Fields */
-#define SIM_SCGC7_FLEXBUS_MASK                   0x1u
-#define SIM_SCGC7_FLEXBUS_SHIFT                  0
-#define SIM_SCGC7_DMA_MASK                       0x2u
-#define SIM_SCGC7_DMA_SHIFT                      1
-#define SIM_SCGC7_MPU_MASK                       0x4u
-#define SIM_SCGC7_MPU_SHIFT                      2
-/* CLKDIV1 Bit Fields */
-#define SIM_CLKDIV1_OUTDIV4_MASK                 0xF0000u
-#define SIM_CLKDIV1_OUTDIV4_SHIFT                16
-#define SIM_CLKDIV1_OUTDIV4(x)                   (((uint32_t)(((uint32_t)(x))<<SIM_CLKDIV1_OUTDIV4_SHIFT))&SIM_CLKDIV1_OUTDIV4_MASK)
-#define SIM_CLKDIV1_OUTDIV3_MASK                 0xF00000u
-#define SIM_CLKDIV1_OUTDIV3_SHIFT                20
-#define SIM_CLKDIV1_OUTDIV3(x)                   (((uint32_t)(((uint32_t)(x))<<SIM_CLKDIV1_OUTDIV3_SHIFT))&SIM_CLKDIV1_OUTDIV3_MASK)
-#define SIM_CLKDIV1_OUTDIV2_MASK                 0xF000000u
-#define SIM_CLKDIV1_OUTDIV2_SHIFT                24
-#define SIM_CLKDIV1_OUTDIV2(x)                   (((uint32_t)(((uint32_t)(x))<<SIM_CLKDIV1_OUTDIV2_SHIFT))&SIM_CLKDIV1_OUTDIV2_MASK)
-#define SIM_CLKDIV1_OUTDIV1_MASK                 0xF0000000u
-#define SIM_CLKDIV1_OUTDIV1_SHIFT                28
-#define SIM_CLKDIV1_OUTDIV1(x)                   (((uint32_t)(((uint32_t)(x))<<SIM_CLKDIV1_OUTDIV1_SHIFT))&SIM_CLKDIV1_OUTDIV1_MASK)
-/* CLKDIV2 Bit Fields */
-#define SIM_CLKDIV2_USBFRAC_MASK                 0x1u
-#define SIM_CLKDIV2_USBFRAC_SHIFT                0
-#define SIM_CLKDIV2_USBDIV_MASK                  0xEu
-#define SIM_CLKDIV2_USBDIV_SHIFT                 1
-#define SIM_CLKDIV2_USBDIV(x)                    (((uint32_t)(((uint32_t)(x))<<SIM_CLKDIV2_USBDIV_SHIFT))&SIM_CLKDIV2_USBDIV_MASK)
-#define SIM_CLKDIV2_I2SFRAC_MASK                 0xFF00u
-#define SIM_CLKDIV2_I2SFRAC_SHIFT                8
-#define SIM_CLKDIV2_I2SFRAC(x)                   (((uint32_t)(((uint32_t)(x))<<SIM_CLKDIV2_I2SFRAC_SHIFT))&SIM_CLKDIV2_I2SFRAC_MASK)
-#define SIM_CLKDIV2_I2SDIV_MASK                  0xFFF00000u
-#define SIM_CLKDIV2_I2SDIV_SHIFT                 20
-#define SIM_CLKDIV2_I2SDIV(x)                    (((uint32_t)(((uint32_t)(x))<<SIM_CLKDIV2_I2SDIV_SHIFT))&SIM_CLKDIV2_I2SDIV_MASK)
-/* FCFG1 Bit Fields */
-#define SIM_FCFG1_DEPART_MASK                    0xF00u
-#define SIM_FCFG1_DEPART_SHIFT                   8
-#define SIM_FCFG1_DEPART(x)                      (((uint32_t)(((uint32_t)(x))<<SIM_FCFG1_DEPART_SHIFT))&SIM_FCFG1_DEPART_MASK)
-#define SIM_FCFG1_EESIZE_MASK                    0xF0000u
-#define SIM_FCFG1_EESIZE_SHIFT                   16
-#define SIM_FCFG1_EESIZE(x)                      (((uint32_t)(((uint32_t)(x))<<SIM_FCFG1_EESIZE_SHIFT))&SIM_FCFG1_EESIZE_MASK)
-#define SIM_FCFG1_PFSIZE_MASK                    0xF000000u
-#define SIM_FCFG1_PFSIZE_SHIFT                   24
-#define SIM_FCFG1_PFSIZE(x)                      (((uint32_t)(((uint32_t)(x))<<SIM_FCFG1_PFSIZE_SHIFT))&SIM_FCFG1_PFSIZE_MASK)
-#define SIM_FCFG1_NVMSIZE_MASK                   0xF0000000u
-#define SIM_FCFG1_NVMSIZE_SHIFT                  28
-#define SIM_FCFG1_NVMSIZE(x)                     (((uint32_t)(((uint32_t)(x))<<SIM_FCFG1_NVMSIZE_SHIFT))&SIM_FCFG1_NVMSIZE_MASK)
-/* FCFG2 Bit Fields */
-#define SIM_FCFG2_MAXADDR1_MASK                  0x3F0000u
-#define SIM_FCFG2_MAXADDR1_SHIFT                 16
-#define SIM_FCFG2_MAXADDR1(x)                    (((uint32_t)(((uint32_t)(x))<<SIM_FCFG2_MAXADDR1_SHIFT))&SIM_FCFG2_MAXADDR1_MASK)
-#define SIM_FCFG2_PFLSH_MASK                     0x800000u
-#define SIM_FCFG2_PFLSH_SHIFT                    23
-#define SIM_FCFG2_MAXADDR0_MASK                  0x3F000000u
-#define SIM_FCFG2_MAXADDR0_SHIFT                 24
-#define SIM_FCFG2_MAXADDR0(x)                    (((uint32_t)(((uint32_t)(x))<<SIM_FCFG2_MAXADDR0_SHIFT))&SIM_FCFG2_MAXADDR0_MASK)
-#define SIM_FCFG2_SWAPPFLSH_MASK                 0x80000000u
-#define SIM_FCFG2_SWAPPFLSH_SHIFT                31
-/* UIDH Bit Fields */
-#define SIM_UIDH_UID_MASK                        0xFFFFFFFFu
-#define SIM_UIDH_UID_SHIFT                       0
-#define SIM_UIDH_UID(x)                          (((uint32_t)(((uint32_t)(x))<<SIM_UIDH_UID_SHIFT))&SIM_UIDH_UID_MASK)
-/* UIDMH Bit Fields */
-#define SIM_UIDMH_UID_MASK                       0xFFFFFFFFu
-#define SIM_UIDMH_UID_SHIFT                      0
-#define SIM_UIDMH_UID(x)                         (((uint32_t)(((uint32_t)(x))<<SIM_UIDMH_UID_SHIFT))&SIM_UIDMH_UID_MASK)
-/* UIDML Bit Fields */
-#define SIM_UIDML_UID_MASK                       0xFFFFFFFFu
-#define SIM_UIDML_UID_SHIFT                      0
-#define SIM_UIDML_UID(x)                         (((uint32_t)(((uint32_t)(x))<<SIM_UIDML_UID_SHIFT))&SIM_UIDML_UID_MASK)
-/* UIDL Bit Fields */
-#define SIM_UIDL_UID_MASK                        0xFFFFFFFFu
-#define SIM_UIDL_UID_SHIFT                       0
-#define SIM_UIDL_UID(x)                          (((uint32_t)(((uint32_t)(x))<<SIM_UIDL_UID_SHIFT))&SIM_UIDL_UID_MASK)
+#define SIM_SCGC5_REGFILE(x)                     (((uint32_t)(((uint32_t)(x)) << SIM_SCGC5_REGFILE_SHIFT)) & SIM_SCGC5_REGFILE_MASK)
+#define SIM_SCGC5_TSI_MASK                       (0x20U)
+#define SIM_SCGC5_TSI_SHIFT                      (5U)
+#define SIM_SCGC5_TSI(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC5_TSI_SHIFT)) & SIM_SCGC5_TSI_MASK)
+#define SIM_SCGC5_PORTA_MASK                     (0x200U)
+#define SIM_SCGC5_PORTA_SHIFT                    (9U)
+#define SIM_SCGC5_PORTA(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC5_PORTA_SHIFT)) & SIM_SCGC5_PORTA_MASK)
+#define SIM_SCGC5_PORTB_MASK                     (0x400U)
+#define SIM_SCGC5_PORTB_SHIFT                    (10U)
+#define SIM_SCGC5_PORTB(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC5_PORTB_SHIFT)) & SIM_SCGC5_PORTB_MASK)
+#define SIM_SCGC5_PORTC_MASK                     (0x800U)
+#define SIM_SCGC5_PORTC_SHIFT                    (11U)
+#define SIM_SCGC5_PORTC(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC5_PORTC_SHIFT)) & SIM_SCGC5_PORTC_MASK)
+#define SIM_SCGC5_PORTD_MASK                     (0x1000U)
+#define SIM_SCGC5_PORTD_SHIFT                    (12U)
+#define SIM_SCGC5_PORTD(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC5_PORTD_SHIFT)) & SIM_SCGC5_PORTD_MASK)
+#define SIM_SCGC5_PORTE_MASK                     (0x2000U)
+#define SIM_SCGC5_PORTE_SHIFT                    (13U)
+#define SIM_SCGC5_PORTE(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_SCGC5_PORTE_SHIFT)) & SIM_SCGC5_PORTE_MASK)
+
+/*! @name SCGC6 - System Clock Gating Control Register 6 */
+#define SIM_SCGC6_FTFL_MASK                      (0x1U)
+#define SIM_SCGC6_FTFL_SHIFT                     (0U)
+#define SIM_SCGC6_FTFL(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_FTFL_SHIFT)) & SIM_SCGC6_FTFL_MASK)
+#define SIM_SCGC6_DMAMUX_MASK                    (0x2U)
+#define SIM_SCGC6_DMAMUX_SHIFT                   (1U)
+#define SIM_SCGC6_DMAMUX(x)                      (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_DMAMUX_SHIFT)) & SIM_SCGC6_DMAMUX_MASK)
+#define SIM_SCGC6_FLEXCAN0_MASK                  (0x10U)
+#define SIM_SCGC6_FLEXCAN0_SHIFT                 (4U)
+#define SIM_SCGC6_FLEXCAN0(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_FLEXCAN0_SHIFT)) & SIM_SCGC6_FLEXCAN0_MASK)
+#define SIM_SCGC6_SPI0_MASK                      (0x1000U)
+#define SIM_SCGC6_SPI0_SHIFT                     (12U)
+#define SIM_SCGC6_SPI0(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_SPI0_SHIFT)) & SIM_SCGC6_SPI0_MASK)
+#define SIM_SCGC6_SPI1_MASK                      (0x2000U)
+#define SIM_SCGC6_SPI1_SHIFT                     (13U)
+#define SIM_SCGC6_SPI1(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_SPI1_SHIFT)) & SIM_SCGC6_SPI1_MASK)
+#define SIM_SCGC6_I2S_MASK                       (0x8000U)
+#define SIM_SCGC6_I2S_SHIFT                      (15U)
+#define SIM_SCGC6_I2S(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_I2S_SHIFT)) & SIM_SCGC6_I2S_MASK)
+#define SIM_SCGC6_CRC_MASK                       (0x40000U)
+#define SIM_SCGC6_CRC_SHIFT                      (18U)
+#define SIM_SCGC6_CRC(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_CRC_SHIFT)) & SIM_SCGC6_CRC_MASK)
+#define SIM_SCGC6_USBDCD_MASK                    (0x200000U)
+#define SIM_SCGC6_USBDCD_SHIFT                   (21U)
+#define SIM_SCGC6_USBDCD(x)                      (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_USBDCD_SHIFT)) & SIM_SCGC6_USBDCD_MASK)
+#define SIM_SCGC6_PDB_MASK                       (0x400000U)
+#define SIM_SCGC6_PDB_SHIFT                      (22U)
+#define SIM_SCGC6_PDB(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_PDB_SHIFT)) & SIM_SCGC6_PDB_MASK)
+#define SIM_SCGC6_PIT_MASK                       (0x800000U)
+#define SIM_SCGC6_PIT_SHIFT                      (23U)
+#define SIM_SCGC6_PIT(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_PIT_SHIFT)) & SIM_SCGC6_PIT_MASK)
+#define SIM_SCGC6_FTM0_MASK                      (0x1000000U)
+#define SIM_SCGC6_FTM0_SHIFT                     (24U)
+#define SIM_SCGC6_FTM0(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_FTM0_SHIFT)) & SIM_SCGC6_FTM0_MASK)
+#define SIM_SCGC6_FTM1_MASK                      (0x2000000U)
+#define SIM_SCGC6_FTM1_SHIFT                     (25U)
+#define SIM_SCGC6_FTM1(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_FTM1_SHIFT)) & SIM_SCGC6_FTM1_MASK)
+#define SIM_SCGC6_ADC0_MASK                      (0x8000000U)
+#define SIM_SCGC6_ADC0_SHIFT                     (27U)
+#define SIM_SCGC6_ADC0(x)                        (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_ADC0_SHIFT)) & SIM_SCGC6_ADC0_MASK)
+#define SIM_SCGC6_RTC_MASK                       (0x20000000U)
+#define SIM_SCGC6_RTC_SHIFT                      (29U)
+#define SIM_SCGC6_RTC(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC6_RTC_SHIFT)) & SIM_SCGC6_RTC_MASK)
+
+/*! @name SCGC7 - System Clock Gating Control Register 7 */
+#define SIM_SCGC7_FLEXBUS_MASK                   (0x1U)
+#define SIM_SCGC7_FLEXBUS_SHIFT                  (0U)
+#define SIM_SCGC7_FLEXBUS(x)                     (((uint32_t)(((uint32_t)(x)) << SIM_SCGC7_FLEXBUS_SHIFT)) & SIM_SCGC7_FLEXBUS_MASK)
+#define SIM_SCGC7_DMA_MASK                       (0x2U)
+#define SIM_SCGC7_DMA_SHIFT                      (1U)
+#define SIM_SCGC7_DMA(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC7_DMA_SHIFT)) & SIM_SCGC7_DMA_MASK)
+#define SIM_SCGC7_MPU_MASK                       (0x4U)
+#define SIM_SCGC7_MPU_SHIFT                      (2U)
+#define SIM_SCGC7_MPU(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_SCGC7_MPU_SHIFT)) & SIM_SCGC7_MPU_MASK)
+
+/*! @name CLKDIV1 - System Clock Divider Register 1 */
+#define SIM_CLKDIV1_OUTDIV4_MASK                 (0xF0000U)
+#define SIM_CLKDIV1_OUTDIV4_SHIFT                (16U)
+#define SIM_CLKDIV1_OUTDIV4(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_CLKDIV1_OUTDIV4_SHIFT)) & SIM_CLKDIV1_OUTDIV4_MASK)
+#define SIM_CLKDIV1_OUTDIV3_MASK                 (0xF00000U)
+#define SIM_CLKDIV1_OUTDIV3_SHIFT                (20U)
+#define SIM_CLKDIV1_OUTDIV3(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_CLKDIV1_OUTDIV3_SHIFT)) & SIM_CLKDIV1_OUTDIV3_MASK)
+#define SIM_CLKDIV1_OUTDIV2_MASK                 (0xF000000U)
+#define SIM_CLKDIV1_OUTDIV2_SHIFT                (24U)
+#define SIM_CLKDIV1_OUTDIV2(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_CLKDIV1_OUTDIV2_SHIFT)) & SIM_CLKDIV1_OUTDIV2_MASK)
+#define SIM_CLKDIV1_OUTDIV1_MASK                 (0xF0000000U)
+#define SIM_CLKDIV1_OUTDIV1_SHIFT                (28U)
+#define SIM_CLKDIV1_OUTDIV1(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_CLKDIV1_OUTDIV1_SHIFT)) & SIM_CLKDIV1_OUTDIV1_MASK)
+
+/*! @name CLKDIV2 - System Clock Divider Register 2 */
+#define SIM_CLKDIV2_USBFRAC_MASK                 (0x1U)
+#define SIM_CLKDIV2_USBFRAC_SHIFT                (0U)
+#define SIM_CLKDIV2_USBFRAC(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_CLKDIV2_USBFRAC_SHIFT)) & SIM_CLKDIV2_USBFRAC_MASK)
+#define SIM_CLKDIV2_USBDIV_MASK                  (0xEU)
+#define SIM_CLKDIV2_USBDIV_SHIFT                 (1U)
+#define SIM_CLKDIV2_USBDIV(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_CLKDIV2_USBDIV_SHIFT)) & SIM_CLKDIV2_USBDIV_MASK)
+#define SIM_CLKDIV2_I2SFRAC_MASK                 (0xFF00U)
+#define SIM_CLKDIV2_I2SFRAC_SHIFT                (8U)
+#define SIM_CLKDIV2_I2SFRAC(x)                   (((uint32_t)(((uint32_t)(x))<<SIM_CLKDIV2_I2SFRAC_SHIFT)) & SIM_CLKDIV2_I2SFRAC_MASK)
+#define SIM_CLKDIV2_I2SDIV_MASK                  (0xFFF00000U)
+#define SIM_CLKDIV2_I2SDIV_SHIFT                 (20U)
+#define SIM_CLKDIV2_I2SDIV(x)                    (((uint32_t)(((uint32_t)(x))<<SIM_CLKDIV2_I2SDIV_SHIFT)) & SIM_CLKDIV2_I2SDIV_MASK)
+
+/*! @name FCFG1 - Flash Configuration Register 1 */
+#define SIM_FCFG1_DEPART_MASK                    (0xF00U)
+#define SIM_FCFG1_DEPART_SHIFT                   (8U)
+#define SIM_FCFG1_DEPART(x)                      (((uint32_t)(((uint32_t)(x)) << SIM_FCFG1_DEPART_SHIFT)) & SIM_FCFG1_DEPART_MASK)
+#define SIM_FCFG1_EESIZE_MASK                    (0xF0000U)
+#define SIM_FCFG1_EESIZE_SHIFT                   (16U)
+#define SIM_FCFG1_EESIZE(x)                      (((uint32_t)(((uint32_t)(x)) << SIM_FCFG1_EESIZE_SHIFT)) & SIM_FCFG1_EESIZE_MASK)
+#define SIM_FCFG1_PFSIZE_MASK                    (0xF000000U)
+#define SIM_FCFG1_PFSIZE_SHIFT                   (24U)
+#define SIM_FCFG1_PFSIZE(x)                      (((uint32_t)(((uint32_t)(x)) << SIM_FCFG1_PFSIZE_SHIFT)) & SIM_FCFG1_PFSIZE_MASK)
+#define SIM_FCFG1_NVMSIZE_MASK                   (0xF0000000U)
+#define SIM_FCFG1_NVMSIZE_SHIFT                  (28U)
+#define SIM_FCFG1_NVMSIZE(x)                     (((uint32_t)(((uint32_t)(x)) << SIM_FCFG1_NVMSIZE_SHIFT)) & SIM_FCFG1_NVMSIZE_MASK)
+
+/*! @name FCFG2 - Flash Configuration Register 2 */
+#define SIM_FCFG2_MAXADDR1_MASK                  (0x7F0000U)
+#define SIM_FCFG2_MAXADDR1_SHIFT                 (16U)
+#define SIM_FCFG2_MAXADDR1(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_FCFG2_MAXADDR1_SHIFT)) & SIM_FCFG2_MAXADDR1_MASK)
+#define SIM_FCFG2_PFLSH_MASK                     (0x800000U)
+#define SIM_FCFG2_PFLSH_SHIFT                    (23U)
+#define SIM_FCFG2_PFLSH(x)                       (((uint32_t)(((uint32_t)(x)) << SIM_FCFG2_PFLSH_SHIFT)) & SIM_FCFG2_PFLSH_MASK)
+#define SIM_FCFG2_MAXADDR0_MASK                  (0x7F000000U)
+#define SIM_FCFG2_MAXADDR0_SHIFT                 (24U)
+#define SIM_FCFG2_MAXADDR0(x)                    (((uint32_t)(((uint32_t)(x)) << SIM_FCFG2_MAXADDR0_SHIFT)) & SIM_FCFG2_MAXADDR0_MASK)
+#define SIM_FCFG2_SWAPPFLSH_MASK                 (0x80000000U)
+#define SIM_FCFG2_SWAPPFLSH_SHIFT                (31U)
+#define SIM_FCFG2_SWAPPFLSH(x)                   (((uint32_t)(((uint32_t)(x)) << SIM_FCFG2_SWAPPFLSH_SHIFT)) & SIM_FCFG2_SWAPPFLSH_MASK)
+
+/*! @name UIDH - Unique Identification Register High */
+#define SIM_UIDH_UID_MASK                        (0xFFFFFFFFU)
+#define SIM_UIDH_UID_SHIFT                       (0U)
+#define SIM_UIDH_UID(x)                          (((uint32_t)(((uint32_t)(x)) << SIM_UIDH_UID_SHIFT)) & SIM_UIDH_UID_MASK)
+
+/*! @name UIDMH - Unique Identification Register Mid-High */
+#define SIM_UIDMH_UID_MASK                       (0xFFFFFFFFU)
+#define SIM_UIDMH_UID_SHIFT                      (0U)
+#define SIM_UIDMH_UID(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_UIDMH_UID_SHIFT)) & SIM_UIDMH_UID_MASK)
+
+/*! @name UIDML - Unique Identification Register Mid Low */
+#define SIM_UIDML_UID_MASK                       (0xFFFFFFFFU)
+#define SIM_UIDML_UID_SHIFT                      (0U)
+#define SIM_UIDML_UID(x)                         (((uint32_t)(((uint32_t)(x)) << SIM_UIDML_UID_SHIFT)) & SIM_UIDML_UID_MASK)
+
+/*! @name UIDL - Unique Identification Register Low */
+#define SIM_UIDL_UID_MASK                        (0xFFFFFFFFU)
+#define SIM_UIDL_UID_SHIFT                       (0U)
+#define SIM_UIDL_UID(x)                          (((uint32_t)(((uint32_t)(x)) << SIM_UIDL_UID_SHIFT)) & SIM_UIDL_UID_MASK)
+
 
 /*!
  * @}
@@ -8909,8 +9176,11 @@ typedef struct {
 #define SIM_BASE                                 (0x40047000u)
 /** Peripheral SIM base pointer */
 #define SIM                                      ((SIM_Type *)SIM_BASE)
+/** Array initializer of SIM peripheral base addresses */
+#define SIM_BASE_ADDRS                           { SIM_BASE }
 /** Array initializer of SIM peripheral base pointers */
 #define SIM_BASES                                { SIM }
+#define SIM_BASE_PTRS                            { SIM }
 
 /*!
  * @}
@@ -8963,47 +9233,62 @@ typedef struct {
  * @{
  */
 
-/* MCR Bit Fields */
-#define SPI_MCR_HALT_MASK                        0x1u
-#define SPI_MCR_HALT_SHIFT                       0
-#define SPI_MCR_SMPL_PT_MASK                     0x300u
-#define SPI_MCR_SMPL_PT_SHIFT                    8
-#define SPI_MCR_SMPL_PT(x)                       (((uint32_t)(((uint32_t)(x))<<SPI_MCR_SMPL_PT_SHIFT))&SPI_MCR_SMPL_PT_MASK)
-#define SPI_MCR_CLR_RXF_MASK                     0x400u
-#define SPI_MCR_CLR_RXF_SHIFT                    10
-#define SPI_MCR_CLR_TXF_MASK                     0x800u
-#define SPI_MCR_CLR_TXF_SHIFT                    11
-#define SPI_MCR_DIS_RXF_MASK                     0x1000u
-#define SPI_MCR_DIS_RXF_SHIFT                    12
-#define SPI_MCR_DIS_TXF_MASK                     0x2000u
-#define SPI_MCR_DIS_TXF_SHIFT                    13
-#define SPI_MCR_MDIS_MASK                        0x4000u
-#define SPI_MCR_MDIS_SHIFT                       14
-#define SPI_MCR_DOZE_MASK                        0x8000u
-#define SPI_MCR_DOZE_SHIFT                       15
-#define SPI_MCR_PCSIS_MASK                       0x3F0000u
-#define SPI_MCR_PCSIS_SHIFT                      16
-#define SPI_MCR_PCSIS(x)                         (((uint32_t)(((uint32_t)(x))<<SPI_MCR_PCSIS_SHIFT))&SPI_MCR_PCSIS_MASK)
-#define SPI_MCR_ROOE_MASK                        0x1000000u
-#define SPI_MCR_ROOE_SHIFT                       24
-#define SPI_MCR_PCSSE_MASK                       0x2000000u
-#define SPI_MCR_PCSSE_SHIFT                      25
-#define SPI_MCR_MTFE_MASK                        0x4000000u
-#define SPI_MCR_MTFE_SHIFT                       26
-#define SPI_MCR_FRZ_MASK                         0x8000000u
-#define SPI_MCR_FRZ_SHIFT                        27
-#define SPI_MCR_DCONF_MASK                       0x30000000u
-#define SPI_MCR_DCONF_SHIFT                      28
-#define SPI_MCR_DCONF(x)                         (((uint32_t)(((uint32_t)(x))<<SPI_MCR_DCONF_SHIFT))&SPI_MCR_DCONF_MASK)
-#define SPI_MCR_CONT_SCKE_MASK                   0x40000000u
-#define SPI_MCR_CONT_SCKE_SHIFT                  30
-#define SPI_MCR_MSTR_MASK                        0x80000000u
-#define SPI_MCR_MSTR_SHIFT                       31
-/* TCR Bit Fields */
-#define SPI_TCR_SPI_TCNT_MASK                    0xFFFF0000u
-#define SPI_TCR_SPI_TCNT_SHIFT                   16
-#define SPI_TCR_SPI_TCNT(x)                      (((uint32_t)(((uint32_t)(x))<<SPI_TCR_SPI_TCNT_SHIFT))&SPI_TCR_SPI_TCNT_MASK)
-/* CTAR Bit Fields */
+/*! @name MCR - Module Configuration Register */
+#define SPI_MCR_HALT_MASK                        (0x1U)
+#define SPI_MCR_HALT_SHIFT                       (0U)
+#define SPI_MCR_HALT(x)                          (((uint32_t)(((uint32_t)(x)) << SPI_MCR_HALT_SHIFT)) & SPI_MCR_HALT_MASK)
+#define SPI_MCR_SMPL_PT_MASK                     (0x300U)
+#define SPI_MCR_SMPL_PT_SHIFT                    (8U)
+#define SPI_MCR_SMPL_PT(x)                       (((uint32_t)(((uint32_t)(x)) << SPI_MCR_SMPL_PT_SHIFT)) & SPI_MCR_SMPL_PT_MASK)
+#define SPI_MCR_CLR_RXF_MASK                     (0x400U)
+#define SPI_MCR_CLR_RXF_SHIFT                    (10U)
+#define SPI_MCR_CLR_RXF(x)                       (((uint32_t)(((uint32_t)(x)) << SPI_MCR_CLR_RXF_SHIFT)) & SPI_MCR_CLR_RXF_MASK)
+#define SPI_MCR_CLR_TXF_MASK                     (0x800U)
+#define SPI_MCR_CLR_TXF_SHIFT                    (11U)
+#define SPI_MCR_CLR_TXF(x)                       (((uint32_t)(((uint32_t)(x)) << SPI_MCR_CLR_TXF_SHIFT)) & SPI_MCR_CLR_TXF_MASK)
+#define SPI_MCR_DIS_RXF_MASK                     (0x1000U)
+#define SPI_MCR_DIS_RXF_SHIFT                    (12U)
+#define SPI_MCR_DIS_RXF(x)                       (((uint32_t)(((uint32_t)(x)) << SPI_MCR_DIS_RXF_SHIFT)) & SPI_MCR_DIS_RXF_MASK)
+#define SPI_MCR_DIS_TXF_MASK                     (0x2000U)
+#define SPI_MCR_DIS_TXF_SHIFT                    (13U)
+#define SPI_MCR_DIS_TXF(x)                       (((uint32_t)(((uint32_t)(x)) << SPI_MCR_DIS_TXF_SHIFT)) & SPI_MCR_DIS_TXF_MASK)
+#define SPI_MCR_MDIS_MASK                        (0x4000U)
+#define SPI_MCR_MDIS_SHIFT                       (14U)
+#define SPI_MCR_MDIS(x)                          (((uint32_t)(((uint32_t)(x)) << SPI_MCR_MDIS_SHIFT)) & SPI_MCR_MDIS_MASK)
+#define SPI_MCR_DOZE_MASK                        (0x8000U)
+#define SPI_MCR_DOZE_SHIFT                       (15U)
+#define SPI_MCR_DOZE(x)                          (((uint32_t)(((uint32_t)(x)) << SPI_MCR_DOZE_SHIFT)) & SPI_MCR_DOZE_MASK)
+#define SPI_MCR_PCSIS_MASK                       (0x3F0000U)
+#define SPI_MCR_PCSIS_SHIFT                      (16U)
+#define SPI_MCR_PCSIS(x)                         (((uint32_t)(((uint32_t)(x)) << SPI_MCR_PCSIS_SHIFT)) & SPI_MCR_PCSIS_MASK)
+#define SPI_MCR_ROOE_MASK                        (0x1000000U)
+#define SPI_MCR_ROOE_SHIFT                       (24U)
+#define SPI_MCR_ROOE(x)                          (((uint32_t)(((uint32_t)(x)) << SPI_MCR_ROOE_SHIFT)) & SPI_MCR_ROOE_MASK)
+#define SPI_MCR_PCSSE_MASK                       (0x2000000U)
+#define SPI_MCR_PCSSE_SHIFT                      (25U)
+#define SPI_MCR_PCSSE(x)                         (((uint32_t)(((uint32_t)(x)) << SPI_MCR_PCSSE_SHIFT)) & SPI_MCR_PCSSE_MASK)
+#define SPI_MCR_MTFE_MASK                        (0x4000000U)
+#define SPI_MCR_MTFE_SHIFT                       (26U)
+#define SPI_MCR_MTFE(x)                          (((uint32_t)(((uint32_t)(x)) << SPI_MCR_MTFE_SHIFT)) & SPI_MCR_MTFE_MASK)
+#define SPI_MCR_FRZ_MASK                         (0x8000000U)
+#define SPI_MCR_FRZ_SHIFT                        (27U)
+#define SPI_MCR_FRZ(x)                           (((uint32_t)(((uint32_t)(x)) << SPI_MCR_FRZ_SHIFT)) & SPI_MCR_FRZ_MASK)
+#define SPI_MCR_DCONF_MASK                       (0x30000000U)
+#define SPI_MCR_DCONF_SHIFT                      (28U)
+#define SPI_MCR_DCONF(x)                         (((uint32_t)(((uint32_t)(x)) << SPI_MCR_DCONF_SHIFT)) & SPI_MCR_DCONF_MASK)
+#define SPI_MCR_CONT_SCKE_MASK                   (0x40000000U)
+#define SPI_MCR_CONT_SCKE_SHIFT                  (30U)
+#define SPI_MCR_CONT_SCKE(x)                     (((uint32_t)(((uint32_t)(x)) << SPI_MCR_CONT_SCKE_SHIFT)) & SPI_MCR_CONT_SCKE_MASK)
+#define SPI_MCR_MSTR_MASK                        (0x80000000U)
+#define SPI_MCR_MSTR_SHIFT                       (31U)
+#define SPI_MCR_MSTR(x)                          (((uint32_t)(((uint32_t)(x)) << SPI_MCR_MSTR_SHIFT)) & SPI_MCR_MSTR_MASK)
+
+/*! @name TCR - Transfer Count Register */
+#define SPI_TCR_SPI_TCNT_MASK                    (0xFFFF0000U)
+#define SPI_TCR_SPI_TCNT_SHIFT                   (16U)
+#define SPI_TCR_SPI_TCNT(x)                      (((uint32_t)(((uint32_t)(x)) << SPI_TCR_SPI_TCNT_SHIFT)) & SPI_TCR_SPI_TCNT_MASK)
+
+/*! @name CTAR - DSPI Clock and Transfer Attributes Register (In Master Mode) */
 #define SPI_CTAR_BR_MASK                         0xFu
 #define SPI_CTAR_BR_SHIFT                        0
 #define SPI_CTAR_BR(x)                           (((uint32_t)(((uint32_t)(x))<<SPI_CTAR_BR_SHIFT))&SPI_CTAR_BR_MASK)
