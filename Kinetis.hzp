@@ -1372,4 +1372,5 @@
       <file file_name="targets/Kinetis/CMSIS/fsl_device_registers.h" />
     </folder>
   </project>
+  <import file_name="targets/Kinetis/Loader.hzp" />
 </solution>
